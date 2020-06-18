@@ -9,6 +9,11 @@
 <meta charset="UTF-8" >
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -30,6 +35,11 @@
 		<meta property="og:description"	id="fbDtls"		content="메가박스에서 전하는 다양한 소식을 안내해드립니다. "/>
 		<meta property="og:image" 		id="fbImg"		content="https://img.megabox.co.kr/SharedImg/metaTag/2020/02/04/gFfTzMwwiCxhBwcUV5TRGMFX9Cmoj64W.jpg" />
 		
+		<style type="text/css">
+			.board-list-tr > th{
+				text-align: center;
+			}
+		</style>
 
 </head>
 <body>
@@ -791,8 +801,8 @@
 
 
 
-	<form name="moveFrm" method="post">
-		<!-- <input type="hidden" name="artiNo" /> -->
+	<!-- <form name="moveFrm" method="post">
+		<input type="hidden" name="artiNo" />
 		<input type="hidden" name="bbsNo" value="9" />
 		<input type="hidden" name="cateNo" />
 		<input type="hidden" name="theater" />
@@ -800,11 +810,11 @@
 		<input type="hidden" name="theater02" />
 		<input type="hidden" name="searchTxt" />
 		<input type="hidden" name="currentPage" value="" />
-	</form>
+	</form> -->
 
 	<!-- container -->
 	<div class="container has-lnb">
-		<div class="page-util">
+		<!-- <div class="page-util">
 			<div class="inner-wrap">
 				<div class="location">
 					<span>Home</span>
@@ -813,7 +823,7 @@
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 
 		<div class="inner-wrap">
 			<div class="lnb-area">
@@ -852,7 +862,7 @@
 				</div>
 
 				<div class="board-list-util">
-					<p class="result-count">전체 <em class="font-gblue">0</em>건</p>
+					<p class="result-count">전체 <em class="font-gblue">${listCount}</em>건</p>
 
 					<select id="theater" title="지역 선택" class="mr07">
 						<option value="">지역 선택</option>
@@ -897,7 +907,7 @@
 							<col style="width:116px;">
 						</colgroup>
 						<thead>
-							<tr>
+							<tr class="board-list-tr">
 								<th scope="col">번호</th>
 								<th scope="col">극장</th>
 								<th scope="col">구분</th>
@@ -909,7 +919,8 @@
 							<c:forEach items="${list}" var="vo">
 								<tr>
 									<td>${vo.num}</td>
-									<td>${vo.writer}</td>
+									<td>${vo.theaterNum}</td>
+									<td>${vo.separate}</td>
 									<td>${vo.title}</td>
 									<td>${vo.regDate}</td>
 								</tr>
@@ -919,10 +930,15 @@
 						</tbody>
 					</table>
 				</div>
+				
+				
 
 				<!-- pagination -->
 				<nav class="pagination"></nav>
 				<!--// pagination -->
+				<div class="container">
+					<a href="../notice/noticeWrite" class="btn btn-primary">Write</a>
+				</div>
 			</div>
 		</div>
 	</div>

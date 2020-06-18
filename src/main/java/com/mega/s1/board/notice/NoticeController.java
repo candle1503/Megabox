@@ -27,7 +27,7 @@ public class NoticeController {
 	@GetMapping("noticeWrite")
 	public ModelAndView boardInsert() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("boardVO", new BoardVO());
+		mv.addObject("boardVO", new NoticeVO());
 		mv.addObject("path", "Write");
 		mv.setViewName("board/boardWrite");
 		
@@ -37,6 +37,8 @@ public class NoticeController {
 	@PostMapping("noticeWrite")
 	public ModelAndView boardInsert(NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		noticeService.boardInsert(noticeVO);
+		mv.setViewName("redirect:./noticeList");
 		
 		return mv;
 	}
@@ -45,7 +47,9 @@ public class NoticeController {
 	public ModelAndView boardList(BoardVO boardVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BoardVO> ar = noticeService.boardList(boardVO);
+		int listCount = ar.size();
 		
+		mv.addObject("listCount", listCount);
 		mv.addObject("list", ar);
 		mv.setViewName("board/boardList");
 		return mv;

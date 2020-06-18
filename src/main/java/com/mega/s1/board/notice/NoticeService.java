@@ -15,9 +15,9 @@ public class NoticeService implements BoardService{
 	private NoticeRepository noticeRepository;
 	
 	@Override
-	public int boardInsert(BoardVO boardVO) throws Exception {
+	public int boardInsert(NoticeVO noticeVO) throws Exception {
 		
-		return noticeRepository.boardInsert(boardVO);
+		return noticeRepository.boardInsert(noticeVO);
 	}
 	
 	@Override

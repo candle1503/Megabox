@@ -6,7 +6,7 @@
 <mapper namespace="com.mega.s1.board.notice.NoticeRepository">
 
 	<insert id="boardInsert" parameterType="com.mega.s1.board.notice.NoticeVO" useGeneratedKeys="true" keyProperty="num">
-		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, now(), 0, 1, #{separate})
+		insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1)
 	</insert>
 
 	<select id="boardList" parameterType="com.mega.s1.board.notice.NoticeVO" resultType="com.mega.s1.board.notice.NoticeVO">

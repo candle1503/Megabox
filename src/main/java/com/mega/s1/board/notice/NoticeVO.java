@@ -6,9 +6,10 @@ import lombok.Data;
 
 @Data
 public class NoticeVO extends BoardVO {
+	
+	private String separate;
 
 	private long theaterNum;
 	
-	private String separate;
 	
 }

@@ -17,41 +17,34 @@
     <form:input path="num" type="hidden" id="num" />
     
     <div class="form-group">
-      <label class="control-label col-sm-2" for="title">Title:</label>
+      <label class="control-label col-sm-2" for="title">제목:</label>
       <div class="col-sm-10">
         <form:input path="title" type="text" class="form-control" id="title" placeholder="Enter title"/>
         <form:errors path="title" cssClass="t"></form:errors>
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="writer">Writer:</label>
-      <div class="col-sm-10">          
-        <form:input path="writer" type="text" class="form-control" id="writer" placeholder="Enter writer" value="${member.id}" readonly="true" />
+      <label class="control-label col-sm-2" for="separate">구분:</label>
+      <div class="col-sm-10">
+	      <div class="dropdown">
+			  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">구분을 골라주세요
+			  <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+			    <li><a href="#" value="공지">공지</a></li>
+			    <li><a href="#" value="이벤트">이벤트</a></li>
+			    <li><a href="#" value="무대인사">무대인사</a></li>
+			    <li><a href="#" value="라이브뷰잉">라이브뷰잉</a></li>
+			  </ul>
+			</div>
+        <form:input path="separate" type="text" class="form-control" id="separate" placeholder="Enter separate"/>
+        <form:errors path="separate" cssClass="t"></form:errors>
       </div>
     </div>
      <div class="form-group">
-      <label class="control-label col-sm-2" for="contents">Contents:</label>
+      <label class="control-label col-sm-2" for="contents">내용:</label>
       <div class="col-sm-10">          
     	  <form:textarea path="contents" rows="" cols="" class="form-control" id="summernote" ></form:textarea>
     	  <form:errors path="contents"></form:errors>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="separate">구분:</label>
-      <div class="col-sm-10">	
-      	<div class="dropdown">
-		  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">구분을 골라주세요
-		  <span class="caret"></span></button>
-		  <ul class="dropdown-menu">
-		    <li><a href="#">공지</a></li>
-		    <li><a href="#">이벤트</a></li>
-		    <li><a href="#">무대인사</a></li>
-		    <li><a href="#">라이브뷰잉</a></li>
-		  </ul>
-		</div>
-		<input type="text" >
-        <%-- <form:input path="separate" type="text" class="form-control" id="title" placeholder="Enter title"/>
-        <form:errors path="title" cssClass="t"></form:errors> --%>
       </div>
     </div>
     
@@ -68,6 +61,12 @@
       </div>
     </div>
   </form:form>
+
+	<script type="text/javascript">
+		$(".dropdown-menu li > a").click(function(){
+			$("#separate").val($(this).attr('value'));
+		});
+	</script>
 
 
 </body>
