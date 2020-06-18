@@ -14074,10 +14074,10 @@ body.body-iframe .modal-layer {
 	border-bottom: 1px solid rgba(255, 255, 255, .2)
 }
 
-/* #header.no-bg .ci a {
+#header.no-bg .ci a {
 	background-image:
 		url(https://img.megabox.co.kr/static/pc/images/common/ci/logo-white.png)
-} */
+}
 
 #header.no-bg .util-area {
 	color: #888
@@ -14155,7 +14155,7 @@ body.body-iframe .modal-layer {
 	position: absolute;
 	top: -38px;
 	height: 38px;
-	text-indent: 10px;
+	text-indent: -9999px;
 	background-position: center 0;
 	background-repeat: no-repeat
 }

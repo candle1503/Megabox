@@ -6,7 +6,7 @@
 	position: absolute;
 	left: 0;
 	right: inherit;
-	top: 1px;
+	top: 80px;
 	width: 100%;
 	z-index: 100;
 }
