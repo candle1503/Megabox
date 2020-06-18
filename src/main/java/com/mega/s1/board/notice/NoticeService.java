@@ -1,5 +1,7 @@
 package com.mega.s1.board.notice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class NoticeService implements BoardService{
 	public int boardInsert(BoardVO boardVO) throws Exception {
 		
 		return noticeRepository.boardInsert(boardVO);
+	}
+	
+	@Override
+	public List<BoardVO> boardList(BoardVO boardVO) throws Exception {
+		return noticeRepository.boardList(boardVO);
 	}
 	
 }

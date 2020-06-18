@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -23,8 +26,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="writer">Writer:</label>
       <div class="col-sm-10">          
-        <input type="text" class="form-control" id="writer" placeholder="Enter writer" name="writer" value="${member.id}" readonly="readonly">
-        <%-- <form:input path="writer" type="text" class="form-control" id="writer" placeholder="Enter writer" readonly="true" /> --%>
+        <form:input path="writer" type="text" class="form-control" id="writer" placeholder="Enter writer" value="${member.id}" readonly="true" />
       </div>
     </div>
      <div class="form-group">
@@ -34,6 +36,26 @@
     	  <form:errors path="contents"></form:errors>
       </div>
     </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="separate">구분:</label>
+      <div class="col-sm-10">	
+      	<div class="dropdown">
+		  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">구분을 골라주세요
+		  <span class="caret"></span></button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">공지</a></li>
+		    <li><a href="#">이벤트</a></li>
+		    <li><a href="#">무대인사</a></li>
+		    <li><a href="#">라이브뷰잉</a></li>
+		  </ul>
+		</div>
+		<input type="text" >
+        <%-- <form:input path="separate" type="text" class="form-control" id="title" placeholder="Enter title"/>
+        <form:errors path="title" cssClass="t"></form:errors> --%>
+      </div>
+    </div>
+    
+    
     <div class="form-group">
    	 	<input type="button" class="btn btn-info" id="add" value="FileAdd">
     </div>

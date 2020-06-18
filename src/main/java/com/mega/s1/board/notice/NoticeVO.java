@@ -9,4 +9,6 @@ public class NoticeVO extends BoardVO {
 
 	private long theaterNum;
 	
+	private String separate;
+	
 }

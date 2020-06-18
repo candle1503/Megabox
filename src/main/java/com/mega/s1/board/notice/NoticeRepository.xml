@@ -6,7 +6,11 @@
 <mapper namespace="com.mega.s1.board.notice.NoticeRepository">
 
 	<insert id="boardInsert" parameterType="com.mega.s1.board.notice.NoticeVO" useGeneratedKeys="true" keyProperty="num">
-		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, now(), 0, 1)
+		insert into notice values(#{num}, #{title}, #{writer}, #{contents}, now(), 0, 1, #{separate})
 	</insert>
+
+	<select id="boardList" parameterType="com.mega.s1.board.notice.NoticeVO" resultType="com.mega.s1.board.notice.NoticeVO">
+		select * from notice order by num desc
+	</select>
 
 </mapper>
