@@ -60,9 +60,12 @@ public class NoticeController {
 	@GetMapping("noticeSelect")
 	public ModelAndView boardSelect(NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		NoticeFileVO noticeFileVO = new NoticeFileVO();
+		noticeFileVO = noticeService.fileDown(noticeFileVO);
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
 		mv.addObject("vo", noticeVO);
+		mv.addObject("fileVO", noticeFileVO);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;

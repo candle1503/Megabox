@@ -146,6 +146,7 @@
 
 						<div class="cont">
 						<span style="font-size:10pt"><span style="font-family:">${vo.contents}</span></span><br />
+						<span>${fileVO.oriName}</span>
 						<hr>
 						<span style="font-size:10pt"><span style="font-family:">안녕하세요,</span></span><br />
 <span style="font-size:10pt"><span style="font-family:">메가박스 입니다.</span></span><br />
