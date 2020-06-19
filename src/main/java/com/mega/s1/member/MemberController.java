@@ -1,5 +1,7 @@
 package com.mega.s1.member;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +25,30 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView setJoin(MemberVO memberVO) throws Exception{
+	public ModelAndView setJoin(MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println(memberVO.getId());
 		memberService.setJoin(memberVO);
-		System.out.println("db연동성공");
+		session.setAttribute("member", memberVO);
+		mv.setViewName("redirect:../");
 		return mv;
-		
+	}
+	
+	@GetMapping("memberLogin")
+	public ModelAndView setLogin() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberLogin");
+		return mv;
+	}
+	
+	@PostMapping("memberLogin")
+	public ModelAndView setLogin(MemberVO memberVO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO =  memberService.setLogin(memberVO);
+		System.out.println(memberVO.getEmail());
+		session.setAttribute("member", memberVO);
+		mv.setViewName("redirect:../");
+		return mv;
 	}
 	
 }

@@ -50,7 +50,7 @@
 
 			<li><a href="#" style="color: white;">공지사항</a></li>
 			<li><a href="#">FAQ</a></li>
-			<li data-toggle="modal" data-target="#myModal"><a href="# " >회원가입</a></li>
+			<li data-toggle="modal" data-target="#myModal"><a href="./member/memberLogin" >로그인</a></li>
 		</ul>
 	</nav>
 	<!--// gnb -->

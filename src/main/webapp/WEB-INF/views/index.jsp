@@ -4,8 +4,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/resources/css/indexMegabox.css"	media="all">
-<link rel="stylesheet" href="/resources/css/indexMain.css" media="all">
+<link rel="stylesheet" href="/resources/css/main.css"	media="all">
+<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
  <link rel="shortcut icon" href="/resources/icon/favicon.ico">
 </head>
 <body>
