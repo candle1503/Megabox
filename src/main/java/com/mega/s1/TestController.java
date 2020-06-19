@@ -15,5 +15,10 @@ public class TestController {
 	public String theaterMain() throws Exception {
 		return "/theater/theaterMain";
 	}
+	
+	@GetMapping("/theater/theaterBranch")
+	public String theaterBranch() throws Exception {
+		return "/theater/theaterBranch";
+	}
 
 }
