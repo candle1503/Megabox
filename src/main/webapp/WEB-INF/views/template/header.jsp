@@ -10,14 +10,6 @@
 
 	<!-- topGnb -->
 
-	<div class="link-area">
-		<a href="#layer_sitemap" class="header-open-layer btn-layer-sitemap"
-			title="사이트맵">사이트맵</a> <a href="#layer_header_search"
-			class="header-open-layer btn-layer-search" title="검색">검색</a> <a
-			href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
-		<a href="#layer_mymega" class="header-open-layer btn-layer-mymega"
-			title="나의 메가박스">나의 메가박스</a>
-	</div>
 
 	<!-- gnb -->
 	<!--
@@ -58,7 +50,7 @@
 
 			<li><a href="#" style="color: white;">공지사항</a></li>
 			<li><a href="#">FAQ</a></li>
-			<li><a href="# ">회원가입</a></li>
+			<li data-toggle="modal" data-target="#myModal"><a href="# " >회원가입</a></li>
 		</ul>
 	</nav>
 	<!--// gnb -->
@@ -66,9 +58,6 @@
 	<!--// topGnb -->
 
 	<!-- 레이어 : 사이트맵 -->
-
-
-
 
 	<div id="layer_sitemap" class="header-layer layer-sitemap">
 		<!-- wrap -->
