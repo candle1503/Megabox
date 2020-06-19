@@ -1,5 +1,6 @@
 package com.mega.s1.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/member/**")
 public class MemberController {
 
+	@Autowired
+	private MemberService memberService;
+	
 	@GetMapping("memberJoin")
 	public ModelAndView setJoin() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -19,9 +23,11 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView setJoin() throws Exception{
+	public ModelAndView setJoin(MemberVO memberVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println(memberVO.getId());
+		memberService.setJoin(memberVO);
+		System.out.println("db연동성공");
 		return mv;
 		
 	}

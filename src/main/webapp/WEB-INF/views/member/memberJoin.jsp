@@ -374,7 +374,7 @@ function fn_submit(page){
 						회원가입
 					</p>
 
-					<form action="memberJoin" method="post">
+					<form action="./memberJoin" method="post">
 					<div class="table-wrap">
 						<table class="board-form">
 							<caption>
@@ -388,58 +388,66 @@ function fn_submit(page){
 							<tbody>
 								<tr>
 									<th scope="row"><label for="ibxSchIdMbNm">아이디<!--이름--></label></th>
-									<td><input id="ibxSchIdMbNm" maxlength="20" type="text"
-										placeholder="이름" class="input-text w230px">
+									<td><input id="id" maxlength="20" type="text"
+										placeholder="아이디" class="input-text w230px" name="id">
 									<!--이름--></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxSchIdMbNm">비밀번호<!--이름--></label></th>
-									<td><input id="ibxSchIdMbNm" maxlength="20" type="text"
-										placeholder="이름" class="input-text w230px">
+									<td><input id="password" maxlength="20" type="password"
+										placeholder="비밀번호" class="input-text w230px" name="password">
+									<!--이름--></td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="ibxSchIdMbNm">비밀번호 확인<!--이름--></label></th>
+									<td><input id="passwordCheck" maxlength="20" type="password"
+										placeholder="비밀번호 재입력" class="input-text w230px" name="passwordCheck">
 									<!--이름--></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxSchIdMbNm">이름<!--이름--></label></th>
-									<td><input id="ibxSchIdMbNm" maxlength="20" type="text"
-										placeholder="이름" class="input-text w230px">
+									<td><input id="name" maxlength="20" type="text"
+										placeholder="이름" class="input-text w230px" name="name">
 									<!--이름--></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxSchIdBirthDe">전화번호<!--생년월일--></label></th>
-									<td><input id="ibxSchIdBirthDe" maxlength="8" type="text"
-										placeholder="생년월일 앞8자리" class="input-text w230px">
-									<!--생년월일 8자리-->
-										<div id="schIdBirthDe-error-text" class="alert"></div></td>
+									<td><input id="phone" maxlength="12" type="text"
+										placeholder="'-' 없이 입력"" class="input-text w230px" name="phone">
+						
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxSchIdMblpTelno">이메일
 											번호<!--휴대폰 번호-->
 									</label></th>
-									<td><input id="ibxSchIdMblpTelno" maxlength="11"
-										type="text" placeholder="'-' 없이 입력" class="input-text w230px">
+									<td><input id="email" maxlength="20"
+										type="email" placeholder="example@test.com" class="input-text w230px" name="email">
 									<!--'-' 없이 입력-->
 										<div id="schIdMblpNo-error-text" class="alert"></div></td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="ibxSchIdMblpTelno">생년월일<!--휴대폰 번호-->
 									</label></th>
-									<td><input id="ibxSchIdMblpTelno" maxlength="11"
-										type="text" placeholder="'-' 없이 입력" class="input-text w230px">
+									<td><input id="age" maxlength="11"
+										type="text" placeholder="'나이입력" class="input-text w230px" name="age">
 									<!--'-' 없이 입력-->
 										<div id="schIdMblpNo-error-text" class="alert"></div></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					</form>
-
+					
 					<div class="btn-member-bottom v1">
-						<button id="btnSchId" type="button" class="button  large">
+						<button type="submit" class="button  large">
 							회원등록
 							<!--아이디 찾기-->
 						</button>
-
 					</div>
+					</form>
+
+					
+
+					
 
 
 				</div>
