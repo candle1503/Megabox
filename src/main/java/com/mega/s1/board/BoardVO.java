@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class BoardVO {
 	
-	private long num;
+	private int num;
 	
 	private String title;
 	

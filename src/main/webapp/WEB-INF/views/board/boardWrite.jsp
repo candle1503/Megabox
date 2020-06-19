@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<div class="container">
+
 <form:form modelAttribute="boardVO" class="form-horizontal" action="${board}${path}" method="POST" enctype="multipart/form-data">
     <form:input path="num" type="hidden" id="num" />
     
@@ -50,9 +52,9 @@
     
     
     <div class="form-group">
-   	 	<input type="button" class="btn btn-info" id="add" value="FileAdd">
+   	 	 <input type="button" class="btn btn-info" id="add" value="FileAdd">
     </div>
-    <div class="form-group" id="f">
+      	<div class="form-group" id="f">
 		    	
     </div>
     <div class="form-group">        
@@ -61,11 +63,22 @@
       </div>
     </div>
   </form:form>
-
+  
+</div>
 	<script type="text/javascript">
 		$(".dropdown-menu li > a").click(function(){
 			$("#separate").val($(this).attr('value'));
 		});
+
+		var path = '${path}';
+		if(path=='Write'){
+			$("#num").remove();
+		}
+		
+		$("#add").click(function(){
+			$("#f").append('<input type="file" name="files">');
+		});
+		
 	</script>
 
 

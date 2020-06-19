@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.board.BoardVO;
+import com.mega.s1.board.notice.noticeFile.NoticeFileVO;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -35,9 +37,9 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeWrite")
-	public ModelAndView boardInsert(NoticeVO noticeVO) throws Exception{
+	public ModelAndView boardInsert(NoticeVO noticeVO, MultipartFile[] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		noticeService.boardInsert(noticeVO);
+		noticeService.boardInsert(noticeVO, files);
 		mv.setViewName("redirect:./noticeList");
 		
 		return mv;
@@ -55,6 +57,40 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@GetMapping("noticeSelect")
+	public ModelAndView boardSelect(NoticeVO noticeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		noticeVO = noticeService.boardSelect(noticeVO);
+		mv.addObject("vo", noticeVO);
+		mv.setViewName("board/boardSelect");
+		
+		return mv;
+	}
 	
+	
+	
+	
+	@GetMapping("noticeDelete")
+	public ModelAndView boardDelete(NoticeVO noticeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		noticeService.boardDelete(noticeVO);
+		mv.setViewName("redirect:./noticeList");
+		return mv;
+	}
+	
+	@GetMapping("fileDown")
+	public ModelAndView fileDown(NoticeFileVO noticeFileVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		noticeFileVO = noticeService.fileDown(noticeFileVO);
+		
+		mv.addObject("fileVO", noticeFileVO);
+		mv.addObject("path", "upload/notice");
+		mv.setViewName("fileDown");
+		
+		return mv;
+	}
 	
 }

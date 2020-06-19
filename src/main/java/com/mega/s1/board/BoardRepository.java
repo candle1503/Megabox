@@ -10,4 +10,9 @@ public interface BoardRepository {
 	
 	public List<BoardVO> boardList(BoardVO boardVO) throws Exception;
 	
+	public NoticeVO boardSelect(NoticeVO noticeVO) throws Exception;
+	
+	
+	
+	public int boardDelete(NoticeVO noticeVO) throws Exception; 
 }

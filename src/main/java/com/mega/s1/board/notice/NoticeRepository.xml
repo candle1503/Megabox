@@ -5,12 +5,25 @@
   
 <mapper namespace="com.mega.s1.board.notice.NoticeRepository">
 
-	<insert id="boardInsert" parameterType="com.mega.s1.board.notice.NoticeVO" useGeneratedKeys="true" keyProperty="num">
+	<insert id="boardInsert" parameterType="NoticeVO" useGeneratedKeys="true" keyProperty="num">
 		insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1)
 	</insert>
 
-	<select id="boardList" parameterType="com.mega.s1.board.notice.NoticeVO" resultType="com.mega.s1.board.notice.NoticeVO">
+	<select id="boardList" parameterType="NoticeVO" resultType="NoticeVO">
 		select * from notice order by num desc
 	</select>
+	
+	<select id="boardSelect" parameterType="NoticeVO" resultType="NoticeVO">
+		select * from notice where num = #{num}
+	</select>
+	
+	<update id="boardUpdate" parameterType="NoticeVO">
+		update notice set separate = #{separate}, title = #{title}, contents = #{contents}
+	</update>
+	
+	<delete id="boardDelete" parameterType="NoticeVO">
+		delete from notice where num = #{num}
+	</delete>
+	
 
 </mapper>
