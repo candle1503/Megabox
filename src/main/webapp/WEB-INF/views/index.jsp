@@ -10,7 +10,12 @@
 
 </head>
 
-<c:import url="./template/header.jsp"></c:import>
+ <link rel="shortcut icon" href="/resources/icon/favicon.ico">
+
+
+<link rel="stylesheet" href="/resources/css/megabox.min.css"
+	media="all">
+<link rel="stylesheet" href="/resources/css/indexMain.css" media="all">
 
 <body>
 

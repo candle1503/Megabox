@@ -7,6 +7,6 @@
 
 <title>Ssangyong CineCity Project</title>
 
-<link rel="stylesheet" href="/resources/css/indexMegabox.css"
+<link rel="stylesheet" href="/resources/css/megabox.min.css"
 	media="all">
 <link rel="stylesheet" href="/resources/css/indexMain.css" media="all">
