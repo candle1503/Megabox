@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
 <head>
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
-
 <link rel="shortcut icon" href="/resources/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
 <link rel="stylesheet" href="/resources/css/myPage.css" media="all">
@@ -14,10 +14,10 @@
 	<div class="body-wrap">
 
 		<header id="header">
-			<h1 class="ci">
+			<h1 class="ci" id="goMain">
 				<a href="../" title="MEGABOX 메인으로 가기">MEGABOX : Life Theater</a>
 			</h1>
-
+	
 			<!-- 2019-04-15 마크업 수정 : 고객요청  -->
 			<div class="util-area">
 
@@ -525,5 +525,6 @@
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
+		
 </body>
 </html>

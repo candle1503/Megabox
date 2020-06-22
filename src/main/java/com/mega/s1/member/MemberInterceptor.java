@@ -23,8 +23,9 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 		check = true;
 		response.sendRedirect("../member/memberLogin");
 		return false;
+	}else {
+		
 	}
-	
-	return check;
+	return true;
 	}
 }
