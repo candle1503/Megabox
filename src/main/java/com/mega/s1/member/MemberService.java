@@ -14,7 +14,7 @@ public class MemberService {
 	public int setJoin(MemberVO memberVO) throws Exception{
 		return memberRepository.setJoin(memberVO);
 	}
-	
+	System.out.println();
 	public MemberVO setLogin(MemberVO memberVO) throws Exception{
 		return memberRepository.setLogin(memberVO);
 	}

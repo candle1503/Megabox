@@ -74,7 +74,7 @@
 </div>
 </div>
 <form id="mainForm"></form>
-
+System.out.println();
 
 <div class="normalStyle"
 	style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>

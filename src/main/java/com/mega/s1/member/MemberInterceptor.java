@@ -17,7 +17,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 	boolean check = false;
-	
+	System.out.println();
 	return check;
 	}
 }

@@ -12,7 +12,7 @@
 				<img alt="" src="/resources/images/sTheater.png"
 					style="margin-left: 90px"> <a href="/main" title="메인 페이지로 이동"></a>
 			</div>
-
+System.out.println();
 			<p class="tit-member">회원가입</p>
 
 			<form:form modelAttribute="memberVO" action="./memberJoin" method="post">

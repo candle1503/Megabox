@@ -10,7 +10,7 @@
 </head>
 <body>
 <c:import url="./template/header.jsp"></c:import>
-
+System.out.println();
 	<div class="skip" title="스킵 네비게이션">
 		<a href="#contents" title="본문 바로가기">본문 바로가기</a> <a href="#footer"
 			title="푸터 바로가기">푸터 바로가기</a>

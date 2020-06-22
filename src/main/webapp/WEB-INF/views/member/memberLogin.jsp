@@ -12,7 +12,7 @@
 			<img alt="" src="/resources/images/sTheater.png"
 				style="margin-left: 90px"> <a href="/main" title="메인 페이지로 이동"></a>
 		</div>
-
+System.out.println();
 		<p class="tit-member">로그인</p>
 
 		<form action="./memberLogin" method="post">

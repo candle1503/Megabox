@@ -10,5 +10,5 @@
 	<select id="setLogin" parameterType="MemberVO" resultType="MemberVO">
 		select * from member where id=#{id} and password=#{password}	
 	</select>
-
+System.out.println();
 </mapper>

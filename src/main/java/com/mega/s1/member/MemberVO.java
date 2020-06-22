@@ -26,5 +26,5 @@ public class MemberVO {
 	@Range(max= 200, min= 0)
 	@NotNull(message = "나이를 입력하세요")
 	private Integer age;
-	
+	System.out.println();
 }
