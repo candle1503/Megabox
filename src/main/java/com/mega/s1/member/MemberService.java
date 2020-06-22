@@ -7,12 +7,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
+import com.mega.s1.member.memberFile.MemberFileRepository;
+import com.mega.s1.member.memberFile.MemberFileVO;
+
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class MemberService {
 
 	@Autowired
 	private MemberRepository memberRepository;
+	
+	@Autowired
+	private MemberFileRepository memberFileRepository;
+	
+	public int setProfile(MemberVO memberVO) throws Exception{
+		MemberFileVO memberFileVO = new MemberFileVO();
+		memberFileVO.setId(memberVO.getId());
+		memberFileVO.setFileName("memberProfile.png");
+		memberFileVO.setOriName("memberProfile.png");
+		return memberFileRepository.setProfile(memberFileVO);
+	}
 	
 	public int setJoin(MemberVO memberVO) throws Exception{
 		return memberRepository.setJoin(memberVO);

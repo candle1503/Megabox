@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mega.s1.member.memberFile.MemberFileVO;
+
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
@@ -36,6 +38,7 @@ public class MemberController {
 			mv.addObject("memerVO", memberVO);
 		}else {
 			memberService.setJoin(memberVO);
+			memberService.setProfile(memberVO);
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}
