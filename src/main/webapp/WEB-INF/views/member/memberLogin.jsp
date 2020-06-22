@@ -42,9 +42,9 @@
 				<button type="submit" class="button  large">로그인</button>
 			</div>
 		</form>
-		<button class="button  large">
-			<a src="./memberJoin">회원가입</a>
-		</button>
+		<form action="./memberJoin" method="get">
+		<button type="submit" class="button  large">회원가입</button>
+		</form>
 	</div>
 </body>
 </html>

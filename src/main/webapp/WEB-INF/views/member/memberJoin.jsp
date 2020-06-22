@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="ko">
 <head>
 <link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
@@ -14,7 +15,7 @@
 
 			<p class="tit-member">회원가입</p>
 
-			<form action="./memberJoin" method="post">
+			<form:form modelAttribute="memberVO" action="./memberJoin" method="post">
 				<div class="table-wrap">
 					<table class="board-form">
 						<caption>
@@ -27,51 +28,56 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="row"><label for="ibxSchIdMbNm">아이디<!--이름--></label></th>
-								<td><input id="id" maxlength="20" type="text"
-									placeholder="아이디" class="input-text w230px" name="id">
-									<!--이름--></td>
+								<th scope="row"><label for="ibxSchIdMbNm">아이디</label></th>
+								<td><form:input path="id" id="id" maxlength="20" type="text"
+									placeholder="아이디" class="input-text w230px"/>
+									<form:errors path="id"></form:errors>
+									</td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="ibxSchIdMbNm">비밀번호<!--이름--></label></th>
-								<td><input id="password" maxlength="20" type="password"
-									placeholder="비밀번호" class="input-text w230px" name="password">
-									<!--이름--></td>
+								<th scope="row"><label for="ibxSchIdMbNm">비밀번호</label></th>
+								<td><form:input path="password" id="password" maxlength="20" type="password"
+									placeholder="비밀번호" class="input-text w230px"/>
+									<form:errors path="password"></form:errors>
+									</td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="ibxSchIdMbNm">비밀번호 확인<!--이름--></label></th>
-								<td><input id="passwordCheck" maxlength="20"
+								<th scope="row"><label for="ibxSchIdMbNm">비밀번호 확인</label></th>
+								<td><form:input path="passwordCheck" id="passwordCheck" maxlength="20"
 									type="password" placeholder="비밀번호 재입력"
-									class="input-text w230px" name="passwordCheck"> <!--이름--></td>
+									class="input-text w230px"/>
+									<form:errors path="passwordCheck"></form:errors>
+									 </td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="ibxSchIdMbNm">이름<!--이름--></label></th>
-								<td><input id="name" maxlength="20" type="text"
-									placeholder="이름" class="input-text w230px" name="name">
-									<!--이름--></td>
+								<th scope="row"><label for="ibxSchIdMbNm">이름</label></th>
+								<td><form:input path="name" id="name" maxlength="20" type="text"
+									placeholder="이름" class="input-text w230px"/>
+									<form:errors path="name"></form:errors>
+									</td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="ibxSchIdBirthDe">전화번호<!--생년월일--></label></th>
-								<td><input id="phone" maxlength="12" type="text"
-									placeholder="'-' 없이 입력" " class="input-text w230px"
-									name="phone">
+								<th scope="row"><label for="ibxSchIdBirthDe">전화번호</label></th>
+								<td><form:input path="phone" id="phone" maxlength="12" type="text"
+									placeholder="'-' 없이 입력"  class="input-text w230px"
+									/>
+									<form:errors path="phone"></form:errors>
 							</tr>
 							<tr>
 								<th scope="row"><label for="ibxSchIdMblpTelno">이메일
-										번호<!--휴대폰 번호-->
 								</label></th>
-								<td><input id="email" maxlength="20" type="email"
+								<td><form:input path="email" id="email" maxlength="20" type="email"
 									placeholder="example@test.com" class="input-text w230px"
-									name="email"> <!--'-' 없이 입력-->
-									<div id="schIdMblpNo-error-text" class="alert"></div></td>
+									/> 
+									<form:errors path="email"></form:errors>
+									</td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="ibxSchIdMblpTelno">생년월일<!--휴대폰 번호-->
+								<th scope="row"><label for="ibxSchIdMblpTelno">나이
 								</label></th>
-								<td><input id="age" maxlength="11" type="text"
-									placeholder="'나이입력" class="input-text w230px" name="age">
-									<!--'-' 없이 입력-->
-									<div id="schIdMblpNo-error-text" class="alert"></div></td>
+								<td><form:input path="age" id="age" maxlength="11" type="text"
+									 class="input-text w230px" />
+									 <form:errors path="age"></form:errors>
 							</tr>
 						</tbody>
 					</table>
@@ -80,10 +86,9 @@
 				<div class="btn-member-bottom v1">
 					<button type="submit" class="button  large">
 						회원등록
-						<!--아이디 찾기-->
 					</button>
 				</div>
-			</form>
+			</form:form>
 		</div>
 </body>
 </html>

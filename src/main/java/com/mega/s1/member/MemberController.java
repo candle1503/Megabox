@@ -1,9 +1,11 @@
 package com.mega.s1.member;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,18 +21,24 @@ public class MemberController {
 	@GetMapping("memberJoin")
 	public ModelAndView setJoin() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		MemberVO memberVO = new MemberVO();
+		mv.addObject("memberVO", memberVO);
 		mv.setViewName("member/memberJoin");
 		return mv;
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView setJoin(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView setJoin(@Valid MemberVO memberVO, BindingResult bindingResult,  HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(memberVO.getId());
-		memberService.setJoin(memberVO);
-		session.setAttribute("member", memberVO);
-		mv.setViewName("redirect:../");
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("member/memberJoin");
+			mv.addObject("memerVO", memberVO);
+		}else {
+			memberService.setJoin(memberVO);
+			session.setAttribute("member", memberVO);
+			mv.setViewName("redirect:../");
+		}
+		
 		return mv;
 	}
 	
