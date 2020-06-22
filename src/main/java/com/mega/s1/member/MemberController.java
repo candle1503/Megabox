@@ -58,7 +58,7 @@ public class MemberController {
 	@PostMapping("memberLogin")
 	public ModelAndView setLogin(MemberVO memberVO,BindingResult bindingResult ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boolean result = memberService.memberLoginError(memberVO, bindingResult, session);
+		boolean result = memberService.memberLoginError(memberVO, bindingResult);
 		if(result) {
 			mv.setViewName("member/memberLogin");
 			mv.addObject("memberVO", memberVO);
@@ -83,6 +83,48 @@ public class MemberController {
 	public ModelAndView getMyPage() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/memberMyPage");
+		return mv;
+	}
+	
+	@GetMapping("passwordCheck")
+	public ModelAndView passwordCheck() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = new MemberVO();
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("member/memberPasswordCheck");
+		return mv;
+	}
+	
+	@PostMapping("passwordCheck")
+	public ModelAndView passwordCheck(@Valid MemberVO memberVO, BindingResult bindingResult, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String password = memberVO.getPassword();
+		memberVO=(MemberVO)session.getAttribute("member");
+		memberVO.setPassword(password);
+		boolean result = memberService.passwordCheck(memberVO, bindingResult);
+		if(result) {
+			mv.setViewName("/common/result");
+			mv.addObject("result", "비밀번호가 일치하지 않습니다.");
+			mv.addObject("path", "/member/passwordCheck");
+		}else {
+			mv.setViewName("./member/memberUpdate");
+		}
+		return mv;
+	}
+	
+	
+	@GetMapping("memberUpdate")
+	public ModelAndView getUserInfo() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberUserInfo");
+		return mv;
+	}
+	
+	@GetMapping("memberDelete")
+	public ModelAndView memberDelete(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		session.invalidate();
+		mv.setViewName("redirect:../");
 		return mv;
 	}
 	

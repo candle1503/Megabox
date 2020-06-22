@@ -13,4 +13,6 @@ public interface MemberRepository {
 	//IdCheck
 	public MemberVO idCheck(MemberVO memberVO) throws Exception;
 	
+	
+	
 }

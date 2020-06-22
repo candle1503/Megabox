@@ -16,64 +16,73 @@ public class MemberService {
 
 	@Autowired
 	private MemberRepository memberRepository;
-	
+
 	@Autowired
 	private MemberFileRepository memberFileRepository;
-	
-	public int setProfile(MemberVO memberVO) throws Exception{
+
+	public int setProfile(MemberVO memberVO) throws Exception {
 		MemberFileVO memberFileVO = new MemberFileVO();
 		memberFileVO.setId(memberVO.getId());
 		memberFileVO.setFileName("memberProfile.png");
 		memberFileVO.setOriName("memberProfile.png");
 		return memberFileRepository.setProfile(memberFileVO);
 	}
-	
-	public int setJoin(MemberVO memberVO) throws Exception{
+
+	public int setJoin(MemberVO memberVO) throws Exception {
 		return memberRepository.setJoin(memberVO);
 	}
-	public MemberVO setLogin(MemberVO memberVO) throws Exception{
+
+	public MemberVO setLogin(MemberVO memberVO) throws Exception {
 		return memberRepository.setLogin(memberVO);
 	}
-	
-	public boolean memberJoinError(MemberVO memberVO, BindingResult bindingResult, HttpSession session) throws Exception {
+
+	public boolean memberJoinError(MemberVO memberVO, BindingResult bindingResult, HttpSession session)
+			throws Exception {
 		boolean result = false;
-		
-		if(bindingResult.hasErrors()) {
+
+		if (bindingResult.hasErrors()) {
 			result = true;
 		}
-		
-		if(!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
+
+		if (!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
 			bindingResult.rejectValue("passwordCheck", "memberVO.passwordCheck");
 			result = true;
 		}
-		
-		if(memberRepository.idCheck(memberVO) !=null) {
+
+		if (memberRepository.idCheck(memberVO) != null) {
 			bindingResult.rejectValue("id", "memberVO.id.same");
 			result = true;
-		}else {
+		} else {
 			bindingResult.rejectValue("id", "memberVO.id.notSame");
 		}
-		
+
 		return result;
 	}
-	
-	public boolean memberLoginError(MemberVO memberVO, BindingResult bindingResult,HttpSession session) throws Exception{
+
+	public boolean memberLoginError(MemberVO memberVO, BindingResult bindingResult) throws Exception {
+		boolean result = false;
+
+		if (bindingResult.hasErrors()) {
+			result = true;
+		}
+			if (memberRepository.idCheck(memberVO) == null) {
+				bindingResult.rejectValue("id", "memberVO.id.notExist");
+				result = true;
+			} else if (!memberRepository.idCheck(memberVO).getPassword().equals(memberVO.getPassword())) {
+				bindingResult.rejectValue("password", "memberVO.password.notSame");
+				result = true;
+			}
+		return result;
+	}
+
+	public boolean passwordCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
 		boolean result = false;
 		
-		if(bindingResult.hasErrors()) {
-			result = true;
-		}
-		
-		if(memberRepository.idCheck(memberVO) == null) {
-			bindingResult.rejectValue("id", "memberVO.id.notExist");
-			result = true;
-		}else if(!memberRepository.idCheck(memberVO).getPassword().equals(memberVO.getPassword())){
-			bindingResult.rejectValue("password", "memberVO.password.notSame");
+		if (!memberRepository.idCheck(memberVO).getPassword().equals(memberVO.getPassword())) {
 			result = true;
 		}
 		
 		return result;
+		
 	}
-	
-	
 }
