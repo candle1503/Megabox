@@ -102,27 +102,27 @@
 					<p class="result-count">전체 <em class="font-gblue">${listCount}</em>건</p>
 
 					<select id="theater" title="지역 선택" class="mr07">
-						<option value="">지역 선택</option>
+							<option class="tho" value="">지역 선택</option>
+						 
+							<option class="tho" value="10" >서울</option>
 						
-							<option value="10" >서울</option>
+							<option class="tho" value="30" >경기</option>
 						
-							<option value="30" >경기</option>
+							<option class="tho" value="35" >인천</option>
 						
-							<option value="35" >인천</option>
+							<option class="tho" value="45" >대전/충청/세종</option>
 						
-							<option value="45" >대전/충청/세종</option>
+							<option class="tho" value="55" >부산/대구/경상</option>
 						
-							<option value="55" >부산/대구/경상</option>
+							<option class="tho" value="65" >광주/전라</option>
 						
-							<option value="65" >광주/전라</option>
+							<option class="tho" value="70" >강원</option>
 						
-							<option value="70" >강원</option>
-						
-							<option value="80" >제주</option>
+							<option class="tho" value="80" >제주</option>
 						
 					</select>
 
-					<select id="theater02" title="극장 선택" disabled="disabled" class="mr07">
+					<select id="theater02" title="극장 선택" class="mr07">
 						<option value="">극장 선택</option>
 						
 					</select>
@@ -237,6 +237,16 @@
 <!--// footer -->
 
   
+<script type="text/javascript">
+	/* $("#theater").on("click", function(){
+		alert($(this).val());
+	}); */
+
+	/* $(".tho").mouseup(function(){
+		alert($(this).val());
+	}); */
+
+</script>
 
 
 </body>
