@@ -79,4 +79,11 @@ public class MemberController {
 		return mv;
 	}
 	
+	@GetMapping("getMyPage")
+	public ModelAndView getMyPage() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberMyPage");
+		return mv;
+	}
+	
 }
