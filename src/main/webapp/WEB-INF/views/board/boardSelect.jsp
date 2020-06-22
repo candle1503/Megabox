@@ -50,13 +50,13 @@
 			<script src="//cast.imp.joins.com/persona.js" async></script>
 		
 		
-	
+<c:import url="../template/header_css.jsp"></c:import>
 
 
 </head>
 <body>
 
-
+<c:import url="../template/header.jsp"></c:import>
 
 <!-- <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> -->
@@ -91,7 +91,7 @@
 	
 
 	<!-- container -->
-	<div class="container has-lnb">
+	<div class="container has-lnb" style="margin-top: 30px;">
 
 		<div class="inner-wrap">
 			<div class="lnb-area">

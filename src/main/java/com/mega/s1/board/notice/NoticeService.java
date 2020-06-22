@@ -14,6 +14,7 @@ import com.mega.s1.board.notice.noticeFile.NoticeFileRepository;
 import com.mega.s1.board.notice.noticeFile.NoticeFileVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
+import com.mega.s1.util.Pager;
 
 @Service
 public class NoticeService implements BoardService{
@@ -55,8 +56,12 @@ public class NoticeService implements BoardService{
 	}
 	
 	@Override
-	public List<BoardVO> boardList(BoardVO boardVO) throws Exception {
-		return noticeRepository.boardList(boardVO);
+	public List<BoardVO> boardList(Pager pager) throws Exception {
+		pager.makeRow();
+		long totalCount = noticeRepository.boardCount(pager);
+		pager.makePage(totalCount);
+		
+		return noticeRepository.boardList(pager);
 	}
 	
 	@Override

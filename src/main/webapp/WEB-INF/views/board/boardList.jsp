@@ -40,16 +40,21 @@
 				text-align: center;
 			}
 		</style>
+		
+		<c:import url="../template/header_css.jsp"></c:import>
 
 </head>
+
+
 <body>
 
 
-
-
+	<c:import url="../template/header.jsp"></c:import>
+	
+	
 
 	<!-- container -->
-	<div class="container has-lnb">
+	<div class="container has-lnb" style="margin-top: 30px;">
 		<!-- <div class="page-util">
 			<div class="inner-wrap">
 				<div class="location">
@@ -126,11 +131,16 @@
 						<option value="">극장 선택</option>
 						
 					</select>
-
+					
+					<form action="./${board	}List" style="float: right;">
+					
 					<div class="board-search">
-						<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15">
-						<button type="button" id="searchBtn" class="btn-search-input">검색</button>
+						<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15" name="search">
+						<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
 					</div>
+					
+					</form>
+					
 				</div>
 
 				<div class="table-wrap">
@@ -171,7 +181,11 @@
 				
 
 				<!-- pagination -->
-				<nav class="pagination"></nav>
+				<ul class="pagination">
+					<li><a href="">&lt</a></li>
+					
+				
+				</ul>
 				<!--// pagination -->
 				<div class="container">
 					<a href="../notice/noticeWrite" class="btn btn-primary">Write</a>
@@ -179,7 +193,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 
@@ -238,6 +251,11 @@
 
   
 <script type="text/javascript">
+	
+
+
+
+
 	/* $("#theater").on("click", function(){
 		alert($(this).val());
 	}); */
