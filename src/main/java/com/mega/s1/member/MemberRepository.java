@@ -9,5 +9,8 @@ public interface MemberRepository {
 	public int setJoin(MemberVO memberVO) throws Exception;
 	//Login
 	public MemberVO setLogin(MemberVO memberVO) throws Exception;
+
+	//IdCheck
+	public MemberVO idCheck(MemberVO memberVO) throws Exception;
 	
 }

@@ -30,7 +30,8 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public ModelAndView setJoin(@Valid MemberVO memberVO, BindingResult bindingResult,  HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		if(bindingResult.hasErrors()) {
+		boolean result = memberService.memberJoinError(memberVO, bindingResult, session);
+		if(result) {
 			mv.setViewName("member/memberJoin");
 			mv.addObject("memerVO", memberVO);
 		}else {
@@ -45,17 +46,24 @@ public class MemberController {
 	@GetMapping("memberLogin")
 	public ModelAndView setLogin() throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO= new MemberVO();
+		mv.addObject("memberVO", memberVO);
 		mv.setViewName("member/memberLogin");
 		return mv;
 	}
 	
 	@PostMapping("memberLogin")
-	public ModelAndView setLogin(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView setLogin(MemberVO memberVO,BindingResult bindingResult ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		memberVO =  memberService.setLogin(memberVO);
-		System.out.println(memberVO.getEmail());
-		session.setAttribute("member", memberVO);
-		mv.setViewName("redirect:../");
+		boolean result = memberService.memberLoginError(memberVO, bindingResult, session);
+		if(result) {
+			mv.setViewName("member/memberLogin");
+			mv.addObject("memberVO", memberVO);
+		}else {
+			memberVO =  memberService.setLogin(memberVO);
+			session.setAttribute("member", memberVO);
+			mv.setViewName("redirect:../");
+		}
 		return mv;
 	}
 	
