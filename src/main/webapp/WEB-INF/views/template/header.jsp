@@ -58,7 +58,7 @@
 
 			<li><a href="#" style="color: white;">공지사항</a></li>
 			<li><a href="#">FAQ</a></li>
-			<li><a href="# ">회원가입</a></li>
+			<li><a href="./member/memberLogin">로그인</a></li>
 		</ul>
 	</nav>
 	<!--// gnb -->

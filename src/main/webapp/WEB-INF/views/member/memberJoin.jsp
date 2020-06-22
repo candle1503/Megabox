@@ -75,7 +75,7 @@
 								<th scope="row"><label for="ibxSchIdMblpTelno">나이
 								</label></th>
 								<td><form:input path="age" id="age" maxlength="11" type="text"
-									 class="input-text w230px" />
+									 class="input-text w230px" placeholder="나이입력" />
 									 <form:errors path="age"></form:errors>
 							</tr>
 						</tbody>
