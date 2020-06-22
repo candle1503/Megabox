@@ -58,7 +58,12 @@
 
 			<li><a href="#" style="color: white;">공지사항</a></li>
 			<li><a href="#">FAQ</a></li>
+			<c:if test="${member eq null}">
 			<li><a href="./member/memberLogin">로그인</a></li>
+			</c:if>
+			<c:if test="${member ne null}">
+			<li><a href="./member/memberLogout">로그아웃</a></li>
+			</c:if>
 		</ul>
 	</nav>
 	<!--// gnb -->
