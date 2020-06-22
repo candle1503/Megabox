@@ -4,24 +4,16 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-
-
-<c:import url="./template/header_css.jsp"></c:import>
-
-</head>
-
+<link rel="stylesheet" href="/resources/css/main.css"	media="all">
+<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
  <link rel="shortcut icon" href="/resources/icon/favicon.ico">
-
-
-<link rel="stylesheet" href="/resources/css/megabox.min.css"
-	media="all">
-<link rel="stylesheet" href="/resources/css/indexMain.css" media="all">
-
+</head>
 <body>
-
+<c:import url="./template/header.jsp"></c:import>
 	<div class="skip" title="스킵 네비게이션">
 		<a href="#contents" title="본문 바로가기">본문 바로가기</a> <a href="#footer"
 			title="푸터 바로가기">푸터 바로가기</a>
+	</div>
 	</div>
 
 	<!-- <div class="body-wrap"> -->
