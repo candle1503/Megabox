@@ -64,6 +64,14 @@ public class NoticeService implements BoardService{
 		return noticeRepository.boardList(pager);
 	}
 	
+	
+	@Override
+	public int listCount(Pager pager) throws Exception {
+		return noticeRepository.listCount(pager);
+	}
+	
+	
+	
 	@Override
 	public NoticeVO boardSelect(NoticeVO noticeVO) throws Exception {
 		return noticeRepository.boardSelect(noticeVO);

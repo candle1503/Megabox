@@ -9,9 +9,9 @@
 <meta charset="UTF-8" >
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -38,6 +38,16 @@
 		<style type="text/css">
 			.board-list-tr > th{
 				text-align: center;
+			}
+			
+			.pagination > li{
+				display: inline-block; 
+			}
+			
+			.active{
+				color: #fff;
+				background-color: #01738b;
+				border-color: #01738b;
 			}
 		</style>
 		
@@ -74,7 +84,7 @@
 					<ul>
 			
 					<li><a href="/support/faq"		title="자주묻는질문">자주묻는질문</a></li>
-                    <li><a href="${board}List"	title="공지사항">공지사항</a></li>
+                    <li class="on"><a href="${board}List"	title="공지사항">공지사항</a></li>
 					
 					</ul>
 
@@ -181,14 +191,34 @@
 				
 
 				<!-- pagination -->
-				<ul class="pagination">
-					<li><a href="">&lt</a></li>
-					
-				
-				</ul>
+				<div>
+					<ul class="pagination" style="">
+						
+						<c:if test="${pager.curBlock gt 1}">
+							<li><a href="./${board}List?curPage=1&search=${pager.search}" class="control first">&lt&lt</a></li>
+						</c:if>
+						
+						<c:if test="${pager.curBlock gt 1}">
+							<li><a href="./${board}List?curPage=${pager.startNum-1}&search=${pager.search}" class="control prev">&lt</a></li>
+						</c:if>
+						
+						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<li><a href="./${board}List?curPage=${i}&search=${pager.search}">${i}</a></li>
+						</c:forEach>
+						
+						<c:if test="${pager.curBlock lt pager.totalBlock}">
+							<li><a href="./${board}List?curPage=${pager.lastNum+1}&search=${pager.search}" class="control next">&gt</a></li>
+						</c:if>
+						
+						<c:if test="${pager.curBlock lt pager.totalBlock}">
+							<li><a href="./${board}List?curPage=${pager.totalPage}&search=${pager.search}" class="control last">&gt&gt</a></li>
+						</c:if>
+					</ul>
+				</div>
 				<!--// pagination -->
+				
 				<div class="container">
-					<a href="../notice/noticeWrite" class="btn btn-primary">Write</a>
+					<a href="../notice/noticeWrite" class="button large writeBtn" style="border-color:#3385ff; color: #3385ff; ">Write</a>
 				</div>
 			</div>
 		</div>
@@ -251,8 +281,15 @@
 
   
 <script type="text/javascript">
-	
 
+	var totalPage = '${listCount}';
+
+ 	$(".pagination > li").click(function(){
+		var curBlock = '${pager.curBlock}';
+ 	 	if($(this).val==curBlock){
+			$(this).toggleClass("active");
+ 	 	}
+	});
 
 
 

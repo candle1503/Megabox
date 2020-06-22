@@ -50,7 +50,8 @@ public class NoticeController {
 	public ModelAndView boardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BoardVO> ar = noticeService.boardList(pager);
-		int listCount = ar.size();
+		
+		int listCount = noticeService.listCount(pager);
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("list", ar);
@@ -65,7 +66,13 @@ public class NoticeController {
 		NoticeFileVO noticeFileVO = new NoticeFileVO();
 		noticeFileVO = noticeService.fileDown(noticeFileVO);
 		
+		Pager pager = new Pager();
+		
+		int listCount = noticeService.listCount(pager);
+		
 		noticeVO = noticeService.boardSelect(noticeVO);
+		
+		mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
 		mv.addObject("fileVO", noticeFileVO);
 		mv.setViewName("board/boardSelect");

@@ -56,7 +56,7 @@
 				</div></li>
 
 
-			<li><a href="#" style="color: white;">공지사항</a></li>
+			<li><a href="../notice/noticeList" style="color: white;">공지사항</a></li>
 			<li><a href="#">FAQ</a></li>
 			<li><a href="# ">회원가입</a></li>
 		</ul>

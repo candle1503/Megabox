@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 	<link rel="shortcut icon" href="/static/pc/images/favicon.ico" />
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
 
 
@@ -204,34 +204,47 @@
 <br />
 <span style="font-size:10pt"><span style="font-family:">감사합니다.</span></span><br />
 &nbsp;</div>
+
+<div class="FD">
+	<c:forEach items="${fileVO}" var="file">
+		<div>
+			<a href="#">${file.oriName}</a>
+		</div>
+	</c:forEach>
+</div>
 					</div>
 				</div>
 
 				<div class="prev-next">
 					<div class="line prev">
 						<p class="tit">이전</p>
-						
+							<!-- <p class="link">이전글이 없습니다.</p> -->
 							
-								<p class="link">이전글이 없습니다.</p>
-							
+							<c:if test="${vo.num lt listCount}">
+								<div id="noPrev"></div>	
+								<a href="./${board}Select?num=${vo.num+1}" class="link moveBtn">이전글</a>
+							</c:if>
 							
 						
 					</div>
 
 					<div class="line next">
 						<p class="tit">다음</p>
-						
 							
-							
-								<a href="#" class="link moveBtn" data-no="${vo.num-1}" title="[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내">[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내</a>
+								<div id="noNext"></div>
+							<c:if test="${vo.num gt 1}">
+								<a href="./${board}Select?num=${vo.num-1}" class="link moveBtn">다음글</a>
+							</c:if>
+								<%-- <a href="#" class="link moveBtn" data-no="${vo.num-1}" title="[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내">[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내</a> --%>
 							
 						
 					</div>
 				</div>
 
 				<div class="btn-group pt40">
+					<a href="${board}Update?num=${vo.num}" class="button large updateBtn" style="border-color: #00cc00; color: #00cc00; ">글 수정</a>
 					<a href="${board}List" class="button large listBtn" title="목록">목록</a>
-					<a href="${board}Delete?num=${vo.num}" class="button large deleteBtn" title="글 삭제" style="border:1px solid #ff1a1a; color: #ff1a1a;">글 삭제</a>
+					<a href="${board}Delete?num=${vo.num}" class="button large deleteBtn" title="글 삭제" style="border-color: #ff1a1a; color: #ff1a1a;">글 삭제</a>
 				</div>
 				
 			</div>
@@ -242,7 +255,27 @@
         
         
 <script type="text/javascript">
-	$(function() {
+
+	var num = '${vo.num}';
+	var listCount = '${listCount}';
+	
+	if(num==listCount){
+		$("#noPrev").append('<p>이전글이 없습니다.</p>');
+	}
+
+	
+	if(num<=1){
+		$("#noNext").append('<p>다음글이 없습니다.</p>');
+	}
+
+	/* if($(".line > a").empty){
+		$("#noNext").append('<p>다음글이 없습니다.</p>')
+
+	}; */
+
+
+
+	/* $(function() {
 		// 이전글, 다음글 이동
 		$('.moveBtn').on('click', function(e) {
 			e.preventDefault();
@@ -250,7 +283,7 @@
 			$('[name=artiNo]').val($(this).data('no'));
 
 			var form = $(document.forms.moveFrm);
-			form.attr('action', '/support/notice/detail');
+			form.attr('action', './noticeSelect?num='+num);
 			form.submit();
 		});
 
@@ -261,8 +294,7 @@
 			var form = $(document.forms.moveFrm);
 			form.attr('action', './notice/noticeList');
 			form.submit();
-		});
-
+		}); */
 		
 			
 		
