@@ -13,6 +13,7 @@ public interface MemberRepository {
 	//IdCheck
 	public MemberVO idCheck(MemberVO memberVO) throws Exception;
 	
-	
+	//Delete
+	public int setDelete(MemberVO memberVO) throws Exception;
 	
 }

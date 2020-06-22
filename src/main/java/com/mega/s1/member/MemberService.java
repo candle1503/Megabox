@@ -28,6 +28,10 @@ public class MemberService {
 		return memberFileRepository.setProfile(memberFileVO);
 	}
 
+	public int setDelete(MemberVO memberVO) throws Exception{
+		return memberRepository.setDelete(memberVO);
+	}
+	
 	public int setJoin(MemberVO memberVO) throws Exception {
 		return memberRepository.setJoin(memberVO);
 	}
@@ -81,8 +85,6 @@ public class MemberService {
 		if (!memberRepository.idCheck(memberVO).getPassword().equals(memberVO.getPassword())) {
 			result = true;
 		}
-		
 		return result;
-		
 	}
 }

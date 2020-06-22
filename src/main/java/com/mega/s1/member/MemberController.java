@@ -123,8 +123,12 @@ public class MemberController {
 	@GetMapping("memberDelete")
 	public ModelAndView memberDelete(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		memberService.setDelete(memberVO);
 		session.invalidate();
-		mv.setViewName("redirect:../");
+		mv.addObject("result", memberVO.getId()+"님 계정이 삭제되었습니다.");
+		mv.addObject("path", "/");
+		mv.setViewName("common/result");
 		return mv;
 	}
 	
