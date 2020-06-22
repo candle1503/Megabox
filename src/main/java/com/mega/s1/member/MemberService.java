@@ -28,6 +28,10 @@ public class MemberService {
 		return memberFileRepository.setProfile(memberFileVO);
 	}
 
+	public int setUpdate(MemberVO memberVO) throws Exception{
+		return memberRepository.setUpdate(memberVO);
+	}
+	
 	public int setDelete(MemberVO memberVO) throws Exception{
 		return memberRepository.setDelete(memberVO);
 	}

@@ -114,9 +114,21 @@ public class MemberController {
 	
 	
 	@GetMapping("memberUpdate")
-	public ModelAndView getUserInfo() throws Exception{
+	public ModelAndView memberUpdate(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member/memberUserInfo");
+		MemberVO memberVO =(MemberVO)session.getAttribute("member");
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("member/memberUpdate");
+		return mv;
+	}
+	
+	@PostMapping("memberUpdate")
+	public ModelAndView memberUpdate(MemberVO memberVO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO vo2=(MemberVO)session.getAttribute("member");
+		memberVO.setId(vo2.getId());
+		memberService.setUpdate(memberVO);
+		mv.setViewName("member/memberMyPage");
 		return mv;
 	}
 	

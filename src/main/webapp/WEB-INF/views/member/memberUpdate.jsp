@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
 <html lang="ko">
 <head>
 
@@ -140,7 +142,7 @@
 								</tr>
 								<tr>
 									<th scope="row">아이디</th>
-									<td>candle1503</td>
+									<td>${member.id}id</td>
 								</tr>
 							</tbody>
 						</table>
@@ -156,17 +158,10 @@
 						</div>
 					</div>
 
-					<form name="mbInfoForm">
-						<input type="hidden" name="mbNo" value="2306892"> <input
-							type="hidden" name="phoneNo" value="010-7510-4558"> <input
-							type="hidden" name="zipcd" value="463-781"> <input
-							type="hidden" name="mbAddr" value="경기 성남시 분당구 수내동 606동106호">
-						<input type="hidden" name="mbProfilFileNo" value="0"> <input
-							type="hidden" id="mbByymmdd" value="19910731">
+					<form:form modelAttribute="memberVO" action="./memberUpdate" method="post">
 
 						<div class="table-wrap mb40">
 							<table class="board-form">
-								<caption>이름, 생년월일, 휴대폰, 이메일, 비밀번호, 주소 항목을 가진 기본정보 표</caption>
 								<colgroup>
 									<col style="width: 180px;">
 									<col>
@@ -175,146 +170,58 @@
 									<tr>
 										<th scope="row">이름 <em class="font-orange">*</em>
 										</th>
-										<td><span class="mbNmClass">전재호</span> <a
-											href="#layer_name"
-											class="button small gray-line ml10 mr10 btn-modal-open"
-											w-data="600" h-data="350" title="이름변경">이름변경</a> ※ 개명으로 이름이
-											변경된 경우, 회원정보의 이름을 변경하실 수 있습니다.
-
-											<section id="layer_name" class="modal-layer">
-												<a href="" class="focus">레이어로 포커스 이동 됨</a>
-												<div class="wrap">
-													<header class="layer-header">
-														<h3 class="tit">본인확인 수단 선택</h3>
-													</header>
-
-													<div class="layer-con">
-														<p class="reset">
-															이름을 변경하기 위한 본인 확인 수단을 선택해 주세요.<br> (단, 개명된 이름으로 가입된
-															본인명의의 휴대전화 또는 아이핀으로만 가능함)
-														</p>
-
-														<div class="box-gray v1 mt20 a-c">
-															<a href="#" target="_blank" class="button" id="ipinBtn"
-																title="I-PIN 인증">I-PIN 인증</a> <a href="#"
-																target="_blank" class="button ml10" id="phoneBtn"
-																title="휴대폰 인증">휴대폰 인증</a>
-														</div>
-
-														<ul class="dash-list mt20">
-															<li>신용평가기관에 개명된 이름이 먼저 등록되어 있어야 합니다.</li>
-															<li>본인인증을 위해 입력하신 정보는 해당 인증기관에서 직접 수집하며 인증 이외의 용도로
-																이용 또는 저장되지 않습니다.</li>
-														</ul>
-													</div>
-
-													<button type="button" class="btn-modal-close">레이어
-														닫기</button>
-												</div>
-											</section></td>
+										<td><span class="mbNmClass">${member.name}</span> 
+											</td>
 									</tr>
 									<tr>
-										<th scope="row">생년월일 <em class="font-orange">*</em>
+										<th scope="row">나이 <em class="font-orange">*</em>
 										</th>
-										<td>1991년 07월 31일</td>
+										<td>${member.age}age</td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="num">휴대폰</label> <em
+										<th scope="row"><label for="phone">전화번호</label> <em
 											class="font-orange">*</em></th>
-										<td>
-											<div class="clearfix">
-												<p class="reset float-l w170px lh32 changeVal"
-													data-name="phoneNo">010-7510-4558</p>
-												<div class="float-l">
-													<button type="button"
-														class="button small gray-line change-phone-num"
-														id="phoneChgBtn" title="휴대폰번호 변경">휴대폰번호 변경</button>
-												</div>
-											</div>
-
-											<div class="change-phone-num-area">
-												<div class="position">
-													<label for="chPhone" class="label">변경할 휴대폰</label> <input
-														type="text" id="chPhone" class="input-text w160px numType"
-														placeholder="'-'없이 입력해 주세요" title="변경할 휴대폰 번호 입력"
-														maxlength="11">
-													<button type="button" class="button small gray-line"
-														id="sendNumberBtn">인증번호 전송</button>
-												</div>
-
-												<div class="position" style="display: none;">
-													<label for="chkNum" class="label">인증번호 입력</label>
-
-													<div class="chk-num small">
-														<div class="line">
-															<input type="text" id="chkNum" class="input-text w180px"
-																title="인증번호 입력" placeholder="인증번호를 입력해 주세요"
-																maxlength="4">
-
-															<div class="time-limit" id="timeLimit">3:00</div>
-														</div>
-													</div>
-													<button type="button" class="button small gray-line"
-														id="chgBtn">변경완료</button>
-												</div>
-											</div>
+										<td><form:input path="phone" type="text" id="phone" 
+											class="input-text w500px" value="${member.phone}"/>
+											<form:errors path="phone"></form:errors>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="email">이메일</label> <em
 											class="font-orange">*</em></th>
-										<td><input type="text" id="email" name="mbEmail"
-											class="input-text w500px" value="ccandle1503@naver.com">
+										<td><form:input path="email" type="email" id="email" 
+											class="input-text w500px" value="${member.email}"/>
+											<form:errors path="email"></form:errors>
 										</td>
 									</tr>
+									
 									<tr>
-										<th scope="row">비밀번호 <em class="font-orange">*</em></th>
-										<td><a href="/on/oh/ohh/Mypage/userPwdChangePage.do"
-											class="button small gray-line" title="비밀번호 변경">비밀번호 변경</a>
-
-											마지막 비밀번호 변경: 969일전에 함 (2017-10-26 23:41:01)</td>
+										<th scope="row"><label for="password">비밀번호</label> <em
+											class="font-orange">*</em></th>
+										<td><form:input path="password" type="password" id="password" 
+											class="input-text w500px" />
+											<form:errors path="password"></form:errors>
+										</td>
 									</tr>
+									
 									<tr>
-										<th scope="row">주소</th>
-										<td><span>463-781</span> <a href="#" id="addrBtn"
-											class="button small gray-line ml10" title="우편번호 검색">우편번호
-												검색</a>
-											<p class="reset mt10">경기 성남시 분당구 수내동 606동106호</p></td>
+										<th scope="row"><label for="passwordCheck">비밀전호 재입력</label> <em
+											class="font-orange">*</em></th>
+										<td><form:input path="passwordCheck" type="password" id="passwordCheck"
+											class="input-text w500px" />
+										</td>
 									</tr>
+									
 								</tbody>
 							</table>
 						</div>
-					</form>
-
-					<h3 class="tit">생년월일 로그인 설정</h3>
-
-					<div class="table-wrap mb40">
-						<table class="board-form">
-							<caption>무인발권기(KIOSK) 기능설정 순서로 보여줍니다.</caption>
-							<colgroup>
-								<col style="width: 180px;">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row" class="a-l">무인발권기(KIOSK)<br>기능설정
-									</th>
-									<td class="a-l"><input type="radio" name="kioskset"
-										id="kioskon" checked="" value="Y"> <label
-										for="kioskon" class="mr10">사용</label> <input type="radio"
-										name="kioskset" id="kioskoff" value="N"> <label
-										for="kioskoff">사용안함</label> <span class="ml20">※
-											‘생년월일+휴대폰번호’ 티켓 출력 및 회원 찾기 기능</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					
 
 					<h3 class="tit">간편로그인 계정연동</h3>
 
 					<div class="table-wrap mb40">
 						<table class="board-list">
-							<caption>구분, 연동정보, 연결 항목응ㄹ 가진 간편 로그인 계정연동 표</caption>
+							<caption>구분, 연동정보, 연결 항목을 가진 간편 로그인 계정연동 표</caption>
 							<colgroup>
 								<col style="width: 130px;">
 								<col>
@@ -376,74 +283,18 @@
 						</table>
 					</div>
 
-					<h3 class="tit">스페셜 멤버십 가입내역</h3>
-
-					<div class="table-wrap mb40">
-
-						<!-- 가입된 스페셜멤버십이 있는 경우 -->
-						<table class="board-form">
-							<caption>가입정보, 스페셜 멤버십 이용동의 안내 순서로 보여줍니다.</caption>
-							<colgroup>
-								<col style="width: 180px;">
-								<col>
-							</colgroup>
-							<tbody>
-								<!-- 가입 내역이 없는 경우 -->
-								<tr>
-									<th scope="row">가입정보</th>
-
-
-
-
-									<td>
-										<div class="clearfix">
-											<p class="float-l reset lh32">필름소사이어티</p>
-
-											<div class="float-r">
-												<a href="/curation/specialcontent" class="button small gray"
-													title="스페셜 멤버십 가입 안내">스페셜 멤버십 가입 안내</a>
-											</div>
-										</div>
-									</td>
-
-
-								</tr>
-
-
-								<tr>
-									<th scope="row">스페셜 멤버십<br>이용동의 안내
-									</th>
-									<td class="userMbshipList">
-
-										<div class="clearfix" data-cd="SMT01">
-											<p class="float-l reset w120px">필름소사이어티</p>
-
-											<div class="float-l">
-												<input type="radio" name="film1" id="filmon1"
-													checked="checked" value="Y"> <label for="filmon1">서비스
-													가입</label> <input type="radio" name="film1" id="filmoff1"
-													class="ml10" value="N"> <label for="filmoff1">서비스
-													가입해지</label> <span class="ml20">(동의일시 : 2020-01-17)</span>
-											</div>
-										</div>
-
-									</td>
-								</tr>
-
-							</tbody>
-						</table>
-					</div>
 
 					<div class="btn-group mt40">
-						<button class="button large" id="cancelBtn">취소</button>
-						<button class="button purple large" id="updateBtn">등록</button>
+						<a href="./getMyPage">
+						<input type="button" class="button large" value="취소">
+						</a>
+						<button type="submit" class="button purple large" id="updateBtn">등록</button>
 					</div>
 				</div>
 
 			</div>
 		</div>
-
-
+</form:form>
 
 
 		<section id="saw_movie_regi" class="modal-layer">

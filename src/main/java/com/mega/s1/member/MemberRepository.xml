@@ -19,4 +19,8 @@
 		delete from member where id=#{id}	
 	</delete>
 	
+	<update id="setUpdate" parameterType="MemberVO">
+		update member set password=#{password},email=#{email}, phone= #{phone} where id=#{id}
+	</update>
+	
 </mapper>
