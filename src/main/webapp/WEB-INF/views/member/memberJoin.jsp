@@ -9,18 +9,14 @@
 <body class="bg-member">
 		<div class="member-wrap">
 			<div>
-				<img alt="" src="/resources/images/sTheater.png"
-					style="margin-left: 90px"> <a href="/main" title="메인 페이지로 이동"></a>
+				<a href="../"><img alt="" src="/resources/images/sTheater.png"
+					style="margin-left: 90px" ></a> 
 			</div>
-			<p class="tit-member">회원가입</p>
+			<p class="tit-member">회원가입&<a href="./memberLogin" style="color:#503396;">로그인</a></p>
 
 			<form:form modelAttribute="memberVO" action="./memberJoin" method="post">
 				<div class="table-wrap">
 					<table class="board-form">
-						<caption>
-							이름, 생년월일, 휴대폰 번호 항목을 가진 아이디 찾기 입력 표
-							<!--이름, 생년월일, 휴대폰 번호 항목을 가진 아이디 찾기 입력 표-->
-						</caption>
 						<colgroup>
 							<col style="width: 130px;">
 							<col>

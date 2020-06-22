@@ -9,10 +9,10 @@
 <body class="bg-member">
 	<div class="member-wrap">
 		<div>
-			<img alt="" src="/resources/images/sTheater.png"
-				style="margin-left: 90px"> <a href="/main" title="메인 페이지로 이동"></a>
+			<a href="../"><img alt="" src="/resources/images/sTheater.png"
+				style="margin-left: 90px"></a>
 		</div>
-		<p class="tit-member">로그인</p>
+		<p class="tit-member">로그인&<a href="./memberJoin" style="color:#503396;">회원가입</a></p>
 
 		<form action="./memberLogin" method="post">
 			<div class="table-wrap">
@@ -40,9 +40,6 @@
 			<div class="btn-member-bottom v1">
 				<button type="submit" class="button  large">로그인</button>
 			</div>
-		</form>
-		<form action="./memberJoin" method="get">
-		<button type="submit" class="button  large">회원가입</button>
 		</form>
 	</div>
 </body>
