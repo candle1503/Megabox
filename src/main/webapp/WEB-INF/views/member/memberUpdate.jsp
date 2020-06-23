@@ -39,6 +39,7 @@
 					href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
 				<a href="./getMyPage" class="header-open-layer btn-layer-mymega"
 					title="나의 메가박스">나의 메가박스</a>
+					
 			</div>
 
 

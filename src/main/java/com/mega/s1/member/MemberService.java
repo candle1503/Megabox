@@ -1,14 +1,20 @@
 package com.mega.s1.member;
 
+import java.io.File;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mega.s1.member.memberFile.MemberFileRepository;
 import com.mega.s1.member.memberFile.MemberFileVO;
+import com.mega.s1.util.FileManager;
+import com.mega.s1.util.FilePathGenerator;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -18,13 +24,23 @@ public class MemberService {
 	private MemberRepository memberRepository;
 
 	@Autowired
+	private FilePathGenerator pathGenerator;
+	
+	@Autowired
+	private FileManager fileManager;
+	
+	@Autowired
 	private MemberFileRepository memberFileRepository;
+	
+	@Value("${member.filePath}")
+	private String filePath;
 
 	public int setProfile(MemberVO memberVO) throws Exception {
 		MemberFileVO memberFileVO = new MemberFileVO();
+		File file = pathGenerator.getUseClassPathResource(filePath);
+		
 		memberFileVO.setId(memberVO.getId());
-		memberFileVO.setFileName("memberProfile.png");
-		memberFileVO.setOriName("memberProfile.png");
+		
 		return memberFileRepository.setProfile(memberFileVO);
 	}
 

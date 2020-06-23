@@ -23,7 +23,7 @@
 				<div class="right-link">
 
 					<div class="after" style="">
-						<a href="./memberLogout" class="" title="로그아웃">로그아웃</a> <a
+						<a href="/member/memberLogout" class="" title="로그아웃">로그아웃</a> <a
 							href="/support" title="고객센터">고객센터</a> <a href="/booking">빠른예매</a>
 					</div>
 				</div>
@@ -36,6 +36,8 @@
 						href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
 					<a href="#" class="header-open-layer btn-layer-mymega"
 						title="나의 메가박스">관리자 페이지</a>
+						<a href="./getMyPage" class="header-open-layer btn-layer-mymega"
+					title="나의 메가박스">나의 메가박스</a>
 				</div>
 
 
@@ -77,7 +79,7 @@
 						</p>
 
 						<ul>
-							<li class=""><a href="/mypage/bookinglist" title="회원 리스트">회원
+							<li class=""><a href="./memberList" title="회원 리스트">회원
 									리스트</a></li>
 							<li><a href="/mypage/moviestory" titel="영화 관리">영화 관리</a></li>
 							<li><a href="/mypage/mydiscount" title="영화관 관리">영화관 관리</a></li>
