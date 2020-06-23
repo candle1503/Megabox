@@ -2,11 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- header -->
-<header id="header" class="main-header no-bg" style="background-color: #985F99;">
+<header id="header" class="main-header no-bg"
+	style="background-color: #985F99; font-family: 'Do Hyeon', sans-serif;">
 
-	<img class="ci" alt=""
-		src="${pageContext.request.contextPath}/resources/images/sTheater.png"
-		style="width: 7%; height: auto;">
+	<a href="${pageContext.request.contextPath}/">
+	<img class="ci" alt="" 	src="${pageContext.request.contextPath}/resources/images/sTheater.png"
+		style="width: 7%; height: auto;"></a>
 
 	<!-- topGnb -->
 

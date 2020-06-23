@@ -11,6 +11,8 @@
 	media="all">
 <link rel="stylesheet" href="/resources/css/indexMain.css" media="all">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
 
 <style type="text/css">
 
