@@ -38,7 +38,7 @@ public class MemberController {
 			mv.setViewName("member/memberJoin");
 			mv.addObject("memerVO", memberVO);
 		}else {
-			memberService.setJoin(memberVO);
+			memberVO = memberService.setJoin(memberVO);
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}

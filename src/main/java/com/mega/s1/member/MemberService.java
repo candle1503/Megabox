@@ -76,7 +76,7 @@ public class MemberService {
 
 	public MemberVO setLogin(MemberVO memberVO) throws Exception {
 		MemberFileVO memberFileVO = new MemberFileVO();
-		memberRepository.setLogin(memberVO);
+		memberVO = memberRepository.setLogin(memberVO);
 		memberFileVO.setId(memberVO.getId());
 		memberFileVO =  memberFileRepository.getMemberFile(memberVO);
 		memberVO.setFileName(memberFileVO.getFileName());

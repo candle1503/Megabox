@@ -139,7 +139,7 @@
 								</tr>
 								<tr>
 									<th scope="row">아이디</th>
-									<td>${member.id}id</td>
+									<td>${member.id}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -173,7 +173,7 @@
 									<tr>
 										<th scope="row">나이 <em class="font-orange">*</em>
 										</th>
-										<td>${member.age}age</td>
+										<td>${member.age}</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="phone">전화번호</label> <em
@@ -287,11 +287,11 @@
 						</a>
 						<button type="submit" class="button purple large" id="updateBtn">등록</button>
 					</div>
+		</form:form>
 				</div>
 
 			</div>
 		</div>
-</form:form>
 
 
 		<section id="saw_movie_regi" class="modal-layer">
