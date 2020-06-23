@@ -89,10 +89,10 @@
 				<div id="contents">
 					<h2 class="tit">회원 리스트</h2>
 
-
+					
 					<div class="board-list-util">
 						<p class="result-count">
-							<strong> <em class="font-gblue">회원 숫자 갯수</em></strong>
+							<strong> <em class="font-gblue">총 ${size} 명의 회원</em></strong>
 						</p>
 
 
@@ -122,192 +122,24 @@
 									<th scope="col">등록일</th>
 								</tr>
 							</thead>
+							<!-- memberList 뿌려줄곳 -->
 							<tbody>
+							<c:forEach items="${list}" var="vo"  varStatus="i">
 								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
+									<td>${i.count}</td>
+									<td>${vo.id}</td>
+									<td>${vo.name}</td>
+									<td>${vo.phone}</td>
+									<td>${vo.age}</td>
 									<td>등록일</td>
+								
 								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
-								<tr>
-									<td>번호</td>
-									<td>아이디</td>
-									<td>전화번호</td>
-									<th><a href="#" class="moveBtn" data-no="10102"
-										title="공지사항 상세보기"><span class="font-green"></span>[<span
-											class="font-green"></span>킨<span class="font-green"></span>텍<span
-											class="font-green"></span>스<span class="font-green"></span>]<span
-											class="font-green"></span> <span class="font-green"></span>건<span
-											class="font-green"></span>물<span class="font-green"></span> <span
-											class="font-green"></span>전<span class="font-green"></span>기<span
-											class="font-green"></span>점<span class="font-green"></span>검<span
-											class="font-green"></span>관<span class="font-green"></span>련<span
-											class="font-green"></span> <span class="font-green"></span>안<span
-											class="font-green"></span>내<span class="font-green"></span></a></th>
-									<td>나이</td>
-									<td>등록일</td>
-								</tr>
+								</c:forEach>
+								
 							</tbody>
 						</table>
 					</div>
 
-					<!-- pagination -->
 					<nav class="pagination">
 						<strong class="active">1</strong> <a title="2페이지보기"
 							href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기"
