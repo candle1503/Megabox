@@ -39,7 +39,6 @@ public class MemberController {
 			mv.addObject("memerVO", memberVO);
 		}else {
 			memberService.setJoin(memberVO);
-			memberService.setProfile(memberVO);
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}
@@ -159,5 +158,19 @@ public class MemberController {
 		return mv;
 	}
 	
+	@PostMapping("profileUpdate")
+	public ModelAndView profileUpdate(MultipartFile file, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(file.getOriginalFilename());
+		MemberVO memberVO=(MemberVO)session.getAttribute("member");
+		MemberFileVO memberFileVO=memberService.setProfile(memberVO, file);
+		memberVO.setFileName(memberFileVO.getFileName());
+		memberVO.setOriName(memberFileVO.getOriName());
+		session.setAttribute("member", memberVO);
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("member/memberUpdate");
+		return mv;
+	
+	}
 	
 }

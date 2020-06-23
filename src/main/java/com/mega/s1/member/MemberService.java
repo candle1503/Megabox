@@ -35,16 +35,27 @@ public class MemberService {
 	@Value("${member.filePath}")
 	private String filePath;
 
-	public int setProfile(MemberVO memberVO) throws Exception {
-		MemberFileVO memberFileVO = new MemberFileVO();
-		File file = pathGenerator.getUseClassPathResource(filePath);
-		
-		memberFileVO.setId(memberVO.getId());
-		
-		return memberFileRepository.setProfile(memberFileVO);
+	
+	public MemberFileVO getMemberFile(MemberVO memberVO) throws Exception{
+		return memberFileRepository.getMemberFile(memberVO);
 	}
-
+	
+	public MemberFileVO setProfile(MemberVO memberVO, MultipartFile file) throws Exception{
+		File fi = pathGenerator.getUseClassPathResource(filePath);
+		String fileName= fileManager.saveFileCopy(file, fi);
+		MemberFileVO memberFileVO = new MemberFileVO();
+		memberFileVO.setId(memberVO.getId());
+		memberFileVO.setFileName(fileName);
+		memberFileVO.setOriName(file.getOriginalFilename());
+		
+		memberFileRepository.updateProfile(memberFileVO);
+			
+		return memberFileVO;
+	}
+	
+	
 	public int setUpdate(MemberVO memberVO) throws Exception{
+		
 		return memberRepository.setUpdate(memberVO);
 	}
 	
@@ -52,12 +63,25 @@ public class MemberService {
 		return memberRepository.setDelete(memberVO);
 	}
 	
-	public int setJoin(MemberVO memberVO) throws Exception {
-		return memberRepository.setJoin(memberVO);
+	public MemberVO setJoin(MemberVO memberVO) throws Exception {
+		MemberFileVO memberFileVO = new MemberFileVO();
+		memberFileVO.setId(memberVO.getId());
+		memberRepository.setJoin(memberVO);
+		memberFileRepository.setProfile(memberFileVO);
+		memberFileVO =  memberFileRepository.getMemberFile(memberVO);
+		memberVO.setFileName(memberFileVO.getFileName());
+		memberVO.setOriName(memberFileVO.getOriName());
+		return memberVO;
 	}
 
 	public MemberVO setLogin(MemberVO memberVO) throws Exception {
-		return memberRepository.setLogin(memberVO);
+		MemberFileVO memberFileVO = new MemberFileVO();
+		memberRepository.setLogin(memberVO);
+		memberFileVO.setId(memberVO.getId());
+		memberFileVO =  memberFileRepository.getMemberFile(memberVO);
+		memberVO.setFileName(memberFileVO.getFileName());
+		memberVO.setOriName(memberFileVO.getOriName());
+		return memberVO;
 	}
 
 	public boolean memberJoinError(MemberVO memberVO, BindingResult bindingResult, HttpSession session)

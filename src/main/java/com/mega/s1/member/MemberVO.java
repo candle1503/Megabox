@@ -8,10 +8,12 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.mega.s1.member.memberFile.MemberFileVO;
+
 import lombok.Data;
 
 @Data
-public class MemberVO {
+public class MemberVO extends MemberFileVO {
 
 	@NotEmpty(message ="아이디를 입력")
 	private String id;
@@ -30,4 +32,5 @@ public class MemberVO {
 	private Integer age;
 	
 	private Date regDate;
+	
 }

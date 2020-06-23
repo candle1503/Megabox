@@ -114,31 +114,27 @@
 									<th scope="row">프로필 사진</th>
 									<td>
 										<div class="profile-photo">
-											<form name="fileForm">
-												<input type="file" id="profileTarget" name="file"
-													style="display: none;">
-
-											</form>
-
-
-
 
 											<div class="profile-img">
-												<img src="../../../static/pc/images/mypage/bg-profile.png"
+											<c:if test="${member.fileName eq null}">
+												<img src="/resources/images/memberProfile.png"
 													alt="프로필 사진 샘플">
+											</c:if>		
+											<c:if test="${member.fileName ne null}">
+												<img src="/upload/member/${member.fileName}"
+													alt="프로필 사진 샘플">
+											</c:if>							
 											</div>
-
-											<button type="button" class="button small gray-line"
-												id="addProfileImgBtn">이미지 등록</button>
-
+											</div>
+											<form action="./profileUpdate" method="post" enctype="multipart/form-data">
+											<input id="file" name="file" type="file">
+											<button type="submit" class="button small gray-line" id="addProfileImgBtn">이미지 등록</button>
+											</form>
 
 
 											<a href="./memberDelete"
 												class="button small member-out" title="회원탈퇴">회원탈퇴</a>
 										</div>
-										<p
-											style="font-size: 0.8em; color: #999; margin-top: 10px; padding: 0; text-align: left; position: absolute; top: 22px; left: 194px;">
-											※ 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p>
 									</td>
 								</tr>
 								<tr>

@@ -6,4 +6,14 @@
   	<insert id="setProfile" parameterType="MemberFileVO" >
   		insert into memberFile values(#{id},'','')
   	</insert>
+  	
+  	<select id="getMemberFile" parameterType="MemberFileVO" resultType="MemberFileVO">
+  		select * from memberFile where id= #{id}
+  	</select>
+  	
+  	<update id="updateProfile" parameterType="MemberFileVO">
+  		update memberFile set fileName=#{fileName}, oriName=#{oriName} where id=#{id}
+  	</update>
+  	
+  	
   </mapper>
