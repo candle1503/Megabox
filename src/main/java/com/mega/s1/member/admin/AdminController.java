@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.Pager;
 
 @Controller
@@ -29,5 +30,23 @@ public class AdminController {
 		mv.setViewName("admin/adminMemberList");
 		return mv;
 	}
+	
+	@GetMapping("theaterList")
+	public ModelAndView theaterList() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin/adminTheaterList");
+		return mv;
+	}
+	
+	@GetMapping("theaterAdd")
+	public ModelAndView theaterAdd() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		TheaterVO theaterVO = new TheaterVO();
+		mv.addObject("theaterVO", theaterVO);
+		mv.setViewName("admin/adminAddTheater");
+		return mv;
+	}
+	
+	
 	
 }
