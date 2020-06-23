@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${vo.title}</title>
 
 
  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,13 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 	<link rel="shortcut icon" href="/static/pc/images/favicon.ico" />
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
 
-
-
-
-		<title>메가박스 개인정보 처리방침 변경 안내 | 라이프씨어터, 메가박스</title>
 		<meta property="name"			id="metaTagTitle"	content="메가박스 개인정보 처리방침 변경 안내"/>
 		<meta property="description"	id="metaTagDtls"	content="삶의 의미와 즐거움을 소통하는 공간, 함께 더 행복한 가치있는 콘텐츠를 추구하는 만남과 소통의 즐거움이 가득한 공간 메가박스 입니다. "/>
 		<meta property="keywords"		id="metaTagKeyword"	content="메가박스,megabox,영화,영화관,극장,티켓,박스오피스,상영예정작,예매,오페라,싱어롱,큐레이션,필름소사이어티,클래식소사이어티,이벤트,Movie,theater,Cinema,film,Megabox"/>
@@ -50,13 +46,13 @@
 			<script src="//cast.imp.joins.com/persona.js" async></script>
 		
 		
-	
+<c:import url="../template/header_css.jsp"></c:import>
 
 
 </head>
 <body>
 
-
+<c:import url="../template/header.jsp"></c:import>
 
 <!-- <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> -->
@@ -91,7 +87,7 @@
 	
 
 	<!-- container -->
-	<div class="container has-lnb">
+	<div class="container has-lnb" style="margin-top: 30px;">
 
 		<div class="inner-wrap">
 			<div class="lnb-area">
@@ -105,7 +101,7 @@
 					<!-- 고객센터 메뉴일때만 출력 -->
 					<div class="left-customer-info">
 						<p class="tit">
-							메가박스 고객센터
+							쌍용 씨네시티 고객센터
 							<span>Dream center</span>
 						</p>
 						<p class="tel">1544-0070</p>
@@ -204,34 +200,48 @@
 <br />
 <span style="font-size:10pt"><span style="font-family:">감사합니다.</span></span><br />
 &nbsp;</div>
+
+<div class="fileDown">
+	<c:forEach items="${vo.boardFileVOs}" var="file">
+		<div>
+			<h2>${file.oriName}</h2>
+			<a href="./${board}/fileDown?fileNum=${file.fileNum}">${file.oriName}</a>
+		</div>
+	</c:forEach>
+</div>
 					</div>
 				</div>
 
 				<div class="prev-next">
 					<div class="line prev">
 						<p class="tit">이전</p>
-						
+							<!-- <p class="link">이전글이 없습니다.</p> -->
 							
-								<p class="link">이전글이 없습니다.</p>
-							
+							<c:if test="${vo.num lt listCount}">
+								<div id="noPrev"></div>	
+								<a href="./${board}Select?num=${vo.num+1}" class="link moveBtn">이전글</a>
+							</c:if>
 							
 						
 					</div>
 
 					<div class="line next">
 						<p class="tit">다음</p>
-						
 							
-							
-								<a href="#" class="link moveBtn" data-no="${vo.num-1}" title="[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내">[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내</a>
+								<div id="noNext"></div>
+							<c:if test="${vo.num gt 1}">
+								<a href="./${board}Select?num=${vo.num-1}" class="link moveBtn">다음글</a>
+							</c:if>
+								<%-- <a href="#" class="link moveBtn" data-no="${vo.num-1}" title="[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내">[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내</a> --%>
 							
 						
 					</div>
 				</div>
 
 				<div class="btn-group pt40">
+					<a href="${board}Update?num=${vo.num}" class="button large updateBtn" style="border-color: #00cc00; color: #00cc00; ">글 수정</a>
 					<a href="${board}List" class="button large listBtn" title="목록">목록</a>
-					<a href="${board}Delete?num=${vo.num}" class="button large deleteBtn" title="글 삭제" style="border:1px solid #ff1a1a; color: #ff1a1a;">글 삭제</a>
+					<a href="${board}Delete?num=${vo.num}" class="button large deleteBtn" title="글 삭제" style="border-color: #ff1a1a; color: #ff1a1a;">글 삭제</a>
 				</div>
 				
 			</div>
@@ -242,7 +252,27 @@
         
         
 <script type="text/javascript">
-	$(function() {
+
+	var num = '${vo.num}';
+	var listCount = '${listCount}';
+	
+	if(num==listCount){
+		$("#noPrev").append('<p>이전글이 없습니다.</p>');
+	}
+
+	
+	if(num<=1){
+		$("#noNext").append('<p>다음글이 없습니다.</p>');
+	}
+
+	/* if($(".line > a").empty){
+		$("#noNext").append('<p>다음글이 없습니다.</p>')
+
+	}; */
+
+
+
+	/* $(function() {
 		// 이전글, 다음글 이동
 		$('.moveBtn').on('click', function(e) {
 			e.preventDefault();
@@ -250,7 +280,7 @@
 			$('[name=artiNo]').val($(this).data('no'));
 
 			var form = $(document.forms.moveFrm);
-			form.attr('action', '/support/notice/detail');
+			form.attr('action', './noticeSelect?num='+num);
 			form.submit();
 		});
 
@@ -261,12 +291,10 @@
 			var form = $(document.forms.moveFrm);
 			form.attr('action', './notice/noticeList');
 			form.submit();
-		});
-
+		}); */
 		
 			
 		
-	});
 </script>
 
 

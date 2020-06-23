@@ -9,8 +9,27 @@
 		insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1)
 	</insert>
 
-	<select id="boardList" parameterType="NoticeVO" resultType="NoticeVO">
-		select * from notice order by num desc
+	<sql id="search">
+		like concat('%', #{search}, '%')
+	</sql>
+
+
+	<select id="boardList" parameterType="Pager" resultType="NoticeVO">
+		select * from notice where title
+		<include refid="search"></include>
+		order by num desc limit #{startRow}, 10
+	</select>
+	
+	<select id="boardCount" parameterType="Pager" resultType="Long">
+		select count(num) from notice			<where>
+			<if test="kind == 'bt'">
+			title <include refid="search"></include>
+			</if>
+		</where>
+	</select>
+	
+	<select id="listCount" parameterType="Pager" resultType="Integer">
+		select count(num) from notice
 	</select>
 	
 	<select id="boardSelect" parameterType="NoticeVO" resultType="NoticeVO">

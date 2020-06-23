@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.board.BoardVO;
 import com.mega.s1.board.notice.noticeFile.NoticeFileVO;
+import com.mega.s1.util.Pager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -46,13 +47,15 @@ public class NoticeController {
 	}
 	
 	@GetMapping("noticeList")
-	public ModelAndView boardList(BoardVO boardVO) throws Exception{
+	public ModelAndView boardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BoardVO> ar = noticeService.boardList(boardVO);
-		int listCount = ar.size();
+		List<BoardVO> ar = noticeService.boardList(pager);
+		
+		int listCount = noticeService.listCount(pager);
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/boardList");
 		return mv;
 	}
@@ -60,12 +63,15 @@ public class NoticeController {
 	@GetMapping("noticeSelect")
 	public ModelAndView boardSelect(NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		NoticeFileVO noticeFileVO = new NoticeFileVO();
-		noticeFileVO = noticeService.fileDown(noticeFileVO);
+		
+		Pager pager = new Pager();
+		
+		int listCount = noticeService.listCount(pager);
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
+		
+		mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
-		mv.addObject("fileVO", noticeFileVO);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;

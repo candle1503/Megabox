@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8" >
-<title>Insert title here</title>
+<title>공지사항 | 라이프씨어터, 쌍용 씨네시티</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,27 +39,32 @@
 			.board-list-tr > th{
 				text-align: center;
 			}
+			
+			.pagination > li{
+				display: inline-block; 
+			}
+			
+			.active{
+				color: #fff;
+				background-color: #01738b;
+				border-color: #01738b;
+			}
 		</style>
+		
+		<c:import url="../template/header_css.jsp"></c:import>
 
 </head>
+
+
 <body>
 
 
-
-
+	<c:import url="../template/header.jsp"></c:import>
+	
+	
 
 	<!-- container -->
-	<div class="container has-lnb">
-		<!-- <div class="page-util">
-			<div class="inner-wrap">
-				<div class="location">
-					<span>Home</span>
-					<a href="/support" title="고객센터 페이지로 이동">고객센터</a>
-					<a href="/support/notice" title="공지사항 페이지로 이동">공지사항</a>
-				</div>
-
-			</div>
-		</div> -->
+	<div class="container has-lnb" style="margin-top: 30px;">
 
 		<div class="inner-wrap">
 			<div class="lnb-area">
@@ -69,14 +74,14 @@
 					<ul>
 			
 					<li><a href="/support/faq"		title="자주묻는질문">자주묻는질문</a></li>
-                    <li><a href="${board}List"	title="공지사항">공지사항</a></li>
+                    <li class="on"><a href="${board}List"	title="공지사항">공지사항</a></li>
 					
 					</ul>
 
 					<!-- 고객센터 메뉴일때만 출력 -->
 					<div class="left-customer-info">
 						<p class="tit">
-							메가박스 고객센터
+							쌍용 씨네시티 고객센터
 							<span>Dream center</span>
 						</p>
 						<p class="tel">1544-0070</p>
@@ -91,7 +96,7 @@
 				<div class="tab-block mb30">
 					<ul>
 						<li class="on tabBtn"><button type="button" class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
-							<li class="tabBtn"><button type="button" class="btn" data-no="81" title="메가박스 공지 보기" >메가박스 공지</button></li>
+							<li class="tabBtn"><button type="button" class="btn" data-no="81" title="메가박스 공지 보기" >쌍용 씨네시티 공지</button></li>
 						
 							<li class="tabBtn"><button type="button" class="btn" data-no="82" title="지점 공지 보기" >지점 공지</button></li>
 						
@@ -126,11 +131,16 @@
 						<option value="">극장 선택</option>
 						
 					</select>
-
+					
+					<form action="./${board	}List" style="float: right;">
+					
 					<div class="board-search">
-						<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15">
-						<button type="button" id="searchBtn" class="btn-search-input">검색</button>
+						<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15" name="search">
+						<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
 					</div>
+					
+					</form>
+					
 				</div>
 
 				<div class="table-wrap">
@@ -171,15 +181,38 @@
 				
 
 				<!-- pagination -->
-				<nav class="pagination"></nav>
+				<div>
+					<ul class="pagination" style="">
+						
+						<c:if test="${pager.curBlock gt 1}">
+							<li><a href="./${board}List?curPage=1&search=${pager.search}" class="control first">&lt&lt</a></li>
+						</c:if>
+						
+						<c:if test="${pager.curBlock gt 1}">
+							<li><a href="./${board}List?curPage=${pager.startNum-1}&search=${pager.search}" class="control prev">&lt</a></li>
+						</c:if>
+						
+						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<li><a href="./${board}List?curPage=${i}&search=${pager.search}">${i}</a></li>
+						</c:forEach>
+						
+						<c:if test="${pager.curBlock lt pager.totalBlock}">
+							<li><a href="./${board}List?curPage=${pager.lastNum+1}&search=${pager.search}" class="control next">&gt</a></li>
+						</c:if>
+						
+						<c:if test="${pager.curBlock lt pager.totalBlock}">
+							<li><a href="./${board}List?curPage=${pager.totalPage}&search=${pager.search}" class="control last">&gt&gt</a></li>
+						</c:if>
+					</ul>
+				</div>
 				<!--// pagination -->
+				
 				<div class="container">
-					<a href="../notice/noticeWrite" class="btn btn-primary">Write</a>
+					<a href="../notice/noticeWrite" class="button large writeBtn" style="border-color:#3385ff; color: #3385ff; ">Write</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 
 
@@ -238,6 +271,18 @@
 
   
 <script type="text/javascript">
+
+	var totalPage = '${listCount}';
+
+ 	$(".pagination > li").click(function(){
+		var curBlock = '${pager.curBlock}';
+ 	 	if($(this).val==curBlock){
+			$(this).toggleClass("active");
+ 	 	}
+	});
+
+
+
 	/* $("#theater").on("click", function(){
 		alert($(this).val());
 	}); */
