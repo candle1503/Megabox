@@ -73,7 +73,7 @@
 					</p>
 					<ul>
 			
-					<li><a href="/support/faq"		title="자주묻는질문">자주묻는질문</a></li>
+					<li><a href="${board}FAQ"		title="자주 묻는 질문">자주 묻는 질문</a></li>
                     <li class="on"><a href="${board}List"	title="공지사항">공지사항</a></li>
 					
 					</ul>
@@ -134,10 +134,10 @@
 					
 					<form action="./${board	}List" style="float: right;">
 					
-					<div class="board-search">
-						<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15" name="search">
-						<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
-					</div>
+						<div class="board-search">
+							<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15" name="search">
+							<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
+						</div>
 					
 					</form>
 					
@@ -163,6 +163,9 @@
 							</tr>
 						</thead>
 						<tbody>
+						
+						<c:choose>
+							<c:when test="${not empty list}">
 							<c:forEach items="${list}" var="vo">
 								<tr>
 									<td>${vo.num}</td>
@@ -171,9 +174,14 @@
 									<td><a href="${board}Select?num=${vo.num}">${vo.title}</a></td>
 									<td>${vo.regDate}</td>
 								</tr>
-								
-								
 							</c:forEach>
+							</c:when>
+							<c:otherwise>
+								 
+								<div style="position: absolute; margin-top: 50px; margin-left: 40%;"><p style="text-align: center;">검색결과가 없습니다.</p></div> 
+								
+							</c:otherwise>
+						</c:choose>
 						</tbody>
 					</table>
 				</div>
@@ -182,7 +190,11 @@
 
 				<!-- pagination -->
 				<div>
-					<ul class="pagination" style="">
+					<ul class="pagination">
+						
+						<c:choose>
+						
+						<c:when test="${not empty list}">
 						
 						<c:if test="${pager.curBlock gt 1}">
 							<li><a href="./${board}List?curPage=1&search=${pager.search}" class="control first">&lt&lt</a></li>
@@ -203,6 +215,13 @@
 						<c:if test="${pager.curBlock lt pager.totalBlock}">
 							<li><a href="./${board}List?curPage=${pager.totalPage}&search=${pager.search}" class="control last">&gt&gt</a></li>
 						</c:if>
+						
+						</c:when>
+						
+						<c:otherwise>
+						</c:otherwise>
+						
+						</c:choose>
 					</ul>
 				</div>
 				<!--// pagination -->

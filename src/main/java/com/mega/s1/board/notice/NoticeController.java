@@ -70,6 +70,10 @@ public class NoticeController {
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
 		
+		List<BoardVO> ar = noticeService.boardList(pager);
+		
+		
+		mv.addObject("list", ar);
 		mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
 		mv.setViewName("board/boardSelect");
@@ -77,6 +81,16 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@PostMapping("noticeSelect")
+	public ModelAndView boardSelect(NoticeVO noticeVO, ModelAndView mv) throws Exception{
+		noticeVO = noticeService.boardSelect(noticeVO);
+		
+		mv.addObject("vo", noticeVO);
+		mv.setViewName("redirect:./noticeSelect?num="+noticeVO.getNum());
+		
+		return mv;
+		
+	}
 	
 	
 	
@@ -95,11 +109,18 @@ public class NoticeController {
 		
 		noticeFileVO = noticeService.fileDown(noticeFileVO);
 		
+		System.out.println(noticeFileVO.getFileNum());
+		
 		mv.addObject("fileVO", noticeFileVO);
-		mv.addObject("path", "upload/notice");
+		mv.addObject("path", "upload/notice/");
 		mv.setViewName("fileDown");
 		
 		return mv;
+	}
+	
+	@GetMapping("noticeFAQ")
+	public String boardFAQ() throws Exception{
+		return "board/boardFAQ";
 	}
 	
 }

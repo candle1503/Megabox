@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mega.s1.board.BoardFileVO;
 import com.mega.s1.board.BoardVO;
+import com.mega.s1.board.notice.noticeFile.NoticeFileVO;
 
 import lombok.Data;
 
@@ -14,6 +15,6 @@ public class NoticeVO extends BoardVO {
 
 	private int theaterNum;
 	
-	private List<BoardFileVO> boardFileVOs;
+	private List<NoticeFileVO> noticeFileVOs;
 	
 }

@@ -92,10 +92,10 @@
 		<div class="inner-wrap">
 			<div class="lnb-area">
 				<nav id="lnb">
-					<p class="tit"><a href="/support" title="고객센터">고객센터</a></p>
+					<p class="tit" style="width: 100%; font-size: 1.2em; line-height: 90px; color: #fff; text-align: center;">고객센터
 					<ul>
-						<li><a href="/support/faq" title="자주 묻는 질문">자주 묻는 질문</a></li>
-						<li class="on"><a href="/support/notice" title="공지사항">공지사항</a></li>
+						<li><a href="${board}FAQ" title="자주 묻는 질문">자주 묻는 질문</a></li>
+						<li class="on"><a href="${board}List" title="공지사항">공지사항</a></li>
 					</ul>
 
 					<!-- 고객센터 메뉴일때만 출력 -->
@@ -202,10 +202,10 @@
 &nbsp;</div>
 
 <div class="fileDown">
-	<c:forEach items="${vo.boardFileVOs}" var="file">
+	<c:forEach items="${vo.noticeFileVOs}" var="fileVO">
 		<div>
-			<h2>${file.oriName}</h2>
-			<a href="./${board}/fileDown?fileNum=${file.fileNum}">${file.oriName}</a>
+			<span style="font-weight: bolder;">* 첨부 파일 다운로드 *</span><br>
+			<a href="./${board}/fileDown?fileNum=${fileVO.fileNum}"> - ${fileVO.oriName}</a>
 		</div>
 	</c:forEach>
 </div>
@@ -217,10 +217,30 @@
 						<p class="tit">이전</p>
 							<!-- <p class="link">이전글이 없습니다.</p> -->
 							
-							<c:if test="${vo.num lt listCount}">
+							<%-- <c:if test="${vo.num lt listCount}">
 								<div id="noPrev"></div>	
 								<a href="./${board}Select?num=${vo.num+1}" class="link moveBtn">이전글</a>
-							</c:if>
+							</c:if> --%>
+							
+							
+							<a href="./${board}Select?num=${vo.num+1}" class="link moveBtnPrev">이전글</a>
+							
+							
+							<%-- <c:forEach items="${list}" var="vo" varStatus="i">
+							
+								<c:if test="${i.count eq 1}">
+									<p class="link">이전글이 없습니다.</p>
+								</c:if>
+									
+								<c:if test="${i.count gt 1}">
+									<a href="./${board}Select?num=${vo.num+1}" class="link moveBtn">이전글</a>
+								</c:if>
+							
+								<h3>${i.count}</h3>
+								<h3>${vo.num}</h3>
+								 
+								 
+							</c:forEach> --%>
 							
 						
 					</div>
@@ -230,7 +250,7 @@
 							
 								<div id="noNext"></div>
 							<c:if test="${vo.num gt 1}">
-								<a href="./${board}Select?num=${vo.num-1}" class="link moveBtn">다음글</a>
+								<a href="./${board}Select?num=${vo.num-1}" class="link moveBtnNext">다음글</a>
 							</c:if>
 								<%-- <a href="#" class="link moveBtn" data-no="${vo.num-1}" title="[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내">[문경] 6월 &#39;영화가 있는 날&#39; 이벤트 일자 변경 안내</a> --%>
 							
@@ -254,6 +274,8 @@
 <script type="text/javascript">
 
 	var num = '${vo.num}';
+	var numPlus = '${vo.num+1}';
+	var numMinus = '${vo.num-1}';
 	var listCount = '${listCount}';
 	
 	if(num==listCount){
@@ -272,18 +294,37 @@
 
 
 
-	/* $(function() {
+	$(function() {
 		// 이전글, 다음글 이동
-		$('.moveBtn').on('click', function(e) {
+		$('.moveBtnPrev').on('click', function(e) {
 			e.preventDefault();
 
 			$('[name=artiNo]').val($(this).data('no'));
 
+
+			
 			var form = $(document.forms.moveFrm);
-			form.attr('action', './noticeSelect?num='+num);
+			if(num==null){
+				form.attr('action', './noticeSelect?num=211')				
+			}
+			form.attr('action', './noticeSelect?num='+numPlus);
 			form.submit();
 		});
 
+		$('.moveBtnNext').on('click', function(e) {
+			e.preventDefault();
+
+			$('[name=artiNo]').val($(this).data('no'));
+			
+			var form = $(document.forms.moveFrm);
+			form.attr('action', './noticeSelect?num='+numMinus);
+			form.submit();
+		});
+		
+	
+		
+
+		/*
 		// 목록 이동
 		$('.listBtn').on('click', function(e) {
 			e.preventDefault();
@@ -292,7 +333,7 @@
 			form.attr('action', './notice/noticeList');
 			form.submit();
 		}); */
-		
+	});	
 			
 		
 </script>
