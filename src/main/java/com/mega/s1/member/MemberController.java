@@ -80,9 +80,14 @@ public class MemberController {
 	}
 	
 	@GetMapping("getMyPage")
-	public ModelAndView getMyPage() throws Exception{
+	public ModelAndView getMyPage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member/memberMyPage");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		if(memberVO.getId().equals("ADMIN")) {
+			mv.setViewName("admin/adminPage");
+		}else {
+			mv.setViewName("member/memberMyPage");
+		}
 		return mv;
 	}
 	
@@ -143,5 +148,15 @@ public class MemberController {
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@GetMapping("getAdminPage")
+	public ModelAndView getAdminPage(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = (MemberVO)session.getAttribute("admin");
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("member/memberAdminPage");
+		return mv;
+	}
+	
 	
 }

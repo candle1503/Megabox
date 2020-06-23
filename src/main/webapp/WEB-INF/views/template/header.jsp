@@ -15,8 +15,11 @@
 			title="사이트맵">사이트맵</a> <a href="#layer_header_search"
 			class="header-open-layer btn-layer-search" title="검색">검색</a> <a
 			href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
-		<a href="./member/getMyPage" class="header-open-layer btn-layer-mymega"
+		<c:if test="${member ne null}">
+			<a href="./member/getMyPage" class="header-open-layer btn-layer-mymega"
 			title="나의 메가박스">나의 메가박스</a>
+		</c:if>
+		
 	</div>
 
 	<!-- gnb -->
