@@ -257,10 +257,11 @@
 			<h2 class="tit new">전체극장</h2>
 
 			<div class="theater-box" style="height: 292px;">
-				<div class="theater-place">
-					<ul>
 
-						<li class="on">
+				<div class="theater-place">
+					<ul class="tabs">
+
+						<li class="tab-link on">
 							<button type="button" class="sel-city">서울</button>
 
 							<div class="theater-list">
@@ -330,7 +331,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">경기</button>
 
 							<div class="theater-list">
@@ -422,7 +423,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">인천</button>
 
 							<div class="theater-list">
@@ -450,7 +451,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">대전/충청/세종</button>
 
 							<div class="theater-list">
@@ -511,7 +512,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">부산/대구/경상</button>
 
 							<div class="theater-list">
@@ -601,7 +602,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">광주/전라</button>
 
 							<div class="theater-list">
@@ -638,7 +639,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">강원</button>
 
 							<div class="theater-list">
@@ -660,7 +661,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li class="tab-link">
 							<button type="button" class="sel-city">제주</button>
 
 							<div class="theater-list">
@@ -675,6 +676,19 @@
 
 					</ul>
 				</div>
+
+				<script type="text/javascript">
+
+						$('ul.tabs li').click(function() {
+							$('ul.tabs li').removeClass('on');
+							$(this).addClass('on');
+
+						})
+
+				</script>
+
+				<!-- end theater list -->
+
 
 				<div class="user-theater">
 
@@ -806,7 +820,7 @@
 		</div>
 	</div>
 
-<c:import url="../template/footer.jsp"></c:import>
+	<c:import url="../template/footer.jsp"></c:import>
 
 </body>
 </html>
