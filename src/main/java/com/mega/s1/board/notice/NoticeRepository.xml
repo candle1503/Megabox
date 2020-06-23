@@ -36,15 +36,7 @@
 	</select>
 	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
-		select count(num) from notice			<where>
-			<if test="kind == 'bt'">
-			title <include refid="search"></include>
-			</if>
-		</where>
-	</select>
-	
-	<select id="listCount" parameterType="Pager" resultType="Integer">
-		select count(num) from notice
+		select count(num) from notice where title		<include refid="search"></include>
 	</select>
 	
 	<select id="boardSelect" parameterType="NoticeVO" resultMap="selectResult">

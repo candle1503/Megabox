@@ -65,11 +65,9 @@ public class NoticeService implements BoardService{
 	}
 	
 	
-	@Override
-	public int listCount(Pager pager) throws Exception {
-		return noticeRepository.listCount(pager);
+	public long boardCount(Pager pager) throws Exception{
+		return noticeRepository.boardCount(pager);
 	}
-	
 	
 	
 	@Override

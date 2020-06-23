@@ -51,7 +51,9 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		List<BoardVO> ar = noticeService.boardList(pager);
 		
-		int listCount = noticeService.listCount(pager);
+		//int listCount = noticeService.listCount(pager);
+		
+		long listCount = noticeService.boardCount(pager);
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("list", ar);
@@ -66,7 +68,7 @@ public class NoticeController {
 		
 		Pager pager = new Pager();
 		
-		int listCount = noticeService.listCount(pager);
+		//int listCount = noticeService.listCount(pager);
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
 		
@@ -74,7 +76,7 @@ public class NoticeController {
 		
 		
 		mv.addObject("list", ar);
-		mv.addObject("listCount", listCount);
+		//mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
 		mv.setViewName("board/boardSelect");
 		
