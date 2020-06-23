@@ -5,6 +5,7 @@
   
 <configuration>
 	<typeAliases>
+		<typeAlias type="java.util.List" alias="List"/>
 		<typeAlias type="com.mega.s1.board.notice.NoticeVO" alias="NoticeVO"/>
 		<typeAlias type="com.mega.s1.board.notice.noticeFile.NoticeFileVO" alias="NoticeFileVO"/>
 		<typeAlias type="com.mega.s1.member.MemberVO" alias="MemberVO"/>
