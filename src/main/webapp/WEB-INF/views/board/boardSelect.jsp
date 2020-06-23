@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${vo.title}</title>
 
 
  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,10 +16,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
 
-
-
-
-		<title>메가박스 개인정보 처리방침 변경 안내 | 라이프씨어터, 메가박스</title>
 		<meta property="name"			id="metaTagTitle"	content="메가박스 개인정보 처리방침 변경 안내"/>
 		<meta property="description"	id="metaTagDtls"	content="삶의 의미와 즐거움을 소통하는 공간, 함께 더 행복한 가치있는 콘텐츠를 추구하는 만남과 소통의 즐거움이 가득한 공간 메가박스 입니다. "/>
 		<meta property="keywords"		id="metaTagKeyword"	content="메가박스,megabox,영화,영화관,극장,티켓,박스오피스,상영예정작,예매,오페라,싱어롱,큐레이션,필름소사이어티,클래식소사이어티,이벤트,Movie,theater,Cinema,film,Megabox"/>
@@ -105,7 +101,7 @@
 					<!-- 고객센터 메뉴일때만 출력 -->
 					<div class="left-customer-info">
 						<p class="tit">
-							메가박스 고객센터
+							쌍용 씨네시티 고객센터
 							<span>Dream center</span>
 						</p>
 						<p class="tel">1544-0070</p>
@@ -205,10 +201,11 @@
 <span style="font-size:10pt"><span style="font-family:">감사합니다.</span></span><br />
 &nbsp;</div>
 
-<div class="FD">
-	<c:forEach items="${fileVO}" var="file">
+<div class="fileDown">
+	<c:forEach items="${vo.boardFileVOs}" var="file">
 		<div>
-			<a href="#">${file.oriName}</a>
+			<h2>${file.oriName}</h2>
+			<a href="./${board}/fileDown?fileNum=${file.fileNum}">${file.oriName}</a>
 		</div>
 	</c:forEach>
 </div>
@@ -298,7 +295,6 @@
 		
 			
 		
-	});
 </script>
 
 

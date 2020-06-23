@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8" >
-<title>Insert title here</title>
+<title>공지사항 | 라이프씨어터, 쌍용 씨네시티</title>
 
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -65,16 +65,6 @@
 
 	<!-- container -->
 	<div class="container has-lnb" style="margin-top: 30px;">
-		<!-- <div class="page-util">
-			<div class="inner-wrap">
-				<div class="location">
-					<span>Home</span>
-					<a href="/support" title="고객센터 페이지로 이동">고객센터</a>
-					<a href="/support/notice" title="공지사항 페이지로 이동">공지사항</a>
-				</div>
-
-			</div>
-		</div> -->
 
 		<div class="inner-wrap">
 			<div class="lnb-area">
@@ -91,7 +81,7 @@
 					<!-- 고객센터 메뉴일때만 출력 -->
 					<div class="left-customer-info">
 						<p class="tit">
-							메가박스 고객센터
+							쌍용 씨네시티 고객센터
 							<span>Dream center</span>
 						</p>
 						<p class="tel">1544-0070</p>
@@ -106,7 +96,7 @@
 				<div class="tab-block mb30">
 					<ul>
 						<li class="on tabBtn"><button type="button" class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
-							<li class="tabBtn"><button type="button" class="btn" data-no="81" title="메가박스 공지 보기" >메가박스 공지</button></li>
+							<li class="tabBtn"><button type="button" class="btn" data-no="81" title="메가박스 공지 보기" >쌍용 씨네시티 공지</button></li>
 						
 							<li class="tabBtn"><button type="button" class="btn" data-no="82" title="지점 공지 보기" >지점 공지</button></li>
 						

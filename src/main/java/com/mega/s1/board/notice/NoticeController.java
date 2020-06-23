@@ -63,8 +63,6 @@ public class NoticeController {
 	@GetMapping("noticeSelect")
 	public ModelAndView boardSelect(NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		NoticeFileVO noticeFileVO = new NoticeFileVO();
-		noticeFileVO = noticeService.fileDown(noticeFileVO);
 		
 		Pager pager = new Pager();
 		
@@ -74,7 +72,6 @@ public class NoticeController {
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
-		mv.addObject("fileVO", noticeFileVO);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;
