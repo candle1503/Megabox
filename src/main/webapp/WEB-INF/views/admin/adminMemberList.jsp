@@ -26,21 +26,7 @@
 
 			<div class="inner-wrap">
 
-				<div class="lnb-area">
-					<nav id="lnb">
-						<p class="tit on">
-							<a href="#" title="나의 메가박스">관리자 목록</a>
-						</p>
-
-						<ul>
-							<li class=""><a href="./memberList" title="회원 리스트">회원
-									리스트</a></li>
-							<li><a href="/mypage/moviestory" titel="영화 관리">영화 관리</a></li>
-							<li><a href="/mypage/mydiscount" title="영화관 관리">영화관 관리</a></li>
-							<li><a href="./passwordCheck" title="예약 관리">예약 관리</a></li>
-						</ul>
-					</nav>
-				</div>
+				<c:import url="../template/adminSidebar.jsp"></c:import>
 
 				<div id="contents">
 					<h2 class="tit">회원 리스트</h2>
