@@ -89,20 +89,20 @@
 				<div id="contents">
 					<h2 class="tit">회원 리스트</h2>
 
-					
+
 					<div class="board-list-util">
 						<p class="result-count">
-							<strong> <em class="font-gblue">총 ${size} 명의 회원</em></strong>
+							<strong> <em class="font-gblue">총 ${size}명의 회원</em></strong>
 						</p>
 
-
+					<form action="./memberList" method="get">
 						<div class="board-search">
 							<input type="text" id="searchID" placeholder="회원 ID 입력"
-								class="input-text" value="" maxlength="15">
-							<button type="button" id="searchBtn" class="btn-search-input">검색</button>
+								class="input-text" value="" maxlength="15" name="search">
+							<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
 						</div>
+					</form>
 					</div>
-
 					<div class="table-wrap">
 						<table class="board-list">
 							<colgroup>
@@ -124,39 +124,41 @@
 							</thead>
 							<!-- memberList 뿌려줄곳 -->
 							<tbody>
-							<c:forEach items="${list}" var="vo"  varStatus="i">
-								<tr>
-									<td>${i.count}</td>
-									<td>${vo.id}</td>
-									<td>${vo.name}</td>
-									<td>${vo.phone}</td>
-									<td>${vo.age}</td>
-									<td>등록일</td>
-								
-								</tr>
+								<c:forEach items="${list}" var="vo" varStatus="i">
+									<tr>
+										<td>${i.count}</td>
+										<td>${vo.id}</td>
+										<td>${vo.name}</td>
+										<td>${vo.phone}</td>
+										<td>${vo.age}</td>
+										<td>${vo.regDate}</td>
+
+									</tr>
 								</c:forEach>
-								
+
 							</tbody>
 						</table>
 					</div>
-
-					<nav class="pagination">
-						<strong class="active">1</strong> <a title="2페이지보기"
-							href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기"
-							href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기"
-							href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기"
-							href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기"
-							href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기"
-							href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기"
-							href="javascript:void(0)" pagenum="8">8</a> <a title="9페이지보기"
-							href="javascript:void(0)" pagenum="9">9</a> <a title="10페이지보기"
-							href="javascript:void(0)" pagenum="10">10</a> <a
-							title="이후 10페이지 보기" href="javascript:void(0)"
-							class="control next" pagenum="11">next</a> <a title="마지막 페이지 보기"
-							href="javascript:void(0)" class="control last" pagenum="559">last</a>
-					</nav>
+					<div>
+						<ul class="pagination">
+							<c:if test="${pager.curBlock gt 1}">
+								<a
+									href="./memberList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a>
+							</c:if>
+							<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
+								var="i">
+								<a
+									href="./memberList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+							</c:forEach>
+							<c:if test="${pager.curBlock lt pager.totalBlock}">
+								<a
+									href="./memberList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a>
+							</c:if>
+						</ul>
+						</div>
 					<!--// pagination -->
 				</div>
+
 
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 package com.mega.s1.member;
 
+import java.sql.Date;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,4 +28,6 @@ public class MemberVO {
 	@Range(max= 200, min= 0)
 	@NotNull(message = "나이를 입력")
 	private Integer age;
+	
+	private Date regDate;
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.util.Pager;
 
 @Controller
 @RequestMapping("/admin/**")
@@ -18,11 +19,12 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@GetMapping("memberList")
-	public ModelAndView memberList() throws Exception{
+	public ModelAndView memberList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<MemberVO> memberVOs = adminService.getMemberList();
+		List<MemberVO> memberVOs = adminService.getMemberList(pager);
 		mv.addObject("list", memberVOs);
-		int size = memberVOs.size();
+		mv.addObject("pager", pager);
+		Long size = adminService.getMemberCount(pager);
 		mv.addObject("size", size);
 		mv.setViewName("admin/adminMemberList");
 		return mv;
