@@ -17,7 +17,15 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 	boolean check = false;
-	System.out.println();
-	return check;
+	MemberVO memberVO = (MemberVO)request.getSession().getAttribute("member");
+	
+	if(memberVO == null) {
+		check = true;
+		response.sendRedirect("../member/memberLogin");
+		return false;
+	}else {
+		
+	}
+	return true;
 	}
 }

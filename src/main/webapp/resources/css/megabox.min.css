@@ -13795,7 +13795,7 @@ body.body-iframe .modal-layer {
 	font-size: 0;
 	line-height: 0;
 	background:
-		url(https://img.megabox.co.kr/static/pc/images/common/ci/logo.png)
+		url(/resources/images/sTheater.png)
 		center center no-repeat
 }
 
@@ -14075,7 +14075,7 @@ body.body-iframe .modal-layer {
 
 /* #header.no-bg .ci a {
 	background-image:
-		url(https://img.megabox.co.kr/static/pc/images/common/ci/logo-white.png)
+		url(/resources/images/sTheater.png)
 } */
 
 #header.no-bg .util-area {
@@ -15611,7 +15611,7 @@ body.no-scroll .page-util.fixed {
 	padding: 0;
 	text-indent: -9999px;
 	background:
-		url(https://img.megabox.co.kr/static/pc/images/common/ci/logo-opacity.png)
+		url(/resources/images/sTheater.png)
 		no-repeat center
 }
 
@@ -25604,7 +25604,7 @@ body.body-iframe .modal-layer2 {
 	margin: 30px auto 0;
 	font-size: 0;
 	background:
-		url(https://img.megabox.co.kr/static/pc/images/common/ci/logo2.png)
+		url(/resources/images/sTheater.png)
 		center center no-repeat
 }
 
@@ -33952,7 +33952,7 @@ body.body-iframe .modal-layer2 {
 	font-size: 0;
 	line-height: 0;
 	background:
-		url(https://img.megabox.co.kr/static/pc/images/reserve/btn-choice-dell-circle.png)
+		url(/resources/images/sTheater.png)
 		no-repeat 0 0
 }
 
@@ -35957,7 +35957,7 @@ body.body-iframe .modal-layer2 {
 	width: 100%;
 	height: 100%;
 	background:
-		url(https://img.megabox.co.kr/static/pc/images/intro/logo-mega-white.png)
+		url(/resources/images/sTheater.png)
 		no-repeat 0 0
 }
 
@@ -36055,7 +36055,7 @@ body.body-iframe .modal-layer2 {
 
 .intro-body #header.scroll .bg-mask .main-menu .ci a {
 	background-image:
-		url(https://img.megabox.co.kr/static/pc/images/intro/logo-mega-purple.png)
+		url(/resources/images/sTheater.png)
 }
 
 .intro-body #header.scroll .bg-mask .main-menu #gnb_intro ul li a {
@@ -38530,7 +38530,7 @@ body.bg-member {
 	font-size: 0;
 	line-height: 0;
 	background:
-		url(https://img.megabox.co.kr/static/pc/images/common/ci/logo.png)
+		url(/resources/images/sTheater.png)
 		center no-repeat
 }
 
@@ -38882,7 +38882,7 @@ body.bg-member {
 	margin-left: -155px;
 	padding-top: 177px;
 	background:
-		url(https://img.megabox.co.kr/static/mb/images/event/0ticket_grapgh_img.png)
+		url(/resources/images/sTheater.png)
 		no-repeat;
 	z-index: 9
 }

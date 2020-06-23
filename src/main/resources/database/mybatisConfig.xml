@@ -14,5 +14,7 @@
 	
 		<typeAlias type="com.mega.s1.util.Pager" alias="Pager"/>
 	
+		<typeAlias type="java.util.List" alias="List"/>
+		<typeAlias type="com.mega.s1.member.memberFile.MemberFileVO" alias="MemberFileVO"/>
 	</typeAliases>
 </configuration>
