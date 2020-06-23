@@ -705,12 +705,37 @@
 			<div class="inner-wrap pt40">
 
 				<div class="tab-list fixed mb40 tab-layer">
-					<ul>
-						<li class="on"><a href="#tab01" title="극장정보 탭으로 이동">극장정보</a></li>
-						<li><a href="#tab02" title="상영시간표 탭으로 이동">상영시간표</a></li>
-						<li><a href="#tab03" title="관람료 탭으로 이동">관람료</a></li>
+					<ul class="tabs">
+						<li class="on"><a href="#tab01" title="1">극장정보</a></li>
+						<li><a href="#tab03" title="3">관람료</a></li>
+						<!-- <li><a href="#tab03" title="상영시간표">상영시간표</a></li> -->
 					</ul>
 				</div>
+
+				<script type="text/javascript">
+					$('ul.tabs li').click(function() {
+						$('ul.tabs li').removeClass('on');
+						$(this).addClass('on');
+
+						alert($('ul.tabs li.on>a').attr("title"))
+						
+						if ($('ul.tabs li.on>a').attr("title") == 1) {
+
+							$('#tab03').removeClass('on');
+							$('#tab01').removeClass('on');
+							$('#tab01').addClass('on');
+
+						} else if ($('ul.tabs li.on>a').attr("title") == 3) {
+
+							$('#tab01').removeClass('on');
+							$('#tab03').removeClass('on');
+							$('#tab03').addClass('on');
+
+						}
+
+					})
+					
+				</script>
 
 				<div class="tab-cont-wrap">
 					<div id="tab01" class="tab-cont on">
@@ -1318,7 +1343,7 @@
 					</div>
 
 
-					<div id="tab02" class="tab-cont">
+					<%-- 					<div id="tab02" class="tab-cont">
 						<a href="" class="ir">상영시간표 탭 화면 입니다.</a>
 						<h2 class="tit small" style="display: none;">무대인사</h2>
 						<div class="movie-greeting" style="display: none;"></div>
@@ -2677,9 +2702,7 @@
 							<li>지연입장에 의한 관람불편을 최소화하고자 본 영화는 약 10분 후 시작됩니다.</li>
 							<li>쾌적한 관람 환경을 위해 상영시간 이전에 입장 부탁드립니다.</li>
 						</div>
-					</div>
-
-
+					</div> --%>
 
 					<div id="tab03" class="tab-cont">
 						<a href="" class="ir">관람료 탭 화면 입니다.</a>

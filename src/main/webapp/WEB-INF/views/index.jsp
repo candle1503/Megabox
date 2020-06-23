@@ -8,6 +8,8 @@
 
 <c:import url="./template/header_css.jsp"></c:import>
 
+
+
 </head>
 
 <c:import url="./template/header.jsp"></c:import>
