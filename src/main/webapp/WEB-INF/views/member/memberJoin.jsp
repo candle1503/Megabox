@@ -14,7 +14,8 @@
 			</div>
 			<p class="tit-member">회원가입&<a href="./memberLogin" style="color:#503396;">로그인</a></p>
 
-			<form:form modelAttribute="memberVO" action="./memberJoin" method="post">
+			<form:form modelAttribute="memberVO" action="./memberJoin" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="files" value="">
 				<div class="table-wrap">
 					<table class="board-form">
 						<colgroup>
@@ -33,6 +34,7 @@
 								<th scope="row"><label for="ibxSchIdMbNm">비밀번호</label></th>
 								<td><form:input path="password" id="password" maxlength="20" type="password"
 									placeholder="비밀번호" class="input-text w230px"/>
+									<form:errors path="password"></form:errors>
 									</td>
 							</tr>
 							<tr>

@@ -18,5 +18,7 @@
 	
 		<typeAlias type="java.util.List" alias="List"/>
 		<typeAlias type="com.mega.s1.member.memberFile.MemberFileVO" alias="MemberFileVO"/>
+		
+		<typeAlias type="com.mega.s1.theater.TheaterVO" alias="TheaterVO"/>
 	</typeAliases>
 </configuration>

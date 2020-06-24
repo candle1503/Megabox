@@ -1,25 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="ko">
 <head>
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
+
 <link rel="shortcut icon" href="/resources/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
 <link rel="stylesheet" href="/resources/css/myPage.css" media="all">
 </head>
 
 <body>
-<c:import url="../template/header.jsp"></c:import>
+	<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
+
 
 
 		<div class="container has-lnb">
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
-						<span>Home</span> <a href="#" title="관리자 페이지">관리자 페이지</a>
+						<span>Home</span> <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의
+							메가박스</a> <a href="#" title="회원정보 페이지로 이동">회원정보</a> <a class="no-link">개인정보
+							수정</a>
 					</div>
 				</div>
 			</div>
@@ -27,80 +32,40 @@
 			<div class="inner-wrap">
 
 				<c:import url="../template/adminSidebar.jsp"></c:import>
-
-				<div id="contents">
-					<h2 class="tit">회원 리스트</h2>
-
-
-					<div class="board-list-util">
-						<p class="result-count">
-							<strong> <em class="font-gblue">총 ${size}명의 회원</em></strong>
-						</p>
-
-					<form action="./memberList" method="get">
-						<div class="board-search">
-							<input type="text" id="searchID" placeholder="회원 ID 입력"
-								class="input-text" value="" maxlength="15" name="search">
-							<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
+				
+				<div id="contents" class="">
+				<form action="/admin/theaterUpdate" method="post">
+					<h2 class="tit">${theaterVO.name}정보</h2>
+					<input type="hidden" value="${theaterVO.theaterNum}" name="theaterNum">
+					<div class="box-radius" style="margin-bottom: 0px;">
+						<textarea class="box-bot" rows="1" cols="95" style="resize: none;"
+							 name="name">${theaterVO.name}</textarea>
+						<textarea class="box-bot" rows="1" cols="95" style="resize: none;"
+							 name="localCode">${theaterVO.localCode}</textarea>
+						<textarea  class="box-bot" rows="1" cols="95" style="resize: none;"
+							 name="address">${theaterVO.address}</textarea>
+						<div class="box-top" style="padding-left: 10px">
+							<strong>주차 이용 안내</strong>
 						</div>
+						<textarea class="box-bot" rows="15" cols="95" style="resize: none;"
+							name="parking">${theaterVO.parking}</textarea>
+						<div class="box-top" style="padding-left: 10px">
+							<strong>극장 정보</strong>
+						</div>
+						<textarea class="box-bot" rows="9" cols="95" style="resize: none;"
+							name="info">${theaterVO.info}</textarea>
+					</div>
+				
+
+					<div class="btn-group mt40">
+						<a href="./theaterList">
+						<input type="button" class="button large" value="취소">
+						</a>
+						<button type="submit" class="button purple large" >수정</button>
+					</div>
 					</form>
-					</div>
-					<div class="table-wrap">
-						<table class="board-list">
-							<colgroup>
-								<col style="width: 72px;">
-								<col style="width: 133px;">
-								<col style="width: 95px;">
-								<col>
-								<col style="width: 116px;">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">번호</th>
-									<th scope="col">ID</th>
-									<th scope="col">이름</th>
-									<th scope="col">전화번호</th>
-									<th scope="col">나이</th>
-									<th scope="col">등록일</th>
-								</tr>
-							</thead>
-							<!-- memberList 뿌려줄곳 -->
-							<tbody>
-								<c:forEach items="${list}" var="vo" varStatus="i">
-									<tr>
-										<td>${i.count}</td>
-										<td>${vo.id}</td>
-										<td>${vo.name}</td>
-										<td>${vo.phone}</td>
-										<td>${vo.age}</td>
-										<td>${vo.regDate}</td>
-									</tr>
-								</c:forEach>
-
-							</tbody>
-						</table>
-					</div>
-					<div>
-						<ul class="pagination">
-							<c:if test="${pager.curBlock gt 1}">
-								<a
-									href="./memberList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a>
-							</c:if>
-							<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
-								var="i">
-								<a
-									href="./memberList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
-							</c:forEach>
-							<c:if test="${pager.curBlock lt pager.totalBlock}">
-								<a
-									href="./memberList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a>
-							</c:if>
-						</ul>
-						</div>
-					<!--// pagination -->
 				</div>
-
-
+				
 			</div>
 		</div>
 
@@ -178,6 +143,5 @@
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
-
 </body>
 </html>

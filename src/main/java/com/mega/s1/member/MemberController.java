@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.member.memberFile.MemberFileVO;
@@ -37,8 +38,7 @@ public class MemberController {
 			mv.setViewName("member/memberJoin");
 			mv.addObject("memerVO", memberVO);
 		}else {
-			memberService.setJoin(memberVO);
-			memberService.setProfile(memberVO);
+			memberVO = memberService.setJoin(memberVO);
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}
@@ -158,5 +158,18 @@ public class MemberController {
 		return mv;
 	}
 	
+	@PostMapping("profileUpdate")
+	public ModelAndView profileUpdate(MultipartFile file, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO=(MemberVO)session.getAttribute("member");
+		MemberFileVO memberFileVO=memberService.setProfile(memberVO, file);
+		memberVO.setFileName(memberFileVO.getFileName());
+		memberVO.setOriName(memberFileVO.getOriName());
+		session.setAttribute("member", memberVO);
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("member/memberUpdate");
+		return mv;
+	
+	}
 	
 }

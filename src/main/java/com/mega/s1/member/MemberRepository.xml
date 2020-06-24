@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mega.s1.member.MemberRepository">
 	<insert id="setJoin" parameterType="MemberVO">
-		insert into member values (#{id},#{password},#{name},#{phone},#{email},#{age})
+		insert into member values (#{id},#{password},#{name},#{phone},#{email},#{age},now())
 	</insert>
 	
 	<select id="setLogin" parameterType="MemberVO" resultType="MemberVO">

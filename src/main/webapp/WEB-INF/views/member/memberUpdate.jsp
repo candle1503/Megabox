@@ -13,54 +13,9 @@
 </head>
 
 <body>
+<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
 
-		<header id="header">
-			<h1 class="ci">
-				<a href="../" title="MEGABOX 메인으로 가기">MEGABOX : Life Theater</a>
-			</h1>
-
-			<!-- 2019-04-15 마크업 수정 : 고객요청  -->
-			<div class="util-area">
-
-				<div class="right-link">
-
-					<div class="after" style="">
-						<a href="./memberLogout" class="" title="로그아웃">로그아웃</a>
-						 <a href="/support"	title="고객센터">고객센터</a>
-						<a href="/booking">빠른예매</a>
-				</div>
-			</div>
-
-			<div class="link-area">
-				<a href="#layer_sitemap" class="header-open-layer btn-layer-sitemap"
-					title="사이트맵">사이트맵</a> <a href="#layer_header_search"
-					class="header-open-layer btn-layer-search" title="검색">검색</a> <a
-					href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
-				<a href="./getMyPage" class="header-open-layer btn-layer-mymega"
-					title="나의 메가박스">나의 메가박스</a>
-			</div>
-
-
-			<nav id="gnb">
-				<ul class="gnb-depth1">
-					<li><a href="/movie" class="gnb-txt-movie" title="영화"></a></li>
-					<li><a href="/booking" class="gnb-txt-reserve" title="예매"></a></li>
-					<li><a href="/theater/list" class="gnb-txt-theater" title="극장"></a>
-							</li>
-					<li><a href="javascript:void(0)"
-						onclick="NetfunnelChk.aTag('EVENT_LIST','/event');return false;"
-						class="gnb-txt-event" title="이벤트"></a></li>
-					<li><a href="javascript:void(0)"
-						onclick="NetfunnelChk.aTag('STORE_LIST','/store');return false;"
-						class="gnb-txt-store" title="스토어"></a></li>
-					<li><a href="/benefit/membership" class="gnb-txt-benefit"
-						title="혜택"></a></li>
-				</ul>
-			</nav>
-
-		</header>
-		<!--// header -->
 
 
 		<div class="container has-lnb">
@@ -77,22 +32,7 @@
 
 			<div class="inner-wrap">
 
-				<div class="lnb-area">
-					<nav id="lnb">
-						<p class="tit on">
-							<a href="./getMyPage" title="나의 메가박스">나의 메가박스</a>
-						</p>
-
-						<ul>
-							<li class=""><a href="/mypage/bookinglist" title="예매/구매내역">예매/구매내역</a></li>
-							<li><a href="/mypage/moviestory" titel="나의 무비스토리">나의
-									무비스토리</a></li>
-							<li><a href="/mypage/mydiscount" title="자주쓰는 할인 카드">자주쓰는
-									카드 관리</a></li>
-							<li><a href="#" title="회원정보">회원정보</a></li>
-						</ul>
-					</nav>
-				</div>
+				<c:import url="../template/memberSidebar.jsp"></c:import>
 
 				<div id="contents">
 					<h2 class="tit">개인정보 수정</h2>
@@ -113,36 +53,32 @@
 									<th scope="row">프로필 사진</th>
 									<td>
 										<div class="profile-photo">
-											<form name="fileForm">
-												<input type="file" id="profileTarget" name="file"
-													style="display: none;">
-
-											</form>
-
-
-
 
 											<div class="profile-img">
-												<img src="../../../static/pc/images/mypage/bg-profile.png"
+											<c:if test="${member.fileName eq null}">
+												<img src="/resources/images/memberProfile.png"
 													alt="프로필 사진 샘플">
+											</c:if>		
+											<c:if test="${member.fileName ne null}">
+												<img src="/upload/member/${member.fileName}"
+													alt="프로필 사진 샘플">
+											</c:if>							
 											</div>
-
-											<button type="button" class="button small gray-line"
-												id="addProfileImgBtn">이미지 등록</button>
-
+											</div>
+											<form action="./profileUpdate" method="post" enctype="multipart/form-data">
+											<input id="file" name="file" type="file">
+											<button type="submit" class="button small gray-line" id="addProfileImgBtn">이미지 등록</button>
+											</form>
 
 
 											<a href="./memberDelete"
 												class="button small member-out" title="회원탈퇴">회원탈퇴</a>
 										</div>
-										<p
-											style="font-size: 0.8em; color: #999; margin-top: 10px; padding: 0; text-align: left; position: absolute; top: 22px; left: 194px;">
-											※ 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">아이디</th>
-									<td>${member.id}id</td>
+									<td>${member.id}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -176,7 +112,7 @@
 									<tr>
 										<th scope="row">나이 <em class="font-orange">*</em>
 										</th>
-										<td>${member.age}age</td>
+										<td>${member.age}</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="phone">전화번호</label> <em
@@ -290,11 +226,11 @@
 						</a>
 						<button type="submit" class="button purple large" id="updateBtn">등록</button>
 					</div>
+		</form:form>
 				</div>
 
 			</div>
 		</div>
-</form:form>
 
 
 		<section id="saw_movie_regi" class="modal-layer">

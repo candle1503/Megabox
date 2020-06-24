@@ -9,7 +9,7 @@ import com.mega.s1.util.Pager;
 
 public interface BoardService {
 
-	public int listCount(Pager pager) throws Exception;
+	public long boardCount(Pager pager) throws Exception;
 	
 	public int boardInsert(NoticeVO noticeVO, MultipartFile[] files) throws Exception;
 	

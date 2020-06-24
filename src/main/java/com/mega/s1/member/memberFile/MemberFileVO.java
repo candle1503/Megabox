@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class MemberFileVO {
 
-	private String fileNum;
 	private String id;
 	private String fileName;
 	private String oriName;
