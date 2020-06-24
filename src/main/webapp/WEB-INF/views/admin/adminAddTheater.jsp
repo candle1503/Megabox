@@ -32,40 +32,43 @@
 			<div class="inner-wrap">
 
 				<c:import url="../template/adminSidebar.jsp"></c:import>
-				
+
 				<div id="contents" class="">
-				<form:form modelAttribute="theaterVO" action="./theaterAdd" method="post">
-					<h2 class="tit">영화관 추가</h2>
+					<form:form modelAttribute="theaterVO" action="./theaterAdd"
+						method="post">
+						<h2 class="tit">영화관 추가</h2>
 
-					<div class="box-radius" style="margin-bottom: 0px;">
-						<form:textarea path="name" class="box-bot" rows="1" cols="95" style="resize: none;"
-							placeholder="영화관 이름을 입력하세요."/>
-						<form:textarea path="localCode" class="box-bot" rows="1" cols="95" style="resize: none;"
-							placeholder="지역 코드를 입력하세요."/>
-						<form:textarea path="address" class="box-bot" rows="1" cols="95" style="resize: none;"
-							placeholder="영화관 주소를 입력하세요."/>
-						<div class="box-top">
-							<strong>주차 이용 안내</strong>
+						<div class="box-radius" style="margin-bottom: 0px;">
+							<form:textarea path="name" class="box-bot" rows="1" cols="95"
+								style="resize: none;" placeholder="영화관 이름을 입력하세요." />
+							<form:textarea path="localCode" class="box-bot" rows="1"
+								cols="95" style="resize: none;"
+								placeholder="형식)[서울]||[경기]||[인천]||[대전/충청/세종]||[부산/대구/경상]||[광주/전라]||[강원]||[제주]
+	**[]는 빼고 입력" />
+							<form:textarea path="address" class="box-bot" rows="1" cols="95"
+								style="resize: none;" placeholder="영화관 주소를 입력하세요." />
+							<div class="box-top" style="padding-left: 10px">
+								<strong>주차 이용 안내</strong>
+							</div>
+							<form:textarea path="parking" class="box-bot" rows="15" cols="95"
+								style="resize: none;" placeholder="주차안내 메세지를 입력하세요." />
+							<div class="box-top" style="padding-left: 10px">
+								<strong>극장 정보</strong>
+							</div>
+							<form:textarea path="info" class="box-bot" rows="9" cols="95"
+								style="resize: none;" placeholder="극장 소개를 해주세요." />
 						</div>
-						<form:textarea path="parking" class="box-bot" rows="9" cols="95" style="resize: none;"
-							placeholder="주차안내 메세지를 입력하세요."/>
-						<div class="box-top">
-							<strong>극장 정보</strong>
-						</div>
-						<form:textarea path="info" class="box-bot" rows="9" cols="95" style="resize: none;"
-							placeholder="극장 소개를 해주세요."/>
-					</div>
-				
 
-					<div class="btn-group mt40">
-						<a href="./theaterList">
-						<input type="button" class="button large" value="취소">
-						</a>
-						<button type="submit" class="button purple large" >등록</button>
-					</div>
+
+						<div class="btn-group mt40">
+							<a href="./theaterList"> <input type="button"
+								class="button large" value="취소">
+							</a>
+							<button type="submit" class="button purple large">등록</button>
+						</div>
 					</form:form>
 				</div>
-				
+
 			</div>
 		</div>
 

@@ -47,7 +47,7 @@
 						<div class="box-top" style="padding-left: 10px">
 							<strong>주차 이용 안내</strong>
 						</div>
-						<textarea class="box-bot" rows="9" cols="95" style="resize: none;"
+						<textarea class="box-bot" rows="15" cols="95" style="resize: none;"
 							name="parking">${theaterVO.parking}</textarea>
 						<div class="box-top" style="padding-left: 10px">
 							<strong>극장 정보</strong>
