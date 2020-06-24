@@ -13,10 +13,49 @@
 		<result column="info" property="info" />
 		<result column="parking" property="parking" />
 	</resultMap>
+	
+	<select id="theaterBranchSelect" parameterType="TheaterVO" resultType="TheaterVO">
+		select * from theater where theaterNum=#{theaterNum}	
+	</select>
 
-	<select id="theaterNameList" parameterType="TheaterVO"
+	<select id="theaterNameSeoul" parameterType="TheaterVO"
 		resultType="TheaterVO">
-		select name from theater
+		select * from theater where localCode='서울'
+	</select>
+
+	<select id="theaterNameGyeonggi" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='경기'
+	</select>
+
+	<select id="theaterNameIncheon" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='인천'
+	</select>
+
+	<select id="theaterNameChungcheong" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='대전/충청/세종'
+	</select>
+
+	<select id="theaterNameGyeongsang" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='부산/대구/경상'
+	</select>
+
+	<select id="theaterNameJeolla" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='광주/전라'
+	</select>
+
+	<select id="theaterNameGangwon" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='강원'
+	</select>
+
+	<select id="theaterNameJeju" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='제주'
 	</select>
 
 </mapper>

@@ -737,13 +737,13 @@
 					
 				</script>
 
+				<!-- 메인 시작 -->
 				<div class="tab-cont-wrap">
 					<div id="tab01" class="tab-cont on">
 
 						<div class="theater-info-text mt40">
 							<p class="big">
-								강남의 중심! 강남 소비문화의 중심지인 지하철 2호선 , 신분당선 - 강남역과 연결<br>로맨틱
-								멀티플렉스! 젊은 도시 강남이 한 눈에 보이는 최상의 View를 제공
+								${vo.theaterNum}
 							</p>
 							<p>&lt;프라다&gt;가 선택한 수려한 디자인의 상영관 의자를 체험해보세요!</p>
 						</div>
