@@ -178,7 +178,7 @@
 							</c:when>
 							<c:otherwise>
 								 
-								<div style="position: absolute; margin-top: 50px; margin-left: 40%;"><p style="text-align: center;">검색결과가 없습니다.</p></div> 
+								<div style="position: absolute; margin-top: 50px; margin-left: 45%;"><p style="text-align: center;">목록이 없습니다.</p></div> 
 								
 							</c:otherwise>
 						</c:choose>

@@ -38,7 +38,7 @@
 						<li><a href="/moviepost/all" title="무비포스트">무비포스트</a></li>
 					</ul>
 				</div></li>
-			<li><a href="../booking/bookingTimeZone" title="예매">예매</a>
+			<li><a href="../booking/bookingList" title="예매">예매</a>
 				<div class="gnb-depth2">
 					<ul>
 						<li><a href="/booking" title="빠른예매">빠른예매</a></li>

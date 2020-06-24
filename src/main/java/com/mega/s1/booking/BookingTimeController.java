@@ -1,8 +1,5 @@
 package com.mega.s1.booking;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +15,12 @@ public class BookingTimeController {
 	@Autowired
 	private BookingTimeService bookingTimeService;
 	
-	@GetMapping("booking/bookingTimeZone")
+	@GetMapping("/booking/bookingTimeZone")
 	public void bookingTimeList(long startDay, Model model) throws Exception{
 		
-//		List<String> timeList = bookingTimeService.bookingTimeList(startDay);
-//		
-//		model.addAttribute("timeList", timeList);
+		List<String> timeList = bookingTimeService.bookingTimeList(startDay);
+		
+		model.addAttribute("timeList", timeList);
 		
 	}
 	
