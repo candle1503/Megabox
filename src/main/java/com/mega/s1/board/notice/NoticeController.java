@@ -51,7 +51,9 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		List<BoardVO> ar = noticeService.boardList(pager);
 		
-		int listCount = noticeService.listCount(pager);
+		//int listCount = noticeService.listCount(pager);
+		
+		long listCount = noticeService.boardCount(pager);
 		
 		mv.addObject("listCount", listCount);
 		mv.addObject("list", ar);
@@ -66,17 +68,31 @@ public class NoticeController {
 		
 		Pager pager = new Pager();
 		
-		int listCount = noticeService.listCount(pager);
+		//int listCount = noticeService.listCount(pager);
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
 		
-		mv.addObject("listCount", listCount);
+		List<BoardVO> ar = noticeService.boardList(pager);
+		
+		
+		mv.addObject("list", ar);
+		//mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;
 	}
 	
+	@PostMapping("noticeSelect")
+	public ModelAndView boardSelect(NoticeVO noticeVO, ModelAndView mv) throws Exception{
+		noticeVO = noticeService.boardSelect(noticeVO);
+		
+		mv.addObject("vo", noticeVO);
+		mv.setViewName("redirect:./noticeSelect?num="+noticeVO.getNum());
+		
+		return mv;
+		
+	}
 	
 	
 	
@@ -95,11 +111,18 @@ public class NoticeController {
 		
 		noticeFileVO = noticeService.fileDown(noticeFileVO);
 		
+		System.out.println(noticeFileVO.getFileNum());
+		
 		mv.addObject("fileVO", noticeFileVO);
-		mv.addObject("path", "upload/notice");
+		mv.addObject("path", "upload/notice/");
 		mv.setViewName("fileDown");
 		
 		return mv;
+	}
+	
+	@GetMapping("noticeFAQ")
+	public String boardFAQ() throws Exception{
+		return "board/boardFAQ";
 	}
 	
 }
