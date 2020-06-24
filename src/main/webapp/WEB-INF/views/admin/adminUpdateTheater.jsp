@@ -34,39 +34,36 @@
 				<c:import url="../template/adminSidebar.jsp"></c:import>
 				
 				<div id="contents" class="">
-					<h2 class="tit">${theaterVO.name} 영화관 정보</h2>
+				<form action="/admin/theaterUpdate" method="post">
+					<h2 class="tit">${theaterVO.name}정보</h2>
 
 					<div class="box-radius" style="margin-bottom: 0px;">
-						<textarea class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5;"
-							readonly="readonly">${theaterVO.name}</textarea>
-						<textarea class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.localCode}</textarea>
-						<textarea  class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.address}</textarea>
+						<textarea class="box-bot" rows="1" cols="95" style="resize: none;"
+							 name="name">${theaterVO.name}</textarea>
+						<textarea class="box-bot" rows="1" cols="95" style="resize: none;"
+							 name="localCode">${theaterVO.localCode}</textarea>
+						<textarea  class="box-bot" rows="1" cols="95" style="resize: none;"
+							 name="address">${theaterVO.address}</textarea>
 						<div class="box-top" style="padding-left: 10px">
-							<strong >주차 이용 안내</strong>
+							<strong>주차 이용 안내</strong>
 						</div>
-						<textarea class="box-bot" rows="9" cols="95" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.parking}</textarea>
+						<textarea class="box-bot" rows="9" cols="95" style="resize: none;"
+							name="parking">${theaterVO.parking}</textarea>
 						<div class="box-top" style="padding-left: 10px">
 							<strong>극장 정보</strong>
 						</div>
-						<textarea class="box-bot" rows="9" cols="95" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.info}</textarea>
+						<textarea class="box-bot" rows="9" cols="95" style="resize: none;"
+							name="info">${theaterVO.info}</textarea>
 					</div>
 				
 
 					<div class="btn-group mt40">
 						<a href="./theaterList">
-						<input type="button" class="button large" value="이전">
+						<input type="button" class="button large" value="취소">
 						</a>
-						<a href="./theaterUpdate?theaterNum=${theaterVO.theaterNum}">
-						<input type="button" class="button purple large" value="수정">
-						</a>
-						<a href="./theaterList">
-						<input type="button" class="button purple large" value="공지쓰기">
-						</a>
+						<button type="submit" class="button purple large" >수정</button>
 					</div>
+					</form>
 				</div>
 				
 			</div>

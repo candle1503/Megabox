@@ -29,4 +29,7 @@ public interface AdminRepository {
 	//theaterSelect
 	public TheaterVO theaterSelect(TheaterVO theaterVO) throws Exception;
 	
+	//theaterUpdate
+	public int theaterUpdate(TheaterVO theaterVO) throws Exception;
+	
 }

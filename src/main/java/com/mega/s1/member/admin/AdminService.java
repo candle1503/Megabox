@@ -45,5 +45,8 @@ public class AdminService {
 		return adminRepository.theaterSelect(theaterVO);
 	}
 	
+	public int theaterUpdate(TheaterVO theaterVO) throws Exception{
+		return adminRepository.theaterUpdate(theaterVO);
+	}
 	
 }

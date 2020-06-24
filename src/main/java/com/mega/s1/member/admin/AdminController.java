@@ -2,6 +2,7 @@ package com.mega.s1.member.admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,29 @@ public class AdminController {
 		theaterVO = adminService.theaterSelect(theaterVO);
 		mv.addObject("theaterVO", theaterVO);
 		mv.setViewName("admin/adminSelectTheater");
+		return mv;
+	}
+	
+	@GetMapping("theaterUpdate")
+	public ModelAndView theaterUpdate(TheaterVO theaterVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		theaterVO = adminService.theaterSelect(theaterVO);
+		mv.addObject("theaterVO", theaterVO);
+		mv.setViewName("admin/adminUpdateTheater");
+		return mv;
+	}
+	
+	@PostMapping("theaterUpdate")
+	public ModelAndView theaterUpdate(TheaterVO theaterVO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("안들어옴?");
+		int result = adminService.theaterUpdate(theaterVO);
+		System.out.println(theaterVO.getName());
+		System.out.println(theaterVO.getParking());
+		System.out.println(theaterVO.getTheaterNum());
+		System.out.println(theaterVO.getAddress());
+		System.out.println(result);
+		mv.setViewName("redirect:./theaterList");
 		return mv;
 	}
 	

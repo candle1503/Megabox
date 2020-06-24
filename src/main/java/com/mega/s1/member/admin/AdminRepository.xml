@@ -39,4 +39,8 @@
 		select * from theater where theaterNum=#{theaterNum}
 	</select>
 	
+	<update id="theaterUpdate" parameterType="TheaterVO">
+		update theater set name=#{name}, localCode=#{localCode}, address=#{address}, info=#{info}, parking=#{parking} where theaterNum = #{theaterNum}
+	</update>
+	
 </mapper>
