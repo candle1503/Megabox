@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="ko">
 <head>
 
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<c:import url="../template/header.jsp"></c:import>
+	<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
 
 
@@ -22,88 +22,40 @@
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
-        <span>Home</span>
-        <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의 메가박스</a>
-        <a href="#" title="회원정보 페이지로 이동">회원정보</a>
-        <a class="no-link">개인정보 수정</a>
-    </div>
+						<span>Home</span> <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의
+							메가박스</a> <a href="#" title="회원정보 페이지로 이동">회원정보</a> <a class="no-link">개인정보
+							수정</a>
+					</div>
 				</div>
 			</div>
 
 			<div class="inner-wrap">
 
 				<c:import url="../template/adminSidebar.jsp"></c:import>
-
-				<div id="contents">
+				
+				<div id="contents" class="">
+				<form:form modelAttribute="theaterVO" action="./theaterAdd" method="post">
 					<h2 class="tit">영화관 추가</h2>
 
-					<div class="tit-util mt40 mb10">
-						<h3 class="tit">기본정보</h3>
-
-						<div class="right">
-							<p class="reset">
-								<em class="font-orange">*</em> 필수
-							</p>
+					<div class="box-radius" style="margin-bottom: 0px;">
+						<form:textarea path="name" class="box-bot" rows="1" cols="95" style="resize: none;"
+							placeholder="영화관 이름을 입력하세요."/>
+						<form:textarea path="localCode" class="box-bot" rows="1" cols="95" style="resize: none;"
+							placeholder="지역 코드를 입력하세요."/>
+						<form:textarea path="address" class="box-bot" rows="1" cols="95" style="resize: none;"
+							placeholder="영화관 주소를 입력하세요."/>
+						<div class="box-top">
+							<strong>주차 이용 안내</strong>
 						</div>
+						<form:textarea path="parking" class="box-bot" rows="9" cols="95" style="resize: none;"
+							placeholder="주차안내 메세지를 입력하세요."/>
+						<div class="box-top">
+							<strong>극장 정보</strong>
+						</div>
+						<form:textarea path="info" class="box-bot" rows="9" cols="95" style="resize: none;"
+							placeholder="극장 소개를 해주세요."/>
 					</div>
-
-					<form:form modelAttribute="theaterVO" action="./theaterAdd" method="post">
-
-						<div class="table-wrap mb40">
-							<table class="board-form">
-								<colgroup>
-									<col style="width: 180px;">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row"><label >지역명</label> <em
-											class="font-orange">*</em></th>
-										<td><form:input path="name" type="text"  
-											class="input-text w500px" />
-											<form:errors path="name"></form:errors>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row"><label >영화관 정보</label> <em
-											class="font-orange">*</em></th>
-										<td><form:input path="info" type="text" 
-											class="input-text w500px" />
-											<form:errors path="info"></form:errors>
-										</td>
-									</tr>
-									
-									<tr>
-										<th scope="row"><label >지역코드명</label> <em
-											class="font-orange">*</em></th>
-										<td><form:input path="localCode" type="text"  
-											class="input-text w500px" />
-											<form:errors path="localCode"></form:errors>
-										</td>
-									</tr>
-									
-									<tr>
-										<th scope="row"><label >주소</label> <em
-											class="font-orange">*</em></th>
-										<td><form:input path="address" type="text" 
-											class="input-text w500px" />
-											<form:errors path="address"></form:errors>
-										</td>
-									</tr>
-									
-									<tr>
-										<th scope="row"><label >주차</label> <em
-											class="font-orange">*</em></th>
-										<td><form:input path="parking" type="text" 
-											class="input-text w500px" />
-											<form:errors path="parking"></form:errors>
-										</td>
-									</tr>
-									
-								</tbody>
-							</table>
-						</div>
-
+				
 
 					<div class="btn-group mt40">
 						<a href="./theaterList">
@@ -111,13 +63,11 @@
 						</a>
 						<button type="submit" class="button purple large" >등록</button>
 					</div>
-		</form:form>
+					</form:form>
 				</div>
-
+				
 			</div>
 		</div>
-
-
 
 		<!-- footer -->
 		<footer id="footer">

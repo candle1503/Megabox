@@ -26,4 +26,7 @@ public interface AdminRepository {
 	//theaterCount
 	public Long getTheaterCount(Pager pager) throws Exception;
 	
+	//theaterSelect
+	public TheaterVO theaterSelect(TheaterVO theaterVO) throws Exception;
+	
 }

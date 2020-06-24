@@ -41,5 +41,9 @@ public class AdminService {
 		return adminRepository.getTheaterCount(pager);
 	}
 	
+	public TheaterVO theaterSelect(TheaterVO theaterVO) throws Exception{
+		return adminRepository.theaterSelect(theaterVO);
+	}
+	
 	
 }

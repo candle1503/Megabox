@@ -35,4 +35,8 @@
 		<include refid="search"></include>
 	</select>
 	
+	<select id="theaterSelect" parameterType="TheaterVO" resultType="TheaterVO">
+		select * from theater where theaterNum=#{theaterNum}
+	</select>
+	
 </mapper>
