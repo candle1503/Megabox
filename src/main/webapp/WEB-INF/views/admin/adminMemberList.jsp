@@ -74,7 +74,6 @@
 										<td>${vo.phone}</td>
 										<td>${vo.age}</td>
 										<td>${vo.regDate}</td>
-
 									</tr>
 								</c:forEach>
 

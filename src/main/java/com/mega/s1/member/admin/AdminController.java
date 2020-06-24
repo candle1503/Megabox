@@ -36,11 +36,17 @@ public class AdminController {
 	}
 	
 	@GetMapping("theaterList")
-	public ModelAndView theaterList() throws Exception {
+	public ModelAndView theaterList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		List<TheaterVO> theaterVOs = adminService.getTheaterList(pager);
+		mv.addObject("list", theaterVOs);
+		mv.addObject("pager", pager);
+		Long size = adminService.getTheaterCount(pager);
+		mv.addObject("size", size);
 		mv.setViewName("admin/adminTheaterList");
 		return mv;
 	}
+	
 	
 	@GetMapping("theaterAdd")
 	public ModelAndView theaterAdd() throws Exception {
@@ -58,7 +64,7 @@ public class AdminController {
 			mv.setViewName("admin/adminAddTheater");
 		}else {
 			adminService.addTheater(theaterVO);
-			mv.setViewName("admin/adminTheaterList");
+			mv.setViewName("redirect:./theaterList");
 		}
 		return mv;
 	}

@@ -30,4 +30,16 @@ public class AdminService {
 		return adminRepository.addTheater(theaterVO);
 	}
 	
+	public List<TheaterVO> getTheaterList(Pager pager) throws Exception{
+		pager.makeRow();
+		long totalCount = adminRepository.getTheaterCount(pager);
+		pager.makePage(totalCount);
+		return adminRepository.getTheaterList(pager);
+	}
+	
+	public Long getTheaterCount(Pager pager) throws Exception{
+		return adminRepository.getTheaterCount(pager);
+	}
+	
+	
 }

@@ -39,7 +39,7 @@
 
 					<form action="/admin/theaterList" method="get">
 						<div class="board-search">
-							<input type="text" id="searchID" placeholder="극장명 입력"
+							<input type="text"  placeholder="극장명 입력"
 								class="input-text" value="" maxlength="15" name="search">
 							<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
 						</div>
@@ -79,23 +79,23 @@
 						<ul class="pagination">
 							<c:if test="${pager.curBlock gt 1}">
 								<a
-									href="./memberList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a>
+									href="./theaterList?curPage=${pager.startNum-1}&search=${pager.search}">이전</a>
 							</c:if>
 							<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
 								var="i">
 								<a
-									href="./memberList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+									href="./theaterList?curPage=${i}&search=${pager.search}">${i}</a>
 							</c:forEach>
 							<c:if test="${pager.curBlock lt pager.totalBlock}">
 								<a
-									href="./memberList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a>
+									href="./theaterList?curPage=${pager.lastNum+1}}&search=${pager.search}">다음</a>
 							</c:if>
 						</ul>
 						</div>
 					<!--// pagination -->
-					<form action="/admin/theaterAdd" method="get">
-					<button type="submit" class="button large" >영화관 추가</button>
-					</form>
+					<a href="/admin/theaterAdd">
+					<input type="button" class="button large"  value="영화관 추가">
+					</a>
 				</div>
 
 			</div>

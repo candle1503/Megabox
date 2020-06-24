@@ -20,4 +20,10 @@ public interface AdminRepository {
 	//addTheater
 	public int addTheater(TheaterVO theaterVO) throws Exception;
 	
+	//theaterList
+	public List<TheaterVO> getTheaterList(Pager pager) throws Exception;
+	
+	//theaterCount
+	public Long getTheaterCount(Pager pager) throws Exception;
+	
 }
