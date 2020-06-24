@@ -1,24 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-
-
-<c:import url="./template/header_css.jsp"></c:import>
-
-
-
+<link rel="stylesheet" href="/resources/css/main.css"	media="all">
+<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
+ <link rel="shortcut icon" href="/resources/icon/favicon.ico">
 </head>
-
-<c:import url="./template/header.jsp"></c:import>
-
 <body>
-
+<c:import url="./template/header.jsp"></c:import>
 	<div class="skip" title="스킵 네비게이션">
 		<a href="#contents" title="본문 바로가기">본문 바로가기</a> <a href="#footer"
 			title="푸터 바로가기">푸터 바로가기</a>
+	</div>
 	</div>
 
 	<!-- <div class="body-wrap"> -->
