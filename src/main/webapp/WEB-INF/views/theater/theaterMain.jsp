@@ -81,15 +81,6 @@
 								title="세종에서 제일 편안한 극장, 세종청사 6월 24일(수) OPEN! 상세보기">
 
 
-
-
-
-
-
-
-
-
-
 								<div class="img new"></div>
 
 								<div class="cont new">

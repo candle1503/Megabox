@@ -12,19 +12,19 @@ class MemberTest {
 	@Autowired
 	private MemberRepository memberRepository;
 	
-	@Test
-	void test() throws Exception{
-		MemberVO memberVO = new MemberVO();
-		for(int i=0; i<100; i++) {
-			memberVO.setId("id"+i);
-			memberVO.setPassword("password"+i);
-			memberVO.setName("name"+i);
-			memberVO.setPhone("phone"+i);
-			memberVO.setEmail("email"+i);
-			memberVO.setAge(+i);
-			memberRepository.setJoin(memberVO);
-			
-		}
-	}
+//	@Test
+//	void test() throws Exception{
+//		MemberVO memberVO = new MemberVO();
+//		for(int i=0; i<100; i++) {
+//			memberVO.setId("id"+i);
+//			memberVO.setPassword("password"+i);
+//			memberVO.setName("name"+i);
+//			memberVO.setPhone("phone"+i);
+//			memberVO.setEmail("email"+i);
+//			memberVO.setAge(+i);
+//			memberRepository.setJoin(memberVO);
+//			
+//		}
+//	}
 
 }

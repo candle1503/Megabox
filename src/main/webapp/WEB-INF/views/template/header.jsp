@@ -6,7 +6,7 @@
 	style="background-color: #985F99; font-family: 'Do Hyeon', sans-serif;">
 
 	<a href="${pageContext.request.contextPath}/">
-	<img class="ci" alt="" 	src="${pageContext.request.contextPath}/resources/images/sTheater.png"
+	<img class="ci" alt="" src="${pageContext.request.contextPath}/resources/images/sTheater.png"
 		style="width: 7%; height: auto;"></a>
 
 	<!-- topGnb -->
@@ -48,7 +48,7 @@
 								부티크 프라이빗 예매</a></li>
 					</ul>
 				</div></li>
-			<li><a href="/theater/list" title="극장">극장</a>
+			<li><a href="/theater/theaterMain" title="극장">극장</a>
 				<div class="gnb-depth2">
 					<ul>
 						<li><a href="/theater/list" title="전체극장">전체극장</a></li>

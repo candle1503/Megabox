@@ -7,9 +7,10 @@
 
 <title>Ssangyong CineCity Project</title>
 
-<link rel="stylesheet" href="/resources/css/indexMegabox.css"
+<link rel="stylesheet" href="/resources/css/megabox.min.css"
 	media="all">
-<link rel="stylesheet" href="/resources/css/indexMain.css" media="all">
+<link rel="stylesheet" href="/resources/css/main.css" media="all">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 

@@ -11,10 +11,10 @@ public class TestController {
 		return "/ticketing/ticketingMain";
 	}
 	
-	@GetMapping("/theater/theaterMain")
-	public String theaterMain() throws Exception {
-		return "/theater/theaterMain";
-	}
+//	@GetMapping("/theater/theaterMain")
+//	public String theaterMain() throws Exception {
+//		return "/theater/theaterMain";
+//	}
 	
 	@GetMapping("/theater/theaterBranch")
 	public String theaterBranch() throws Exception {
