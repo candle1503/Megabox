@@ -20,4 +20,9 @@
 		<include refid="search"></include>
 	</select>
 	
+	<insert id="addTheater" parameterType="TheaterVO" useGeneratedKeys="true" keyProperty="theaterNum">
+		insert into theater values (#{theaterNum},#{name},#{localCode},#{address},#{info},#{parking})
+	</insert>
+	
+	
 </mapper>

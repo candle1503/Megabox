@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.Pager;
 
 @Mapper
@@ -15,4 +16,8 @@ public interface AdminRepository {
 	
 	//memberCount
 	public Long getMemberCount(Pager pager) throws Exception;
+	
+	//addTheater
+	public int addTheater(TheaterVO theaterVO) throws Exception;
+	
 }

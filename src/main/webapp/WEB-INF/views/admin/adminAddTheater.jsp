@@ -47,7 +47,7 @@
 						</div>
 					</div>
 
-					<form:form modelAttribute="theaterVO" action="./setTheater" method="post">
+					<form:form modelAttribute="theaterVO" action="./theaterAdd" method="post">
 
 						<div class="table-wrap mb40">
 							<table class="board-form">
@@ -59,7 +59,7 @@
 									<tr>
 										<th scope="row"><label >지역명</label> <em
 											class="font-orange">*</em></th>
-										<td><form:input path="name" type="text" id="phone" 
+										<td><form:input path="name" type="text"  
 											class="input-text w500px" />
 											<form:errors path="name"></form:errors>
 										</td>
@@ -69,6 +69,7 @@
 											class="font-orange">*</em></th>
 										<td><form:input path="info" type="text" 
 											class="input-text w500px" />
+											<form:errors path="info"></form:errors>
 										</td>
 									</tr>
 									
@@ -77,6 +78,7 @@
 											class="font-orange">*</em></th>
 										<td><form:input path="localCode" type="text"  
 											class="input-text w500px" />
+											<form:errors path="localCode"></form:errors>
 										</td>
 									</tr>
 									
@@ -85,6 +87,7 @@
 											class="font-orange">*</em></th>
 										<td><form:input path="address" type="text" 
 											class="input-text w500px" />
+											<form:errors path="address"></form:errors>
 										</td>
 									</tr>
 									
@@ -93,6 +96,7 @@
 											class="font-orange">*</em></th>
 										<td><form:input path="parking" type="text" 
 											class="input-text w500px" />
+											<form:errors path="parking"></form:errors>
 										</td>
 									</tr>
 									
@@ -105,7 +109,7 @@
 						<a href="./theaterList">
 						<input type="button" class="button large" value="취소">
 						</a>
-						<button type="submit" class="button purple large" id="updateBtn">등록</button>
+						<button type="submit" class="button purple large" >등록</button>
 					</div>
 		</form:form>
 				</div>
