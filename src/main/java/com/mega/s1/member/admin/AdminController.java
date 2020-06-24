@@ -92,14 +92,13 @@ public class AdminController {
 	@PostMapping("theaterUpdate")
 	public ModelAndView theaterUpdate(TheaterVO theaterVO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("안들어옴?");
 		int result = adminService.theaterUpdate(theaterVO);
 		System.out.println(theaterVO.getName());
 		System.out.println(theaterVO.getParking());
 		System.out.println(theaterVO.getTheaterNum());
 		System.out.println(theaterVO.getAddress());
 		System.out.println(result);
-		mv.setViewName("redirect:./theaterList");
+		mv.setViewName("admin/adminSelectTheater");
 		return mv;
 	}
 	

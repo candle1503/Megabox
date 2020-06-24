@@ -36,7 +36,7 @@
 				<div id="contents" class="">
 				<form action="/admin/theaterUpdate" method="post">
 					<h2 class="tit">${theaterVO.name}정보</h2>
-
+					<input type="hidden" value="${theaterVO.theaterNum}" name="theaterNum">
 					<div class="box-radius" style="margin-bottom: 0px;">
 						<textarea class="box-bot" rows="1" cols="95" style="resize: none;"
 							 name="name">${theaterVO.name}</textarea>
