@@ -161,7 +161,6 @@ public class MemberController {
 	@PostMapping("profileUpdate")
 	public ModelAndView profileUpdate(MultipartFile file, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(file.getOriginalFilename());
 		MemberVO memberVO=(MemberVO)session.getAttribute("member");
 		MemberFileVO memberFileVO=memberService.setProfile(memberVO, file);
 		memberVO.setFileName(memberFileVO.getFileName());

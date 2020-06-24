@@ -34,6 +34,7 @@
 								<th scope="row"><label for="ibxSchIdMbNm">비밀번호</label></th>
 								<td><form:input path="password" id="password" maxlength="20" type="password"
 									placeholder="비밀번호" class="input-text w230px"/>
+									<form:errors path="password"></form:errors>
 									</td>
 							</tr>
 							<tr>

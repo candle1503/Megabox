@@ -29,17 +29,17 @@
 				<c:import url="../template/adminSidebar.jsp"></c:import>
 
 				<div id="contents">
-					<h2 class="tit">회원 리스트</h2>
+					<h2 class="tit">극장 리스트</h2>
 
 
 					<div class="board-list-util">
 						<p class="result-count">
-							<strong> <em class="font-gblue">총 ${size}명의 회원</em></strong>
+							<strong> <em class="font-gblue">총 ${size}개의 극장</em></strong>
 						</p>
 
-					<form action="./memberList" method="get">
+					<form action="/admin/theaterList" method="get">
 						<div class="board-search">
-							<input type="text" id="searchID" placeholder="회원 ID 입력"
+							<input type="text"  placeholder="극장명 입력"
 								class="input-text" value="" maxlength="15" name="search">
 							<button type="submit" id="searchBtn" class="btn-search-input">검색</button>
 						</div>
@@ -48,32 +48,27 @@
 					<div class="table-wrap">
 						<table class="board-list">
 							<colgroup>
-								<col style="width: 72px;">
-								<col style="width: 133px;">
-								<col style="width: 95px;">
-								<col>
-								<col style="width: 116px;">
+								<col style="width: 35px;">
+								<col style="width: 100px;">
+								<col style="width: 70px;">
+								<col style="width: 250px;">
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col">번호</th>
-									<th scope="col">ID</th>
-									<th scope="col">이름</th>
-									<th scope="col">전화번호</th>
-									<th scope="col">나이</th>
-									<th scope="col">등록일</th>
+									<th scope="col">지역코드</th>
+									<th scope="col">극장명</th>
+									<th scope="col">주소</th>
 								</tr>
 							</thead>
 							<!-- memberList 뿌려줄곳 -->
 							<tbody>
-								<c:forEach items="${list}" var="vo" varStatus="i">
+								<c:forEach items="${list}" var="vo" >
 									<tr>
-										<td>${i.count}</td>
-										<td>${vo.id}</td>
-										<td>${vo.name}</td>
-										<td>${vo.phone}</td>
-										<td>${vo.age}</td>
-										<td>${vo.regDate}</td>
+										<td>${vo.theaterNum}</td>
+										<td>${vo.localCode}</td>
+										<td><a href="./theaterSelect?theaterNum=${vo.theaterNum}" style="color: blue;">${vo.name}</a></td>
+										<td>${vo.address}</td>
 									</tr>
 								</c:forEach>
 
@@ -84,22 +79,24 @@
 						<ul class="pagination">
 							<c:if test="${pager.curBlock gt 1}">
 								<a
-									href="./memberList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a>
+									href="./theaterList?curPage=${pager.startNum-1}&search=${pager.search}">이전</a>
 							</c:if>
 							<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
 								var="i">
 								<a
-									href="./memberList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
+									href="./theaterList?curPage=${i}&search=${pager.search}">${i}</a>
 							</c:forEach>
 							<c:if test="${pager.curBlock lt pager.totalBlock}">
 								<a
-									href="./memberList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a>
+									href="./theaterList?curPage=${pager.lastNum+1}}&search=${pager.search}">다음</a>
 							</c:if>
 						</ul>
 						</div>
 					<!--// pagination -->
+					<a href="/admin/theaterAdd">
+					<input type="button" class="button large"  value="영화관 추가">
+					</a>
 				</div>
-
 
 			</div>
 		</div>

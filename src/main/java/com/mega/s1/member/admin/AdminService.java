@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.Pager;
 
 @Service
@@ -23,6 +24,29 @@ public class AdminService {
 	
 	public Long getMemberCount(Pager pager) throws Exception{
 		return adminRepository.getMemberCount(pager);
+	}
+	
+	public int addTheater(TheaterVO theaterVO) throws Exception{
+		return adminRepository.addTheater(theaterVO);
+	}
+	
+	public List<TheaterVO> getTheaterList(Pager pager) throws Exception{
+		pager.makeRow();
+		long totalCount = adminRepository.getTheaterCount(pager);
+		pager.makePage(totalCount);
+		return adminRepository.getTheaterList(pager);
+	}
+	
+	public Long getTheaterCount(Pager pager) throws Exception{
+		return adminRepository.getTheaterCount(pager);
+	}
+	
+	public TheaterVO theaterSelect(TheaterVO theaterVO) throws Exception{
+		return adminRepository.theaterSelect(theaterVO);
+	}
+	
+	public int theaterUpdate(TheaterVO theaterVO) throws Exception{
+		return adminRepository.theaterUpdate(theaterVO);
 	}
 	
 }

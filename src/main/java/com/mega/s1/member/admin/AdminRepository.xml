@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mega.s1.member.admin.AdminRepository">
 
-	<select id="getMemberList" parameterType="Pager" resultType="memberVO">
+	<select id="getMemberList" parameterType="Pager" resultType="MemberVO">
 		select * from member where id
 		<include refid="search"></include>
 		limit #{startRow}, 10
@@ -19,5 +19,28 @@
 		select count(id) from member where id 
 		<include refid="search"></include>
 	</select>
+	
+	<insert id="addTheater" parameterType="TheaterVO" useGeneratedKeys="true" keyProperty="theaterNum">
+		insert into theater values (#{theaterNum},#{name},#{localCode},#{address},#{info},#{parking})
+	</insert>
+	
+	<select id="getTheaterList" parameterType="Pager" resultType="TheaterVO">
+		select * from theater where name
+		<include refid="search"></include>
+		limit #{startRow}, 10
+	</select>
+	
+	<select id="getTheaterCount" resultType="Long">
+		select count(name) from theater where name
+		<include refid="search"></include>
+	</select>
+	
+	<select id="theaterSelect" parameterType="TheaterVO" resultType="TheaterVO">
+		select * from theater where theaterNum=#{theaterNum}
+	</select>
+	
+	<update id="theaterUpdate" parameterType="TheaterVO">
+		update theater set name=#{name}, localCode=#{localCode}, address=#{address}, info=#{info}, parking=#{parking} where theaterNum = #{theaterNum}
+	</update>
 	
 </mapper>

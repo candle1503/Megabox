@@ -11,53 +11,8 @@
 </head>
 
 <body>
+<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
-		<header id="header">
-			<h1 class="ci" id="goMain">
-				<a href="../" title="MEGABOX 메인으로 가기">MEGABOX : Life Theater</a>
-			</h1>
-	
-			<!-- 2019-04-15 마크업 수정 : 고객요청  -->
-			<div class="util-area">
-
-				<div class="right-link">
-
-					<div class="after" style="">
-						<a href="./memberLogout" class="" title="로그아웃">로그아웃</a>
-						 <a href="/support"	title="고객센터">고객센터</a>
-						<a href="/booking">빠른예매</a>
-				</div>
-			</div>
-
-			<div class="link-area">
-				<a href="#layer_sitemap" class="header-open-layer btn-layer-sitemap"
-					title="사이트맵">사이트맵</a> <a href="#layer_header_search"
-					class="header-open-layer btn-layer-search" title="검색">검색</a> <a
-					href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
-				<a href="#" class="header-open-layer btn-layer-mymega"
-					title="나의 메가박스">관리자 페이지</a>
-			</div>
-
-
-			<nav id="gnb">
-				<ul class="gnb-depth1">
-					<li><a href="/movie" class="gnb-txt-movie" title="영화"></a></li>
-					<li><a href="/booking" class="gnb-txt-reserve" title="예매"></a></li>
-					<li><a href="/theater/list" class="gnb-txt-theater" title="극장"></a>
-							</li>
-					<li><a href="javascript:void(0)"
-						onclick="NetfunnelChk.aTag('EVENT_LIST','/event');return false;"
-						class="gnb-txt-event" title="이벤트"></a></li>
-					<li><a href="javascript:void(0)"
-						onclick="NetfunnelChk.aTag('STORE_LIST','/store');return false;"
-						class="gnb-txt-store" title="스토어"></a></li>
-					<li><a href="/benefit/membership" class="gnb-txt-benefit"
-						title="혜택"></a></li>
-				</ul>
-			</nav>
-
-		</header>
-		<!--// header -->
 
 
 		<div class="container has-lnb">
@@ -71,20 +26,7 @@
 
 			<div class="inner-wrap">
 
-				<div class="lnb-area">
-					<nav id="lnb">
-						<p class="tit on">
-							<a href="#" title="나의 메가박스">관리자 목록</a>
-						</p>
-
-						<ul>
-							<li class=""><a href="/admin/memberList" title="회원 리스트">회원 리스트</a></li>
-							<li><a href="/admin/movie" titel="영화 관리">영화 관리</a></li>
-							<li><a href="/admin/theather" title="영화관 관리">영화관 관리</a></li>
-							<li><a href="/admin/booking" title="예약 관리">예약 관리</a></li>
-						</ul>
-					</nav>
-				</div>
+				<c:import url="../template/adminSidebar.jsp"></c:import>
 
 				<div id="contents" class="">
 
