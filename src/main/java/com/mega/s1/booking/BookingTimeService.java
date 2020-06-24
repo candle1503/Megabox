@@ -30,11 +30,24 @@ public class BookingTimeService {
 
 		Date date = new Date();
 		
+		System.out.println(sdfYear.format(date));
+		System.out.println(sdfMonth.format(date));
+		System.out.println(sdfDay.format(date));
+		System.out.println(sdfYoil.format(date));
+		System.out.println(startDay);
+		System.out.println("----");
+		System.out.println(Calendar.DATE);
+		System.out.println("--==--");
 		
-		for(int i=0; i<7; i++) {
+		month = Integer.parseInt(sdfMonth.format(date));
+		
+		
+		System.out.println(month);
+		
+		for(int i=0; i<14; i++) {
 			//월별로 현재 일이 현재 월의 마지막 날보다 크고 현재일이 원래 월보다 큰 경우 다음달로 월을 넘김
 							//현재 날짜중 월의 가장 마지막 날
-			if(startDay > cal.getActualMaximum(Calendar.DAY_OF_MONTH) || month > Calendar.DAY_OF_MONTH) {
+			if(startDay > cal.getActualMaximum(Calendar.DAY_OF_MONTH) || month > Calendar.DAY_OF_MONTH+1) {
 				year = Integer.parseInt(sdfYear.format(date));	//sdf형식을 date형식으로 바꾼 후 int타입으로 형변환
 				month = Integer.parseInt(sdfMonth.format(date))+1;
 				day = Integer.parseInt(sdfDay.format(date));
@@ -44,20 +57,37 @@ public class BookingTimeService {
 				day = Integer.parseInt(sdfDay.format(date));
 			}
 			
-			if(count < 7) {
+			if(count < 14) {
 				//현재 일이 현재 월의 마지막 날보다 큰 경우 / 현재일-마지막날로 현재일을 리턴  
 				if(startDay > cal.getActualMaximum(Calendar.DAY_OF_MONTH)) {
 					startDay = (startDay - cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 					
 					Date setdate = new Date(year, month-1, (int)startDay-1);
-					timeList.add(startDay+"/"+sdfYoil.format(setdate));
+					
+					System.out.println("Month:"+month);
+					System.out.println("yoil:"+sdfYoil.format(setdate));
+					
+					timeList.add((int)startDay+"/"+sdfYoil.format(setdate));
 					count++;
 					startDay++;
 				}else {
 					Date setdate = new Date(year, month-1, (int)startDay-1);
-					timeList.add(startDay+"/"+sdfYoil.format(setdate));
+//					System.out.println("year  :"+setdate.getYear());
+//					System.out.println("month :"+setdate.getMonth());
+//					System.out.println("date  :"+setdate.getDate());
+//					System.out.println("day   :"+setdate.getDay());
+					
+					//System.out.println(sdfYoil.format(setdate));
+					
+//					Date test1 = new Date();
+//					test1.setYear(year);
+					System.out.println("month:"+month);
+					
+					timeList.add((int)startDay+"/"+sdfYoil.format(setdate));
 					count++;
 					startDay++;
+//					System.out.println(timeList.get(i).toString());
+//					System.out.println("--");
 				}
 			}
 		}

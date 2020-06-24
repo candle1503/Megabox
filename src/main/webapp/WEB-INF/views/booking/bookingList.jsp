@@ -64,13 +64,15 @@
 	display: inline-block;
 	height: 100px;
 	margin: 0 0.4%;
-	width: 11%;
+	width: 5%;
 	float: left;
 }
 
-#day-list>li>a:hover {
+/* #day-list>li>a {
+	width:5%;
+	height:100px;
 	color: white;
-}
+} */
 	</style>
 
 </head>
@@ -98,7 +100,7 @@
 		var count = 0;
 		var date = new Date();
 		var startDay = parseInt((date.getDate()+100+"").substr(1,3));
-		
+		 
 		bookingTimeZone(startDay);
 
 		$("#next").click(function(){

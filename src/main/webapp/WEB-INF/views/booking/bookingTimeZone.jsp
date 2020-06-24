@@ -6,7 +6,7 @@
 	<c:forEach items="${timeList}" var="date" varStatus="i">
 	
 		<c:if test="${fn:substringAfter(date,'/') eq '토'}">	
-			<li id="day${i.index}" class="day-list"> <a style="color: #3b5fcb; "> <p class="dateNum">${fn:substringBefore(date,'/')}</p> <span class="yoil">${fn:substringAfter(date,'/')}</span> </a> </li>	
+			<li id="day${i.index}" class="day-list"> <a style="color: #3b5fcb;"> <p class="dateNum">${fn:substringBefore(date,'/')}</p> <span class="yoil">${fn:substringAfter(date,'/')}</span> </a> </li>	
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'/') eq '일'}">
