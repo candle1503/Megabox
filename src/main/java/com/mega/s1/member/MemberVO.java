@@ -20,6 +20,7 @@ public class MemberVO extends MemberFileVO {
 	
 	@Size(max = 20, min = 8, message="최소 8글자 최대 20글자")
 	private String password;
+	@Size(max = 20, min = 8, message="최소 8글자 최대 20글자")
 	private String passwordCheck;
 	@NotEmpty(message = "이름을 입력")
 	private String name;

@@ -36,7 +36,7 @@
 				<div id="contents" class="">
 					<h2 class="tit">${theaterVO.name} 영화관 정보</h2>
 
-					<div class="box-radius" style="margin-bottom: 0px;">
+					<div class="box-radius">
 						<textarea class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5;"
 							readonly="readonly">${theaterVO.name}</textarea>
 						<textarea class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5"
@@ -63,7 +63,7 @@
 						<a href="./theaterUpdate?theaterNum=${theaterVO.theaterNum}">
 						<input type="button" class="button purple large" value="수정">
 						</a>
-						<a href="./theaterList">
+						<a href="./theaterNotice">
 						<input type="button" class="button purple large" value="공지쓰기">
 						</a>
 					</div>

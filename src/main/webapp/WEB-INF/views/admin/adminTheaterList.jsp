@@ -48,10 +48,10 @@
 					<div class="table-wrap">
 						<table class="board-list">
 							<colgroup>
-								<col style="width: 90px;">
-								<col style="width: 133px;">
-								<col style="width: 95px;">
-								<col style="width: 116px;">
+								<col style="width: 35px;">
+								<col style="width: 100px;">
+								<col style="width: 70px;">
+								<col style="width: 250px;">
 							</colgroup>
 							<thead>
 								<tr>
