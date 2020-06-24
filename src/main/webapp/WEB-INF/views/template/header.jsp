@@ -50,17 +50,17 @@
 								부티크 프라이빗 예매</a></li>
 					</ul>
 				</div></li>
-			<li><a href="/theater/list" title="극장">극장</a>
-				<div class="gnb-depth2">
+			<li><a href="/theater/theaterMain" title="극장">극장</a>
+<!-- 				<div class="gnb-depth2">
 					<ul>
 						<li><a href="/theater/list" title="전체극장">전체극장</a></li>
 						<li><a href="/specialtheater/list" title="특별관">특별관</a></li>
 					</ul>
-				</div></li>
+				</div></li> -->
 
 
 			<li><a href="${pageContext.request.contextPath}/notice/noticeList" style="color: white;">공지사항</a></li>
-			<li><a href="#">FAQ</a></li>
+			<li><a href="${pageContext.request.contextPath}/notice/noticeFAQ">FAQ</a></li>
 			<c:if test="${member eq null}">
 			<li><a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a></li>
 			</c:if>
