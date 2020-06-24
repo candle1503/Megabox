@@ -102,4 +102,13 @@ public class AdminController {
 		return mv;
 	}
 	
+	@GetMapping("theaterNotice")
+	public ModelAndView theaterNotice(TheaterVO theaterVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("admin/adminTheaterNotice");
+		return mv;
+	}
+	
+	
 }
