@@ -99,7 +99,7 @@ $(function(){
 
 <!-- movie-detail -->
 <div class="movie-detail-page">
-	<div class="bg-img" style="background-image:url('https://img.megabox.co.kr/SharedImg/2020/06/09/4ukWkF6Z9Q80RY6g3l1UWJoR4q0SrGf7_570.jpg');"></div>
+	<div class="bg-img" style="background-image:url('${pageContext.request.contextPath}/upload/movie/${file[1].fileName}');"></div>
 	<div class="bg-pattern"></div>
 	<div class="bg-mask"></div>
 
@@ -118,7 +118,7 @@ $(function(){
 
         <p class="contents-type"></p>
 		<p class="title">${vo.name }</p>
-		<p class="title-eng">#ALIVE</p>
+		<br>
 
 
 		<div class="btn-util">
@@ -215,7 +215,7 @@ $(function(){
 					
 					
 				
-			 	<img src="https://img.megabox.co.kr/SharedImg/2020/06/02/xIBdAOS5lJNBe1CBXovcV1WYE9Q6DWPV_420.jpg" onerror="noImg(this)" alt="#살아있다">
+			 	<img src="${pageContext.request.contextPath}/upload/movie/${file[0].fileName}" onerror="noImg(this)" alt="#살아있다">
 
 				<a href="#" class="btn-poster-down" title="포스터 다운로드" data-no="1019195" data-sn="1">포스터 다운로드</a>
 			</div>
@@ -263,7 +263,18 @@ $(function(){
             </div>
         
     </div>
-
+	<script type="text/javascript">
+		var num = 1;
+		$('.btn-more').click(function(){
+			if(num==1){
+				$('.txt').css("height", "360px")
+				num=0
+			} else {
+				$('.txt').css("height", "140px")
+				num=1
+			}
+			})
+	</script>
     <div class="movie-info infoContent">
 
         <div class="line">
@@ -363,6 +374,7 @@ $(function(){
         
         <!-- 한줄평 없을 때 -->
             <h2 class="tit small mt70">아직 남겨진 한줄평이 없어요.</h2>
+            
 	
 
     <div class="movie-idv-story oneContent">
