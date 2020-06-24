@@ -2,3 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mega.s1.theater.TheaterRepository">
+
+	<resultMap type="TheaterVO" id="selectResult">
+		<id column="theaterNum" property="theaterNum" />
+		<result column="name" property="name" />
+		<result column="localCode" property="localCode" />
+		<result column="address" property="address" />
+		<result column="info" property="info" />
+		<result column="parking" property="parking" />
+	</resultMap>
+
+	<select id="theaterNameList" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select name from theater
+	</select>
+
+</mapper>
+  
+  
