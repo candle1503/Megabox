@@ -115,7 +115,9 @@ public class MemberController {
 		}else {
 			memberFileVO = memberService.getMemberFile(memberVO);
 			memberVO.setFileName(memberFileVO.getFileName());
+			memberVO.setOriName(memberFileVO.getOriName());
 			session.setAttribute("member", memberVO);
+			mv.addObject("memberVO", memberVO);
 			System.out.println(memberVO.getFileName());
 			mv.setViewName("./member/memberUpdate");
 		}
