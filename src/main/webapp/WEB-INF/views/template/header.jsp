@@ -2,6 +2,8 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- header -->
+
+
 <header id="header" class="main-header no-bg">
 
 	<img class="ci" alt=""
