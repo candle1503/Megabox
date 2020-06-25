@@ -20,27 +20,27 @@
 		<include refid="search"></include>
 	</select>
 	
-	<insert id="addTheater" parameterType="TheaterVO" >
-		insert into theater values (#{theaterName},#{localCode},#{address},#{info},#{parking})
+	<insert id="addTheater" parameterType="TheaterVO" useGeneratedKeys="true" keyProperty="theaterNum">
+		insert into theater values (#{theaterNum},#{name},#{localCode},#{address},#{info},#{parking})
 	</insert>
 	
 	<select id="getTheaterList" parameterType="Pager" resultType="TheaterVO">
-		select * from theater where theaterName
+		select * from theater where name
 		<include refid="search"></include>
 		limit #{startRow}, 10
 	</select>
 	
 	<select id="getTheaterCount" resultType="Long">
-		select count(theaterName) from theater where theaterName
+		select count(name) from theater where name
 		<include refid="search"></include>
 	</select>
 	
 	<select id="theaterSelect" parameterType="TheaterVO" resultType="TheaterVO">
-		select * from theater where theaterName=#{theaterName}
+		select * from theater where theaterNum=#{theaterNum}
 	</select>
 	
 	<update id="theaterUpdate" parameterType="TheaterVO">
-		update theater set theaterName=#{theaterName}, localCode=#{localCode}, address=#{address}, info=#{info}, parking=#{parking} where theaterName=#{theaterName}
+		update theater set name=#{name}, localCode=#{localCode}, address=#{address}, info=#{info}, parking=#{parking} where theaterNum = #{theaterNum}
 	</update>
 	
 </mapper>
