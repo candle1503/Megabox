@@ -2,3 +2,62 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mega.s1.theater.TheaterRepository">
+
+	<resultMap type="TheaterVO" id="selectResult">
+		<id column="theaterNum" property="theaterNum" />
+		<result column="name" property="name" />
+		<result column="localCode" property="localCode" />
+		<result column="address" property="address" />
+		<result column="info" property="info" />
+		<result column="parking" property="parking" />
+	</resultMap>
+	
+	<select id="theaterBranchSelect" parameterType="TheaterVO" resultType="TheaterVO">
+		select * from theater where theaterNum=#{theaterNum}	
+	</select>
+
+	<select id="theaterNameSeoul" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='서울'
+	</select>
+
+	<select id="theaterNameGyeonggi" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='경기'
+	</select>
+
+	<select id="theaterNameIncheon" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='인천'
+	</select>
+
+	<select id="theaterNameChungcheong" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='대전/충청/세종'
+	</select>
+
+	<select id="theaterNameGyeongsang" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='부산/대구/경상'
+	</select>
+
+	<select id="theaterNameJeolla" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='광주/전라'
+	</select>
+
+	<select id="theaterNameGangwon" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='강원'
+	</select>
+
+	<select id="theaterNameJeju" parameterType="TheaterVO"
+		resultType="TheaterVO">
+		select * from theater where localCode='제주'
+	</select>
+ss
+</mapper>
+  
+  
