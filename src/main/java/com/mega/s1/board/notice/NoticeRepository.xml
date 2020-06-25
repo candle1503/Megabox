@@ -22,7 +22,7 @@
 
 	<insert id="boardInsert" parameterType="NoticeVO" useGeneratedKeys="true" keyProperty="num">
 		<!-- insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1) -->
-		insert into notice values(#{num}, #{title}, #{contents}, now(), #{separate}, #{name}, #{localCode})
+		insert into notice values(#{num}, #{title}, #{contents}, now(), #{separate}, #{name})
 	</insert>
 
 	<sql id="search">
