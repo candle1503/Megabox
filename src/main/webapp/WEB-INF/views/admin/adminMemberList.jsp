@@ -76,7 +76,7 @@
 										<td>${vo.regDate}</td>
 									</tr>
 								</c:forEach>
-
+ss
 							</tbody>
 						</table>
 					</div>
