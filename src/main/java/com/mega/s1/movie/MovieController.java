@@ -1,6 +1,9 @@
 package com.mega.s1.movie;
 
+import java.sql.Time;
+import java.util.Calendar;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +24,40 @@ public class MovieController {
 	public ModelAndView movieSelect(ModelAndView mv, MovieVO movieVO) throws Exception{
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		MovieVO vo = movieService.movieSelect(movieVO);
-		
+	
 		mv.addObject("vo", vo);
 		mv.addObject("file", files);
 		mv.setViewName("movie/movieInfo");
+		return mv;
+	}
+	
+	@GetMapping("review")
+	public ModelAndView review(ModelAndView mv, MovieVO movieVO) throws Exception {
+		MovieVO vo = movieService.movieSelect(movieVO);
+		
+		mv.addObject("vo", vo);
+		mv.setViewName("movie/review");
+		return mv;
+	}
+	
+	@GetMapping("movieSelect1")
+	public ModelAndView movieSelectAgain(ModelAndView mv, MovieVO movieVO) throws Exception{
+		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
+		MovieVO vo = movieService.movieSelect(movieVO);
+	
+		mv.addObject("vo", vo);
+		mv.addObject("file", files);
+		mv.setViewName("movie/info");
+		return mv;
+	}
+	
+	@GetMapping("reviewPage")
+	public ModelAndView reviewPage(ModelAndView mv, MovieVO movieVO) throws Exception {
+		
+		MovieVO vo = movieService.movieSelect(movieVO);
+		
+		mv.addObject("vo", vo);
+		mv.setViewName("movie/reviewPage");
 		return mv;
 	}
 

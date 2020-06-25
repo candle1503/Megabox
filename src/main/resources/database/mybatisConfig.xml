@@ -13,7 +13,8 @@
 		<typeAlias type="com.mega.s1.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.mega.s1.movie.MovieVO" alias="MovieVO"/>
 		<typeAlias type="com.mega.s1.movie.movieFile.MovieFileVO" alias="MovieFileVO"/>
-	
+		<typeAlias type="com.mega.s1.review.ReviewVO" alias="ReviewVO"/>
+		
 		<typeAlias type="com.mega.s1.util.Pager" alias="Pager"/>
 	
 		<typeAlias type="java.util.List" alias="List"/>

@@ -8,5 +8,11 @@
 		select * from movie where movieNum=#{movieNum}
 	</select>
 
-
+	<insert id="reviewInsert" parameterType="ReviewVO">
+		insert into review values(0, #{writer}, #{point}, #{contents}, sysdate(), #{ticketNum}, #{movieNum}, #{likePoint} )
+	</insert>
+	
+	<select id="reviewList" parameterType="ReviewVO" resultType="ReviewVO">
+		select * from review where movieNum=#{movieNum}
+	</select>
 </mapper>

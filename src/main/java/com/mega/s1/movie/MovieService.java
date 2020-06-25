@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mega.s1.member.memberFile.MemberFileRepository;
 import com.mega.s1.movie.movieFile.MovieFileRepository;
 import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.review.ReviewVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
 
@@ -40,6 +41,10 @@ public class MovieService {
 	
 	public List<MovieFileVO> getMovieFile(MovieVO movieVO) throws Exception{
 		return movieFileRepository.movieFileSelect(movieVO);
+	}
+	
+	public List<ReviewVO> reviewPage(ReviewVO reviewVO) throws Exception{
+		return movieRepository.reviewList(reviewVO);
 	}
 	
 	

@@ -20,7 +20,7 @@ public class MovieVO {
 	private String contents;
 	private int like;
 	private String character;
-	private Time playTime;
+	private int playTime;
 	private int views;
 	private MovieFileVO movieFileVO;
 

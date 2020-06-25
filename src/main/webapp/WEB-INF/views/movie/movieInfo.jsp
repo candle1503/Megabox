@@ -248,13 +248,13 @@ $(function(){
 <div class="inner-wrap">
     <div class="tab-list fixed">
         <ul>
-            <li class="on"><a href="/on/oh/oha/Movie/selectMovieInfo.do" title="주요정보 탭으로 이동">주요정보</a></li>
-            <li><a href="/on/oh/oha/Movie/selectMovieOneDetail.do" title="한줄평 탭으로 이동">한줄평</a></li>
+            <li class="on"><a href="#" title="주요정보 탭으로 이동" id="inform">주요정보</a></li>
+            <li><a href="#" title="한줄평 탭으로 이동" id="review">한줄평</a></li>
             
-            <li><a href="/on/oh/oha/Movie/selectMovieStilDetail.do" title="예고편/스틸컷 탭으로 이동">예고편/스틸컷</a></li>
+            <li><a href="#" title="예고편/스틸컷 탭으로 이동" id="preview">예고편/스틸컷</a></li>
         </ul>
     </div>
-
+<div class="back">
     <div class="movie-summary infoContent" id="info">
         
             <div class="txt">${vo.contents }</div>
@@ -274,12 +274,60 @@ $(function(){
 				num=1
 			}
 			})
+			
+		
+		
+		$('#inform').click(function(){
+			$(this).parent().attr("class", "on");
+			$("#review").parent().removeClass("on");
+			$("#preview").parent().removeClass("on");
+			var ajaxOption = {
+		            url : "./movieSelect1",
+		            
+		            data : {movieNum:'${vo.movieNum}'},
+		            type : "GET",
+		            dataType : "html"
+		            
+		    };  
+			$.ajax(ajaxOption).done(function(data){
+		       
+		        $('.back').children().remove();
+		       
+		        $('.back').html(data);
+		    });
+		})
+		$('#preview').click(function(){
+			$(this).parent().attr("class", "on");
+			$("#review").parent().removeClass("on");
+			$("#inform").parent().removeClass("on");
+		})
+		
+		$('#review').click(function(){
+			$(this).parent().attr("class", "on");
+			$("#inform").parent().removeClass("on");
+			$("#preview").parent().removeClass("on");
+			var ajaxOption = {
+		            url : "./reviewPage",
+		            
+		            data : {movieNum:'${vo.movieNum}'},
+		            type : "GET",
+		            dataType : "html"
+		            
+		    };  
+			$.ajax(ajaxOption).done(function(data){
+		       
+		        $('.back').children().remove();
+		       
+		        $('.back').html(data);
+		    });
+			
+		})
 	</script>
     <div class="movie-info infoContent">
 
         <div class="line">
            <p>감독&nbsp;: ${vo.director }</p>
-           <p>장르&nbsp;: ${vo.genre } / ${vo.playTime }</p>
+           <p>장르&nbsp;: ${vo.genre } / ${vo.playTime }분</p>
            <p>등급&nbsp;: ${vo.age }</p>
            <p>개봉일&nbsp;: ${vo.openDay }</p>
   <!--           -->
@@ -354,7 +402,7 @@ $(function(){
                 <dt>일자별관객수</dt>
                 <dd class="font-roboto regular">
                   
-                        2,767
+                        ${vo.views }
                     
                 </dd>
             </dl>
@@ -450,89 +498,7 @@ $(function(){
 
 
 
-<!-- 레이어 : 관람평 등록 -->
-<section id="layer_regi_reply_review" class="modal-layer">
-    <div class="wrap">
-        <header class="layer-header">
-            <h3 class="tit"><span class="oneTitle"></span> 작성하기</h3>
-        </header>
 
-        <div class="layer-con">
-            <!-- regi-reply-score review -->
-            <div class="regi-reply-score review">
-                <!-- score -->
-                <div class="score">
-                    <p class="tit">"#살아있다"<br><span class="oneTitle"></span>을 남겨보세요!</p>
-                    <div class="box">
-                        <div class="box-star-score">
-                            <div class="star">
-                                <div class="group">
-                                    <button type="button" class="btn left score-1">1</button>
-                                    <button type="button" class="btn right score-2">2</button>
-                                </div>
-                                <div class="group">
-                                    <button type="button" class="btn left score-3">3</button>
-                                    <button type="button" class="btn right score-4">4</button>
-                                </div>
-                                <div class="group">
-                                    <button type="button" class="btn left score-5">5</button>
-                                    <button type="button" class="btn right score-6">6</button>
-                                </div>
-                                <div class="group">
-                                    <button type="button" class="btn left score-7">7</button>
-                                    <button type="button" class="btn right score-8">8</button>
-                                </div>
-                                <div class="group">
-                                    <button type="button" class="btn left score-9">9</button>
-                                    <button type="button" class="btn right score-10">10</button>
-                                </div>
-                            </div>
-                            <div class="num">
-                                <em>0</em>
-                                <span>점</span>
-                            </div>
-                        </div>
-
-                        <div class="textarea">
-                            <textarea id="textarea" rows="5" cols="30" title="한줄평 입력" placeholder="영화에 대한 후기를 남겨주세요." class="input-textarea"></textarea>
-                            <div class="util">
-                                <p class="count"><span>0</span> / 100</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--// score -->
-
-                <!-- point -->
-                <div class="point">
-                    <p class="tit"><span class="oneText"></span>포인트는 무엇인가요?</p>
-                    <p class="txt">(최대 2개 선택가능)</p>
-
-                    <div class="box">
-                        <button type="button" class="btn">연출</button>
-                        <button type="button" class="btn">스토리</button>
-                        <button type="button" class="btn">영상미</button>
-                        <button type="button" class="btn">배우</button>
-                        <button type="button" class="btn">OST</button>
-                    </div>
-                </div>
-                <!--// point -->
-
-                <div class="txt-alert errText" style="display: none;">한줄평 내용을 입력해 주세요.</div>
-            </div>
-            <!--// regi-reply-score preview -->
-        </div>
-
-        <div class="btn-group-fixed">
-            <button type="button" class="button close-layer">취소</button>
-            <button type="button" class="button purple" id="regOneBtn" data-no="" data-cd="" data-mno="20019200">등록</button>
-        </div>
-
-        <button type="button" class="btn-modal-close">레이어 닫기</button>
-    </div>
-</section>
-
-<!--// 레이어 : 관람평 등록 -->
 </div>
 
         <div class="add-area infoContent" id="boxoInfoContent" style="">
@@ -546,7 +512,7 @@ $(function(){
 </div>
 <!--// container -->
 <!-- 		</div> -->
- 
+ </div>
 <c:import url="../template/footer.jsp"></c:import>
 
 </html>
