@@ -17,7 +17,7 @@ import com.mega.s1.member.memberFile.MemberFileVO;
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
-
+sss
 	@Autowired
 	private MemberService memberService;
 	
