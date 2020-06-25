@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="ko">
 <head>
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="/resources/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
 <link rel="stylesheet" href="/resources/css/myPage.css" media="all">
 </head>
 
 <body>
-<c:import url="../template/header.jsp"></c:import>
+	<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
 
 
@@ -22,11 +22,10 @@
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
-        <span>Home</span>
-        <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의 메가박스</a>
-        <a href="#" title="회원정보 페이지로 이동">회원정보</a>
-        <a class="no-link">개인정보 수정</a>
-    </div>
+						<span>Home</span> <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의
+							메가박스</a> <a href="#" title="회원정보 페이지로 이동">회원정보</a> <a class="no-link">개인정보
+							수정</a>
+					</div>
 				</div>
 			</div>
 
@@ -55,30 +54,46 @@
 										<div class="profile-photo">
 
 											<div class="profile-img">
-											<c:if test="${member.fileName eq null}">
-												<img src="/resources/images/memberProfile.png"
-													alt="프로필 사진 샘플">
-											</c:if>		
-											<c:if test="${member.fileName ne null}">
-												<img src="/upload/member/${member.fileName}"
-													alt="프로필 사진 샘플">
-											</c:if>							
+												<c:choose>
+													<c:when test="${member.fileName == 'null'}">
+														<img src="/resources/images/memberProfile.png">
+													</c:when>
+													<c:otherwise>
+														<img src="/upload/member/${member.fileName}" >
+													</c:otherwise>
+												</c:choose>
 											</div>
-											</div>
-											<form action="./profileUpdate" method="post" enctype="multipart/form-data">
-											<input id="file" name="file" type="file">
-											<button type="submit" class="button small gray-line" id="addProfileImgBtn">이미지 등록</button>
-											</form>
-
-
-											<a href="./memberDelete"
-												class="button small member-out" title="회원탈퇴">회원탈퇴</a>
 										</div>
+										
+										<form action="./profileUpdate" method="post"
+											enctype="multipart/form-data">
+											<input id="file" name="file" type="file">
+											<button type="submit" class="button small gray-line"
+												id="addProfileImgBtn">이미지 등록</button>
+										</form> <button class="button small member-out delete_btn">회원탈퇴</button> 
+										<script>
+											$('.delete_btn').click(function() {
+											if (confirm("정말 삭제하시겠습니까 ?") == true) {
+												location.href="./memberDelete";
+												alert("삭제 되었습니다");
+											}
+											else {
+												return;
+											}
+										});
+										</script> 
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">아이디</th>
 									<td>${member.id}</td>
+								<tr>
+									<th scope="row">이름</th>
+									<td>${member.name}</td>
+								</tr>
+								<tr>
+									<th scope="row">나이</th>
+									<td>${member.age}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -94,8 +109,12 @@
 						</div>
 					</div>
 
-					<form:form modelAttribute="memberVO" action="./memberUpdate" method="post">
+					<form:form modelAttribute="memberVO" action="./memberUpdate"
+						method="post">
 
+						<form:input path="id" type="hidden" value="${member.id}" />
+						<form:input path="name" type="hidden" value="${member.name}" />
+						<form:input path="age" type="hidden" value="${member.age}" />
 						<div class="table-wrap mb40">
 							<table class="board-form">
 								<colgroup>
@@ -104,131 +123,117 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th scope="row">이름 <em class="font-orange">*</em>
-										</th>
-										<td><span class="mbNmClass">${member.name}</span> 
-											</td>
-									</tr>
-									<tr>
-										<th scope="row">나이 <em class="font-orange">*</em>
-										</th>
-										<td>${member.age}</td>
-									</tr>
-									<tr>
 										<th scope="row"><label for="phone">전화번호</label> <em
 											class="font-orange">*</em></th>
-										<td><form:input path="phone" type="text" id="phone" 
-											class="input-text w500px" value="${member.phone}"/>
-											<form:errors path="phone"></form:errors>
-										</td>
+										<td><form:input path="phone" type="text" id="phone"
+												class="input-text w500px" value="${member.phone}" /> <form:errors
+												path="phone"></form:errors></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="email">이메일</label> <em
 											class="font-orange">*</em></th>
-										<td><form:input path="email" type="email" id="email" 
-											class="input-text w500px" value="${member.email}"/>
-											<form:errors path="email"></form:errors>
-										</td>
+										<td><form:input path="email" type="email" id="email"
+												class="input-text w500px" value="${member.email}" /> <form:errors
+												path="email"></form:errors></td>
 									</tr>
-									
+
 									<tr>
 										<th scope="row"><label for="password">비밀번호</label> <em
 											class="font-orange">*</em></th>
-										<td><form:input path="password" type="password" id="password" 
-											class="input-text w500px" />
-											<form:errors path="password"></form:errors>
-										</td>
+										<td><form:input path="password" type="password"
+												id="password" class="input-text w500px" /> <form:errors
+												path="password"></form:errors></td>
 									</tr>
-									
+
 									<tr>
-										<th scope="row"><label for="passwordCheck">비밀전호 재입력</label> <em
-											class="font-orange">*</em></th>
-										<td><form:input path="passwordCheck" type="password" id="passwordCheck"
-											class="input-text w500px" />
-										</td>
+										<th scope="row"><label for="passwordCheck">비밀전호
+												재입력</label> <em class="font-orange">*</em></th>
+										<td><form:input path="passwordCheck" type="password"
+												id="passwordCheck" class="input-text w500px" /> <form:errors
+												path="passwordCheck"></form:errors></td>
 									</tr>
-									
+
 								</tbody>
 							</table>
 						</div>
-					
-
-					<h3 class="tit">간편로그인 계정연동</h3>
-
-					<div class="table-wrap mb40">
-						<table class="board-list">
-							<caption>구분, 연동정보, 연결 항목을 가진 간편 로그인 계정연동 표</caption>
-							<colgroup>
-								<col style="width: 130px;">
-								<col>
-								<col style="width: 110px;">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">구분</th>
-									<th scope="col">연동정보</th>
-									<th scope="col">연결</th>
-								</tr>
-							</thead>
-							<tbody id="lnkgInfoTbody">
-								<tr>
-									<th scope="row" class="a-c">페이스북</th>
 
 
+						<h3 class="tit">간편로그인 계정연동</h3>
 
-									<td class="a-l">연결된 계정정보가 없습니다.</td>
-									<td><button type="button" class="button small gray"
-											lnkgty="FACEBOOK" connty="conn">연동</button></td>
-
-
-								</tr>
-								<tr>
-									<th scope="row" class="a-c">네이버</th>
+						<div class="table-wrap mb40">
+							<table class="board-list">
+								<caption>구분, 연동정보, 연결 항목을 가진 간편 로그인 계정연동 표</caption>
+								<colgroup>
+									<col style="width: 130px;">
+									<col>
+									<col style="width: 110px;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">구분</th>
+										<th scope="col">연동정보</th>
+										<th scope="col">연결</th>
+									</tr>
+								</thead>
+								<tbody id="lnkgInfoTbody">
+									<tr>
+										<th scope="row" class="a-c">페이스북</th>
 
 
 
-									<td class="a-l">연결된 계정정보가 없습니다.</td>
-									<td><button type="button" class="button small gray"
-											lnkgty="NAVER" connty="conn">연동</button></td>
+										<td class="a-l">연결된 계정정보가 없습니다.</td>
+										<td><button type="button" class="button small gray"
+												lnkgty="FACEBOOK" connty="conn">연동</button></td>
 
 
-								</tr>
-								<tr>
-									<th scope="row" class="a-c">카카오</th>
-
-
-
-									<td class="a-l">연결된 계정정보가 없습니다.</td>
-									<td><button type="button" class="button small gray"
-											lnkgty="KAKAO" connty="conn">연동</button></td>
-
-
-								</tr>
-								<tr>
-									<th scope="row" class="a-c">페이코</th>
+									</tr>
+									<tr>
+										<th scope="row" class="a-c">네이버</th>
 
 
 
-									<td class="a-l">연결된 계정정보가 없습니다.</td>
-									<td><button type="button" class="button small gray"
-											lnkgty="PAYCO" connty="conn">연동</button></td>
+										<td class="a-l">연결된 계정정보가 없습니다.</td>
+										<td><button type="button" class="button small gray"
+												lnkgty="NAVER" connty="conn">연동</button></td>
 
 
-								</tr>
-							</tbody>
-						</table>
-					</div>
+									</tr>
+									<tr>
+										<th scope="row" class="a-c">카카오</th>
 
 
-					<div class="btn-group mt40">
-						<a href="./getMyPage">
-						<input type="button" class="button large" value="취소">
-						</a>
-						<button type="submit" class="button purple large" id="updateBtn">등록</button>
-					</div>
-		</form:form>
+
+										<td class="a-l">연결된 계정정보가 없습니다.</td>
+										<td><button type="button" class="button small gray"
+												lnkgty="KAKAO" connty="conn">연동</button></td>
+
+
+									</tr>
+									<tr>
+										<th scope="row" class="a-c">페이코</th>
+
+
+
+										<td class="a-l">연결된 계정정보가 없습니다.</td>
+										<td><button type="button" class="button small gray"
+												lnkgty="PAYCO" connty="conn">연동</button></td>
+
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+
+						<div class="btn-group mt40">
+							<a href="./getMyPage"> <input type="button"
+								class="button large" value="취소">
+							</a>
+							<button type="submit" class="button purple large" id="updateBtn">등록</button>
+						</div>
+
+					</form:form>
 				</div>
-
 			</div>
 		</div>
 

@@ -10,9 +10,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 @Configuration
 public class MemberInterceptor extends HandlerInterceptorAdapter{
 
-	@Autowired
-	private MemberRepository memberRepository;
-	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -20,12 +17,11 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 	MemberVO memberVO = (MemberVO)request.getSession().getAttribute("member");
 	
 	if(memberVO == null) {
-		check = true;
 		response.sendRedirect("../member/memberLogin");
-		return false;
+		check = false;
 	}else {
-		
+		check = true;
 	}
-	return true;
+	return check;
 	}
 }

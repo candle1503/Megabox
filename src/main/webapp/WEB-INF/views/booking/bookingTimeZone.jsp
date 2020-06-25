@@ -6,15 +6,15 @@
 	<c:forEach items="${timeList}" var="date" varStatus="i">
 	
 		<c:if test="${fn:substringAfter(date,'/') eq '토'}">	
-			<li id="day${i.index}" class="day-list"> <a style="color: #3b5fcb; "> <p class="dateNum">${fn:substringBefore(date,'/')}</p> <span class="yoil">${fn:substringAfter(date,'/')}</span> </a> </li>	
+			<a href="#" style="color: #3b5fcb; text-decoration: none;" onfocus="blur()"> <li id="day${i.index}" class="bookingTime-list"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li> </a>	
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'/') eq '일'}">
-			<li id="day${i.index}" class="day-list"> <a style="color: #e81002;"> <p class="dateNum">${fn:substringBefore(date,'/')}</p> <span class="yoil">${fn:substringAfter(date,'/')}</span> </a> </li>
+			<a href="#" style="color: #e81002; text-decoration: none;" onfocus="blur()"> <li id="day${i.index}" class="bookingTime-list"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li>  </a>
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'/') ne '토' && fn:substringAfter(date,'/') ne '일'}">
-			<li id="day${i.index}" class="day-list"> <a style="color: black;"> <p class="dateNum">${fn:substringBefore(date,'/')}</p> <span class="yoil">${fn:substringAfter(date,'/')}</span> </a> </li>
+			<a href="#" style="color: black; text-decoration: none;" onfocus="blur()" class="pointer-bottom"> <li id="day${i.index}" class="bookingTime-list">  <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li> </a>
 		</c:if>
 		
 	</c:forEach>
