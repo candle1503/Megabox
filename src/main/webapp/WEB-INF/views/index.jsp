@@ -16,7 +16,7 @@
 			title="푸터 바로가기">푸터 바로가기</a>
 	</div>
 	</div>
-ss
+
 	<!-- <div class="body-wrap"> -->
 
 		<form id="loginForm">
