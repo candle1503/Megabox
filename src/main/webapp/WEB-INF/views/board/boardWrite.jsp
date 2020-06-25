@@ -26,6 +26,24 @@
         <form:errors path="title" cssClass="t"></form:errors>
       </div>
     </div>
+    
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="contents">내용:</label>
+      <div class="col-sm-10">          
+    	  <form:textarea path="contents" rows="" cols="" class="form-control" id="summernote" ></form:textarea>
+    	  <form:errors path="contents"></form:errors>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="theaterName">극장:</label>
+      <div class="col-sm-10">
+        <form:input path="title" type="text" class="form-control" id="title" placeholder="Enter title"/>
+        <form:errors path="title" cssClass="t"></form:errors>
+      </div>
+    </div>
+    
+    
     <div class="form-group">
       <label class="control-label col-sm-2" for="separate">구분:</label>
       <div class="col-sm-10">
@@ -43,14 +61,6 @@
         <form:errors path="separate" cssClass="t"></form:errors>
       </div>
     </div>
-     <div class="form-group">
-      <label class="control-label col-sm-2" for="contents">내용:</label>
-      <div class="col-sm-10">          
-    	  <form:textarea path="contents" rows="" cols="" class="form-control" id="summernote" ></form:textarea>
-    	  <form:errors path="contents"></form:errors>
-      </div>
-    </div>
-    
     
     <div class="form-group">
    	 	 <input type="button" class="btn btn-info" id="add" value="FileAdd">

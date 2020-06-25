@@ -12,9 +12,9 @@ import lombok.Data;
 @Data
 public class NoticeVO extends BoardVO {
 	
-	private String separate;
+	private String theaterName;
 
-	private int theaterNum;
+	private String separate;
 	
 	private List<NoticeFileVO> noticeFileVOs;
 	
