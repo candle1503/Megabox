@@ -55,7 +55,6 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">번호</th>
 									<th scope="col">지역코드</th>
 									<th scope="col">극장명</th>
 									<th scope="col">주소</th>
@@ -65,9 +64,8 @@
 							<tbody>
 								<c:forEach items="${list}" var="vo" >
 									<tr>
-										<td>${vo.theaterNum}</td>
 										<td>${vo.localCode}</td>
-										<td><a href="./theaterSelect?theaterNum=${vo.theaterNum}" style="color: blue;">${vo.name}</a></td>
+										<td><a href="./theaterSelect?theaterName=${vo.theaterName}" style="color: blue;">${vo.theaterName}</a></td>
 										<td>${vo.address}</td>
 									</tr>
 								</c:forEach>
