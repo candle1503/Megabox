@@ -7,9 +7,8 @@ import lombok.Data;
 @Data
 public class TheaterVO {
 
-	private int theaterNum;
 	@NotEmpty(message = "극장이름을 적어주세요.")
-	private String name;
+	private String theaterName;
 	@NotEmpty(message = "지역 코드를 적어주세요.")
 	private String localCode;
 	@NotEmpty(message = "주소를 적어주세요.")

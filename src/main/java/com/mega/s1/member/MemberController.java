@@ -33,7 +33,8 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public ModelAndView setJoin(@Valid MemberVO memberVO, BindingResult bindingResult,  HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boolean result = memberService.memberJoinError(memberVO, bindingResult, session);
+		String path="join";
+		boolean result = memberService.errorCheck(memberVO, bindingResult, session, path);
 		if(result) {
 			mv.setViewName("member/memberJoin");
 			mv.addObject("memerVO", memberVO);
@@ -58,7 +59,8 @@ public class MemberController {
 	@PostMapping("memberLogin")
 	public ModelAndView setLogin(MemberVO memberVO,BindingResult bindingResult ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boolean result = memberService.memberLoginError(memberVO, bindingResult);
+		String path ="login";
+		boolean result = memberService.errorCheck(memberVO, bindingResult, session, path);
 		if(result) {
 			mv.setViewName("member/memberLogin");
 			mv.addObject("memberVO", memberVO);
@@ -102,6 +104,7 @@ public class MemberController {
 	
 	@PostMapping("passwordCheck")
 	public ModelAndView passwordCheck(@Valid MemberVO memberVO, BindingResult bindingResult, HttpSession session) throws Exception{
+		MemberFileVO memberFileVO = new MemberFileVO();
 		ModelAndView mv = new ModelAndView();
 		String password = memberVO.getPassword();
 		memberVO=(MemberVO)session.getAttribute("member");
@@ -112,6 +115,12 @@ public class MemberController {
 			mv.addObject("result", "비밀번호가 일치하지 않습니다.");
 			mv.addObject("path", "/member/passwordCheck");
 		}else {
+			memberFileVO = memberService.getMemberFile(memberVO);
+			memberVO.setFileName(memberFileVO.getFileName());
+			memberVO.setOriName(memberFileVO.getOriName());
+			session.setAttribute("member", memberVO);
+			mv.addObject("memberVO", memberVO);
+			System.out.println(memberVO.getFileName());
 			mv.setViewName("./member/memberUpdate");
 		}
 		return mv;
@@ -128,12 +137,20 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberUpdate")
-	public ModelAndView memberUpdate(MemberVO memberVO,HttpSession session) throws Exception{
+	public ModelAndView memberUpdate(@Valid MemberVO memberVO, BindingResult bindingResult ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		MemberVO vo2=(MemberVO)session.getAttribute("member");
-		memberVO.setId(vo2.getId());
-		memberService.setUpdate(memberVO);
-		mv.setViewName("member/memberMyPage");
+		String path="update";
+		boolean result = memberService.errorCheck(memberVO, bindingResult, session, path);
+		if(result) {
+			mv.setViewName("member/memberUpdate");
+			mv.addObject("memberVO", memberVO);
+		}else {
+			memberService.setUpdate(memberVO);
+			session.setAttribute("member", memberVO);
+			mv.addObject("result", memberVO.getId()+"님 정보가 수정되었습니다.");
+			mv.addObject("path", "/member/passwordCheck");
+			mv.setViewName("common/result");
+		}
 		return mv;
 	}
 	
