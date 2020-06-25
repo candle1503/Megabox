@@ -61,7 +61,7 @@
 											</c:if>		
 											<c:if test="${member.fileName ne null}">
 												<img src="/upload/member/${member.fileName}"
-													alt="프로필 사진 샘플">
+													>
 											</c:if>							
 											</div>
 											</div>

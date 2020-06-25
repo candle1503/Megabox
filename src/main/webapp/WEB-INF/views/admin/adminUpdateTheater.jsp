@@ -38,9 +38,9 @@
 					<h2 class="tit">${theaterVO.name}정보</h2>
 					<input type="hidden" value="${theaterVO.theaterNum}" name="theaterNum">
 					<div class="box-radius" style="margin-bottom: 0px;">
-						<textarea class="box-bot" rows="1" cols="95" style="resize: none;"
+						<textarea class="box-bot" rows="1" cols="93" style="resize: none;"
 							 name="name">${theaterVO.name}</textarea>
-						<select id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 820px;" name="localCode">
+						<select id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px;" name="localCode">
 							 	<option value="${theaterVO.localCode}">${theaterVO.localCode}</option>
 								<option value="서울">서울</option>
 								<option value="경기">경기</option>
@@ -51,17 +51,17 @@
 								<option value="강원">강원</option>
 								<option value="제주">제주</option>
 							</select>
-						<textarea  class="box-bot" rows="1" cols="95" style="resize: none;"
+						<textarea  class="box-bot" rows="1" cols="93" style="resize: none; " 
 							 name="address">${theaterVO.address}</textarea>
 						<div class="box-top" style="padding-left: 10px">
 							<strong>주차 이용 안내</strong>
 						</div>
-						<textarea class="box-bot" rows="15" cols="95" style="resize: none;"
+						<textarea class="box-bot" rows="15" cols="93" style="resize: none; "
 							name="parking">${theaterVO.parking}</textarea>
 						<div class="box-top" style="padding-left: 10px">
 							<strong>극장 정보</strong>
 						</div>
-						<textarea class="box-bot" rows="9" cols="95" style="resize: none;"
+						<textarea class="box-bot" rows="9" cols="93" style="resize: none; "
 							name="info">${theaterVO.info}</textarea>
 					</div>
 				
