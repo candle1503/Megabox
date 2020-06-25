@@ -84,7 +84,7 @@ public class MemberService {
 		return memberVO;
 	}
 
-	public boolean errorCheck(MemberVO memberVO, BindingResult bindingResult, HttpSession session, String path)
+	public boolean memberJoinError(MemberVO memberVO, BindingResult bindingResult, HttpSession session)
 			throws Exception {
 		boolean result = false;
 
@@ -92,20 +92,27 @@ public class MemberService {
 			result = true;
 		}
 
-		if(path == "join") {
-			if (!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
-				bindingResult.rejectValue("passwordCheck", "memberVO.passwordCheck");
-				result = true;
-			}
-			if (memberRepository.idCheck(memberVO) != null) {
-				bindingResult.rejectValue("id", "memberVO.id.same");
-				result = true;
-			} else {
-				bindingResult.rejectValue("id", "memberVO.id.notSame");
-			}
+		if (!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
+			bindingResult.rejectValue("passwordCheck", "memberVO.passwordCheck");
+			result = true;
 		}
-		
-		if(path =="login") {
+
+		if (memberRepository.idCheck(memberVO) != null) {
+			bindingResult.rejectValue("id", "memberVO.id.same");
+			result = true;
+		} else {
+			bindingResult.rejectValue("id", "memberVO.id.notSame");
+		}
+
+		return result;
+	}
+
+	public boolean memberLoginError(MemberVO memberVO, BindingResult bindingResult) throws Exception {
+		boolean result = false;
+
+		if (bindingResult.hasErrors()) {
+			result = true;
+		}
 			if (memberRepository.idCheck(memberVO) == null) {
 				bindingResult.rejectValue("id", "memberVO.id.notExist");
 				result = true;
@@ -113,24 +120,9 @@ public class MemberService {
 				bindingResult.rejectValue("password", "memberVO.password.notSame");
 				result = true;
 			}
-		}
-		
-		if(path=="update") {
-			if (!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
-				bindingResult.rejectValue("passwordCheck", "memberVO.passwordCheck");
-				result = true;
-			}
-		}
-
-		if(path =="passwordCheck") {
-			if (!memberRepository.idCheck(memberVO).getPassword().equals(memberVO.getPassword())) {
-				result = true;
-			}
-		}
-		
 		return result;
 	}
-	
+
 	public boolean passwordCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
 		boolean result = false;
 		
