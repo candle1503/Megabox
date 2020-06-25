@@ -25,5 +25,5 @@ public interface TheaterRepository {
 	public List<TheaterVO> theaterNameGangwon() throws Exception;
 
 	public List<TheaterVO> theaterNameJeju() throws Exception;
-
+ss
 }
