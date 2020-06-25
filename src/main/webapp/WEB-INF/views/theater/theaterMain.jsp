@@ -259,13 +259,8 @@
 								<ul>
 
 									<c:forEach items="${arSeoul}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="./theaterBranch?theaterNum=${vo.theaterNum}" title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="./theaterBranch?theaterName=${vo.theaterName}" title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 								</ul>
 							</div>
@@ -278,15 +273,9 @@
 								<ul>
 
 									<c:forEach items="${arGyeonggi}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="./theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="./theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 
 								</ul>
@@ -299,15 +288,9 @@
 							<div class="theater-list">
 								<ul>
 									<c:forEach items="${arIncheon}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 
 								</ul>
@@ -321,15 +304,9 @@
 								<ul>
 
 									<c:forEach items="${arChungcheong}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 								</ul>
 							</div>
@@ -342,15 +319,9 @@
 								<ul>
 
 									<c:forEach items="${arGyeongsang}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 
 								</ul>
@@ -364,15 +335,9 @@
 								<ul>
 
 									<c:forEach items="${arJeolla}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="${pageContext.request.contextPath}/theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="${pageContext.request.contextPath}/theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 
 								</ul>
@@ -386,15 +351,9 @@
 								<ul>
 
 									<c:forEach items="${arGangwon}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaetName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 
 								</ul>
@@ -408,15 +367,9 @@
 								<ul>
 
 									<c:forEach items="${arJeju}" var="vo">
-<<<<<<< HEAD
 										<li data-brch-no="${vo.theaterNum}"><a
 											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
 											title="">${vo.name}</a></li>
-=======
-										<li data-brch-no="${vo.theaterName}"><a
-											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
-											title="">${vo.theaterName}</a></li>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 									</c:forEach>
 
 								</ul>
