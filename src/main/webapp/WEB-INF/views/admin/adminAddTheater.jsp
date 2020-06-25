@@ -42,11 +42,7 @@
 							<form:textarea path="name" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화관 이름을 입력하세요." />
 
-<<<<<<< HEAD
-							<select id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " name="localCode">
-=======
 							<form:select path ="localCode" id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " name="localCode">
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
 							 	<option value="">지역선택</option>
 								<option value="서울">서울</option>
 								<option value="경기">경기</option>
@@ -56,12 +52,8 @@
 								<option value="광주/전라">광주/전라</option>
 								<option value="강원">강원</option>
 								<option value="제주">제주</option>
-<<<<<<< HEAD
-							</select>
-=======
-							<form:errors path="localCode" ></form:errors>
 							</form:select>
->>>>>>> parent of 9941b35... Revert "Merge remote-tracking branch 'origin/branch_buskerbusker' into JaeHyuk"
+							<form:errors path="localCode" ></form:errors>
 
 							<form:textarea path="address" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화관 주소를 입력하세요." />
