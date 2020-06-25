@@ -9,6 +9,70 @@
 
 <c:import url="../template/header_css.jsp"></c:import>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style type="text/css">
+
+	.preNext {
+		background-color: white;
+		border: none;
+		outline: none;
+	}
+	
+	em{
+		margin-left: 13px;
+	}
+	
+	.dateNum {
+		font-size: 1em;
+		font-family: Roboto;
+	}
+	
+	.yoil {
+		font-size: .8667em;
+		font-family: NanumBarunGothic,Dotum,'돋움',sans-serif; 
+		display: inline-block;
+	}
+	
+	.timeSpan{
+		margin-top: 10px;
+		/* padding-left: 3px; */
+	}
+	
+	.bookingTime-list {
+		display: inline-block;
+		height: 39px;
+		/* margin: 0 0.4%; */
+		
+		
+		/* margin-left: 12px;
+		margin-right: 12px; */
+		width: 3.15%;
+	}
+	
+	
+	
+	/* em span:after{  
+		content: '';
+		position: absolute;
+		top: 16px;  
+		display: block;
+		margin-left: 13px;
+		width: 3px; 
+		height: 3px;
+		background-color: #888;
+		 
+	} */
+	
+	.cssDatePlus{
+		background-color: #f7f8f9;
+		border-bottom: 2px solid #503396;
+	}
+
+
+</style>
+
+
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -255,8 +319,10 @@ function fn_validateDateYn(param) {
                     <div class="time-schedule quick">
                         <div class="wrap">
 
+							<!-- <button id="prev" class="timeButton">&lt</button> -->
+
                             <!-- 이전날짜 -->
-                            <button type="button" title="이전 날짜 보기" class="btn-pre" disabled="true">
+                            <button id="prev" class="btn-pre timeButton" title="이전 날짜 보기">
                                 <i class="iconset ico-cld-pre"></i> <em>이전</em>
                             </button>
                             <!--// 이전날짜 -->
@@ -270,153 +336,27 @@ function fn_validateDateYn(param) {
 
 
 							<div class="date-area" id="formDeList">
-								<div class="wrap"
-									style="position: relative; width: 2100px; border: none; left: -70px;">
-									<button class="disabled" type="button" date-data="2020.06.17"
-										month="5" tabindex="-1">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">17<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">수</span><span
-											class="day-en" style="pointer-events: none; display: none">Wed</span>
-									</button>
-									<button class="on" type="button" date-data="2020.06.18"
-										month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">18<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">오늘</span><span
-											class="day-en" style="pointer-events: none; display: none">Thu</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.19" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">19<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">내일</span><span
-											class="day-en" style="pointer-events: none; display: none">Fri</span>
-									</button>
-									<button class="sat" type="button" date-data="2020.06.20"
-										month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">20<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">토</span><span
-											class="day-en" style="pointer-events: none; display: none">Sat</span>
-									</button>
-									<button class="holi" type="button" date-data="2020.06.21"
-										month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">21<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">일</span><span
-											class="day-en" style="pointer-events: none; display: none">Sun</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.22" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">22<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">월</span><span
-											class="day-en" style="pointer-events: none; display: none">Mon</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.23" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">23<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">화</span><span
-											class="day-en" style="pointer-events: none; display: none">Tue</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.24" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">24<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">수</span><span
-											class="day-en" style="pointer-events: none; display: none">Wed</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.25" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">25<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">목</span><span
-											class="day-en" style="pointer-events: none; display: none">Thu</span>
-									</button>
-									<button class="disabled" type="button" date-data="2020.06.26"
-										month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">26<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">금</span><span
-											class="day-en" style="pointer-events: none; display: none">Fri</span>
-									</button>
-									<button class="sat" type="button" date-data="2020.06.27"
-										month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">27<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">토</span><span
-											class="day-en" style="pointer-events: none; display: none">Sat</span>
-									</button>
-									<button class="holi" type="button" date-data="2020.06.28"
-										month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">28<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">일</span><span
-											class="day-en" style="pointer-events: none; display: none">Sun</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.29" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">29<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">월</span><span
-											class="day-en" style="pointer-events: none; display: none">Mon</span>
-									</button>
-									<button class="" type="button" date-data="2020.06.30" month="5">
-										<span class="ir">2020년 6월</span><em
-											style="pointer-events: none;">30<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">화</span><span
-											class="day-en" style="pointer-events: none; display: none">Tue</span>
-									</button>
-									<button class="" type="button" date-data="2020.07.01" month="6">
-										<span class="ir">2020년 7월</span><em
-											style="pointer-events: none;">1<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">수</span><span
-											class="day-en" style="pointer-events: none; display: none">Wed</span>
-									</button>
-									<button class="disabled" type="button" date-data="2020.07.02"
-										month="6" tabindex="-1">
-										<span class="ir">2020년 7월</span><em
-											style="pointer-events: none;">2<span
-											style="pointer-events: none;" class="ir">일</span></em><span
-											class="day-kr"
-											style="pointer-events: none; display: inline-block">목</span><span
-											class="day-en" style="pointer-events: none; display: none">Thu</span>
-									</button>
+								<div class="wrap" style="position: relative; width: 2100px; border: none;">
+									
+									<ul id="bookingTime-list">
+				
+									</ul>
+									
+									
+									
+									
+									
 								</div>
 							</div>
 						</div>
 
                             <!-- 다음날짜 -->
-                            <button type="button" title="다음 날짜 보기" class="btn-next">
+                            <button id="next" class="btn-next timeButton" title="다음 날짜 보기">
                                 <i class="iconset ico-cld-next"></i> <em>다음</em>
                             </button>
                             <!--// 다음날짜 -->
+                            
+                            <!-- <button id="next" class="timeButton">&gt</button> -->
 
                             <!-- 달력보기 -->
                             <div class="bg-line">
@@ -428,6 +368,69 @@ function fn_validateDateYn(param) {
                         </div>
                     </div>
                     <!--// time-schedule -->
+
+
+					<script type="text/javascript">
+						var count = 0;
+						var date = new Date();
+						var startDay = parseInt((date.getDate()+100+"").substr(1,3));
+						 
+						bookingTimeZone(startDay);
+						
+						$("#next").click(function(){
+							$("#bookingTime-list").empty();
+							startDay = startDay + 1;
+							count++;
+							bookingTimeZone(startDay);
+						});
+						
+						$("#prev").click(function(){
+							$("#bookingTime-list").empty();
+							startDay = startDay - 1;
+							count--;
+							bookingTimeZone(startDay);
+						});
+						
+						function bookingTimeZone(startDay){
+							$.get("bookingTimeZone?startDay="+startDay, function(result){
+								$("#bookingTime-list").append(result);
+							});
+						
+							if(count == 0){
+								$("#prev").prop("disabled", "disabled");
+								$("#next").removeAttr("disabled");
+							} else if(count > 0 && count < 7){
+								$("#prev").removeAttr("disabled");
+								$("#next").removeAttr("disabled");
+							} else if(count == 14){
+								$("#prev").removeAttr("disabled");
+								$("#next").prop("disabled", "disabled");
+							}
+						}
+
+
+						
+						$(".wrap").on("click", ".bookingTime-list", function(){
+							$(this).addClass("cssDatePlus");
+
+							/* if($(".wrap").prop("mouseup")){
+								$(this).css("background-color", "white");
+							} */
+							
+						});
+
+						
+						$(".wrap").on("mouseover", ".bookingTime-list", function(){
+							$(this).css("border-bottom", "2px solid #503396");
+						});
+						
+						$(".wrap").on("mouseout", ".bookingTime-list", function(){
+							$(this).css("border-bottom", "1px solid #d8d9db");
+						});
+						
+					</script>
+
+
 
                     <!-- quick-reserve-area -->
                     <div class="quick-reserve-area">
