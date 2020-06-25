@@ -19,55 +19,25 @@
 		outline: none;
 	}
 	
-	em{
-		margin-left: 13px;
-	}
-	
 	.dateNum {
 		font-size: 1em;
 		font-family: Roboto;
 	}
 	
-	.yoil {
-		font-size: .8667em;
-		font-family: NanumBarunGothic,Dotum,'돋움',sans-serif; 
-		display: inline-block;
-	}
-	
 	.timeSpan{
-		margin-top: 10px;
-		/* padding-left: 3px; */
+		margin-top: 8px;
 	}
 	
 	.bookingTime-list {
 		display: inline-block;
 		height: 39px;
-		/* margin: 0 0.4%; */
-		
-		
-		/* margin-left: 12px;
-		margin-right: 12px; */
 		width: 3.15%;
 	}
 	
-	
-	
-	/* em span:after{  
-		content: '';
-		position: absolute;
-		top: 16px;  
-		display: block;
-		margin-left: 13px;
-		width: 3px; 
-		height: 3px;
-		background-color: #888;
-		 
-	} */
-	
-	.cssDatePlus{
+	/* .cssDatePlus{
 		background-color: #f7f8f9;
 		border-bottom: 2px solid #503396;
-	}
+	} */
 
 
 </style>
@@ -319,10 +289,8 @@ function fn_validateDateYn(param) {
                     <div class="time-schedule quick">
                         <div class="wrap">
 
-							<!-- <button id="prev" class="timeButton">&lt</button> -->
-
                             <!-- 이전날짜 -->
-                            <button id="prev" class="btn-pre timeButton" title="이전 날짜 보기">
+                            <button id="prev" class="btn-pre" title="이전 날짜 보기">
                                 <i class="iconset ico-cld-pre"></i> <em>이전</em>
                             </button>
                             <!--// 이전날짜 -->
@@ -342,21 +310,15 @@ function fn_validateDateYn(param) {
 				
 									</ul>
 									
-									
-									
-									
-									
 								</div>
 							</div>
 						</div>
 
                             <!-- 다음날짜 -->
-                            <button id="next" class="btn-next timeButton" title="다음 날짜 보기">
+                            <button id="next" class="btn-next" title="다음 날짜 보기">
                                 <i class="iconset ico-cld-next"></i> <em>다음</em>
                             </button>
                             <!--// 다음날짜 -->
-                            
-                            <!-- <button id="next" class="timeButton">&gt</button> -->
 
                             <!-- 달력보기 -->
                             <div class="bg-line">
