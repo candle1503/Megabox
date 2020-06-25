@@ -35,13 +35,6 @@
       </div>
     </div>
     
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="theaterName">극장:</label>
-      <div class="col-sm-10">
-        <form:input path="title" type="text" class="form-control" id="title" placeholder="Enter title"/>
-        <form:errors path="title" cssClass="t"></form:errors>
-      </div>
-    </div>
     
     
     <div class="form-group">
