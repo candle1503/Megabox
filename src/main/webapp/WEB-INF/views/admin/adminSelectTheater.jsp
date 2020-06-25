@@ -63,6 +63,9 @@
 						<a href="./theaterUpdate?theaterNum=${theaterVO.theaterNum}">
 						<input type="button" class="button purple large" value="수정">
 						</a>
+						<a href="./theaterNotice">
+						<input type="button" class="button purple large" value="공지쓰기">
+						</a>
 					</div>
 				</div>
 				

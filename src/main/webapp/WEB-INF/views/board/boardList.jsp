@@ -169,7 +169,7 @@
 							<c:forEach items="${list}" var="vo">
 								<tr>
 									<td>${vo.num}</td>
-									<td>${vo.theaterNum}</td>
+									<td></td>
 									<td>${vo.separate}</td>
 									<td><a href="${board}Select?num=${vo.num}">${vo.title}</a></td>
 									<td>${vo.regDate}</td>
