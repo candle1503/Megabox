@@ -137,10 +137,11 @@ public class MemberController {
 	@PostMapping("memberUpdate")
 	public ModelAndView memberUpdate(MemberVO memberVO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		MemberVO vo2=(MemberVO)session.getAttribute("member");
-		memberVO.setId(vo2.getId());
 		memberService.setUpdate(memberVO);
-		mv.setViewName("member/memberMyPage");
+		session.setAttribute("member", memberVO);
+		mv.addObject("result", memberVO.getId()+"님 정보가 수정되었습니다.");
+		mv.addObject("path", "/member/passwordCheck");
+		mv.setViewName("common/result");
 		return mv;
 	}
 	
