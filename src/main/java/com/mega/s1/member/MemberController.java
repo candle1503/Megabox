@@ -102,6 +102,7 @@ public class MemberController {
 	
 	@PostMapping("passwordCheck")
 	public ModelAndView passwordCheck(@Valid MemberVO memberVO, BindingResult bindingResult, HttpSession session) throws Exception{
+		System.out.println("들어왔지?");
 		ModelAndView mv = new ModelAndView();
 		String password = memberVO.getPassword();
 		memberVO=(MemberVO)session.getAttribute("member");
@@ -113,6 +114,9 @@ public class MemberController {
 			mv.addObject("path", "/member/passwordCheck");
 		}else {
 			mv.setViewName("./member/memberUpdate");
+			mv.addObject("member", memberVO);
+			System.out.println("fileName있어?"+memberVO.getFileName());
+			System.out.println(memberVO.getFileName());
 		}
 		return mv;
 	}

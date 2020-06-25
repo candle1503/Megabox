@@ -55,8 +55,8 @@
 										<div class="profile-photo">
 
 											<div class="profile-img">
-											<c:if test="${member.fileName eq null}">
-												<img src="/resources/images/memberProfile.png"
+											<c:if test="${member.fileName eq }">
+												<img src="${pageContext.request.contextPath}/resources/images/memberProfile.png"
 													alt="프로필 사진 샘플">
 											</c:if>		
 											<c:if test="${member.fileName ne null}">
