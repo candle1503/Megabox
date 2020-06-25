@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.review.ReviewVO;
+import com.mega.s1.util.Pager;
 
 @Controller
 @RequestMapping("/movie/**")
@@ -52,11 +54,15 @@ public class MovieController {
 	}
 	
 	@GetMapping("reviewPage")
-	public ModelAndView reviewPage(ModelAndView mv, MovieVO movieVO) throws Exception {
-		
+	public ModelAndView reviewPage(ModelAndView mv, Pager pager) throws Exception {
+		MovieVO movieVO = new MovieVO();
+		movieVO.setMovieNum(pager.getMovieNum());
 		MovieVO vo = movieService.movieSelect(movieVO);
-		
+		List<ReviewVO> review= movieService.reviewPage(pager);
+		long all = movieService.boardCount(pager);
+		mv.addObject("review", review);
 		mv.addObject("vo", vo);
+		mv.addObject("count", all);
 		mv.setViewName("movie/reviewPage");
 		return mv;
 	}

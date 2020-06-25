@@ -157,6 +157,7 @@
                     </li>
 
         </ul>
+        
     
 	<script type="text/javascript">
 	var num = 1;
@@ -173,6 +174,34 @@
 	</script>
 
     </div>
+
+<div class="inner-wrap mt70 infoContent">
+    <div class="tit-util mb15">
+        <h2 class="tit small">이벤트</h2>
+        <a href="javascript:void(0)" title="이벤트 페이지로 이동" onclick="NetfunnelChk.aTag('EVENT_LIST','/event');return false;" class="more">더보기 <i class="iconset ico-arr-right-gray"></i></a>
+    </div>
+
+    <div class="event-box">
+        <ul>
+            
+                
+                    <li>
+                        <a href="#" title="메가패키지4_콤보50%할인+포토카드+500포인트 상세보기" class="eventBtn" data-no="8456" data-netfunnel="N"><img src="https://img.megabox.co.kr/SharedImg/event/2020/06/18/h1ymwJ57pS5YVlxXi6RYSYrwlYZdvxhT.jpg" onerror="noImg(this)" alt="메가패키지4_콤보50%할인+포토카드+500포인트"></a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="#" title="목금토일 6천원 할인 4차_<극장에서 다시, 봄> 상세보기" class="eventBtn" data-no="8455" data-netfunnel="N"><img src="https://img.megabox.co.kr/SharedImg/event/2020/06/04/pyXibJYLHGPpRPkpG0ABTTCM9tm9Fra7.jpg" onerror="noImg(this)" alt="목금토일 6천원 할인 4차_<극장에서 다시, 봄>"></a>
+                    </li>
+                
+            
+        </ul>
+    </div>
+</div>
+
+    
+    <!--// contents -->
 
 </body>
 </html>

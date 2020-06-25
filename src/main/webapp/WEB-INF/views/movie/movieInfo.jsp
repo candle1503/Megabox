@@ -317,7 +317,7 @@ $(function(){
 			$.ajax(ajaxOption).done(function(data){
 		       
 		        $('.back').children().remove();
-		       
+		        $('.mt70').children().remove();
 		        $('.back').html(data);
 		    });
 			
@@ -420,53 +420,7 @@ $(function(){
     <!--// movie-greeting  -->
 
         
-        <!-- 한줄평 없을 때 -->
-            <h2 class="tit small mt70">아직 남겨진 한줄평이 없어요.</h2>
-            
-	
-
-    <div class="movie-idv-story oneContent">
-
-
-    
-        <ul>
-
-                    <li class="type03">
-                        <div class="story-area">
-                            <!-- 프로필영역 -->
-                            <div class="user-prof">
-                                <div class="prof-img"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png" alt="MEGABOX"></div>
-                                <p class="user-id">MEGABOX</p>
-                            </div>
-                            <!-- // 프로필영역 -->
-
-                            <!-- 내용 영역 -->
-                            <div class="story-box">
-                                <div class="story-wrap">
-                                    <div class="story-cont">
-                                        첫번째 <span class="font-gblue">관람평</span>의 주인공이 되어 보세요.
-                                    </div>
-                                    <div class="story-write">
-
-         					   		
-
-					                	
-
-					                	 <!-- 로그인이 안되있을시 -->
-                                        	<a href="#tooltip-layer01" class="tooltip-click oneWrtNonMbBtn" w-data="500" h-data="680" data-cd="PREV" title="관람평쓰기"><i class="iconset ico-story-write"></i> 관람평쓰기</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- // 내용 영역 -->
-                        </div>
-                    </li>
-
-        </ul>
-    
-
-
-    </div>
+        
 </div>
 <!--// inner-wrap -->
 

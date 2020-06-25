@@ -22,6 +22,8 @@ public class Pager {
 	private String kind;
 	private String search;
 	
+	private Integer movieNum;
+	
 	public void makeRow() {
 		this.startRow = (this.getCurPage()-1)*this.getPerPage();
 		this.lastRow = this.getCurPage()*this.getPerPage();

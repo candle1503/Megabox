@@ -12,7 +12,12 @@
 		insert into review values(0, #{writer}, #{point}, #{contents}, sysdate(), #{ticketNum}, #{movieNum}, #{likePoint} )
 	</insert>
 	
-	<select id="reviewList" parameterType="ReviewVO" resultType="ReviewVO">
-		select * from review where movieNum=#{movieNum}
+	<select id="reviewList" parameterType="Pager" resultType="ReviewVO">
+		select * from review where movieNum=#{movieNum} 
+		order by movieNum desc limit #{startRow}, 10
+	</select>
+	
+	<select id="boardCount" parameterType="Pager" resultType="Long">
+		select count(movieNum) from review where movieNum=#{movieNum}
 	</select>
 </mapper>

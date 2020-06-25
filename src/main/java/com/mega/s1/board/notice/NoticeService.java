@@ -16,7 +16,7 @@ import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
 import com.mega.s1.util.Pager;
 
-//@Service
+@Service
 public class NoticeService implements BoardService{
 
 	@Autowired

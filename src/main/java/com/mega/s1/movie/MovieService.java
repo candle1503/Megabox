@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.mega.s1.board.BoardVO;
 import com.mega.s1.member.memberFile.MemberFileRepository;
 import com.mega.s1.movie.movieFile.MovieFileRepository;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
+import com.mega.s1.util.Pager;
 
 @Service
 public class MovieService {
@@ -43,10 +45,16 @@ public class MovieService {
 		return movieFileRepository.movieFileSelect(movieVO);
 	}
 	
-	public List<ReviewVO> reviewPage(ReviewVO reviewVO) throws Exception{
-		return movieRepository.reviewList(reviewVO);
+	public List<ReviewVO> reviewPage(Pager pager) throws Exception{
+		pager.makeRow();
+		long totalCount = movieRepository.boardCount(pager);
+		pager.makePage(totalCount);
+		return movieRepository.reviewList(pager);
 	}
 	
+	public long boardCount(Pager pager) throws Exception{
+		return movieRepository.boardCount(pager);
+	}
 	
 
 }
