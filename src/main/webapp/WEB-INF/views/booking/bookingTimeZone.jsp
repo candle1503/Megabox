@@ -6,18 +6,15 @@
 	<c:forEach items="${timeList}" var="date" varStatus="i">
 	
 		<c:if test="${fn:substringAfter(date,'/') eq '토'}">	
-			<%-- <a href="#" style="color: #3b5fcb; text-decoration: none;" onfocus="blur()"> <li id="day${i.index}" class="bookingTime-list"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li> </a> --%>	
-			<li id="day${i.index}" class="bookingTime-list"> <button type="button" style="color: #3b5fcb" > <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em><span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </button> </li>
+			<a href="#" style="color: #3b5fcb; text-decoration: none;" onfocus="blur()"> <li id="day${i.index}" class="bookingTime-list"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li> </a>	
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'/') eq '일'}">
-			<%-- <a href="#" style="color: #e81002; text-decoration: none;" onfocus="blur()"> <li id="day${i.index}" class="bookingTime-list"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li>  </a> --%>
-			<li id="day${i.index}" class="bookingTime-list"> <button type="button" style="color: #e81002;"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em><span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </button> </li>
+			<a href="#" style="color: #e81002; text-decoration: none;" onfocus="blur()"> <li id="day${i.index}" class="bookingTime-list"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li>  </a>
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'/') ne '토' && fn:substringAfter(date,'/') ne '일'}">
-			<%-- <a href="#" style="color: black; text-decoration: none;" onfocus="blur()" class="pointer-bottom"> <li id="day${i.index}" class="bookingTime-list">  <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li> </a> --%>
-			<li id="day${i.index}" class="bookingTime-list"> <button type="button" style="color: black;"> <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em><span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </button> </li>
+			<a href="#" style="color: black; text-decoration: none;" onfocus="blur()" class="pointer-bottom"> <li id="day${i.index}" class="bookingTime-list">  <em><span class="dateNum timeSpan">${fn:substringBefore(date,'/')}</span></em>ㆍ<span class="yoil timeSpan">${fn:substringAfter(date,'/')}</span> </li> </a>
 		</c:if>
 		
 	</c:forEach>

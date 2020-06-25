@@ -11,8 +11,7 @@
 		<result column="contents" property="contents"/>
 		<result column="regDate" property="regDate"/>
 		<result column="separate" property="separate"/>
-		<result column="name" property="name"/>
-		<result column="localCode" property="localCode"/>
+		<result column="theaterNum" property="theaterNum"/>
 		<collection property="noticeFileVOs" javaType="List" ofType="NoticeFileVO">
 			<id column="fileNum" property="fileNum"/>
 			<result column="fileName" property="fileName"/>
@@ -22,8 +21,7 @@
 
 
 	<insert id="boardInsert" parameterType="NoticeVO" useGeneratedKeys="true" keyProperty="num">
-		<!-- insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1) -->
-		insert into notice values(#{num}, #{title}, #{contents}, now(), #{separate}, #{name}, #{localCode})
+		insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1)
 	</insert>
 
 	<sql id="search">
