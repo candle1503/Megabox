@@ -55,14 +55,15 @@
 										<div class="profile-photo">
 
 											<div class="profile-img">
-											<c:if test="${member.fileName eq }">
-												<img src="${pageContext.request.contextPath}/resources/images/memberProfile.png"
-													alt="프로필 사진 샘플">
-											</c:if>		
-											<c:if test="${member.fileName ne null}">
+											<c:choose> 
+											<c:when test="${member.fileName == 'null'}">
+											<img src="/resources/images/memberProfile.png">
+											</c:when>
+											<c:otherwise>
 												<img src="/upload/member/${member.fileName}"
-													>
-											</c:if>							
+													alt="프로필 사진 샘플">
+											</c:otherwise>							
+											</c:choose>		
 											</div>
 											</div>
 											<form action="./profileUpdate" method="post" enctype="multipart/form-data">
@@ -73,7 +74,6 @@
 
 											<a href="./memberDelete"
 												class="button small member-out" title="회원탈퇴">회원탈퇴</a>
-										</div>
 									</td>
 								</tr>
 								<tr>
