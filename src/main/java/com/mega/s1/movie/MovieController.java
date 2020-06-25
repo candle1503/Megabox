@@ -21,7 +21,7 @@ public class MovieController {
 	public ModelAndView movieSelect(ModelAndView mv, MovieVO movieVO) throws Exception{
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		MovieVO vo = movieService.movieSelect(movieVO);
-		System.out.println(files.get(0).getFileName());
+		
 		mv.addObject("vo", vo);
 		mv.addObject("file", files);
 		mv.setViewName("movie/movieInfo");
