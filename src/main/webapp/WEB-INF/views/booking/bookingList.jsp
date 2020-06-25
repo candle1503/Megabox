@@ -16,6 +16,31 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<style type="text/css">
+	
+		/* .dateMain{
+		}
+	 
+		#day-list{
+			list-style: none;
+			
+		}
+		  
+		.day-list{
+			width: 5%;
+			display: inline-block;
+			border: 1px solid black;
+		}
+		
+		.dateNum{
+			width: 2%;
+			height: 30px;
+		}
+		  
+		.yoil{
+			width: 2%;
+		} */
+		
+		
 		
 .preNext {
 	background-color: white;
@@ -39,15 +64,13 @@
 	display: inline-block;
 	height: 100px;
 	margin: 0 0.4%;
-	width: 5%;
+	width: 11%;
 	float: left;
 }
 
-/* #day-list>li>a {
-	width:5%;
-	height:100px;
+#day-list>li>a:hover {
 	color: white;
-} */
+}
 	</style>
 
 </head>
@@ -75,7 +98,7 @@
 		var count = 0;
 		var date = new Date();
 		var startDay = parseInt((date.getDate()+100+"").substr(1,3));
-		 
+		
 		bookingTimeZone(startDay);
 
 		$("#next").click(function(){
