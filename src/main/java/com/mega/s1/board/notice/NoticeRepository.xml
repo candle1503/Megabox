@@ -11,8 +11,7 @@
 		<result column="contents" property="contents"/>
 		<result column="regDate" property="regDate"/>
 		<result column="separate" property="separate"/>
-		<result column="name" property="name"/>
-		<result column="localCode" property="localCode"/>
+		<result column="theaterName" property="theaterName"/>
 		<collection property="noticeFileVOs" javaType="List" ofType="NoticeFileVO">
 			<id column="fileNum" property="fileNum"/>
 			<result column="fileName" property="fileName"/>
