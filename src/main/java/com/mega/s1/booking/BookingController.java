@@ -14,7 +14,6 @@ public class BookingController {
 	
 	@GetMapping("bookingMain")
 	public void bookingMain() throws Exception{
-		System.out.println("안들어와??");
 	}
 	
 }
