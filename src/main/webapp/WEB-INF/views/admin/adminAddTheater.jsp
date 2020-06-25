@@ -42,7 +42,7 @@
 							<form:textarea path="name" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화관 이름을 입력하세요." />
 
-							<form:select path ="localCode" id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " name="localCode">
+							<select id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " name="localCode">
 							 	<option value="">지역선택</option>
 								<option value="서울">서울</option>
 								<option value="경기">경기</option>
@@ -52,12 +52,10 @@
 								<option value="광주/전라">광주/전라</option>
 								<option value="강원">강원</option>
 								<option value="제주">제주</option>
-							<form:errors path="localCode" ></form:errors>
-							</form:select>
+							</select>
 
 							<form:textarea path="address" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화관 주소를 입력하세요." />
-							<form:errors path="address"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>주차 이용 안내</strong>
 							</div>
