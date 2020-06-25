@@ -10,12 +10,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mega.s1.board.BoardVO;
+import com.mega.s1.board.notice.NoticeService;
+import com.mega.s1.util.Pager;
+
 @Controller
 @RequestMapping("/theater/**")
 public class TheaterController {
 
 	@Autowired
 	private TheaterService theaterService;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@GetMapping("theaterMain")
 	public ModelAndView theaterMain() throws Exception {
@@ -44,6 +51,12 @@ public class TheaterController {
 
 		ar = theaterService.theaterNameJeju();
 		mv.addObject("arJeju", ar);
+		
+		Pager pager = new Pager();
+		
+		List<BoardVO> ar2 = noticeService.boardList(pager);
+		
+		mv.addObject("notice",ar2);
 
 		mv.setViewName("theater/theaterMain");
 		
@@ -57,8 +70,6 @@ public class TheaterController {
 		ModelAndView mv = new ModelAndView();
 
 		theaterVO = theaterService.theaterBranchSelect(theaterVO);
-		
-		System.out.println(theaterVO.getName());
 
 		mv.addObject("vo", theaterVO);
 		mv.setViewName("theater/theaterBranch");

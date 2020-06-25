@@ -718,7 +718,7 @@
 						$(this).addClass('on');
 
 						alert($('ul.tabs li.on>a').attr("title"))
-						
+
 						if ($('ul.tabs li.on>a').attr("title") == 1) {
 
 							$('#tab03').removeClass('on');
@@ -734,7 +734,6 @@
 						}
 
 					})
-					
 				</script>
 
 				<!-- 메인 시작 -->
@@ -742,10 +741,7 @@
 					<div id="tab01" class="tab-cont on">
 
 						<div class="theater-info-text mt40">
-							<p class="big">
-								${vo.theaterNum}
-							</p>
-							<p>&lt;프라다&gt;가 선택한 수려한 디자인의 상영관 의자를 체험해보세요!</p>
+							<p class="big">${vo.info}</p>
 						</div>
 
 
@@ -758,30 +754,18 @@
 
 						<div class="theater-facility">
 
-
-
 							<p>
-								<i class="iconset ico-facility-theater"></i>일반상영관
+								<i class="iconset ico-facility-theater"></i>일반상영관<br>(상영관
+								정보 입력)
 							</p>
-
-
-
-
 
 							<p>
 								<i class="iconset ico-facility-disabled"></i>장애인석
 							</p>
 
-
-
-
-
-
 						</div>
 
-
-
-						<h3 class="tit small mt30">층별안내</h3>
+						<h3 class="tit small mt30">층별안내(각 상영관 정보로 바꿀 예정)</h3>
 
 						<ul class="dot-list">
 
@@ -799,14 +783,12 @@
 
 						</ul>
 
-
 						<h2 class="tit small mt70">교통안내</h2>
 
 						<h3 class="tit small">약도</h3>
 
 						<ul class="dot-list">
-							<li><span class="font-gblue">도로명주소 : </span> 서울 서초구 서초대로77길
-								3 아라타워 8층 메가박스 강남지점</li>
+							<li><span class="font-gblue">도로명주소 : </span>${vo.address}</li>
 
 						</ul>
 
@@ -817,8 +799,6 @@
 									class="button purple" target="_blank" title="새창열림">실시간 길찾기</a>
 							</div>
 						</div>
-
-
 
 						<h3 class="tit small mt30">주차</h3>
 
@@ -841,8 +821,6 @@
 								</div>
 							</div>
 
-
-
 							<div class="parking-section">
 								<div class="icon-box">
 									<i class="iconset ico-parking-confirm" title="주차확인">주차확인</i>
@@ -858,8 +836,6 @@
 									</ul>
 								</div>
 							</div>
-
-
 
 							<div class="parking-section">
 								<div class="icon-box">
@@ -889,16 +865,12 @@
 
 						</div>
 
+						<!-- 	<h3 class="tit small mt30">대중교통</h3>
 
-
-
-
-						<h3 class="tit small mt30">대중교통</h3>
-
-						<!-- location-info -->
+						location-info
 						<div class="public-transportation">
 
-							<!-- 버스 정보 -->
+							버스 정보
 
 							<div class="transportation-section">
 								<div class="icon-box">
@@ -922,7 +894,7 @@
 							</div>
 
 
-							<!-- 지하철 정보 -->
+							지하철 정보
 
 							<div class="transportation-section">
 								<div class="icon-box">
@@ -940,10 +912,10 @@
 							</div>
 
 
-							<!-- 대중교통 정보가 없는 경우 -->
+							대중교통 정보가 없는 경우
 
 						</div>
-
+ -->
 
 						<!--// location-info -->
 
@@ -1163,187 +1135,11 @@
 							<!--// pagination -->
 						</div>
 
-
-
-
-						<h2 class="tit small mt70">강남에서 이용할 수 있는 스토어 상품</h2>
-
-						<div class="store-list">
-							<ul class="list">
-
-								<li><a href=""
-									onclick="NetfunnelChk.aTag('STORE_DTL','/store/detail?cmbndKindNo=20001304');return false;"
-									title="즉석구이콤보 상세보기">
-
-
-
-
-
-
-										<div class="label push">추천</div>
-
-
-
-
-
-
-										<div class="img">
-											<img
-												src="https://img.megabox.co.kr/SharedImg/store/2020/03/17/4IdTDK4CS2PxFmMMJTozULSROsPzufHw.png"
-												alt="" onerror="noImg(this, 'del')">
-										</div>
-
-										<div class="info">
-											<div class="tit">
-												<!-- 제품명 최대 2줄 -->
-												<p class="name">즉석구이콤보</p>
-
-												<!-- 제품구성 최대 2줄 -->
-												<p class="bundle">팝콘(R) 1 + 탄산음료(R) 2 + 즉석구이오징어 몸or다리 1</p>
-											</div>
-
-											<div class="price">
-
-												<p class="sale">
-													<em>13,000</em> <span>원</span>
-												</p>
-												<p class="ea"></p>
-											</div>
-										</div>
-								</a></li>
-
-								<li><a href=""
-									onclick="NetfunnelChk.aTag('STORE_DTL','/store/detail?cmbndKindNo=20001303');return false;"
-									title="반반에이드콤보 상세보기">
-
-
-
-
-
-
-										<div class="label push">추천</div>
-
-
-
-
-
-
-										<div class="img">
-											<img
-												src="https://img.megabox.co.kr/SharedImg/store/2020/03/17/nRR553PK3zMFtaiYav781vbrTZzIDpFO.png"
-												alt="" onerror="noImg(this, 'del')">
-										</div>
-
-										<div class="info">
-											<div class="tit">
-												<!-- 제품명 최대 2줄 -->
-												<p class="name">반반에이드콤보</p>
-
-												<!-- 제품구성 최대 2줄 -->
-												<p class="bundle">반반팝콘(L) 1 + 에이드 2</p>
-											</div>
-
-											<div class="price">
-
-												<p class="sale">
-													<em>13,000</em> <span>원</span>
-												</p>
-												<p class="ea"></p>
-											</div>
-										</div>
-								</a></li>
-
-								<li><a href=""
-									onclick="NetfunnelChk.aTag('STORE_DTL','/store/detail?cmbndKindNo=20001301');return false;"
-									title="나쵸콤보 상세보기">
-
-
-
-
-										<div class="label event">BEST</div>
-
-
-
-
-
-
-
-
-										<div class="img">
-											<img
-												src="https://img.megabox.co.kr/SharedImg/store/2020/03/17/ZLQ2wAXLSZCOTv2qrxgNRDII5Jdlwr6b.png"
-												alt="" onerror="noImg(this, 'del')">
-										</div>
-
-										<div class="info">
-											<div class="tit">
-												<!-- 제품명 최대 2줄 -->
-												<p class="name">나쵸콤보</p>
-
-												<!-- 제품구성 최대 2줄 -->
-												<p class="bundle">팝콘(R) 1 + 탄산음료(R) 2 + 나쵸 1</p>
-											</div>
-
-											<div class="price">
-
-												<p class="sale">
-													<em>12,000</em> <span>원</span>
-												</p>
-												<p class="ea"></p>
-											</div>
-										</div>
-								</a></li>
-
-								<li><a href=""
-									onclick="NetfunnelChk.aTag('STORE_DTL','/store/detail?cmbndKindNo=20000092');return false;"
-									title="팝콘L 상세보기">
-
-
-
-
-
-
-
-
-
-										<div class="label"></div>
-
-
-
-										<div class="img">
-											<img
-												src="https://img.megabox.co.kr/SharedImg/store/2020/01/07/pQuiA7uLopLcQtLuba9g1amSBgtsjLxe.png"
-												alt="" onerror="noImg(this, 'del')">
-										</div>
-
-										<div class="info">
-											<div class="tit">
-												<!-- 제품명 최대 2줄 -->
-												<p class="name">팝콘L</p>
-
-												<!-- 제품구성 최대 2줄 -->
-												<p class="bundle">팝콘L</p>
-											</div>
-
-											<div class="price">
-
-												<p class="sale">
-													<em>5,000</em> <span>원</span>
-												</p>
-												<p class="ea"></p>
-											</div>
-										</div>
-								</a></li>
-
-
-							</ul>
-						</div>
-
-
 					</div>
+					<!--  end tab -->
 
-
-					<%-- 					<div id="tab02" class="tab-cont">
+					<!--  상영시간표 탭 일단 주석처리 -->
+					<%-- 				<div id="tab02" class="tab-cont">
 						<a href="" class="ir">상영시간표 탭 화면 입니다.</a>
 						<h2 class="tit small" style="display: none;">무대인사</h2>
 						<div class="movie-greeting" style="display: none;"></div>

@@ -260,8 +260,7 @@
 
 									<c:forEach items="${arSeoul}" var="vo">
 										<li data-brch-no="${vo.theaterNum}"><a
-											href="./theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+											href="./theaterBranch?theaterNum=${vo.theaterNum}" title="">${vo.name}</a></li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -408,10 +407,6 @@
 
 			<div class="tit-util mt70 mb15">
 				<h3 class="tit">극장 이벤트</h3>
-				<a href=""
-					onclick="NetfunnelChk.aTag('STORE_DTL','/event/theater');return false;"
-					class="more" title="극장 이벤트 더보기">더보기 <i
-					class="iconset ico-arr-right-gray"></i></a>
 			</div>
 
 			<div class="event-box">
@@ -438,14 +433,15 @@
 
 			<div class="tit-util mt70 mb15">
 				<h3 class="tit">극장 공지사항</h3>
-				<a href="/support/notice?ti=3" class="more" title="극장 공지사항 더보기">더보기
-					<i class="iconset ico-arr-right-gray"></i>
+				<a href="${pageContext.request.contextPath}/notice/noticeList"
+					class="more" title="극장 공지사항 더보기">더보기 <i
+					class="iconset ico-arr-right-gray"></i>
 				</a>
 			</div>
 
 			<div class="table-wrap">
 				<table class="board-list">
-					<caption>극장, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption>
+					<caption>번호, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption>
 					<colgroup>
 						<col style="width: 150px;">
 						<col>
@@ -454,65 +450,25 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col">극장</th>
+							<th scope="col">번호</th>
 							<th scope="col">제목</th>
-							<th scope="col">지역</th>
+							<th scope="col">구분</th>
 							<th scope="col">등록일</th>
 						</tr>
 					</thead>
 					<tbody>
 
 
-
-						<tr>
-							<td>문경</td>
-							<th scope="row"><a
-								href="/support/notice/detail?artiNo=10100&amp;bbsNo=9"
-								title="[문경] 6월 '영화가 있는 날' 이벤트 일자 변경 안내 상세보기"> [문경] 6월 '영화가
-									있는 날' 이벤트 일자 변경 안내 </a></th>
-							<td>부산/대구/경상</td>
-							<td>2020.06.18</td>
-						</tr>
-
-						<tr>
-							<td>코엑스</td>
-							<th scope="row"><a
-								href="/support/notice/detail?artiNo=10099&amp;bbsNo=9"
-								title="[코엑스] 스타필드 코엑스몰 행사 진행에 따른 주차 안내 (6/25~28) 상세보기">
-									[코엑스] 스타필드 코엑스몰 행사 진행에 따른 주차 안내 (6/25~28) </a></th>
-							<td>서울</td>
-							<td>2020.06.17</td>
-						</tr>
-
-						<tr>
-							<td>문경</td>
-							<th scope="row"><a
-								href="/support/notice/detail?artiNo=10097&amp;bbsNo=9"
-								title="[문경] 6월 휴관일 안내 상세보기"> [문경] 6월 휴관일 안내 </a></th>
-							<td>부산/대구/경상</td>
-							<td>2020.06.11</td>
-						</tr>
-
-						<tr>
-							<td>대전</td>
-							<th scope="row"><a
-								href="/support/notice/detail?artiNo=10096&amp;bbsNo=9"
-								title="[대전점] 대전지역 경찰할인 제휴 종료 안내 상세보기"> [대전점] 대전지역 경찰할인 제휴 종료
-									안내 </a></th>
-							<td>대전/충청/세종</td>
-							<td>2020.06.11</td>
-						</tr>
-
-						<tr>
-							<td>원주센트럴</td>
-							<th scope="row"><a
-								href="/support/notice/detail?artiNo=10095&amp;bbsNo=9"
-								title="[원주센트럴점] 지점 관람권 및 지점 초대권 유효기간 연장 안내  상세보기"> [원주센트럴점]
-									지점 관람권 및 지점 초대권 유효기간 연장 안내 </a></th>
-							<td>강원</td>
-							<td>2020.06.10</td>
-						</tr>
-
+						<c:forEach items="${notice}" var="vo">
+							<tr>
+								<td>${vo.num}</td>
+								<th scope="row"><a
+									href="${pageContext.request.contextPath}/notice/noticeSelect?num=${vo.num}"
+									title="" >${vo.title}</a></th>
+								<td>${vo.separate}</td>
+								<td>${vo.regDate}</td>
+							</tr>
+						</c:forEach>
 
 					</tbody>
 				</table>
@@ -520,6 +476,8 @@
 
 		</div>
 	</div>
+
+	<div style="margin-top: 70px; margin-bottom: 70px"></div>
 
 	<c:import url="../template/footer.jsp"></c:import>
 
