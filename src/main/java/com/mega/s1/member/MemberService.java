@@ -123,6 +123,22 @@ public class MemberService {
 		return result;
 	}
 
+	public boolean memberUpdateError(MemberVO memberVO, BindingResult bindingResult) throws Exception{
+		boolean result = false;
+		
+		if (bindingResult.hasErrors()) {
+			result = true;
+		}
+		
+		if (!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
+			bindingResult.rejectValue("passwordCheck", "memberVO.passwordCheck");
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	
 	public boolean passwordCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
 		boolean result = false;
 		

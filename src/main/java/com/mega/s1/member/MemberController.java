@@ -135,13 +135,19 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberUpdate")
-	public ModelAndView memberUpdate(MemberVO memberVO,HttpSession session) throws Exception{
+	public ModelAndView memberUpdate(@Valid MemberVO memberVO, BindingResult bindingResult ,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		memberService.setUpdate(memberVO);
-		session.setAttribute("member", memberVO);
-		mv.addObject("result", memberVO.getId()+"님 정보가 수정되었습니다.");
-		mv.addObject("path", "/member/passwordCheck");
-		mv.setViewName("common/result");
+		boolean result = memberService.memberUpdateError(memberVO, bindingResult);
+		if(result) {
+			mv.setViewName("member/memberUpdate");
+			mv.addObject("memberVO", memberVO);
+		}else {
+			memberService.setUpdate(memberVO);
+			session.setAttribute("member", memberVO);
+			mv.addObject("result", memberVO.getId()+"님 정보가 수정되었습니다.");
+			mv.addObject("path", "/member/passwordCheck");
+			mv.setViewName("common/result");
+		}
 		return mv;
 	}
 	
