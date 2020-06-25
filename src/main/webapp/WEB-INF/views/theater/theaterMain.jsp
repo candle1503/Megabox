@@ -259,8 +259,8 @@
 								<ul>
 
 									<c:forEach items="${arSeoul}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="./theaterBranch?theaterNum=${vo.theaterNum}" title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="./theaterBranch?theaterName=${vo.theaterName}" title="">${vo.theaterName}</a></li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -273,9 +273,9 @@
 								<ul>
 
 									<c:forEach items="${arGyeonggi}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="./theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="./theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaterName}</a></li>
 									</c:forEach>
 
 								</ul>
@@ -288,9 +288,9 @@
 							<div class="theater-list">
 								<ul>
 									<c:forEach items="${arIncheon}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaterName}</a></li>
 									</c:forEach>
 
 								</ul>
@@ -304,9 +304,9 @@
 								<ul>
 
 									<c:forEach items="${arChungcheong}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaterName}</a></li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -319,9 +319,9 @@
 								<ul>
 
 									<c:forEach items="${arGyeongsang}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaterName}</a></li>
 									</c:forEach>
 
 								</ul>
@@ -335,9 +335,9 @@
 								<ul>
 
 									<c:forEach items="${arJeolla}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="${pageContext.request.contextPath}/theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="${pageContext.request.contextPath}/theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaterName}</a></li>
 									</c:forEach>
 
 								</ul>
@@ -351,9 +351,9 @@
 								<ul>
 
 									<c:forEach items="${arGangwon}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaetName}</a></li>
 									</c:forEach>
 
 								</ul>
@@ -367,9 +367,9 @@
 								<ul>
 
 									<c:forEach items="${arJeju}" var="vo">
-										<li data-brch-no="${vo.theaterNum}"><a
-											href="../theater/theaterBranch?theaterNum=${vo.theaterNum}"
-											title="">${vo.name}</a></li>
+										<li data-brch-no="${vo.theaterName}"><a
+											href="../theater/theaterBranch?theaterName=${vo.theaterName}"
+											title="">${vo.theaterName}</a></li>
 									</c:forEach>
 
 								</ul>
