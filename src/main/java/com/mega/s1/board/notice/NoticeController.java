@@ -15,8 +15,8 @@ import com.mega.s1.board.BoardVO;
 import com.mega.s1.board.notice.noticeFile.NoticeFileVO;
 import com.mega.s1.util.Pager;
 
-//@Controller
-//@RequestMapping("/notice/**")
+@Controller
+@RequestMapping("/notice/**")
 public class NoticeController {
 
 	@Autowired
