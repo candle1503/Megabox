@@ -64,7 +64,7 @@
 						<input type="button" class="button purple large" value="수정">
 						</a>
 						<a href="./theaterNotice">
-						<input type="button" class="button purple large" value="공지쓰기">
+						<input type="button" class="button purple large" value="상영시간 관리">
 						</a>
 					</div>
 				</div>
