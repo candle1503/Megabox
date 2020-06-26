@@ -51,16 +51,7 @@
 
 			<!-- container -->
 			<div class="container has-lnb">
-				<div class="page-util">
-					<div class="inner-wrap">
-						<div class="location">
-							<span>Home</span> <a href="/support" title="고객센터 페이지로 이동">고객센터</a>
-							<a href="/support/faq" title="자주 묻는 질문 페이지로 이동">자주 묻는 질문</a>
-						</div>
-
-					</div>
-				</div>
-
+				
 				<div class="inner-wrap">
 					<div class="lnb-area">
 						<nav id="lnb">
