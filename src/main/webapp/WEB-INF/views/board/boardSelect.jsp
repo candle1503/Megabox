@@ -121,12 +121,10 @@
 
 						<div class="info">
 							
-							<c:if test="${vo.theaterNum gt 0}">
 								<p>
 									<span class="tit">영화관</span>
-									<span class="txt">${vo.theaterNum}</span>
+									<span class="txt">${vo.name}</span>
 								</p>
-							</c:if>
 								
 							<p>
 								<span class="tit">구분</span>

@@ -132,7 +132,7 @@
 						
 					</select>
 					
-					<form action="./${board	}List" style="float: right;">
+					<form action="./${board}List" style="float: right;">
 					
 						<div class="board-search">
 							<input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15" name="search">
@@ -169,7 +169,7 @@
 							<c:forEach items="${list}" var="vo">
 								<tr>
 									<td>${vo.num}</td>
-									<td>${vo.theaterNum}</td>
+									<td>${vo.name}</td>
 									<td>${vo.separate}</td>
 									<td><a href="${board}Select?num=${vo.num}">${vo.title}</a></td>
 									<td>${vo.regDate}</td>
