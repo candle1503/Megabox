@@ -56,5 +56,15 @@ public class MovieService {
 		return movieRepository.boardCount(pager);
 	}
 	
+	public int reviewInsert(ReviewVO reviewVO) throws Exception{
+		int result = movieRepository.reviewInsert(reviewVO);
+		Double rate = movieRepository.reviewRate(reviewVO);
+		MovieVO movieVO = new MovieVO();
+		movieVO.setMovieNum(reviewVO.getMovieNum());
+		movieVO.setRate(rate);
+		movieRepository.rateUpdate(movieVO);
+		
+		return result;
+	}
 
 }

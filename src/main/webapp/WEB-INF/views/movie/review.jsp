@@ -35,8 +35,8 @@
 <!-- 레이어 : 관람평 등록 -->
 
     <div class="wrap">
-        
-
+     	<form action="./reviewInsert" method="post">   
+	
         <div class="layer-con">
             <!-- regi-reply-score review -->
             <div class="regi-reply-score review">
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="textarea">
-                            <textarea id="textarea" rows="5" cols="30" title="한줄평 입력" placeholder="영화에 대한 후기를 남겨주세요." class="input-textarea"></textarea>
+                            <textarea id="textarea" rows="5" cols="30" title="한줄평 입력" placeholder="영화에 대한 후기를 남겨주세요." class="input-textarea" name="contents"></textarea>
                             <div class="util">
                                 <p class="count"><span>0</span> / 100</p>
                             </div>
@@ -80,25 +80,34 @@
                     <p class="txt" id="oneLineAlert">(1개 선택가능)</p>
 
                     <div class="box">
-                        <button type="button" class="btn" id="direction">연출</button>
-                        <button type="button" class="btn" id="story">스토리</button>
-                        <button type="button" class="btn" id="beauty">영상미</button>
-                        <button type="button" class="btn" id="player">배우</button>
-                        <button type="button" class="btn" id="ost">OST</button>
+                        <button type="button" class="btn" title="연출">연출</button>
+                        <button type="button" class="btn" title="스토리">스토리</button>
+                        <button type="button" class="btn" title="영상미">영상미</button>
+                        <button type="button" class="btn" title="배우">배우</button>
+                        <button type="button" class="btn" title="OST">OST</button>
                     </div>
                 </div>
                 <!--// point -->
 
-                <div class="txt-alert errText" style="display: none;">한줄평 내용을 입력해 주세요.</div>
+                <div class="txt-alert errText" style="display: none;">한줄평 입력</div>
             </div>
             <!--// regi-reply-score preview -->
         </div>
 
+			<input name="movieNum" value="${vo.movieNum}" hidden="true" >
+				<input name="writer" value="practice" hidden="true">
+				<input name="point" class="reviewRate" value="0" hidden="true">
+				<input name="ticketNum" value="111" hidden="true">
+				<input name="likePoint" class="likePoint" value="없음" hidden="true">
+			    <div class="form-group">
+			      
+			    </div>
+	
         <div class="btn-group-fixed">
             <button type="button" class="button close-layer">취소</button>
-            <button type="button" class="button purple" id="regOneBtn" data-no="" data-cd="" data-mno="20019200">등록</button>
+            <input type="submit" class="button purple" id="regOneBtn" data-no="" data-cd="" data-mno="20019200" value="등록">
         </div>
-
+	</form>
     </div>
 
 
@@ -111,25 +120,27 @@
 	  $(this).parent().children('span').removeClass('on');
 	  $(this).addClass('on').prevAll('span').addClass('on');
 	  $(".num > em").html($(this).attr("title"));
+	  $(".reviewRate").val($(this).attr("title"));
 	  return false;
 	});
 
 	$('.point .box button').on('click', function() {
         if($(this).attr('class').indexOf('on') == -1) {
             $('#oneLineAlert').text('(1개 선택가능)');
+            $(".likePoint").val($(this).attr("title"));
 
-
-            if($('.point .box button.on').length == 0){ //2개 선택 시 문구 변경
+            if($('.point .box button.on').length == 0){ 
                 $('#oneLineAlert').addClass('font-gblue');
                 $('#oneLineAlert').text('(선택완료 하셨습니다.)');
             }
-            if($('.point .box button.on').length >= 1) { //3개째 선택하면 선택했던거 초기화
+             if($('.point .box button.on').length >= 1) { //3개째 선택하면 선택했던거 초기화
                 $('.point .box button.on').removeClass('on');
-                $('#oneLineAlert').removeClass('font-gblue');
+               
+                $(this).addClass('on');
                 $('#oneLineAlert').text('(최대 1개 선택가능)');
                 return;
-            }
-
+            } 
+            
             $(this).addClass('on');
 
         } else {
@@ -137,12 +148,14 @@
 
         }
     });
-	/* $('.btn-success').click(function(){
+
+	$('.close-layer').click(function(){
+		
 		var ajaxOption = {
-	            url : "./already",
+	            url : "./reviewPage",
 	            
-	            data : {memberNum:'${member.memberNum}'},
-	            type : "POST",
+	            data : {movieNum:'${vo.movieNum}'},
+	            type : "GET",
 	            dataType : "html"
 	            
 	    };  
@@ -152,12 +165,13 @@
 	       
 	        $('.back').html(data);
 	    });
+		
 	})
-	$('.btn-primary').click(function(){
-		
-		alert("리뷰 등록 성공");
-		
-	}) */
+	$('#textarea').on('keyup', function() {
+        if(this.value.length > 100) this.value = this.value.substr(0, 100);
+
+        $('.textarea .count span').html(this.value.length);
+    });
 	
 </script>
 </body>

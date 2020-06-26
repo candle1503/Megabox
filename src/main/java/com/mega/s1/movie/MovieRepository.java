@@ -16,4 +16,7 @@ public interface MovieRepository {
 	public List<ReviewVO> reviewList(Pager pager) throws Exception;
 	
 	public long boardCount(Pager pager) throws Exception;
+	
+	public Double reviewRate(ReviewVO reviewVO) throws Exception;
+	public int rateUpdate(MovieVO movieVO) throws Exception;
 }

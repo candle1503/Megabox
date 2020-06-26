@@ -14,10 +14,18 @@
 	
 	<select id="reviewList" parameterType="Pager" resultType="ReviewVO">
 		select * from review where movieNum=#{movieNum} 
-		order by movieNum desc limit #{startRow}, 10
+		order by reviewNum desc limit #{startRow}, 10
 	</select>
 	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
 		select count(movieNum) from review where movieNum=#{movieNum}
 	</select>
+	
+	<select id="reviewRate" parameterType="ReviewVO" resultType="java.lang.Double">
+		select avg(point) from review where movieNum=#{movieNum}
+	</select>
+	
+	<update id="rateUpdate" parameterType="MovieVO">
+		update movie set rate=#{rate} where movieNum=#{movieNum}
+	</update>
 </mapper>
