@@ -6,8 +6,11 @@
 <mapper namespace="com.mega.s1.theater.TheaterRepository">
 
 	<resultMap type="TheaterVO" id="selectResult">
+
 		<id column="theaterNum" property="theaterNum" />
 		<result column="name" property="name" />
+
+		
 		<result column="localCode" property="localCode" />
 		<result column="address" property="address" />
 		<result column="info" property="info" />
@@ -15,7 +18,9 @@
 	</resultMap>
 	
 	<select id="theaterBranchSelect" parameterType="TheaterVO" resultType="TheaterVO">
+
 		select * from theater where theaterNum=#{theaterNum}	
+
 	</select>
 
 	<select id="theaterNameSeoul" parameterType="TheaterVO"

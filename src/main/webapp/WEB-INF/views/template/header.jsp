@@ -2,6 +2,8 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- header -->
+
+
 <header id="header" class="main-header no-bg">
 
 	<img class="ci" alt=""
@@ -41,7 +43,7 @@
 						<li><a href="/moviepost/all" title="무비포스트">무비포스트</a></li>
 					</ul>
 				</div></li>
-			<li><a href="../booking/bookingList" title="예매">예매</a>
+			<li><a href="${pageContext.request.contextPath}/booking/bookingMain" title="예매">예매</a>
 				<div class="gnb-depth2">
 					<ul>
 						<li><a href="/booking" title="빠른예매">빠른예매</a></li>

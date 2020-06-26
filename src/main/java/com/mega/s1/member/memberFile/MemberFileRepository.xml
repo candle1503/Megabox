@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mega.s1.member.memberFile.MemberFileRepository">
   	<insert id="setProfile" parameterType="MemberFileVO" >
-  		insert into memberFile values(#{id},'','')
+  		insert into memberFile values(#{id},'null','')
   	</insert>
   	
   	<select id="getMemberFile" parameterType="MemberFileVO" resultType="MemberFileVO">
