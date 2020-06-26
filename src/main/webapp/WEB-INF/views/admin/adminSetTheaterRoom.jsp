@@ -15,48 +15,67 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
-
-
-
-		<div class="container has-lnb">
-			<div class="page-util">
-				<div class="inner-wrap" id="myLoaction">
-					<div class="location">
-						<span>Home</span> <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의
-							메가박스</a> <a href="#" title="회원정보 페이지로 이동">회원정보</a> <a class="no-link">개인정보
-							수정</a>
-					</div>
-				</div>
-			</div>
-
 			<div class="inner-wrap">
 
 				<c:import url="../template/adminSidebar.jsp"></c:import>
-				
+
 				<div id="contents" class="">
 					<h2 class="tit">${theaterVO.name} 영화관 정보</h2>
 
-					<div class="box-radius">
-						<textarea class="box-bot" rows="1" cols="93" style="resize: none; background-color: f2f4f5; "
-							readonly="readonly">${theaterVO.name}</textarea>
-						<textarea class="box-bot" rows="1" cols="93" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.localCode}</textarea>
-						<textarea  class="box-bot" rows="1" cols="93" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.address}</textarea>
-						<div class="box-top" style="padding-left: 10px">
-							<strong >주차 이용 안내</strong>
-						</div>
-						<textarea class="box-bot" rows="15" cols="93" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.parking}</textarea>
-						<div class="box-top" style="padding-left: 10px">
-							<strong>극장 정보</strong>
-						</div>
-						<textarea class="box-bot" rows="9" cols="93" style="resize: none; background-color: f2f4f5"
-							readonly="readonly">${theaterVO.info}</textarea>
-					</div>
-				
+					<div class="tit-util mt40 mb10">
+						<h3 class="tit">기본정보</h3>
 
-					<div class="btn-group mt40">
+						<div class="right">
+							<p class="reset">
+								<em class="font-orange">*</em> 필수
+							</p>
+						</div>
+					</div>
+
+						<div class="table-wrap mb40">
+							<table class="board-form">
+								<colgroup>
+									<col style="width: 180px;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row"><label for="phone">전화번호</label> <em
+											class="font-orange">*</em></th>
+										<td><form:input path="phone" type="text" id="phone"
+												class="input-text w500px" value="${member.phone}" /> <form:errors
+												path="phone"></form:errors></td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="email">이메일</label> <em
+											class="font-orange">*</em></th>
+										<td><form:input path="email" type="email" id="email"
+												class="input-text w500px" value="${member.email}" /> <form:errors
+												path="email"></form:errors></td>
+									</tr>
+
+									<tr>
+										<th scope="row"><label for="password">비밀번호</label> <em
+											class="font-orange">*</em></th>
+										<td><form:input path="password" type="password"
+												id="password" class="input-text w500px" /> <form:errors
+												path="password"></form:errors></td>
+									</tr>
+
+									<tr>
+										<th scope="row"><label for="passwordCheck">비밀전호
+												재입력</label> <em class="font-orange">*</em></th>
+										<td><form:input path="passwordCheck" type="password"
+												id="passwordCheck" class="input-text w500px" /> <form:errors
+												path="passwordCheck"></form:errors></td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+
+
+						<div class="btn-group mt40">
 						<a href="./theaterList">
 						<input type="button" class="button large" value="이전">
 						</a>
@@ -67,8 +86,7 @@
 						<input type="button" class="button purple large" value="상영시간 관리">
 						</a>
 					</div>
-				</div>
-				
+
 			</div>
 		</div>
 

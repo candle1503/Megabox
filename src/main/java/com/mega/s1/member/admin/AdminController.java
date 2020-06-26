@@ -105,5 +105,12 @@ public class AdminController {
 		return mv;
 	}
 	
+	@GetMapping("setTheaterRoom")
+	public ModelAndView setTheaterRoom() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("admin/adminSetTheaterRoom");
+		return mv;
+	}
 	
 }
