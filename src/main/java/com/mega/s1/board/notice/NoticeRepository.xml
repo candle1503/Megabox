@@ -48,7 +48,7 @@
 	</select>
 	
 	<update id="boardUpdate" parameterType="NoticeVO">
-		update notice set separate = #{separate}, title = #{title}, contents = #{contents}
+		update notice set title = #{title}, contents = #{contents}, separate = #{separate}, name = #{name}, localCode = #{localCode} where num = #{num}
 	</update>
 	
 	<delete id="boardDelete" parameterType="NoticeVO">

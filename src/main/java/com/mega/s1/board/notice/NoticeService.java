@@ -81,6 +81,27 @@ public class NoticeService implements BoardService{
 	}
 	
 	
+	@Override
+	public int boardUpdate(NoticeVO noticeVO, MultipartFile[] files) throws Exception {
+		File file = filePathGenerator.getUseClassPathResource(filePath);
+		
+		int result = noticeRepository.boardUpdate(noticeVO);
+		
+		for(MultipartFile multipartFile : files) {
+			if(multipartFile.getSize() <= 0) {
+				continue;
+			}
+			String fileName = fileManager.saveFileCopy(multipartFile, file);
+			NoticeFileVO noticeFileVO = new NoticeFileVO();
+			noticeFileVO.setNum(noticeVO.getNum());
+			noticeFileVO.setFileName(fileName);
+			noticeFileVO.setOriName(multipartFile.getOriginalFilename());
+			
+			result = noticeFileRepository.noticeFileInsert(noticeFileVO);
+		}
+		
+		return result;
+	}
 	
 	
 	@Override
@@ -91,6 +112,7 @@ public class NoticeService implements BoardService{
 	public NoticeFileVO fileDown(NoticeFileVO noticeFileVO) throws Exception{
 		return noticeFileRepository.fileDown(noticeFileVO);
 	}
+	
 	
 	
 	

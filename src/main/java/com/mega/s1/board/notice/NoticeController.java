@@ -2,8 +2,11 @@ package com.mega.s1.board.notice;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -99,7 +102,7 @@ public class NoticeController {
 //		NoticeVO noticeVO = new NoticeVO();
 //		noticeVO.setLocalCode(localCode);
 		
-		mv.addObject("boardVO", new NoticeVO());
+		mv.addObject("noticeVO", new NoticeVO());
 		mv.addObject("path", "Write");
 		mv.setViewName("board/boardWrite");
 		
@@ -107,12 +110,40 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeWrite")
-	public ModelAndView boardInsert(NoticeVO noticeVO, MultipartFile[] files) throws Exception{
+	public ModelAndView boardInsert(@Valid NoticeVO noticeVO, BindingResult bindingResult, MultipartFile[] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		List<TheaterVO> theaterArSeoul = theaterService.theaterNameSeoul();
+		mv.addObject("theaterArSeoul", theaterArSeoul);
 		
-		noticeService.boardInsert(noticeVO, files);
-		mv.setViewName("redirect:./noticeList");
+		List<TheaterVO> theaterArGyeonggi = theaterService.theaterNameGyeonggi();
+		mv.addObject("theaterArGyeonggi", theaterArGyeonggi);
+		
+		List<TheaterVO> theaterArIncheon = theaterService.theaterNameIncheon();
+		mv.addObject("theaterArIncheon", theaterArIncheon);
+		
+		List<TheaterVO> theaterArChungcheong = theaterService.theaterNameChungcheong();
+		mv.addObject("theaterArChungcheong", theaterArChungcheong);
+		
+		List<TheaterVO> theaterArGyeongsang = theaterService.theaterNameGyeongsang();
+		mv.addObject("theaterArGyeongsang", theaterArGyeongsang);
+		
+		List<TheaterVO> theaterArJeolla = theaterService.theaterNameJeolla();
+		mv.addObject("theaterArJeolla", theaterArJeolla);
+		
+		List<TheaterVO> theaterArGangwon = theaterService.theaterNameGangwon();
+		mv.addObject("theaterArGangwon", theaterArGangwon);
+		
+		List<TheaterVO> theaterArJeju = theaterService.theaterNameJeju();
+		mv.addObject("theaterArJeju", theaterArJeju);
+		
+		if(bindingResult.hasErrors()) {
+			mv.addObject("path", "Write");
+			mv.setViewName("board/boardWrite");
+		}else {
+			noticeService.boardInsert(noticeVO, files);
+			mv.setViewName("redirect:./noticeList");
+		}
 		
 		return mv;
 	}
@@ -121,8 +152,6 @@ public class NoticeController {
 	public ModelAndView boardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BoardVO> ar = noticeService.boardList(pager);
-		
-		//int listCount = noticeService.listCount(pager);
 		
 		
 		long listCount = noticeService.boardCount(pager);
@@ -140,15 +169,12 @@ public class NoticeController {
 		
 		Pager pager = new Pager();
 		
-		//int listCount = noticeService.listCount(pager);
-		
 		noticeVO = noticeService.boardSelect(noticeVO);
 		
 		List<BoardVO> ar = noticeService.boardList(pager);
 		
 		
 		mv.addObject("list", ar);
-		//mv.addObject("listCount", listCount);
 		mv.addObject("vo", noticeVO);
 		mv.setViewName("board/boardSelect");
 		
@@ -166,6 +192,75 @@ public class NoticeController {
 		
 	}
 	
+	@GetMapping("noticeUpdate")
+	public ModelAndView boardUpdate(NoticeVO noticeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<TheaterVO> theaterArSeoul = theaterService.theaterNameSeoul();
+		mv.addObject("theaterArSeoul", theaterArSeoul);
+		
+		List<TheaterVO> theaterArGyeonggi = theaterService.theaterNameGyeonggi();
+		mv.addObject("theaterArGyeonggi", theaterArGyeonggi);
+		
+		List<TheaterVO> theaterArIncheon = theaterService.theaterNameIncheon();
+		mv.addObject("theaterArIncheon", theaterArIncheon);
+		
+		List<TheaterVO> theaterArChungcheong = theaterService.theaterNameChungcheong();
+		mv.addObject("theaterArChungcheong", theaterArChungcheong);
+		
+		List<TheaterVO> theaterArGyeongsang = theaterService.theaterNameGyeongsang();
+		mv.addObject("theaterArGyeongsang", theaterArGyeongsang);
+		
+		List<TheaterVO> theaterArJeolla = theaterService.theaterNameJeolla();
+		mv.addObject("theaterArJeolla", theaterArJeolla);
+		
+		List<TheaterVO> theaterArGangwon = theaterService.theaterNameGangwon();
+		mv.addObject("theaterArGangwon", theaterArGangwon);
+		
+		List<TheaterVO> theaterArJeju = theaterService.theaterNameJeju();
+		mv.addObject("theaterArJeju", theaterArJeju);
+		
+		noticeVO = noticeService.boardSelect(noticeVO);
+		mv.addObject("vo", noticeVO);
+		mv.addObject("path", "Update");
+		mv.setViewName("board/boardWrite");
+		
+		return mv;
+	}
+	
+	@PostMapping("noticeUpdate")
+	public ModelAndView boardUpdate(NoticeVO noticeVO, MultipartFile[] files) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<TheaterVO> theaterArSeoul = theaterService.theaterNameSeoul();
+		mv.addObject("theaterArSeoul", theaterArSeoul);
+		
+		List<TheaterVO> theaterArGyeonggi = theaterService.theaterNameGyeonggi();
+		mv.addObject("theaterArGyeonggi", theaterArGyeonggi);
+		
+		List<TheaterVO> theaterArIncheon = theaterService.theaterNameIncheon();
+		mv.addObject("theaterArIncheon", theaterArIncheon);
+		
+		List<TheaterVO> theaterArChungcheong = theaterService.theaterNameChungcheong();
+		mv.addObject("theaterArChungcheong", theaterArChungcheong);
+		
+		List<TheaterVO> theaterArGyeongsang = theaterService.theaterNameGyeongsang();
+		mv.addObject("theaterArGyeongsang", theaterArGyeongsang);
+		
+		List<TheaterVO> theaterArJeolla = theaterService.theaterNameJeolla();
+		mv.addObject("theaterArJeolla", theaterArJeolla);
+		
+		List<TheaterVO> theaterArGangwon = theaterService.theaterNameGangwon();
+		mv.addObject("theaterArGangwon", theaterArGangwon);
+		
+		List<TheaterVO> theaterArJeju = theaterService.theaterNameJeju();
+		mv.addObject("theaterArJeju", theaterArJeju);
+		
+		noticeService.boardUpdate(noticeVO, files);
+		mv.setViewName("redirect:./noticeList");
+		
+		return mv;
+	}
 	
 	
 	@GetMapping("noticeDelete")

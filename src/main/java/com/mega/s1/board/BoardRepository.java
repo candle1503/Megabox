@@ -15,7 +15,7 @@ public interface BoardRepository {
 	
 	public NoticeVO boardSelect(NoticeVO noticeVO) throws Exception;
 	
-	
+	public int boardUpdate(NoticeVO noticeVO) throws Exception;
 	
 	public int boardDelete(NoticeVO noticeVO) throws Exception; 
 }

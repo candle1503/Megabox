@@ -15,6 +15,10 @@
   	.dropdown-toggle{
   		float: left;
   	}
+  	
+  	.noticeError{
+  		color: red;
+  	}
   		
   </style>
   
@@ -24,7 +28,7 @@
 
 <div class="container">
 
-		<form:form modelAttribute="boardVO" class="form-horizontal"
+		<form:form modelAttribute="noticeVO" class="form-horizontal"
 			action="${board}${path}" method="POST" enctype="multipart/form-data">
 			<form:input path="num" type="hidden" id="num" />
 
@@ -32,8 +36,8 @@
 				<label class="control-label col-sm-2" for="title">제목:</label>
 				<div class="col-sm-10">
 					<form:input path="title" type="text" class="form-control"
-						id="title" placeholder="Enter title" />
-					<form:errors path="title" cssClass="t"></form:errors>
+						id="title" placeholder="Enter title" value="${vo.title}"/>
+					<form:errors path="title" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
 
@@ -41,8 +45,8 @@
 				<label class="control-label col-sm-2" for="contents">내용:</label>
 				<div class="col-sm-10">
 					<form:textarea path="contents" rows="" cols="" class="form-control"
-						id="summernote"></form:textarea>
-					<form:errors path="contents"></form:errors>
+						id="summernote" value="${vo.contents}"></form:textarea>
+					<form:errors path="contents" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
 
@@ -62,8 +66,8 @@
 						</ul>
 					</div>
 					<form:input path="separate" type="text" class="form-control"
-						id="separate" placeholder="Enter separate" readonly="true" />
-					<form:errors path="separate" cssClass="t"></form:errors>
+						id="separate" placeholder="Enter separate" readonly="true" value="${vo.separate}"/>
+					<form:errors path="separate" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
 
@@ -88,8 +92,8 @@
 						</ul>
 					</div>
 					<form:input path="localCode" type="text" class="form-control"
-						id="localCode" placeholder="Enter localCode" readonly="true"/>
-					<form:errors path="localCode" cssClass="t"></form:errors>
+						id="localCode" placeholder="Enter localCode" readonly="true" value="${vo.localCode}"/>
+					<form:errors path="localCode" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
 
@@ -196,8 +200,8 @@
 
 					<form:input path="name" type="text"
 						class="form-control seoul gyeonggi incheon chungcheong gyeongsang jeolla gangwon jeju" id="name"
-						placeholder="Enter name" readonly="true"/>
-					<form:errors path="name" cssClass="t"></form:errors>
+						placeholder="Enter name" readonly="true" value="${vo.name}"/>
+					<form:errors path="name" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
 			
@@ -336,6 +340,21 @@
 			</div>
 			<div class="form-group" id="file"></div>
 
+				<div class="fileDown">
+					<c:forEach items="${vo.noticeFileVOs}" var="fileVO">
+						<div class="fileSub">
+							<span style="font-weight: bolder;">* 첨부 파일 다운로드 *</span><br>
+							<a href=""> -
+								${fileVO.oriName}</a>
+						</div>
+					</c:forEach>
+				</div>
+				
+				<div class="fileDownCancel">
+					<input type="button" id="fdc" value="FileCancel">
+				</div>
+
+
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
@@ -414,6 +433,15 @@
 			}
 			
 		});
+
+
+		
+		$("#fdc").click(function(){
+			$(".fileSub > span").remove();
+			$(".fileSub > a").remove();
+		});
+
+		
 	</script>
 
 
