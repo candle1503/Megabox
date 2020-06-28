@@ -345,14 +345,15 @@
 						<div class="fileSub">
 							<span style="font-weight: bolder;">* 첨부 파일 다운로드 *</span><br>
 							<a href=""> -
-								${fileVO.oriName}</a>
+								${fileVO.oriName}</a><a href="./fileDelete?num=${vo.num}" class="btn btn-danger" id="fdc">FileDelete</a>
 						</div>
 					</c:forEach>
 				</div>
 				
-				<div class="fileDownCancel">
+				<!-- <div class="fileDownCancel">
+					<a href="./fileDelete?num=" class="btn btn-danger" id="fdc">FileDelete</a>
 					<input type="button" id="fdc" value="FileCancel">
-				</div>
+				</div> -->
 
 
 
@@ -439,6 +440,9 @@
 		$("#fdc").click(function(){
 			$(".fileSub > span").remove();
 			$(".fileSub > a").remove();
+
+			
+			
 		});
 
 		

@@ -113,6 +113,9 @@ public class NoticeService implements BoardService{
 		return noticeFileRepository.fileDown(noticeFileVO);
 	}
 	
+	public int fileDelete(NoticeFileVO noticeFileVO) throws Exception{
+		return noticeFileRepository.fileDelete(noticeFileVO);
+	}
 	
 	
 	

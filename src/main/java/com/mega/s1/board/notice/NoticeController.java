@@ -229,7 +229,7 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeUpdate")
-	public ModelAndView boardUpdate(NoticeVO noticeVO, MultipartFile[] files) throws Exception{
+	public ModelAndView boardUpdate(@Valid NoticeVO noticeVO, BindingResult bindingResult, MultipartFile[] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<TheaterVO> theaterArSeoul = theaterService.theaterNameSeoul();
@@ -256,8 +256,13 @@ public class NoticeController {
 		List<TheaterVO> theaterArJeju = theaterService.theaterNameJeju();
 		mv.addObject("theaterArJeju", theaterArJeju);
 		
-		noticeService.boardUpdate(noticeVO, files);
-		mv.setViewName("redirect:./noticeList");
+		if(bindingResult.hasErrors()) {
+			mv.addObject("path", "Update");
+			mv.setViewName("board/boardWrite");
+		}else {
+			noticeService.boardUpdate(noticeVO, files);
+			mv.setViewName("redirect:./noticeList");
+		}
 		
 		return mv;
 	}
@@ -283,6 +288,18 @@ public class NoticeController {
 		mv.addObject("fileVO", noticeFileVO);
 		mv.addObject("path", "upload/notice/");
 		mv.setViewName("fileDown");
+		
+		return mv;
+	}
+	
+	@GetMapping("fileDelete")
+	public ModelAndView fileDelete(NoticeFileVO noticeFileVO, NoticeVO noticeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		noticeVO = noticeService.boardSelect(noticeVO);
+		
+		noticeService.fileDelete(noticeFileVO);
+		mv.setViewName("redirect:./noticeUpdate?num="+noticeVO.getNum());
 		
 		return mv;
 	}
