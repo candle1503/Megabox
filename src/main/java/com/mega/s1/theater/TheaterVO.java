@@ -1,6 +1,7 @@
 package com.mega.s1.theater;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -18,6 +19,6 @@ public class TheaterVO {
 	private String info;
 	@NotEmpty(message = "주차안내를 적어주세요.")
 	private String parking;
-	
-	
+	@NotNull(message="극장 갯수를 적어주세요.")
+	private int roomCount;
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.theater.TheaterRoomVO;
 import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.Pager;
 
@@ -47,6 +48,10 @@ public class AdminService {
 	
 	public int theaterUpdate(TheaterVO theaterVO) throws Exception{
 		return adminRepository.theaterUpdate(theaterVO);
+	}
+	
+	public int theaterRoomSet(TheaterRoomVO theaterRoomVO) throws Exception{
+		return adminRepository.theaterRoomSet(theaterRoomVO);
 	}
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.theater.TheaterRoomVO;
 import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.Pager;
 
@@ -60,12 +61,26 @@ public class AdminController {
 	}
 	
 	@PostMapping("theaterAdd")
-	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult) throws Exception{
+	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult, String roomCount) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		TheaterRoomVO roomVO = new TheaterRoomVO();
 		if (bindingResult.hasErrors()) {
+			mv.addObject("theaterVO", theaterVO);
 			mv.setViewName("admin/adminAddTheater");
 		}else {
 			adminService.addTheater(theaterVO);
+			if(theaterVO.getRoomCount()==1) {
+				roomVO.setName(theaterVO.getName());
+				roomVO.setRoomName(theaterVO.getName()+" 1관");
+				adminService.theaterRoomSet(roomVO);
+				System.out.println("ok!!");
+			}else if(theaterVO.getRoomCount()==2) {
+				
+			}else if(theaterVO.getRoomCount()==3) {
+				
+			}else if(theaterVO.getRoomCount()==4) {
+				
+			}
 			mv.setViewName("redirect:./theaterList");
 		}
 		return mv;
