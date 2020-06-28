@@ -83,7 +83,17 @@ public class NoticeController {
 		List<TheaterVO> theaterArChungcheong = theaterService.theaterNameChungcheong();
 		mv.addObject("theaterArChungcheong", theaterArChungcheong);
 		
+		List<TheaterVO> theaterArGyeongsang = theaterService.theaterNameGyeongsang();
+		mv.addObject("theaterArGyeongsang", theaterArGyeongsang);
 		
+		List<TheaterVO> theaterArJeolla = theaterService.theaterNameJeolla();
+		mv.addObject("theaterArJeolla", theaterArJeolla);
+		
+		List<TheaterVO> theaterArGangwon = theaterService.theaterNameGangwon();
+		mv.addObject("theaterArGangwon", theaterArGangwon);
+		
+		List<TheaterVO> theaterArJeju = theaterService.theaterNameJeju();
+		mv.addObject("theaterArJeju", theaterArJeju);
 		
 		
 //		NoticeVO noticeVO = new NoticeVO();

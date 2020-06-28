@@ -145,9 +145,57 @@
 							</c:forEach>
 						</ul>
 					</div>
+					
+					<div class="dropdown dd5">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							부산/대구/경상 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-gyeongsang">
+							<c:forEach items="${theaterArGyeongsang}" var="taGyeongsang">
+								<li><a href="#" value="${taGyeongsang.name}">${taGyeongsang.name}</a></li>
+							</c:forEach>
+						</ul>
+					</div>
+					
+					<div class="dropdown dd6">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							광주/전라 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-jeolla">
+							<c:forEach items="${theaterArJeolla}" var="taJeolla">
+								<li><a href="#" value="${taJeolla.name}">${taJeolla.name}</a></li>
+							</c:forEach>
+						</ul>
+					</div>
+					
+					<div class="dropdown dd7">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							강원 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-gangwon">
+							<c:forEach items="${theaterArGangwon}" var="taGangwon">
+								<li><a href="#" value="${taGangwon.name}">${taGangwon.name}</a></li>
+							</c:forEach>
+						</ul>
+					</div>
+					
+					<div class="dropdown dd8">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							제주 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-jeju">
+							<c:forEach items="${theaterArJeju}" var="taJeju">
+								<li><a href="#" value="${taJeju.name}">${taJeju.name}</a></li>
+							</c:forEach>
+						</ul>
+					</div>
 
 					<form:input path="name" type="text"
-						class="form-control seoul gyeonggi incheon chungcheong" id="name"
+						class="form-control seoul gyeonggi incheon chungcheong gyeongsang jeolla gangwon jeju" id="name"
 						placeholder="Enter name" readonly="true"/>
 					<form:errors path="name" cssClass="t"></form:errors>
 				</div>
@@ -283,10 +331,10 @@
 			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="button" class="btn btn-info" id="add" value="FileAdd">
+					<input type="button" class="btn btn-info" id="add" value="FileAdd" >
 				</div>
 			</div>
-			<div class="form-group" id="f"></div>
+			<div class="form-group" id="file"></div>
 
 
 			<div class="form-group">
@@ -296,9 +344,9 @@
 			</div>
 		</form:form>
 
-	</div> 
-    
-  
+	</div>
+
+
 	<script type="text/javascript">
 		$(".dropdown-separate li > a").click(function() {
 			$("#separate").val($(this).attr('value'));
@@ -324,15 +372,47 @@
 			$(".chungcheong").val($(this).attr('value'));
 		});
 
-		
+		$(".dropdown-gyeongsang li > a").click(function() {
+			$(".gyeongsang").val($(this).attr('value'));
+		});
 
+		$(".dropdown-jeolla li > a").click(function() {
+			$(".jeolla").val($(this).attr('value'));
+		});
+
+		$(".dropdown-gangwon li > a").click(function() {
+			$(".gangwon").val($(this).attr('value'));
+		});
+
+		$(".dropdown-jeju li > a").click(function() {
+			$(".jeju").val($(this).attr('value'));
+		});
+		
+		
 		var path = '${path}';
 		if (path == 'Write') {
 			$("#num").remove();
 		}
 
+		var fileCount = 1;
+
+			
+
+		
+		$("#file").on("click", ".remove", function(){
+			$(this).parent().remove();
+			fileCount--;
+		});
+		
 		$("#add").click(function() {
-			$("#f").append('<input type="file" name="files">');
+
+			if(fileCount < 6){
+				$("#file").append('<div class="form-group"><div><input type="file" name="files"></div><i class="glyphicon glyphicon-remove remove"></i></div>');
+				fileCount++;
+			}else{
+				alert("최대 파일 등록 수는 5개까지만 가능합니다.");
+			}
+			
 		});
 	</script>
 
