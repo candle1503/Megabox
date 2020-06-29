@@ -57,7 +57,7 @@
 		resultType="TheaterVO">
 		select * from theater where localCode='제주'
 	</select>
-ss
+
 </mapper>
   
   

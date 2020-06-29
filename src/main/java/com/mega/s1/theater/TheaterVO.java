@@ -19,5 +19,5 @@ public class TheaterVO {
 	@NotEmpty(message = "주차안내를 적어주세요.")
 	private String parking;
 	
-	ss
+	
 }

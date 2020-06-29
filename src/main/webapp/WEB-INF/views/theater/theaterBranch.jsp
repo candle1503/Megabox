@@ -39,23 +39,32 @@
 				<div class="bg-mask"></div>
 
 				<!-- theater-all -->
+
+				<script type="text/javascript">
+					$('li.headtab').click(function() {
+						$('li.headtab').removeClass('on');
+						$(this).addClass('on');
+					})
+				</script>
+
 				<div class="theater-all">
 					<!-- theater-area-list -->
 					<div class="theater-area-list">
 						<ul class="area-depth1">
 
 
-							<li><a href="" class="depth1" title="서울 선택">서울</a>
+							<li class="on headtab"><a href="" class="depth1"
+								title="서울 선택">서울</a>
 								<div class="area-depth2">
 									<ul>
 
-										<li class="on"><a href="/theater?brchNo=1372"
-											title="강남 상세보기">강남 </a></li>
-
-										<li><a href="/theater?brchNo=1359" title="강남대로(씨티) 상세보기">강남대로(씨티)
+										<li><a href="/theater?brchNo=1372" title="강남 상세보기">강남
 
 
 										</a></li>
+
+										<li class="on"><a href="/theater?brchNo=1359"
+											title="강남대로(씨티) 상세보기">강남대로(씨티) </a></li>
 
 										<li><a href="/theater?brchNo=1341" title="강동 상세보기">강동
 
@@ -151,7 +160,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="경기 선택">경기</a>
+							<li class="headtab"><a href="" class="depth1" title="경기 선택">경기</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -298,7 +307,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="인천 선택">인천</a>
+							<li class=""><a href="" class="depth1" title="인천 선택">인천</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -336,7 +345,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="대전/충청/세종 선택">대전/충청/세종</a>
+							<li class=""><a href="" class="depth1" title="대전/충청/세종 선택">대전/충청/세종</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -365,9 +374,9 @@
 
 
 
+												<i class="iconset ico-theater-new"></i>
 
 
-												<i class="iconset ico-theater-open"></i>
 
 
 
@@ -389,9 +398,9 @@
 
 
 
+												<i class="iconset ico-theater-new"></i>
 
 
-												<i class="iconset ico-theater-open"></i>
 
 
 
@@ -437,7 +446,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="부산/대구/경상 선택">부산/대구/경상</a>
+							<li class=""><a href="" class="depth1" title="부산/대구/경상 선택">부산/대구/경상</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -559,9 +568,9 @@
 
 
 
+												<i class="iconset ico-theater-new"></i>
 
 
-												<i class="iconset ico-theater-open"></i>
 
 
 
@@ -577,7 +586,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="광주/전라 선택">광주/전라</a>
+							<li class=""><a href="" class="depth1" title="광주/전라 선택">광주/전라</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -630,7 +639,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="강원 선택">강원</a>
+							<li class=""><a href="" class="depth1" title="강원 선택">강원</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -658,7 +667,7 @@
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="제주 선택">제주</a>
+							<li class=""><a href="" class="depth1" title="제주 선택">제주</a>
 								<div class="area-depth2">
 									<ul>
 
@@ -674,7 +683,7 @@
 					</div>
 					<!--// theater-area-list -->
 
-					<p class="name">강남</p>
+					<p class="name">강남대로(씨티)</p>
 
 					<div class="btn-util right">
 
@@ -698,6 +707,7 @@
 						</div>
 					</div>
 				</div>
+
 				<!--// theater-detail-cont -->
 			</div>
 			<!--// theater-detail-page -->

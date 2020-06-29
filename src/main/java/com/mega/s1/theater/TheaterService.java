@@ -54,5 +54,5 @@ public class TheaterService {
 
 		return theaterRepository.theaterNameJeju();
 	}
-ss
+
 }
