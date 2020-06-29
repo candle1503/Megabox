@@ -20,7 +20,7 @@ public class TheaterController {
 
 	@Autowired
 	private TheaterService theaterService;
-	
+
 	@Autowired
 	private NoticeService noticeService;
 
@@ -51,15 +51,18 @@ public class TheaterController {
 
 		ar = theaterService.theaterNameJeju();
 		mv.addObject("arJeju", ar);
-		
+
 		Pager pager = new Pager();
-		
+
 		List<BoardVO> ar2 = noticeService.boardList(pager);
-		
-		mv.addObject("notice",ar2);
+
+		mv.addObject("notice", ar2);
+
+		ar = theaterService.theaterNewBranchSelect();
+
+		mv.addObject("newBranch", ar);
 
 		mv.setViewName("theater/theaterMain");
-		
 
 		return mv;
 	}
@@ -70,6 +73,36 @@ public class TheaterController {
 		ModelAndView mv = new ModelAndView();
 
 		theaterVO = theaterService.theaterBranchSelect(theaterVO);
+
+		List<TheaterVO> ar = theaterService.theaterNameSeoul();
+		mv.addObject("arSeoul", ar);
+
+		ar = theaterService.theaterNameGyeonggi();
+		mv.addObject("arGyeonggi", ar);
+
+		ar = theaterService.theaterNameIncheon();
+		mv.addObject("arIncheon", ar);
+
+		ar = theaterService.theaterNameChungcheong();
+		mv.addObject("arChungcheong", ar);
+
+		ar = theaterService.theaterNameGyeongsang();
+		mv.addObject("arGyeongsang", ar);
+
+		ar = theaterService.theaterNameJeolla();
+		mv.addObject("arJeolla", ar);
+
+		ar = theaterService.theaterNameGangwon();
+		mv.addObject("arGangwon", ar);
+
+		ar = theaterService.theaterNameJeju();
+		mv.addObject("arJeju", ar);
+
+		Pager pager = new Pager();
+
+		List<BoardVO> ar2 = noticeService.boardList(pager);
+
+		mv.addObject("notice", ar2);
 
 		mv.addObject("vo", theaterVO);
 		mv.setViewName("theater/theaterBranch");

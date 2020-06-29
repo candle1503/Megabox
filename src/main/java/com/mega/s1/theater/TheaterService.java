@@ -11,6 +11,10 @@ public class TheaterService {
 	@Autowired
 	private TheaterRepository theaterRepository;
 	
+	public List<TheaterVO> theaterNewBranchSelect() throws Exception{
+		return theaterRepository.theaterNewBranchSelect();		
+	}
+	
 	public TheaterVO theaterBranchSelect(TheaterVO theaterVO) throws Exception{
 		return theaterRepository.theaterBranchSelect(theaterVO);		
 	}

@@ -6,9 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface TheaterRepository {
-	
-	//Branch 1개 가져오기
+
+	// 최신 3개
+	public List<TheaterVO> theaterNewBranchSelect() throws Exception;
+
+	// Branch 1개 가져오기
 	public TheaterVO theaterBranchSelect(TheaterVO theaterVO) throws Exception;
+
 	// 지역별 리스트
 	public List<TheaterVO> theaterNameSeoul() throws Exception;
 
