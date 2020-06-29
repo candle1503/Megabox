@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.board.BoardVO;
 import com.mega.s1.board.notice.NoticeService;
+import com.mega.s1.board.notice.NoticeVO;
 import com.mega.s1.util.Pager;
 
 @Controller
@@ -54,7 +55,7 @@ public class TheaterController {
 		
 		Pager pager = new Pager();
 		
-		List<BoardVO> ar2 = noticeService.boardList(pager);
+		List<NoticeVO> ar2 = noticeService.boardList(pager);
 		
 		mv.addObject("notice",ar2);
 

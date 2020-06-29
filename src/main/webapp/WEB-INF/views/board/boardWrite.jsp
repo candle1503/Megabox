@@ -19,15 +19,28 @@
   	.noticeError{
   		color: red;
   	}
+  	
+  	.con{
+  		
+  	}
   		
   </style>
+  
+  <c:import url="../template/header_css.jsp"></c:import>
   
 </head>
 
 <body>
 
-<div class="container">
+	<c:import url="../template/header.jsp"></c:import>
 
+<!-- <div class="container"></div> -->
+
+<div class="container has-lnb">
+
+	<div class="inner-wrap">
+
+	<div id="contents" class="con" style="margin: 0 150px 0 0;">
 		<form:form modelAttribute="noticeVO" class="form-horizontal"
 			action="${board}${path}" method="POST" enctype="multipart/form-data">
 			<form:input path="num" type="hidden" id="num" />
@@ -36,16 +49,16 @@
 				<label class="control-label col-sm-2" for="title">제목:</label>
 				<div class="col-sm-10">
 					<form:input path="title" type="text" class="form-control"
-						id="title" placeholder="Enter title" value="${vo.title}"/>
+						id="title" placeholder="제목을 입력해주세요." value="${vo.title}"/>
 					<form:errors path="title" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="contents">내용:</label>
-				<div class="col-sm-10">
-					<form:textarea path="contents" rows="" cols="" class="form-control"
-						id="summernote" value="${vo.contents}"></form:textarea>
+				<div class="col-sm-10"> 
+					<form:textarea path="contents" rows="10" cols="" class="form-control"
+						id="summernote" placeholder="내용을 입력해주세요." value="${vo.contents}"></form:textarea>
 					<form:errors path="contents" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
@@ -56,7 +69,7 @@
 					<div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button"
 							data-toggle="dropdown">
-							구분을 골라주세요 <span class="caret"></span>
+							구분을 선택해주세요 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-separate">
 							<li><a href="#" value="공지">공지</a></li>
@@ -66,7 +79,7 @@
 						</ul>
 					</div>
 					<form:input path="separate" type="text" class="form-control"
-						id="separate" placeholder="Enter separate" readonly="true" value="${vo.separate}"/>
+						id="separate" placeholder="공지 / 이벤트 / 무대인사 / 라이브뷰잉" readonly="true" value="${vo.separate}"/>
 					<form:errors path="separate" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
@@ -77,7 +90,7 @@
 					<div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button"
 							data-toggle="dropdown">
-							지역을 골라주세요 <span class="caret"></span>
+							지역을 선택해주세요 <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-localCode">
 							<li><a href="#" value="서울">서울</a></li>
@@ -92,7 +105,7 @@
 						</ul>
 					</div>
 					<form:input path="localCode" type="text" class="form-control"
-						id="localCode" placeholder="Enter localCode" readonly="true" value="${vo.localCode}"/>
+						id="localCode" placeholder="지역을 입력해주세요." readonly="true" value="${vo.localCode}"/>
 					<form:errors path="localCode" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
@@ -200,7 +213,7 @@
 
 					<form:input path="name" type="text"
 						class="form-control seoul gyeonggi incheon chungcheong gyeongsang jeolla gangwon jeju" id="name"
-						placeholder="Enter name" readonly="true" value="${vo.name}"/>
+						placeholder="극장을 선택해주세요." readonly="true" value="${vo.name}"/>
 					<form:errors path="name" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
@@ -333,38 +346,44 @@
 				</div>
 			</div> --%>
 			
-			<div class="form-group">
+			<div class="form-group"> 
 				<div class="col-sm-10">
-					<input type="button" class="btn btn-info" id="add" value="FileAdd" >
-				</div>
+					<input type="button" class="btn btn-info" id="add" value="첨부파일 추가" style="margin-left: 80px;">
+				</div> 
 			</div>
-			<div class="form-group" id="file"></div>
+			<div class="form-group" id="file" style="margin-left: 95px;"></div>
 
-				<div class="fileDown">
+				<div class="fileDown" style="margin-left: 80px; margin-bottom: 50px;">
 					<c:forEach items="${vo.noticeFileVOs}" var="fileVO">
 						<div class="fileSub">
 							<span style="font-weight: bolder;">* 첨부 파일 다운로드 *</span><br>
 							<a href=""> -
-								${fileVO.oriName}</a><a href="./fileDelete?num=${vo.num}" class="btn btn-danger" id="fdc">FileDelete</a>
+								${fileVO.oriName}</a><a href="./fileDelete?num=${vo.num}" class="btn btn-danger" id="fdc">첨부파일 삭제</a>
 						</div>
 					</c:forEach>
 				</div>
-				
-				<!-- <div class="fileDownCancel">
-					<a href="./fileDelete?num=" class="btn btn-danger" id="fdc">FileDelete</a>
-					<input type="button" id="fdc" value="FileCancel">
-				</div> -->
-
 
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">작성</button>
+					<c:if test="${path eq 'Write'}">
+						<a href="./${board}List" class="btn btn-primary" style="color:white;">뒤로가기</a>
+					</c:if>
+					<c:if test="${path eq 'Update'}">
+						<a href="./${board}Select?num=${vo.num}" class="btn btn-primary" style="color:white;">뒤로가기</a>
+					</c:if>
 				</div>
 			</div>
+			
 		</form:form>
 
+		</div>
+		</div>
+
 	</div>
+	
+	<c:import url="../template/footer.jsp"></c:import>
 
 
 	<script type="text/javascript">
@@ -440,9 +459,6 @@
 		$("#fdc").click(function(){
 			$(".fileSub > span").remove();
 			$(".fileSub > a").remove();
-
-			
-			
 		});
 
 		

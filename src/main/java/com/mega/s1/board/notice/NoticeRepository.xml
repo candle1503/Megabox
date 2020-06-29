@@ -28,16 +28,30 @@
 	<sql id="search">
 		like concat('%', #{search}, '%')
 	</sql>
+	
+	<sql id="nameSearch">
+		like concat('%', #{name}, '%')
+	</sql>
 
 
 	<select id="boardList" parameterType="Pager" resultType="NoticeVO">
-		select * from notice where title
+		select * from notice where name 
+		<include refid="nameSearch"></include>
+		and 
+		title
 		<include refid="search"></include>
 		order by num desc limit #{startRow}, 10
 	</select>
 	
+	<select id="localCodeNameList" parameterType="TheaterVO" resultType="TheaterVO">
+		select name from theater
+	</select>
+	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
-		select count(num) from notice where title		<include refid="search"></include>
+		select count(num) from notice where name 
+		<include refid="nameSearch"></include>
+		and
+		title		<include refid="search"></include>
 	</select>
 	
 	<select id="boardSelect" parameterType="NoticeVO" resultMap="selectResult">

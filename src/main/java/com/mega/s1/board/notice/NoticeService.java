@@ -13,6 +13,7 @@ import com.mega.s1.board.BoardVO;
 import com.mega.s1.board.notice.noticeFile.NoticeFileRepository;
 import com.mega.s1.board.notice.noticeFile.NoticeFileVO;
 import com.mega.s1.theater.TheaterRepository;
+import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
 import com.mega.s1.util.Pager;
@@ -61,7 +62,7 @@ public class NoticeService implements BoardService{
 	}
 	
 	@Override
-	public List<BoardVO> boardList(Pager pager) throws Exception {
+	public List<NoticeVO> boardList(Pager pager) throws Exception {
 		pager.makeRow();
 		long totalCount = noticeRepository.boardCount(pager);
 		pager.makePage(totalCount);
@@ -118,5 +119,8 @@ public class NoticeService implements BoardService{
 	}
 	
 	
+	public List<TheaterVO> localCodeNameList() throws Exception{
+		return noticeRepository.localCodeNameList();
+	}
 	
 }

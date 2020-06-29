@@ -1,5 +1,6 @@
 package com.mega.s1.board.notice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -149,10 +150,15 @@ public class NoticeController {
 	}
 	
 	@GetMapping("noticeList")
-	public ModelAndView boardList(Pager pager) throws Exception{
+	public ModelAndView boardList(Pager pager, String name, NoticeVO noticeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BoardVO> ar = noticeService.boardList(pager);
 		
+		List<NoticeVO> ar = noticeService.boardList(pager);
+		
+		
+		
+		List<TheaterVO> theaterArResult = noticeService.localCodeNameList();
+		mv.addObject("localCodeNameList", theaterArResult);
 		
 		long listCount = noticeService.boardCount(pager);
 		 
@@ -171,7 +177,7 @@ public class NoticeController {
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
 		
-		List<BoardVO> ar = noticeService.boardList(pager);
+		List<NoticeVO> ar = noticeService.boardList(pager);
 		
 		
 		mv.addObject("list", ar);

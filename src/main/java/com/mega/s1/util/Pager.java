@@ -24,6 +24,8 @@ public class Pager {
 	
 	private Integer movieNum;
 	
+	private String name;
+	
 	public void makeRow() {
 		this.startRow = (this.getCurPage()-1)*this.getPerPage();
 		this.lastRow = this.getCurPage()*this.getPerPage();
@@ -76,6 +78,13 @@ public class Pager {
 			this.search = "";
 		}
 		return search;
+	}
+	
+	public String getName() {
+		if(this.name == null) {
+			this.name = "";
+		}
+		return name;
 	}
 	
 }

@@ -1212,9 +1212,7 @@
 			
 			<c:import url="./template/footer.jsp"></c:import>
 			
-</body>
 
 </body>
-realtest123
 
 </html>
