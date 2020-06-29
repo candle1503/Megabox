@@ -37,21 +37,21 @@
 					<h2 class="tit">${theaterVO.name} 영화관 정보</h2>
 
 					<div class="box-radius">
-						<textarea class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5;"
+						<textarea class="box-bot" rows="1" cols="93" style="resize: none; background-color: f2f4f5; "
 							readonly="readonly">${theaterVO.name}</textarea>
-						<textarea class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5"
+						<textarea class="box-bot" rows="1" cols="93" style="resize: none; background-color: f2f4f5"
 							readonly="readonly">${theaterVO.localCode}</textarea>
-						<textarea  class="box-bot" rows="1" cols="95" style="resize: none; background-color: f2f4f5"
+						<textarea  class="box-bot" rows="1" cols="93" style="resize: none; background-color: f2f4f5"
 							readonly="readonly">${theaterVO.address}</textarea>
 						<div class="box-top" style="padding-left: 10px">
 							<strong >주차 이용 안내</strong>
 						</div>
-						<textarea class="box-bot" rows="15" cols="95" style="resize: none; background-color: f2f4f5"
+						<textarea class="box-bot" rows="15" cols="93" style="resize: none; background-color: f2f4f5"
 							readonly="readonly">${theaterVO.parking}</textarea>
 						<div class="box-top" style="padding-left: 10px">
 							<strong>극장 정보</strong>
 						</div>
-						<textarea class="box-bot" rows="9" cols="95" style="resize: none; background-color: f2f4f5"
+						<textarea class="box-bot" rows="9" cols="93" style="resize: none; background-color: f2f4f5"
 							readonly="readonly">${theaterVO.info}</textarea>
 					</div>
 				
@@ -62,6 +62,9 @@
 						</a>
 						<a href="./theaterUpdate?theaterNum=${theaterVO.theaterNum}">
 						<input type="button" class="button purple large" value="수정">
+						</a>
+						<a href="./setTheaterRoom">
+						<input type="button" class="button purple large" value="상영시간 관리">
 						</a>
 					</div>
 				</div>

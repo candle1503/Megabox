@@ -7,16 +7,20 @@
 	<typeAliases>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
-	
+		
 		<typeAlias type="com.mega.s1.board.notice.NoticeVO" alias="NoticeVO"/>
 		<typeAlias type="com.mega.s1.board.notice.noticeFile.NoticeFileVO" alias="NoticeFileVO"/>
 		<typeAlias type="com.mega.s1.member.MemberVO" alias="MemberVO"/>
-	
+		<typeAlias type="com.mega.s1.movie.MovieVO" alias="MovieVO"/>
+		<typeAlias type="com.mega.s1.movie.movieFile.MovieFileVO" alias="MovieFileVO"/>
+		<typeAlias type="com.mega.s1.review.ReviewVO" alias="ReviewVO"/>
+		
 		<typeAlias type="com.mega.s1.util.Pager" alias="Pager"/>
 	
 		<typeAlias type="java.util.List" alias="List"/>
 		<typeAlias type="com.mega.s1.member.memberFile.MemberFileVO" alias="MemberFileVO"/>
 		
 		<typeAlias type="com.mega.s1.theater.TheaterVO" alias="TheaterVO"/>
+		<typeAlias type="com.mega.s1.theater.TheaterRoomVO" alias="TheaterRoomVO"/>
 	</typeAliases>
 </configuration>
