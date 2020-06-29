@@ -50,8 +50,14 @@ public class AdminService {
 		return adminRepository.theaterUpdate(theaterVO);
 	}
 	
-	public int theaterRoomSet(TheaterRoomVO theaterRoomVO) throws Exception{
-		return adminRepository.theaterRoomSet(theaterRoomVO);
+	public int theaterRoomSet(TheaterRoomVO theaterRoomVO, int roomCount) throws Exception{
+		
+		for(int i=0; i<=roomCount-1; i++) {
+			int roomNum= i+1;
+			theaterRoomVO.setRoomName(theaterRoomVO.getName()+ roomNum+"관");
+			adminRepository.theaterRoomSet(theaterRoomVO);
+		}
+		return 0;
 	}
 	
 }

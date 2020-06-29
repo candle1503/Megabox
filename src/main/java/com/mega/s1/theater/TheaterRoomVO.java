@@ -9,8 +9,7 @@ public class TheaterRoomVO {
 
 	private String name;
 	private String roomName;
-	private Time startTime;
-	private String seatCount;
-	private int movieNum;
+	private int theaterRoomCode;
+	private int seatCount;
 	
 }

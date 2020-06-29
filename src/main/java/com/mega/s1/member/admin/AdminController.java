@@ -61,26 +61,17 @@ public class AdminController {
 	}
 	
 	@PostMapping("theaterAdd")
-	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult, String roomCount) throws Exception{
+	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		int roomCount = theaterVO.getRoomCount();
 		TheaterRoomVO roomVO = new TheaterRoomVO();
 		if (bindingResult.hasErrors()) {
 			mv.addObject("theaterVO", theaterVO);
 			mv.setViewName("admin/adminAddTheater");
 		}else {
 			adminService.addTheater(theaterVO);
-			if(theaterVO.getRoomCount()==1) {
-				roomVO.setName(theaterVO.getName());
-				roomVO.setRoomName(theaterVO.getName()+" 1관");
-				adminService.theaterRoomSet(roomVO);
-				System.out.println("ok!!");
-			}else if(theaterVO.getRoomCount()==2) {
-				
-			}else if(theaterVO.getRoomCount()==3) {
-				
-			}else if(theaterVO.getRoomCount()==4) {
-				
-			}
+					roomVO.setName(theaterVO.getName());
+					adminService.theaterRoomSet(roomVO,roomCount);
 			mv.setViewName("redirect:./theaterList");
 		}
 		return mv;
