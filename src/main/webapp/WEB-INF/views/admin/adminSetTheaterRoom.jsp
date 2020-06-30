@@ -46,7 +46,7 @@
 
 						<div class="right">
 							<p class="reset">
-								<em class="font-orange">*</em> 필수
+								<input type ="button" value="달력">
 							</p>
 						</div>
 					</div>
@@ -63,7 +63,7 @@
 										<th scope="row">
 											<label for="phone">
 												
-												<select  class="btn dropdown-toggle btn-default bs-placeholder timeChoose" style="border: none; background-color:#f7f8f9;" >
+												<select  class="btn dropdown-toggle btn-default bs-placeholder timeChoose" style="border: none; background-color:#f7f8f9;"  >
 												 	<option value="">상영 시간 선택</option>
 													<option value=7>07:00</option>
 													<option value=8>08:00</option>
@@ -84,23 +84,32 @@
 												</select>									
 											</label></th>
 										<td style="background-color:#f7f8f9;">
-												<select  class="input-text w500px" style="border: none; background-color:#f7f8f9; width: 550px" >
+												<select  class="input-text w500px movieSelect" style="border: none; background-color:#f7f8f9; width: 550px" >
 												 	<option value="">영화 선택</option>
+												 	<option value="포레스트검프">포레스트검프</option>
+												 	<option value="..">..</option>
 												</select>
 									</tr>
 									
 
 								</tbody>
 							</table>
-								<button type="submit" class="button purple" id="updateBtn" style="margin-left: 785px">등록</button>
+								<input type=button class="button reset" style=" float:right;" value="RESET">
+								<button type="submit" class="button purple" style="margin-left: 700px;" >저장</button>
 						</div>
 
 					<script type="text/javascript">
-
 						var timeAddContents = $('.timeAdd').html();
 						var lastTime = 0;
 						var timeGap;
 						var listCount = 1;
+
+						$('.reset').on('click', function(){
+							$('.timeAdd').empty();
+							$('.timeAdd').prepend(timeAddContents);
+							lastTime = 0;
+							listCount = 1;
+							})
 
 						
 						$('.timeAddBtn').on('click',function() {
@@ -111,8 +120,12 @@
 						}
 						
 						var	timeChoose = $('.timeChoose').val();
-						if(timeChoose == ''){
+						var movieSelected = $('.movieSelect').val();
+						if(timeChoose == '' ){
 							alert("시간을 먼저 선택해주세요");
+							return false;
+						}else if(movieSelected ==''){
+							alert("영화를 선택해주세요");
 							return false;
 						}
 						timeGap = parseInt(timeChoose)-lastTime;
@@ -123,10 +136,8 @@
 								}
 							}
 						lastTime = timeChoose;
-							
+							$('.timeChoose').attr("disabled","disabled");
  							$('.timeAdd').prepend(timeAddContents);
- 							alert("선택한 시간: "+ timeChoose);
- 							alert("시간 차이 : "+ timeGap);
 
 							listCount += 1;
 						})
