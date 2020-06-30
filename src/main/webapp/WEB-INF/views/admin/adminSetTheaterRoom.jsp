@@ -100,39 +100,7 @@ var G_calendar = {
 $('#calendar').datepicker(G_calendar);
 $('#calendar2').datepicker(G_calendar);
 </script>
-						<!-- 시작일보다 마지막날이 적으면 ""넣어줌 -->
-							<script type="text/javascript">
-
-							var startDay;
-							var endDay;
-
-
-							$('#calendar').change( function(){
-								startDay = $('#calendar').val();
-								if(startDay > endDay){
-									alert("마지막 날짜 이전으로 설정해주세요.");
-									$('#calendar').val("시작날짜");
-								}
-								alert(startDay);
-							})
 							
-							$('#calendar2').change(function(){
-								endDay=$('#calendar2').val()
-								
-							if($('#calendar').val()=="시작날짜"){
-								alert("시작날짜를 먼저 선택해주세요.");
-								$('#calendar2').val("마지막날짜");
-								}
-								
-							if(endDay < startDay){
-								alert("시작날짜 이후로 설정해주세요.");
-								$('#calendar2').val("마지막날짜");
-								}
-							})
-							
-							
-								
-							</script>
 							<div class="table-wrap mb40">
 								<table class="board-form">
 									<colgroup>
@@ -182,19 +150,48 @@ $('#calendar2').datepicker(G_calendar);
 									style="margin-left: 700px;">저장</button>
 							</div>
 
+						<!-- 버튼들 유효성 검사 -->
 							<script type="text/javascript">
 								var timeAddContents = $('.timeAdd').html();
 								var lastTime = 0;
 								var timeGap;
 								var listCount = 1;
-
+								var startDay;
+								var endDay;
+								
 								$('.resetBTN').on('click', function() {
 									$('.timeAdd').empty();
 									$('.timeAdd').prepend(timeAddContents);
 									lastTime = 0;
 									listCount = 1;
+									$('#calendar').val("시작날짜");
+									$('#calendar2').val("마지막날짜");
+									startDay="시작날짜";
+									endDay="마지막날짜";
 								})
+							
 
+							$('#calendar').change( function(){
+								startDay = $('#calendar').val();
+								if(startDay > endDay){
+									alert("마지막 날짜 이전으로 설정해주세요.");
+									$('#calendar').val("시작날짜");
+								}
+							})
+							
+							$('#calendar2').change(function(){
+								endDay=$('#calendar2').val()
+								
+							if($('#calendar').val()=="시작날짜"){
+								alert("시작날짜를 먼저 선택해주세요.");
+								$('#calendar2').val("마지막날짜");
+								}else if(endDay < startDay){
+								alert("시작날짜 이후로 설정해주세요.");
+								$('#calendar2').val("마지막날짜");
+								}
+							})
+								
+								
 								$('.timeAddBtn')
 										.on(
 												'click',
