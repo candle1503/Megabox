@@ -15,11 +15,11 @@
 <!-- dataPicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
 </head>
 
-
-
 <body>
+
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="body-wrap">
 
@@ -36,30 +36,6 @@
 				</div>
 			</div>
 
-
-
-
-
-<script type="text/javascript">
-var G_calendar = {
-	startDate: '-0d',
-    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-    dayNamesMin: ['일','월','화','수','목','금','토'],
-    weekHeader: 'Wk',
-    dateFormat: 'yy-mm-dd',	
-    autoclose : true,
-    showOn:"button",
-    buttonImage:"/img/calendar.png", 
-    multidate : true,
-    multidateSeparator :",",
-    buttonImageOnly:false,
-    showMonthAfterYear: true,
-    maxDate: '+2Y',
-    minDate: '-10y',
-    	closeText: '닫기'
-};
-
-</script>
 			<div class="inner-wrap">
 
 				<c:import url="../template/memberSidebar.jsp"></c:import>
@@ -79,29 +55,83 @@ var G_calendar = {
 
 								<div class="right">
 									<p class="reset">
-										<input type="button" class="button calendarOpen" value="달력" >
+									<input id='calendar' style=" left: 1300px;" value="시작날짜" >
+									<input id='calendar2' style="left: 1400px; " value="마지막날짜" >
 									</p>
 								</div>
 								
-								<div id='calendar' style=" position: absolute;  top: 260px; left: 1510px; z-index: 1; "></div>
 							</div>
 
-							<script type="text/javascript">
-								var open = 0;
 
-								$('.calendarOpen').on('click', function(){
-									alert(open);
-									if(open%2 == 0){
-										$('#calendar').datepicker(G_calendar);
-										open += 1;
-									}else{
-										$('#calendar').datepicker({
-										    closeText
-										});
-										open += 1;
-										}
-									})
-									
+<!-- 달력 설정 -->
+							<script type="text/javascript">
+
+var G_calendar = {
+		startDate: '-0d',
+	    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    dayNamesMin: ['일','월','화','수','목','금','토'],
+	    weekHeader: 'Wk',
+	    dateFormat: 'yy-mm-dd',	
+	    autoclose : true,
+	    showOn:"both",
+		buttonImageOnly:false,
+	    showMonthAfterYear: true,
+	    maxDate: '4w',
+	    minDate: '0d'
+	        
+	}
+
+	var G_calendar = {
+			startDate: '-0d',
+		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    dayNamesMin: ['일','월','화','수','목','금','토'],
+		    weekHeader: 'Wk',
+		    dateFormat: 'yy-mm-dd',	
+		    autoclose : true,
+		    showOn:"both",
+			buttonImageOnly:false,
+		    showMonthAfterYear: true,
+		    maxDate: '4w',
+		    minDate: '0d',
+		    closeText: '닫기'
+		        
+	}
+
+$('#calendar').datepicker(G_calendar);
+$('#calendar2').datepicker(G_calendar);
+</script>
+						<!-- 시작일보다 마지막날이 적으면 ""넣어줌 -->
+							<script type="text/javascript">
+
+							var startDay;
+							var endDay;
+
+
+							$('#calendar').change( function(){
+								startDay = $('#calendar').val();
+								if(startDay > endDay){
+									alert("마지막 날짜 이전으로 설정해주세요.");
+									$('#calendar').val("시작날짜");
+								}
+								alert(startDay);
+							})
+							
+							$('#calendar2').change(function(){
+								endDay=$('#calendar2').val()
+								
+							if($('#calendar').val()=="시작날짜"){
+								alert("시작날짜를 먼저 선택해주세요.");
+								$('#calendar2').val("마지막날짜");
+								}
+								
+							if(endDay < startDay){
+								alert("시작날짜 이후로 설정해주세요.");
+								$('#calendar2').val("마지막날짜");
+								}
+							})
+							
+							
+								
 							</script>
 							<div class="table-wrap mb40">
 								<table class="board-form">
