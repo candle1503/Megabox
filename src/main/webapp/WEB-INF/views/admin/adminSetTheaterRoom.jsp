@@ -100,12 +100,21 @@
 						var timeAddContents = $('.timeAdd').html();
 						var lastTime = 0;
 						var timeGap;
+						var listCount = 1;
+
+						
 						$('.timeAddBtn').on('click',function() {
-							var	timeChoose = $('.timeChoose').val();
-							if(timeChoose == ''){
-								alert("시간을 먼저 선택해주세요");
-								return false;
-								}
+
+						if(listCount > 3){
+							alert("상영은 최대 4번");
+							return false;
+						}
+						
+						var	timeChoose = $('.timeChoose').val();
+						if(timeChoose == ''){
+							alert("시간을 먼저 선택해주세요");
+							return false;
+						}
 						timeGap = parseInt(timeChoose)-lastTime;
 						if(lastTime != 0){
 							if(timeGap < 3){
@@ -118,6 +127,8 @@
  							$('.timeAdd').prepend(timeAddContents);
  							alert("선택한 시간: "+ timeChoose);
  							alert("시간 차이 : "+ timeGap);
+
+							listCount += 1;
 						})
 							
 							
