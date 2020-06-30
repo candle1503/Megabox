@@ -42,11 +42,11 @@
 					<div class="roomNumber">
 					
 					<div class="tit-util mt40 mb10">
-						<h3 class="tit">목동 1관</h3><input class="timeAddBtn" type="button" style="background-color:#f7f8f9; margin-left: 50px; font-size: large;" value="상영시간+">
+						<h3 class="tit">목동 1관</h3><input class="timeAddBtn button" type="button" style="margin-left: 50px; font-size: large;" value="상영시간+">
 
 						<div class="right">
 							<p class="reset">
-								<input type ="button" value="달력">
+								<input type ="button" class="button" value="달력">
 							</p>
 						</div>
 					</div>
@@ -94,7 +94,7 @@
 
 								</tbody>
 							</table>
-								<input type=button class="button reset" style=" float:right;" value="RESET">
+								<input type=button class="button resetBTN" style=" float:right;" value="RESET">
 								<button type="submit" class="button purple" style="margin-left: 700px;" >저장</button>
 						</div>
 
@@ -104,7 +104,7 @@
 						var timeGap;
 						var listCount = 1;
 
-						$('.reset').on('click', function(){
+						$('.resetBTN').on('click', function(){
 							$('.timeAdd').empty();
 							$('.timeAdd').prepend(timeAddContents);
 							lastTime = 0;
