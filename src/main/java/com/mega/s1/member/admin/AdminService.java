@@ -16,6 +16,7 @@ public class AdminService {
 	@Autowired
 	private AdminRepository adminRepository;
 	
+	
 	public List<MemberVO> getMemberList(Pager pager) throws Exception{
 		pager.makeRow();
 		long totalCount = adminRepository.getMemberCount(pager);
@@ -58,6 +59,10 @@ public class AdminService {
 			adminRepository.theaterRoomSet(theaterRoomVO);
 		}
 		return 0;
+	}
+	
+	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception{
+		return adminRepository.getRoomList(theaterVO);
 	}
 	
 }

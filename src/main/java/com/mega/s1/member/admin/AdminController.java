@@ -112,8 +112,16 @@ public class AdminController {
 	}
 	
 	@GetMapping("setTheaterRoom")
-	public ModelAndView setTheaterRoom() throws Exception{
+	public ModelAndView setTheaterRoom(TheaterVO theaterVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		List<TheaterRoomVO> roomVOs = adminService.getRoomList(theaterVO);
+		
+		System.out.println(roomVOs.get(0).getRoomName());
+		System.out.println(roomVOs.get(1).getRoomName());
+		System.out.println(roomVOs.get(2).getRoomName());
+		
+		mv.addObject("list", roomVOs);
 		
 		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;

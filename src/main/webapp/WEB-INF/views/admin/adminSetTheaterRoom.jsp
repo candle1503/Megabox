@@ -43,13 +43,15 @@
 				<form action="./memberUpdate" method="post">
 
 					<div id="contents">
-						<h2 class="tit">목동 상영관 설정</h2>
+						<h2 class="tit">${theaterVO.name} 상영관 설정</h2>
 
 						<!-- c:foreach 로 관수 마다 뿌려져야함 -->
+						
+						<c:forEach items="${list}" var="vo" >
 						<div class="roomNumber">
 
 							<div class="tit-util mt40 mb10">
-								<h3 class="tit">목동 1관</h3>
+								<h3 class="tit">${vo.roomName}</h3>
 								<input class="timeAddBtn button" type="button"
 									style="margin-left: 50px; font-size: large;" value="상영시간+">
 
@@ -61,45 +63,6 @@
 								</div>
 								
 							</div>
-
-
-<!-- 달력 설정 -->
-							<script type="text/javascript">
-
-var G_calendar = {
-		startDate: '-0d',
-	    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-	    dayNamesMin: ['일','월','화','수','목','금','토'],
-	    weekHeader: 'Wk',
-	    dateFormat: 'yy-mm-dd',	
-	    autoclose : true,
-	    showOn:"both",
-		buttonImageOnly:false,
-	    showMonthAfterYear: true,
-	    maxDate: '4w',
-	    minDate: '0d'
-	        
-	}
-
-	var G_calendar = {
-			startDate: '-0d',
-		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    dayNamesMin: ['일','월','화','수','목','금','토'],
-		    weekHeader: 'Wk',
-		    dateFormat: 'yy-mm-dd',	
-		    autoclose : true,
-		    showOn:"both",
-			buttonImageOnly:false,
-		    showMonthAfterYear: true,
-		    maxDate: '4w',
-		    minDate: '0d',
-		    closeText: '닫기'
-		        
-	}
-
-$('#calendar').datepicker(G_calendar);
-$('#calendar2').datepicker(G_calendar);
-</script>
 							
 							<div class="table-wrap mb40">
 								<table class="board-form">
@@ -149,9 +112,47 @@ $('#calendar2').datepicker(G_calendar);
 								<button type="submit" class="button purple"
 									style="margin-left: 700px;">저장</button>
 							</div>
-
-						<!-- 버튼들 유효성 검사 -->
+						</c:forEach>
+						
 							<script type="text/javascript">
+							<!-- 달력 설정 -->
+							var G_calendar = {
+									startDate: '-0d',
+								    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+								    dayNamesMin: ['일','월','화','수','목','금','토'],
+								    weekHeader: 'Wk',
+								    dateFormat: 'yy-mm-dd',	
+								    autoclose : true,
+								    showOn:"both",
+									buttonImageOnly:false,
+								    showMonthAfterYear: true,
+								    maxDate: '4w',
+								    minDate: '0d'
+								        
+								}
+
+								var G_calendar = {
+										startDate: '-0d',
+									    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+									    dayNamesMin: ['일','월','화','수','목','금','토'],
+									    weekHeader: 'Wk',
+									    dateFormat: 'yy-mm-dd',	
+									    autoclose : true,
+									    showOn:"both",
+										buttonImageOnly:false,
+									    showMonthAfterYear: true,
+									    maxDate: '4w',
+									    minDate: '0d',
+									    closeText: '닫기'
+									        
+								}
+
+							$('#calendar').datepicker(G_calendar);
+							$('#calendar2').datepicker(G_calendar);
+
+
+							
+							<!-- 버튼들 유효성 검사 -->
 								var timeAddContents = $('.timeAdd').html();
 								var lastTime = 0;
 								var timeGap;
@@ -236,189 +237,7 @@ $('#calendar2').datepicker(G_calendar);
 
 
 						</div>
-
-						<div class="roomNumber">
-
-							<div class="tit-util mt40 mb10">
-								<h3 class="tit">목동 2관</h3>
-
-								<div class="right">
-									<p class="reset">
-										<em class="font-orange">*</em> 필수
-									</p>
-								</div>
-							</div>
-
-							<div class="table-wrap mb40">
-								<table class="board-form">
-									<colgroup>
-										<col style="width: 180px;">
-										<col>
-									</colgroup>
-									<tbody>
-										<!-- +버튼 누르면 아래로 추가되게 -->
-										<tr>
-											<th scope="row"><label for="phone"> <select
-													class="btn dropdown-toggle btn-default bs-placeholder"
-													style="border: none; background-color: #f7f8f9;">
-														<option value="">상영 시간 선택</option>
-														<option value="7">07:00</option>
-														<option value="8">08:00</option>
-														<option value="9">09:00</option>
-														<option value="10">10:00</option>
-														<option value="11">11:00</option>
-														<option value="12">12:00</option>
-														<option value="13">13:00</option>
-														<option value="14">14:00</option>
-														<option value="15">15:00</option>
-														<option value="16">16:00</option>
-														<option value="17">17:00</option>
-														<option value="18">18:00</option>
-														<option value="19">19:00</option>
-														<option value="20">20:00</option>
-														<option value="21">21:00</option>
-														<option value="22">22:00</option>
-												</select>
-											</label></th>
-											<td style="background-color: #f7f8f9;"><select
-												class="input-text w500px"
-												style="border: none; background-color: #f7f8f9; width: 550px">
-													<option value="">영화 선택</option>
-											</select> <input type="button"
-												style="background-color: #f7f8f9; margin-left: 50px; font-size: large;"
-												value="+">
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-
-
-
-
-						</div>
-
-						<div class="roomNumber">
-
-							<div class="tit-util mt40 mb10">
-								<h3 class="tit">목동 3관</h3>
-
-								<div class="right">
-									<p class="reset">
-										<em class="font-orange">*</em> 필수
-									</p>
-								</div>
-							</div>
-
-							<div class="table-wrap mb40">
-								<table class="board-form">
-									<colgroup>
-										<col style="width: 180px;">
-										<col>
-									</colgroup>
-									<tbody>
-										<!-- +버튼 누르면 아래로 추가되게 -->
-										<tr>
-											<th scope="row"><label for="phone"> <select
-													class="btn dropdown-toggle btn-default bs-placeholder"
-													style="border: none; background-color: #f7f8f9;">
-														<option value="">상영 시간 선택</option>
-														<option value="7">07:00</option>
-														<option value="8">08:00</option>
-														<option value="9">09:00</option>
-														<option value="10">10:00</option>
-														<option value="11">11:00</option>
-														<option value="12">12:00</option>
-														<option value="13">13:00</option>
-														<option value="14">14:00</option>
-														<option value="15">15:00</option>
-														<option value="16">16:00</option>
-														<option value="17">17:00</option>
-														<option value="18">18:00</option>
-														<option value="19">19:00</option>
-														<option value="20">20:00</option>
-														<option value="21">21:00</option>
-														<option value="22">22:00</option>
-												</select>
-											</label></th>
-											<td style="background-color: #f7f8f9;"><select
-												class="input-text w500px"
-												style="border: none; background-color: #f7f8f9; width: 550px">
-													<option value="">영화 선택</option>
-											</select> <input type="button"
-												style="background-color: #f7f8f9; margin-left: 50px; font-size: large;"
-												value="+">
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-
-
-
-
-						</div>
-
-						<div class="roomNumber">
-
-							<div class="tit-util mt40 mb10">
-								<h3 class="tit">목동 4관</h3>
-
-								<div class="right">
-									<p class="reset">
-										<em class="font-orange">*</em> 필수
-									</p>
-								</div>
-							</div>
-
-							<div class="table-wrap mb40">
-								<table class="board-form">
-									<colgroup>
-										<col style="width: 180px;">
-										<col>
-									</colgroup>
-									<tbody>
-										<!-- +버튼 누르면 아래로 추가되게 -->
-										<tr>
-											<th scope="row"><label for="phone"> <select
-													class="btn dropdown-toggle btn-default bs-placeholder"
-													style="border: none; background-color: #f7f8f9;">
-														<option value="">상영 시간 선택</option>
-														<option value="7">07:00</option>
-														<option value="8">08:00</option>
-														<option value="9">09:00</option>
-														<option value="10">10:00</option>
-														<option value="11">11:00</option>
-														<option value="12">12:00</option>
-														<option value="13">13:00</option>
-														<option value="14">14:00</option>
-														<option value="15">15:00</option>
-														<option value="16">16:00</option>
-														<option value="17">17:00</option>
-														<option value="18">18:00</option>
-														<option value="19">19:00</option>
-														<option value="20">20:00</option>
-														<option value="21">21:00</option>
-														<option value="22">22:00</option>
-												</select>
-											</label></th>
-											<td style="background-color: #f7f8f9;"><select
-												class="input-text w500px"
-												style="border: none; background-color: #f7f8f9; width: 550px">
-													<option value="">영화 선택</option>
-											</select> <input type="button"
-												style="background-color: #f7f8f9; margin-left: 50px; font-size: large;"
-												value="+">
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-
-
-
-
-						</div>
+						
 						<div class="btn-group mt40">
 							<a href="./getMyPage"> <input type="button"
 								class="button large" value="취소">

@@ -36,4 +36,7 @@ public interface AdminRepository {
 	//theaterRoomSet
 	public int theaterRoomSet(TheaterRoomVO theaterRoomVO) throws Exception;
 	
+	//getRoomList
+	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception;
+	
 }

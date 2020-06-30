@@ -47,5 +47,9 @@
 		insert into theaterRoom values (#{name},#{roomName},0,100)
 	</insert>
 	
+	<select id="getRoomList" parameterType="TheaterVO" resultType="TheaterRoomVO">
+		select * from theaterRoom where name=#{name}
+	</select>
+	
 	
 </mapper>
