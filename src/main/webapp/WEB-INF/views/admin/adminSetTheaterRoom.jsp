@@ -147,23 +147,7 @@
 							var i = 1;
 							
 							while(i<9){
-								
 							$('#calendar'+i).datepicker(G_calendar);
-							
-// 							$('.resetBTN'+i).on('click', function() {
-// 								alert("!!");
-// 								$('.timeAdd'+i).empty();
-// 								$('.timeAdd'+i).prepend(timeAddContents);
-// 								lastTime = 0;
-// 								listCount = 1;
-
-
-// 								$('#calendar'+i).val("시작 날짜");
-// 								$('#calendar'+i+4).val("마지막 날짜");
-// 								startDay="시작날짜";
-// 								endDay="마지막날짜";
-// 							})
-							
 								i += 1;
 							}
 
@@ -172,44 +156,119 @@
 								var lastTime = 0;
 								var timeGap;
 								var listCount = 1;
-								var startDay;
-								var endDay;
+								var startDay1;
+								var startDay2;
+								var startDay3;
+								var startDay4;
+								var endDay5;
+								var endDay6;
+								var endDay7;
+								var endDay8;
 								var j = 1;
 
-// 								while(j<9){
 									
-// 								$('.resetBTN'+i).on('click', function() {
-// 									$('.timeAdd'+i).empty();
-// 									$('.timeAdd'+i).prepend(timeAddContents);
-// 									lastTime = 0;
-// 									listCount = 1;
+								$('.resetBTN').on('click', function() {
+									$('.timeAdd').empty();
+									$('.timeAdd').prepend(timeAddContents);
+									lastTime = 0;
+									listCount = 1;
 
 
-// 									$('#calendar'+i).val("시작 날짜");
-// 									$('#calendar'+i+4).val("마지막 날짜");
-// 									startDay="시작날짜";
-// 									endDay="마지막날짜";
-// 									})
-// 								}
+									$('#calendar').val("시작 날짜");
+									$('#calendar').val("마지막 날짜");
+									startDay="시작날짜";
+									endDay="마지막날짜";
+									})
 							
 
 							$('#calendar1').change( function(){
-								startDay = $('#calendar1').val();
-								if(startDay > endDay){
+								startDay1 = $('#calendar1').val();
+								if(startDay1 > endDay5){
 									alert("마지막 날짜 이전으로 설정해주세요.");
 									$('#calendar1').val("시작날짜");
 								}
 							})
 							
+
+							$('#calendar2').change( function(){
+								startDay2 = $('#calendar2').val();
+								if(startDay2 > endDay6){
+									alert("마지막 날짜 이전으로 설정해주세요.");
+									$('#calendar2').val("시작날짜");
+								}
+							})
+							
+
+							$('#calendar3').change( function(){
+								startDay3 = $('#calendar3').val();
+								if(startDay3 > endDay7){
+									alert("마지막 날짜 이전으로 설정해주세요.");
+									$('#calendar3').val("시작날짜");
+								}
+							})
+							
+
+							$('#calendar4').change( function(){
+								startDay4 = $('#calendar4').val();
+								if(startDay4 > endDay8){
+									alert("마지막 날짜 이전으로 설정해주세요.");
+									$('#calendar4').val("시작날짜");
+								}
+							})
+							
 							$('#calendar5').change(function(){
-								endDay=$('#calendar5').val()
+								endDay5=$('#calendar5').val()
 								
 							if($('#calendar1').val()=="시작날짜"){
 								alert("시작날짜를 먼저 선택해주세요.");
 								$('#calendar5').val("마지막날짜");
-								}else if(endDay < startDay){
+								endDay5 = "마지막날짜";
+								}else if(endDay5 < startDay1){
 								alert("시작날짜 이후로 설정해주세요.");
 								$('#calendar5').val("마지막날짜");
+								endDay5 = "마지막날짜";
+								}
+							})
+								
+							$('#calendar6').change(function(){
+								endDay6=$('#calendar6').val()
+								
+							if($('#calendar2').val()=="시작날짜"){
+								alert("시작날짜를 먼저 선택해주세요.");
+								$('#calendar6').val("마지막날짜");
+								endDay6 = "마지막날짜";
+								}else if(endDay6 < startDay2){
+								alert("시작날짜 이후로 설정해주세요.");
+								$('#calendar6').val("마지막날짜");
+								endDay6 = "마지막날짜";
+								}
+							})
+								
+							$('#calendar7').change(function(){
+								endDay7=$('#calendar7').val()
+								
+							if($('#calendar3').val()=="시작날짜"){
+								alert("시작날짜를 먼저 선택해주세요.");
+								$('#calendar7').val("마지막날짜");
+								endDay7 = "마지막날짜";
+								}else if(endDay7 < startDay3){
+								alert("시작날짜 이후로 설정해주세요.");
+								$('#calendar7').val("마지막날짜");
+								endDay7 = "마지막날짜";
+								}
+							})
+								
+							$('#calendar8').change(function(){
+								endDay8=$('#calendar8').val()
+								
+							if($('#calendar4').val()=="시작날짜"){
+								alert("시작날짜를 먼저 선택해주세요.");
+								$('#calendar8').val("마지막날짜");
+								endDay8 = "마지막날짜";
+								}else if(endDay8 < startDay4){
+								alert("시작날짜 이후로 설정해주세요.");
+								$('#calendar8').val("마지막날짜");
+								endDay8 = "마지막날짜";
 								}
 							})
 								
