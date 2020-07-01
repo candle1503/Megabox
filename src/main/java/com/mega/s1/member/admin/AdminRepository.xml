@@ -43,4 +43,13 @@
 		update theater set name=#{name}, localCode=#{localCode}, address=#{address}, info=#{info}, parking=#{parking} where theaterNum = #{theaterNum}
 	</update>
 	
+	<insert id="theaterRoomSet" parameterType="TheaterRoomVO" keyProperty="theaterRoomCode" useGeneratedKeys="true">
+		insert into theaterRoom values (#{name},#{roomName},0,100)
+	</insert>
+	
+	<select id="getRoomList" parameterType="TheaterVO" resultType="TheaterRoomVO">
+		select * from theaterRoom where name=#{name}
+	</select>
+	
+	
 </mapper>

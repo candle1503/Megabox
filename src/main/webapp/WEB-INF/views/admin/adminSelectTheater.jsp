@@ -7,9 +7,9 @@
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
 
-<link rel="shortcut icon" href="/resources/icon/favicon.ico">
-<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
-<link rel="stylesheet" href="/resources/css/myPage.css" media="all">
+<link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
+<link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
+<link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
 </head>
 
 <body>
@@ -63,8 +63,8 @@
 						<a href="./theaterUpdate?theaterNum=${theaterVO.theaterNum}">
 						<input type="button" class="button purple large" value="수정">
 						</a>
-						<a href="./theaterNotice">
-						<input type="button" class="button purple large" value="공지쓰기">
+						<a href="./setTheaterRoom?name=${theaterVO.name}">
+						<input type="button" class="button purple large" value="상영시간 관리">
 						</a>
 					</div>
 				</div>

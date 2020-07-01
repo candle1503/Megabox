@@ -7,9 +7,9 @@
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
 
-<link rel="shortcut icon" href="/resources/icon/favicon.ico">
-<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
-<link rel="stylesheet" href="/resources/css/myPage.css" media="all">
+<link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
+<link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
+<link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
 </head>
 
 <body>
@@ -41,8 +41,9 @@
 						<div class="box-radius" style="margin-bottom: 0px;">
 							<form:textarea path="name" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화관 이름을 입력하세요." />
+							<form:errors path="name"></form:errors>
 
-							<select id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " name="localCode">
+							<form:select path="localCode" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " >
 							 	<option value="">지역선택</option>
 								<option value="서울">서울</option>
 								<option value="경기">경기</option>
@@ -52,20 +53,34 @@
 								<option value="광주/전라">광주/전라</option>
 								<option value="강원">강원</option>
 								<option value="제주">제주</option>
-							</select>
+							<form:errors path="localCode"></form:errors>
+							</form:select>
 
 							<form:textarea path="address" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화관 주소를 입력하세요." />
+							<form:errors path="address"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>주차 이용 안내</strong>
 							</div>
 							<form:textarea path="parking" class="box-bot" rows="15" cols="93"
 								style="resize: none;" placeholder="주차안내 메세지를 입력하세요." />
+							<form:errors path="parking"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>극장 정보</strong>
 							</div>
 							<form:textarea path="info" class="box-bot" rows="9" cols="93"
 								style="resize: none;" placeholder="극장 소개를 해주세요." />
+							<form:errors path="info"></form:errors>
+								
+							<form:select path="roomCount" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " >
+							 	<option value="">상영관 갯수를 정해주세요.</option>
+								<option value="1">1개</option>
+								<option value="2">2개</option>
+								<option value="3">3개</option>
+								<option value="4">4개</option>
+								<form:errors path="roomCount"></form:errors>
+							</form:select>
+								
 						</div>
 
 
