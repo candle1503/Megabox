@@ -149,7 +149,7 @@
 						<div class="block">
 
 							<button type="button" class="btn btn-like tooltip click">
-								<i class="iconset ico-like-line"></i> <span>선호극장</span> <span
+								<i class="iconset ico-like-line"></i> <span>예매하러 가기</span> <span
 									class="ir" data-width="235"> <span class="cont-area">
 										<span class="login-alert-tooltip"> 로그인이 필요한 서비스 입니다.<br>
 											<a href="" id="moveLogin" title="로그인하기">로그인하기 <i
@@ -170,6 +170,8 @@
 				$('li.headtab').hover(function() {
 					$('li.headtab').removeClass('on');
 					$(this).addClass('on');
+				}, function() {
+					$('li.headtab').removeClass('on');
 				})
 			</script>
 			<!--// theater-detail-page -->
@@ -396,6 +398,10 @@
 
 						<div id="brchNoti">
 							<h2 class="tit small mt70">공지사항</h2>
+							<a href="${pageContext.request.contextPath}/notice/noticeList"
+								class="more" title="극장 공지사항 더보기" style="margin-left: 1030px; padding-bottom: 10px">더보기 <i
+								class="iconset ico-arr-right-gray"></i>
+							</a>
 
 							<!-- accordion-list -->
 							<div class="accordion-list">
@@ -594,18 +600,6 @@
 							</div>
 							<!--// accordion-list -->
 
-							<!-- pagination -->
-							<nav class="pagination">
-								<strong class="active">1</strong> <a title="2페이지보기"
-									href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기"
-									href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기"
-									href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기"
-									href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기"
-									href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기"
-									href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기"
-									href="javascript:void(0)" pagenum="8">8</a>
-							</nav>
-							<!--// pagination -->
 						</div>
 
 					</div>
@@ -2035,8 +2029,8 @@
 									</table>
 								</div>
 							</div>
-							
-<%-- 							<div class="fee-table">
+
+							<%-- 							<div class="fee-table">
 								<p class="fee-table-tit">일반 3D</p>
 								<div class="table-wrap">
 									<table class="data-table a-c"
@@ -2094,11 +2088,11 @@
 									</table>
 								</div>
 							</div> --%>
-							
+
 						</div>
-						
-						
-<%-- 						<div class="fee-table-box">
+
+
+						<%-- 						<div class="fee-table-box">
 							<div class="fee-table">
 								<p class="fee-table-tit">COMFORT 일반 2D</p>
 								<div class="table-wrap">
@@ -2216,8 +2210,8 @@
 								</div>
 							</div>
 						</div> --%>
-						
-						
+
+
 						<span style="color: #503396"><span style="font-size: 22px">요금제</span></span><br>
 						<br> • <font color="#01738b">청소년 요금</font>&nbsp; 만7세~ 만18세 :
 						초등학생~고등학생(학생증, 교복, 청소년증, 의료보험증, 주민등록 등/초본, 그 외 청소년 확인 가능 서류)<br>

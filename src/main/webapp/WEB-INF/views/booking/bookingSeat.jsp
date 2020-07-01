@@ -18,317 +18,13 @@
 	<input type="hidden" id="playSchdlNo" name="playSchdlNo"
 		value="2006291372041">
 	<input type="hidden" id="brchNo" name="brchNo" value="1372">
-	<section id="layer_age_alert" class="modal-layer" style="z-index: 900">
-		<a href="" class="focus">레이어로 포커스 이동 됨</a>
-		<div class="wrap"
-			style="width: 500px; height: 350px; margin-left: -250px; margin-top: 0px; top: 140px;">
-			<header class="layer-header">
-				<h3 class="tit">알림</h3>
-			</header>
-			<div class="layer-con">
-				<div class="alert-age-layer age12">
-					<div class="age-box age-12">
-						<div class="left">
-							<p class="circle">12</p>
-						</div>
-						<div class="right">
-							<p class="tit">12세이상관람가</p>
-							<p class="txt">
-							<p>
-								[12세 이상 관람가]<br> <br>만 12 세 미만의 고객님은(영,유아 포함) 반드시 부모님
-								또는<br> 성인 보호자의 동반하에 관람이 가능합니다.<br>연령 확인 불가 시 입장이 제한될 수
-								있습니다.
-							</p>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="btn-group-fixed">
-				<button type="button" class="button purple close-layer">확인</button>
-			</div>
-			<button type="button" class="btn-modal-close">레이어 닫기</button>
-		</div>
-	</section>
+
+
 	<div class="inner-wrap" style="">
 		<div class="quick-reserve">
 			<h2 class="tit"></h2>
-			<!-- cti 일때만 출력 -->
 
 
-
-
-
-
-
-			<script type="text/javascript">
-				var requestPayAt = "N";
-
-				$(function() {
-					//RIA의 경우
-					if (parent.sellChnlCd != "") {
-						$('.inner-wrap').css('padding-bottom', '').css(
-								'padding-top', ''); //하단 상단 공백 제거
-						//         $('#btnLangChg').hide();    //언어전환 버튼숨김
-
-						//로그인 되었으면
-						if (parent.riaLoginAt == "Y") {
-							$('.cti-area input[name=riaName]').attr('value',
-									parent.riaParamName); //고객명
-							$('.cti-area input[name=riaMobileNo]').attr(
-									'value', parent.riaParamMobileNo); //고객전화번호
-							$('.cti-area input[name=riaBirthday]').attr(
-									'value', parent.riaParamBirthday); //고객생년월일
-							$('.cti-area input[name=riaMemberYn]').attr(
-									'value',
-									parent.riaMemberYn == "Y" ? "회원" : "비회원"); //회원여부
-
-							$('.cti-area input[name=riaName]').attr("readonly",
-									true); //고객명
-							$('.cti-area input[name=riaMobileNo]').attr(
-									"readonly", true); //고객전화번호
-							$('.cti-area input[name=riaBirthday]').attr(
-									"readonly", true); //고객생년월일
-
-							$('.cti-area input[name=riaMemberYn]').attr(
-									"readonly", true); //회원여부
-
-							$('.cti-area button').attr('login-at', "Y");
-
-							//결제화면이 아니면
-							if ("N" == requestPayAt) {
-								$('.cti-area button').html('재인증');
-							}
-						}
-						//로그인 되지 않았으면
-						else {
-							$('.cti-area input[name=riaName]').attr('value',
-									parent.riaParamName); //고객명
-							$('.cti-area input[name=riaMobileNo]').attr(
-									'value', parent.riaParamMobileNo); //고객전화번호
-							$('.cti-area input[name=riaBirthday]').attr(
-									'value', parent.riaParamBirthday); //고객생년월일
-							$('.cti-area input[name=riaMemberYn]').attr(
-									'value', ''); //회원여부
-
-							$('.cti-area input[name=riaName]').attr("readonly",
-									false); //고객명
-							$('.cti-area input[name=riaMobileNo]').attr(
-									"readonly", false); //고객전화번호
-							$('.cti-area input[name=riaBirthday]').attr(
-									"readonly", false); //고객생년월일
-
-							$('.cti-area input[name=riaMemberYn]').attr(
-									"readonly", true); //회원여부
-
-							$('.cti-area button').attr('login-at', "N"); //회원여부
-							//결제화면이 아니면
-							if ("N" == requestPayAt) {
-								$('.cti-area button').html('인증요청');
-							}
-						}
-
-						//드림센터의 경우
-						if (parent.sellChnlCd == "TELLER") {
-							$('.cti-area').show(); //cti 로그인창 표시
-						} else {
-							$('.cti-area').hide(); //cti 로그인창 표시
-						}
-
-						//회원정보 확인을 위한 초기 파라메타 셋팅
-
-						//파라메타 셋팅후
-						//회원여부확인				부모창
-						//나머지 화면 disable 처리	부모창
-
-					} else {
-						$('.quick-reserve-ad-area').show(); //광고영역 표시
-						//         $('#btnLangChg').show();	//언어전환 버튼표시 사용안함 20200106 김민영
-					}
-
-					/* RIA 재인증 버튼 클릭 */
-					$('.cti-area button')
-							.on(
-									"click",
-									function() {
-
-										//입력값 검증
-										if ($('.cti-area button').attr(
-												'login-at') == "N") {
-
-											// 			if($(".cti-area input[name=riaName]").val().length == 0){
-											// 				gfn_alertMsgBoxSize('이름은  필수 입력 항목 입니다.',400,250);	//{0} 필수 입력 항목 입니다.
-											// 				return;
-											// 			}
-
-											if (!fn_validateDateYn($(
-													".cti-area input[name=riaBirthday]")
-													.val())) {
-												gfn_alertMsgBoxSize(
-														'생년월일을 정확히 입력해주세요.',
-														400, 250); //생년월일을 정확히 입력해주세요.
-												return;
-											}
-
-											if ($(
-													".cti-area input[name=riaMobileNo]")
-													.val().length < 10) {
-												gfn_alertMsgBoxSize(
-														'휴대폰번호를 정확히 입력해주세요.',
-														400, 250); //휴대폰번호를 정확히 입력해주세요.
-												return;
-											}
-
-											if ($(
-													".cti-area input[name=riaMobileNo]")
-													.val().substr(0, 2) != "01") {
-												gfn_alertMsgBoxSize(
-														'휴대폰번호를 정확히 입력해주세요.',
-														400, 250); //휴대폰번호를 정확히 입력해주세요.
-												return;
-											}
-										}
-										parent
-												.fn_setRiaLoginToggle([
-														$('.cti-area button')
-																.attr(
-																		'login-at'),
-														$(
-																".cti-area input[name=riaName]")
-																.val(),
-														$(
-																".cti-area input[name=riaBirthday]")
-																.val(),
-														$(
-																".cti-area input[name=riaMobileNo]")
-																.val() ]);
-									});
-
-					/* 이름 숫자를 제외한 입력 여부판단 */
-					$(".cti-area input[name=riaName]").on(
-							"keyup",
-							function(e) {
-								var partton = /[^ㄱ-힣a-zA-Z]/g;
-								if (partton.test($(this).val())) {
-									var value = $(this).val().replace(
-											/[^ㄱ-힣a-zA-Z]/g, "");
-									$(this).val(value);
-								}
-							});
-					$(".cti-area input[name=riaName]").focusout(
-							function() {
-								var partton = /[^ㄱ-힣a-zA-Z]/g;
-								if (partton.test($(this).val())) {
-									var value = $(this).val().replace(
-											/[^ㄱ-힣a-zA-Z]/g, "");
-									$(this).val(value);
-								}
-							});
-
-					/* 생년월일 숫자만 입력 여부판단 */
-					$(".cti-area input[name=riaBirthday]").on(
-							"keyup",
-							function(e) {
-								$(this).val(
-										$(this).val().replace(/[^0-9]/g, ""));
-							});
-					$(".cti-area input[name=riaBirthday]").focusout(function() {
-						$(this).val($(this).val().replace(/[^0-9]/g, ""));
-					});
-
-					/* 휴대폰번호 숫자만 입력 여부판단 */
-					$(".cti-area input[name=riaMobileNo]").on(
-							"keyup",
-							function(e) {
-								$(this).val(
-										$(this).val().replace(/[^0-9]/g, ""));
-							});
-					$(".cti-area input[name=riaMobileNo]").focusout(function() {
-						$(this).val($(this).val().replace(/[^0-9]/g, ""));
-					});
-				});
-
-				/*날짜 형태 확인*/
-				function fn_validateDateYn(param) {
-					try {
-						var yearFront = "";
-						var year = "";
-						var month = "";
-						var day = "";
-
-						param = param.replace(/-/g, '');
-
-						// 자리수가 맞지않을때
-						if (isNaN(param) || param.length < 6
-								|| param.length == 7) {
-							return false;
-						}
-
-						if (param.length == 6) {
-							year = Number(param.substring(0, 2));
-							month = Number(param.substring(2, 4));
-							day = Number(param.substring(4, 6));
-						} else if (param.length == 8) {
-							var date = new Date();
-							yearFront = Number(param.substring(0, 4));
-							year = Number(param.substring(2, 4));
-							month = Number(param.substring(4, 6));
-							day = Number(param.substring(6, 8));
-
-							if (yearFront > date.getFullYear()) {
-								return false;
-							}
-						}
-						var dd = day / 0;
-
-						if (month<1 || month>12) {
-							return false;
-						}
-
-						var maxDaysInMonth = [ 31, 28, 31, 30, 31, 30, 31, 31,
-								30, 31, 30, 31 ];
-						var maxDay = maxDaysInMonth[month - 1];
-
-						// 윤년 체크
-						if (month == 2
-								&& (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)) {
-							maxDay = 29;
-						}
-
-						if (day<=0 || day>maxDay) {
-							return false;
-						}
-						return true;
-
-					} catch (err) {
-						return false;
-					}
-				}
-			</script>
-			<!-- cti 일때만 출력 -->
-			<div class="cti-area" style="display: none">
-				<p>이름</p>
-				<input maxlength="20" name="riaName" type="text" title="이름 출력"
-					class="input-text a-c w120px" placeholder="이름" value="">
-
-				<p>생년월일</p>
-				<input maxlength="8" name="riaBirthday" type="text" title="생년월일 출력"
-					class="input-text a-c w150px" placeholder="6자리 또는 8자리" value="">
-
-				<p>휴대폰번호</p>
-				<input maxlength="11" name="riaMobileNo" type="text"
-					title="휴대폰번호 출력" class="input-text a-c w150px"
-					placeholder="- 없이 입력" value="">
-
-				<p>회원</p>
-				<input name="riaMemberYn" type="text" title="회원여부 출력"
-					class="input-text a-c w100px" value="" readyonly="readyonly"
-					readonly="readonly">
-
-
-				<button type="button" class="button gray ml10" login-at="N">인증요청</button>
-
-			</div>
 			<div class="seat-select-section">
 				<div class="seat-section">
 					<div class="tit-util">
@@ -347,10 +43,10 @@
 							<div class="cell">
 								<p class="txt">성인</p>
 								<div class="count">
-									<button type="button" class="down" title="성인 좌석 선택 감소">-</button>
+
 									<div class="number">
 										<button type="button" class="now" title="성인 현재 좌석 선택 수"
-											ticketgrpcd="TKA">0</button>
+											ticketgrpcd="TKA" style="border-width: 1px 1px">0</button>
 										<ul class="num-choice">
 											<li><button type="button" class="btn on">0</button></li>
 											<li><button type="button" class="btn">1</button></li>
@@ -363,53 +59,46 @@
 											<li><button type="button" class="btn">8</button></li>
 										</ul>
 									</div>
-									<button type="button" class="up" title="성인 좌석 선택 증가">+</button>
+
 								</div>
 							</div>
-							<div class="cell">
-								<p class="txt">청소년</p>
-								<div class="count">
-									<button type="button" class="down" title="청소년 좌석 선택 감소">-</button>
-									<div class="number">
-										<button type="button" class="now" title="청소년 현재 좌석 선택 수"
-											ticketgrpcd="TKY">0</button>
-										<ul class="num-choice">
-											<li><button type="button" class="btn on">0</button></li>
-											<li><button type="button" class="btn">1</button></li>
-											<li><button type="button" class="btn">2</button></li>
-											<li><button type="button" class="btn">3</button></li>
-											<li><button type="button" class="btn">4</button></li>
-											<li><button type="button" class="btn">5</button></li>
-											<li><button type="button" class="btn">6</button></li>
-											<li><button type="button" class="btn">7</button></li>
-											<li><button type="button" class="btn">8</button></li>
-										</ul>
-									</div>
-									<button type="button" class="up" title="청소년 좌석 선택 증가">+</button>
-								</div>
-							</div>
-							<div class="cell">
-								<p class="txt">우대</p>
-								<div class="count">
-									<button type="button" class="down" title="우대 좌석 선택 감소">-</button>
-									<div class="number">
-										<button type="button" class="now" title="우대 현재 좌석 선택 수"
-											ticketgrpcd="TKS">0</button>
-										<ul class="num-choice">
-											<li><button type="button" class="btn on">0</button></li>
-											<li><button type="button" class="btn">1</button></li>
-											<li><button type="button" class="btn">2</button></li>
-											<li><button type="button" class="btn">3</button></li>
-											<li><button type="button" class="btn">4</button></li>
-											<li><button type="button" class="btn">5</button></li>
-											<li><button type="button" class="btn">6</button></li>
-											<li><button type="button" class="btn">7</button></li>
-											<li><button type="button" class="btn">8</button></li>
-										</ul>
-									</div>
-									<button type="button" class="up" title="우대 좌석 선택 증가">+</button>
-								</div>
-							</div>
+
+							<script type="text/javascript">
+								$(document)
+										.on(
+												'click',
+												'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now',
+												function() {
+													$(this)
+															.closest('.number')
+															.find('.num-choice')
+															.toggleClass('on');
+												});
+
+								$(document)
+										.on(
+												'click',
+												'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn',
+												function() {
+													_num = $(this).text();
+													$(this).closest('.number')
+															.find('.now').text(
+																	_num);
+
+													$(this).closest('ul').find(
+															'.btn')
+															.removeClass('on');
+													$(this).addClass('on');
+
+													$(this).closest(
+															'.num-choice')
+															.removeClass('on');
+													$(this).closest('.number')
+															.find('.now')
+															.focus();
+												});
+							</script>
+
 						</div>
 						<div class="seat-layout">
 							<div class="alert" style="display: none;"></div>
@@ -425,7 +114,7 @@
 										style="position: relative; top: 0px; left: 0px; height: 210px;"
 										dir="ltr">
 										<div id="seatLayout" style="width: 100%; height: 210px;">
-											<img src="/static/pc/images/reserve/img-theater-screen.png"
+											<img src="../resources/images/img-theater-screen.png"
 												alt="screen"
 												style="position: absolute; left: 62px; top: 10px;"
 												class="mCS_img_loaded">
@@ -881,7 +570,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="D6 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 351px; top: 110px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00400601" rownm="D" seatno="6"
@@ -891,7 +580,7 @@
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="D7 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard finish"
+													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 391px; top: 110px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00400801" rownm="D" seatno="7"
@@ -1003,7 +692,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="E5 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 331px; top: 130px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00500501" rownm="E" seatno="5"
@@ -1033,7 +722,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="E8 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 411px; top: 130px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00500901" rownm="E" seatno="8"
@@ -1043,7 +732,7 @@
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="E9 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 431px; top: 130px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00501001" rownm="E" seatno="9"
@@ -1175,7 +864,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="F9 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 431px; top: 150px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00601001" rownm="F" seatno="9"
@@ -1217,7 +906,7 @@
 												<button type="button" class="btn-seat-row" title="G 행"
 													style="position: absolute; left: 206px; top: 172px;">G</button>
 												<button type="button" title="G1 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 251px; top: 170px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00700101" rownm="G" seatno="1"
@@ -1227,7 +916,7 @@
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="G2 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 271px; top: 170px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00700201" rownm="G" seatno="2"
@@ -1247,7 +936,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="G4 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 311px; top: 170px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00700401" rownm="G" seatno="4"
@@ -1257,7 +946,7 @@
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="G5 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 331px; top: 170px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00700501" rownm="G" seatno="5"
@@ -1287,7 +976,7 @@
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="G8 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard common"
+													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 411px; top: 170px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00700901" rownm="G" seatno="8"
@@ -1379,7 +1068,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 												<button type="button" title="H8 (스탠다드/일반)"
-													class="jq-tooltip seat-condition standard finish"
+													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 411px; top: 190px; width: 20px;"
 													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
 													seatuniqno="00800901" rownm="H" seatno="8"
@@ -1409,7 +1098,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 											</div>
-											<img src="/static/pc/images/reserve/img-door-left-right.png"
+											<img src="../resources/images/img-door-left-right.png"
 												alt="좌우측 출입구"
 												style="position: absolute; left: 231px; top: 30px; width: 16px; height: 16px;"
 												class="mCS_img_loaded">
@@ -1434,29 +1123,33 @@
 				<div class="seat-result">
 					<div class="wrap">
 						<div class="tit-area">
-							<span class="movie-grade small age-all age-12">12세이상관람가</span>
-							<p class="tit">위대한 쇼맨</p>
-							<p class="cate">2D(자막)</p>
+							<span class="movie-grade small age-all">전체관람가</span>
+							<p class="tit">영화제목 JSTL</p>
+							<p class="cate"></p>
 						</div>
 						<div class="info-area">
-							<p class="theater">강남</p>
-							<p class="special">5관</p>
+							<p class="theater">영화관 제목 JSTL</p>
+							<p class="special">상영관 이름 JSTL</p>
 							<p class="date">
-								<span>2020.06.29</span><em>(월)</em>
+								<span>상영날짜 JSTL</span>
 							</p>
 							<div class="other-time">
-								<button type="button" class="now">
-									18:15~20:09<i class="arr"></i>
-								</button>
+								<p
+									style="border: 1px solid #333; border-bottom: 0; border-radius: 5px 5px 0 0; color: #fff; margin-left: 14px;">
+									시작시간JSTL</p>
 								<ul class="other">
-									<li><button type="button" choicnt="60"
-											playschdlno="2006291372041" class="btn on ">18:15~20:09</button></li>
+									<li><button type="button" choicnt="52"
+											playschdlno="2006301372021" class="btn on ">16:05~17:57</button></li>
+									<li><button type="button" choicnt="52"
+											playschdlno="2006301372040" class="btn ">19:30~21:22</button></li>
+									<li><button type="button" choicnt="65"
+											playschdlno="2006301372041" class="btn ">21:40~23:32</button></li>
 								</ul>
 							</div>
 							<p class="poster">
 								<img
-									src="/SharedImg/asis/system/mop/poster/2017/D0/D558A7-DE6C-4178-B3F6-27A023AA5DEE.medium.jpg"
-									onerror="noImg(this);" alt="위대한 쇼맨">
+									src="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
+									onerror="noImg(this);" alt="온워드: 단 하루의 기적">
 							</p>
 						</div>
 						<div class="choice-seat-area">
@@ -1466,9 +1159,6 @@
 										<em>선택</em></li>
 									<li><div class="seat-condition finish" title="예매 완료"></div>
 										<em>예매완료</em></li>
-									<li><div class="seat-condition impossible" title="선택 불가"></div>
-										<em>선택불가</em></li>
-									<li><div class="seat-condition pos" title="띄어앉기석"></div> <em>띄어앉기석</em></li>
 									<li><div class="seat-condition common" title="일반"></div> <em>
 											일반</em></li>
 									<li><div class="seat-condition disabled" title="장애인석"></div>
@@ -1501,11 +1191,14 @@
 						<div class="btn-group">
 							<a href="javaScript:void(0)" class="button" id="pagePrevious"
 								title="이전">이전</a> <a href="javaScript:void(0)"
-								class="button disabled" id="pageNext" title="다음">다음</a>
+								class="button" id="pageNext" title="다음">다음</a>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
+
 		</div>
 	</div>
 
@@ -1513,6 +1206,7 @@
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
+
 </body>
 
 <c:import url="../template/footer.jsp"></c:import>
