@@ -27,5 +27,9 @@ public class BookingController {
 	@GetMapping("bookingSeatNext")
 	public void bookingSeatNext() throws Exception {
 	}
+	
+	@GetMapping("bookingComplete")
+	public void bookingComplete() throws Exception {
+	}
 
 }
