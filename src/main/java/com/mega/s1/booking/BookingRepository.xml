@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="bookingLocalList" parameterType="BookingVO" resultType="BookingVO">
-		select distinct localCode
+		select distinct localCode, name
 		from roomMovieTime R left join theater T
 		on (R.theaterNum = T.theaterNum)
 		where movieNum = #{movieNum}

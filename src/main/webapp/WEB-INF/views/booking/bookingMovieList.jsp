@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<c:forEach items="${bookingMovieAr}" var="bmList" varStatus="">
+<c:forEach items="${bookingMovieAr}" var="bmList" varStatus="i">
 	<li class="bookingMovie-Name">
-		<button type="button" class="btn">
+		<button type="button" class="btn${i.count-1}">
 			<c:if test="${bmList.age eq '전체관람가'}">		
 				<span class="movie-grade small age-all">${bmList.age}</span>
 			</c:if>
@@ -20,6 +20,7 @@
 			</c:if>
 			<i class="iconset ico-heart-small">보고싶어 설정안함</i>
 				<span class="txt">${bmList.name}</span>
+				<span class="txt">${bmList.movieNum}</span>
 		</button>
 	</li>
 </c:forEach>
@@ -28,21 +29,67 @@
 
 	var bookingMovieArSize = "${bookingMovieArSize}";
 
-	var movieNum = 0;
+	var bookingMovieNum = new Array();
 	
-	$(".bookingMovie-Name").on("click", ".btn", function(){
+	for(var j=0; j<bookingMovieArSize; j++){
 
-		for(var i=0; i<bookingMovieArSize; i++){
-			movieNum = "${bookingMovieAr.get(i).getMovieNum()}";
-		}
+		$(".bookingMovie-Name").on("click", ".btn"+j, function(){
 
-		alert(movieNum);
-		//alert(movieNum);
-		/* $.ajax({
+			bookingMovieNum[j] = "${bookingMovieNum}";
 			
+			alert(bookingMovieNum[j]);
+		
 			
-		}); */
-	});
+		});
+		
+	}
+xcvx
+
+
+
+
+	
+	//var j = 0;
+
+	
+	/* while(j<bookingMovieArSize){
+
+		$(".bookingMovie-Name").on("click", ".btn"+j, function(){
+
+			var movieNum = 0;
+			
+			if(j=0){
+				movieNum = "${bookingMovieAr.get(j).getMovieNum()}";
+				break;	
+			}
+
+			j=j+1;
+			
+			alert(movieNum);
+			//alert(movieNum);
+			$.ajax({
+				
+				
+			});
+		});
+		
+	} */
+
+	
+	/* var movieNum = 0;
+
+	var bookingVO = "${bookingVO.getMovieNum()}";
+	
+	for(var j=0; j<bookingMovieArSize; j++){
+
+		$(".bookingMovie-Name").on("click", ".btn"+j, function(){
+		
+			alert(bookingVO);
+		
+			
+		});
+		
+	} */
 
 	
 

@@ -45,10 +45,16 @@ public class BookingController {
 		
 		//System.out.println("movieNum:"+bookingMovieAr.get(0).getMovieNum());
 		
+		int size = bookingMovieAr.size();
+		
+		int[] movieNum = new int[size];
+		
 		for(int i=0; i<bookingMovieAr.size(); i++) {
-			int movieNum = bookingMovieAr.get(i).getMovieNum();
-			System.out.println("movieNum:"+movieNum);
-			mv.addObject("bookingMovieNum", movieNum);
+			movieNum[i] = bookingMovieAr.get(i).getMovieNum();
+			
+			System.out.println("movieNum"+i+":"+movieNum[i]);
+			
+			mv.addObject("bookingMovieNum", movieNum[i]);
 		}
 		
 		int bookingMovieArSize = bookingMovieAr.size();
