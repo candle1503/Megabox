@@ -1,6 +1,6 @@
 package com.mega.s1.member.admin;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -129,8 +129,9 @@ public class AdminController {
 	@PostMapping("movieTimeCheck")
 	public ModelAndView adminMovieTimeCheck(String choosedTime) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(choosedTime);
-		
+		List<MovieVO> movieVOs = adminService.movieTimeCheck(choosedTime);
+		System.out.println(movieVOs.get(0).getName());
+		System.out.println(movieVOs.get(1).getName());
 		return mv;
 	}
 	
