@@ -114,7 +114,7 @@
 										style="position: relative; top: 0px; left: 0px; height: 210px;"
 										dir="ltr">
 										<div id="seatLayout" style="width: 100%; height: 210px;">
-											<img src="../resources/images/img-theater-screen.png"
+											<img src="../resources/static/images/img-theater-screen.png"
 												alt="screen"
 												style="position: absolute; left: 62px; top: 10px;"
 												class="mCS_img_loaded">
@@ -1098,7 +1098,7 @@
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
 											</div>
-											<img src="../resources/images/img-door-left-right.png"
+											<img src="../resources/static/images/img-door-left-right.png"
 												alt="좌우측 출입구"
 												style="position: absolute; left: 231px; top: 30px; width: 16px; height: 16px;"
 												class="mCS_img_loaded">

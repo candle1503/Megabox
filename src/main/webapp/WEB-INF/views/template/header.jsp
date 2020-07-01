@@ -6,9 +6,9 @@
 
 <header id="header" class="main-header no-bg">
 
-	<img class="ci" alt=""
+	<a href="${pageContext.request.contextPath}/"><img class="ci" alt=""
 		src="${pageContext.request.contextPath}/resources/static/images/sTheater.png"
-		style="width: 7%; height: auto;">
+		style="width: 7%; height: auto;"></a>
 
 	<!-- topGnb -->
 
