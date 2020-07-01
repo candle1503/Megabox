@@ -423,7 +423,7 @@ function fn_validateDateYn(param) {
 											style="max-height: none;" tabindex="0">
 											<div id="mCSB_1_container" class="mCSB_container"
 												style="position: relative; top: 0; left: 0;" dir="ltr">
-												<ul>
+												<ul class="">
 													<li><button type="button" class="btn"
 															movie-nm="온워드: 단 하루의 기적" movie-no="01693600"
 															img-path="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
