@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.movie.MovieVO;
 import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import com.mega.s1.util.Pager;
@@ -116,12 +117,13 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<TheaterRoomVO> roomVOs = adminService.getRoomList(theaterVO);
-		
-		System.out.println(roomVOs.get(0).getRoomName());
-		System.out.println(roomVOs.get(1).getRoomName());
-		System.out.println(roomVOs.get(2).getRoomName());
-		
+		List<MovieVO> movieVOs = adminService.getMovieList();
+		System.out.println(movieVOs.get(0).getOpenDay());
+		System.out.println(movieVOs.get(1).getOpenDay());
+		System.out.println(movieVOs.get(2).getOpenDay());
+		System.out.println(movieVOs.get(3).getOpenDay());
 		mv.addObject("list", roomVOs);
+		mv.addObject("movieList", movieVOs);
 		
 		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;

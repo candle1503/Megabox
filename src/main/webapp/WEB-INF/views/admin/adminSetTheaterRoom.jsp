@@ -41,7 +41,7 @@
 				<c:import url="../template/memberSidebar.jsp"></c:import>
 
 					<div id="contents">
-						<h2 class="tit">${theaterVO.name} 상영관 설정</h2>
+						<h2 class="tit"> 상영관 설정</h2>
 
 						<!-- c:foreach 로 관수 마다 뿌려져야함 -->
 						
@@ -50,11 +50,12 @@
 
 							<div class="tit-util mt40 mb10">
 								<h3 class="tit">${vo.roomName}+${i.count}</h3>
+								
 								<input class="timeAddBtn${i.count} button" type="button"
 									style="margin-left: 50px; font-size: large;" value="상영시간+">
 
 								<div class="right">
-									<p class="reset">
+									<p class="reset${i.count}">
 									<input id="calendar${0+i.count}" style=" left: 1300px;" value="시작날짜" >
 									<input id="calendar${4+i.count}" style="left: 1400px; " value="마지막날짜" >
 									</p>
@@ -93,12 +94,17 @@
 														<option value="22">22:00</option>
 												</select>
 											</label></th>
-											<td style="background-color: #f7f8f9;"><select
-												class="input-text w500px movieSelect${i.count}"
+											<td style="background-color: #f7f8f9;">
+											<select	class="input-text w500px movieSelect${i.count}"
 												style="border: none; background-color: #f7f8f9; width: 550px">
 													<option value="">영화 선택</option>
-													<option value="포레스트검프">포레스트검프</option>
-													<option value="..">..</option>
+												<c:forEach items="${movieList}" var="vo2">
+<%-- 												<option>${vo2.openDay}</option> --%>
+<%-- 													<c:if test="${vo2.openDay gt 2020-06-10}"> --%>
+<%-- 													<option value="${vo2.name}">${vo2.name}</option> --%>
+<%-- 													<option value=C"${vo2.name}">${vo2.openDay}</option> --%>
+<%-- 													</c:if> --%>
+												</c:forEach>
 											</select>
 										</tr>
 
@@ -181,13 +187,18 @@
 								var movieSelected2;
 								var movieSelected3;
 								var movieSelected4;
+
 								
 								while(i<9){
 								$('#calendar'+i).datepicker(G_calendar);
 									i += 1;
 								}
-									
+								
 								$('.resetBTN1').on('click', function() {
+									$('.reset1').empty();
+									$('.reset1').prepend('<input id="calendar1" style=" left: 1300px;" value="시작 날짜" > <input id="calendar5" style="left: 1400px; " value="마지막 날짜" >')
+									$('#calendar1').datepicker(G_calendar);
+									$('#calendar5').datepicker(G_calendar);
 									$('.timeAdd1').empty();
 									$('.timeAdd1').prepend(timeAddContents1);
 									lastTime1 = 0;
@@ -196,11 +207,39 @@
 
 									$('#calendar1').val("시작 날짜");
 									$('#calendar5').val("마지막 날짜");
-									startDay1="시작날짜";
-									endDay5="마지막날짜";
+									startDay1="시작 날짜";
+									endDay5="마지막 날짜";
+
+									$('#calendar1').change( function(){
+										alert("!!!");
+										startDay1 = $('#calendar1').val();
+										if(startDay1 > endDay5){
+											alert("마지막 날짜 이전으로 설정해주세요.");
+											$('#calendar1').val("시작날짜");
+										}
+										$('#calendar1').attr("disabled","disabled");
+										$('#calendar1').attr("id","done1");
+									})
+									
+									$('#calendar5').change(function(){
+								endDay5=$('#calendar5').val()
+								
+								if($('#calendar1').val()=="시작날짜"){
+									alert("시작날짜를 먼저 선택해주세요.");
+									$('#calendar5').val("마지막날짜");
+									endDay5 = "마지막날짜";
+									}else if(endDay5 < startDay1){
+									alert("시작날짜 이후로 설정해주세요.");
+									$('#calendar5').val("마지막날짜");
+									endDay5 = "마지막날짜";
+									}
+								})
+
+									
 									})
 							
 								$('.resetBTN2').on('click', function() {
+									$('#done2').attr("id","#calendar2");
 									$('.timeAdd2').empty();
 									$('.timeAdd2').prepend(timeAddContents2);
 									lastTime2 = 0;
@@ -214,6 +253,7 @@
 									})
 							
 								$('.resetBTN3').on('click', function() {
+									$('#done3').attr("id","#calendar3");
 									$('.timeAdd3').empty();
 									$('.timeAdd3').prepend(timeAddContents3);
 									lastTime3 = 0;
@@ -227,6 +267,7 @@
 									})
 							
 								$('.resetBTN4').on('click', function() {
+									$('#done4').attr("id","#calendar4");
 									$('.timeAdd4').empty();
 									$('.timeAdd4').prepend(timeAddContents4);
 									lastTime4 = 0;
@@ -241,12 +282,19 @@
 							
 
 							$('#calendar1').change( function(){
+							
 								startDay1 = $('#calendar1').val();
+								alert(startDay1);
 								if(startDay1 > endDay5){
 									alert("마지막 날짜 이전으로 설정해주세요.");
 									$('#calendar1').val("시작날짜");
 								}
-							})
+								$('#calendar1').attr("disabled","disabled");
+								$('#calendar1').attr("id","done1");
+
+
+
+								})
 							
 
 							$('#calendar2').change( function(){
@@ -255,6 +303,8 @@
 									alert("마지막 날짜 이전으로 설정해주세요.");
 									$('#calendar2').val("시작날짜");
 								}
+								$('#calendar2').attr("disabled","disabled");
+								$('#calendar2').attr("id","done2");
 							})
 							
 
@@ -264,6 +314,8 @@
 									alert("마지막 날짜 이전으로 설정해주세요.");
 									$('#calendar3').val("시작날짜");
 								}
+								$('#calendar3').attr("disabled","disabled");
+								$('#calendar3').attr("id","done3");
 							})
 							
 
@@ -273,6 +325,8 @@
 									alert("마지막 날짜 이전으로 설정해주세요.");
 									$('#calendar4').val("시작날짜");
 								}
+								$('#calendar4').attr("disabled","disabled");
+								$('#calendar4').attr("id","done4");
 							})
 							
 							$('#calendar5').change(function(){
@@ -458,6 +512,10 @@
 
 								listCount4 += 1;
 							})
+							
+							
+							
+							
 							</script>
 
 

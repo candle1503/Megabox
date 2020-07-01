@@ -51,5 +51,7 @@
 		select * from theaterRoom where name=#{name}
 	</select>
 	
-	
+	<select id="getMovieList" resultType="MovieVO">
+		select * from movie
+	</select>
 </mapper>
