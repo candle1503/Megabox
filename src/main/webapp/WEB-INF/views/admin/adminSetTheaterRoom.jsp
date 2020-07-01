@@ -68,11 +68,11 @@
 										<col style="width: 180px;">
 										<col>
 									</colgroup>
-									<tbody class="timeAdd${0+${i.count}">
+									<tbody class="timeAdd${0+i.count}">
 										<!-- +버튼 누르면 아래로 추가되게 -->
 										<tr class="added">
 											<th scope="row"><label for="phone"> <select
-													class="btn dropdown-toggle btn-default bs-placeholder timeChoose"
+													class="btn dropdown-toggle btn-default bs-placeholder timeChoose${0+i.count}"
 													style="border: none; background-color: #f7f8f9;">
 														<option value="">상영 시간 선택</option>
 														<option value=7>07:00</option>
@@ -94,7 +94,7 @@
 												</select>
 											</label></th>
 											<td style="background-color: #f7f8f9;"><select
-												class="input-text w500px movieSelect"
+												class="input-text w500px movieSelect${0+i.count}"
 												style="border: none; background-color: #f7f8f9; width: 550px">
 													<option value="">영화 선택</option>
 													<option value="포레스트검프">포레스트검프</option>
@@ -147,7 +147,23 @@
 							var i = 1;
 							
 							while(i<9){
+								
 							$('#calendar'+i).datepicker(G_calendar);
+							
+// 							$('.resetBTN'+i).on('click', function() {
+// 								alert("!!");
+// 								$('.timeAdd'+i).empty();
+// 								$('.timeAdd'+i).prepend(timeAddContents);
+// 								lastTime = 0;
+// 								listCount = 1;
+
+
+// 								$('#calendar'+i).val("시작 날짜");
+// 								$('#calendar'+i+4).val("마지막 날짜");
+// 								startDay="시작날짜";
+// 								endDay="마지막날짜";
+// 							})
+							
 								i += 1;
 							}
 
@@ -160,85 +176,74 @@
 								var endDay;
 								var j = 1;
 
-								while(j<9){
+// 								while(j<9){
 									
-								$('.resetBTN'+j).on('click', function() {
-									$('.timeAdd').empty();
-									$('.timeAdd').prepend(timeAddContents);
-									lastTime = 0;
-									listCount = 1;
+// 								$('.resetBTN'+i).on('click', function() {
+// 									$('.timeAdd'+i).empty();
+// 									$('.timeAdd'+i).prepend(timeAddContents);
+// 									lastTime = 0;
+// 									listCount = 1;
 
 
-									$('#calendar'+j).val("시작 날짜");
-									$('#calendar'+j).val("마지막 날짜");
-									startDay="시작날짜";
-									endDay="마지막날짜";
-									})
-									j = j+1	
-								}
+// 									$('#calendar'+i).val("시작 날짜");
+// 									$('#calendar'+i+4).val("마지막 날짜");
+// 									startDay="시작날짜";
+// 									endDay="마지막날짜";
+// 									})
+// 								}
 							
 
-							$('#calendar').change( function(){
-								startDay = $('#calendar').val();
+							$('#calendar1').change( function(){
+								startDay = $('#calendar1').val();
 								if(startDay > endDay){
 									alert("마지막 날짜 이전으로 설정해주세요.");
-									$('#calendar').val("시작날짜");
+									$('#calendar1').val("시작날짜");
 								}
 							})
 							
-							$('#calendar2').change(function(){
-								endDay=$('#calendar2').val()
+							$('#calendar5').change(function(){
+								endDay=$('#calendar5').val()
 								
-							if($('#calendar').val()=="시작날짜"){
+							if($('#calendar1').val()=="시작날짜"){
 								alert("시작날짜를 먼저 선택해주세요.");
-								$('#calendar2').val("마지막날짜");
+								$('#calendar5').val("마지막날짜");
 								}else if(endDay < startDay){
 								alert("시작날짜 이후로 설정해주세요.");
-								$('#calendar2').val("마지막날짜");
+								$('#calendar5').val("마지막날짜");
 								}
 							})
 								
 								
-								$('.timeAddBtn')
-										.on(
-												'click',
-												function() {
+								$('.timeAddBtn1').on('click',function() {
+								
+								if (listCount > 3) {
+									alert("상영은 최대 4번");
+									return false;
+								}
 
-													if (listCount > 3) {
-														alert("상영은 최대 4번");
-														return false;
-													}
+								var timeChoose = $('.timeChoose1').val();
+								var movieSelected = $('.movieSelect1').val();
+								if (timeChoose == '') {
+									alert("시간을 먼저 선택해주세요");
+									return false;
+								} else if (movieSelected == '') {
+									alert("영화를 선택해주세요");
+									return false;
+								}
+								timeGap = parseInt(timeChoose)
+										- lastTime;
+								if (lastTime != 0) {
+									if (timeGap < 3) {
+										alert("이전 시간과 3시간 이상으로 설정해주세요.")
+										return false;
+									}
+								}
+								lastTime = timeChoose;
+								$('.timeChoose1').attr("disabled","disabled");
+								$('.timeAdd1').prepend(timeAddContents);
 
-													var timeChoose = $(
-															'.timeChoose')
-															.val();
-													var movieSelected = $(
-															'.movieSelect')
-															.val();
-													if (timeChoose == '') {
-														alert("시간을 먼저 선택해주세요");
-														return false;
-													} else if (movieSelected == '') {
-														alert("영화를 선택해주세요");
-														return false;
-													}
-													timeGap = parseInt(timeChoose)
-															- lastTime;
-													if (lastTime != 0) {
-														if (timeGap < 3) {
-															alert("이전 시간과 3시간 이상으로 설정해주세요.")
-															return false;
-														}
-													}
-													lastTime = timeChoose;
-													$('.timeChoose').attr(
-															"disabled",
-															"disabled");
-													$('.timeAdd').prepend(
-															timeAddContents);
-
-													listCount += 1;
-												})
+								listCount += 1;
+							})
 							</script>
 
 
