@@ -1,4 +1,4 @@
-package com.mega.s1.theater;
+package com.mega.s1.theater.theaterRoom;
 
 import java.sql.Time;
 
@@ -9,8 +9,7 @@ public class TheaterRoomVO {
 
 	private String name;
 	private String roomName;
-	private Time startTime;
-	private String seatCount;
-	private int movieNum;
+	private int theaterRoomCode;
+	private int seatCount;
 	
 }

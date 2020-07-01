@@ -7,9 +7,9 @@
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="shortcut icon" href="/resources/icon/favicon.ico">
-<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
-<link rel="stylesheet" href="/resources/css/myPage.css" media="all">
+<link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
+<link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
+<link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
 </head>
 
 <body>
@@ -56,7 +56,7 @@
 											<div class="profile-img">
 												<c:choose>
 													<c:when test="${member.fileName == 'null'}">
-														<img src="/resources/images/memberProfile.png">
+														<img src="/resources/static/images/memberProfile.png">
 													</c:when>
 													<c:otherwise>
 														<img src="/upload/member/${member.fileName}" >

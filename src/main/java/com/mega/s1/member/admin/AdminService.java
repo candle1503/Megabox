@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mega.s1.member.MemberVO;
-import com.mega.s1.theater.TheaterRoomVO;
 import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import com.mega.s1.util.Pager;
 
 @Service
@@ -15,6 +15,7 @@ public class AdminService {
 
 	@Autowired
 	private AdminRepository adminRepository;
+	
 	
 	public List<MemberVO> getMemberList(Pager pager) throws Exception{
 		pager.makeRow();
@@ -50,8 +51,18 @@ public class AdminService {
 		return adminRepository.theaterUpdate(theaterVO);
 	}
 	
-	public int theaterRoomSet(TheaterRoomVO theaterRoomVO) throws Exception{
-		return adminRepository.theaterRoomSet(theaterRoomVO);
+	public int theaterRoomSet(TheaterRoomVO theaterRoomVO, int roomCount) throws Exception{
+		
+		for(int i=0; i<=roomCount-1; i++) {
+			int roomNum= i+1;
+			theaterRoomVO.setRoomName(theaterRoomVO.getName()+ roomNum+"관");
+			adminRepository.theaterRoomSet(theaterRoomVO);
+		}
+		return 0;
+	}
+	
+	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception{
+		return adminRepository.getRoomList(theaterVO);
 	}
 	
 }

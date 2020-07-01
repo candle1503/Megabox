@@ -14,7 +14,6 @@ public class HomeController {
 	
 	@GetMapping("/adminOnly")
 	public ModelAndView adminOnly() throws Exception{
-		System.out.println("들어옴?");
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("result", "관리자만 가능합니다");
 		mv.addObject("path", "/");

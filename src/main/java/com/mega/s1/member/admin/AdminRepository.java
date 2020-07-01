@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mega.s1.member.MemberVO;
-import com.mega.s1.theater.TheaterRoomVO;
 import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import com.mega.s1.util.Pager;
 
 @Mapper
@@ -36,5 +36,7 @@ public interface AdminRepository {
 	//theaterRoomSet
 	public int theaterRoomSet(TheaterRoomVO theaterRoomVO) throws Exception;
 	
+	//getRoomList
+	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception;
 	
 }
