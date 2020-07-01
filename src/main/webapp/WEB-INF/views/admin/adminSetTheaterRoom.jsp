@@ -42,12 +42,13 @@
 
 					<div id="contents">
 						<h2 class="tit"> 상영관 설정</h2>
-
+						
 						<!-- c:foreach 로 관수 마다 뿌려져야함 -->
 						
 						<c:forEach items="${list}" var="vo" varStatus="i" >
 						<div class="roomNumber">
-
+						<!-- theaterNum 히든으로 넘겨줄거임 -->
+						<input type="hidden" value="${theaterNum}">
 							<div class="tit-util mt40 mb10">
 								<h3 class="tit">${vo.roomName}+${i.count}</h3>
 								

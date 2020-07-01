@@ -1,5 +1,6 @@
 package com.mega.s1.member.admin;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,8 +71,8 @@ public class AdminController {
 			mv.setViewName("admin/adminAddTheater");
 		}else {
 			adminService.addTheater(theaterVO);
-					roomVO.setName(theaterVO.getName());
-					adminService.theaterRoomSet(roomVO,roomCount);
+			roomVO.setName(theaterVO.getName());
+			adminService.theaterRoomSet(roomVO,roomCount);
 			mv.setViewName("redirect:./theaterList");
 		}
 		return mv;
@@ -116,6 +116,8 @@ public class AdminController {
 	public ModelAndView setTheaterRoom(TheaterVO theaterVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		int theaterNum = adminService.getTheaterNum(theaterVO);
+		
 		List<TheaterRoomVO> roomVOs = adminService.getRoomList(theaterVO);
 		List<MovieVO> movieVOs = adminService.getMovieList();
 		System.out.println(movieVOs.get(0).getOpenDay());
@@ -124,6 +126,7 @@ public class AdminController {
 		System.out.println(movieVOs.get(3).getOpenDay());
 		mv.addObject("list", roomVOs);
 		mv.addObject("movieList", movieVOs);
+		mv.addObject("theaterNum", theaterNum);
 		
 		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;

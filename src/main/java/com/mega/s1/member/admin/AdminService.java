@@ -69,4 +69,8 @@ public class AdminService {
 	public List<MovieVO> getMovieList() throws Exception{
 		return adminRepository.getMovieList();
 	}
+	
+	public int getTheaterNum(TheaterVO theaterVO) throws Exception{
+		return adminRepository.getTheaterNum(theaterVO);
+	}
 }

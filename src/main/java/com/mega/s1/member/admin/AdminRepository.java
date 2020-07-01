@@ -42,4 +42,7 @@ public interface AdminRepository {
 	
 	//getMovieList
 	public List<MovieVO> getMovieList() throws Exception;
+	
+	//getTheaterNum
+	public int getTheaterNum(TheaterVO theaterVO) throws Exception;
 }

@@ -54,4 +54,9 @@
 	<select id="getMovieList" resultType="MovieVO">
 		select * from movie
 	</select>
+	
+	<select id="getTheaterNum" resultType="Integer">
+		select theaterNum from theater where name=#{name}
+	</select>
+	
 </mapper>
