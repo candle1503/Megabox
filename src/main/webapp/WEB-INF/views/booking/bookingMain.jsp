@@ -331,72 +331,7 @@ function fn_validateDateYn(param) {
 
 
 					<script type="text/javascript">
-						var count = 0;
-						var date = new Date();
-						var startDay = parseInt((date.getDate()+100+"").substr(1,3));
-						 
-						bookingTimeZone(startDay);
 						
-						$("#next").click(function(){
-							$("#bookingTime-list").empty();
-							startDay = startDay + 1;
-							count++;
-							bookingTimeZone(startDay);
-						});
-						
-						$("#prev").click(function(){
-							$("#bookingTime-list").empty();
-							startDay = startDay - 1;
-							count--;
-							bookingTimeZone(startDay);
-						});
-						
-						function bookingTimeZone(startDay){
-							$.get("bookingTimeZone?startDay="+startDay, function(result){
-								$("#bookingTime-list").append(result);
-							});
-						
-							if(count == 0){
-								$("#prev").prop("disabled", "disabled");
-								$("#next").removeAttr("disabled");
-							} else if(count > 0 && count < 7){
-								$("#prev").removeAttr("disabled");
-								$("#next").removeAttr("disabled");
-							} else if(count == 14){
-								$("#prev").removeAttr("disabled");
-								$("#next").prop("disabled", "disabled");
-							}
-						}
-
-						
-						
-						$("#bookingTime-list").on("click", ".bookingTime-list",function(){
-							
-						});
-						
-						
-						
-						$(".wrap").on("click",  function(){
-
-							/* $(".dateButton").addClass("on"); */
-
-						});
-
-						
-
-						
-						$(".wrap").on("mouseover", ".bookingTime-list", function(){
-							$(this).css("border-bottom", "2px solid #503396");
-
-							/* $(this).click(function(){
-								$(".bookingTime-list > button").addClass("on");
-							}); */
-							
-						});
-						
-						$(".wrap").on("mouseout", ".bookingTime-list", function(){
-							$(this).css("border-bottom", "1px solid #d8d9db");
-						});
 						
 					</script>
 
@@ -423,7 +358,7 @@ function fn_validateDateYn(param) {
 											style="max-height: none;" tabindex="0">
 											<div id="mCSB_1_container" class="mCSB_container"
 												style="position: relative; top: 0; left: 0;" dir="ltr">
-												<ul class="">
+												<ul id="bookingMovie-List">
 													<li><button type="button" class="btn"
 															movie-nm="온워드: 단 하루의 기적" movie-no="01693600"
 															img-path="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
@@ -432,38 +367,17 @@ function fn_validateDateYn(param) {
 																class="iconset ico-heart-small">보고싶어 설정안함</i><span
 																class="txt">온워드: 단 하루의 기적</span>
 														</button></li>
-													<li><button type="button" class="btn"
-															movie-nm="사라진 시간" movie-no="20018900"
-															img-path="/SharedImg/2020/06/08/s0lDFGluXxYc6hNTqfr1qfOeS2UVw7nc_150.jpg"
-															movie-popup-at="N" movie-popup-no="0" form-at="Y">
-															<span class="movie-grade small age-15">15세이상관람가</span><i
-																class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																class="txt">사라진 시간</span>
-														</button></li>
-													<li><button type="button" class="btn" movie-nm="결백"
-															movie-no="20003500"
-															img-path="/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_150.jpg"
-															movie-popup-at="N" movie-popup-no="0" form-at="Y">
-															<span class="movie-grade small age-15">15세이상관람가</span><i
-																class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																class="txt">결백</span>
-														</button></li>
-													<li><button type="button" class="btn"
-															movie-nm="위대한 쇼맨" movie-no="01309400"
-															img-path="/SharedImg/asis/system/mop/poster/2017/D0/D558A7-DE6C-4178-B3F6-27A023AA5DEE.small.jpg"
-															movie-popup-at="N" movie-popup-no="0" form-at="Y">
-															<span class="movie-grade small age-12">12세이상관람가</span><i
-																class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																class="txt">위대한 쇼맨</span>
-														</button></li>
-													<li><button type="button" class="btn"
-															movie-nm="콜 미 바이 유어 네임" movie-no="20021700"
-															img-path="/SharedImg/2020/06/16/T43wKaYuW6i30Kc5Rd1SJ8gdtoDLzgwO_150.jpg"
-															movie-popup-at="N" movie-popup-no="0" form-at="Y">
-															<span class="movie-grade small age-19">청소년관람불가</span><i
-																class="iconset ico-heart-small">보고싶어 설정안함</i><span
-																class="txt">콜 미 바이 유어 네임</span>
-														</button></li>
+
+
+
+
+
+
+
+
+
+
+
 												</ul>
 											</div>
 											<div id="mCSB_1_scrollbar_vertical"
@@ -679,10 +593,92 @@ function fn_validateDateYn(param) {
 
 <c:import url="../template/footer.jsp"></c:import>
 
+
+
 <script type="text/javascript">
 
+	//예매 날짜 리스트 부분//
+	var count = 0;
+	var date = new Date();
+	var startDay = parseInt((date.getDate()+100+"").substr(1,3));
 	
+	console.log(startDay);
+	 
+	bookingTimeZone(startDay);
+	
+	$("#next").click(function(){
+		$("#bookingTime-list").empty();
+		startDay = startDay + 1;
+		count++;
+		bookingTimeZone(startDay);
+	});
+	
+	$("#prev").click(function(){
+		$("#bookingTime-list").empty();
+		startDay = startDay - 1;
+		count--;
+		bookingTimeZone(startDay);
+	});
+	
+	function bookingTimeZone(startDay){
+		$.get("bookingTimeZone?startDay="+startDay, function(result){
+			$("#bookingTime-list").append(result);
+		});
+	
+		if(count == 0){
+			$("#prev").prop("disabled", "disabled");
+			$("#next").removeAttr("disabled");
+		} else if(count > 0 && count < 7){
+			$("#prev").removeAttr("disabled");
+			$("#next").removeAttr("disabled");
+		} else if(count == 14){
+			$("#prev").removeAttr("disabled");
+			$("#next").prop("disabled", "disabled");
+		}
+	}
+	
+	
+	$(".wrap").on("click",  function(){
+	
+		/* $(".dateButton").addClass("on"); */
+	
+	});
+	
+	
+	$(".wrap").on("mouseover", ".bookingTime-list", function(){
+		$(this).css("border-bottom", "2px solid #503396");
+	
+		/* $(this).click(function(){
+			$(".bookingTime-list > button").addClass("on");
+		}); */
+		
+	});
+	
+	$(".wrap").on("mouseout", ".bookingTime-list", function(){
+		$(this).css("border-bottom", "1px solid #d8d9db");
+	});
+	//예매 날짜 리스트 부분//
 
+	//예매 날짜별로 영화 리스트 부분//
+	var startTime = startDay+"";
+	console.log(startTime.length);
+	if(startTime.length<2){
+		startTime = 0+startTime;
+	}
+
+	console.log(startTime);
+
+	function bookingMovieList(startTime){
+		$.get("bookingMovieList?startTime="+startTime, function(result){
+			$("#bookingMovie-List").append(result);
+		});	
+	}
+	
+	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
+		$("#bookingMovie-List").empty();
+		bookingMovieList(startTime);
+	});
+	//예매 날짜별로 영화 리스트 부분//
 
 
 </script>
