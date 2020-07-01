@@ -19,57 +19,21 @@
 		outline: none;
 	}
 	
-	em{
-		margin-left: 13px;
-	}
-	
 	.dateNum {
 		font-size: 1em;
 		font-family: Roboto;
 	}
 	
-	.yoil {
-		font-size: .8667em;
-		font-family: NanumBarunGothic,Dotum,'돋움',sans-serif; 
-		display: inline-block;
-	}
-	
 	.timeSpan{
-		margin-top: 10px;
-		/* padding-left: 3px; */
+		margin-top: 8px;
 	}
 	
 	.bookingTime-list {
 		display: inline-block;
 		height: 39px;
-		/* margin: 0 0.4%; */
-		
-		
-		/* margin-left: 12px;
-		margin-right: 12px; */
 		width: 3.15%;
 	}
 	
-	
-	
-	/* em span:after{  
-		content: '';
-		position: absolute;
-		top: 16px;  
-		display: block;
-		margin-left: 13px;
-		width: 3px; 
-		height: 3px;
-		background-color: #888;
-		 
-	} */
-	
-	.cssDatePlus{
-		background-color: #f7f8f9;
-		border-bottom: 2px solid #503396;
-	}
-
-
 </style>
 
 
@@ -329,10 +293,10 @@ function fn_validateDateYn(param) {
 
                             <div class="date-list">
                                 <!-- 년도, 월 표시 -->
-                                <div class="year-area">
+                                <!-- <div class="year-area">
                                     <div class="year" style="left: 30px; z-index: 1; opacity: 1;">2020.06</div>
                                     <div class="year" style="left: 940px; z-index: 1; opacity: 1;">2020.07</div>
-                                </div>
+                                </div> -->
 
 
 							<div class="date-area" id="formDeList">
@@ -341,10 +305,6 @@ function fn_validateDateYn(param) {
 									<ul id="bookingTime-list">
 				
 									</ul>
-									
-									
-									
-									
 									
 								</div>
 							</div>
@@ -408,20 +368,30 @@ function fn_validateDateYn(param) {
 							}
 						}
 
-
 						
-						$(".wrap").on("click", ".bookingTime-list", function(){
-							$(this).addClass("cssDatePlus");
-
-							/* if($(".wrap").prop("mouseup")){
-								$(this).css("background-color", "white");
-							} */
+						
+						$("#bookingTime-list").on("click", ".bookingTime-list",function(){
 							
 						});
+						
+						
+						
+						$(".wrap").on("click",  function(){
+
+							/* $(".dateButton").addClass("on"); */
+
+						});
+
+						
 
 						
 						$(".wrap").on("mouseover", ".bookingTime-list", function(){
 							$(this).css("border-bottom", "2px solid #503396");
+
+							/* $(this).click(function(){
+								$(".bookingTime-list > button").addClass("on");
+							}); */
+							
 						});
 						
 						$(".wrap").on("mouseout", ".bookingTime-list", function(){
@@ -446,8 +416,70 @@ function fn_validateDateYn(param) {
                                 <div class="all-list">
                                     <button type="button" class="btn-tab on" id="movieAll">전체</button>
                                     <div class="list">
-                                        <div class="scroll m-scroll mCustomScrollbar _mCS_1" id="movieList"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button type="button" class="btn" movie-nm="온워드: 단 하루의 기적" movie-no="01693600" img-path="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">온워드: 단 하루의 기적</span></button></li><li><button type="button" class="btn" movie-nm="사라진 시간" movie-no="20018900" img-path="/SharedImg/2020/06/08/s0lDFGluXxYc6hNTqfr1qfOeS2UVw7nc_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">사라진 시간</span></button></li><li><button type="button" class="btn" movie-nm="결백" movie-no="20003500" img-path="/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">결백</span></button></li><li><button type="button" class="btn" movie-nm="위대한 쇼맨" movie-no="01309400" img-path="/SharedImg/asis/system/mop/poster/2017/D0/D558A7-DE6C-4178-B3F6-27A023AA5DEE.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">위대한 쇼맨</span></button></li><li><button type="button" class="btn" movie-nm="콜 미 바이 유어 네임" movie-no="20021700" img-path="/SharedImg/2020/06/16/T43wKaYuW6i30Kc5Rd1SJ8gdtoDLzgwO_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-19">청소년관람불가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">콜 미 바이 유어 네임</span></button></li><li><button type="button" class="btn" movie-nm="야구소녀" movie-no="20019300" img-path="/SharedImg/2020/05/26/4DpEOKISeL20EXabwXkfsfaeeJW27heu_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">야구소녀</span></button></li><li><button type="button" class="btn" movie-nm="에어로너츠" movie-no="20005400" img-path="/SharedImg/2020/05/25/3nE8zx0IneEL2zhcyDWIx9mh8mA8EWgI_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">에어로너츠</span></button></li><li><button type="button" class="btn" movie-nm="[시네도슨트] 루브르 박물관" movie-no="20002500" img-path="/SharedImg/2020/02/10/pYFBsgbriaDyNbaCMcVH5GCkXCpdx4BZ_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[시네도슨트] 루브르 박물관</span></button></li><li><button type="button" class="btn" movie-nm="날씨의 아이" movie-no="01580700" img-path="/SharedImg/2020/05/15/TAFm5eSuCBRThONLHqqDpRR6oDAFjD8U_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">날씨의 아이</span></button></li><li><button type="button" class="btn" movie-nm="침입자" movie-no="20003100" img-path="/SharedImg/2020/05/13/L1M5yrfpINDCNXETFojjPzPfJk8jcpxx_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">침입자</span></button></li><li><button type="button" class="btn" movie-nm="나의 첫 번째 슈퍼스타" movie-no="20020400" img-path="/SharedImg/2020/05/25/zI1Vb9sD0zS10onJOoI305JLLNn6kz9q_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">나의 첫 번째 슈퍼스타</span></button></li><li><button type="button" class="btn" movie-nm="레옹 디 오리지널" movie-no="20022300" img-path="/SharedImg/2020/06/17/E5s47ZECrcMEWmGVdDBaVEX3kYiaXYoZ_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-19">청소년관람불가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">레옹 디 오리지널</span></button></li><li><button type="button" class="btn" movie-nm="패왕별희 디 오리지널" movie-no="20004800" img-path="/SharedImg/2020/04/16/3OHRKnHHelry9f7WY1vM9qghwK48Sr0I_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">패왕별희 디 오리지널</span></button></li><li><button type="button" class="btn" movie-nm="카페 벨에포크" movie-no="20013300" img-path="/SharedImg/2020/05/13/Ke4lvcHauIeImAMNTOAn1IfCcIbLUAaT_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">카페 벨에포크</span></button></li><li><button type="button" class="btn" movie-nm="프리즌 이스케이프" movie-no="20014600" img-path="/SharedImg/2020/04/28/hDUkLr58n3u70NXwJU8gBkMjFldKAwfi_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">프리즌 이스케이프</span></button></li><li><button type="button" class="btn" movie-nm="환상의 마로나" movie-no="20020200" img-path="/SharedImg/2020/05/25/Hk5CYZskPmQjedi5z7Gl8j7AhtMLhppx_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">환상의 마로나</span></button></li><li><button type="button" class="btn" movie-nm="아이 캔 온리 이매진" movie-no="01665200" img-path="/SharedImg/2020/05/18/0RqweQlBIg53f2AiqcrCwpAeYR2EDZxs_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">아이 캔 온리 이매진</span></button></li><li><button type="button" class="btn" movie-nm="런 보이 런" movie-no="20019400" img-path="/SharedImg/2020/05/21/0lMH4GiVQlMxbHibYmzQjhJSmplbhNOb_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">런 보이 런</span></button></li><li><button type="button" class="btn" movie-nm="전망좋은 방" movie-no="20020000" img-path="/SharedImg/2020/05/21/2PdCEHVNa13k4zwyEWrhyHY1iooB9kOl_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">전망좋은 방</span></button></li><li><button type="button" class="btn" movie-nm="[오페라] 피델리오" movie-no="20014500" img-path="/SharedImg/2020/04/27/3jXoFpofS8rB3xFhn1JwRWsKTeqv9MQC_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[오페라] 피델리오</span></button></li><li><button type="button" class="btn" movie-nm="[오페라] 마담 버터플라이 @ The Met" movie-no="20013900" img-path="/SharedImg/2020/04/20/rqm2j2jeEeUaLhnbaTvhcWLZqpqURrwt_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[오페라] 마담 버터플라이 @ The Met</span></button></li><li><button type="button" class="btn" movie-nm="[GET9] 커피와 담배" movie-no="01538400" img-path="/SharedImg/asis/system/mop/poster/2019/28/2011C2-59F0-4F5F-B426-167ECF2CC609.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[GET9] 커피와 담배</span></button></li><li><button type="button" class="btn" movie-nm="[GET9] 데드맨" movie-no="20020600" img-path="/SharedImg/2020/05/26/cHKNnrkPgfEVE2k4995bQbIsov7NJR0C_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[GET9] 데드맨</span></button></li><li><button type="button" class="btn" movie-nm="슈퍼스타 뚜루" movie-no="01687900" img-path="/SharedImg/2020/05/21/FYVMxk03Squc46YJ5BXBw8QZibrB2yAa_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">슈퍼스타 뚜루</span></button></li><li><button type="button" class="btn" movie-nm="나는보리" movie-no="20004900" img-path="/SharedImg/2020/04/17/imYX3U493li0BBZKeH9NlqGvwVqi2GBR_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">나는보리</span></button></li><li><button type="button" class="btn" movie-nm="킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-" movie-no="20004100" img-path="/SharedImg/2020/04/13/6R6F5khxY400ZPHaixQDjZL7zabPSrLF_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-</span></button></li><li><button type="button" class="btn" movie-nm="도미노" movie-no="20019600" img-path="/SharedImg/2020/05/21/XCiv9F6xEPAR63rs8lH2olKfQT9rz101_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">도미노</span></button></li><li><button type="button" class="btn" movie-nm="그레텔과 헨젤" movie-no="20015200" img-path="/SharedImg/2020/06/17/b2o38NFbC4uvxsUN33KQ0PIhOvgQSeeb_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">그레텔과 헨젤</span></button></li><li><button type="button" class="btn" movie-nm="와일드 시티" movie-no="20020100" img-path="/SharedImg/2020/06/05/GOpT3E6rt8copM6XqVWqlAkiMLJY8hG9_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-19">청소년관람불가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">와일드 시티</span></button></li><li><button type="button" class="btn" movie-nm="배트맨 비긴즈" movie-no="20026500" img-path="/SharedImg/2020/06/17/8y5RfA6a6O3PAPnmwzI1GKFD8I926ife_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">배트맨 비긴즈</span></button></li><li><button type="button" class="btn" movie-nm="[팝콘클래식] 와인의 영혼 IN VINO VERITAS" movie-no="20021000" img-path="/SharedImg/2020/06/02/SKnIh2xmDHhogB5v6FeGxmiWQfvDXpSG_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[팝콘클래식] 와인의 영혼 IN VINO VERITAS</span></button></li><li><button type="button" class="btn" movie-nm="프랭크" movie-no="00776700" img-path="/SharedImg/asis/system/mop/poster/2014/B1/90C08E-DEF9-4371-85FA-099E845146D7.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">프랭크</span></button></li><li><button type="button" class="btn" movie-nm="언더워터" movie-no="20018800" img-path="/SharedImg/2020/05/19/33PV0IxdVj6sW2l8FC0KWZvzGtq5VKpH_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">언더워터</span></button></li><li><button type="button" class="btn" movie-nm="파리 오페라 발레단" movie-no="20022100" img-path="/SharedImg/2020/06/04/q2FAKqNfvCKs9bbqOu9yFQulQ8AOgHru_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">파리 오페라 발레단</span></button></li><li><button type="button" class="btn" movie-nm="8인: 최후의 결사단" movie-no="20023000" img-path="/SharedImg/2020/06/17/E6LqHUFCDAs1d7Yq5GFy6wgZQacR3zY9_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">8인: 최후의 결사단</span></button></li><li><button type="button" class="btn" movie-nm="[오페라] 아크나텐 @The Met" movie-no="20025700" img-path="/SharedImg/2020/06/15/mkuTBD77ntyhS0FQUuZcYX03Fh3Cur6K_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[오페라] 아크나텐 @The Met</span></button></li><li><button type="button" class="btn" movie-nm="라라랜드" movie-no="20007800" img-path="/SharedImg/2020/03/11/Qgl73W9FxEMYJnnaOYPFtyqSrqB3vmJ2_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">라라랜드</span></button></li><li><button type="button" class="btn" movie-nm="[팝콘클래식] 오페라와 다양한 장르의 음악들" movie-no="20021200" img-path="/SharedImg/2020/06/02/72PgiGFVn6lvlIWvPNK7JGMJi1l1F2of_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[팝콘클래식] 오페라와 다양한 장르의 음악들</span></button></li><li><button type="button" class="btn" movie-nm="미스비헤이비어" movie-no="20016400" img-path="/SharedImg/2020/05/14/wOZ8LWNLfPPhM1kMLkal9sqiI98rZIeY_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">미스비헤이비어</span></button></li><li><button type="button" class="btn" movie-nm="초미의 관심사" movie-no="20014200" img-path="/SharedImg/2020/05/07/pzM5IaIAXWGSKLstS47ZHT6Xt6y3EK04_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">초미의 관심사</span></button></li><li><button type="button" class="btn" movie-nm="스타 이즈 본" movie-no="01438700" img-path="/SharedImg/asis/system/mop/poster/2018/C6/013959-C07F-401A-AAC0-CA9A76DB48AE.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">스타 이즈 본</span></button></li><li><button type="button" class="btn" movie-nm="조금씩, 천천히 안녕" movie-no="20013600" img-path="/SharedImg/2020/05/15/QYiZX0Nl68ib7PH81yY8nVyszkm1fK7Q_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">조금씩, 천천히 안녕</span></button></li><li><button type="button" class="btn" movie-nm="열혈형사" movie-no="20019700" img-path="/SharedImg/2020/06/17/E3djH70gtye5r8xxcPPCGpV8jWSnCKzU_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">열혈형사</span></button></li><li><button type="button" class="btn" movie-nm="카메론 포스트의 잘못된 교육" movie-no="20019100" img-path="/SharedImg/2020/05/25/9CfQz9SGfJPvsyP5SPLBQUprmDA3oQ7w_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">카메론 포스트의 잘못된 교육</span></button></li><li><button type="button" class="btn" movie-nm="시간을 달리는 소녀" movie-no="20016300" img-path="/SharedImg/2020/05/07/RtRhOaX5OrDJPvP7QGDvPhjwWsEjuWDJ_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">시간을 달리는 소녀</span></button></li><li><button type="button" class="btn" movie-nm="바다로 가자" movie-no="20020800" img-path="/SharedImg/2020/05/27/nkPQnTtUwoUS9OlGaTeqpveUvXY3yhP4_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">바다로 가자</span></button></li><li><button type="button" class="btn" movie-nm="트롤: 월드 투어" movie-no="20003900" img-path="/SharedImg/2020/05/07/FPu782r61QMPQ44Yr0YdHbBTwF5Ags94_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">트롤: 월드 투어</span></button></li><li><button type="button" class="btn" movie-nm="썸머 워즈" movie-no="00154600" img-path="/SharedImg/asis/system/mop/poster/2009/FE/1AB080-8619-4AE2-A388-94204A03B6B5.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">썸머 워즈</span></button></li><li><button type="button" class="btn" movie-nm="괴물의 아이" movie-no="00978000" img-path="/SharedImg/asis/system/mop/poster/2015/DD/FAC56C-D1A3-440F-86F6-0C0333072F74.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">괴물의 아이</span></button></li><li><button type="button" class="btn" movie-nm="미래의 미라이" movie-no="01454300" img-path="/SharedImg/asis/system/mop/poster/2018/56/CF4307-A8C4-43F1-9920-1E70BC16F240.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">미래의 미라이</span></button></li><li><button type="button" class="btn" movie-nm="톰보이" movie-no="20013400" img-path="/SharedImg/2020/04/21/0XLqinzHFuemgowSBF1j7mHRvWxpjdJ9_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">톰보이</span></button></li><li><button type="button" class="btn" movie-nm="문라이즈 킹덤" movie-no="00480700" img-path="/SharedImg/asis/system/mop/poster/2013/F7/7B1657-98B1-4B21-B43C-FA1D4675D9AF.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">문라이즈 킹덤</span></button></li><li><button type="button" class="btn" movie-nm="저 산 너머" movie-no="20012700" img-path="/SharedImg/2020/05/13/eXsrtnolJEthN7wxaaFJXot40dz60WCA_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">저 산 너머</span></button></li><li><button type="button" class="btn" movie-nm="늑대아이" movie-no="00416900" img-path="/SharedImg/asis/system/mop/poster/2013/5D/327950-248A-4A26-9882-233CEC98E77C.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">늑대아이</span></button></li><li><button type="button" class="btn" movie-nm="프랑스여자" movie-no="20016900" img-path="/SharedImg/2020/05/19/1uSZAqVXCYBgV0E0ChwbTVy9D0nGTwxp_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">프랑스여자</span></button></li><li><button type="button" class="btn" movie-nm="제인의 썸머" movie-no="20025600" img-path="/SharedImg/2020/06/17/dSgeidaI0zgrSj4NHR7AS4QOlp9Lx10E_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-19">청소년관람불가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">제인의 썸머</span></button></li><li><button type="button" class="btn" movie-nm="[GET9] 지상의 밤" movie-no="01538300" img-path="/SharedImg/asis/system/mop/poster/2019/38/35865E-20F3-4775-97AF-3E5590D88410.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[GET9] 지상의 밤</span></button></li><li><button type="button" class="btn" movie-nm="로렌스 애니웨이" movie-no="00637200" img-path="/SharedImg/asis/system/mop/poster/2013/53/7AFDC6-7273-4781-B371-AEB11677F19D.small.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">로렌스 애니웨이</span></button></li><li><button type="button" class="btn" movie-nm="백년의 기억" movie-no="20022600" img-path="/SharedImg/2020/06/09/KXwCK9WrULMOXb3aHIe7KpXbrJIkUsPu_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">백년의 기억</span></button></li></ul></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: block; max-height: 310px; top: 0px; height: 61px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
-                                    </div>
+									<div class="scroll m-scroll mCustomScrollbar _mCS_1"
+										id="movieList">
+										<div id="mCSB_1"
+											class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+											style="max-height: none;" tabindex="0">
+											<div id="mCSB_1_container" class="mCSB_container"
+												style="position: relative; top: 0; left: 0;" dir="ltr">
+												<ul class="">
+													<li><button type="button" class="btn"
+															movie-nm="온워드: 단 하루의 기적" movie-no="01693600"
+															img-path="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
+															movie-popup-at="N" movie-popup-no="0" form-at="Y">
+															<span class="movie-grade small age-all">전체관람가</span><i
+																class="iconset ico-heart-small">보고싶어 설정안함</i><span
+																class="txt">온워드: 단 하루의 기적</span>
+														</button></li>
+													<li><button type="button" class="btn"
+															movie-nm="사라진 시간" movie-no="20018900"
+															img-path="/SharedImg/2020/06/08/s0lDFGluXxYc6hNTqfr1qfOeS2UVw7nc_150.jpg"
+															movie-popup-at="N" movie-popup-no="0" form-at="Y">
+															<span class="movie-grade small age-15">15세이상관람가</span><i
+																class="iconset ico-heart-small">보고싶어 설정안함</i><span
+																class="txt">사라진 시간</span>
+														</button></li>
+													<li><button type="button" class="btn" movie-nm="결백"
+															movie-no="20003500"
+															img-path="/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_150.jpg"
+															movie-popup-at="N" movie-popup-no="0" form-at="Y">
+															<span class="movie-grade small age-15">15세이상관람가</span><i
+																class="iconset ico-heart-small">보고싶어 설정안함</i><span
+																class="txt">결백</span>
+														</button></li>
+													<li><button type="button" class="btn"
+															movie-nm="위대한 쇼맨" movie-no="01309400"
+															img-path="/SharedImg/asis/system/mop/poster/2017/D0/D558A7-DE6C-4178-B3F6-27A023AA5DEE.small.jpg"
+															movie-popup-at="N" movie-popup-no="0" form-at="Y">
+															<span class="movie-grade small age-12">12세이상관람가</span><i
+																class="iconset ico-heart-small">보고싶어 설정안함</i><span
+																class="txt">위대한 쇼맨</span>
+														</button></li>
+													<li><button type="button" class="btn"
+															movie-nm="콜 미 바이 유어 네임" movie-no="20021700"
+															img-path="/SharedImg/2020/06/16/T43wKaYuW6i30Kc5Rd1SJ8gdtoDLzgwO_150.jpg"
+															movie-popup-at="N" movie-popup-no="0" form-at="Y">
+															<span class="movie-grade small age-19">청소년관람불가</span><i
+																class="iconset ico-heart-small">보고싶어 설정안함</i><span
+																class="txt">콜 미 바이 유어 네임</span>
+														</button></li>
+												</ul>
+											</div>
+											<div id="mCSB_1_scrollbar_vertical"
+												class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical"
+												style="display: block;">
+												<div class="mCSB_draggerContainer">
+													<div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
+														style="position: absolute; min-height: 30px; display: block; max-height: 310px; top: 0px; height: 61px;">
+														<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+													</div>
+													<div class="mCSB_draggerRail"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
                                 </div>
                                 <!--// all : 전체 -->
 
@@ -647,7 +679,13 @@ function fn_validateDateYn(param) {
 
 <c:import url="../template/footer.jsp"></c:import>
 
+<script type="text/javascript">
+
+	
+
+
+
+</script>
+
 </body>
 </html>
-
-ss

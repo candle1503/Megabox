@@ -25,30 +25,6 @@
 					<p class="txt">
 						쌍용시네시티의<br>새로운 지점을<br>소개합니다.
 					</p>
-
-					<!-- swiper-control -->
-					<div class="swiper-control">
-						<div class="theater-pagination swiper-pagination-bullets">
-							<span
-								class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span
-								class="swiper-pagination-bullet"></span><span
-								class="swiper-pagination-bullet"></span>
-						</div>
-
-						<div class="theater-util">
-							<button type="button" class="theater-prev" tabindex="0"
-								role="button" aria-label="Previous slide">이전 이벤트 보기</button>
-							<button type="button" class="theater-next" tabindex="0"
-								role="button" aria-label="Next slide">다음 이벤트 보기</button>
-							<button type="button" class="pause on">일시정지</button>
-							<button type="button" class="play">자동재생</button>
-						</div>
-
-						<div class="theater-count">
-							<span title="현재 페이지" class="active">1</span> / <span
-								title="전체 페이지" class="total">3</span>
-						</div>
-					</div>
 				</div>
 
 				<!-- theater-swiper -->
@@ -56,6 +32,7 @@
 					class="theater-swiper swiper-container-initialized swiper-container-horizontal">
 					<div class="swiper-wrapper"
 						style="transition-duration: 0ms; transform: translate3d(-1710px, 0px, 0px);">
+
 						<div class="cell swiper-slide swiper-slide-duplicate" tabindex="0"
 							data-swiper-slide-index="0"
 							style="width: 245px; margin-right: 40px;">
@@ -68,12 +45,12 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">부산/대구/경상</p>
-									<p class="name">창원내서</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[0].localCode}</p>
+									<p class="name">${newBranch[0].name}</p>
 								</div>
 							</a>
 						</div>
+
 						<div class="cell swiper-slide swiper-slide-duplicate" tabindex="0"
 							data-swiper-slide-index="1"
 							style="width: 245px; margin-right: 40px;">
@@ -85,9 +62,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">대전/충청/세종</p>
-									<p class="name">세종청사</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[1].localCode}</p>
+									<p class="name">${newBranch[1].name}</p>
 								</div>
 							</a>
 						</div>
@@ -99,22 +75,12 @@
 								title="품격있는 당신을 위한 명품극장, 대전현대아울렛 6월 24일(수) OPEN! 상세보기">
 
 
-
-
-
-
-
-
-
-
-
 								<div class="img new"></div>
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">대전/충청/세종</p>
-									<p class="name">대전현대아울렛</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[2].localCode}</p>
+									<p class="name">${newBranch[2].name}</p>
 								</div>
 							</a>
 						</div>
@@ -130,9 +96,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">부산/대구/경상</p>
-									<p class="name">창원내서</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[0].localCode}</p>
+									<p class="name">${newBranch[0].name}</p>
 								</div>
 							</a>
 						</div>
@@ -149,9 +114,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">대전/충청/세종</p>
-									<p class="name">세종청사</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[1].localCode}</p>
+									<p class="name">${newBranch[1].name}</p>
 								</div>
 							</a>
 						</div>
@@ -168,9 +132,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">대전/충청/세종</p>
-									<p class="name">대전현대아울렛</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[2].localCode}</p>
+									<p class="name">${newBranch[2].name}</p>
 								</div>
 							</a>
 						</div>
@@ -189,9 +152,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">부산/대구/경상</p>
-									<p class="name">창원내서</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[0].localCode}</p>
+									<p class="name">${newBranch[0].name}</p>
 								</div>
 							</a>
 						</div>
@@ -208,9 +170,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">대전/충청/세종</p>
-									<p class="name">세종청사</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[1].localCode}</p>
+									<p class="name">${newBranch[1].name}</p>
 								</div>
 							</a>
 						</div>
@@ -227,9 +188,8 @@
 
 								<div class="cont new">
 									<p class="label">신규오픈</p>
-									<p class="local">대전/충청/세종</p>
-									<p class="name">대전현대아울렛</p>
-									<p class="date">20.06.24</p>
+									<p class="local">${newBranch[2].localCode}</p>
+									<p class="name">${newBranch[2].name}</p>
 								</div>
 							</a>
 						</div>
@@ -464,7 +424,7 @@
 								<td>${vo.num}</td>
 								<th scope="row"><a
 									href="${pageContext.request.contextPath}/notice/noticeSelect?num=${vo.num}"
-									title="" >${vo.title}</a></th>
+									title="">${vo.title}</a></th>
 								<td>${vo.separate}</td>
 								<td>${vo.regDate}</td>
 							</tr>

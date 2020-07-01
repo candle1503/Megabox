@@ -11,7 +11,8 @@
 		<result column="contents" property="contents"/>
 		<result column="regDate" property="regDate"/>
 		<result column="separate" property="separate"/>
-		<result column="theaterNum" property="theaterNum"/>
+		<result column="name" property="name"/>
+		<result column="localCode" property="localCode"/>
 		<collection property="noticeFileVOs" javaType="List" ofType="NoticeFileVO">
 			<id column="fileNum" property="fileNum"/>
 			<result column="fileName" property="fileName"/>
@@ -21,22 +22,36 @@
 
 
 	<insert id="boardInsert" parameterType="NoticeVO" useGeneratedKeys="true" keyProperty="num">
-		insert into notice values(#{num}, #{separate}, #{title}, #{contents}, now(), 1)
+		insert into notice values(#{num}, #{title}, #{contents}, now(), #{separate}, #{name}, #{localCode})
 	</insert>
 
 	<sql id="search">
 		like concat('%', #{search}, '%')
 	</sql>
+	
+	<sql id="nameSearch">
+		like concat('%', #{name}, '%')
+	</sql>
 
 
 	<select id="boardList" parameterType="Pager" resultType="NoticeVO">
-		select * from notice where title
+		select * from notice where name 
+		<include refid="nameSearch"></include>
+		and 
+		title
 		<include refid="search"></include>
 		order by num desc limit #{startRow}, 10
 	</select>
 	
+	<select id="localCodeNameList" parameterType="TheaterVO" resultType="TheaterVO">
+		select name from theater
+	</select>
+	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
-		select count(num) from notice where title		<include refid="search"></include>
+		select count(num) from notice where name 
+		<include refid="nameSearch"></include>
+		and
+		title		<include refid="search"></include>
 	</select>
 	
 	<select id="boardSelect" parameterType="NoticeVO" resultMap="selectResult">
@@ -47,7 +62,7 @@
 	</select>
 	
 	<update id="boardUpdate" parameterType="NoticeVO">
-		update notice set separate = #{separate}, title = #{title}, contents = #{contents}
+		update notice set title = #{title}, contents = #{contents}, separate = #{separate}, name = #{name}, localCode = #{localCode} where num = #{num}
 	</update>
 	
 	<delete id="boardDelete" parameterType="NoticeVO">

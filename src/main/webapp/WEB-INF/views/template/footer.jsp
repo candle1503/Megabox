@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- footer -->
 <footer id="footer">
 	<!-- footer-top -->
 	<div class="footer-top">
@@ -20,7 +19,7 @@
 			</ul>
 
 			<a href="#layer_looking_theater" class="btn-looking-theater"
-				title="극장찾기"><i class="iconset ico-footer-search"></i> 극장찾기</a>
+				title="극장찾기" style="margin-right: 10px;"><i class="iconset ico-footer-search" ></i> 극장찾기</a>
 		</div>
 	</div>
 	<!--// footer-top -->
@@ -28,11 +27,8 @@
 	<!-- footer-bottom -->
 	<div class="footer-bottom">
 		<div class="inner-wrap">
-			<div class="c1">
-				<img alt=""
-					src="${pageContext.request.contextPath}/resources/images/sTheater.png"
-					style="width: 25%; height: auto;">
-			</div>
+			<div class="ci">MEGABOX : Life Theater</div>
+
 			<div class="footer-info">
 				<div>
 					<address>서울특별시 마포구 월드컵북로 21 풍성빌딩 2~4층 (우)04001</address>
@@ -45,37 +41,13 @@
 				<p class="copy">COPYRIGHT © 쌍용 씨네시티</p>
 			</div>
 
-			<div class="footer-sns">
-				<a href="https://twitter.com/megaboxon" target="_blank"
-					title="MEGABOX 트위터 페이지로 이동"><i class="iconset ico-twitter">트위터</i></a>
-				<a href="https://www.facebook.com/megaboxon" target="_blank"
-					title="MEGABOX 페이스북 페이지로 이동"><i class="iconset ico-facebook">페이스북</i></a>
-				<a href="http://instagram.com/megaboxon" target="_blank"
-					title="MEGABOX 인스타그램 페이지로 이동"><i class="iconset ico-instagram">인스타그램</i></a>
-				<a
-					href="https://play.google.com/store/apps/details?id=com.megabox.mop"
-					target="_blank" title="MEGABOX 구글플레이 페이지로 이동"><i
-					class="iconset ico-googleplay">구글플레이</i></a> <a
-					href="https://itunes.apple.com/kr/app/megabox/id894443858?l=ko&amp;ls=1&amp;mt=8"
-					target="_blank" title="MEGABOX 앱스토어 페이지로 이동"><i
-					class="iconset ico-appstore">앱스토어</i></a>
+			<div class="footer-sns" style="margin-right: 10px;">
+				<a href="https://twitter.com/megaboxon" target="_blank"><i class="iconset ico-twitter">트위터</i></a>
+				<a href="https://www.facebook.com/megaboxon" target="_blank"><i class="iconset ico-facebook">페이스북</i></a>
+				<a href="http://instagram.com/megaboxon" target="_blank"><i class="iconset ico-instagram">인스타그램</i></a>
 			</div>
 		</div>
 	</div>
 	<!--// footer-bottom -->
 	<div id="layer_looking_theater" class="layer-looking-theater"></div>
 </footer>
-<!--// footer -->
-
-<!-- 모바일 때만 출력 -->
-<div class="go-mobile" style="display: none;">
-	<a href="#" data-url="https://m.megabox.co.kr">모바일웹으로 보기 <i
-		class="iconset ico-go-mobile"></i></a>
-</div>
-</div>
-<form id="mainForm"></form>
-
-<div class="normalStyle"
-	style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
-<div class="alertStyle"
-	style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
