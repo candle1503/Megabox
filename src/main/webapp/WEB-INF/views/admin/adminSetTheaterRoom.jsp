@@ -68,7 +68,7 @@
 										<col style="width: 180px;">
 										<col>
 									</colgroup>
-									<tbody class="timeAdd">
+									<tbody class="timeAdd${0+${i.count}">
 										<!-- +버튼 누르면 아래로 추가되게 -->
 										<tr class="added">
 											<th scope="row"><label for="phone"> <select
@@ -105,7 +105,7 @@
 
 									</tbody>
 								</table>
-								<input type=button class="button resetBTN" style="float: right;"
+								<input type=button class="button resetBTN${0+i.count}" style="float: right;"
 									value="RESET">
 								<button type="submit" class="button purple"
 									style="margin-left: 700px;">저장</button>
@@ -144,12 +144,13 @@
 									    closeText: '닫기'
 									        
 								}
-
-							$('#calendar1').datepicker(G_calendar);
-							$('#calendar2').datepicker(G_calendar);
-
-
+							var i = 1;
 							
+							while(i<9){
+							$('#calendar'+i).datepicker(G_calendar);
+								i += 1;
+							}
+
 							<!-- 버튼들 유효성 검사 -->
 								var timeAddContents = $('.timeAdd').html();
 								var lastTime = 0;
@@ -157,17 +158,24 @@
 								var listCount = 1;
 								var startDay;
 								var endDay;
-								
-								$('.resetBTN').on('click', function() {
+								var j = 1;
+
+								while(j<9){
+									
+								$('.resetBTN'+j).on('click', function() {
 									$('.timeAdd').empty();
 									$('.timeAdd').prepend(timeAddContents);
 									lastTime = 0;
 									listCount = 1;
-									$('#calendar').val("시작날짜");
-									$('#calendar2').val("마지막날짜");
+
+
+									$('#calendar'+j).val("시작 날짜");
+									$('#calendar'+j).val("마지막 날짜");
 									startDay="시작날짜";
 									endDay="마지막날짜";
-								})
+									})
+									j = j+1	
+								}
 							
 
 							$('#calendar').change( function(){
