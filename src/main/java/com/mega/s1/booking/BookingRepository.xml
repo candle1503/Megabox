@@ -6,11 +6,17 @@
 <mapper namespace="com.mega.s1.booking.BookingRepository">
 
 	<select id="bookingMovieList" parameterType="BookingVO" resultType="BookingVO">
-		select R.*, M.*
+		select distinct name, age, M.movieNum
 		from roomMovieTime R left join movie M
 		on (R.movieNum = M.movieNum)
 		where date_format(startTime, '%d') = #{startTime}
 	</select>
 	
+	<select id="bookingLocalList" parameterType="BookingVO" resultType="BookingVO">
+		select distinct localCode
+		from roomMovieTime R left join theater T
+		on (R.theaterNum = T.theaterNum)
+		where movieNum = #{movieNum}
+	</select>
 
 </mapper>

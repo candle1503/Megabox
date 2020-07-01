@@ -15,6 +15,8 @@ public class BookingVO {
 	
 	private int theaterRoomCode;
 	
+	private int theaterNum;
+	
 	private String name;
 	
 	private String age;

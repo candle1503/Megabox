@@ -3,32 +3,51 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<c:forEach items="${bookingMovieAr}" var="bmList">
+<c:forEach items="${bookingMovieAr}" var="bmList" varStatus="">
 	<li class="bookingMovie-Name">
 		<button type="button" class="btn">
-			<span class="movie-grade small">${bmList.age}</span><i
-				class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">${bmList.name}</span>
+			<c:if test="${bmList.age eq '전체관람가'}">		
+				<span class="movie-grade small age-all">${bmList.age}</span>
+			</c:if>
+			<c:if test="${bmList.age eq '12세이상관람가'}">		
+				<span class="movie-grade small age-12">${bmList.age}</span>
+			</c:if>
+			<c:if test="${bmList.age eq '15세이상관람가'}">		
+				<span class="movie-grade small age-15">${bmList.age}</span>
+			</c:if>
+			<c:if test="${bmList.age eq '청소년관람불가'}">		
+				<span class="movie-grade small age-19">${bmList.age}</span>
+			</c:if>
+			<i class="iconset ico-heart-small">보고싶어 설정안함</i>
+				<span class="txt">${bmList.name}</span>
 		</button>
 	</li>
 </c:forEach>
 
 <script type="text/javascript">
-	var age = "${bookingMovieAge}";
 
-	if(age=='전체관람가'){
-		$(".btn > span").addClass("age-all");
-	}else if(age=="12세이상관람가"){
-		$(".btn > span").addClass("age-12");
-	}else if(age=="15세이상관람가"){
-		$(".btn > span").addClass("age-15");
-	}else if(age=="청소년관람불가"){
-		$(".btn > span").addClass("age-19");
-	}
+	var bookingMovieArSize = "${bookingMovieArSize}";
+
+	var movieNum = 0;
+	
+	$(".bookingMovie-Name").on("click", ".btn", function(){
+
+		for(var i=0; i<bookingMovieArSize; i++){
+			movieNum = "${bookingMovieAr.get(i).getMovieNum()}";
+		}
+
+		alert(movieNum);
+		//alert(movieNum);
+		/* $.ajax({
+			
+			
+		}); */
+	});
+
+	
+
+
 </script>
-
-
-
-
 
 
 <!-- <li class="bookingMovie-List"><button type="button" class="btn" movie-nm="사라진 시간"

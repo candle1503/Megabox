@@ -11,4 +11,5 @@ public interface BookingRepository {
 
 	public List<BookingVO> bookingMovieList(BookingVO bookingVO) throws Exception;
 	
+	public List<BookingVO> bookingLocalList(BookingVO bookingVO) throws Exception;
 }

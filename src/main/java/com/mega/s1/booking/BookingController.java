@@ -1,5 +1,6 @@
 package com.mega.s1.booking;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,18 +43,32 @@ public class BookingController {
 		
 		List<BookingVO> bookingMovieAr = bookingService.bookingMovieList(bookingVO);
 		
-		System.out.println("age:"+bookingMovieAr.get(0).getAge());
-		
-		String age = "";
+		//System.out.println("movieNum:"+bookingMovieAr.get(0).getMovieNum());
 		
 		for(int i=0; i<bookingMovieAr.size(); i++) {
-			 age = bookingMovieAr.get(i).getAge();
+			int movieNum = bookingMovieAr.get(i).getMovieNum();
+			System.out.println("movieNum:"+movieNum);
+			mv.addObject("bookingMovieNum", movieNum);
 		}
 		
-		mv.addObject("bookingMovieAr", bookingMovieAr);
-		mv.addObject("bookingMovieAge", age);
+		int bookingMovieArSize = bookingMovieAr.size();
+		mv.addObject("bookingMovieArSize", bookingMovieArSize);
 		
+		mv.addObject("bookingMovieAr", bookingMovieAr);
 		mv.setViewName("booking/bookingMovieList");
+		
+		return mv;
+	}
+	
+	@GetMapping("bookingLocalList")
+	public ModelAndView bookingLocalList(BookingVO bookingVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookingVO> bookingLocalAr = bookingService.bookingLocalList(bookingVO);
+		
+		mv.addObject("bookingLocalAr", bookingLocalAr);
+		mv.setViewName("booking/bookingLocalList");
+		
 		return mv;
 	}
 	
