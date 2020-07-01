@@ -119,16 +119,18 @@ public class AdminController {
 		int theaterNum = adminService.getTheaterNum(theaterVO);
 		
 		List<TheaterRoomVO> roomVOs = adminService.getRoomList(theaterVO);
-		List<MovieVO> movieVOs = adminService.getMovieList();
-		System.out.println(movieVOs.get(0).getOpenDay());
-		System.out.println(movieVOs.get(1).getOpenDay());
-		System.out.println(movieVOs.get(2).getOpenDay());
-		System.out.println(movieVOs.get(3).getOpenDay());
 		mv.addObject("list", roomVOs);
-		mv.addObject("movieList", movieVOs);
 		mv.addObject("theaterNum", theaterNum);
 		
 		mv.setViewName("admin/adminSetTheaterRoom");
+		return mv;
+	}
+	
+	@PostMapping("movieTimeCheck")
+	public ModelAndView adminMovieTimeCheck(String choosedTime) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(choosedTime);
+		
 		return mv;
 	}
 	

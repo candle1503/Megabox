@@ -41,7 +41,7 @@ public interface AdminRepository {
 	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception;
 	
 	//getMovieList
-	public List<MovieVO> getMovieList() throws Exception;
+	public List<MovieVO> movieTimeCheck(String choosedTime) throws Exception;
 	
 	//getTheaterNum
 	public int getTheaterNum(TheaterVO theaterVO) throws Exception;

@@ -66,8 +66,8 @@ public class AdminService {
 		return adminRepository.getRoomList(theaterVO);
 	}
 	
-	public List<MovieVO> getMovieList() throws Exception{
-		return adminRepository.getMovieList();
+	public List<MovieVO> movieTimeCheck(String choosedTime) throws Exception{
+		return adminRepository.movieTimeCheck(choosedTime);
 	}
 	
 	public int getTheaterNum(TheaterVO theaterVO) throws Exception{

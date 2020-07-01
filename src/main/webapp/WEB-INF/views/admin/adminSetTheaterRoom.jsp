@@ -373,6 +373,7 @@
 							
 								startDay1 = $('#calendar1').val();
 								alert(startDay1);
+								
 								if(startDay1 > endDay5){
 									alert("마지막 날짜 이전으로 설정해주세요.");
 									$('#calendar1').val("시작날짜");
@@ -380,7 +381,11 @@
 								$('#calendar1').attr("disabled","disabled");
 								$('#calendar1').attr("id","done1");
 
-
+								$.post("movieTimeCheck", {
+									choosedTime : startDay1
+								}, function() {
+									
+								});
 
 								})
 							
