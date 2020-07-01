@@ -368,7 +368,11 @@ function fn_validateDateYn(param) {
 							}
 						}
 
-
+						
+						
+						$("#bookingTime-list").on("click", ".bookingTime-list",function(){
+							
+						});
 						
 						
 						
