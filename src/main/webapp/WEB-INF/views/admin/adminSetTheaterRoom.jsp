@@ -6,8 +6,7 @@
 <head>
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
 <link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
@@ -99,13 +98,9 @@
 											<select	class="input-text w500px movieSelect${i.count}"
 												style="border: none; background-color: #f7f8f9; width: 550px">
 													<option value="">영화 선택</option>
-												<c:forEach items="${movieList}" var="vo2">
-<%-- 												<option>${vo2.openDay}</option> --%>
-<%-- 													<c:if test="${vo2.openDay gt 2020-06-10}"> --%>
-<%-- 													<option value="${vo2.name}">${vo2.name}</option> --%>
-<%-- 													<option value=C"${vo2.name}">${vo2.openDay}</option> --%>
-<%-- 													</c:if> --%>
-												</c:forEach>
+												
+													<option value="${vo2.name}">${vo2.name}</option>
+											
 											</select>
 										</tr>
 
@@ -381,14 +376,28 @@
 								$('#calendar1').attr("disabled","disabled");
 								$('#calendar1').attr("id","done1");
 
+
+								<!-- 상영중인 영화 찾기 -->
 								$.post("movieTimeCheck", {
 									choosedTime : startDay1
-								}, function() {
-									
+								}, function(result) {
+									location.href(result);
 								});
 
 								})
-							
+								
+// 								$.ajax({
+// 						         url: "./movieTimeCheck?choice=3",
+// 						         method: "get",
+// 						         dataType:'html',
+// 						         success : function(d) {
+// 						     	 console.log('success');
+						     
+// 						            },
+// 						            error : function(e) {
+// 						                console.log('error');
+// 						            }
+// 						       });
 
 							$('#calendar2').change( function(){
 								startDay2 = $('#calendar2').val();

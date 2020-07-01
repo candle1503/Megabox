@@ -128,10 +128,10 @@ public class AdminController {
 	
 	@PostMapping("movieTimeCheck")
 	public ModelAndView adminMovieTimeCheck(String choosedTime) throws Exception{
+		System.out.println("11");
 		ModelAndView mv = new ModelAndView();
 		List<MovieVO> movieVOs = adminService.movieTimeCheck(choosedTime);
-		System.out.println(movieVOs.get(0).getName());
-		System.out.println(movieVOs.get(1).getName());
+		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;
 	}
 	
