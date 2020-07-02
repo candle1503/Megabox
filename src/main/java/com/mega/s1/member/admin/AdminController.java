@@ -1,7 +1,5 @@
 package com.mega.s1.member.admin;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -130,15 +128,178 @@ public class AdminController {
 	
 	@PostMapping("setTheaterRoom")
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
+		int firstDay = 1;
+		int timeSize = 0;
+		int timeSize2 = 0;
 		RoomMovieTimeVO[] roomMovieTimeVOs = {roomMovieTimeVO};
 		String[] times = roomMovieTimeVOs[0].getTime().split(",");
 		String[] movieNums = roomMovieTimeVOs[0].getMovieNum().split(",");
 		System.out.println("상영관이름:"+roomMovieTimeVO.getRoomName());
 		System.out.println("roomcode:"+roomMovieTimeVO.getTheaterRoomCode());
 		System.out.println("theaterNum:"+roomMovieTimeVO.getTheaterNum());
-		System.out.println("시작날짜:"+roomMovieTimeVO.getStartDay());
-		System.out.println("끝날짜:"+roomMovieTimeVO.getEndDay());
+		String [] startDays=roomMovieTimeVO.getStartDay().split("-", 3);
+		String [] endDays=roomMovieTimeVO.getEndDay().split("-", 3);
+		System.out.println("startDays1:"+startDays[0]);
+		System.out.println("startDays2:"+startDays[1]);
+		System.out.println("startDays3:"+startDays[2]);
+		System.out.println("endDays1:"+endDays[0]);
+		System.out.println("endDays2:"+endDays[1]);
+		System.out.println("endDays3:"+endDays[2]);
+		int startDayInt = Integer.parseInt(startDays[2]);
+		int startMonthInt = Integer.parseInt(startDays[1]);
+		int startYearInt = Integer.parseInt(startDays[0]);
+		int endDayInt = Integer.parseInt(endDays[2]);
+		int endMonthInt = Integer.parseInt(endDays[1]);
+		int endYearInt = Integer.parseInt(endDays[0]);
+		System.out.println(startDayInt);
+		System.out.println(endDayInt);
 		int length = times.length;
+		if(endMonthInt > startMonthInt) {
+			System.out.println("한달이상 차이나네;;");
+			if(endMonthInt == 2) {
+				while( startDayInt <= 31 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+				//윤년계산 해줘야함
+			}else if(endMonthInt ==3) {
+				System.out.println("윤년계산중...");
+				
+				
+				if( startYearInt%4==0 && startYearInt%100!=0 || startYearInt%400==0 ) {
+					System.out.println("윤년");
+					while( startDayInt <= 29 ) {
+						System.out.println("startDay 하루 더해줌"+startDayInt);
+						startDayInt += 1;
+					}
+					while(firstDay <= endDayInt) {
+						System.out.println("firstDay 하루 더해줌"+firstDay);
+						firstDay += 1;
+					};
+				}else {
+					System.out.println("윤년아님");
+					while( startDayInt <= 28 ) {
+						System.out.println("startDay 하루 더해줌"+startDayInt);
+						startDayInt += 1;
+					}
+					while(firstDay <= endDayInt) {
+						System.out.println("firstDay 하루 더해줌"+firstDay);
+						firstDay += 1;
+					}
+				}
+				
+				
+				
+			}else if(endMonthInt ==4) {
+				while( startDayInt <= 31 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==5) {
+				while( startDayInt <= 30 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==6) {
+				while( startDayInt <= 31 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==7) {
+				while( startDayInt <= 30 ) {
+					roomMovieTimeVO.setStartDay((startYearInt+startMonthInt+startDayInt +""));
+					System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+firstDay));
+					System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==8) {
+				while( startDayInt <= 31 ) {
+					for(int i=0; i<length; i++) {
+						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt+"-"+times[i]));
+						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
+					}
+					startDayInt += 1;
+					
+				}
+				while(firstDay <= endDayInt) {
+					for(int j=0; j<length; j++) {
+						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay+"-"+times[j]));
+						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
+					}
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==9) {
+				while( startDayInt <= 31 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==10) {
+				while( startDayInt <= 30 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==11) {
+				while( startDayInt <= 31 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}else if(endMonthInt ==12) {
+				while( startDayInt <= 30 ) {
+					System.out.println("startDay 하루 더해줌"+startDayInt);
+					startDayInt += 1;
+				}
+				while(firstDay <= endDayInt) {
+					System.out.println("firstDay 하루 더해줌"+firstDay);
+					firstDay += 1;
+				}
+				
+			}
+		}
+		
+		
 		for(int i = length-1; i>-1 ;i--) {
 			System.out.println("----------"+i+"개-----------");
 			System.out.println("몇시?:"+times[i]);
