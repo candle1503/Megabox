@@ -110,6 +110,7 @@
 											<td style="background-color: #f7f8f9;">
 											<select	class="input-text w500px movieSelect${i.count}"
 												style="border: none; background-color: #f7f8f9; width: 550px" name="movieNum">
+												
 											</select>
 										</tr>
 

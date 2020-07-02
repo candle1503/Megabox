@@ -1,5 +1,6 @@
 package com.mega.s1.member.admin;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -130,11 +131,13 @@ public class AdminController {
 	@PostMapping("setTheaterRoom")
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
 		RoomMovieTimeVO[] roomMovieTimeVOs = {roomMovieTimeVO};
-		System.out.println(roomMovieTimeVOs[0].getStartDay());
-		System.out.println(roomMovieTimeVOs[0].getEndDay());
-		System.out.println(roomMovieTimeVOs[0].getTime());
-		System.out.println(roomMovieTimeVOs[0].getMovieNum());
-		
+		String[] times = roomMovieTimeVOs[0].getTime().split(",");
+		String[] movieNums = roomMovieTimeVOs[0].getMovieNum().split(",");
+		int length = times.length;
+		for(int i = 0; i<length; i++) {
+			System.out.println(times[i]);
+			System.out.println(movieNums[i]);
+		}
 //		adminService.setTheaterRoom(roomMovieTimeVO);
 	}
 	

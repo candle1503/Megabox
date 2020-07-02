@@ -561,8 +561,18 @@
 										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
 										}
 									})
+									
+							var timeChoosedNum = 0;
+							$('.timeChoose1').change(function(){
+								if($('.timeChoose1').val()-timeChoosedNum <3){
+									alert("최소 3시간 이상으로 설정해주세요.")
+								}
+								timeChoosedNum = $('.timeChoose1').val()
+							})
 							
-							
+							$('.timeChoose1').change(function(){
+								var timeChoosedNum = $('.timeChoose1').val()
+							})
 //							<!-- 저장 버튼 눌렀을 때 값들 다 있는지 확인 -->
 //								$('.saveBTN1').click(function(){
 //									if($('.movieSelect1').val() == null){
