@@ -23,5 +23,6 @@
 		<typeAlias type="com.mega.s1.theater.TheaterVO" alias="TheaterVO"/>
 		<typeAlias type="com.mega.s1.theater.theaterRoom.TheaterRoomVO" alias="TheaterRoomVO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="com.mega.s1.theater.theaterRoom.RoomMovieTimeVO" alias="RoomMovieTimeVO"/>
 	</typeAliases>
 </configuration>

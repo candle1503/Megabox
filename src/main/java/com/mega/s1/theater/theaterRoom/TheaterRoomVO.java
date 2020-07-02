@@ -1,7 +1,5 @@
 package com.mega.s1.theater.theaterRoom;
 
-import java.sql.Time;
-
 import lombok.Data;
 
 @Data

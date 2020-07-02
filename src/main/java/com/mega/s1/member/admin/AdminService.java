@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import com.mega.s1.util.Pager;
 
@@ -72,5 +73,9 @@ public class AdminService {
 	
 	public int getTheaterNum(TheaterVO theaterVO) throws Exception{
 		return adminRepository.getTheaterNum(theaterVO);
+	}
+	
+	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
+		adminRepository.setTheaterRoom(roomMovieTimeVO);
 	}
 }

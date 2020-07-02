@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import com.mega.s1.util.Pager;
 
@@ -126,15 +127,23 @@ public class AdminController {
 		return mv;
 	}
 	
+	@PostMapping("setTheaterRoom")
+	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
+		System.out.println(roomMovieTimeVO.getStartDay());
+		System.out.println(roomMovieTimeVO.getEndDay());
+		System.out.println(roomMovieTimeVO.getTime());
+		System.out.println(roomMovieTimeVO.getMovieNum());
+		
+//		adminService.setTheaterRoom(roomMovieTimeVO);
+	}
+	
+	
 	@PostMapping("movieTimeCheck")
 	public ModelAndView adminMovieTimeCheck(String choosedTime) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<MovieVO> movieVOs = adminService.movieTimeCheck(choosedTime);
-		System.out.println(movieVOs.get(0).getName());
-		System.out.println(movieVOs.get(1).getName());
-		System.out.println(movieVOs.get(2).getName());
 		mv.addObject("movieList", movieVOs);
-		mv.setViewName("ajax/movieList");
+ 		mv.setViewName("ajax/movieList");
 		return mv;
 	}
 	

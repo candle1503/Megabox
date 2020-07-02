@@ -61,4 +61,8 @@
 		select theaterNum from theater where name=#{name}
 	</select>
 	
+	<insert id="setTheaterRoom" parameterType="RoomMovieTimeVO" keyProperty="timeCode" useGeneratedKeys="true">
+		insert into roomMovieTime values (0,#{startTime},#{roomName},#{movieNum},#{theaterRoomCode},#{theaterNum})
+	</insert>
+	
 </mapper>
