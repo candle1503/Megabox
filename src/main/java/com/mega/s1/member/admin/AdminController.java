@@ -133,10 +133,17 @@ public class AdminController {
 		RoomMovieTimeVO[] roomMovieTimeVOs = {roomMovieTimeVO};
 		String[] times = roomMovieTimeVOs[0].getTime().split(",");
 		String[] movieNums = roomMovieTimeVOs[0].getMovieNum().split(",");
+		System.out.println("상영관이름:"+roomMovieTimeVO.getRoomName());
+		System.out.println("roomcode:"+roomMovieTimeVO.getTheaterRoomCode());
+		System.out.println("theaterNum:"+roomMovieTimeVO.getTheaterNum());
+		System.out.println("시작날짜:"+roomMovieTimeVO.getStartDay());
+		System.out.println("끝날짜:"+roomMovieTimeVO.getEndDay());
 		int length = times.length;
-		for(int i = 0; i<length; i++) {
-			System.out.println(times[i]);
-			System.out.println(movieNums[i]);
+		for(int i = length-1; i>-1 ;i--) {
+			System.out.println("----------"+i+"개-----------");
+			System.out.println("몇시?:"+times[i]);
+			System.out.println("영화넘버:"+movieNums[i]);
+			System.out.println("---------------------------");
 		}
 //		adminService.setTheaterRoom(roomMovieTimeVO);
 	}

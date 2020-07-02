@@ -49,8 +49,12 @@
 						<div class="roomNumber">
 						<!-- theaterNum 히든으로 넘겨줄거임 -->
 						<input type="hidden" value="${theaterNum}" name="theaterNum">
+						<!-- theaterRoomCode 히든으로 넘겨줄거임 -->
+						<input type="hidden" value="${vo.theaterRoomCode}" name="theaterRoomCode">
+						<!-- theaterRoomCode 히든으로 넘겨줄거임 -->
+						<input type="hidden" value="${vo.roomName}" name="roomName">
 							<div class="tit-util mt40 mb10">
-								<h3 class="tit">${vo.roomName}+${i.count}</h3>
+								<h3 class="tit">${vo.roomName}</h3>
 								
 								<input class="timeAddBtn${i.count} button" type="button"
 									style="margin-left: 50px; font-size: large;" value="상영시간+">
