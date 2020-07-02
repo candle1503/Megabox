@@ -58,5 +58,9 @@ public class TheaterService {
 
 		return theaterRepository.theaterNameJeju();
 	}
+	
+	public String selectTheaterName(TheaterVO theaterVO) throws Exception{
+		return theaterRepository.selectTheaterName(theaterVO);
+	}
 
 }

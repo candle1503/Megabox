@@ -68,6 +68,10 @@
 	<delete id="boardDelete" parameterType="NoticeVO">
 		delete from notice where num = #{num}
 	</delete>
+
+	<select id="boardSelectList" parameterType="String" resultType="NoticeVO">
+		select * from notice where name = #{name}
+	</select>
 	
 
 </mapper>

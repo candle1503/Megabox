@@ -1120,6 +1120,45 @@
 						<div class="zone-legend" style="display: none"></div>
 					</div>
 				</div>
+
+
+				<script type="text/javascript">
+
+					<!-- 결제과 완료된 좌석은 finish pos-->
+					<!-- 사회 거리두기 좌석은 finish-->
+					<!-- 선택하면 class에  choice 및 selected="selected" 삽입-->
+					var seatCheckCnt = 0;
+
+					$('.common').click(function(){		
+
+						var cnt = $('ul.num-choice>li>.on').text()
+						var array = $(this).attr('class')
+						var strArray = array.split(' ');
+						var idOn = strArray[strArray.length-1]
+
+
+						alert(cnt)
+						alert(idOn)
+						
+						if(seatCheckCnt<cnt){
+
+							if(idOn != 'on'){
+								seatCheckCnt = seatCheckCnt+1;
+							$(this).addClass('on');		
+							}
+							else if(idOn = 'on'){
+								seatCheckCnt = seatCheckCnt-1;
+								$(this).removeClass('on');
+							}
+						}
+						alert(seatCheckCnt)
+					})
+	
+				</script>
+
+				<!-- 				<script type="text/javascript" src="../resources/static/js/testFrame.js"></script>
+				<script type="text/javascript" src="../resources/static/js/testJs.js"></script> -->
+
 				<div class="seat-result">
 					<div class="wrap">
 						<div class="tit-area">
@@ -1190,8 +1229,8 @@
 						</div>
 						<div class="btn-group">
 							<a href="javaScript:void(0)" class="button" id="pagePrevious"
-								title="이전">이전</a> <a href="javaScript:void(0)"
-								class="button" id="pageNext" title="다음">다음</a>
+								title="이전">이전</a> <a href="javaScript:void(0)" class="button"
+								id="pageNext" title="다음">다음</a>
 						</div>
 					</div>
 				</div>
