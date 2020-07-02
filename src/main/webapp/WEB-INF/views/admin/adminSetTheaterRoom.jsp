@@ -105,7 +105,7 @@
 								</table>
 								<input type=button class="button resetBTN${i.count}" style="float: right;"
 									value="RESET">
-								<button type="submit" class="button purple"
+								<button type="submit" class="button purple saveBTN${i.count}"
 									style="margin-left: 700px;">저장</button>
 							</div>
 						</c:forEach>
@@ -240,7 +240,11 @@
 									}
 								})
 								
-									
+									$('.movieSelect1').click(function(){
+									if($('.movieSelect1').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
 								})
 							
 								$('.resetBTN2').on('click', function() {
@@ -290,7 +294,11 @@
 									}
 								})
 
-									
+									$('.movieSelect2').click(function(){
+									if($('.movieSelect2').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
 								})
 							
 								$('.resetBTN3').on('click', function() {
@@ -339,7 +347,11 @@
 									endDay7 = "마지막날짜";
 									}
 								})
-
+									$('.movieSelect3').click(function(){
+									if($('.movieSelect3').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
 									
 								})
 							
@@ -390,7 +402,11 @@
 									}
 								})
 
-									
+									$('.movieSelect4').click(function(){
+									if($('.movieSelect1').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
 								})
 							
 								
@@ -398,7 +414,6 @@
 							$('#calendar1').change( function(){
 							
 								startDay1 = $('#calendar1').val();
-								alert(startDay1);
 								
 								if(startDay1 > endDay5){
 									alert("마지막 날짜 이전으로 설정해주세요.");
@@ -661,7 +676,36 @@
 								listCount4 += 1;
 							})
 							
+							<!-- 영화 목록 없을때 누르면 날짜 먼저 누르라고 알려주기-->
+								$('.movieSelect1').click(function(){
+									if($('.movieSelect1').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
 							
+								$('.movieSelect2').click(function(){
+									if($('.movieSelect2').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
+							
+								$('.movieSelect3').click(function(){
+									if($('.movieSelect3').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
+							
+								$('.movieSelect4').click(function(){
+									if($('.movieSelect4').val()==null){
+										alert("시작날짜를 먼저 선택해야 영화가 나옵니다.")
+										}
+									})
+							
+							
+							<!-- 저장 버튼 눌렀을 때 값들 다 있는지 확인 -->
+								$('.saveBTN1').click(function(){
+									alert("!!");
+									})
 							
 							
 							</script>
