@@ -97,10 +97,6 @@
 											<td style="background-color: #f7f8f9;">
 											<select	class="input-text w500px movieSelect${i.count}"
 												style="border: none; background-color: #f7f8f9; width: 550px">
-													<option value="">영화 선택</option>
-												
-													<option value="${vo2.name}">${vo2.name}</option>
-											
 											</select>
 										</tr>
 
@@ -207,14 +203,28 @@
 									endDay5="마지막 날짜";
 
 									$('#calendar1').change( function(){
+										
 										startDay1 = $('#calendar1').val();
+										alert(startDay1);
+										
 										if(startDay1 > endDay5){
 											alert("마지막 날짜 이전으로 설정해주세요.");
 											$('#calendar1').val("시작날짜");
 										}
 										$('#calendar1').attr("disabled","disabled");
 										$('#calendar1').attr("id","done1");
-									})
+
+
+										<!-- 상영중인 영화 찾기 -->
+										$.post("movieTimeCheck", {
+											choosedTime : startDay1
+										}, function(result) {
+										$('.movieSelect1').append(result);
+											result.trim();
+											console.log(result)
+										});
+
+										})
 									
 									$('#calendar5').change(function(){
 								endDay5=$('#calendar5').val()
@@ -229,7 +239,7 @@
 									endDay5 = "마지막날짜";
 									}
 								})
-
+								
 									
 								})
 							
@@ -257,6 +267,13 @@
 										}
 										$('#calendar2').attr("disabled","disabled");
 										$('#calendar2').attr("id","done2");
+
+										$.post("movieTimeCheck", {
+											choosedTime : startDay2
+										}, function(result) {
+											result.trim();
+										$('.movieSelect2').append(result);
+										});
 									})
 									
 									$('#calendar6').change(function(){
@@ -300,6 +317,13 @@
 										}
 										$('#calendar3').attr("disabled","disabled");
 										$('#calendar3').attr("id","done3");
+
+										$.post("movieTimeCheck", {
+											choosedTime : startDay3
+										}, function(result) {
+											result.trim();
+										$('.movieSelect3').append(result);
+										});
 									})
 									
 									$('#calendar7').change(function(){
@@ -343,6 +367,13 @@
 										}
 										$('#calendar4').attr("disabled","disabled");
 										$('#calendar4').attr("id","done4");
+
+										$.post("movieTimeCheck", {
+											choosedTime : startDay4
+										}, function(result) {
+											result.trim();
+										$('.movieSelect4').append(result);
+										});
 									})
 									
 									$('#calendar8').change(function(){
@@ -381,23 +412,12 @@
 								$.post("movieTimeCheck", {
 									choosedTime : startDay1
 								}, function(result) {
-									location.href(result);
+									result.trim();
+								$('.movieSelect1').append(result);
 								});
 
 								})
 								
-// 								$.ajax({
-// 						         url: "./movieTimeCheck?choice=3",
-// 						         method: "get",
-// 						         dataType:'html',
-// 						         success : function(d) {
-// 						     	 console.log('success');
-						     
-// 						            },
-// 						            error : function(e) {
-// 						                console.log('error');
-// 						            }
-// 						       });
 
 							$('#calendar2').change( function(){
 								startDay2 = $('#calendar2').val();
@@ -407,6 +427,15 @@
 								}
 								$('#calendar2').attr("disabled","disabled");
 								$('#calendar2').attr("id","done2");
+		
+								$.post("movieTimeCheck", {
+									choosedTime : startDay2
+								}, function(result) {
+									result.trim();
+								$('.movieSelect2').append(result);
+								});
+
+								
 							})
 							
 
@@ -418,6 +447,15 @@
 								}
 								$('#calendar3').attr("disabled","disabled");
 								$('#calendar3').attr("id","done3");
+
+								$.post("movieTimeCheck", {
+									choosedTime : startDay3
+								}, function(result) {
+									result.trim();
+								$('.movieSelect3').append(result);
+								});
+
+								
 							})
 							
 
@@ -429,6 +467,14 @@
 								}
 								$('#calendar4').attr("disabled","disabled");
 								$('#calendar4').attr("id","done4");
+
+								$.post("movieTimeCheck", {
+									choosedTime : startDay4
+								}, function(result) {
+									result.trim();
+								$('.movieSelect4').append(result);
+								});
+								
 							})
 							
 							$('#calendar5').change(function(){
