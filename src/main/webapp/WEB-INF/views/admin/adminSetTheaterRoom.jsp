@@ -45,7 +45,7 @@
 						<!-- c:foreach 로 관수 마다 뿌려져야함 -->
 						
 						<c:forEach items="${list}" var="vo" varStatus="i" >
-						<form action="./setTheaterRoom" method="post">
+						<form action="./setTheaterRoom" method="post" >
 						<div class="roomNumber">
 						<!-- theaterNum 히든으로 넘겨줄거임 -->
 						<input type="hidden" value="${theaterNum}" name="theaterNum">

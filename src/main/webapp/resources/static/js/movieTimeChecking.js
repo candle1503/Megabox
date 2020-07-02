@@ -432,8 +432,6 @@
 								}
 								lastTime1 = timeChoose1;
 								var  movieContents1 = $('.movieSelect1').html();
-								$('.timeChoose1').attr("disabled","disabled");
-								$('.movieSelect1').attr("disabled","disabled");
 								$('.timeAdd1').prepend(timeAddContents1);
 								$('.movieSelect1').append(movieContents1);
 								
@@ -467,8 +465,6 @@
 								}
 								lastTime2 = timeChoose2;
 								var  movieContents2 = $('.movieSelect2').html();
-								$('.timeChoose2').attr("disabled","disabled");
-								$('.movieSelect2').attr("disabled","disabled");
 								$('.timeAdd2').prepend(timeAddContents2);
 								$('.movieSelect2').append(movieContents2);
 
@@ -502,8 +498,6 @@
 								}
 								lastTime3 = timeChoose3;
 								var  movieContents3 = $('.movieSelect3').html();
-								$('.timeChoose3').attr("disabled","disabled");
-								$('.movieSelect3').attr("disabled","disabled");
 								$('.timeAdd3').prepend(timeAddContents3);
 								$('.movieSelect3').append(movieContents3);
 
@@ -537,8 +531,6 @@
 								}
 								lastTime4 = timeChoose4;
 								var  movieContents4 = $('.movieSelect4').html();
-								$('.timeChoose4').attr("disabled","disabled");
-								$('.movieSelect4').attr("disabled","disabled");
 								$('.timeAdd4').prepend(timeAddContents4);
 								$('.movieSelect4').append(movieContents4);
 

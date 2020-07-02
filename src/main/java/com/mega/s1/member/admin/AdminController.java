@@ -129,10 +129,11 @@ public class AdminController {
 	
 	@PostMapping("setTheaterRoom")
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
-		System.out.println(roomMovieTimeVO.getStartDay());
-		System.out.println(roomMovieTimeVO.getEndDay());
-		System.out.println(roomMovieTimeVO.getTime());
-		System.out.println(roomMovieTimeVO.getMovieNum());
+		RoomMovieTimeVO[] roomMovieTimeVOs = {roomMovieTimeVO};
+		System.out.println(roomMovieTimeVOs[0].getStartDay());
+		System.out.println(roomMovieTimeVOs[0].getEndDay());
+		System.out.println(roomMovieTimeVOs[0].getTime());
+		System.out.println(roomMovieTimeVOs[0].getMovieNum());
 		
 //		adminService.setTheaterRoom(roomMovieTimeVO);
 	}
