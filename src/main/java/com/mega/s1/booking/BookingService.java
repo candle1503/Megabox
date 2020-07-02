@@ -15,6 +15,10 @@ public class BookingService {
 		return bookingRepository.bookingMovieList(bookingVO);
 	}
 	
+	public List<BookingVO> bookingMovieTime(BookingVO bookingVO) throws Exception{
+		return bookingRepository.bookingMovieTime(bookingVO);
+	}
+	
 	public List<BookingVO> bookingLocalList(BookingVO bookingVO) throws Exception{
 		return bookingRepository.bookingLocalList(bookingVO);
 	}

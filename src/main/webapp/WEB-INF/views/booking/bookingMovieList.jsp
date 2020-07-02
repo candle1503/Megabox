@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:forEach items="${bookingMovieAr}" var="bmList" varStatus="i">
-	<li class="bookingMovie-Name">
-		<button type="button" class="btn${i.count-1}">
+	<li id="bookingMovie${i.count-1}" class="bookingMovie-Name">
+		<button type="button" class="btn">
 			<c:if test="${bmList.age eq '전체관람가'}">		
 				<span class="movie-grade small age-all">${bmList.age}</span>
 			</c:if>
@@ -27,69 +27,111 @@
 
 <script type="text/javascript">
 
-	var bookingMovieArSize = "${bookingMovieArSize}";
+	var movieNum = 0;
 
-	var bookingMovieNum = new Array();
+	var date = new Date();
+	var startDay = parseInt(date.getDate());
+	var startTime = startDay;
+
+	//var startTime = "";
 	
-	for(var j=0; j<bookingMovieArSize; j++){
+	$("#bookingMovie0").on("click", function(){
 
-		$(".bookingMovie-Name").on("click", ".btn"+j, function(){
+		movieNum = "${bookingMovieAr.get(0).getMovieNum()}";
+		//alert(movieNum);
+		startTime = "${bookingMovieTimeAr.get(0).getStartTime()}";
 
-			bookingMovieNum[j] = "${bookingMovieNum}";
-			
-			alert(bookingMovieNum[j]);
+		startTime = startTime.substr(8,2);
 		
-			
+		//alert(startTime);
+	 
+		$.ajax({
+			url:"bookingLocalList",
+			type:"GET", 
+			data:{movieNum, startTime},
+			success:function(result){
+				$("#bookingLocal-List").empty();
+				$("#bookingLocal-List").append(result);
+			},
 		});
+
+		tartTime = parseInt(startTime);
+		//alert("st:"+startTime);
+	});
+	
+	$("#bookingMovie1").on("click", function(){
+
+		movieNum = "${bookingMovieAr.get(1).getMovieNum()}";
+		//alert(movieNum);
+		startTime = "${bookingMovieTimeAr.get(1).getStartTime()}";
 		
-	}
-xcvx
+		startTime = startTime.substr(8,2);
 
-
-
-
-	
-	//var j = 0;
-
-	
-	/* while(j<bookingMovieArSize){
-
-		$(".bookingMovie-Name").on("click", ".btn"+j, function(){
-
-			var movieNum = 0;
-			
-			if(j=0){
-				movieNum = "${bookingMovieAr.get(j).getMovieNum()}";
-				break;	
+		//alert(startTime);
+		
+		$.ajax({
+			url:"bookingLocalList",
+			type:"GET", 
+			data:{movieNum, startTime},
+			success:function(result){
+				$("#bookingLocal-List").empty();
+				$("#bookingLocal-List").append(result);
 			}
+		});
 
-			j=j+1;
-			
-			alert(movieNum);
-			//alert(movieNum);
-			$.ajax({
-				
-				
-			});
+		startTime = parseInt(startTime);
+		//alert("st:"+startTime);
+	});
+	
+	$("#bookingMovie2").on("click", function(){
+
+		movieNum = "${bookingMovieAr.get(2).getMovieNum()}";
+
+		startTime = "${bookingMovieTimeAr.get(2).getStartTime()}";
+		
+		startTime = startTime.substr(8,2);
+
+		//alert(startTime);
+
+		$.ajax({
+			url:"bookingLocalList",
+			type:"GET", 
+			data:{movieNum, startTime},
+			success:function(result){
+				$("#bookingLocal-List").empty();
+				$("#bookingLocal-List").append(result);
+			}
 		});
 		
-	} */
+		startTime = parseInt(startTime);
+		//alert("st:"+startTime);
+	});
 
-	
-	/* var movieNum = 0;
+	$("#bookingMovie3").on("click", function(){
 
-	var bookingVO = "${bookingVO.getMovieNum()}";
-	
-	for(var j=0; j<bookingMovieArSize; j++){
+		movieNum = "${bookingMovieAr.get(3).getMovieNum()}";
 
-		$(".bookingMovie-Name").on("click", ".btn"+j, function(){
+		startTime = "${bookingMovieTimeAr.get(3).getStartTime()}";
 		
-			alert(bookingVO);
-		
-			
+		startTime = startTime.substr(8,2);
+
+		//alert(startTime);
+
+		$.ajax({
+			url:"bookingLocalList",
+			type:"GET", 
+			data:{movieNum, startTime},
+			success:function(result){
+				$("#bookingLocal-List").empty();
+				$("#bookingLocal-List").append(result);
+			}
 		});
 		
-	} */
+		startTime = parseInt(startTime);
+		//alert("st:"+startTime);
+	});
+
+
 
 	
 

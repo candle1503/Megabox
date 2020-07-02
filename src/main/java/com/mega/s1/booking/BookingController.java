@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,8 @@ public class BookingController {
 
 	@Autowired
 	private BookingService bookingService;
+	@Autowired
+	private BookingTimeService bookingTimeService;
 	
 	@GetMapping("bookingList")
 	public void bookingList() throws Exception {
@@ -22,7 +25,11 @@ public class BookingController {
 
 	@GetMapping("bookingMain")
 	public void bookingMain() throws Exception {
-		
+//		System.out.println("movieNum!!!!!!:"+bookingVO.getMovieNum());
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("movieNum", bookingVO.getMovieNum());
+//		mv.setViewName("booking/bookingMain");
+//		return mv;
 	}
 
 	@GetMapping("bookingSeat")
@@ -42,23 +49,11 @@ public class BookingController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookingVO> bookingMovieAr = bookingService.bookingMovieList(bookingVO);
+
+		List<BookingVO> bookingMovieTimeAr = bookingService.bookingMovieTime(bookingVO);
+		mv.addObject("bookingMovieTimeAr", bookingMovieTimeAr);
 		
-		//System.out.println("movieNum:"+bookingMovieAr.get(0).getMovieNum());
-		
-		int size = bookingMovieAr.size();
-		
-		int[] movieNum = new int[size];
-		
-		for(int i=0; i<bookingMovieAr.size(); i++) {
-			movieNum[i] = bookingMovieAr.get(i).getMovieNum();
-			
-			System.out.println("movieNum"+i+":"+movieNum[i]);
-			
-			mv.addObject("bookingMovieNum", movieNum[i]);
-		}
-		
-		int bookingMovieArSize = bookingMovieAr.size();
-		mv.addObject("bookingMovieArSize", bookingMovieArSize);
+		//System.out.println("stt:"+bookingMovieTimeAr.get(0).getStartTime());
 		
 		mv.addObject("bookingMovieAr", bookingMovieAr);
 		mv.setViewName("booking/bookingMovieList");
@@ -71,6 +66,9 @@ public class BookingController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookingVO> bookingLocalAr = bookingService.bookingLocalList(bookingVO);
+		
+		int bookingLocalArSize = bookingLocalAr.size();
+		mv.addObject("bookingLocalArSize", bookingLocalArSize);
 		
 		mv.addObject("bookingLocalAr", bookingLocalAr);
 		mv.setViewName("booking/bookingLocalList");
