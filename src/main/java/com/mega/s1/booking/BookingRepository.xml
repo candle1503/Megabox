@@ -5,25 +5,11 @@
   
 <mapper namespace="com.mega.s1.booking.BookingRepository">
 
-	<select id="bookingMovieList" parameterType="BookingVO" resultType="BookingVO">
+	<select id="bookingMovieList" parameterType="String" resultType="BookingVO">
 		select distinct name, age, M.movieNum
 		from roomMovieTime R left join movie M
 		on (R.movieNum = M.movieNum)
 		where date_format(startTime, '%d') = #{startTime}
-	</select>
-	
-	<select id="bookingMovieTime" parameterType="BookingVO" resultType="BookingVO">
-		select distinct startTime
-		from roomMovieTime R left join movie M 
-		on (R.movieNum = M.movieNum)
-		where date_format(startTime, '%d') = #{startTime}
-	</select>
-	
-	<select id="bookingLocalList" parameterType="BookingVO" resultType="BookingVO">
-		select distinct localCode, name
-		from roomMovieTime R left join theater T
-		on (R.theaterNum = T.theaterNum)
-		where movieNum = #{movieNum} and date_format(startTime, '%d') = #{startTime}
 	</select>
 
 </mapper>

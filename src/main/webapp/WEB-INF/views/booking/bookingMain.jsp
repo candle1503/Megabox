@@ -604,7 +604,7 @@ function fn_validateDateYn(param) {
 	$("#next").click(function(){
 		$("#bookingTime-list").empty();
 		startDay = startDay + 1;
-		startTime = startTime + 1;
+		//startTime = startTime + 1;
 		count++;
 		bookingTimeZone(startDay);
 	});
@@ -612,7 +612,7 @@ function fn_validateDateYn(param) {
 	$("#prev").click(function(){
 		$("#bookingTime-list").empty();
 		startDay = startDay - 1;
-		startTime = startTime - 1;
+		//startTime = startTime - 1;
 		count--;
 		bookingTimeZone(startDay);
 	});
@@ -664,7 +664,7 @@ function fn_validateDateYn(param) {
 		startTime = 0+startTime;
 	}
 	bookingMovieList(startTime);
-	startTime = parseInt(startTime);
+	//startTime = parseInt(startTime);
 	
 	function bookingMovieList(startTime){
 		$.get("bookingMovieList?startTime="+startTime, function(result){
@@ -672,165 +672,26 @@ function fn_validateDateYn(param) {
 		});	
 	}
 	
-	/* $("#bookingTime-list").on("click", ".bookingTime-list",function(){
+	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
 		$("#bookingMovie-List").empty();
+		var days = $(this).text().split('/');
+		startTime = parseInt(days[0]);
+
+		startTime = startTime+"";
+		
+		if(startTime.length<2){
+			startTime = 0+startTime;
+		}
+		
 		alert(startTime);
 		bookingMovieList(startTime);
-	}); */
+	});
 
-	$("#bookingTime-list").on("click", "#day0", function(){
-		$("#bookingMovie-List").empty();
-		startTime = startDay+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime);
-	});
-	$("#bookingTime-list").on("click", "#day1", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus1 = startTime+1;
-		startTime = startPlus1+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-1;
-	});
-	$("#bookingTime-list").on("click", "#day2", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus2 = startTime+2;
-		startTime = startPlus2+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-2;
-	});
-	$("#bookingTime-list").on("click", "#day3", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus3 = startTime+3;
-		startTime = startPlus3+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-3;
-	});
-	$("#bookingTime-list").on("click", "#day4", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus4 = startTime+4;
-		startTime = startPlus4+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-4;
-	});
-	$("#bookingTime-list").on("click", "#day5", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus5 = startTime+5;
-		startTime = startPlus5+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-5;
-	});
-	$("#bookingTime-list").on("click", "#day6", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus6 = startTime+6;
-		startTime = startPlus6+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-6;
-	});
-	$("#bookingTime-list").on("click", "#day7", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus7 = startTime+7;
-		startTime = startPlus7+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-7;
-	});
-	$("#bookingTime-list").on("click", "#day8", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus8 = startTime+8;
-		startTime = startPlus8+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-8;
-	});
-	$("#bookingTime-list").on("click", "#day9", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus9 = startTime+9;
-		startTime = startPlus9+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-9;
-	});
-	$("#bookingTime-list").on("click", "#day10", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus10 = startTime+10;
-		startTime = startPlus10+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-10;
-	});
-	$("#bookingTime-list").on("click", "#day11", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus11 = startTime+11;
-		startTime = startPlus11+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-11;
-	});
-	$("#bookingTime-list").on("click", "#day12", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus12 = startTime+12;
-		startTime = startPlus12+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-12;
-	});
-	$("#bookingTime-list").on("click", "#day13", function(){
-		$("#bookingMovie-List").empty();
-		var startPlus13 = startTime+13;
-		startTime = startPlus13+"";
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		//alert(startTime);
-		bookingMovieList(startTime);
-		startTime = parseInt(startTime)-13;
-	});
+
+
+
+
+	
 	//예매 날짜별로 영화 리스트 부분//
 
 	

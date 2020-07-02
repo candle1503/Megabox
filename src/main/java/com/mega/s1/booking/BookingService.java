@@ -11,15 +11,8 @@ public class BookingService {
 	@Autowired
 	private BookingRepository bookingRepository;
 	
-	public List<BookingVO> bookingMovieList(BookingVO bookingVO) throws Exception{
-		return bookingRepository.bookingMovieList(bookingVO);
+	public List<BookingVO> bookingMovieList(String startTime) throws Exception{
+		return bookingRepository.bookingMovieList(startTime);
 	}
 	
-	public List<BookingVO> bookingMovieTime(BookingVO bookingVO) throws Exception{
-		return bookingRepository.bookingMovieTime(bookingVO);
-	}
-	
-	public List<BookingVO> bookingLocalList(BookingVO bookingVO) throws Exception{
-		return bookingRepository.bookingLocalList(bookingVO);
-	}
 }

@@ -25,7 +25,8 @@
 	</li>
 </c:forEach>
 
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 
 	var movieNum = 0;
 
@@ -136,7 +137,7 @@
 	
 
 
-</script>
+</script> -->
 
 
 <!-- <li class="bookingMovie-List"><button type="button" class="btn" movie-nm="사라진 시간"
