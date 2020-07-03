@@ -57,7 +57,7 @@
 		]]> 
 	</select >
 	
-	<select id="getTheaterNum" resultType="Integer">
+	<select id="getTheaterNum" resultType="Integer" parameterType="TheaterVO">
 		select theaterNum from theater where name=#{name}
 	</select>
 	

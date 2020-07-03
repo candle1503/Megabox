@@ -9,8 +9,8 @@
 									    showOn:"both",
 										buttonImageOnly:false,
 									    showMonthAfterYear: true,
-									    maxDate: '',
-									    minDate: '-1y',
+									    maxDate: '2w',
+									    minDate: '-0d',
 									    closeText: '닫기'
 									        
 								}

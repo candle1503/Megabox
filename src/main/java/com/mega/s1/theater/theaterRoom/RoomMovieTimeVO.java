@@ -17,4 +17,6 @@ public class RoomMovieTimeVO {
 	private String startTime;
 	private String endDay;
 	private String time;
+	//theaterNum 가져올려고 쓰는 변수
+	private String name;
 }
