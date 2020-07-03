@@ -128,9 +128,9 @@ public class AdminController {
 	
 	@PostMapping("setTheaterRoom")
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+
 		int firstDay = 1;
-		int timeSize = 0;
-		int timeSize2 = 0;
 		RoomMovieTimeVO[] roomMovieTimeVOs = {roomMovieTimeVO};
 		String[] times = roomMovieTimeVOs[0].getTime().split(",");
 		String[] movieNums = roomMovieTimeVOs[0].getMovieNum().split(",");
@@ -151,7 +151,6 @@ public class AdminController {
 		
 		
 		if(endMonthInt > startMonthInt) {
-			System.out.println("한달이상 차이나네;;");
 			if(endMonthInt == 2) {
 				while( startDayInt <= 31 ) {
 					System.out.println("startDay 하루 더해줌"+startDayInt);
@@ -236,36 +235,35 @@ public class AdminController {
 				}
 				
 			}else if(endMonthInt ==8) {
-				System.out.println("시작 일은?????????????? : "+ startDayInt);
 				while( startDayInt <= 31 ) {
-					System.out.println("시작 while문 안에서?????????????? : "+ startDayInt);
-					roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-					System.out.println("시작날자 :!!!!!!!!!!!!!!!!!!!!!!!!!! "+roomMovieTimeVO.getStartTime());
+					roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
 						
 						case 0 :
-							System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
-							System.out.println("이날 해놓은 DB가 없어!");
+							for(int i=length-1; i>-1; i--) {
+								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO.setMovieNum(movieNums[i]);
+								adminService.setTheaterRoom(roomMovieTimeVO);
+								System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
+							}
 							startDayInt += 1;
 							continue;
 						
 						case 1 :
-							System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 							System.out.println("이날은 있어!");
+							String result = roomMovieTimeVO.getStartTime();
+							String[] resultList = {result};
 							startDayInt += 1;
 							continue;
 						}
 					
-//					for(int i=length-1; i>-1; i--) {
-//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt+"-"+times[i]));
-//						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
-//					}
-					
 				}
 				while(firstDay <= endDayInt) {
 					for(int j=length-1; j>-1; j--) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay+"-"+times[j]));
-						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
+						roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[j]));
+						roomMovieTimeVO.setMovieNum(movieNums[j]);
+						adminService.setTheaterRoom(roomMovieTimeVO);
+						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 					}
 					firstDay += 1;
 				}

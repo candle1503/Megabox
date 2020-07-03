@@ -80,13 +80,9 @@ public class AdminService {
 	}
 	
 	public int getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
-		System.out.println("roomName은?" +roomMovieTimeVO.getRoomName());
-		System.out.println("startTime은?" +roomMovieTimeVO.getStartTime());
 		if(adminRepository.getTheaterRoom(roomMovieTimeVO) == null) {
-			System.out.println("서비스 내부 메세지  DB데이터 없어");
 			return 0;
 		}else {
-			System.out.println("서비스 내부 메세지 DB데이터 있어");
 			return 1;
 		}
 	}

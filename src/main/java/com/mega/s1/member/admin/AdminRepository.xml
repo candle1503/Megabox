@@ -66,7 +66,7 @@
 	</insert>
 	
 	<select id="getTheaterRoom" parameterType="RoomMovieTimeVO" resultType="RoomMovieTimeVO">
-		select * from roomMovieTime where roomName= #{roomName} and date_format(startTime, '%Y-%c-%e')= #{startTime}
+		select * from roomMovieTime where roomName= #{roomName} and date_format(startTime, '%Y-%c-%e')= #{startDay} limit 1
 	</select>
 	
 </mapper>
