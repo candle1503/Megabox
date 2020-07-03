@@ -89,6 +89,7 @@
 										$.post("movieTimeCheck", {
 											choosedTime : startDay1
 										}, function(result) {
+										$('.movieSelect1').empty();
 										$('.movieSelect1').append(result);
 											result.trim();
 											console.log(result)
@@ -144,6 +145,7 @@
 											choosedTime : startDay2
 										}, function(result) {
 											result.trim();
+											$('.movieSelect2').empty();
 										$('.movieSelect2').append(result);
 										});
 									})
@@ -196,6 +198,7 @@
 											choosedTime : startDay3
 										}, function(result) {
 											result.trim();
+										$('.movieSelect3').empty();
 										$('.movieSelect3').append(result);
 										});
 									})
@@ -248,6 +251,7 @@
 											choosedTime : startDay4
 										}, function(result) {
 											result.trim();
+										$('.movieSelect4').empty();
 										$('.movieSelect4').append(result);
 										});
 									})
@@ -291,6 +295,7 @@
 									choosedTime : startDay1
 								}, function(result) {
 									result.trim();
+									$('.movieSelect1').empty();
 								$('.movieSelect1').append(result);
 								});
 								
@@ -308,6 +313,7 @@
 									choosedTime : startDay2
 								}, function(result) {
 									result.trim();
+								$('.movieSelect2').empty();
 								$('.movieSelect2').append(result);
 								});
 
@@ -326,6 +332,7 @@
 									choosedTime : startDay3
 								}, function(result) {
 									result.trim();
+								$('.movieSelect3').empty();
 								$('.movieSelect3').append(result);
 								});
 
@@ -344,6 +351,7 @@
 									choosedTime : startDay4
 								}, function(result) {
 									result.trim();
+								$('.movieSelect4').empty();
 								$('.movieSelect4').append(result);
 								});
 								

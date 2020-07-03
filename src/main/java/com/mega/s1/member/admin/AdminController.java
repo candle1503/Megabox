@@ -139,21 +139,17 @@ public class AdminController {
 		System.out.println("theaterNum:"+roomMovieTimeVO.getTheaterNum());
 		String [] startDays=roomMovieTimeVO.getStartDay().split("-", 3);
 		String [] endDays=roomMovieTimeVO.getEndDay().split("-", 3);
-		System.out.println("startDays1:"+startDays[0]);
-		System.out.println("startDays2:"+startDays[1]);
-		System.out.println("startDays3:"+startDays[2]);
-		System.out.println("endDays1:"+endDays[0]);
-		System.out.println("endDays2:"+endDays[1]);
-		System.out.println("endDays3:"+endDays[2]);
 		int startDayInt = Integer.parseInt(startDays[2]);
 		int startMonthInt = Integer.parseInt(startDays[1]);
 		int startYearInt = Integer.parseInt(startDays[0]);
 		int endDayInt = Integer.parseInt(endDays[2]);
 		int endMonthInt = Integer.parseInt(endDays[1]);
 		int endYearInt = Integer.parseInt(endDays[0]);
-		System.out.println(startDayInt);
 		System.out.println(endDayInt);
 		int length = times.length;
+		
+		
+		
 		if(endMonthInt > startMonthInt) {
 			System.out.println("한달이상 차이나네;;");
 			if(endMonthInt == 2) {
@@ -240,16 +236,34 @@ public class AdminController {
 				}
 				
 			}else if(endMonthInt ==8) {
+				System.out.println("시작 일은?????????????? : "+ startDayInt);
 				while( startDayInt <= 31 ) {
-					for(int i=0; i<length; i++) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt+"-"+times[i]));
-						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
-					}
-					startDayInt += 1;
+					System.out.println("시작 while문 안에서?????????????? : "+ startDayInt);
+					roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+					System.out.println("시작날자 :!!!!!!!!!!!!!!!!!!!!!!!!!! "+roomMovieTimeVO.getStartTime());
+						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+						
+						case 0 :
+							System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
+							System.out.println("이날 해놓은 DB가 없어!");
+							startDayInt += 1;
+							continue;
+						
+						case 1 :
+							System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
+							System.out.println("이날은 있어!");
+							startDayInt += 1;
+							continue;
+						}
+					
+//					for(int i=length-1; i>-1; i--) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt+"-"+times[i]));
+//						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
+//					}
 					
 				}
 				while(firstDay <= endDayInt) {
-					for(int j=0; j<length; j++) {
+					for(int j=length-1; j>-1; j--) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay+"-"+times[j]));
 						System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartDay());
 					}
@@ -300,12 +314,12 @@ public class AdminController {
 		}
 		
 		
-		for(int i = length-1; i>-1 ;i--) {
-			System.out.println("----------"+i+"개-----------");
-			System.out.println("몇시?:"+times[i]);
-			System.out.println("영화넘버:"+movieNums[i]);
-			System.out.println("---------------------------");
-		}
+//		for(int i = length-1; i>-1 ;i--) {
+//			System.out.println("----------"+i+"개-----------");
+//			System.out.println("몇시?:"+times[i]);
+//			System.out.println("영화넘버:"+movieNums[i]);
+//			System.out.println("---------------------------");
+//		}
 //		adminService.setTheaterRoom(roomMovieTimeVO);
 	}
 	

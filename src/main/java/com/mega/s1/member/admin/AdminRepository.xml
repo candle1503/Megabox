@@ -65,4 +65,8 @@
 		insert into roomMovieTime values (0,#{startTime},#{roomName},#{movieNum},#{theaterRoomCode},#{theaterNum})
 	</insert>
 	
+	<select id="getTheaterRoom" parameterType="RoomMovieTimeVO" resultType="RoomMovieTimeVO">
+		select * from roomMovieTime where roomName= #{roomName} and date_format(startTime, '%Y-%c-%e')= #{startTime}
+	</select>
+	
 </mapper>

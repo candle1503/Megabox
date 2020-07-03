@@ -50,4 +50,7 @@ public interface AdminRepository {
 	//setTheaterRoom
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 	
+	//getTheaterRoom
+	public RoomMovieTimeVO getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	 
 }

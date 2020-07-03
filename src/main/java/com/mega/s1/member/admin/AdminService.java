@@ -57,7 +57,7 @@ public class AdminService {
 		
 		for(int i=0; i<=roomCount-1; i++) {
 			int roomNum= i+1;
-			theaterRoomVO.setRoomName(theaterRoomVO.getName()+ roomNum+"관");
+			theaterRoomVO.setRoomName(theaterRoomVO.getName()+roomNum+"관");
 			adminRepository.theaterRoomSet(theaterRoomVO);
 		}
 		return 0;
@@ -77,5 +77,17 @@ public class AdminService {
 	
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
 		adminRepository.setTheaterRoom(roomMovieTimeVO);
+	}
+	
+	public int getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
+		System.out.println("roomName은?" +roomMovieTimeVO.getRoomName());
+		System.out.println("startTime은?" +roomMovieTimeVO.getStartTime());
+		if(adminRepository.getTheaterRoom(roomMovieTimeVO) == null) {
+			System.out.println("서비스 내부 메세지  DB데이터 없어");
+			return 0;
+		}else {
+			System.out.println("서비스 내부 메세지 DB데이터 있어");
+			return 1;
+		}
 	}
 }
