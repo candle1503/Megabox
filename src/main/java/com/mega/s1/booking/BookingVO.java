@@ -22,4 +22,6 @@ public class BookingVO {
 	private String age;
 	
 	private int seatCount;
+	
+	private int playTime;
 }

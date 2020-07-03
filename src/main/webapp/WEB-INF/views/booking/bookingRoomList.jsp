@@ -3,16 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-
 <c:forEach items="${bookingRoomAr}" var="brList" varStatus="i">
 	<li class="bookingRoomList-room"><button type="button" class="btn">
 			<div class="legend"></div>
-			<span class="time"><strong title="상영 시작">${brList.startTime}</strong><em
+			<span class="time"><strong title="상영 시작">${stm[i.index]}</strong><em
 				title="상영 종료">~??:??</em></span><span class="title">
 				<%-- <c:forEach items="${vom}" var="map" varStatus="status">
 					<strong title="인베이젼 2020">${map[status.index]["vom"]}</strong><em>2D(자막)</em></span>
 				</c:forEach> --%>
-				<strong title="인베이젼 2020">${vom[i.index]}</strong><em>2D(자막)</em></span>
+				<strong title="${vom[i.index]}">${vom[i.index]}</strong><em>2D(자막)</em></span>
 			<div class="info">
 				<span class="theater" title="극장">${brList.roomName} </span><span
 					class="seat"><strong class="now" title="잔여 좌석">99</strong><span>/</span><em

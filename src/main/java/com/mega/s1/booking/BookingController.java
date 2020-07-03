@@ -59,28 +59,40 @@ public class BookingController {
 		
 		List<BookingVO> bookingRoomAr = bookingService.bookingRoomList(bookingVO);
 		
-		System.out.println("ststst:"+bookingRoomAr.get(0).getStartTime());
 		
-		String startTime = "";
 		
+		
+		Map<Integer, String> startTimeMap = new HashMap<>();
 		Map<Integer, String> movieNameMap = new HashMap<>();
 		
+		String startTime = "";
 		int movieNum = 0;
+		String playTime = "";
+		String endTime = "";
 		
 		for(int i=0; i<bookingRoomAr.size(); i++) {
+			//영화 시작 시간 잘라오기
 			startTime = bookingRoomAr.get(i).getStartTime();
+			startTime = startTime.substring(11, 16);
+			startTimeMap.put(i, startTime);
+			
+			mv.addObject("stm", startTimeMap);
 			
 			
+			//영화 제목 가져옴
 			movieNum = bookingRoomAr.get(i).getMovieNum();  
-			
 			movieVO.setMovieNum(movieNum);
-			
 			movieVO = movieService.movieSelect(movieVO);
-			
 			movieNameMap.put(i, movieVO.getName());
 			
 			mv.addObject("vom", movieNameMap);
+			
+			playTime = movieVO.getPlayTime()+"";
+			
+			
 		}
+		System.out.println("play:"+movieVO.getPlayTime());
+		
 		
 		mv.addObject("bookingRoomAr", bookingRoomAr);
 		mv.setViewName("booking/bookingRoomList");

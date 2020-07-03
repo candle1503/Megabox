@@ -981,7 +981,7 @@ function fn_validateDateYn(param) {
 	
 	//예매 날짜별로 영화 리스트 부분//
 
-	//localCode
+	//localCode 눌렀을 때
 	$(".bookingLocal-Local").on("click", "#local1", function(){
 		$(this).addClass("on");
 		$("#localDepth1").addClass("on");
