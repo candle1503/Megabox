@@ -46,9 +46,9 @@
 
 									<div class="number">
 										<button type="button" class="now" title="성인 현재 좌석 선택 수"
-											ticketgrpcd="TKA" style="border-width: 1px 1px">0</button>
+											ticketgrpcd="TKA" style="border-width: 1px 1px">0 ▼</button>
 										<ul class="num-choice">
-											<li><button type="button" class="btn on">0</button></li>
+											<li><button type="button" class="btn on">0 ▼</button></li>
 											<li><button type="button" class="btn">1</button></li>
 											<li><button type="button" class="btn">2</button></li>
 											<li><button type="button" class="btn">3</button></li>
@@ -1128,30 +1128,56 @@
 					<!-- 사회 거리두기 좌석은 finish-->
 					<!-- 선택하면 class에  choice 및 selected="selected" 삽입-->
 					var seatCheckCnt = 0;
+					var seatArrayHelper = seatArrayHelper;
+					
 
 					$('.common').click(function(){		
 
 						var cnt = $('ul.num-choice>li>.on').text()
 						var array = $(this).attr('class')
 						var strArray = array.split(' ');
-						var idOn = strArray[strArray.length-1]
+						var idOn = strArray[strArray.length-1];			
 
+						/* var seatArray = ['seatArray1','seatArray2','seatArray3','seatArray4','seatArray5','seatArray6','seatArray7','seatArray8']			 */		
 
 						alert(cnt)
-						alert(idOn)
+						alert(seatCheckCnt)
 						
-						if(seatCheckCnt<cnt){
+						if(seatCheckCnt<=cnt){
 
 							if(idOn != 'on'){
+	
+								if(seatCheckCnt<cnt){
 								seatCheckCnt = seatCheckCnt+1;
-							$(this).addClass('on');		
+								$(this).addClass('choice');
+								$(this).addClass('on');		
+
+
+/* 								var idSeatArray =  "$("+"'"+"."+ "seatArray" + seatCheckCnt+"'"+""+")";
+								var idSeatArray2 = "seatArray" + seatCheckCnt;
+		
+								alert(idSeatArray);
+								alert(idSeatArray2);
+								
+								idSeatArray.removeClass('all');
+								idSeatArray.addClass('choice');  */
+								}
+								
 							}
+							
 							else if(idOn = 'on'){
 								seatCheckCnt = seatCheckCnt-1;
+								$(this).removeClass('choice');
 								$(this).removeClass('on');
 							}
+
 						}
-						alert(seatCheckCnt)
+
+						if(seatCheckCnt==cnt){
+									alert('모두 선택하셨습니다. 결제창으로 이동해 주세요')
+									$('#pageNext').removeClass('disabled')
+							}
+
 					})
 	
 				</script>
@@ -1207,14 +1233,14 @@
 							<div class="seat-num">
 								<p class="tit">선택좌석</p>
 								<div class="my-seat">
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
-									<div class="seat all" title="구매가능 좌석">-</div>
+									<div class="seat all seatArray1" title="구매가능 좌석">Z1 </div>
+									<div class="seat all seatArray2" title="구매가능 좌석">Z2 </div>
+									<div class="seat all seatArray3" title="구매가능 좌석">Z3 </div>
+									<div class="seat all seatArray4" title="구매가능 좌석">-</div>
+									<div class="seat all seatArray5"  title="구매가능 좌석">-</div>
+									<div class="seat all seatArray6" title="구매가능 좌석">-</div>
+									<div class="seat all seatArray7" title="구매가능 좌석">-</div>
+									<div class="seat all seatArray8" title="구매가능 좌석">-</div>
 								</div>
 							</div>
 						</div>
@@ -1229,7 +1255,7 @@
 						</div>
 						<div class="btn-group">
 							<a href="javaScript:void(0)" class="button" id="pagePrevious"
-								title="이전">이전</a> <a href="javaScript:void(0)" class="button"
+								title="이전">이전</a> <a href="${pageContext.request.contextPath}/booking/bookingSeatNext" class="button disabled"
 								id="pageNext" title="다음">다음</a>
 						</div>
 					</div>
