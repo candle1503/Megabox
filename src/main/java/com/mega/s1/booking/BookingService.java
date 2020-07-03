@@ -15,4 +15,8 @@ public class BookingService {
 		return bookingRepository.bookingMovieList(startTime);
 	}
 	
+	public List<BookingVO> bookingRoomList(BookingVO bookingVO) throws Exception{
+		return bookingRepository.bookingRoomList(bookingVO);
+	}
+	
 }

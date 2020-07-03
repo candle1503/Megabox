@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -18,7 +18,7 @@
 					style="position: relative; top: 0; left: 0;" dir="ltr">
 					<ul>
 						<li class="bookingLocal-Local"><button id="btn" type="button">${blList.name}</button></li>
-						<!-- <li><button id="btn" type="button" brch-no="1372"
+						<li><button id="btn" type="button" brch-no="1372"
 								brch-nm="강남" brch-eng-nm="Gangnam" form-at="Y" area-cd="10"
 								area-cd-nm="서울" spclb-yn="N" brch-bokd-unable-at="N"
 								brch-popup-at="Y" brch-popup-no="998">강남</button></li>
@@ -29,7 +29,7 @@
 						<li><button id="btn" type="button" brch-no="1341"
 								brch-nm="강동" brch-eng-nm="Gangdong" form-at="Y" area-cd="10"
 								area-cd-nm="서울" spclb-yn="N" brch-bokd-unable-at="N"
-								brch-popup-at="Y" brch-popup-no="939">강동</button></li> -->
+								brch-popup-at="Y" brch-popup-no="939">강동</button></li>
 					</ul>
 				</div>
 				<div id="mCSB_4_scrollbar_vertical"
@@ -54,3 +54,4 @@
 
 </script>
 
+ --%>

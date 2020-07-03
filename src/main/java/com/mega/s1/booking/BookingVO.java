@@ -21,5 +21,5 @@ public class BookingVO {
 	
 	private String age;
 	
-	private String localCode;
+	private int seatCount;
 }

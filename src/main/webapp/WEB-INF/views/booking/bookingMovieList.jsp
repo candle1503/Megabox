@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:forEach items="${bookingMovieAr}" var="bmList" varStatus="i">
-	<li id="bookingMovie${i.count-1}" class="bookingMovie-Name">
-		<button type="button" class="btn">
+	<li id="bookingMovie${i.count}" class="bookingMovie-Name">
+		<button type="button" id="movieBtn${i.count}" class="btn">
 			<c:if test="${bmList.age eq '전체관람가'}">		
 				<span class="movie-grade small age-all">${bmList.age}</span>
 			</c:if>
@@ -26,118 +25,14 @@
 </c:forEach>
 
 
-<!-- <script type="text/javascript">
-
-	var movieNum = 0;
-
-	var date = new Date();
-	var startDay = parseInt(date.getDate());
-	var startTime = startDay;
-
-	//var startTime = "";
-	
-	$("#bookingMovie0").on("click", function(){
-
-		movieNum = "${bookingMovieAr.get(0).getMovieNum()}";
-		//alert(movieNum);
-		startTime = "${bookingMovieTimeAr.get(0).getStartTime()}";
-
-		startTime = startTime.substr(8,2);
-		
-		//alert(startTime);
-	 
-		$.ajax({
-			url:"bookingLocalList",
-			type:"GET", 
-			data:{movieNum, startTime},
-			success:function(result){
-				$("#bookingLocal-List").empty();
-				$("#bookingLocal-List").append(result);
-			},
+<script type="text/javascript">
+	for (var bml = 1; bml < 10; bml++) {
+		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
+			$(this).addClass("on");
 		});
+	}
+</script>
 
-		tartTime = parseInt(startTime);
-		//alert("st:"+startTime);
-	});
-	
-	$("#bookingMovie1").on("click", function(){
-
-		movieNum = "${bookingMovieAr.get(1).getMovieNum()}";
-		//alert(movieNum);
-		startTime = "${bookingMovieTimeAr.get(1).getStartTime()}";
-		
-		startTime = startTime.substr(8,2);
-
-		//alert(startTime);
-		
-		$.ajax({
-			url:"bookingLocalList",
-			type:"GET", 
-			data:{movieNum, startTime},
-			success:function(result){
-				$("#bookingLocal-List").empty();
-				$("#bookingLocal-List").append(result);
-			}
-		});
-
-		startTime = parseInt(startTime);
-		//alert("st:"+startTime);
-	});
-	
-	$("#bookingMovie2").on("click", function(){
-
-		movieNum = "${bookingMovieAr.get(2).getMovieNum()}";
-
-		startTime = "${bookingMovieTimeAr.get(2).getStartTime()}";
-		
-		startTime = startTime.substr(8,2);
-
-		//alert(startTime);
-
-		$.ajax({
-			url:"bookingLocalList",
-			type:"GET", 
-			data:{movieNum, startTime},
-			success:function(result){
-				$("#bookingLocal-List").empty();
-				$("#bookingLocal-List").append(result);
-			}
-		});
-		
-		startTime = parseInt(startTime);
-		//alert("st:"+startTime);
-	});
-
-	$("#bookingMovie3").on("click", function(){
-
-		movieNum = "${bookingMovieAr.get(3).getMovieNum()}";
-
-		startTime = "${bookingMovieTimeAr.get(3).getStartTime()}";
-		
-		startTime = startTime.substr(8,2);
-
-		//alert(startTime);
-
-		$.ajax({
-			url:"bookingLocalList",
-			type:"GET", 
-			data:{movieNum, startTime},
-			success:function(result){
-				$("#bookingLocal-List").empty();
-				$("#bookingLocal-List").append(result);
-			}
-		});
-		
-		startTime = parseInt(startTime);
-		//alert("st:"+startTime);
-	});
-
-
-
-	
-
-
-</script> -->
 
 
 <!-- <li class="bookingMovie-List"><button type="button" class="btn" movie-nm="사라진 시간"

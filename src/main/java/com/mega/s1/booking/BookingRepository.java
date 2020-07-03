@@ -11,4 +11,5 @@ public interface BookingRepository {
 
 	public List<BookingVO> bookingMovieList(String startTime) throws Exception;
 	
+	public List<BookingVO> bookingRoomList(BookingVO bookingVO) throws Exception;
 }

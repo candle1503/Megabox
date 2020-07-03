@@ -387,7 +387,7 @@ function fn_validateDateYn(param) {
                                 <div class="other-list">
                                     <button type="button" class="btn-tab" id="movieCrtn">큐레이션</button>
                                     <div class="list">
-                                        <div class="scroll m-scroll mCustomScrollbar _mCS_2 mCS_no_scrollbar" id="crtnMovieList"><div id="mCSB_2" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_2_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button type="button" class="btn" movie-nm="콜 미 바이 유어 네임" movie-no="20021700" img-path="/SharedImg/2020/06/16/T43wKaYuW6i30Kc5Rd1SJ8gdtoDLzgwO_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-19">청소년관람불가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">콜 미 바이 유어 네임</span></button></li><li><button type="button" class="btn" movie-nm="야구소녀" movie-no="20019300" img-path="/SharedImg/2020/05/26/4DpEOKISeL20EXabwXkfsfaeeJW27heu_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">야구소녀</span></button></li><li><button type="button" class="btn" movie-nm="[시네도슨트] 루브르 박물관" movie-no="20002500" img-path="/SharedImg/2020/02/10/pYFBsgbriaDyNbaCMcVH5GCkXCpdx4BZ_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[시네도슨트] 루브르 박물관</span></button></li><li><button type="button" class="btn" movie-nm="패왕별희 디 오리지널" movie-no="20004800" img-path="/SharedImg/2020/04/16/3OHRKnHHelry9f7WY1vM9qghwK48Sr0I_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">패왕별희 디 오리지널</span></button></li><li><button type="button" class="btn" movie-nm="카페 벨에포크" movie-no="20013300" img-path="/SharedImg/2020/05/13/Ke4lvcHauIeImAMNTOAn1IfCcIbLUAaT_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">카페 벨에포크</span></button></li><li><button type="button" class="btn" movie-nm="환상의 마로나" movie-no="20020200" img-path="/SharedImg/2020/05/25/Hk5CYZskPmQjedi5z7Gl8j7AhtMLhppx_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">환상의 마로나</span></button></li><li><button type="button" class="btn" movie-nm="전망좋은 방" movie-no="20020000" img-path="/SharedImg/2020/05/21/2PdCEHVNa13k4zwyEWrhyHY1iooB9kOl_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">전망좋은 방</span></button></li><li><button type="button" class="btn" movie-nm="[오페라] 피델리오" movie-no="20014500" img-path="/SharedImg/2020/04/27/3jXoFpofS8rB3xFhn1JwRWsKTeqv9MQC_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[오페라] 피델리오</span></button></li><li><button type="button" class="btn" movie-nm="[오페라] 마담 버터플라이 @ The Met" movie-no="20013900" img-path="/SharedImg/2020/04/20/rqm2j2jeEeUaLhnbaTvhcWLZqpqURrwt_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[오페라] 마담 버터플라이 @ The Met</span></button></li><li><button type="button" class="btn" movie-nm="나는보리" movie-no="20004900" img-path="/SharedImg/2020/04/17/imYX3U493li0BBZKeH9NlqGvwVqi2GBR_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">나는보리</span></button></li><li><button type="button" class="btn" movie-nm="[팝콘클래식] 와인의 영혼 IN VINO VERITAS" movie-no="20021000" img-path="/SharedImg/2020/06/02/SKnIh2xmDHhogB5v6FeGxmiWQfvDXpSG_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[팝콘클래식] 와인의 영혼 IN VINO VERITAS</span></button></li><li><button type="button" class="btn" movie-nm="파리 오페라 발레단" movie-no="20022100" img-path="/SharedImg/2020/06/04/q2FAKqNfvCKs9bbqOu9yFQulQ8AOgHru_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">파리 오페라 발레단</span></button></li><li><button type="button" class="btn" movie-nm="[오페라] 아크나텐 @The Met" movie-no="20025700" img-path="/SharedImg/2020/06/15/mkuTBD77ntyhS0FQUuZcYX03Fh3Cur6K_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[오페라] 아크나텐 @The Met</span></button></li><li><button type="button" class="btn" movie-nm="라라랜드" movie-no="20007800" img-path="/SharedImg/2020/03/11/Qgl73W9FxEMYJnnaOYPFtyqSrqB3vmJ2_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-12">12세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">라라랜드</span></button></li><li><button type="button" class="btn" movie-nm="[팝콘클래식] 오페라와 다양한 장르의 음악들" movie-no="20021200" img-path="/SharedImg/2020/06/02/72PgiGFVn6lvlIWvPNK7JGMJi1l1F2of_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">[팝콘클래식] 오페라와 다양한 장르의 음악들</span></button></li><li><button type="button" class="btn" movie-nm="조금씩, 천천히 안녕" movie-no="20013600" img-path="/SharedImg/2020/05/15/QYiZX0Nl68ib7PH81yY8nVyszkm1fK7Q_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="N"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">조금씩, 천천히 안녕</span></button></li><li><button type="button" class="btn" movie-nm="카메론 포스트의 잘못된 교육" movie-no="20019100" img-path="/SharedImg/2020/05/25/9CfQz9SGfJPvsyP5SPLBQUprmDA3oQ7w_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-15">15세이상관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">카메론 포스트의 잘못된 교육</span></button></li><li><button type="button" class="btn" movie-nm="바다로 가자" movie-no="20020800" img-path="/SharedImg/2020/05/27/nkPQnTtUwoUS9OlGaTeqpveUvXY3yhP4_150.jpg" movie-popup-at="N" movie-popup-no="0" form-at="Y"><span class="movie-grade small age-all">전체관람가</span><i class="iconset ico-heart-small">보고싶어 설정안함</i><span class="txt">바다로 가자</span></button></li></ul></div><div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+                                        
                                     </div>
                                 </div>
                                 <!--// other-list  : 큐레이션 -->
@@ -434,8 +434,278 @@ function fn_validateDateYn(param) {
                                         <div class="scroll" id="brchList">
                                         
 										<ul id="bookingLocal-List">
-											
-												
+											<li class="bookingLocal-Local"><button type="button"
+													class="btn" id="local1">
+													<!-- btn on 하면 활성화  / has-issue 하면 왼쪽에 점 생김-->
+													<span class="txt">서울</span>
+												</button>
+												<div id="localDepth1" class="depth">
+													<!-- on (name출력) -->
+													<!-- mCS_no_scrollbar 활성화되면 지워짐 -->
+													<div
+														class="detail-list m-scroll area-cd10 mCustomScrollbar _mCS_4 mCS_no_scrollbar">
+														<div id="mCSB_4"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<!-- mCS_no_scrollbar_y 활성화되면 지워짐 -->
+															<div id="mCSB_4_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																	<li class="bookingLocal-Local"><button id="localBtnS1" type="button" 
+																			value="목동" >목동</button></li>
+																	<li class="bookingLocal-Local"><button id="localBtnS2" type="button" brch-no="1359"
+																			brch-nm="강남대로(씨티)" brch-eng-nm="Gangnam-daero (City)"
+																			form-at="Y" area-cd="10" area-cd-nm="서울" spclb-yn="N"
+																			brch-bokd-unable-at="N" brch-popup-at="Y"
+																			brch-popup-no="988" value="쌍용">쌍용</button></li>
+																	<li class="bookingLocal-Local"><button id="localBtnS3" type="button" brch-no="1341"
+																			brch-nm="강동" brch-eng-nm="Gangdong" form-at="Y"
+																			area-cd="10" area-cd-nm="서울" spclb-yn="N"
+																			brch-bokd-unable-at="N" brch-popup-at="Y"
+																			brch-popup-no="939">강동</button></li>
+																</ul>
+															</div>
+															<div id="mCSB_4_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_4_scrollbar mCS-light mCSB_scrollTools_vertical">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_4_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local2">
+													<span calss="txt">경기</span>
+												</button>
+												<div id="localDepth2" class="depth">
+													<div
+														class="detail-list m-scroll area-cd30 mCustomScrollbar _mCS_5 mCS_no_scrollbar">
+														<div id="mCSB_5"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_5_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																	<li><button id="btn" type="button" brch-no="1372"
+																			brch-nm="강남" brch-eng-nm="Gangnam" form-at="Y"
+																			area-cd="10" area-cd-nm="서울" spclb-yn="N"
+																			brch-bokd-unable-at="N" brch-popup-at="Y"
+																			brch-popup-no="998">고양</button></li>
+																</ul>
+															</div>
+															<div id="mCSB_5_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_5_scrollbar mCS-light mCSB_scrollTools_vertical"
+																style="display: block;">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_5_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 141px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li><button type="button" class="btn" id="35">
+													<span calss="txt">인천</span>
+												</button>
+												<div class="depth">
+													<div
+														class="detail-list m-scroll area-cd35 mCustomScrollbar _mCS_6 mCS_no_scrollbar">
+														<div id="mCSB_6"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_6_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																</ul>
+															</div>
+															<div id="mCSB_6_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_6_scrollbar mCS-light mCSB_scrollTools_vertical">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_6_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 610px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li><button type="button" class="btn" id="45">
+													<span calss="txt">대전/충청/세종</span>
+												</button>
+												<div class="depth">
+													<div
+														class="detail-list m-scroll area-cd45 mCustomScrollbar _mCS_7 mCS_no_scrollbar">
+														<div id="mCSB_7"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_7_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																</ul>
+															</div>
+															<div id="mCSB_7_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_7_scrollbar mCS-light mCSB_scrollTools_vertical"
+																style="display: block;">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_7_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 244px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li><button type="button" class="btn" id="55">
+													<span calss="txt">부산/대구/경상</span>
+												</button>
+												<div class="depth">
+													<div
+														class="detail-list m-scroll area-cd55 mCustomScrollbar _mCS_8 mCS_no_scrollbar">
+														<div id="mCSB_8"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_8_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0px; left: 0px;"
+																dir="ltr">
+																<ul>
+																</ul>
+															</div>
+															<div id="mCSB_8_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_8_scrollbar mCS-light mCSB_scrollTools_vertical mCSB_scrollTools_onDrag"
+																style="display: block;">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_8_dragger_vertical"
+																		class="mCSB_dragger mCSB_dragger_onDrag"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 146px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li><button type="button" class="btn" id="65">
+													<span calss="txt">광주/전라</span>
+												</button>
+												<div class="depth">
+													<div
+														class="detail-list m-scroll area-cd65 mCustomScrollbar _mCS_9 mCS_no_scrollbar">
+														<div id="mCSB_9"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_9_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																</ul>
+															</div>
+															<div id="mCSB_9_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_9_scrollbar mCS-light mCSB_scrollTools_vertical">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_9_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 406px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li><button type="button" class="btn" id="70">
+													<span calss="txt">강원</span>
+												</button>
+												<div class="depth">
+													<div
+														class="detail-list m-scroll area-cd70 mCustomScrollbar _mCS_10 mCS_no_scrollbar">
+														<div id="mCSB_10"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_10_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																</ul>
+															</div>
+															<div id="mCSB_10_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_10_scrollbar mCS-light mCSB_scrollTools_vertical">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_10_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 914px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
+											<li><button type="button" class="btn" id="80">
+													<span calss="txt">제주</span>
+												</button>
+												<div class="depth">
+													<div
+														class="detail-list m-scroll area-cd80 mCustomScrollbar _mCS_11 mCS_no_scrollbar">
+														<div id="mCSB_11"
+															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+															style="max-height: none;" tabindex="0">
+															<div id="mCSB_11_container"
+																class="mCSB_container mCS_no_scrollbar_y"
+																style="position: relative; top: 0; left: 0;" dir="ltr">
+																<ul>
+																	<li><button id="btn" type="button" brch-no="6901"
+																			brch-nm="제주" brch-eng-nm="Jeju" form-at="Y"
+																			area-cd="80" area-cd-nm="제주" spclb-yn="N"
+																			brch-bokd-unable-at="N" brch-popup-at="N"
+																			brch-popup-no="0">제주</button></li>
+																</ul>
+															</div>
+															<div id="mCSB_11_scrollbar_vertical"
+																class="mCSB_scrollTools mCSB_11_scrollbar mCS-light mCSB_scrollTools_vertical">
+																<div class="mCSB_draggerContainer">
+																	<div id="mCSB_11_dragger_vertical" class="mCSB_dragger"
+																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 3657px; max-height: 310px;">
+																		<div class="mCSB_dragger_bar"
+																			style="line-height: 30px;"></div>
+																	</div>
+																	<div class="mCSB_draggerRail"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div></li>
+
 										</ul>
 										
 									</div>
@@ -449,7 +719,7 @@ function fn_validateDateYn(param) {
                                     <!-- list -->
                                     <div class="list" id="specialBrchTab">
                                         <div class="scroll" id="specialBrchList">
-                                            <ul><li><button type="button" class="btn has-issue" id="MX"><span calss="txt">MX(10)</span></button><div class="depth"><div class="detail-list m-scroll area-cdMX mCustomScrollbar _mCS_12 mCS_no_scrollbar"><div id="mCSB_12" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_12_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button id="btn" type="button" brch-no="4121" brch-nm="고양스타필드" brch-eng-nm="Goyang Starfield" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="976">고양스타필드</button></li><li><button id="btn" type="button" brch-no="7011" brch-nm="대구신세계(동대구)" brch-eng-nm="Daegu Shinsegae (Dongdaegu)" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">대구신세계(동대구)</button></li><li><button id="btn" type="button" brch-no="0017" brch-nm="대전현대아울렛" brch-eng-nm="Megabox Daejeon Hyundai Outlet Branch" form-at="N" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="45" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0"><span class="jq-tooltip" title="오픈예정">대전현대아울렛</span><i class="iconset ico-theater-open" title="오픈예정">오픈예정</i></button></li><li><button id="btn" type="button" brch-no="1581" brch-nm="목동" brch-eng-nm="Mokdong" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="968">목동</button></li><li><button id="btn" type="button" brch-no="1211" brch-nm="상암월드컵경기장" brch-eng-nm="Sangam World Cup Stadium" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">상암월드컵경기장</button></li><li><button id="btn" type="button" brch-no="1331" brch-nm="성수" brch-eng-nm="SEOUNGSU" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="1006">성수</button></li><li><button id="btn" type="button" brch-no="4062" brch-nm="송도" brch-eng-nm="Song-do" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="35" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="927">송도</button></li><li><button id="btn" type="button" brch-no="4431" brch-nm="영통" brch-eng-nm="Yeongtong" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="944">영통</button></li><li><button id="btn" type="button" brch-no="1351" brch-nm="코엑스" brch-eng-nm="COEX" form-at="N" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">코엑스</button></li><li><button id="btn" type="button" brch-no="4651" brch-nm="하남스타필드" brch-eng-nm="Hanam Starfield" form-at="Y" area-cd="MX" area-cd-nm="MX" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="982">하남스타필드</button></li></ul></div><div id="mCSB_12_scrollbar_vertical" class="mCSB_scrollTools mCSB_12_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_12_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div></div></li><li><button type="button" class="btn" id="CFT"><span calss="txt">COMFORT(31)</span></button><div class="depth"><div class="detail-list m-scroll area-cdCFT mCustomScrollbar _mCS_13 mCS_no_scrollbar"><div id="mCSB_13" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_13_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button id="btn" type="button" brch-no="4041" brch-nm="검단" brch-eng-nm="Geomdan" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="35" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="945">검단</button></li><li><button id="btn" type="button" brch-no="5021" brch-nm="광주상무" brch-eng-nm="Gwangju Sangmu" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="65" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="970">광주상무</button></li><li><button id="btn" type="button" brch-no="5061" brch-nm="광주하남" brch-eng-nm="Gwangju Hanam" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="65" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="969">광주하남</button></li><li><button id="btn" type="button" brch-no="7022" brch-nm="대구(칠성로)" brch-eng-nm="Daegu (Chilseong-ro)" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">대구(칠성로)</button></li><li><button id="btn" type="button" brch-no="3021" brch-nm="대전" brch-eng-nm="Daejeon" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="45" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">대전</button></li><li><button id="btn" type="button" brch-no="6161" brch-nm="덕천" brch-eng-nm="Deokcheon" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="931">덕천</button></li><li><button id="btn" type="button" brch-no="1003" brch-nm="동대문" brch-eng-nm="Dong Dae Moon" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">동대문</button></li><li><button id="btn" type="button" brch-no="4451" brch-nm="동탄" brch-eng-nm="Dongtan" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="923">동탄</button></li><li><button id="btn" type="button" brch-no="6312" brch-nm="마산" brch-eng-nm="Masan" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="986">마산</button></li><li><button id="btn" type="button" brch-no="1581" brch-nm="목동" brch-eng-nm="Mokdong" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="968">목동</button></li><li><button id="btn" type="button" brch-no="4113" brch-nm="백석" brch-eng-nm="Baek Seok" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="940">백석</button></li><li><button id="btn" type="button" brch-no="6906" brch-nm="부산대" brch-eng-nm="Busan &#8203;&#8203;National University" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="941">부산대</button></li><li><button id="btn" type="button" brch-no="1311" brch-nm="상봉" brch-eng-nm="Sangbong" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="980">상봉</button></li><li><button id="btn" type="button" brch-no="1211" brch-nm="상암월드컵경기장" brch-eng-nm="Sangam World Cup Stadium" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">상암월드컵경기장</button></li><li><button id="btn" type="button" brch-no="0008" brch-nm="세종청사" brch-eng-nm="SejongChungsa" form-at="N" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="45" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0"><span class="jq-tooltip" title="오픈예정">세종청사</span><i class="iconset ico-theater-open" title="오픈예정">오픈예정</i></button></li><li><button id="btn" type="button" brch-no="4062" brch-nm="송도" brch-eng-nm="Song-do" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="35" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="927">송도</button></li><li><button id="btn" type="button" brch-no="4291" brch-nm="시흥배곧" brch-eng-nm="Siheung Baegod" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">시흥배곧</button></li><li><button id="btn" type="button" brch-no="1202" brch-nm="신촌" brch-eng-nm="Sin Chon" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">신촌</button></li><li><button id="btn" type="button" brch-no="6261" brch-nm="양산" brch-eng-nm="Yangsan" form-at="N" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="932">양산</button></li><li><button id="btn" type="button" brch-no="6262" brch-nm="양산라피에스타" brch-eng-nm="Yangsan La Fiesta" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="957">양산라피에스타</button></li><li><button id="btn" type="button" brch-no="0012" brch-nm="용인기흥" brch-eng-nm="Yongin Giheung" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0"><span class="jq-tooltip" title="신규오픈">용인기흥</span><i class="iconset ico-theater-renewal" title="신규오픈">신규오픈</i></button></li><li><button id="btn" type="button" brch-no="4462" brch-nm="용인테크노밸리" brch-eng-nm="Yongin Technoveli" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">용인테크노밸리</button></li><li><button id="btn" type="button" brch-no="6811" brch-nm="울산" brch-eng-nm="Ulsan" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="956">울산</button></li><li><button id="btn" type="button" brch-no="0014" brch-nm="창원내서" brch-eng-nm="Megabox Changwon Naeseo Branch" form-at="N" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="Y" brch-popup-at="N" brch-popup-no="0"><span class="jq-tooltip" title="오픈예정">창원내서</span><i class="iconset ico-theater-open" title="오픈예정">오픈예정</i></button></li><li><button id="btn" type="button" brch-no="3301" brch-nm="천안" brch-eng-nm="Cheonan" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="45" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">천안</button></li><li><button id="btn" type="button" brch-no="4043" brch-nm="청라지젤" brch-eng-nm="Cheongna Giselle" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="35" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="928">청라지젤</button></li><li><button id="btn" type="button" brch-no="1351" brch-nm="코엑스" brch-eng-nm="COEX" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">코엑스</button></li><li><button id="btn" type="button" brch-no="4112" brch-nm="킨텍스" brch-eng-nm="KINTEX" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="981">킨텍스</button></li><li><button id="btn" type="button" brch-no="4132" brch-nm="파주금촌" brch-eng-nm="Paju Geumchon" form-at="N" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">파주금촌</button></li><li><button id="btn" type="button" brch-no="4115" brch-nm="파주운정" brch-eng-nm="Paju Unjeong" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">파주운정</button></li><li><button id="btn" type="button" brch-no="6121" brch-nm="해운대(장산)" brch-eng-nm=" Haeundae (Jangsan)" form-at="Y" area-cd="CFT" area-cd-nm="COMFORT" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">해운대(장산)</button></li></ul></div><div id="mCSB_13_scrollbar_vertical" class="mCSB_scrollTools mCSB_13_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_13_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div></div></li><li><button type="button" class="btn has-issue" id="TBQ"><span calss="txt">THE BOUTIQUE(6)</span></button><div class="depth"><div class="detail-list m-scroll area-cdTBQ mCustomScrollbar _mCS_14 mCS_no_scrollbar"><div id="mCSB_14" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_14_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button id="btn" type="button" brch-no="4631" brch-nm="분당" brch-eng-nm="Bundang" form-at="Y" area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="958">분당</button></li><li><button id="btn" type="button" brch-no="1331" brch-nm="성수" brch-eng-nm="SEOUNGSU" form-at="Y" area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="1006">성수</button></li><li><button id="btn" type="button" brch-no="1371" brch-nm="센트럴" brch-eng-nm="Central" form-at="Y" area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="1002">센트럴</button></li><li><button id="btn" type="button" brch-no="4104" brch-nm="일산벨라시타" brch-eng-nm="Ilsan Bellashita" form-at="Y" area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="942">일산벨라시타</button></li><li><button id="btn" type="button" brch-no="1351" brch-nm="코엑스" brch-eng-nm="COEX" form-at="Y" area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y" ori-area-cd="10" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">코엑스</button></li><li><button id="btn" type="button" brch-no="4651" brch-nm="하남스타필드" brch-eng-nm="Hanam Starfield" form-at="Y" area-cd="TBQ" area-cd-nm="THE BOUTIQUE" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="982">하남스타필드</button></li></ul></div><div id="mCSB_14_scrollbar_vertical" class="mCSB_scrollTools mCSB_14_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_14_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div></div></li><li><button type="button" class="btn has-issue" id="MKB"><span calss="txt">MEGABOX KIDS(4)</span></button><div class="depth"><div class="detail-list m-scroll area-cdMKB mCustomScrollbar _mCS_15 mCS_no_scrollbar"><div id="mCSB_15" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_15_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button id="btn" type="button" brch-no="6312" brch-nm="마산" brch-eng-nm="Masan" form-at="Y" area-cd="MKB" area-cd-nm="MEGABOX KIDS" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="986">마산</button></li><li><button id="btn" type="button" brch-no="4431" brch-nm="영통" brch-eng-nm="Yeongtong" form-at="N" area-cd="MKB" area-cd-nm="MEGABOX KIDS" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="944">영통</button></li><li><button id="btn" type="button" brch-no="4651" brch-nm="하남스타필드" brch-eng-nm="Hanam Starfield" form-at="Y" area-cd="MKB" area-cd-nm="MEGABOX KIDS" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="982">하남스타필드</button></li><li><button id="btn" type="button" brch-no="6121" brch-nm="해운대(장산)" brch-eng-nm=" Haeundae (Jangsan)" form-at="Y" area-cd="MKB" area-cd-nm="MEGABOX KIDS" spclb-yn="Y" ori-area-cd="55" brch-bokd-unable-at="N" brch-popup-at="N" brch-popup-no="0">해운대(장산)</button></li></ul></div><div id="mCSB_15_scrollbar_vertical" class="mCSB_scrollTools mCSB_15_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_15_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div></div></li><li><button type="button" class="btn has-issue" id="TFC"><span calss="txt">THE FIRST CLUB(1)</span></button><div class="depth"><div class="detail-list m-scroll area-cdTFC mCustomScrollbar _mCS_16 mCS_no_scrollbar"><div id="mCSB_16" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_16_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><ul><li><button id="btn" type="button" brch-no="4112" brch-nm="킨텍스" brch-eng-nm="KINTEX" form-at="Y" area-cd="TFC" area-cd-nm="THE FIRST CLUB" spclb-yn="Y" ori-area-cd="30" brch-bokd-unable-at="N" brch-popup-at="Y" brch-popup-no="981">킨텍스</button></li></ul></div><div id="mCSB_16_scrollbar_vertical" class="mCSB_scrollTools mCSB_16_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_16_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div></div></li></ul>
+                                            
                                         </div>
                                     </div>
                                     <!--// list -->
@@ -543,22 +813,43 @@ function fn_validateDateYn(param) {
 
                                 <!-- 영화, 영화관 선택 안했을때 -->
                                 <!---->
-                                <div class="no-result" id="playScheduleNonList">
+                                <!-- <div class="no-result" id="playScheduleNonList">
                                     <i class="iconset ico-movie-time"></i>
-
-                                    <p class="txt">
+										
+								<p class="txt">
                                         영화와 극장을 선택하시면<br>
                                         상영시간표를 비교하여 볼 수 있습니다.
                                     </p>
-                                </div>
+                                </div> -->
 
 
                                 <!-- 영화, 영화관 선택 했을때 -->
                                 <div class="result">
-                                    <div class="scroll m-scroll mCustomScrollbar _mCS_3 mCS_no_scrollbar" id="playScheduleList" style="display: none;"><div id="mCSB_3" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 760px;" tabindex="0"><div id="mCSB_3_container" class="mCSB_container mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"></div><div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-light mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_3_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: none; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+                                <div class="scroll m-scroll mCustomScrollbar _mCS_17" id="playScheduleList" style="">
+									<div id="mCSB_17" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+										style="max-height: none;" tabindex="0">
+											<div id="mCSB_17_container" class="mCSB_container" style="position: relative; top: 0; left: 0;" dir="ltr">
+												<ul id="bookingRoom-List">
+											
 
-                                </div>
-                            </div>
+												</ul>
+											</div>
+											<div id="mCSB_30_scrollbar_vertical"
+												class="mCSB_scrollTools mCSB_30_scrollbar mCS-light mCSB_scrollTools_vertical"
+												style="display: block;">
+												<div class="mCSB_draggerContainer">
+													<div id="mCSB_30_dragger_vertical" class="mCSB_dragger"
+														style="position: absolute; min-height: 30px; display: block; height: 77px; max-height: 420px; top: 0px;">
+														<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+													</div>
+													<div class="mCSB_draggerRail"></div>
+												</div>
+											</div>
+										</div>	
+										
+										
+	                               	 </div>
+	                           	 </div>
                             <!--// movie-schedule-area : 시간표 출력 영역-->
 
                         </div>
@@ -683,17 +974,63 @@ function fn_validateDateYn(param) {
 			startTime = 0+startTime;
 		}
 		
-		alert(startTime);
+		//alert(startTime);
 		bookingMovieList(startTime);
 	});
-
-
-
-
 
 	
 	//예매 날짜별로 영화 리스트 부분//
 
+	//localCode
+	$(".bookingLocal-Local").on("click", "#local1", function(){
+		$(this).addClass("on");
+		$("#localDepth1").addClass("on");
+	});
+	$(".bookingLocal-Local").on("click", "#local2", function(){
+		$(this).addClass("on");
+		$("#localDepth2").addClass("on");
+	});
+	 
+
+	//예매 날짜별로 극장을 선택했을 때 리스트 부분//
+	function bookingRoomList(startTime, name){
+		$.get("bookingRoomList?startTime="+startTime+"&name="+name, function(result){
+			$("#bookingRoom-List").append(result);
+		});
+	}
+
+	var name = "";
+	
+	//name
+	for(var i=1; i<10; i++){
+		
+		$("#localBtnS"+i).on("click" , function(){
+			$(this).addClass("on");
+			$("#bookingRoom-List").empty();
+
+			name = encodeURIComponent($(this).val());
+			/* alert(name);	
+			alert(startTime); */
+
+			bookingRoomList(startTime, name);
+		});
+
+		
+		/* $(".bookingLocal-Local").on("click", "#localBtnS"+i, function(){
+			$(this).addClass("on");
+			alert("목동");
+			//$("#bookingRoom-List").
+		}); */
+		
+		/* $(".bookingLocal-Local").on("click", "#localBtnS2", function(){
+			$(this).addClass("on");
+		}); */
+	}
+	//예매 날짜별로 극장을 선택했을 때 리스트 부분//
+	
+
+	//
+	
 	
 	
 </script>
