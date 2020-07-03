@@ -234,7 +234,8 @@
 
 						<div class="select-payment-card" style="display: block;">
 							<label for="card_select">카드사 선택 <!-- 카드사 선택 --></label>
-							<div class="dropdown bootstrap-select v1 small bs3 dropup open">
+							<div class="dropdown bootstrap-select v1 small bs3 dropup"
+								id="cardDrop" style="display: inline;">
 								<select id="card_select" title="카드사 선택"
 									class="selectpicker v1 small" tabindex="-98"><option
 										class="bs-title-option" value=""></option>
@@ -277,10 +278,10 @@
 								</select>
 								<button type="button" class="btn dropdown-toggle btn-default on"
 									data-toggle="dropdown" role="button" data-id="card_select"
-									title="카드선택" aria-expanded="true">
+									title="카드선택" aria-expanded="true" style="width: 14.4%;">
 									<div class="filter-option">
 										<div class="filter-option-inner">
-											<div class="filter-option-inner-inner">카드선택</div>
+											<div class="filter-option-inner-inner" id="selectCard">카드선택</div>
 										</div>
 									</div>
 									<span class="bs-caret"><span class="caret"></span></span>
@@ -288,11 +289,13 @@
 								<div class="dropdown-menu open" role="combobox"
 									style="max-height: 302px; overflow: hidden; min-width: 104px;">
 									<div class="inner open" role="listbox" aria-expanded="true"
-										tabindex="-1" style="max-height: 300px; overflow-y: auto;">
-										<ul class="dropdown-menu inner ">
+										tabindex="-1" style="max-height: 300px; overflow-y: auto; ">
+										<ul class="dropdown-menu inner " id = "selectCardInner">
 											<li class="selected active"><a role="option"
 												aria-disabled="false" tabindex="0" class="selected active"
 												aria-selected="true"><span class="text">카드선택</span></a></li>
+												
+												
 											<li><a role="option" aria-disabled="false" tabindex="0"
 												aria-selected="false"><span class="text">비씨카드</span></a></li>
 											<li><a role="option" aria-disabled="false" tabindex="0"
@@ -345,6 +348,30 @@
 								for="sepecial_card" id="lab_sepecial_card"
 								style="display: none;">포인트사용 <!-- 삼성카드 포인트 사용 --></label>
 						</div>
+
+						<script type="text/javascript">
+							$('#cardDrop').click(function() {
+								
+								if ($("#cardDrop").hasClass("open") == false) {
+									$('#cardDrop').addClass('open');
+								}
+
+								else if ($("#cardDrop").hasClass("open") == true) {
+
+									$('#cardDrop').removeClass('open');
+								}
+							})
+							
+							$('#selectCardInner>li').click(function(){
+
+								$('#selectCardInner>li').removeClass('selected active')
+								$(this).addClass('selected active');
+								var test = $('#selectCardInner>li.active>a>span').text();
+								$('#selectCard').text(test)
+								})
+
+							
+						</script>
 
 
 
@@ -399,7 +426,7 @@
 						<div class="price-process">
 							<div class="box">
 								<div class="data">
-									<span class="tit">일반 <em>1</em></span><span class="price">6,000</span>
+									<span class="tit">일반 <em>1</em></span><span class="price">8,000</span>
 								</div>
 								<!--
 							<div class="data">
@@ -413,7 +440,7 @@
 							</div>
 							-->
 								<div class="all">
-									<span class="tit">금액 <!-- 금액 --></span> <span class="price"><em>6,000</em>
+									<span class="tit">금액 <!-- 금액 --></span> <span class="price"><em>8,000</em>
 										<span>원 <!-- 원 --></span></span>
 								</div>
 							</div>
@@ -443,7 +470,7 @@
 								</p>
 
 								<div class="money">
-									<em>6,000</em> <span>원 <!-- 원 --></span>
+									<em>8,000</em> <span>원 <!-- 원 --></span>
 								</div>
 							</div>
 							<div class="payment-thing">
@@ -453,7 +480,7 @@
 						</div>
 
 						<div class="btn-group">
-							<a href="#" class="button" id="btn_booking_back" title="이전">이전
+							<a href="${pageContext.request.contextPath}/booking/bookingSeat" class="button" id="btn_booking_back" title="이전">이전
 								<!-- 이전 -->
 							</a> <a href="#" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"

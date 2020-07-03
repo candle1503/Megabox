@@ -41,7 +41,7 @@
 					<div class="seat-area">
 						<div class="seat-count" style="min-height: 52px">
 							<div class="cell">
-								<p class="txt">성인</p>
+								<p class="txt">일반</p>
 								<div class="count">
 
 									<div class="number">
@@ -1138,12 +1138,13 @@
 						var strArray = array.split(' ');
 						var idOn = strArray[strArray.length-1];			
 
-						/* var seatArray = ['seatArray1','seatArray2','seatArray3','seatArray4','seatArray5','seatArray6','seatArray7','seatArray8']			 */		
-
 						alert(cnt)
 						alert(seatCheckCnt)
 						
 						if(seatCheckCnt<=cnt){
+
+							var idSeatArray = "seatArray" + seatCheckCnt;
+							var idSeatText = $(this).attr('rownm')+$(this).attr('seatno');		
 
 							if(idOn != 'on'){
 	
@@ -1152,29 +1153,64 @@
 								$(this).addClass('choice');
 								$(this).addClass('on');		
 
-
-/* 								var idSeatArray =  "$("+"'"+"."+ "seatArray" + seatCheckCnt+"'"+""+")";
-								var idSeatArray2 = "seatArray" + seatCheckCnt;
-		
-								alert(idSeatArray);
-								alert(idSeatArray2);
+								alert($('div.money>em').text())		
 								
-								idSeatArray.removeClass('all');
-								idSeatArray.addClass('choice');  */
+								$('div.money>em').text(seatCheckCnt * 8000)
+														
+
+								idSeatArray = "seatArray" + seatCheckCnt;
+								idSeatText = $(this).attr('rownm')+$(this).attr('seatno');				
+	
+								$('.'+idSeatArray).attr('title',idSeatText);
+								$('.'+idSeatArray).text(idSeatText);
+					
+								$('.'+idSeatArray).removeClass('all');
+								$('.'+idSeatArray).addClass('choice');
 								}
+
+								alert($(this).attr('title').slice(0,2))
+								alert($('.'+idSeatArray).attr('title'))
 								
 							}
 							
 							else if(idOn = 'on'){
-								seatCheckCnt = seatCheckCnt-1;
-								$(this).removeClass('choice');
-								$(this).removeClass('on');
+
+								
+								
+								if($(this).attr('title').slice(0,2) ==$('.'+idSeatArray).attr('title')){
+
+
+									$('.'+idSeatArray).removeClass('choice');
+
+									idSeatText = '-';				
+
+									$('.'+idSeatArray).attr('title','구매가능한 좌석');
+									$('.'+idSeatArray).text(idSeatText);
+									
+									seatCheckCnt = seatCheckCnt-1;		
+									
+									$(this).removeClass('choice');
+									$(this).removeClass('on');
+									
+									$('div.money>em').text(seatCheckCnt * 8000)
+
+									} else{
+
+										alert('선택한 순서대로 해제해주세요')
+										
+										}
+								
 							}
+
+							$('#pageNext').attr('href','#')
+							$('#pageNext').addClass('disabled')
 
 						}
 
 						if(seatCheckCnt==cnt){
 									alert('모두 선택하셨습니다. 결제창으로 이동해 주세요')
+									
+									$('#pageNext').attr('href','${pageContext.request.contextPath}/booking/bookingSeatNext')
 									$('#pageNext').removeClass('disabled')
 							}
 
@@ -1233,11 +1269,11 @@
 							<div class="seat-num">
 								<p class="tit">선택좌석</p>
 								<div class="my-seat">
-									<div class="seat all seatArray1" title="구매가능 좌석">Z1 </div>
-									<div class="seat all seatArray2" title="구매가능 좌석">Z2 </div>
-									<div class="seat all seatArray3" title="구매가능 좌석">Z3 </div>
+									<div class="seat all seatArray1" title="구매가능 좌석">-</div>
+									<div class="seat all seatArray2" title="구매가능 좌석">-</div>
+									<div class="seat all seatArray3" title="구매가능 좌석">-</div>
 									<div class="seat all seatArray4" title="구매가능 좌석">-</div>
-									<div class="seat all seatArray5"  title="구매가능 좌석">-</div>
+									<div class="seat all seatArray5" title="구매가능 좌석">-</div>
 									<div class="seat all seatArray6" title="구매가능 좌석">-</div>
 									<div class="seat all seatArray7" title="구매가능 좌석">-</div>
 									<div class="seat all seatArray8" title="구매가능 좌석">-</div>
@@ -1245,7 +1281,10 @@
 							</div>
 						</div>
 						<div class="pay-area">
-							<p class="count"></p>
+							<p class="count">티켓 가격
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8000원</p>
 							<div class="pay">
 								<p class="tit">최종결제금액</p>
 								<div class="money">
@@ -1255,7 +1294,7 @@
 						</div>
 						<div class="btn-group">
 							<a href="javaScript:void(0)" class="button" id="pagePrevious"
-								title="이전">이전</a> <a href="${pageContext.request.contextPath}/booking/bookingSeatNext" class="button disabled"
+								title="이전">이전</a> <a href="#" class="button disabled"
 								id="pageNext" title="다음">다음</a>
 						</div>
 					</div>
