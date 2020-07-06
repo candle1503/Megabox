@@ -19,16 +19,39 @@
 			</c:if>
 			<i class="iconset ico-heart-small">보고싶어 설정안함</i>
 				<span class="txt">${bmList.name}</span>
-				<span class="txt">${bmList.movieNum}</span>
+				<span class="txt" >/${bmList.movieNum}</span>
 		</button>
 	</li>
+	
+	<c:if test="${bookingMovieArSize eq 0}">
+		<div class="no-result" id="playScheduleNonList">
+			<i class="iconset ico-movie-time"></i>
+
+			<p class="txt">
+				현재 날짜에 상영중인 영화가 없습니다.<br> 다른 날짜를 선택해주세요.
+			</p>
+		</div>
+	</c:if>
 </c:forEach>
 
 
 <script type="text/javascript">
+	var size = "${bookingMovieArSize}";
+	console.log(size);
+
 	for (var bml = 1; bml < 10; bml++) {
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
 			$(this).addClass("on");
+			var txt = $(this).text().split('/');
+			var movieNum = parseInt(txt[1]);
+
+			console.log(movieNum);
+
+			/* $.ajax({
+				url:"",
+				
+			}); */
+
 		});
 	}
 </script>

@@ -36,7 +36,14 @@
 </c:forEach>
 
 <script type="text/javascript">
-	
+	var bookingRoomArSize = "${bookingRoomArSize}";
+
+	$.ajax({
+		url:"bookingMain",
+		type:"GET",
+		data:{bookingRoomArSize},
+			
+	});
 
 
 </script>

@@ -23,8 +23,6 @@ public class BookingController {
 	private BookingService bookingService;
 	@Autowired
 	private MovieService movieService;
-	@Autowired
-	private BookingTimeService bookingTimeService;
 
 	@GetMapping("bookingMain")
 	public void bookingMain() throws Exception {
@@ -48,7 +46,9 @@ public class BookingController {
 		
 		List<BookingVO> bookingMovieAr = bookingService.bookingMovieList(startTime);
 
+		int bookingMovieArSize = bookingMovieAr.size();
 		
+		mv.addObject("bookingMovieArSize", bookingMovieArSize);
 		mv.addObject("bookingMovieAr", bookingMovieAr);
 		mv.setViewName("booking/bookingMovieList");
 		
@@ -61,7 +61,7 @@ public class BookingController {
 		
 		List<BookingVO> bookingRoomAr = bookingService.bookingRoomList(bookingVO);
 		
-		
+		int bookingRoomArSize = bookingRoomAr.size();
 		
 		
 		Map<Integer, String> startTimeMap = new HashMap<>();
@@ -83,7 +83,7 @@ public class BookingController {
 		
 		String endTime = "";
 		
-		for(int i=0; i<bookingRoomAr.size(); i++) {
+		for(int i=0; i<bookingRoomArSize; i++) {
 			//영화 시작 시간 잘라오기
 			startTime = bookingRoomAr.get(i).getStartTime();
 			startTime = startTime.substring(11, 16);
@@ -162,6 +162,7 @@ public class BookingController {
 			
 		}
 		
+		mv.addObject("bookingRoomArSize", bookingRoomArSize);
 		mv.addObject("bookingRoomAr", bookingRoomAr);
 		mv.setViewName("booking/bookingRoomList");
 		return mv;

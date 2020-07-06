@@ -24,10 +24,6 @@
 		font-family: Roboto;
 	}
 	
-	.timeSpan{
-		margin-top: 8px;
-	}
-	
 	.bookingTime-list {
 		display: inline-block;
 		height: 39px;
@@ -359,12 +355,10 @@ function fn_validateDateYn(param) {
 											<div id="mCSB_1_container" class="mCSB_container"
 												style="position: relative; top: 0; left: 0;" dir="ltr">
 												
-												<c:catch>
 												<ul id="bookingMovie-List">
 
 
 												</ul>
-												</c:catch>
 											</div>
 											<div id="mCSB_1_scrollbar_vertical"
 												class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical"
@@ -452,15 +446,12 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="bookingLocal-Local"><button id="localBtnS1" type="button" 
+																	<li><button id="localBtnS1" type="button" 
 																			value="목동" >목동</button></li>
-																	<li class="bookingLocal-Local"><button id="localBtnS2" type="button" 
+																	<li><button id="localBtnS2" type="button" 
 																			value="쌍용">쌍용</button></li>
-																	<li class="bookingLocal-Local"><button id="localBtnS3" type="button" brch-no="1341"
-																			brch-nm="강동" brch-eng-nm="Gangdong" form-at="Y"
-																			area-cd="10" area-cd-nm="서울" spclb-yn="N"
-																			brch-bokd-unable-at="N" brch-popup-at="Y"
-																			brch-popup-no="939">강동</button></li>
+																	<li><button id="localBtnS3" type="button"
+																					>강동</button></li>
 																</ul>
 															</div>
 															<div id="mCSB_4_scrollbar_vertical"
@@ -514,7 +505,7 @@ function fn_validateDateYn(param) {
 													</div>
 												</div></li>
 
-											<li><button type="button" class="btn" id="35">
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local3">
 													<span calss="txt">인천</span>
 												</button>
 												<div class="depth">
@@ -544,7 +535,7 @@ function fn_validateDateYn(param) {
 													</div>
 												</div></li>
 
-											<li><button type="button" class="btn" id="45">
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local4">
 													<span calss="txt">대전/충청/세종</span>
 												</button>
 												<div class="depth">
@@ -575,7 +566,7 @@ function fn_validateDateYn(param) {
 													</div>
 												</div></li>
 
-											<li><button type="button" class="btn" id="55">
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local5">
 													<span calss="txt">부산/대구/경상</span>
 												</button>
 												<div class="depth">
@@ -608,7 +599,7 @@ function fn_validateDateYn(param) {
 													</div>
 												</div></li>
 
-											<li><button type="button" class="btn" id="65">
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local6">
 													<span calss="txt">광주/전라</span>
 												</button>
 												<div class="depth">
@@ -638,7 +629,7 @@ function fn_validateDateYn(param) {
 													</div>
 												</div></li>
 
-											<li><button type="button" class="btn" id="70">
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local7">
 													<span calss="txt">강원</span>
 												</button>
 												<div class="depth">
@@ -668,7 +659,7 @@ function fn_validateDateYn(param) {
 													</div>
 												</div></li>
 
-											<li><button type="button" class="btn" id="80">
+											<li class="bookingLocal-Local"><button type="button" class="btn" id="local8">
 													<span calss="txt">제주</span>
 												</button>
 												<div class="depth">
@@ -810,14 +801,16 @@ function fn_validateDateYn(param) {
 
                                 <!-- 영화, 영화관 선택 안했을때 -->
                                 <!---->
-                                <!-- <div class="no-result" id="playScheduleNonList">
-                                    <i class="iconset ico-movie-time"></i>
-										
-								<p class="txt">
-                                        영화와 극장을 선택하시면<br>
-                                        상영시간표를 비교하여 볼 수 있습니다.
-                                    </p>
-                                </div> -->
+                                <c:if test="${bookingRoomArSize eq 0}">
+	                                <div class="no-result" id="playScheduleNonList">
+	                                    <i class="iconset ico-movie-time"></i>
+											
+									<p class="txt">
+	                                        영화와 극장을 선택하시면<br>
+	                                        상영시간표를 비교하여 볼 수 있습니다.
+	                                    </p>
+	                                </div>
+                                </c:if>
 
 
                                 <!-- 영화, 영화관 선택 했을때 -->
@@ -866,6 +859,7 @@ function fn_validateDateYn(param) {
 			
         </div>
         <!--// inner-wrap -->
+     </div>
 
 <div class="normalStyle" style="display:none;position:fixed;top:0;left:0;background:#000;opacity:0.7;text-indent:-9999px;width:100%;height:100%;z-index:100;">닫기</div><div class="alertStyle" style="display:none;position:fixed;top:0px;left:0px;background:#000;opacity:0.7;width:100%;height:100%;z-index:5005;"></div><div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body>
 
@@ -876,7 +870,7 @@ function fn_validateDateYn(param) {
 
 <script type="text/javascript">
 
-	//예매 날짜 리스트 부분//
+	//예매 날짜 리스트 부분 start//
 	var count = 0;
 	var date = new Date();
 	var startDay = parseInt((date.getDate()+100+"").substr(1,3));
@@ -898,18 +892,12 @@ function fn_validateDateYn(param) {
 	if(count==0){
 		var startTime = startDay;
 	}
-
-	
-	
-
-	//console.log(startDay);
 	 
 	bookingTimeZone(startDay);
 	
 	$("#next").click(function(){
 		$("#bookingTime-list").empty();
 		startDay = startDay + 1;
-		//startTime = startTime + 1;
 		count++;
 		bookingTimeZone(startDay);
 	});
@@ -917,7 +905,6 @@ function fn_validateDateYn(param) {
 	$("#prev").click(function(){
 		$("#bookingTime-list").empty();
 		startDay = startDay - 1;
-		//startTime = startTime - 1;
 		count--;
 		bookingTimeZone(startDay);
 	});
@@ -939,30 +926,97 @@ function fn_validateDateYn(param) {
 		}
 	}
 	
-	
-	$(".wrap").on("click",  function(){
-	
-		/* $(".dateButton").addClass("on"); */
-	
-	});
-	
-	
 	$(".wrap").on("mouseover", ".bookingTime-list", function(){
 		$(this).css("border-bottom", "2px solid #503396");
-	
-		/* $(this).click(function(){
-			$(".bookingTime-list > button").addClass("on");
-		}); */
-		
+
+		var timeCss;
+
+		/* for(var k=0; k<14; k++){
+			$("#timeBtn"+k).click(function(){
+				$(timeCss).removeClass("on");
+				$(this).addClass("on");
+				timeCss = "#timeBtn"+k;
+			});
+		} */
+		$("#timeBtn0").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn0";
+		});
+		$("#timeBtn1").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn1";
+		});
+		$("#timeBtn2").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn2";
+		});
+		$("#timeBtn3").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn3";
+		});
+		$("#timeBtn4").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn4";
+		});
+		$("#timeBtn5").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn5";
+		});
+		$("#timeBtn6").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn6";
+		});
+		$("#timeBtn7").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn7";
+		});
+		$("#timeBtn8").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn8";
+		});
+		$("#timeBtn9").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn9";
+		});
+		$("#timeBtn10").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn10";
+		});
+		$("#timeBtn11").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn11";
+		});
+		$("#timeBtn12").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn12";
+		});
+		$("#timeBtn13").click(function(){
+			$(timeCss).removeClass("on");
+			$(this).addClass("on");
+			timeCss = "#timeBtn13";
+		});
 	});
 	
 	$(".wrap").on("mouseout", ".bookingTime-list", function(){
 		$(this).css("border-bottom", "1px solid #d8d9db");
 	});
-	//예매 날짜 리스트 부분//
+	//예매 날짜 리스트 부분 end//
 	
 	
-	//예매 날짜별로 영화 리스트 부분//
+	//예매 날짜별로 영화 리스트 부분 start//
 	/* startTime = startDay+"";
 	
 	if(startTime.length<2){
@@ -1010,11 +1064,8 @@ function fn_validateDateYn(param) {
 		startDaily = parseInt(days[0]); */
 
 		var startYearCut = $(this).text().substr(0,6);
-		console.log(startYearCut);
 		var startMonthCut = $(this).text().substr(7,2);
-		console.log(startMonthCut);
 		var startDailyCut = $(this).text().substr(9,3); 
-		console.log(startDailyCut);
 
 		startYear = startYearCut.trim();
 		startMonth = startMonthCut.trim();
@@ -1022,22 +1073,30 @@ function fn_validateDateYn(param) {
 
 		startDate = startYear + "-" + startMonth + "-" + startDaily;
 
-		console.log("sy:"+startYear);
+		/* console.log("sy:"+startYear);
 		console.log("sm:"+startMonth);
 		console.log("sd:"+startDaily);
-		console.log("sD:"+startDate);
+		console.log("sD:"+startDate); */
 		
 		bookingMovieList(startDate);
 	});
 	
 
 	
-	//예매 날짜별로 영화 리스트 부분//
+	//예매 날짜별로 영화 리스트 부분 end//
 	var lastDepth;
 	var lastlocal;
 	//localCode 눌렀을 때
 	
 	/* for(var j=1; j<9; j++){
+		$("#local"+j).click(function(){
+			$(lastDepth).removeClass("on");
+			$(lastlocal).removeClass("on");
+			$(this).addClass("on");
+			$("#localDepth"+j).addClass("on");
+			lastDepth = "#localDepth"+j;
+			lastlocal = "#local"+j;
+		});
 		$(".bookingLocal-Local").on("click", "#local"+j, function(){
 			$(lastDepth).removeClass("on");
 			$(lastlocal).removeClass("on");
@@ -1047,31 +1106,73 @@ function fn_validateDateYn(param) {
 			lastlocal = "#local"+j;
 		});
 	} */
+	
 	$(".bookingLocal-Local").on("click", "#local1", function(){
 		$(lastDepth).removeClass("on");
 		$(lastlocal).removeClass("on");
 		$(this).addClass("on");
-		$("#localDepth1").addClass("on");
+		$("#localDepth1").addClass("on"); 
 		lastDepth = "#localDepth1";
 		lastlocal = "#local1";
 	});
-	
-	/* $(".bookingLocal-Local").on("click", "#local2", function(){
+	$(".bookingLocal-Local").on("click", "#local2", function(){
 		$(lastDepth).removeClass("on");
 		$(lastlocal).removeClass("on");
 		$(this).addClass("on");
 		$("#localDepth2").addClass("on");
 		lastDepth = "#localDepth2";
 		lastlocal = "#local2";
-		}); */
-	
-// 	$(".bookingLocal-Local").on("click", "#local2", function(){
-// 		$(this).addClass("on");
-// 		$("#localDepth2").addClass("on");
-// 	});
-	 
+	});
+	$(".bookingLocal-Local").on("click", "#local3", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
+		$(this).addClass("on");
+		$("#localDepth3").addClass("on");
+		lastDepth = "#localDepth3";
+		lastlocal = "#local3";
+	});
+	$(".bookingLocal-Local").on("click", "#local4", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
+		$(this).addClass("on");
+		$("#localDepth4").addClass("on");
+		lastDepth = "#localDepth4";
+		lastlocal = "#local4";
+	});
+	$(".bookingLocal-Local").on("click", "#local5", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
+		$(this).addClass("on");
+		$("#localDepth5").addClass("on");
+		lastDepth = "#localDepth5";
+		lastlocal = "#local5";
+	});
+	$(".bookingLocal-Local").on("click", "#local6", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
+		$(this).addClass("on");
+		$("#localDepth6").addClass("on");
+		lastDepth = "#localDepth6";
+		lastlocal = "#local6";
+	});
+	$(".bookingLocal-Local").on("click", "#local7", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
+		$(this).addClass("on");
+		$("#localDepth7").addClass("on");
+		lastDepth = "#localDepth7";
+		lastlocal = "#local7";
+	});
+	$(".bookingLocal-Local").on("click", "#local8", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
+		$(this).addClass("on");
+		$("#localDepth8").addClass("on");
+		lastDepth = "#localDepth8";
+		lastlocal = "#local8";
+	});
 
-	//예매 날짜별로 극장을 선택했을 때 리스트 부분//
+	//예매 날짜별로 극장을 선택했을 때 리스트 부분 start//
 	function bookingRoomList(startDate, name){
 		$.get("bookingRoomList?startTime="+startDate+"&name="+name, function(result){
 			$("#bookingRoom-List").append(result);
@@ -1117,7 +1218,7 @@ function fn_validateDateYn(param) {
 			$(this).addClass("on");
 		}); */
 	}
-	//예매 날짜별로 극장을 선택했을 때 리스트 부분//
+	//예매 날짜별로 극장을 선택했을 때 리스트 부분 end//
 	
 
 	//
