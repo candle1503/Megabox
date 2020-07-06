@@ -290,13 +290,14 @@
 
 									<ul class="dot-list">
 
-										<li>아라타워 건물 內 지하 3층 ~ 지하 6층 주차장 이용</li>
+										<li>${vo.parking}</li>
+										<!-- <li>아라타워 건물 內 지하 3층 ~ 지하 6층 주차장 이용</li> -->
 
 									</ul>
 								</div>
 							</div>
 
-							<div class="parking-section">
+					<!-- 		<div class="parking-section">
 								<div class="icon-box">
 									<i class="iconset ico-parking-confirm" title="주차확인">주차확인</i>
 								</div>
@@ -336,7 +337,7 @@
 
 									</ul>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 
@@ -393,210 +394,48 @@
  -->
 
 						<!--// location-info -->
-
-
-
 						<div id="brchNoti">
 							<h2 class="tit small mt70">공지사항</h2>
 							<a href="${pageContext.request.contextPath}/notice/noticeList"
-								class="more" title="극장 공지사항 더보기" style="margin-left: 1030px; padding-bottom: 10px">더보기 <i
-								class="iconset ico-arr-right-gray"></i>
-							</a>
+								class="more" title="극장 공지사항 더보기" style="margin-left: 1030px;">더보기
+								<i class="iconset ico-arr-right-gray"></i>
+							</a> <br>
+							<br>
 
 							<!-- accordion-list -->
-							<div class="accordion-list">
-								<ul>
-									<li><div class="title ">
-											<a href="" title="[강남] 운영시간 임시 조정 안내">
-												<div class="cont-tit">[강남] 운영시간 임시 조정 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2020.04.03</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											안녕하세요.<br> 메가박스 강남지점입니다.<br> 코로나19 확산 예방에 동참하고자
-											운영시간이 임시 조정되오니<br> 홈페이지나 어플 상영시간표를 참고하시어 영화관 이용 부탁드립니다.<br>
-											<br> - 운영시간 조정 적용일 : 2020년 4월 1일(수) ~<br>
-											&nbsp;(매표, 매점 운영시간 : 13시 30분 ~ 20시 30분)<br> <br>
-											지속적인 방역과 소독관리를 통해 안전한 관람 환경 조성에 최선을 다하겠습니다.<br> 감사합니다.
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 영화 관람 요금 변경 안내">
-												<div class="cont-tit">[강남] 영화 관람 요금 변경 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2020.01.06</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p>
-												안녕하십니까.<br> 메가박스 강남지점입니다.<br> &nbsp;<br>
-												2020년 1월6일(월)부터 영화 관람 요금이 일부 조정됩니다.<br> &nbsp;<br>
-												- 조정내용<br> &nbsp;<br> 주말 청소년 조조 요금: 기존 6,000원 →
-												7,000원(상영관 별 첫 회차 영화)<br> &nbsp;<br> 앞으로도 고객님의 많은
-												관심과 사랑 부탁드리며,<br> 더욱 나아진 서비스로 고객님의 성원에 보답하는 메가박스 강남지점이
-												되겠습니다.<br> &nbsp;<br> 감사합니다.<br> &nbsp;
-											</p>
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 2019년 상반기 소방 작동기능점검 실시 안내">
-												<div class="cont-tit">[강남] 2019년 상반기 소방 작동기능점검 실시 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2019.02.07</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">안녕하십니까.
-													메가박스 강남지점입니다.</span>
-											</p>
+							<div class="table-wrap">
+								<table class="board-list">
+									<caption>번호, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption>
+									<colgroup>
+										<col style="width: 150px;">
+										<col>
+										<col style="width: 150px;">
+										<col style="width: 120px;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">번호</th>
+											<th scope="col">제목</th>
+											<th scope="col">극장</th>
+											<th scope="col">등록일</th>
+										</tr>
+									</thead>
+									<tbody>
 
-											<p>
-												<br> <span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">고객님의
-													안전한 영화 관람을 위하여 2019년도 상반기&nbsp;소방 작동기능점검을 실시할 예정입니다.</span>
-											</p>
 
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">아래의
-													내용 확인하시어 영화관 이용에&nbsp;참고해 주시기 바랍니다.</span>
-											</p>
+										<c:forEach items="${notice}" var="vo" begin="0" end="4">
+											<tr>
+												<td>${vo.num}</td>
+												<th scope="row"><a
+													href="${pageContext.request.contextPath}/notice/noticeSelect?num=${vo.num}"
+													title="">${vo.title}</a></th>
+												<td>${vo.name}</td>
+												<td>${vo.regDate}</td>
+											</tr>
+										</c:forEach>
 
-											<p>&nbsp;</p>
-
-											<p>
-												<strong><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-													-&nbsp;내 용&nbsp;-</strong>
-											</p>
-
-											<p>&nbsp;</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">1.
-												</span> <span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">시행
-													일시:</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">&nbsp;2019년
-													2월 11일(월)~2월 12일(화) 09:00~16:00(2일 진행)</span>
-											</p>
-
-											<p>&nbsp;</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">2.&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">안내</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">
-													사항:</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">
-													점검 시간 동안 간헐적으로 소음(경종, 싸이렌, 비상 방송) 발생 및 시각 경보기가&nbsp;작동할 수
-													있습니다.</span>
-											</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;다소
-													불편하시더라도 많은 양해 부탁 드립니다.</span>
-											</p>
-
-											<p>&nbsp;</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">감사합니다.</span>
-											</p>
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 건물 주차장 이용 제한 안내">
-												<div class="cont-tit">[강남] 건물 주차장 이용 제한 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2018.08.07</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">안녕하세요,<br>
-													메가박스 강남지점입니다.&nbsp;
-												</span>
-											</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">&nbsp;</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">'드루킹'
-													특검 수사 진행 기간 동안 강남역 일대&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">교통
-													통행 제한&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">및&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">불편이
-													많을 것으로 예상되오니 참고 부탁드립니다.</span>
-											</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">&nbsp;</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">영화
-													관람 예정 고객께서는 주차장 이용에 제한이 있을 수 있으니<br> 가급적 대중교통을 이용해주시기
-													바랍니다.
-												</span>
-											</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">&nbsp;</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">감사합니다.</span>
-											</p>
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 2018년 하반기 소방 종합정밀점검 안내">
-												<div class="cont-tit">[강남] 2018년 하반기 소방 종합정밀점검 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2018.08.06</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p>안녕하십니까,</p>
-
-											<p>메가박스 강남지점입니다.</p>
-
-											<p>&nbsp;</p>
-
-											<p>고객님의 안전한 영화 관람을 위하여 2018년도 하반기 소방 종합정밀점검을 실시할 예정입니다.</p>
-
-											<p>아래의 내용 확인하시어 영화관 이용에 참고해 주시기 바랍니다.</p>
-
-											<p>&nbsp;</p>
-
-											<p>1. 시행 일시: 2018년 8월 13일 ~ 14일 / 09:00~16:00 (양일 간 진행)</p>
-
-											<p>
-												<br> 2. 안내 사항<br> 점검 시간 동안 간헐적으로 소음(경종, 싸이렌, 비상
-												방송) 발생 및 시각 경보기가 작동될 수 있습니다.
-											</p>
-
-											<p>
-												다소 불편하시더라도 많은 양해 부탁 드립니다.<br> &nbsp;
-											</p>
-
-											<p>고객님 안전을 위하여 언제나 최선을 다하는 메가박스가 되겠습니다.</p>
-
-											<p>감사합니다.</p>
-										</div></li>
-								</ul>
+									</tbody>
+								</table>
 							</div>
 							<!--// accordion-list -->
 

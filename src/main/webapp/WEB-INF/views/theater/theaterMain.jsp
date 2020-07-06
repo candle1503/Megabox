@@ -356,7 +356,7 @@
 
 					<!-- 로그인 전 -->
 					<div>
-						<i class="iconset ico-favo-theater"></i> 나의 선호영화관 정보 <a href=""
+						<i class="iconset ico-favo-theater"></i> 나의 선호영화관 정보 <a href="${pageContext.request.contextPath}/member/memberLogin"
 							class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>
 					</div>
 
@@ -419,7 +419,7 @@
 					<tbody>
 
 
-						<c:forEach items="${notice}" var="vo">
+						<c:forEach items="${notice}" var="vo" begin="0" end="4">
 							<tr>
 								<td>${vo.num}</td>
 								<th scope="row"><a

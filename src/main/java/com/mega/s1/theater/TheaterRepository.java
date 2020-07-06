@@ -29,5 +29,8 @@ public interface TheaterRepository {
 	public List<TheaterVO> theaterNameGangwon() throws Exception;
 
 	public List<TheaterVO> theaterNameJeju() throws Exception;
+	
+	// Branch 이름 가져오기
+	public String selectTheaterName(TheaterVO theaterVO) throws Exception;
 
 }

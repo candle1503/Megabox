@@ -142,13 +142,34 @@ ticketMotion = (function() {
 }());
 */
 /**
- * PC 寃쎄퀬李� �몄텧 硫붿꽌�� mbAlert.toggle({ �꾩씠��:'layer_alert_ex', msg:'�뺤씤�댁＜�몄슂',
- * confirm: 'confirm', cancel: 'cancel', callback:{ confirm: function() {
- * console.log('ok') }, cancel: function() { console.log('close') } }, param:{
- * confirm: 'yes', cancel: undefined }, width: 300, minHeight:200, type:'' });
- * mbAlert.toggle({ �꾩씠��:'layer_alert_ex', msg:'', confirm: '��', cancel: '痍�',
- * width: 300, minHeight:200, type:'' });
- */
+ *  PC 寃쎄퀬李� �몄텧 硫붿꽌��
+ *  mbAlert.toggle({
+        �꾩씠��:'layer_alert_ex',
+        msg:'�뺤씤�댁＜�몄슂',
+        confirm: 'confirm',
+        cancel: 'cancel',
+        callback:{
+            confirm: function() { console.log('ok') },
+            cancel:	function() { console.log('close') }
+        },
+        param:{
+            confirm: 'yes',
+            cancel:	undefined
+        },
+        width: 300,
+        minHeight:200,
+        type:''
+    });
+    mbAlert.toggle({
+        �꾩씠��:'layer_alert_ex',
+        msg:'',
+        confirm: '��',
+        cancel: '痍�',
+        width: 300,
+        minHeight:200,
+        type:''
+    });
+ **/
  var mbAlert = mbAlert || {};
  mbAlert = (function() {
      'use strict';
@@ -366,18 +387,12 @@ ticketMotion = (function() {
           },
           complete: function() {
               focusables = $(tgtID).find('a, button, input');
-              // mbAlert.dom.root.css({'overflow': 'hidden'});
+              //mbAlert.dom.root.css({'overflow': 'hidden'});
               mbAlert.update();
               mbAlert.dom.dim.css({opacity:0}).show().finish().animate({opacity: 0.7}, 300, 'easeOutQuart');
               $(tgtID).css({opacity: 0}).show().finish().animate({opacity: 1}, 500, 'easeOutQuart');
               clock = setTimeout(function() { focusables.eq(0).focus(); }, 1);
-            $('section.layer-popup .button.purple').addClass('confirm'); // �덉씠�댄뙘��
-																			// ��
-																			// purple
-																			// 踰꾪듉�먮쭔
-																			// confirm
-																			// �대옒��
-																			// 異붽�
+            $('section.layer-popup .button.purple').addClass('confirm'); // �덉씠�댄뙘�� �� purple 踰꾪듉�먮쭔 confirm �대옒�� 異붽�
 			$('.confirm').focus();
 
 
@@ -390,14 +405,10 @@ ticketMotion = (function() {
                   thh	= settings.defaultHead, // �덉씠�� ���댄� �곸뿭 �믪씠
                   lw	= settings.minWidth, // �덉씠�� 理쒖냼 �덈퉬
                   lh	= settings.minHeight, // �덉씠�� 理쒖냼 �믪씠
-                  cw	= ((tw - tg * 2) > lw + tg * 2), // 釉뚮씪�곗졇 �덈퉬媛�
-															// �덉씠�� 理쒖냼 �덈퉬蹂대떎
-															// �곗� �щ�
-                  cH	= ((th - tg * 2) > lh + tg * 4); // 釉뚮씪�곗졇 �덈퉬媛�
-															// �덉씠�� 理쒖냼 �덈퉬蹂대떎
-															// �곗� �щ�
+                  cw	= ((tw - tg * 2) > lw + tg * 2), // 釉뚮씪�곗졇 �덈퉬媛� �덉씠�� 理쒖냼 �덈퉬蹂대떎 �곗� �щ�
+                  cH	= ((th - tg * 2) > lh + tg * 4); // 釉뚮씪�곗졇 �덈퉬媛� �덉씠�� 理쒖냼 �덈퉬蹂대떎 �곗� �щ�
 
-            // $(tgtID).find('.layer-con').css({height: });
+            //$(tgtID).find('.layer-con').css({height: });
             $(tgtID).find('.layer-con').css({height: (cH) ? settings.minHeight : th - tg * 2 - thh });
             $(tgtID)
             .css({  top: th / 2 - $(tgtID).outerHeight(true) / 2,
@@ -409,16 +420,28 @@ ticketMotion = (function() {
   }());
 
 /**
- * PC �덉씠�댄뙘�� �몄텧 硫붿꽌�� ajax �섎룞�몄텧 : mbLayer.toggle({�꾩씠��:'layer_ex',
- * url:'/html/test/external.html', title:'�덉씠�댄뙘�� �섎룞�몄텧 �뚯뒪��', minWidth:350
- * }); mbLayer.toggle({�꾩씠��:'layer_ex', msg:str, confirm:'�뚯뒪��', cancel:'�リ린',
- * callback:null, minHeight:200, type:'' }); mbLayer.toggle({ �꾩씠��:'layer_nm',
- * msg:'硫붿떆吏� �쎌엯', confirm: '�뺤씤', cancel: '痍⑥냼', callback:{ confirm:
- * function() { console.log('normal layer confirm') }, cancel: function() {
- * console.log('normal layer cancel') } }, param:{ confirm: 'normal', cancel:
- * {a:'aa'} }, width: 300, minHeight:200, type:'' //: single or '' });
- * mbLayer.validates
- */
+*   PC �덉씠�댄뙘�� �몄텧 硫붿꽌��
+*   ajax �섎룞�몄텧 : mbLayer.toggle({�꾩씠��:'layer_ex', url:'/html/test/external.html', title:'�덉씠�댄뙘�� �섎룞�몄텧 �뚯뒪��', minWidth:350 });
+*   mbLayer.toggle({�꾩씠��:'layer_ex', msg:str, confirm:'�뚯뒪��', cancel:'�リ린', callback:null, minHeight:200, type:'' });
+*   mbLayer.toggle({
+        �꾩씠��:'layer_nm',
+        msg:'硫붿떆吏� �쎌엯',
+      confirm: '�뺤씤',
+      cancel: '痍⑥냼',
+        callback:{
+              confirm: function() { console.log('normal layer confirm') },
+              cancel:	function() { console.log('normal layer cancel') }
+        },
+    param:{
+        confirm: 'normal',
+          cancel:	{a:'aa'}
+    },
+        width: 300,
+        minHeight:200,
+        type:'' //: single or ''
+    });
+    mbLayer.validates
+**/
 var mbLayer = mbLayer || {};
 mbLayer = (function() {
     'use strict';
@@ -574,14 +597,11 @@ mbLayer = (function() {
                             .done(function(response) {
                                 tgtID = '#'+settings.id;
 
-                                // $(mbLayer.dom.root).find('>
-								// .'+mbLayer.dom.common).remove();
+                                // $(mbLayer.dom.root).find('> .'+mbLayer.dom.common).remove();
                                 // $(mbLayer.dom.root)
                                 // .append(mbLayer.dom.frame)
-                                // .find('> .'+mbLayer.dom.common).attr('id',
-								// settings.id);
-                                // $(tgtID).find('header
-								// h3').empty().text(settings.title);
+                                // .find('> .'+mbLayer.dom.common).attr('id', settings.id);
+                                // $(tgtID).find('header h3').empty().text(settings.title);
                                 // $(tgtID).find('.layer-con').empty().html(response);
                                 lyBdy.insertAdjacentHTML('beforeEnd', mbLayer.dom.frame);
                                 lyPop = document.querySelector('.layer-popup.dynamic');
@@ -642,13 +662,12 @@ mbLayer = (function() {
            },
            complete: function() {
                focusables = $(tgtID).find('a, button, input');
-               // mbLayer.dom.root.css({'overflow': 'hidden'});
+               //mbLayer.dom.root.css({'overflow': 'hidden'});
                mbLayer.update();
                mbLayer.dom.dim.css({opacity:0}).show().finish().animate({opacity: 0.7}, 300, 'easeOutQuart');
                $(tgtID).css({opacity: 0}).show().finish().animate({opacity: 1}, 500, 'easeOutQuart');
                clock = setTimeout(function() { focusables.eq(0).focus(); }, 1);
-               // $('section.layer-popup .button.purple').addClass('confirm');
-				// // �덉씠�댄뙘�� �� purple 踰꾪듉�먮쭔 confirm �대옒�� 異붽�
+               //$('section.layer-popup .button.purple').addClass('confirm'); // �덉씠�댄뙘�� �� purple 踰꾪듉�먮쭔 confirm �대옒�� 異붽�
            },
            update: function() {
                var tw	= dS.browser.getW(), // 釉뚮씪�곗졇 �덈퉬
@@ -657,14 +676,10 @@ mbLayer = (function() {
                    thh	= settings.defaultHead, // �덉씠�� ���댄� �곸뿭 �믪씠
                    lw	= settings.minWidth, // �덉씠�� 理쒖냼 �덈퉬
                    lh	= settings.minHeight, // �덉씠�� 理쒖냼 �믪씠
-                   cw	= ((tw - tg * 2) > lw + tg * 2), // 釉뚮씪�곗졇 �덈퉬媛�
-															// �덉씠�� 理쒖냼 �덈퉬蹂대떎
-															// �곗� �щ�
-                   cH	= ((th - tg * 2) > lh + tg * 4); // 釉뚮씪�곗졇 �덈퉬媛�
-															// �덉씠�� 理쒖냼 �덈퉬蹂대떎
-															// �곗� �щ�
+                   cw	= ((tw - tg * 2) > lw + tg * 2), // 釉뚮씪�곗졇 �덈퉬媛� �덉씠�� 理쒖냼 �덈퉬蹂대떎 �곗� �щ�
+                   cH	= ((th - tg * 2) > lh + tg * 4); // 釉뚮씪�곗졇 �덈퉬媛� �덉씠�� 理쒖냼 �덈퉬蹂대떎 �곗� �щ�
 
-               // $(tgtID).find('.layer-con').css({height: });
+               //$(tgtID).find('.layer-con').css({height: });
             $(tgtID).find('.layer-con').css({height: (cH) ? settings.minHeight : th - tg * 2 - thh });
             $(tgtID)
                .css({  top: th / 2 - $(tgtID).outerHeight(true) / 2,
@@ -681,10 +696,11 @@ mbLayer = (function() {
  }
 
 /**
- * PC �곹솕 濡ㅼ삤踰� 怨듯넻 �몄뒪�댁뒪 ��) var movieOn = new addOnMotion({parent:'遺�紐�
- * dom�대옒��', target:'濡ㅼ삤踰꾨맆 dom�대옒��', top:濡ㅼ삤踰꾩떆 ��寃� top 媛�}); setting.ease :
- * easing �듭뀡 setting.duration : easing �띾룄
- */
+ * PC �곹솕 濡ㅼ삤踰� 怨듯넻 �몄뒪�댁뒪
+ * ��) var movieOn = new addOnMotion({parent:'遺�紐� dom�대옒��', target:'濡ㅼ삤踰꾨맆 dom�대옒��', top:濡ㅼ삤踰꾩떆 ��寃� top 媛�});
+ * setting.ease : easing �듭뀡
+ * setting.duration : easing �띾룄
+ **/
 var addOnMotion = function(opts) {
     this.setting = {
         ease: 'easeOutQuart',
@@ -717,10 +733,9 @@ addOnMotion.prototype.toggle = function() {
 };
 
 /**
- * PC on�대옒�� �좉� 怨듯넻 �몄뒪�댁뒪 ��) var movieOn = new toggleOnOff({target:�곸슜��
- * dom�대옒��, title:{on:'�쒖꽦�붿떆 �쒕ぉ', off:'鍮꾪솢�깊솕�� �쒕ぉ'}, identifier:toggle��
- * �묐룞�쒗궗 �대옒�ㅻ챸});
- */
+ * PC on�대옒�� �좉� 怨듯넻 �몄뒪�댁뒪
+ * ��) var movieOn = new toggleOnOff({target:�곸슜�� dom�대옒��, title:{on:'�쒖꽦�붿떆 �쒕ぉ', off:'鍮꾪솢�깊솕�� �쒕ぉ'}, identifier:toggle�� �묐룞�쒗궗 �대옒�ㅻ챸});
+ **/
 var toggleOnOff = function(opts) {
     this.setting = {};
     $.extend(this.setting, opts);
@@ -749,9 +764,9 @@ toggleOnOff.prototype.toggle = function(e) {
 };
 
 /**
- * PC 寃뚯떆湲� show/hide �좉� 怨듯넻 硫붿꽌�� ��) atcToggle.init({target:�곸슜�� dom�대옒��,
- * identifier:toggle�� �묐룞�쒗궗 �대옒�ㅻ챸});
- */
+ * PC 寃뚯떆湲� show/hide �좉� 怨듯넻 硫붿꽌��
+ * ��) atcToggle.init({target:�곸슜�� dom�대옒��, identifier:toggle�� �묐룞�쒗궗 �대옒�ㅻ챸});
+ **/
 var atcToggle = atcToggle || {};
 atcToggle = (function() {
     'use strict';
@@ -784,23 +799,25 @@ atcToggle = (function() {
 
             $(this).addClass('on');
             $(this).next('div.awn').show();
-            /*
-			 * �좊땲硫붿씠�� �꾩슂�� var tg = $(this).next('ul'); th =
-			 * tg.outerHeight(true); tg.css({height:0, 'padding-top':0,
-			 * 'padding-bottom':0, 'overflow':'hidden', 'border-bottom':
-			 * 'none'}); tg.show().finish().animate({'padding-top': 15,}, 50,
-			 * 'linear', function() { tg.animate({height: th, 'padding-bottom':
-			 * 15}, 450, 'easeOutQuart', function() { tg.css({'border-bottom':
-			 * '1px solid #eaeaea'}); }); });
-			 */
+            /* �좊땲硫붿씠�� �꾩슂��
+            var tg = $(this).next('ul');
+                th = tg.outerHeight(true);
+            tg.css({height:0, 'padding-top':0, 'padding-bottom':0, 'overflow':'hidden', 'border-bottom': 'none'});
+            tg.show().finish().animate({'padding-top': 15,}, 50, 'linear', function() {
+                tg.animate({height: th, 'padding-bottom': 15}, 450, 'easeOutQuart', function() {
+                    tg.css({'border-bottom': '1px solid #eaeaea'});
+                });
+            });
+            */
         }
     };
 }());
 
 
 /**
- * PC �곹솕 �좏깮 �좉� 怨듯넻 硫붿꽌�� ��)
- */
+ * PC �곹솕 �좏깮 �좉� 怨듯넻 硫붿꽌��
+ * ��)
+ **/
 var selMovieToggle = selMovieToggle || {};
 selMovieToggle = (function() {
     'use strict';
@@ -838,9 +855,9 @@ selMovieToggle = (function() {
 }());
 
 /**
- * PC �곹솕 臾대퉬�ъ뒪�� 由ъ뒪�� �ъ빱�� �대깽�� ��)
- * mbMoviePsFocus.init({target:'post-list'});
- */
+ * PC �곹솕 臾대퉬�ъ뒪�� 由ъ뒪�� �ъ빱�� �대깽��
+ * ��) mbMoviePsFocus.init({target:'post-list'});
+ **/
 var mbMoviePsFocus = mbMoviePsFocus || {};
 mbMoviePsFocus = (function() {
     'use strict';
@@ -889,9 +906,9 @@ mbMoviePsFocus = (function() {
 }());
 
 /**
- * PC �곹솕 臾대퉬�ъ뒪�� 醫뚯슦�ㅽ겕濡� 怨좎젙�대깽�� ��)
- * mbPostScroll.init({target:'user-post-btn'});
- */
+ * PC �곹솕 臾대퉬�ъ뒪�� 醫뚯슦�ㅽ겕濡� 怨좎젙�대깽��
+ * ��) mbPostScroll.init({target:'user-post-btn'});
+ **/
 var mbPostScroll = mbPostScroll || {};
 mbPostScroll = (function() {
     'use strict';
@@ -926,7 +943,7 @@ mbPostScroll = (function() {
                 top:500
             });
 
-            // mbPostScroll.repo.left();
+            //mbPostScroll.repo.left();
             this.addEvents();
         },
         addEvents: function() {
@@ -952,7 +969,7 @@ mbPostScroll = (function() {
             }
         },
         resize: function() {
-            // mbPostScroll.repo.left();
+            //mbPostScroll.repo.left();
         },
         scrl: function() {
             var lStop   = dS.browser.getST(),
@@ -960,17 +977,23 @@ mbPostScroll = (function() {
                 lPos	= $(dom.cont);
 
             /*
-			 * if (lStop <= setting.fxH) { lTgt.css({'pointer-events':'auto'});
-			 * lTgt.finish().animate({ top:setting.fxH, opacity:1 }, 100,
-			 * 'easeOutQuart'); } else if (lStop > lPos.outerHeight(true) -
-			 * setting.fxH / 2 - 150) { lTgt.finish().animate({ opacity:0 },
-			 * 300, 'easeOutQuart', function() {
-			 * lTgt.css({'pointer-events':'none'}); }); } else { setting.int++;
-			 * if (setting.int <= 1) { lTgt.css({ 'pointer-events':'auto',
-			 * top:setting.fxH, opacity:1 }); } else { lTgt.css({
-			 * 'pointer-events':'auto'}); lTgt.finish().animate({
-			 * top:setting.fxH, opacity:1 }, 300, 'easeOutQuart'); }; };
-			 */
+            if (lStop <= setting.fxH) {
+                lTgt.css({'pointer-events':'auto'});
+                lTgt.finish().animate({ top:setting.fxH, opacity:1 }, 100, 'easeOutQuart');
+            } else if (lStop > lPos.outerHeight(true) - setting.fxH / 2 - 150) {
+                lTgt.finish().animate({ opacity:0 }, 300, 'easeOutQuart', function() {
+                    lTgt.css({'pointer-events':'none'});
+                });
+            } else {
+                setting.int++;
+                if (setting.int <= 1) {
+                    lTgt.css({ 'pointer-events':'auto', top:setting.fxH, opacity:1 });
+                } else {
+                    lTgt.css({ 'pointer-events':'auto'});
+                    lTgt.finish().animate({ top:setting.fxH, opacity:1 }, 300, 'easeOutQuart');
+                };
+            };
+            */
 
 
             var srtPosTop = Math.floor($('.comment-write').offset().top)-300,
@@ -991,9 +1014,9 @@ mbPostScroll = (function() {
 }());
 
 /**
- * PC �곹솕 臾대퉬�ъ뒪�� �곷떒 ��궧 �ъ빱�� �대깽�� ��)
- * mbMovieRankFocus.init({target:['post-lank li > a','mypost-box > a']});
- */
+ * PC �곹솕 臾대퉬�ъ뒪�� �곷떒 ��궧 �ъ빱�� �대깽��
+ * ��) mbMovieRankFocus.init({target:['post-lank li > a','mypost-box > a']});
+ **/
 var mbMovieRankFocus = mbMovieRankFocus || {};
 mbMovieRankFocus = (function() {
     'use strict';
@@ -1031,8 +1054,9 @@ mbMovieRankFocus = (function() {
 }());
 
 /**
- * �곹솕 �볤��좉퀬 �댄똻 紐⑤뱢 ��) mbMovieTip.init({target:'post-top-area'});
- */
+ * �곹솕 �볤��좉퀬 �댄똻 紐⑤뱢
+ * ��) mbMovieTip.init({target:'post-top-area'});
+ **/
 var mbMovieTip = mbMovieTip || {};
 mbMovieTip = (function() {
     'use strict';
@@ -1077,8 +1101,7 @@ mbMovieTip = (function() {
 
             this.dom.btn = ' .btn-alert';
             this.dom.cls = this.dom.default + ' .btn-close a';
-            // $(this.dom.cont).prepend(this.dom.cmt); 踰꾪듉 �꾩튂媛� �곸씠�⑥쑝濡�
-			// prepend �꾩튂 蹂�寃� �꾩슂
+            //$(this.dom.cont).prepend(this.dom.cmt); 踰꾪듉 �꾩튂媛� �곸씠�⑥쑝濡� prepend �꾩튂 蹂�寃� �꾩슂
             $(this.dom.default).hide();
 
             this.addEvents();
@@ -1116,9 +1139,7 @@ mbMovieTip = (function() {
             cn = ct[0].nodeName;
             $(mbMovieTip.dom.body).find('.balloon-space').remove();
 
-            // (pt === 'post-top-area') ?
-			// $(mbMovieTip.dom.post).prepend(this.dom.cmt) :
-			// $(mbMovieTip.dom.comt).prepend(this.dom.cmt);
+            //(pt === 'post-top-area') ? $(mbMovieTip.dom.post).prepend(this.dom.cmt) : $(mbMovieTip.dom.comt).prepend(this.dom.cmt);
             $(mbMovieTip.dom.body).prepend(this.dom.cmt);
             df = $(mbMovieTip.dom.default);
 
@@ -1160,9 +1181,10 @@ mbMovieTip = (function() {
 }());
 
 /**
- * �곹솕 媛ㅻ윭由� 紐⑤뱢 ��) mbThumGal.init({target:'stillcut-slide', effect:'flash'});
+ * �곹솕 媛ㅻ윭由� 紐⑤뱢
+ * ��) mbThumGal.init({target:'stillcut-slide', effect:'flash'});
  * effect: '', 'sliding', 'flash' 以� �앹씪
- */
+ **/
 var mbThumGal = mbThumGal || {};
 mbThumGal = (function() {
     'use strict';
@@ -1199,7 +1221,7 @@ mbThumGal = (function() {
             dom.btpr = '.' + dom.root + ' .btn-prev';
             dom.btnt = '.' + dom.root + ' .btn-next';
             dom.hovr = '.movie-detail';
-            // console.log('bind:', self);
+            //console.log('bind:', self);
             if ($(dom.cell).length <= 0) {
                 console.warn('�щ씪�대뵫�� �곸슜�� �대�吏�媛� �놁뒿�덈떎.')
                 return false;
@@ -1212,9 +1234,7 @@ mbThumGal = (function() {
             target.tlmt = (target.len - 1) - target.tdft; // �숈쟻 �낅뜲�댄듃 �꾩슂
 
             $(dom.mask).css({ 'overflow':'hidden' });
-            $(dom.list).css({ position:'relative', width:target.wdt * target.len, 'overflow':'' }); // �숈쟻
-																									// �낅뜲�댄듃
-																									// �꾩슂
+            $(dom.list).css({ position:'relative', width:target.wdt * target.len, 'overflow':'' }); // �숈쟻 �낅뜲�댄듃 �꾩슂
 
 
             dom.thumCaption  = '.' + dom.root + ' .thum-caption';
@@ -1238,14 +1258,11 @@ mbThumGal = (function() {
 
             $(dom.titl).empty().html('<span>' + $(dom.imgdt).eq(0).attr('alt') + '</span>');
 
-            $(dom.thumCaption).empty().html($(dom.imgdt).eq(0).attr('desc')); // 理쒗깭��
-																				// �꾩떆�묒뾽
+            $(dom.thumCaption).empty().html($(dom.imgdt).eq(0).attr('desc')); // 理쒗깭�� �꾩떆�묒뾽
 
             $(dom.tthum).css({ width:target.twdt });  // �뚯닔�� �쒓굅
             $(dom.tmask).css({ position:'relative', left:40, width:target.tdfW, 'overflow':'hidden' });
-            $(dom.tlist).css({ position:'absolute', width:target.tsld * target.len, 'padding':0 }); // �숈쟻
-																									// �낅뜲�댄듃
-																									// �꾩슂
+            $(dom.tlist).css({ position:'absolute', width:target.tsld * target.len, 'padding':0 }); // �숈쟻 �낅뜲�댄듃 �꾩슂
 
             $(dom.btpr).css({ opacity:0.5, 'cursor':'default' });
             $(dom.subTt).hide();
@@ -1257,14 +1274,8 @@ mbThumGal = (function() {
         addEvents: function() {
             $(dom.body).on('click', dom.btns, self.slide.init); // 醫뚯슦 �붿궡�� �대┃
             $(dom.body).on('click', dom.tthum, self.slide.thumb); // �몃꽕�� �대┃
-            $(dom.body).on('focus focusout', dom.tthum, self.slide.focus); // �몃찓��
-																			// �ъ빱��
-																			// ��
-																			// �꾩썐
-            $(dom.body).on('mouseenter mouseleave', dom.tthum, self.slide.enter); // �몃찓��
-																					// 留덉슦��
-																					// ��
-																					// �꾩썐
+            $(dom.body).on('focus focusout', dom.tthum, self.slide.focus); // �몃찓�� �ъ빱�� �� �꾩썐
+            $(dom.body).on('mouseenter mouseleave', dom.tthum, self.slide.enter); // �몃찓�� 留덉슦�� �� �꾩썐
             $(dom.body).on('click', dom.subBt, self.subTt); // �먮쭑 �щ떕湲�
         },
         subTt: function(e) {
@@ -1305,12 +1316,9 @@ mbThumGal = (function() {
             // 由ъ뒪�� 異붽� �� �몃꽕�� 媛�닔 諛� �꾩껜 �덈퉬 �낅뜲�댄듃
             sld: function() {
                 target.len = $(dom.cell).length; // �숈쟻 �낅뜲�댄듃 �꾩슂
-                target.tlmt = (target.len - 1) - target.tdft; // �숈쟻 �낅뜲�댄듃
-																// �꾩슂
+                target.tlmt = (target.len - 1) - target.tdft; // �숈쟻 �낅뜲�댄듃 �꾩슂
 
-                $(dom.list).css({ width:target.wdt * target.len }); // �숈쟻
-																	// �낅뜲�댄듃
-																	// �꾩슂
+                $(dom.list).css({ width:target.wdt * target.len }); // �숈쟻 �낅뜲�댄듃 �꾩슂
                 $(dom.tlist).css({ width:target.tsld * target.len });
 
                 self.update.csr();
@@ -1324,8 +1332,7 @@ mbThumGal = (function() {
 
                 if (lTgt.hasClass('disabled')) return false;
 
-                var dir = $(e.currentTarget).attr('class').split('-')[1], // 留덉슦��
-																			// 諛⑺뼢
+                var dir = $(e.currentTarget).attr('class').split('-')[1], // 留덉슦�� 諛⑺뼢
                     thm = undefined, // �대�吏� �곗씠��
                     tit = undefined, // �쒕ぉ
                     des = undefined; // �ㅻ챸
@@ -1429,11 +1436,11 @@ mbThumGal = (function() {
                 var lList   = $(dom.tlist),
                     lThmb   = $(dom.tthum);
 
-                /*
-				 * �몃꽕�� �쒓컻�� �대룞 �� (target.ctn - 1 >= target.tlmt) ?
-				 * lList.css({ left:-(target.tlmt + 1) * target.tsld }) :
-				 * lList.css({ left:-target.ctn * target.tsld });
-				 */
+                /* �몃꽕�� �쒓컻�� �대룞 ��
+                (target.ctn - 1 >= target.tlmt)
+                    ? lList.css({ left:-(target.tlmt + 1) * target.tsld })
+                    : lList.css({ left:-target.ctn * target.tsld });
+                */
                 if (target.ctn % target.tdft === 0 && dir === 'next') {
                     lList.animate({ left:-(target.ctn / target.tdft) * target.tdfW }, 700, 'easeOutQuart');
                 };
@@ -1443,7 +1450,7 @@ mbThumGal = (function() {
 
                 lThmb.removeClass('on');
                 lThmb.eq(target.ctn).addClass('on');
-                $(dom.subTt).html(lThmb.eq(target.ctn).find('a').data('cn').replaceAll('\n', '<br>')); // �먮쭑異붽�
+                $(dom.subTt).html(lThmb.eq(target.ctn).find('a').data('cn').replaceAll('\n', '<br>')); //�먮쭑異붽�
                 self.update.csr();
             }
         }
@@ -1451,9 +1458,10 @@ mbThumGal = (function() {
 }());
 
 /**
- * �ㅼ��댄븨/濡ㅻ쭅 �ㅻ툕�앺듃 swobj �대옒�ㅼ뿉 �먮룞 �곸슜 ��) mbSwiper.init({intv:3000,
- * edur:1000, eopt:'easeInOutCubic'});
- */
+ * �ㅼ��댄븨/濡ㅻ쭅 �ㅻ툕�앺듃
+ * swobj �대옒�ㅼ뿉 �먮룞 �곸슜
+ * ��) mbSwiper.init({intv:3000, edur:1000, eopt:'easeInOutCubic'});
+ **/
 var mbSwiper = mbSwiper || {};
 mbSwiper = (function() {
     'use strict';
@@ -1471,16 +1479,13 @@ mbSwiper = (function() {
             self	= this;
             dom	 = self.dom;
 
-            var priority = document.getElementsByClassName(dom.default); // �ㅼ��댄븨
-																			// �곸뿭
-																			// 怨듯넻
-																			// �대옒��
+            var priority = document.getElementsByClassName(dom.default); // �ㅼ��댄븨 �곸뿭 怨듯넻 �대옒��
 
             if (typeof opts !== 'undefined') for (var k in opts) setting[k] = opts[k];
             if (priority.length > 0) self.setUI();
         },
         setUI: function() {
-            var swpObj  = document.getElementsByClassName(dom.default), // $('.'+this.dom.default),
+            var swpObj  = document.getElementsByClassName(dom.default), //$('.'+this.dom.default),
                 initNm  = 0,
                 initln  = swpObj.length;
 
@@ -1496,12 +1501,11 @@ mbSwiper = (function() {
 
             // �붾㈃ �� swpObj 媛�닔留뚰겮 Object �앹꽦
             targets.forEach(function(val, key) {
-                var drctn	   = setting.subopts[key].direction, // �щ씪�대뵫
-																	// 諛⑺뼢 �듭뀡
+                var drctn	   = setting.subopts[key].direction, // �щ씪�대뵫 諛⑺뼢 �듭뀡
                     liOpt	   = undefined,
                     ulOpt	   = undefined,
                     crNde	   = document.createElement('div'),
-                    // aNde = document.createElement('a'),
+                    //aNde		= document.createElement('a'),
                     sInt		= 0;
 
                 val.props	   = new Object();
@@ -1512,7 +1516,7 @@ mbSwiper = (function() {
                 val.props.len   = val.props.lis.length,
                 val.props.anm   = false;
 
-                // $(crNde).addClass('circle-wrap');
+                //$(crNde).addClass('circle-wrap');
                 crNde.className = 'circle-wrap';
                 val.me.appendChild(crNde);
 
@@ -1619,8 +1623,7 @@ mbSwiper = (function() {
                     len	 = targets.length;
 
                 for (; inm < len; inm++) {
-                    var drctn = setting.subopts[inm].direction, // �щ씪�대뵫 諛⑺뼢
-																// �듭뀡
+                    var drctn = setting.subopts[inm].direction, // �щ씪�대뵫 諛⑺뼢 �듭뀡
                         wtOpt = undefined,
                         liOpt = undefined,
                         ulOpt = undefined;
@@ -1686,7 +1689,7 @@ mbSwiper = (function() {
 
                 tgts.props.mousestat = true;
                 tgts.props.anm = false;
-                // ul.stop();
+                //ul.stop();
 
                 switch (e.type) {
                     case 'mousedown':
@@ -1735,21 +1738,10 @@ mbSwiper = (function() {
                 var drctn   = setting.subopts[sIdx].direction,
                     tgts	= targets[sIdx],
                     dWth	= tgts.props.wth,
-                    dDst	= (tgts.props.dist !== undefined) ? tgts.props.dist : 0, // �대┃留�
-																						// �덉쓣寃쎌슦
-																						// �꾨떖
-																						// 媛믪씠
-																						// �놁쓬
-                    lDist   = (dDst !== 0) ? dDst + dWth : 0, // �대┃留� �덉쓣寃쎌슦
-																// �꾨떖 媛믪씠 �놁쓬
+                    dDst	= (tgts.props.dist !== undefined) ? tgts.props.dist : 0, // �대┃留� �덉쓣寃쎌슦 �꾨떖 媛믪씠 �놁쓬
+                    lDist   = (dDst !== 0) ? dDst + dWth : 0, // �대┃留� �덉쓣寃쎌슦 �꾨떖 媛믪씠 �놁쓬
                     tempo   = new Object();
-                if (e.target.classList.value.indexOf('toggle-btn') !== -1) return false; // �뚮젅��,
-																							// �ㅽ넲
-																							// 踰꾪듉
-																							// �대┃��
-																							// �대깽��
-																							// 踰꾨툝
-																							// 以묒�
+                if (e.target.classList.value.indexOf('toggle-btn') !== -1) return false; // �뚮젅��, �ㅽ넲 踰꾪듉 �대┃�� �대깽�� 踰꾨툝 以묒�
 
                 e.preventDefault();
                 e.stopImmediatePropagation();
@@ -1784,12 +1776,7 @@ mbSwiper = (function() {
                                 : (dir === 'left') // �몃줈 踰꾩쟾
                                     ? dist - Number(ul.style['top'].split('px')[0])
                                     : dist + Number(ul.style['bottom'].split('px')[0]),
-                    spd	 =   Math.abs(ulDist - dWth + dWth) * 3, // (roll ===
-																	// 'go') ?
-																	// Math.abs(ulDist
-																	// - dWth +
-																	// dWth) * 2
-																	// : 200,
+                    spd	 =   Math.abs(ulDist - dWth + dWth) * 3, //(roll === 'go') ? Math.abs(ulDist - dWth + dWth) * 2 : 200,
                     cond	=   (tgts.me.querySelector('a').classList.value.indexOf('active') !== -1) ? true : false,
                     mOpt	=   undefined,
                     lCrlc   =   tgts.me.querySelectorAll('.circle-wrap .circle-btn'),
@@ -1843,13 +1830,7 @@ mbSwiper = (function() {
 
                 tgts.props.anm = false;
                 if (cond) self.timer.toggle({ key:opts.key, tglr:'play' });
-                if (dWth !== tgts.props.wth) self.callback.resize(); // �щ씪�대뵫
-																		// �쒖옉
-																		// �꾧낵
-																		// �볦씠媛믪씠
-																		// �щ씪議뚯쓣
-																		// 寃쎌슦
-																		// �ъ“��
+                if (dWth !== tgts.props.wth) self.callback.resize(); // �щ씪�대뵫 �쒖옉 �꾧낵 �볦씠媛믪씠 �щ씪議뚯쓣 寃쎌슦 �ъ“��
             }
         },
         timer: {
@@ -1878,8 +1859,9 @@ mbSwiper = (function() {
 }());
 
 /**
- * �댄똻 ��) mbCmnTooltip.init({ target:'tooltip-over' });
- */
+ * �댄똻
+ * ��) mbCmnTooltip.init({ target:'tooltip-over' });
+ **/
  var mbCmnTooltip = mbCmnTooltip || {};
 mbCmnTooltip = (function() {
     'use strict';
@@ -1905,29 +1887,18 @@ mbCmnTooltip = (function() {
                 l = o.length;
 
             dom.body						= document.getElementsByTagName('body');
-            dom.tooltip					 = document.createElement('div'); // �댄똻
-																			// 諛뺤뒪
+            dom.tooltip					 = document.createElement('div'); // �댄똻 諛뺤뒪
             dom.tooltip.className		   = 'tooltip-layer';
-            dom.tooltipInner				= document.createElement('div'); // �댄똻
-																				// ���댄�,
-																				// �댁슜
-																				// 猿띿쭏
+            dom.tooltipInner				= document.createElement('div'); // �댄똻 ���댄�, �댁슜 猿띿쭏
             dom.tooltipInner.className	  = 'wrap';
-            dom.tooltipPin				  = document.createElement('div'); // �댄똻
-																			// �붿궡��
+            dom.tooltipPin				  = document.createElement('div'); // �댄똻 �붿궡��
             dom.tooltipPin.className		= 'tipPin';
-            dom.tooltipTit				  = document.createElement('div'); // �댄똻
-																			// ���댄�
-																			// �곸뿭
+            dom.tooltipTit				  = document.createElement('div'); // �댄똻 ���댄� �곸뿭
             dom.tooltipTit.className		= 'tit-area';
             dom.tooltipTit.style.display	= 'none';
-            dom.tooltipCon				  = document.createElement('div'); // �댄똻
-																			// �댁슜
-																			// �곸뿭
+            dom.tooltipCon				  = document.createElement('div'); // �댄똻 �댁슜 �곸뿭
             dom.tooltipCon.className		= 'cont-area';
-            dom.tooltipCls				  = document.createElement('button'); // �댄똻
-																				// �リ린
-																				// 踰꾪듉
+            dom.tooltipCls				  = document.createElement('button'); // �댄똻 �リ린 踰꾪듉
             dom.tooltipCls.style.display	= 'none';
             dom.tooltipCls.className		= 'btn-close-tooltip';
             dom.tooltipCls.innerHTML		= '�댄똻 �リ린';
@@ -1939,17 +1910,13 @@ mbCmnTooltip = (function() {
             dom.tooltipInner.appendChild(dom.tooltipCon);
             dom.tooltip.appendChild(dom.tooltipCls);
 
-            dom.ts			 = document.createElement('span'); // �띿뒪�� �덈퉬
-																// 怨꾩궛��
+            dom.ts			 = document.createElement('span'); // �띿뒪�� �덈퉬 怨꾩궛��
             dom.ts.className = 'tempspan4wth';
             dom.body[0].appendChild(dom.ts);
 
             dS.css.set({ target:dom.tooltipInner, property:{ 'min-width':'200px' } });
             dS.css.set({ target:dom.tooltip, property:{ display:'block', 'min-width':'200px', zIndex:'501', opacity:0 } });
-            dS.css.set({ target:dom.tooltipPin, property:{ position:'absolute', top:'0px', left:'0px', width:'22px', height:'12px', opacity:0, zIndex:'501'} });// background
-																																								// image
-																																								// �덉쓬.
-																																								// common.css
+            dS.css.set({ target:dom.tooltipPin, property:{ position:'absolute', top:'0px', left:'0px', width:'22px', height:'12px', opacity:0, zIndex:'501'} });// background image �덉쓬. common.css
             dS.css.set({ target:dom.ts, property:{ position:'absolute', display:'block', 'font-size':'15px', opacity:0 } });
 
             for (; i < l; i++) targets.push({me:o[i]});
@@ -1979,8 +1946,7 @@ mbCmnTooltip = (function() {
                 dS.events.add({ target:val.me, events:e, function:self.events.toggle, params:key });
             });
             // �リ린 �대깽��
-            // dS.events.add({ target:dom.tooltipCls, events:'click',
-			// function:self.events.destroy, params:null }); //
+            //dS.events.add({ target:dom.tooltipCls, events:'click', function:self.events.destroy, params:null }); //
             dS.events.add({ target:dom.tooltip, events:'click', function:self.events.destroy, params:undefined });
             dS.events.add({ target:window, events:'resize scroll', function:self.events.destroy, params:undefined });
         },
@@ -2007,12 +1973,8 @@ mbCmnTooltip = (function() {
                     j   = e.type,
                     h   = dom.tooltip.offsetHeight, // �댄똻諛뺤뒪�� �믪씠
                     w   = dom.tooltip.offsetWidth, // �댄똻諛뺤뒪�� �덉씠
-                    x   = Math.floor(t.getBoundingClientRect().left), // t��
-																		// offsetLeft
-																		// 媛�
-                    y   = Math.floor(t.getBoundingClientRect().top), // t��
-																		// offsetTop
-																		// 媛�
+                    x   = Math.floor(t.getBoundingClientRect().left), // t�� offsetLeft 媛�
+                    y   = Math.floor(t.getBoundingClientRect().top), // t�� offsetTop 媛�
                     b   = 12, // 留먰뭾�� 瑗���� �믪씠
                     c   = dS.browser.getH(), // 釉뚮씪�곗졇 �믪씠
                     d   = dS.browser.getW(), // 釉뚮씪�곗졇 �덈퉬
@@ -2022,15 +1984,11 @@ mbCmnTooltip = (function() {
                     m   = t.offsetHeight, // 踰꾪듉 �믪씠
                     v   = undefined, // �댄똻 left 媛�
                     z   = undefined, // �댄똻 top 媛�
-                    o   = (j === 'click') // click �대깽�몄쓽 寃쎌슦 cont-area �댁슜
-											// �쎌엯
+                    o   = (j === 'click') // click �대깽�몄쓽 寃쎌슦 cont-area �댁슜 �쎌엯
                         ? t.getElementsByClassName('cont-area')[0].innerHTML
                         : t.getElementsByClassName('ir')[0].innerHTML,
                     p   = undefined, // ���댄� �댁슜
-                    ct  = t.getAttribute('class').search('pop'), // ���댄���
-																	// �꾩슂��
-																	// �댄똻�몄�
-																	// �щ� �뺤씤
+                    ct  = t.getAttribute('class').search('pop'), // ���댄��� �꾩슂�� �댄똻�몄� �щ� �뺤씤
                     tt  = 40, // ���댄� �곸뿭 �믪씠
                     cs  = undefined, // j ���� 蹂���
                     bs  = ['<br>','<br >','<br/>','<br />'],
@@ -2059,7 +2017,7 @@ mbCmnTooltip = (function() {
                     dom.ts.insertAdjacentHTML('beforeEnd', v + '<br>');
                 });
 
-                // dom.tooltip.className = 'tooltip-layer'
+                //dom.tooltip.className = 'tooltip-layer'
                 dS.css.set({ target:dom.tooltipTit, property:{ display:'none' } });
                 dS.css.set({ target:dom.tooltipCls, property:{ display:'none' } });
 
@@ -2070,9 +2028,7 @@ mbCmnTooltip = (function() {
                     case 'open':
                         dom.tooltipCon.innerHTML = '';
                         dom.tooltipCon.insertAdjacentHTML('beforeend', o.trim());
-                        dS.css.set({ target:dom.tooltip, property:{ width:w + 'px' } }); // css
-																							// 湲곕낯�띿꽦
-																							// override
+                        dS.css.set({ target:dom.tooltip, property:{ width:w + 'px' } }); // css 湲곕낯�띿꽦 override
                         dS.css.set({ target:dom.tooltipInner, property:{ width:w + 'px' } });
 
                         h = dom.tooltip.clientHeight;
@@ -2121,35 +2077,15 @@ mbCmnTooltip = (function() {
                         } else if (y - tt <= h + b) {
                             console.log('�섎떒�� �쒖떆');
                             v = x - w / 2  + g + l / 2; // 醫뚯슦
-                            z = y + m + f + b + (m / 4) ; // �곹븯: 踰꾪듉�� y 媛� +
-															// 踰꾪듉�� �믪씠 +
-															// �곹븯�ㅽ겕濡� + �붿궡��
-															// �믪씠
+                            z = y + m + f + b + (m / 4) ; // �곹븯: 踰꾪듉�� y 媛� + 踰꾪듉�� �믪씠 + �곹븯�ㅽ겕濡� + �붿궡�� �믪씠
                             dS.css.set({ target:dom.tooltipPin,
                                 property:{ top: Math.round(z - 10) + 'px', left: v + (w / 2) - 11 + 'px',
                                 '-ms-transform': 'rotate(0deg)', transform: 'rotate(0deg)', opacity:1 } });
                         // �섎떒 �곸뿭�� 遺�議�
                         } else {
                             console.log('�곷떒�� �쒖떆');
-                            v = x - w / 2 + g + l / 2; // 醫뚯슦: 踰꾪듉 x媛� - �댄똻�덈퉬
-														// / 2 + 醫뚯슦�ㅽ겕濡� + 踰꾪듉
-														// �덈퉬 / 2
-                            z = y - h - b + f - (m / 4) - ((ct !== -1) ? tt : 0); // �곹븯:
-																					// 踰꾪듉
-																					// y媛�
-																					// -
-																					// �댄똻�믪씠
-																					// -
-																					// �댄똻�붿궡��
-																					// �믪씠
-																					// +
-																					// �곹븯�ㅽ겕濡�
-																					// -
-																					// ���댄���
-																					// �덉쓣
-																					// 寃쎌슦
-																					// ���댄�
-																					// �믪씠
+                            v = x - w / 2 + g + l / 2; // 醫뚯슦: 踰꾪듉 x媛� - �댄똻�덈퉬 / 2 + 醫뚯슦�ㅽ겕濡� + 踰꾪듉 �덈퉬 / 2
+                            z = y - h - b + f - (m / 4) - ((ct !== -1) ? tt : 0); // �곹븯: 踰꾪듉 y媛� - �댄똻�믪씠 - �댄똻�붿궡�� �믪씠 + �곹븯�ㅽ겕濡� - ���댄��� �덉쓣 寃쎌슦 ���댄� �믪씠
                             dS.css.set({ target:dom.tooltipPin,
                                 property:{ top: Math.round(z + h) + 'px', left: Math.round(v + (w / 2) - 11) + 'px',
                                 '-ms-transform': 'rotate(180deg)', transform: 'rotate(180deg)', opacity:1 } });
@@ -2191,9 +2127,10 @@ mbCmnTooltip = (function() {
 }());
 
 /**
- * �곹솕愿� 寃뚯떆臾� �좉� accordion-list �대옒�ㅼ뿉 �먮룞 �곸슜 ��) mbThToggle.init({
- * target:'accordion-list' });
- */
+ * �곹솕愿� 寃뚯떆臾� �좉�
+ * accordion-list �대옒�ㅼ뿉 �먮룞 �곸슜
+ * ��) mbThToggle.init({ target:'accordion-list' });
+ **/
 var mbThToggle = mbThToggle || {};
 mbThToggle = (function() {
     'use strict';
@@ -2215,7 +2152,7 @@ mbThToggle = (function() {
             if (document.getElementsByClassName(setting.target).length > 0) self.setUI();
         },
         setUI: function() {
-            var wrap	= document.getElementsByClassName(setting.target), // $('.'+this.dom.default),
+            var wrap	= document.getElementsByClassName(setting.target), //$('.'+this.dom.default),
                 tglTit  = wrap[0].getElementsByTagName(dom.default),
                 initNm  = 0,
                 initln  = tglTit.length;
@@ -2270,13 +2207,14 @@ mbThToggle = (function() {
 }());
 
 /**
- * �곹솕愿� �곸쁺�쒓컙�� �щ젰 date-area �대옒�ㅼ뿉 �먮룞 �곸슜 �� 1)
- * mbThCalendar.events.trimdate({ mnDate:'', direction:'' }); �� 2)
- * mbThCalendar.events.trimdate({ mnDate:'2018.12.16', callback:test }); �� 3)
- * mbThCalendar.events.trimdate({ mnDate:'2018.12.16', direction:'pre' }); �� 4)
- * mbThCalendar.events.trimdate({ mnDate:'2018.12.16', direction:'next' }); ��
- * 5) mbThCalendar.events.selhour({ hour:5 }); �덈ℓ 媛��ν븳 �쒓컙�쇰줈 珥덇린��
- */
+ * �곹솕愿� �곸쁺�쒓컙�� �щ젰
+ * date-area �대옒�ㅼ뿉 �먮룞 �곸슜
+ * �� 1) mbThCalendar.events.trimdate({ mnDate:'', direction:'' });
+ * �� 2) mbThCalendar.events.trimdate({ mnDate:'2018.12.16', callback:test });
+ * �� 3) mbThCalendar.events.trimdate({ mnDate:'2018.12.16', direction:'pre' });
+ * �� 4) mbThCalendar.events.trimdate({ mnDate:'2018.12.16', direction:'next' });
+ * �� 5) mbThCalendar.events.selhour({ hour:5 }); �덈ℓ 媛��ν븳 �쒓컙�쇰줈 珥덇린��
+ **/
 var mbThCalendar = mbThCalendar || {};
 mbThCalendar = (function() {
     'use strict';
@@ -2317,12 +2255,7 @@ mbThCalendar = (function() {
             setting.mscrIntv	= undefined;
             setting.tHourCk	 = undefined;
             setting.lPara	   = window.parent.location.search.split('?')[1];
-            setting.lan		 = (setting.lPara !== 'megaboxLanguage=en') ? true : false; // true
-																						// >
-																						// �쒓뎅��
-																						// false
-																						// >
-																						// English
+            setting.lan		 = (setting.lPara !== 'megaboxLanguage=en') ? true : false; // true > �쒓뎅�� false > English
 
             dom.root			= document.getElementsByClassName('time-schedule')[0];
             dom.krenTgl		 = document.querySelector('.quick-reserve .btn-ticket button');
@@ -2360,9 +2293,7 @@ mbThCalendar = (function() {
             dom.dateM.className = 'wrap';
             dom.dateG.innerHTML = '';
             dom.dateG.appendChild(dom.dateM);
-            // dS.css.set({ target: dom.dateM, property: { position:'relative',
-			// width: (setting.dlen * 2) * setting.dwidth + 'px', border:'none'
-			// } });
+            //dS.css.set({ target: dom.dateM, property: { position:'relative', width: (setting.dlen * 2) * setting.dwidth + 'px', border:'none' } });
             dom.dateM.style.cssText = 'position:relative;width:'+ (setting.dlen * 2) * setting.dwidth + 'px;border:none';
             dom.daybtns			 = dom.root.querySelectorAll('.date-area .wrap');
             dom.mbtbtns			 = document.querySelectorAll('#movieList, #crtnMovieList, #brchList, #specialBrchTab');
@@ -2374,14 +2305,13 @@ mbThCalendar = (function() {
             dS.events.add({ target: dom.pnbtns, events: 'click', function: self.events.init });
             dS.events.add({ target: dom.daybtns, events: 'click', function: self.events.day });
             dS.events.add({ target: dom.mbtbtns, events: 'click', function: self.events.mtlist });
-            // all-list
+            //all-list
 
             // ��/�� �좉�
             if (dom.krenTgl !== null)
             {
                 self.events.tglLang();
-                // dS.events.add({ target: dom.krenTgl, events: 'click',
-				// function: self.events.tglLang });
+                //dS.events.add({ target: dom.krenTgl, events: 'click', function: self.events.tglLang });
             };
 
             // 鍮좊Ⅸ�덈ℓ �쒓컙 �좏깮��
@@ -2425,7 +2355,7 @@ mbThCalendar = (function() {
                         }
                         else
                         {
-                            // self.events.trimdate({mnDate:'',direction:''});
+                            //self.events.trimdate({mnDate:'',direction:''});
                         };
                     }
                 }, 100);
@@ -2435,17 +2365,11 @@ mbThCalendar = (function() {
                 // �곹솕 �ㅼ�伊� �좏깮��
                 setting.mscrIntv	= null;
                 setting.initHour = undefined;
-                // clearInterval(setting.mscrIntv); // setInterval �� clear 媛�
-				// �쒕�濡� �덈릺�� 踰꾧렇媛� �덉뼱�� setTimeout �쇰줈 蹂�寃�
+                //clearInterval(setting.mscrIntv); // setInterval �� clear 媛� �쒕�濡� �덈릺�� 踰꾧렇媛� �덉뼱�� setTimeout �쇰줈 蹂�寃�
 
-                setting.mscrIntv = setTimeout(function() {// setInterval ��
-															// clear 媛� �쒕�濡�
-															// �덈릺�� 踰꾧렇媛� �덉뼱��
-															// setTimeout �쇰줈
-															// 蹂�寃�
+                setting.mscrIntv = setTimeout(function() {// setInterval �� clear 媛� �쒕�濡� �덈릺�� 踰꾧렇媛� �덉뼱�� setTimeout �쇰줈 蹂�寃�
                     if (document.querySelector('.result .mCustomScrollbar > div > div') !== null) {
-                        // clearInterval(setting.mscrIntv); // setInterval ��
-						// clear 媛� �쒕�濡� �덈릺�� 踰꾧렇媛� �덉뼱�� setTimeout �쇰줈 蹂�寃�
+                        //clearInterval(setting.mscrIntv); // setInterval �� clear 媛� �쒕�濡� �덈릺�� 踰꾧렇媛� �덉뼱�� setTimeout �쇰줈 蹂�寃�
                         setting.mscrIntv = null;
 
                         dom.cusSc = document.querySelector('.result .mCustomScrollbar');
@@ -2490,17 +2414,17 @@ mbThCalendar = (function() {
                     , tHour = undefined
                     , lHour = undefined;
 
-                /*
-				 * �ㅽ겕濡ㅼ뿉�곕씪 �쒓컙 �대룞 遺덇� �붿껌 for (;i < l; i++) { if
-				 * (-dom.indvS[i].offsetTop >= y) { tHour =
-				 * Number(dom.indvS[i].querySelector('.time
-				 * strong').innerText.split(':')[0]); }; };
-				 * 
-				 * lHour = (setting.tHourCk !== undefined) ? setting.tHourCk :
-				 * tHour;
-				 * 
-				 * self.events.trimhour({ hour:lHour });
-				 */
+                /* �ㅽ겕濡ㅼ뿉�곕씪 �쒓컙 �대룞 遺덇� �붿껌
+                 for (;i < l; i++) {
+                    if (-dom.indvS[i].offsetTop >= y) {
+                        tHour = Number(dom.indvS[i].querySelector('.time strong').innerText.split(':')[0]);
+                    };
+                };
+
+                lHour = (setting.tHourCk !== undefined) ? setting.tHourCk : tHour;
+
+                self.events.trimhour({ hour:lHour });
+                 */
             }
             , trimhour: function(opts) {
                 var idx = (opts === undefined) ? 0 : opts.hour
@@ -2592,7 +2516,7 @@ mbThCalendar = (function() {
                         c = s[i].getAttribute('class'),
                         d = s[i].getAttribute('date-data');
 
-                    // alert('�좎쭨 �대┃')
+                    //alert('�좎쭨 �대┃')
 
                     // �대룞 遺덇��섍쾶 �섍퀬 �띠쓣 寃쎌슦
                     if (c.indexOf('disabled') !== -1) return false;
@@ -2612,7 +2536,7 @@ mbThCalendar = (function() {
             }
             , tglLang: function()
             {
-                // (setting.lan) ? setting.lan = false : setting.lan = true;
+                //(setting.lan) ? setting.lan = false : setting.lan = true;
                 if (setting.lan)
                 {
                     dS.css.set({ target:dom.dateG.querySelectorAll('span.day-kr'), property: { display:'inline-block' } });
@@ -2631,9 +2555,7 @@ mbThCalendar = (function() {
 
                     TweenLite.to(dom.dateM, .3, { left:(d === 'next') ? -(setting.dwidth * 2) : 0, ease: Power1.easeOutCubic,
                     onComplete:self.events.trimdate.bind(this, { mnDate:'', direction:d }) });
-                    // onComplete:self.events.trimdate.bind(this, { mnDate:'',
-					// direction:d, callback:(typeof tempMthd === 'function') ?
-					// tempMthd : undefined }) });
+                    // onComplete:self.events.trimdate.bind(this, { mnDate:'', direction:d, callback:(typeof tempMthd === 'function') ? tempMthd : undefined }) });
 
                     setting.onani = true;
                 },
@@ -2677,15 +2599,13 @@ mbThCalendar = (function() {
             trimdate: function(opts) {
                 setting.count++;
                 // �뚯뒪�몄슜
-                // allPlayDates = ["2019.05.27", "2019.05.28", "2019.05.29",
-				// "2019.05.30", "2019.05.31", "2019.06.01", "2019.06.03",
-				// "2019.06.11"];
+                //allPlayDates = ["2019.05.27", "2019.05.28", "2019.05.29", "2019.05.30", "2019.05.31", "2019.06.01", "2019.06.03", "2019.06.11"];
                 // holidaysFromServer = ["2019.05.28", "2019.06.03"]
 
                 var t = arguments[0],
                     b = undefined, // �좎쭨 媛�媛� 媛�
                     d = t.direction, // �좎쭨 媛�媛� �묐룞 諛⑺뼢
-                    s = -1,// -setting.dlen , // 猷⑦봽 �쒖옉
+                    s = -1,//-setting.dlen  , // 猷⑦봽 �쒖옉
                     t = setting.dlen, // 猷⑦봽 ��
                     i = -1, // 猷⑦봽 �꾩껜 湲몄씠 怨꾩궛
                     w = setting.dwidth, // �좎쭨 諛뺤뒪 �덈퉬
@@ -2694,10 +2614,7 @@ mbThCalendar = (function() {
                     k = new Array(), // �좎슂��
                     v = undefined // �붾㈃�곸뿉 �쒖떆�� 泥ル쾲吏� ��
                     , forwardArr = undefined // �붾㈃�곸뿉 �쒖떆�� 留덉�留� ��
-                    , lastActDate = (typeof allPlayDates  !== 'undefined' && allPlayDates.length > 0) ? allPlayDates[allPlayDates.length - 1] : [] // �쒕쾭�먯꽌
-																																					// �꾨떖��
-																																					// 留덉�留�
-																																					// ��
+                    , lastActDate = (typeof allPlayDates  !== 'undefined' && allPlayDates.length > 0) ? allPlayDates[allPlayDates.length - 1] : [] // �쒕쾭�먯꽌 �꾨떖�� 留덉�留� ��
                     , krCon = (setting.lan) ? 'display:inline-block' : 'display:none'
                     , enCon = (setting.lan) ? 'display:none' : 'display:inline-block'
                     , lastSelDate = Array.prototype.slice.call(dom.root.querySelectorAll('.date-area .wrap button'), null)
@@ -2720,35 +2637,36 @@ mbThCalendar = (function() {
                     setting.fetchedDis = window[setting.disdays];
                 };
 
-/*
- * lastSelDate.forEach(function(el, i) { if ($(el).hasClass('on')) {
- * setting.lsDate = el.getAttribute('date-data'); }; })
- */
+/*				lastSelDate.forEach(function(el, i) {
+                    if ($(el).hasClass('on'))
+                    {
+                        setting.lsDate =  el.getAttribute('date-data');
+                    };
+                })*/
 
                 setting.onani   = false;
 
-                // 1. �섎룞�낅젰(mnDate) > 2. 留덉�留� ���� �� �좎쭨(lsDate) > 3. �ㅻ뒛
-				// �좎쭨(today)
+                // 1. �섎룞�낅젰(mnDate) > 2. 留덉�留� ���� �� �좎쭨(lsDate) > 3. �ㅻ뒛 �좎쭨(today)
                 setting.mnDate  =   (opts.mnDate === "")
                                     ? (setting.lsDate === undefined) ? setting.today : setting.lsDate
                                     : opts.mnDate,
-// if (opts.mnDate !== '')
-// {
-// setting.mnDate = setting.lastDate = opts.mnDate;
-// }
-// else
-// {
-// if (setting.lastDate === undefined)
-// {
-// setting.mnDate = setting.today;
-// }
-// else
-// {
-// setting.mnDate = setting.lastDate;
-// };
-// };
+//				if (opts.mnDate !== '')
+//				{
+//					setting.mnDate = setting.lastDate = opts.mnDate;
+//				}
+//				else
+//				{
+//					if (setting.lastDate === undefined)
+//					{
+//						setting.mnDate = setting.today;
+//					}
+//					else
+//					{
+//						setting.mnDate = setting.lastDate;
+//					};
+//				};
 
-                // 珥덇린 �쒕뜑留곸떆�� �곸뿭 諛뽰쓽 �좎쭨濡� �대룞�쒕쭔 �щ젰 �ㅼ떆 洹몃┝
+                // 珥덇린 �쒕뜑留곸떆�� �곸뿭 諛뽰쓽 �좎쭨濡� �대룞�쒕쭔  �щ젰 �ㅼ떆 洹몃┝
                 setting.spDate  =   setting.mnDate.split('.'),
                 setting.dateTo  =   new Date(setting.spDate[0] + '-' + dS.util.number.addZero(setting.spDate[1]) +
                         '-' + dS.util.number.addZero(setting.spDate[2]));
@@ -2778,23 +2696,19 @@ mbThCalendar = (function() {
                     // 湲곗��� �욌뮘濡� �섏뿴
                     var a0 = new Date(setting.dateTo.getFullYear(), setting.dateTo.getMonth(), ( setting.dateTo.getDate() + s )),
                         a1 = a0.toDateString(),
-                        a2 = setting.dateTo.toDateString(), // �ㅻ뒛�좎쭨�먯꽌 �쒕쾭
-															// �좎쭨濡� 蹂�寃� new
-															// Date().toDateString(),
+                        a2 = setting.dateTo.toDateString(), // �ㅻ뒛�좎쭨�먯꽌 �쒕쾭 �좎쭨濡� 蹂�寃� new Date().toDateString(),
                         b0 = a0.getDate(),
                         c0 = a0.getMonth(),
                         d0 = a0.getFullYear(),
                         e0 = a0.getDay(),
                         f0 = setting.days[e0], // ��
                         f1 = setting.daysEn[e0], // �� - �곷Ц
-                        m0 = d0+''+dS.util.number.addZero(c0 + 1)+''+dS.util.number.addZero(b0), // �붾㈃�곸쓽
-																									// �좎쭨��
+                        m0 = d0+''+dS.util.number.addZero(c0 + 1)+''+dS.util.number.addZero(b0), // �붾㈃�곸쓽 �좎쭨��
                         n0 = setting.today.split('.').join(''), // �ㅻ뒛
-                        // o0 = (Number(n0) > Number(m0)) ? 'disabled' : '', //
-						// �ㅻ뒛�댁쟾�대㈃ 鍮꾪솢�깊솕
+                        //o0 = (Number(n0) > Number(m0)) ? 'disabled' : '', // �ㅻ뒛�댁쟾�대㈃ 鍮꾪솢�깊솕
                         p0 = m0.slice(0,4)+'.'+m0.slice(4,6)+'.'+m0.slice(6,8),
                         g0 = '<span class="ir">'+ d0 +'�� '+ (c0 + 1) +'��</span>',
-                        h0 = '<button class="disabled" type="button" date-data='+ p0 +'>'+ g0 +'<em style="pointer-events:none;">'+ b0 + // disabled
+                        h0 = '<button class="disabled" type="button" date-data='+ p0 +'>'+ g0 +'<em style="pointer-events:none;">'+ b0 + //disabled
                                 '<span style="pointer-events:none;" class="ir">��</span></em>' +
                                 '<span class="day-kr" style="pointer-events:none;'+krCon+'">'+ f0 +'</span>' +
                                 '<span class="day-en" style="pointer-events:none;'+enCon+'">'+ f1 +'</span>' +
@@ -2805,9 +2719,7 @@ mbThCalendar = (function() {
                     // 湲곗��� ����
                     if (s === 0) {
                         l0 = new Date(a0.getFullYear(), a0.getMonth(), a0.getDate());
-                        setting.lsDate = l0.getFullYear() + '.' + dS.util.number.addZero(Number(l0.getMonth() + 1)) + '.' + dS.util.number.addZero(l0.getDate()); // 留덉�留�
-																																									// �좎쭨
-																																									// ����
+                        setting.lsDate = l0.getFullYear() + '.' + dS.util.number.addZero(Number(l0.getMonth() + 1)) + '.' + dS.util.number.addZero(l0.getDate()); // 留덉�留� �좎쭨 ����
                     };
 
                     // �ㅻ뒛
@@ -2840,21 +2752,20 @@ mbThCalendar = (function() {
                         tcn = dom.btns[c + 1].querySelector('span.day-kr'),
                         tcnE = dom.btns[c + 1].querySelector('span.day-en');
 
-                    // dom.btns[c].className = (ccn === '') ? 'on' : ccn + '
-					// on';
+                    //dom.btns[c].className = (ccn === '') ? 'on' : ccn + ' on';
                     $(".date-area button[date-data='"+setting.today+"'] .day-kr").text("�ㅻ뒛")
                             .closest("button").next().find(".day-kr").text("�댁씪");
                 };
 
                 // �쇱슂�� �대옒�� �쎌엯
                 j.forEach(function(val, key) {
-                    // dom.btns[val].className = 'holi';
+                    //dom.btns[val].className = 'holi';
                     $(dom.btns[val]).addClass('holi');
                 });
 
                 // �좎슂�� �대옒�� �쎌엯
                 k.forEach(function(val, key) {
-                    // dom.btns[val].className = 'sat';
+                    //dom.btns[val].className = 'sat';
                     $(dom.btns[val]).addClass('sat');
                 });
 
@@ -2934,20 +2845,18 @@ mbThCalendar = (function() {
                 if (d !== 'next' && d !== 'pre')
                 {
                     $(document.querySelectorAll('.date-list .date-area button')).removeClass('on');
-                    // mbThCalendar.lastSavedDate = undefined;
+                    //mbThCalendar.lastSavedDate = undefined;
                     if (opts.mnDate !== '')
                     {
                         mbThCalendar.lastSavedDate = opts.mnDate;
-                        // $(document.querySelectorAll('[date-data="'+
-						// mbThCalendar.lastSavedDate +'"]')).addClass('on');
+                        //$(document.querySelectorAll('[date-data="'+ mbThCalendar.lastSavedDate +'"]')).addClass('on');
                     };
 
-                    // $(document.querySelectorAll('.date-list .date-area
-					// button')[1]).addClass('on')
+                    //$(document.querySelectorAll('.date-list .date-area button')[1]).addClass('on')
                 }
                 else
                 {
-                    // console.log('pre next', mbThCalendar.lastSavedDate)
+                    //console.log('pre next', mbThCalendar.lastSavedDate)
 
                     if (mbThCalendar.lastSavedDate !== undefined)
                     {
@@ -2990,9 +2899,10 @@ mbThCalendar = (function() {
 }());
 
 /**
- * �뚯궗�뚭컻 �곷떒 �ㅽ겕濡� main-menu �대옒�� �댁뿉 'MEGABOX �뚭컻' �띿뒪�� 寃��� �� �곸슜 ��
- * mbCorpScoll.init({ target:'main-menu' });
- */
+ * �뚯궗�뚭컻 �곷떒 �ㅽ겕濡�
+ * main-menu �대옒�� �댁뿉 'MEGABOX �뚭컻' �띿뒪�� 寃��� �� �곸슜
+ * �� mbCorpScoll.init({ target:'main-menu' });
+ **/
 var mbCorpScoll = mbCorpScoll || {};
 mbCorpScoll = (function() {
     'use strict';
@@ -3052,8 +2962,7 @@ mbCorpScoll = (function() {
                     l = dS.browser.getSL(),
                     s = dS.browser.getST();
 
-                // dom.head.style.transform = 'translateX(-'+ l +'px)'; ie9�먯꽌
-				// �묐룞 �덊븿
+                // dom.head.style.transform = 'translateX(-'+ l +'px)'; ie9�먯꽌 �묐룞 �덊븿
                 // dom.tab.style.transform = 'translateX(-'+ l +'px)';
                 dom.head.style.left = '-'+ l + 'px';
                 dom.tab.style.left  = '-'+ l + 'px';
@@ -3093,8 +3002,10 @@ mbCorpScoll = (function() {
 
 
 /**
- * 硫붿씤 main-header �대옒�ㅼ뿉 �먮룞 �곸슜 �� mbMain.init({ target:'main-header' });
- */
+ * 硫붿씤
+ * main-header �대옒�ㅼ뿉 �먮룞 �곸슜
+ * �� mbMain.init({ target:'main-header' });
+ **/
 var mbMain = mbMain || {};
 mbMain = (function() {
     'use strict';
@@ -3113,35 +3024,19 @@ mbMain = (function() {
             if (priority !== undefined && priority.length > 0) self.setUI();
         },
         setUI: function() {
-            dom.bg		  = document.querySelector('.section.main-movie').children[0]; // �곷떒
-																						// 諛곌꼍
-            dom.mlist	   = document.getElementsByClassName('movie-list-info'); // �곷떒
-																					// �ъ뒪��
-																					// 由ъ뒪��
-            dom.bkmk		= document.querySelectorAll('.nav-main li'); // �곗륫
-																			// 遺곷쭏��
+            dom.bg		  = document.querySelector('.section.main-movie').children[0]; // �곷떒 諛곌꼍
+            dom.mlist	   = document.getElementsByClassName('movie-list-info'); // �곷떒 �ъ뒪�� 由ъ뒪��
+            dom.bkmk		= document.querySelectorAll('.nav-main li'); // �곗륫 遺곷쭏��
             dom.sec		 = document.querySelectorAll('.section'); // 硫붿씤 �뱀뀡
-            dom.view		= document.querySelector('.slider-view'); // �щ씪�대뱶�곸뿭
-																		// 諛뺤뒪
-            dom.cont		= document.querySelectorAll('.slider-view .cell'); // �щ씪�대뱶�곸뿭
-																				// 諛뺤뒪
+            dom.view		= document.querySelector('.slider-view'); // �щ씪�대뱶�곸뿭  諛뺤뒪
+            dom.cont		= document.querySelectorAll('.slider-view .cell'); // �щ씪�대뱶�곸뿭  諛뺤뒪
             dom.contChk		= document.querySelectorAll('.main-condition');
             dom.contT	   = document.querySelectorAll('.slider-view .cell .txt');
             dom.contB	   = document.querySelectorAll('.slider-view .cell .bg');
-            dom.rect		= document.querySelectorAll('.slider-control .page')[0]; // �щ씪�대뱶而⑦듃濡�
-																						// ��
-																						// �뱀뀡
-            dom.numb		= document.querySelectorAll('.slider-control .page-count')[0]; // �щ씪�대뱶而⑦듃濡�
-																							// ��
-																							// �レ옄
-            dom.btna		= document.querySelectorAll('.slider-control .util .btn-prev, .slider-control .util .btn-next'); // �щ씪�대뱶而⑦듃濡�
-																																// ��
-																																// 醫뚯슦
-																																// 踰꾪듉
-            dom.btnp		= document.querySelectorAll('.slider-control .util .btn-pause, .slider-control .util .btn-play'); // �щ씪�대뱶而⑦듃濡�
-																																// ��
-																																// �쒖옉�뺤�
-																																// 踰꾪듉
+            dom.rect		= document.querySelectorAll('.slider-control .page')[0]; // �щ씪�대뱶而⑦듃濡� �� �뱀뀡
+            dom.numb		= document.querySelectorAll('.slider-control .page-count')[0]; // �щ씪�대뱶而⑦듃濡� �� �レ옄
+            dom.btna		= document.querySelectorAll('.slider-control .util .btn-prev, .slider-control .util .btn-next'); // �щ씪�대뱶而⑦듃濡� �� 醫뚯슦 踰꾪듉
+            dom.btnp		= document.querySelectorAll('.slider-control .util .btn-pause, .slider-control .util .btn-play'); // �щ씪�대뱶而⑦듃濡� �� �쒖옉�뺤� 踰꾪듉
 
             setting.cid	 = 0; // �щ씪�대뵫�곸뿭 id;
             setting.chto	= null; // �ъ뒪�� �ъ빱�� ���꾩븘��
@@ -3153,27 +3048,17 @@ mbMain = (function() {
             if (document.querySelectorAll('.main-condition').length > 0)
             {
                 dS.css.set({ target:dom.cont, property: { display:'none', position: 'absolute', float:'none' } });
-                dS.css.set({ target:dom.contT, property: { top:'100px', opacity:0 } }); // 0px濡�
-																						// �좊땲硫붿씠��
-                dS.css.set({ target:dom.contB, property: { left:'450px', opacity:0 } }); // 300px濡�
-																							// �좊땲硫붿씠��
-                dS.css.set({ target:dom.contT[0], property: { top:'0px', opacity:1 } }); // 0px濡�
-																							// �좊땲硫붿씠��
-                dS.css.set({ target:dom.contB[0], property: { left:'300px', opacity:1 } }); // 300px濡�
-																							// �좊땲硫붿씠��
+                dS.css.set({ target:dom.contT, property: { top:'100px', opacity:0 } }); // 0px濡� �좊땲硫붿씠��
+                dS.css.set({ target:dom.contB, property: { left:'450px', opacity:0 } }); // 300px濡� �좊땲硫붿씠��
+                dS.css.set({ target:dom.contT[0], property: { top:'0px', opacity:1 } }); // 0px濡� �좊땲硫붿씠��
+                dS.css.set({ target:dom.contB[0], property: { left:'300px', opacity:1 } }); // 300px濡� �좊땲硫붿씠��
                 dom.view.style.width		= '1100px';
                 if(dom.cont.length > 0) dom.cont[0].style.display   = 'block';
                 dom.rect.innerHTML		  = '';
                 dom.btna[0].setAttribute('disabled', true);
                 dom.btna[0].style.opacity = 0.5;
-                for (var i = 0; i < dom.sec.length; i++) setting.seca.push(dom.sec[i].offsetTop); // 媛�
-																									// �뱀뀡
-																									// 蹂�
-																									// offsetTop
-																									// 媛�
-																									// ����
-                for (var j = 0; j < dom.cont.length; j++) { // �щ씪�대뵫 媛�닔留뚰겮 諛뺤뒪
-															// �ㅼ젙
+                for (var i = 0; i < dom.sec.length; i++) setting.seca.push(dom.sec[i].offsetTop); // 媛� �뱀뀡 蹂� offsetTop 媛� ����
+                for (var j = 0; j < dom.cont.length; j++) { // �щ씪�대뵫 媛�닔留뚰겮 諛뺤뒪 �ㅼ젙
                     var cl = (j === 0) ? 'on' : '';
                     dom.rect.insertAdjacentHTML('beforeEnd', '<span class="'+ cl +'" style="width:'+ (1 / dom.cont.length) * 100 +'%"></span>');
                 };
@@ -3192,21 +3077,11 @@ mbMain = (function() {
             self.addEvents();
         },
         addEvents: function() {
-            dS.events.add({ target:document, events:'scroll', function:self.events.scroll, params:null }); // �ㅽ겕濡�
-																											// �대깽��
-            // dS.events.add({ target:dom.mlist, events:'focus',
-			// function:self.events.focusm, params:null }); // �곷떒 �ъ뒪�� �ъ빱��
-			// �대깽��
-            dS.events.add({ target:dom.bkmk, events:'click mouseenter mouseleave', function:self.events.ckbk, params:null }); // �곗륫
-																																// 遺곷쭏��
-																																// �대깽��
-            dS.events.add({ target:dom.btna, events:'click', function:self.events.slideArr, params:null }); // �щ씪�대뵫
-																											// 醫뚯슦
-																											// 踰꾪듉
-            dS.events.add({ target:dom.btnp, events:'click', function:self.events.slidePS, params:null }); // �щ씪�대뵫
-																											// �ъ깮
-																											// �뺤�
-																											// 踰꾪듉
+            dS.events.add({ target:document, events:'scroll', function:self.events.scroll, params:null }); // �ㅽ겕濡� �대깽��
+            //dS.events.add({ target:dom.mlist, events:'focus', function:self.events.focusm, params:null }); // �곷떒 �ъ뒪�� �ъ빱�� �대깽��
+            dS.events.add({ target:dom.bkmk, events:'click mouseenter mouseleave', function:self.events.ckbk, params:null }); // �곗륫 遺곷쭏�� �대깽��
+            dS.events.add({ target:dom.btna, events:'click', function:self.events.slideArr, params:null }); // �щ씪�대뵫 醫뚯슦 踰꾪듉
+            dS.events.add({ target:dom.btnp, events:'click', function:self.events.slidePS, params:null }); // �щ씪�대뵫 �ъ깮 �뺤� 踰꾪듉
 
             if (dom.contChk.length > 0) self.events.slideTick();
         },
@@ -3273,8 +3148,7 @@ mbMain = (function() {
                     default:
                     break;
                 };
-                // TweenLite.to(window, 1, { scrollTo:{ y:dom.sec[i].offsetTop
-				// }, ease: Power1.easeOutCubic });
+                //TweenLite.to(window, 1, { scrollTo:{ y:dom.sec[i].offsetTop }, ease: Power1.easeOutCubic });
 
             },
             scroll: function() {
@@ -3294,13 +3168,10 @@ mbMain = (function() {
                         dom.bkmk[j].className = '';
                         dom.bkmk[j].querySelector('span').style.color = '#503396';
                     };
-                    // dom.bkmk[arr[arr.length - 1]].className = 'active';
-                    // dom.bkmk[arr[arr.length -
-					// 1]].querySelector('span').style.color = '#fff';
-                    // $(dom.sec[arr[arr.length - 1]]).addClass('on'); // ie9�먯꽌
-					// classlist �묐룞�덊븿
-                    // dS.dom.addclass({ target:dom.sec[arr[arr.length - 1]],
-					// class:'on' })
+                    //dom.bkmk[arr[arr.length - 1]].className = 'active';
+                    //dom.bkmk[arr[arr.length - 1]].querySelector('span').style.color = '#fff';
+                    //$(dom.sec[arr[arr.length - 1]]).addClass('on'); // ie9�먯꽌 classlist �묐룞�덊븿
+                    //dS.dom.addclass({ target:dom.sec[arr[arr.length - 1]], class:'on' })
                 }, 300);
             },
             slidePS: function() {
@@ -3400,10 +3271,8 @@ mbMain = (function() {
             },
             slideObj: function() {
                 dS.css.set({ target:dom.cont, property: { display:'none' } });
-                dS.css.set({ target:dom.contT, property: { top:'100px', opacity:0 } }); // 0px濡�
-																						// �좊땲硫붿씠��
-                dS.css.set({ target:dom.contB, property: { left:'450px', opacity:0 } }); // 300px濡�
-																							// �좊땲硫붿씠��
+                dS.css.set({ target:dom.contT, property: { top:'100px', opacity:0 } }); // 0px濡� �좊땲硫붿씠��
+                dS.css.set({ target:dom.contB, property: { left:'450px', opacity:0 } }); // 300px濡� �좊땲硫붿씠��
                 dom.cont[setting.cid].style.display   = 'block';
                 TweenLite.to(dom.contT[setting.cid], .5, { top:0, opacity:1, ease: Power1.easeOutCubic });
                 TweenLite.to(dom.contB[setting.cid], .8, { left:300, opacity:1, ease: Power1.easeOutCubic });
@@ -3413,9 +3282,10 @@ mbMain = (function() {
 }());
 
 /**
- * �대깽�� 硫붿씤 event-top-slide �대옒�ㅼ뿉 �먮룞 �곸슜 �� mbEvtMain.init({
- * target:'event-top-slide' });
- */
+ * �대깽�� 硫붿씤
+ * event-top-slide �대옒�ㅼ뿉 �먮룞 �곸슜
+ * �� mbEvtMain.init({ target:'event-top-slide' });
+ **/
 var mbEvtMain = mbEvtMain || {};
 mbEvtMain = (function() {
     'use strict';
@@ -3438,27 +3308,19 @@ mbEvtMain = (function() {
             if (priority !== undefined && priority.length > 0) self.setUI();
         }
         , setUI: function() {
-            target.sld		  = document.querySelector('.slide'); // �щ씪�대뱶
-																	// �곸뿭 猿띿쭏
-            target.sldEl		= target.sld.querySelector('ul'); // �щ씪�대뱶
-																	// �곸뿭
-            target.sldEls	   = target.sldEl.querySelectorAll('li'); // 媛쒕퀎
-																		// �붿냼
-            target.mArr		 = document.querySelectorAll('.btn-control')[0]; // 醫뚯슦
-																				// 踰꾪듉
+            target.sld		  = document.querySelector('.slide'); // �щ씪�대뱶 �곸뿭 猿띿쭏
+            target.sldEl		= target.sld.querySelector('ul'); // �щ씪�대뱶 �곸뿭
+            target.sldEls	   = target.sldEl.querySelectorAll('li'); // 媛쒕퀎 �붿냼
+            target.mArr		 = document.querySelectorAll('.btn-control')[0]; // 醫뚯슦 踰꾪듉
 
             target.ind		  = document.querySelector('.slider-control .page'); // �몃뵒耳��댄꽣
-            target.sArr		 = document.querySelectorAll('.util .btn-prev, .util .btn-next'); // ���대㉧
-																								// �곸뿭
-																								// 醫뚯슦
-																								// 踰꾪듉
+            target.sArr		 = document.querySelectorAll('.util .btn-prev, .util .btn-next'); // ���대㉧ �곸뿭 醫뚯슦 踰꾪듉
             target.psBtn		= document.querySelectorAll('.util .btn-pause, .util .btn-play');
             target.numbs		= document.querySelector('.slider-control .page-count');
 
             setting.id		  = 0; // 珥덇린 id �낅젰
             setting.len		 = target.sldEls.length; // 媛쒕퀎 �붿닔 媛�닔
-            setting.dw		  = target.sldEls[0].clientWidth + 40 // 媛쒕퀎 �붿냼
-																	// �덈퉬;
+            setting.dw		  = target.sldEls[0].clientWidth + 40 // 媛쒕퀎 �붿냼 �덈퉬;
             setting.trsfm	   = (dS.browser.brwIsIE9()) ? '-ms-transform' : 'transform';
             setting.tmOut	   = undefined;
             setting.tmOutAniPre = undefined;
@@ -3471,12 +3333,12 @@ mbEvtMain = (function() {
             if (setting.len < 3) {
                 self.events.dom.disable();
             } else {
-                // target.sldEl.prepend(target.last);
+                //target.sldEl.prepend(target.last);
                 var tObj = {};
                 tObj[setting.trsfm] = 'translateX(0px)';
                 tObj.position = 'absolute';
                 tObj.width = setting.dw * setting.len + 'px';
-                // tObj.transition = 'none';
+                //tObj.transition = 'none';
                 dS.css.set( { target:target.sldEl, property:tObj });
             };
 
@@ -3513,8 +3375,7 @@ mbEvtMain = (function() {
             dom: {
                 disable: function() {
                     dS.css.set({ target:target.mArr.children, property:{ opacity:.5 } });
-                    // dS.css.set({ target:target.sArr, property:{ opacity:.5 }
-					// });
+                    //dS.css.set({ target:target.sArr, property:{ opacity:.5 } });
                     for (var j = 0; j < target.sArr.length; j++) {
                         dS.css.set({ target:target.mArr.children[j], property: { 'pointer-events':'none' } });
                         dS.css.set({ target:target.sArr[j], property: { 'pointer-events':'none' } });
@@ -3522,8 +3383,7 @@ mbEvtMain = (function() {
                 }
                 , enable: function() {
                     dS.css.set({ target:target.mArr.children, property:{ opacity:1 } });
-                    // dS.css.set({ target:target.sArr, property:{ opacity:1 }
-					// });
+                    //dS.css.set({ target:target.sArr, property:{ opacity:1 } });
                     for (var j = 0; j < target.sArr.length; j++) {
                         dS.css.set({ target:target.mArr.children[j], property: { 'pointer-events':'auto' } });
                         dS.css.set({ target:target.sArr[j], property: { 'pointer-events':'auto' } });
@@ -3586,8 +3446,7 @@ mbEvtMain = (function() {
             }
             , slide: function() {
                 var args	= arguments[0]
-                    // , lPos =
-					// Number(getComputedStyle(target.sldEl)[setting.trsfm].getMatrix(4))
+                    //, lPos  = Number(getComputedStyle(target.sldEl)[setting.trsfm].getMatrix(4))
                     , lTrs  = getComputedStyle(target.sldEl)[setting.trsfm]
                     , lPos  = Number(String.prototype.getMatrix.call(lTrs, 4))
                     , tPos  = undefined
@@ -3654,9 +3513,9 @@ mbEvtMain = (function() {
 }());
 
 /*
- * mbImgArr.init({ target:'.stair-slide-list', initN:0, deftW:260, deftR:4 });
- * mbImgArr.events.load(); 異붽� 濡쒕뱶
- */
+* mbImgArr.init({ target:'.stair-slide-list', initN:0, deftW:260, deftR:4 });
+* mbImgArr.events.load(); 異붽� 濡쒕뱶
+*/
 var mbImgArr = mbImgArr || {};
 mbImgArr = (function() {
     'use strict';
@@ -3681,9 +3540,7 @@ mbImgArr = (function() {
             if (priority.length === 0) return false;
             if (typeof opts !== 'undefined') for (var k in opts) setting[k] = opts[k];
 
-            setting.trsfm = (dS.browser.brwIsIE9()) ? '-ms-transform' : 'transform'; // 釉뚮씪�곗졇蹂�
-																						// transform
-																						// �듭뀡
+            setting.trsfm = (dS.browser.brwIsIE9()) ? '-ms-transform' : 'transform'; // 釉뚮씪�곗졇蹂� transform �듭뀡
             setting.initN = 0;
             setting.initR = 0; // array �앹꽦��
             setting.deftG = 20; // �대�吏� 媛꾧꺽
@@ -3741,9 +3598,7 @@ mbImgArr = (function() {
                     if (e.type === 'click') e.preventDefault();
                 };
                 dom.mbtn.style.opacity	= 0;
-                // dS.xhr({ url:'/html/test/posters.html', async:true,
-				// callback:self.events.prepare, method:'get' }); // test�� �섑뵆
-				// html
+                //dS.xhr({ url:'/html/test/posters.html', async:true, callback:self.events.prepare, method:'get' }); // test�� �섑뵆 html
                 dS.xhr({ url:'/on/oh/oha/Movie/selectMovieStillList.do?rpstMovieNo='+$("#rpstMovieNo").val()+'&currentPage='+$("#currentPage").val()+'&recordCountPerPage='+$("#recordCountPerPage").val(), async:true, callback:self.events.prepare, method:'get' });
             }
             , img: {
@@ -3867,11 +3722,9 @@ mbImgArr = (function() {
                         tObj[setting.trsfm] 	= 'translate('+ Number(setting.rlArr[ci].c.x) +'px, '
                             + Number(setting.rlArr[ci].c.y) +'px)';
                         tObj.transition			= 'none';
-                        // tObj.transition = setting.trsfm + ' .1s ease-out 0s';
-                        // tObj.msTransition = setting.trsfm + ' .1s ease-out
-						// 0s';
-                        // tObj.WebkitTransition = setting.trsfm + ' .1s
-						// ease-out 0s';
+                        // tObj.transition			= setting.trsfm + ' .1s ease-out 0s';
+                        // tObj.msTransition		= setting.trsfm + ' .1s ease-out 0s';
+                        // tObj.WebkitTransition	= setting.trsfm + ' .1s ease-out 0s';
 
                         if (setting.rlArr[ci].e !== undefined) {
                             dS.css.set({
@@ -3881,13 +3734,11 @@ mbImgArr = (function() {
                             setting.rlArr[ci].e.setAttribute('row', setting.rlArr[ci].d.row);
                             setting.rlArr[ci].e.setAttribute('col', setting.rlArr[ci].d.col);
                         };
-                        // console.clear();
-                        // console.log('�먮났 �뺣젹 以�:', setting.rlArr[ci].d.row, '
-						// ��:',setting.rlArr[ci].d.col);
+                        //console.clear();
+                        //console.log('�먮났 �뺣젹 以�:', setting.rlArr[ci].d.row, ' ��:',setting.rlArr[ci].d.col);
                     };
 
-                    setting.initN	= dom.list.length; // 湲곗〈�� 議댁옱�섎뒗 �ъ뒪��
-														// �댄썑 遺��� �쒖옉
+                    setting.initN	= dom.list.length; // 湲곗〈�� 議댁옱�섎뒗 �ъ뒪�� �댄썑 遺��� �쒖옉
                     dom.list		= dom.wrap.querySelectorAll('.thumb');
 
                     dS.css.set({ target:dom.list, property:{ display:'block' } });
@@ -3905,10 +3756,8 @@ mbImgArr = (function() {
                     var tgtTp	=	(setting.initN < setting.deftR)
                                     ? 0 // 泥ル쾲吏� 以�
                                     // �먮쾲吏� 以� 遺��� �믪씠 怨꾩궛
-                                    // :
-									// Number(getComputedStyle(dom.list[setting.initN
-                                    // -
-									// setting.deftR])[setting.trsfm].getMatrix(5))
+                                    // : Number(getComputedStyle(dom.list[setting.initN
+                                    //	 - setting.deftR])[setting.trsfm].getMatrix(5))
                                     : Number(String.prototype.getMatrix.call(getComputedStyle(dom.list[setting.initN
                                         - setting.deftR])[setting.trsfm], 5))
                         , tgtHt	=	(setting.initN < setting.deftR)
@@ -3929,8 +3778,7 @@ mbImgArr = (function() {
                     tObj.WebkitTransition	= setting.trsfm + ', opacity .2s ease-out '+ setting.trnsD +'s';
 
                     dS.css.set({ target:dom.list[setting.initN], property:tObj });
-                    // console.log('珥덇린 �뺣젹 以�:', setting.strtR, '
-					// ��:',setting.strtC);
+                    //console.log('珥덇린 �뺣젹 以�:', setting.strtR, ' ��:',setting.strtC);
                     dom.list[setting.initN].setAttribute('row', setting.strtR);
                     dom.list[setting.initN].setAttribute('col', setting.strtC);
                     setting.arrsH[setting.strtC] = setting.arrsH[setting.strtC]
@@ -3948,34 +3796,18 @@ mbImgArr = (function() {
                     return b - a;
                 });
 
-                // self.events.setHeight();
+                //self.events.setHeight();
                 self.events.checkHeight();
             }
             , checkHeight: function() {
-                setting.talsR	= setting.arrsO.indexOf(setting.arrsT[0]); // 媛���
-																			// 湲�
-																			// 以�
-                setting.shrtR	= setting.arrsO.indexOf(setting.arrsT[setting.arrsT.length - 1]); // 媛���
-																									// 吏㏃�
-																									// 以�
-                // console.log('[1] tallest line: '+setting.talsR + ' ,shortest
-				// line: '+setting.shrtR);
-                dom.talsEs		= dom.wrap.querySelectorAll('[col="'+ setting.talsR +'"]'); // 媛���
-																							// 湲�
-																							// 以�
-																							// �ъ뒪�곕뱾
-                dom.shrtEs		= dom.wrap.querySelectorAll('[col="'+ setting.shrtR +'"]'); // 媛���
-																							// 吏㏃�
-																							// 以�
-																							// �ъ뒪�곕뱾
+                setting.talsR	= setting.arrsO.indexOf(setting.arrsT[0]); // 媛��� 湲� 以�
+                setting.shrtR	= setting.arrsO.indexOf(setting.arrsT[setting.arrsT.length - 1]); // 媛��� 吏㏃� 以�
+                //console.log('[1] tallest line: '+setting.talsR + ' ,shortest line: '+setting.shrtR);
+                dom.talsEs		= dom.wrap.querySelectorAll('[col="'+ setting.talsR +'"]'); // 媛��� 湲� 以� �ъ뒪�곕뱾
+                dom.shrtEs		= dom.wrap.querySelectorAll('[col="'+ setting.shrtR +'"]'); // 媛��� 吏㏃� 以� �ъ뒪�곕뱾
 
-                dom.talsE		= dom.talsEs[dom.talsEs.length - 1]; // 媛���
-																		// 湲�
-																		// 以꾩쓽
-																		// 留덉�留�
-																		// �ъ뒪��
-                // console.log('[1] original: ', setting.arrsO, '\ntallest: ',
-				// setting.arrsT[0]);
+                dom.talsE		= dom.talsEs[dom.talsEs.length - 1]; // 媛��� 湲� 以꾩쓽 留덉�留� �ъ뒪��
+                //console.log('[1] original: ', setting.arrsO, '\ntallest: ', setting.arrsT[0]);
                 self.events.checkArrange();
             }
             , checkArrange: function() {
@@ -3985,11 +3817,8 @@ mbImgArr = (function() {
                 // + 留덉�留됱쨪留� �ъ젙��
                 if (setting.arrsT[setting.arrsT.length - 1] + dom.talsE.clientHeight < setting.arrsT[0]
                     && rLen - 1 === Number(dom.talsE.getAttribute('row')) && rLen > 1) {
-                    // console.log('[2] rearrange needed')//,
-					// setting.arrsT[setting.arrsT.length - 1],
-					// dom.talsE.clientHeight,
-                    // setting.arrsT[setting.arrsT.length - 1] +
-					// dom.talsE.clientHeight);
+                    //console.log('[2] rearrange needed')//, setting.arrsT[setting.arrsT.length - 1], dom.talsE.clientHeight,
+                    //setting.arrsT[setting.arrsT.length - 1] + dom.talsE.clientHeight);
                     setting.rlcnt++;
                     if (setting.rlcnt < setting.deftR - 2) {
                         self.events.setArrange();
@@ -3997,21 +3826,15 @@ mbImgArr = (function() {
                         self.events.setHeight();
                     };
                 } else {
-                    // console.log('[2] rearrange not needed');
+                    //console.log('[2] rearrange not needed');
                     self.events.setHeight();
                     return;
                 };
             }
             // �ъ젙��
             , setArrange: function() {
-                var newPx	= String.prototype.getMatrix.call(getComputedStyle(dom.shrtEs[0])[setting.trsfm], 4) // 媛���
-																													// 吏㏃�
-																													// 以� x
-																													// 媛�
-                    , oldPh = setting.arrsT[setting.arrsT.length - 1] // 媛���
-																		// 吏㏃�
-																		// 以�
-																		// �믪씠
+                var newPx	= String.prototype.getMatrix.call(getComputedStyle(dom.shrtEs[0])[setting.trsfm], 4) // 媛��� 吏㏃� 以� x 媛�
+                    , oldPh = setting.arrsT[setting.arrsT.length - 1] // 媛��� 吏㏃� 以� �믪씠
                     , tObj	= {}
                     , cell	= {};
 
@@ -4027,7 +3850,7 @@ mbImgArr = (function() {
                     // �꾩튂媛� 蹂�寃쎈맂 �대�吏��ㅼ쓣 ����
                     setting.rlArr.push(cell);
                 };
-                // console.log(setting.rlArr);
+                //console.log(setting.rlArr);
                 tObj[setting.trsfm] 	= 'translate('+ Number(newPx) +'px, '+ Number(oldPh) +'px)';
                 tObj.transition			= 'none';
                 tObj.transition 		= setting.trsfm + ', opacity .1s ease-out .3s';
@@ -4038,7 +3861,7 @@ mbImgArr = (function() {
                 dom.talsE.setAttribute('col', setting.shrtR);
                 dom.talsE.setAttribute('reLoced', setting.rlcnt);
                 dS.css.set({ target:dom.talsE, property:tObj });
-                // console.log('�꾩옱 媛��� 吏㏃� ��: ', setting.shrtR);
+                //console.log('�꾩옱 媛��� 吏㏃� ��: ', setting.shrtR);
 
                 // 湲곕낯媛� 珥덇린��
                 setting.strtC = -1;	// �대컮轅덉슜
@@ -4055,8 +3878,7 @@ mbImgArr = (function() {
                         setting.strtC = 0;
                         setting.strtR++;
                     };
-                    // console.log('�ъ젙�� 以�:', setting.strtR, ' ��:', tobeI,
-					// setting.strtC);
+                    //console.log('�ъ젙�� 以�:', setting.strtR, ' ��:', tobeI, setting.strtC);
 
                     setting.arrsT[tobeI] = setting.arrsT[tobeI]
                         + document.querySelector('[col="'+ tobeI +'"][row="'+ setting.strtR +'"] img').clientHeight
@@ -4066,7 +3888,7 @@ mbImgArr = (function() {
                 // 以� �믪씠媛� 諛붽펷�쇰�濡� 湲곗〈 �믪씠媛믩룄 蹂�寃�
                 setting.arrsO	= [];
                 for (var ti = 0; ti < setting.arrsT.length; ti++) setting.arrsO.push(setting.arrsT[ti]);
-                // console.log('[3] height changed: ', setting.arrsO);
+                //console.log('[3] height changed: ', setting.arrsO);
                 setting.arrsT.sort(function(a, b) {
                     return b - a;
                 });
@@ -4078,8 +3900,7 @@ mbImgArr = (function() {
                 dom.wrap.style.height	= setting.arrsT[0] + dom.mbtn.offsetHeight + 'px';
                 dom.mbtn.style.top		= setting.arrsT[0] + 'px';
                 dom.mbtn.style.opacity	= 1;
-                // console.log('[4]
-				// =================================================================');
+                //console.log('[4] =================================================================');
 
                 if(window.fn_checkStilPage) {
                     fn_checkStilPage();
@@ -4096,56 +3917,38 @@ $(function() {
     if (typeof mbAlert === 'object') mbAlert.init(); // �덉씠�댄뙘��
 });
 window.onload = function(){
-// $(function() {
+//$(function() {
     'use strict';
-    // if (typeof mbHead === 'object') mbHead.init(); // �곷떒 GNB
-    // if (typeof mbAlert === 'object') mbAlert.init(); // �덉씠�댄뙘��
-    // if (typeof mbLayer === 'object') mbLayer.init(); // �덉씠�댄뙘��
-    if (typeof mbMain === 'object') mbMain.init({ target:'main-header' }); // 硫붿씤
-																			// 怨듯넻
-    if (typeof ticketMotion === 'object') ticketMotion.init(); // �곷떒 �곗륫 �덈ℓ
-																// 踰꾪듉
-    // if (typeof atcToggle === 'object') atcToggle.init({ target:'faq-list',
-	// identifier:'on', nodeName:'ul' });
-    // if (typeof viewToggle === 'object') viewToggle.init({ target:'story-box',
-	// identifier:'on', nodeName:'div' }); // �쒖쨪�� 紐⑸줉
-    // if (typeof selMovieToggle === 'object') selMovieToggle.init({
-	// target:'select-post', identifier:'on' });
-    // if (typeof mbThumGal === 'object') mbThumGal.init({
-	// target:'stillcut-slide', effect:'flash' }); // effect '', 'sliding',
-	// 'flash' 以� �앹씪
-    // if (typeof mbMovieTip === 'object') mbMovieTip.init({
-	// target:'post-top-area', option:'user' }); // 臾대퉬�ъ뒪�� �곸꽭 - �대깽�� �덈줈 留뚮벉
-    // if (typeof mbMovieTip === 'object') mbMovieTip.init({
-	// target:'event-detail', option:'user' }); // �대깽�� �곸꽭 - �대깽�� �덈줈 留뚮벉
-    // if (typeof mbImgArr === 'object') mbImgArr.init({
-	// target:'stair-slide-list', deftW:260, deftR:4, shffl:false }); // �곹솕
-	// 媛ㅻ윭由� �ㅽ떥而�
+    //if (typeof mbHead === 'object') mbHead.init(); // �곷떒 GNB
+    //if (typeof mbAlert === 'object') mbAlert.init(); // �덉씠�댄뙘��
+    //if (typeof mbLayer === 'object') mbLayer.init(); // �덉씠�댄뙘��
+    if (typeof mbMain === 'object') mbMain.init({ target:'main-header' }); // 硫붿씤 怨듯넻
+    if (typeof ticketMotion === 'object') ticketMotion.init(); // �곷떒 �곗륫 �덈ℓ 踰꾪듉
+    //if (typeof atcToggle === 'object') atcToggle.init({ target:'faq-list', identifier:'on', nodeName:'ul' });
+    //if (typeof viewToggle === 'object') viewToggle.init({ target:'story-box', identifier:'on', nodeName:'div' }); // �쒖쨪�� 紐⑸줉
+    //if (typeof selMovieToggle === 'object') selMovieToggle.init({ target:'select-post', identifier:'on' });
+    //if (typeof mbThumGal === 'object') mbThumGal.init({ target:'stillcut-slide', effect:'flash' }); // effect '', 'sliding', 'flash' 以� �앹씪
+    //if (typeof mbMovieTip === 'object') mbMovieTip.init({ target:'post-top-area', option:'user' }); // 臾대퉬�ъ뒪�� �곸꽭 - �대깽�� �덈줈 留뚮벉
+    //if (typeof mbMovieTip === 'object') mbMovieTip.init({ target:'event-detail', option:'user' }); // �대깽�� �곸꽭 - �대깽�� �덈줈 留뚮벉
+    //if (typeof mbImgArr === 'object') mbImgArr.init({ target:'stair-slide-list', deftW:260, deftR:4, shffl:false }); // �곹솕 媛ㅻ윭由� �ㅽ떥而�
     if (typeof mbMovieRankFocus === 'object') mbMovieRankFocus.init({ target:['post-lank li > a','mypost-box > a'] });
-    if (typeof mbMoviePsFocus === 'object') mbMoviePsFocus.init({ target:'post-list' }); // �곹솕
-																							// �ъ뒪��
+    if (typeof mbMoviePsFocus === 'object') mbMoviePsFocus.init({ target:'post-list' }); // �곹솕 �ъ뒪��
     if (typeof mbPostScroll === 'object') mbPostScroll.init({ target:'post-detail' });
     if (typeof mbThToggle === 'object') mbThToggle.init({ target:'accordion-list' });
-    if (typeof mbCmnTooltip === 'object') mbCmnTooltip.init({ target:'tooltip' }); // 怨듯넻
-																					// �댄똻
+    if (typeof mbCmnTooltip === 'object') mbCmnTooltip.init({ target:'tooltip' }); // 怨듯넻 �댄똻
     if (typeof mbThCalendar === 'object') mbThCalendar.init({ target:'date-area',
         fetchHoliday:setHldyAdopt, fetchDisday:setDisdyAdopt,
-        holidays:'holidaysFromServer', disdays:'disdaysFromServer' }); // �곸쁺愿�
-																		// �щ젰
-    if (typeof mbCorpScoll === 'object') mbCorpScoll.init({ target:'main-menu' }); // �뚯궗�뚭컻
-																					// �곷떒
-																					// �ㅽ겕濡�
-    // if (typeof mbEvtMain === 'object') mbEvtMain.init({
-	// target:'event-top-slide' }); // �대깽�� 硫붿씤
+        holidays:'holidaysFromServer', disdays:'disdaysFromServer' }); // �곸쁺愿� �щ젰
+    if (typeof mbCorpScoll === 'object') mbCorpScoll.init({ target:'main-menu' }); // �뚯궗�뚭컻 �곷떒 �ㅽ겕濡�
+    //if (typeof mbEvtMain === 'object') mbEvtMain.init({ target:'event-top-slide' }); // �대깽�� 硫붿씤
     if (typeof mbSwiper === 'object') mbSwiper.init({
         subopts:[
-            // { term:5000, ease:'easeInOutCubic', direction:'h' },
+            //{ term:5000, ease:'easeInOutCubic', direction:'h' },
             { term:3000, ease:'easeInOutCubic', direction:'h' }
-            // { term:4000, ease:'easeInOutCubic', direction:'v' }
+            //{ term:4000, ease:'easeInOutCubic', direction:'v' }
         ]
     });
-    // var rollMovie = new addOnMotion({ parent:'.movie-list-info',
-	// target:'.movie-score', top:0 });
+    //var rollMovie = new addOnMotion({ parent:'.movie-list-info', target:'.movie-score', top:0 });
     var toggleAir = new toggleOnOff({ target:'.onair-condition .btn-onair', title:{ on:'媛쒕큺�묐쭔 蹂닿린', off:'�꾩껜 �곹솕 蹂닿린' }, identifier:'on' });
 
     if(MegaboxUtil.Common.isMobile()){
@@ -4156,7 +3959,7 @@ window.onload = function(){
 
 };
 
-// �쇱옄 �뗮똿 �⑥닔
+//�쇱옄 �뗮똿 �⑥닔
 var holidaysFromServer = [];
 var disdaysFromServer = [];
 function setHldyAdopt(date) {
@@ -4180,12 +3983,12 @@ function openPopup(_file, _name, w, h, l, t){
 // m-scroll update
 function mScrollUpdate() {
     $('.m-scroll').mCustomScrollbar('update');
-    // if (typeof mbThCalendar === 'object') mbThCalendar.setUI();
+    //if (typeof mbThCalendar === 'object') mbThCalendar.setUI();
 }
 
 $(function(){
 
-    // datepicker - jquery ui
+    // datepicker -  jquery ui
     datepickerEvent = function datepicker() {
 
         var allPlayDates = [];
@@ -4353,7 +4156,7 @@ $(function(){
             $('.bg-modal').animate({opacity: 1}, 0);
         }
 
-        // $('.bg-modal').animate({opacity: 1}, 300);
+        //$('.bg-modal').animate({opacity: 1}, 300);
 
         $('#' + $id).addClass('on');
 
@@ -4380,7 +4183,7 @@ $(function(){
 
     $(document).on('click', '.btn-modal-open', function(e){
 
-    	// �덉씠�댄뙘�낆떆 �섏쓽硫붽�諛뺤뒪 �몄뀡泥댄겕
+    	//�덉씠�댄뙘�낆떆 �섏쓽硫붽�諛뺤뒪 �몄뀡泥댄겕
 		if( $(this).prop('id') != 'loginPupupATag' &&
 			$(this).prop('id') != 'moveLogin' ){
 			if( !sessionAllow( {sessionAt:false} ) ) return
@@ -4404,7 +4207,7 @@ $(function(){
             $modal_href = $('#' + targetId);
 
             if ( $modal_href.length == 0 ){
-                // alert('�대떦�섎뒗 �덉씠�닿� �놁뒿�덈떎');
+                //alert('�대떦�섎뒗 �덉씠�닿� �놁뒿�덈떎');
                 return false;
             }
 
@@ -4444,7 +4247,7 @@ $(function(){
 
             // �꾩옱 �덉씠�� �リ퀬 �ㅻⅨ �덉씠�� �� �� // �� �묎렐�깅븣臾몄뿉 二쇱꽍泥섎━
             if( $(this).hasClass('toggle') ){
-                // $(this).closest('.modal-layer').removeClass('on');
+                //$(this).closest('.modal-layer').removeClass('on');
             }
 
             $($modal_href).addClass('on').css('z-index', $layerIndex);
@@ -4495,8 +4298,7 @@ $(function(){
                     $(this).removeClass('target');
 
                     if( $(this).is(':hidden') ){
-                        $(this).focus(); // layer id�� 留ㅼ묶�섎뒗 a �쒓렇濡� �ъ빱��
-											// �대룞
+                        $(this).focus(); // layer id�� 留ㅼ묶�섎뒗 a �쒓렇濡� �ъ빱�� �대룞
                     }
                 }
 
@@ -4508,8 +4310,7 @@ $(function(){
                     $(this).removeClass('target');
 
                     if( $(this).is(':hidden') ){
-                        $(this).focus(); // layer id�� 留ㅼ묶�섎뒗 a �쒓렇濡� �ъ빱��
-											// �대룞
+                        $(this).focus(); // layer id�� 留ㅼ묶�섎뒗 a �쒓렇濡� �ъ빱�� �대룞
                     }
 
                 }
@@ -4556,7 +4357,7 @@ $(function(){
             $('.bg-modal').animate({opacity: 1}, 0);
         }
 
-        // $('.bg-modal').animate({opacity: 1}, 300);
+        //$('.bg-modal').animate({opacity: 1}, 300);
 
         $('#' + $id).addClass('on');
 
@@ -4582,13 +4383,13 @@ $(function(){
 
     $(document).on('click', '.btn-modal-open2', function(e){
 
-    	// �덉씠�댄뙘�낆떆 �섏쓽硫붽�諛뺤뒪 �몄뀡泥댄겕
+    	//�덉씠�댄뙘�낆떆 �섏쓽硫붽�諛뺤뒪 �몄뀡泥댄겕
 		if( $(this).prop('id') != 'loginPupupATag' &&
 			$(this).prop('id') != 'moveLogin' ){
 			if( !sessionAllow( {sessionAt:false} ) ) return
 	    }
 
-    	// �꾩옱 硫뷀��쒓렇 蹂��섏뿉 ����
+    	//�꾩옱 硫뷀��쒓렇 蹂��섏뿉 ����
     	saveCurrentMeta();
 
         if( $(this).hasClass('disabled') || $(this).hasClass('no-event') ){
@@ -4610,7 +4411,7 @@ $(function(){
             $modal_href = $('#' + targetId);
 
             if ( $modal_href.length == 0 ){
-                // alert('�대떦�섎뒗 �덉씠�닿� �놁뒿�덈떎');
+                //alert('�대떦�섎뒗 �덉씠�닿� �놁뒿�덈떎');
                 return false;
             }
 
@@ -4642,7 +4443,7 @@ $(function(){
 
             // �꾩옱 �덉씠�� �リ퀬 �ㅻⅨ �덉씠�� �� �� // �� �묎렐�깅븣臾몄뿉 二쇱꽍泥섎━
             if( $(this).hasClass('toggle') ){
-                // $(this).closest('.modal-layer').removeClass('on');
+                //$(this).closest('.modal-layer').removeClass('on');
             }
 
 
@@ -4673,11 +4474,9 @@ $(function(){
             $($modal_href).find('.focus').focus(); // �덉씠�대줈 �ъ빱�� �대룞 : �묎렐��
 
 
-			$bgDimHeight = $('.modal-layer2 .wrap').outerHeight(true); // 臾대퉬�ъ뒪��
-																		// �덉씠�댄뙘��
-																		// �믪씠媛�
+			$bgDimHeight = $('.modal-layer2 .wrap').outerHeight(true); //臾대퉬�ъ뒪�� �덉씠�댄뙘�� �믪씠媛�
 
-			// 臾대퉬�ъ뒪�� �덉씠�댄뙘�� �� �대┃�곸뿭 �믪씠媛� 遺���
+			//臾대퉬�ъ뒪�� �덉씠�댄뙘�� �� �대┃�곸뿭 �믪씠媛� 遺���
             if( $('body').hasClass('body-iframe') ){
                 $($modal_href).find('.bg-modal-dim').css({
                     height : $bgDimHeight + 100
@@ -4695,10 +4494,10 @@ $(function(){
     $(document).on('click', '.btn-modal-close2, .close-layer2, .bg-modal-dim', function(){
         divObj = $(this).closest('.modal-layer');
 
-		// URL 蹂�寃�
+		//URL 蹂�寃�
 		history.replaceState( null, null, preMetaFormat.metaTagUrl );
 
-		// 硫뷀��쒓렇 �ㅼ젙
+		//硫뷀��쒓렇 �ㅼ젙
 		settingMeta(preMetaFormat);
 
 		$('#layer_post_detail .bg-modal-dim')[0].scrollIntoView(true);
@@ -4740,31 +4539,30 @@ $(function(){
         }
     });
 
-	// �곹솕�곸꽭 �덇퀬��/�ㅽ떥而� 踰꾪듉�대┃�� �대떦 而⑦뀗痢좎씠��
+	//�곹솕�곸꽭 �덇퀬��/�ㅽ떥而� 踰꾪듉�대┃�� �대떦 而⑦뀗痢좎씠��
 	/*
-	 * $(document).on('click', '.movie-sorting span .btn', function(){
-	 * $(this).closest('.movie-sorting').find('.btn').removeClass('on');
-	 * $(this).addClass('on'); });
-	 * 
-	 * $(document).on('click', '.movie-sorting .preview', function(){
-	 * $(this).closest('.inner-wrap').find('.stillcut-slide')[0].scrollIntoView();
-	 * });
-	 * 
-	 * $(document).on('click', '.movie-sorting .stillcut', function(){
-	 * $(this).closest('.inner-wrap').find('.stair-slide')[0].scrollIntoView();
-	 * });
-	 */
+	$(document).on('click', '.movie-sorting span .btn', function(){
+		 $(this).closest('.movie-sorting').find('.btn').removeClass('on');
+		 $(this).addClass('on');
+	});
+
+	$(document).on('click', '.movie-sorting .preview', function(){
+		$(this).closest('.inner-wrap').find('.stillcut-slide')[0].scrollIntoView();
+	});
+
+	$(document).on('click', '.movie-sorting .stillcut', function(){
+		$(this).closest('.inner-wrap').find('.stair-slide')[0].scrollIntoView();
+	});
+	*/
 
 
 
 
-/*
- * ==========================================================================
- * 
- * 硫붿씤
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    硫붿씤
+
+========================================================================== */
 
     if( $('.main-page').length > 0 ){
 
@@ -4791,12 +4589,11 @@ $(function(){
 
             if( $this.hasClass('open') ) {
                 $('.my-movie-main').addClass('on');
-                // $('.my-movie-main .btn-util
-				// .btn-arr-my-movie.close').focus();
+                //$('.my-movie-main .btn-util .btn-arr-my-movie.close').focus();
             }
             else {
                 $('.my-movie-main').removeClass('on');
-                // $('.my-movie-main .btn-util .btn-arr-my-movie.open').focus();
+                //$('.my-movie-main .btn-util .btn-arr-my-movie.open').focus();
             }
         });
 
@@ -4829,13 +4626,11 @@ $(function(){
     }
 
 
-/*
- * ==========================================================================
- * 
- * header
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    header
+
+========================================================================== */
 
     $header = $('#header');
     $gnb = $('#gnb');
@@ -4982,7 +4777,7 @@ $(function(){
         $(this).closest('.layer-header-notice').removeClass('on');
     });
 
-    // header - header �꾩쓽 愿묎퀬�곸뿭 �リ린
+    //header - header �꾩쓽 愿묎퀬�곸뿭 �リ린
     $(document).on('click', '.header-add-area .btn-del', function(e){
         e.preventDefault();
         $(this).closest('.header-add-area').hide();
@@ -4992,13 +4787,11 @@ $(function(){
 
 
 
-/*
- * ==========================================================================
- * 
- * footer
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    footer
+
+========================================================================== */
 
     // 洹뱀옣李얘린 �덉씠��
     $(document).on('click','.btn-looking-theater',function(e){
@@ -5031,13 +4824,11 @@ $(function(){
 
 
 
-/*
- * ==========================================================================
- * 
- * 怨듯넻
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    怨듯넻
+
+========================================================================== */
     // ���됲듃 諛뺤뒪 �붿옄��
     // bootstrap.js , bootstap-select.js �먭컻 �숈떆 �꾩슂
     if( $('.selectpicker').length > 0 ){
@@ -5055,8 +4846,7 @@ $(function(){
         }
 
         if($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
-            $('.btn-go-top').css('position', 'fixed'); // restore when you
-														// scroll up
+            $('.btn-go-top').css('position', 'fixed'); // restore when you scroll up
         }
     }
 
@@ -5142,13 +4932,11 @@ $(function(){
 
 
 
-/*
- * ==========================================================================
- * 
- * �곹솕
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    �곹솕
+
+========================================================================== */
 
     // �곹솕 - 紐⑸줉
     $('.movie-list ol li').on({
@@ -5286,7 +5074,7 @@ $(function(){
             $($(this).attr('href')).addClass('on');
         }
 
-        // $($(this).attr('href')).toggleClass('on');
+        //$($(this).attr('href')).toggleClass('on');
     });
 
 
@@ -5297,24 +5085,20 @@ $(function(){
     });
 
     // �곹솕 �곸꽭 �댁슜�덉쓽 sns 怨듭쑀�섍린
-   /*
-	 * $(document).on('click', '.movie-detail-page .sns-share
-	 * .btn-common-share', function(e){ e.preventDefault();
-	 * 
-	 * $(this).closest('.sns-share').find('.btn-sns-share-wrap').toggleClass('on');
-	 * });
-	 */
+   /* $(document).on('click', '.movie-detail-page .sns-share .btn-common-share', function(e){
+        e.preventDefault();
+
+        $(this).closest('.sns-share').find('.btn-sns-share-wrap').toggleClass('on');
+    });*/
 
 
 
 
-/*
- * ==========================================================================
- * 
- * �덈ℓ
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    �덈ℓ
+
+========================================================================== */
     // mcustomscroll
     $m_scroll = function(){
         $('.m-scroll').mCustomScrollbar({
@@ -5355,18 +5139,18 @@ $(function(){
             contentTouchScroll:25,
             advanced:{
                 autoExpandHorizontalScroll:false,
-                // autoScrollOnFocus:"input,textarea,select,button,datalist,keygen,a[tabindex],area,object,[contenteditable='true']",
+                //autoScrollOnFocus:"input,textarea,select,button,datalist,keygen,a[tabindex],area,object,[contenteditable='true']",
                 autoScrollOnFocus:false,
                 updateOnContentResize:true,
                 updateOnImageLoad:true,
                 updateOnSelectorChange:false,
                 releaseDraggableSelectors:false
             },
-            // theme:"light",
+            //theme:"light",
             callbacks:{
                 onInit:false,
                 onScrollStart:false,
-                // onScroll:mbThCalendar.events.wheel.bind(this, $m_scroll),
+                //onScroll:mbThCalendar.events.wheel.bind(this, $m_scroll),
                 onTotalScroll:false,
                 onTotalScrollBack:false,
                 whileScrolling:false,
@@ -5424,12 +5208,12 @@ $(function(){
         $(this).closest('.list-area').find('.list').hide();
         $(this).next('.list').show();
 
-        // mScrollUpdate();
+        //mScrollUpdate();
     });
 
     // �덈ℓ - 鍮좊Ⅸ�덈ℓ - �곹솕 �좏깮
     $(document).on('click', '.quick-reserve-area .movie-choice .list .btn', function(){
-        // $(this).toggleClass('on'); // 媛쒕컻�먯꽌 泥섎━
+        //$(this).toggleClass('on'); // 媛쒕컻�먯꽌 泥섎━
     });
 
     // �덈ℓ - 鍮좊Ⅸ�덈ℓ - �곹솕愿� 硫붿씤 吏��� �좏깮
@@ -5443,7 +5227,7 @@ $(function(){
 
     // �덈ℓ - 鍮좊Ⅸ�덈ℓ - �곹솕愿� �쒕툕 吏��� �좏깮
     $(document).on('click', '.quick-reserve-area .theater-choice .list .depth button', function(){
-        // $(this).toggleClass('on'); // 媛쒕컻�먯꽌 泥섎━
+        //$(this).toggleClass('on'); // 媛쒕컻�먯꽌 泥섎━
     });
 
     // �덈ℓ - 鍮좊Ⅸ�덈ℓ - �곹솕 �쒓컙 �좏깮
@@ -5459,30 +5243,35 @@ $(function(){
         $(this).addClass('on');
     });
 
-    /*
-	 * 媛쒕컻�먯꽌 �대깽�� 泥섎━ �꾨즺 // �덈ℓ - 醫뚯꽍�좏깮 媛�닔 �대깽�� $(document).on('click',
-	 * '.seat-select-section .seat-section .seat-area .seat-count .cell .count
-	 * .number .now', function(){
-	 * $(this).closest('.number').find('.num-choice').toggleClass('on'); });
-	 * 
-	 * $(document).on('click', '.seat-select-section .seat-section .seat-area
-	 * .seat-count .cell .count .number .num-choice .btn', function(){ //_num =
-	 * $(this).text(); // $(this).closest('.number').find('.now').text(_num);
-	 * 
-	 * $(this).closest('ul').find('.btn').removeClass('on');
-	 * $(this).addClass('on');
-	 * 
-	 * $(this).closest('.num-choice').removeClass('on');
-	 * $(this).closest('.number').find('.now').focus(); }); // �덈ℓ - 醫뚯꽍�좏깮
-	 * 留덉슦�� �ㅻ쾭, �ъ빱�ㅼ떆 �대깽�� $(document).on('mouseenter
-	 * focus','button.seat-condition', function(){ if(
-	 * !$(this).hasClass('finish') && !$(this).hasClass('impossible') ){
-	 * $(this).addClass('on'); } });
-	 * 
-	 * $(document).on('mouseleave blur','button.seat-condition', function(){
-	 * $(this).removeClass('on'); });
-	 */
-    /* // 媛쒕컻�먯꽌 �대깽�� 泥섎━ �꾨즺 */
+    /* 媛쒕컻�먯꽌 �대깽�� 泥섎━ �꾨즺
+    // �덈ℓ - 醫뚯꽍�좏깮 媛�닔 �대깽��
+    $(document).on('click', '.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now', function(){
+        $(this).closest('.number').find('.num-choice').toggleClass('on');
+    });
+
+    $(document).on('click', '.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn', function(){
+        //_num = $(this).text();
+        // $(this).closest('.number').find('.now').text(_num);
+
+        $(this).closest('ul').find('.btn').removeClass('on');
+        $(this).addClass('on');
+
+        $(this).closest('.num-choice').removeClass('on');
+        $(this).closest('.number').find('.now').focus();
+    });
+
+    // �덈ℓ - 醫뚯꽍�좏깮 留덉슦�� �ㅻ쾭, �ъ빱�ㅼ떆 �대깽��
+    $(document).on('mouseenter focus','button.seat-condition', function(){
+        if( !$(this).hasClass('finish') && !$(this).hasClass('impossible') ){
+            $(this).addClass('on');
+        }
+    });
+
+    $(document).on('mouseleave blur','button.seat-condition', function(){
+        $(this).removeClass('on');
+    });
+    */
+    /*// 媛쒕컻�먯꽌 �대깽�� 泥섎━ �꾨즺 */
 
     // �덈ℓ - 醫뚯꽍 �좏깮, 寃쎄퀬李� �놁븷湲�
     $(document).on('click', '.seat-select-section .seat-section .seat-area .seat-layout .alert .box-alert .btn-close-small', function(){
@@ -5503,12 +5292,11 @@ $(function(){
     });
 
     // 鍮좊Ⅸ�덈ℓ - 愿��뚭텒 諛� �좎씤�곸슜 : �꾩퐫�붿뼵 (媛쒕컻 �먯꽌 ��젣) 2019-08-19 (�ъ텛媛�)
-    // $(document).on('click', '.discout-setting .discout-list ul li .tit',
-	// function(e){
-        // e.preventDefault();
-        // $(this).closest('.discout-list').find('li').removeClass('on');
-        // $(this).closest('li').addClass('on');
-    // });
+    //$(document).on('click', '.discout-setting .discout-list ul li .tit', function(e){
+        //e.preventDefault();
+        //$(this).closest('.discout-list').find('li').removeClass('on');
+        //$(this).closest('li').addClass('on');
+    //});
 
     // 鍮좊Ⅸ�덈ℓ - 愿��뚭텒 諛� �좎씤�곸슜 : 寃곗젣�섎떒 �좏깮
     $(document).on('click', '.select-payment button', function(){
@@ -5516,20 +5304,21 @@ $(function(){
     });
 
     // 鍮좊Ⅸ�덈ℓ - 愿��뚭텒 諛� �좎씤�곸슜 : 移대뱶�� �좏깮
-    /*
-	 * $(document).on('click', '.select-payment button', function(e){ if(
-	 * $(this).hasClass('card') ){ $('.select-payment-card').show(); } else {
-	 * $('.select-payment-card').hide(); } });
-	 */
+    /*$(document).on('click', '.select-payment button', function(e){
+        if( $(this).hasClass('card') ){
+            $('.select-payment-card').show();
+        }
+        else {
+            $('.select-payment-card').hide();
+        }
+    });*/
 
 
-/*
- * ==========================================================================
- * 
- * 洹뱀옣
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    洹뱀옣
+
+========================================================================== */
 
     // 洹뱀옣 �곷떒 吏���꽑��
     $('.theater-area-list > ul > li .depth1').on({
@@ -5552,7 +5341,7 @@ $(function(){
         }
     });
 
-    // �곹솕愿� 硫붿씤 - 吏���퀎 �곹솕愿� 由ъ뒪��
+    // �곹솕愿� 硫붿씤  - 吏���퀎 �곹솕愿� 由ъ뒪��
     var _h1 = $('.user-theater').outerHeight();
     var _h2 = $('.theater-place').outerHeight();
 
@@ -5566,39 +5355,39 @@ $(function(){
     }
     theaterPlaceTab();
 
-    /*
-	 * 媛쒕컻�먯꽌 �대깽�� 泥섎━ function selCity(){ $(document).on('click', '.sel-city' ,
-	 * function(e){ e.preventDefault();
-	 * $(this).parent().addClass('on').siblings('li').removeClass('on');
-	 * 
-	 * _h0 = $(this).parent().find('.theater-list').outerHeight(); _hAll = _h0 +
-	 * _h1 + _h2;
-	 * 
-	 * $('.theater-box').outerHeight(_hAll); }); } selCity();
-	 */
+    /* 媛쒕컻�먯꽌 �대깽�� 泥섎━
+    function selCity(){
+        $(document).on('click', '.sel-city' , function(e){
+            e.preventDefault();
+            $(this).parent().addClass('on').siblings('li').removeClass('on');
+
+            _h0 = $(this).parent().find('.theater-list').outerHeight();
+            _hAll = _h0 + _h1 + _h2;
+
+            $('.theater-box').outerHeight(_hAll);
+        });
+    }
+    selCity();
+    */
 
 
 
-/*
- * ==========================================================================
- * 
- * �ㅽ넗��
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    �ㅽ넗��
+
+========================================================================== */
     $(document).on('click', '.layer-goods-theater .area ul li .btn', function(){
         $(this).closest('li').addClass('on').siblings('li').removeClass('on');
     });
 
 
 
-/*
- * ==========================================================================
- * 
- * 怨좉컼�쇳꽣
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    怨좉컼�쇳꽣
+
+========================================================================== */
     if( $('.faq-list').length > 0 ){
         $('.faq-list ul li').first().find('.qut').addClass('on');
 
@@ -5616,13 +5405,11 @@ $(function(){
     }
 
 
-/*
- * ==========================================================================
- * 
- * �섏쓽 硫붽�諛뺤뒪
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    �섏쓽 硫붽�諛뺤뒪
+
+========================================================================== */
 
     // �섏쓽 硫붽�諛뺤뒪 - 媛쒖씤�뺣낫 �섏젙 - �곕쾲�� 蹂�寃�
     $(document).on('click', '.change-phone-num', function(){
@@ -5642,7 +5429,7 @@ $(function(){
         $(this).closest('.change-phone-num-area').removeClass('on');
     });
 
-    // �섏쓽 硫붽�諛뺤뒪 - 湲고봽�몄뭅�� - �붿븸�댁쟾
+    // �섏쓽 硫붽�諛뺤뒪  - 湲고봽�몄뭅�� - �붿븸�댁쟾
     $(document).on('click', '.money-move .get-area .list ul li .card-choice', function(){
         $(this).addClass('on').closest('li').siblings('li').find('.card-choice').removeClass('on');
     });
@@ -5654,13 +5441,11 @@ $(function(){
 
 
 
-/*
- * ==========================================================================
- * 
- * 濡쒓렇��, �뚯썝媛���
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    濡쒓렇��, �뚯썝媛���
+
+========================================================================== */
 
     // 濡쒓렇�� - 鍮꾪쉶�먮줈洹몄씤 - 鍮꾪쉶�먯삁留� 媛쒖씤�뺣낫 泥섎━諛⑹묠
     $(document).on('click', '.no-member-privacy-rule .btn-agree .button', function(){
@@ -5671,13 +5456,11 @@ $(function(){
 
 
 
-/*
- * ==========================================================================
- * 
- * �뚯궗�뚭컻
- * 
- * ==========================================================================
- */
+/* ==========================================================================
+
+    �뚯궗�뚭컻
+
+========================================================================== */
 
     // �고쁺
     $(document).on('click', '.year-box a', function(e){
@@ -5696,7 +5479,7 @@ $(function(){
         }
     });
 
-    // 寃��� 踰꾪듉 �대┃
+    //寃��� 踰꾪듉 �대┃
     $(document).on("click", "#btnHeaderSearch", function(){
         fn_searchHeaderBoxOffice();
     });
@@ -5710,9 +5493,9 @@ $(function(){
 }); // end Document ready
 
 function common_scroll() {
-  // $(window).on('load', function(){
+  //  $(window).on('load', function(){
 
-        // console.log($(document).find('.page-util'))
+        //console.log($(document).find('.page-util'))
 
         if( $(document).find('.page-util').length > 0 ) {
 
@@ -5723,14 +5506,12 @@ function common_scroll() {
 
                 tab_top = $(document).find('.tab-list.fixed').offset().top;
 
-                // console.log(tab_top)
+                //console.log(tab_top)
 
                 // �곹솕 �곸꽭 �섏씠吏� �쇰븣
                 if( $(document).find('.movie-detail-page').length > 0 ) {
 
-                    $(document).find('.page-util').addClass('off'); // �쇰떒
-																	// 濡쒖��댁뀡
-																	// �④린湲�
+                    $(document).find('.page-util').addClass('off'); // �쇰떒 濡쒖��댁뀡 �④린湲�
                     $(document).find('.page-util .sns-share').hide();
 
                     btn_movie_reserve = $(document).find('.movie-detail-page div.reserve').offset().top;
@@ -5760,29 +5541,41 @@ function common_scroll() {
                         }
                     });
                 }
-                /*
-				 * 2019-07-19 洹뱀옣 �곸꽭�먯꽌 �ㅽ겕瑜쇱떆 �대깽�� ��젣 else if (
-				 * $('.theater-detail-page').length > 0 ) { $('.page-util
-				 * .sns-share').hide();
-				 * 
-				 * $(window).on('scroll', function() { if ($(window).scrollTop() >
-				 * 411 ) { $('.theater-detail-page').addClass('fixed');
-				 * $('#contents').addClass('theater-fixed'); } else {
-				 * $('.theater-detail-page').removeClass('fixed');
-				 * $('#contents').removeClass('theater-fixed'); }; }); //
-				 * location 怨좎젙 �쒗궎湲� $(window).on('scroll', function() { if
-				 * ($(window).scrollTop() > $header_h ) {
-				 * $('.page-util').addClass('fixed');
-				 * $('#contents').addClass('location-fixed'); } else {
-				 * $('.page-util').removeClass('fixed');
-				 * $('#contents').removeClass('location-fixed'); } });
-				 * 
-				 * $(window).on('scroll', function() { if ($(window).scrollTop() >
-				 * tab_top - 192 ) { $('.tab-list.fixed').addClass('theater');
-				 * $('#contents').addClass('tab-fixed-theater'); } else {
-				 * $('.tab-list.fixed').removeClass('theater');
-				 * //$('#contents').removeClass('tab-fixed-theater'); } }); }
-				 */
+                /* 2019-07-19 洹뱀옣 �곸꽭�먯꽌 �ㅽ겕瑜쇱떆 �대깽�� ��젣
+                    else if ( $('.theater-detail-page').length > 0 ) {
+                    $('.page-util .sns-share').hide();
+
+                    $(window).on('scroll', function() {
+                        if ($(window).scrollTop() > 411 ) {
+                            $('.theater-detail-page').addClass('fixed');
+                            $('#contents').addClass('theater-fixed');
+                        } else {
+                            $('.theater-detail-page').removeClass('fixed');
+                            $('#contents').removeClass('theater-fixed');
+                        };
+                    });
+
+                    // location 怨좎젙 �쒗궎湲�
+                    $(window).on('scroll', function() {
+                        if ($(window).scrollTop() > $header_h ) {
+                            $('.page-util').addClass('fixed');
+                            $('#contents').addClass('location-fixed');
+                        } else {
+                            $('.page-util').removeClass('fixed');
+                            $('#contents').removeClass('location-fixed');
+                        }
+                    });
+
+                    $(window).on('scroll', function() {
+                        if ($(window).scrollTop() > tab_top - 192 ) {
+                            $('.tab-list.fixed').addClass('theater');
+                            $('#contents').addClass('tab-fixed-theater');
+                        } else {
+                            $('.tab-list.fixed').removeClass('theater');
+                            //$('#contents').removeClass('tab-fixed-theater');
+                        }
+                    });
+                }*/
                 // �곹솕 �곸꽭 �섏씠吏�媛� �꾨땺 ��
                 else {
 
@@ -5833,13 +5626,12 @@ function common_scroll() {
                 });
             }
         }
-  // });
+  //  });
 }
-// common_scroll();
+//common_scroll();
 
 /**
  * �뚯씪 �ㅼ슫濡쒕뱶
- * 
  * @param downLoadUrl
  * @returns
  */
@@ -5848,19 +5640,18 @@ function gfn_fileDown( downLoadUrl ){
 	$.get(downLoadUrl, function(data) {
 		window.location.assign(downLoadUrl);
 	}).done(function() {
-		// alert('�� 踰덉㎏ �깃났');
+		//alert('�� 踰덉㎏ �깃났');
 	}).fail(function(e) {
-		// alert('�묒냽 �ㅽ뙣');
+		//alert('�묒냽 �ㅽ뙣');
 		gfn_alertMsgBox('�뚯씪�� 議댁옱�섏� �딆뒿�덈떎.');
 	}).always(function() {
-		// alert('�꾨즺');
+		//alert('�꾨즺');
 	});
 
 }
 
 /**
  * input type='number' �� maxlength �ㅼ젙
- * 
  * @param e
  * @returns
  */

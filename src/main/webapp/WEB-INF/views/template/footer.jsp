@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <footer id="footer">
+
+	<div class="quick-area" style="display: block;">
+		<a href="" class="btn-go-top" title="top" style="position: absolute;">top</a>
+	</div>
 	<!-- footer-top -->
 	<div class="footer-top">
 		<div class="inner-wrap">
@@ -18,8 +22,9 @@
 					target="_blank" title="윤리경영 페이지로 이동">윤리경영</a></li>
 			</ul>
 
-			<a href="#layer_looking_theater" class="btn-looking-theater"
-				title="극장찾기" style="margin-right: 10px;"><i class="iconset ico-footer-search" ></i> 극장찾기</a>
+<!-- 			<a href="#layer_looking_theater" class="btn-looking-theater"
+				title="극장찾기" style="margin-right: 10px;"><i
+				class="iconset ico-footer-search"></i> 극장찾기</a> -->
 		</div>
 	</div>
 	<!--// footer-top -->
@@ -42,9 +47,12 @@
 			</div>
 
 			<div class="footer-sns" style="margin-right: 10px;">
-				<a href="https://twitter.com/megaboxon" target="_blank"><i class="iconset ico-twitter">트위터</i></a>
-				<a href="https://www.facebook.com/megaboxon" target="_blank"><i class="iconset ico-facebook">페이스북</i></a>
-				<a href="http://instagram.com/megaboxon" target="_blank"><i class="iconset ico-instagram">인스타그램</i></a>
+				<a href="https://twitter.com/megaboxon" target="_blank"><i
+					class="iconset ico-twitter">트위터</i></a> <a
+					href="https://www.facebook.com/megaboxon" target="_blank"><i
+					class="iconset ico-facebook">페이스북</i></a> <a
+					href="http://instagram.com/megaboxon" target="_blank"><i
+					class="iconset ico-instagram">인스타그램</i></a>
 			</div>
 		</div>
 	</div>

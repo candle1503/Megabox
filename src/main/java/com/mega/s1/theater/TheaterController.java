@@ -54,11 +54,11 @@ public class TheaterController {
 		mv.addObject("arJeju", ar);
 
 		Pager pager = new Pager();
-		
+
 		List<NoticeVO> ar2 = noticeService.boardList(pager);
-		
-		mv.addObject("notice",ar2);
-		
+
+		mv.addObject("notice", ar2);
+
 		ar = theaterService.theaterNewBranchSelect();
 
 		mv.addObject("newBranch", ar);
@@ -73,7 +73,17 @@ public class TheaterController {
 
 		ModelAndView mv = new ModelAndView();
 
+//		Pager pager = new Pager();
+		
+		String name = theaterService.selectTheaterName(theaterVO);
+
+		List<NoticeVO> ar2 = noticeService.boardSelectList(name);
+
+		mv.addObject("notice", ar2);
+
 		theaterVO = theaterService.theaterBranchSelect(theaterVO);
+
+		mv.addObject("vo", theaterVO);
 
 		List<TheaterVO> ar = theaterService.theaterNameSeoul();
 		mv.addObject("arSeoul", ar);
@@ -99,13 +109,6 @@ public class TheaterController {
 		ar = theaterService.theaterNameJeju();
 		mv.addObject("arJeju", ar);
 
-		Pager pager = new Pager();
-
-		List<NoticeVO> ar2 = noticeService.boardList(pager);
-
-		mv.addObject("notice", ar2);
-
-		mv.addObject("vo", theaterVO);
 		mv.setViewName("theater/theaterBranch");
 
 		return mv;
