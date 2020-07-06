@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
+import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.util.Pager;
 
 @Controller
@@ -205,6 +206,14 @@ public class MovieController {
 		List<MovieVO> movieList = movieService.movieList();
 		mv.addObject("movie", movieList);
 		mv.setViewName("movie/movieList");
+		return mv;
+	}
+	
+	@GetMapping("movieInsert")
+	public ModelAndView movieInsert(ModelAndView mv) throws Exception {
+		MovieVO movieVO = new MovieVO();
+		mv.addObject("movieVO", movieVO);
+		mv.setViewName("admin/addMovie");
 		return mv;
 	}
 	

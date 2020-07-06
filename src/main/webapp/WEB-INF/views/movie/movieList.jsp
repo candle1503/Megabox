@@ -49,12 +49,13 @@
 
     <div class="tab-list fixed">
         <ul>
-            <li class="on"><a href="#" title="주요정보 탭으로 이동" id="inform">주요정보</a></li>
-            <li><a href="#" title="한줄평 탭으로 이동" id="review">한줄평</a></li>
+            <li class="on"><a href="#" title="전체영화 탭으로 이동" id="inform">전체 영화</a></li>
             
-            <li><a href="#" title="예고편/스틸컷 탭으로 이동" id="preview">예고편/스틸컷</a></li>
+            <li><a href="#" title="개봉영화 탭으로 이동" id="preview">개봉 영화</a></li>
+            <li><a href="#" title="상영에정 탭으로 이동" id="review">상영예정작</a></li>
+          
         </ul>
-    </div><br><br><br><br>
+    </div><br><br><a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a><br><br>
 <div class="movie-list">
 	<ol class="list" id="movieList">
 		<c:forEach var="movie" items="${movie }" varStatus="vs">	
