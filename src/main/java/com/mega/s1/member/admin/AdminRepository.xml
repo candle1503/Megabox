@@ -69,8 +69,8 @@
 		select * from roomMovieTime where roomName= #{roomName} and date_format(startTime, '%Y-%c-%e')= #{startDay} limit 1
 	</select>
 	
-	<insert id="setSeat" parameterType="RoomMovieTimeVO">
-		insert into seat values (0,#{timeCode},#{seatNum})
+	<insert id="setSeat" parameterType="RoomMovieTimeVO" keyProperty="seatCode" useGeneratedKeys="true">
+		insert into seat values (0,#{timeCode},#{seatNum},0)
 	</insert>
 	
 	<select id="getTimeCode" parameterType="RoomMovieTimeVO" resultType="Integer">

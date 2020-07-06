@@ -83,30 +83,30 @@ public class AdminService {
 		adminRepository.setTheaterRoom(roomMovieTimeVO);
 		int timeCode = adminRepository.getTimeCode(roomMovieTimeVO);
 		
-		
 		char seatCount = (char)65;
 		String seatNum;
 		roomMovieTimeVO.setTimeCode(timeCode);
 		
 		while(seatCount<73) {
+			
 			if(seatCount ==70) {
 				for(int i=1; i<13; i++) {
 					seatNum = Character.toString(seatCount)+i;
 					roomMovieTimeVO.setSeatNum(seatNum);
 					adminRepository.setSeat(roomMovieTimeVO);
-				}
+				}seatCount+=1;
 			}else if(seatCount ==71){
 				for(int i=1; i<12; i++) {
 					seatNum = Character.toString(seatCount)+i;
 					roomMovieTimeVO.setSeatNum(seatNum);
 					adminRepository.setSeat(roomMovieTimeVO);
-				}
+				}seatCount+=1;
 			}else if(seatCount ==72){
-				for(int i=1; i<9; i++) {
+				for(int i=3; i<11; i++) {
 					seatNum = Character.toString(seatCount)+i;
 					roomMovieTimeVO.setSeatNum(seatNum);
 					adminRepository.setSeat(roomMovieTimeVO);
-				}
+				}seatCount+=1;
 			}else {
 				for(int i=1; i<14; i++) {
 					seatNum = Character.toString(seatCount)+i;
