@@ -19,4 +19,7 @@ public class RoomMovieTimeVO {
 	private String time;
 	//theaterNum 가져올려고 쓰는 변수
 	private String name;
+	
+	//seat 초기 설정하는 변수
+	private String seatNum;
 }

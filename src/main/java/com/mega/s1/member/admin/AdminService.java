@@ -75,9 +75,63 @@ public class AdminService {
 		return adminRepository.getTheaterNum(theaterVO);
 	}
 	
+	
+	
+	
+	
 	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
 		adminRepository.setTheaterRoom(roomMovieTimeVO);
+		int timeCode = adminRepository.getTimeCode(roomMovieTimeVO);
+		
+		
+		char seatCount = (char)65;
+		String seatNum;
+		roomMovieTimeVO.setTimeCode(timeCode);
+		
+		while(seatCount<73) {
+			if(seatCount ==70) {
+				for(int i=1; i<13; i++) {
+					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatNum(seatNum);
+					adminRepository.setSeat(roomMovieTimeVO);
+				}
+			}else if(seatCount ==71){
+				for(int i=1; i<12; i++) {
+					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatNum(seatNum);
+					adminRepository.setSeat(roomMovieTimeVO);
+				}
+			}else if(seatCount ==72){
+				for(int i=1; i<9; i++) {
+					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatNum(seatNum);
+					adminRepository.setSeat(roomMovieTimeVO);
+				}
+			}else {
+				for(int i=1; i<14; i++) {
+					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatNum(seatNum);
+					adminRepository.setSeat(roomMovieTimeVO);
+				}
+				seatCount+=1;
+			}
+			
+		}
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public int getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
 		if(adminRepository.getTheaterRoom(roomMovieTimeVO) == null) {
@@ -85,5 +139,9 @@ public class AdminService {
 		}else {
 			return 1;
 		}
+	}
+	
+	public void setSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
+		adminRepository.setSeat(roomMovieTimeVO);
 	}
 }

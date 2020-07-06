@@ -1,6 +1,7 @@
 package com.mega.s1.member.admin;
 
 import java.util.List;
+import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -492,6 +493,7 @@ public class AdminController {
 					}
 					
 				}else if(endMonthInt ==8) {
+					
 					while( startDayInt <= 31 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {

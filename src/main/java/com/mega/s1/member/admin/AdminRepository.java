@@ -53,4 +53,9 @@ public interface AdminRepository {
 	//getTheaterRoom
 	public RoomMovieTimeVO getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 	 
+	//setSeat
+	public void setSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	
+	//getTimeCode
+	public int getTimeCode(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 }
