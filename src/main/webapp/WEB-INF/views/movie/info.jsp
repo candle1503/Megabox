@@ -40,8 +40,8 @@
             </dl>
 
             <div class="graph" style="position: relative; bottom: 0px;">
-                <canvas id="chartByStart" style="width: 216px; height: 216px; display: none;"></canvas>
-                <img src="../../../static/pc/images/movie/no-graph01.jpg" alt="기대포인트 결과 없음" style="">
+                <canvas id="chartByStart" style="width: 216px; height: 216px;"></canvas>
+                
             </div>
         </div>
 
@@ -60,17 +60,17 @@
             
 			-->
             
-                
-                    <div class="graph">
-                        <img src="../../../static/pc/images/movie/no-graph02.jpg" alt="메가스코어 결과 없음">
-                    </div>
-                    <div class="score" style="position: relative; bottom: 29px; display: none;">
-                        <div class="before">
+                 <div class="graph" style="display: none;">
+                        <!-- <img src="../../../static/pc/images/movie/no-graph02.jpg" alt="메가스코어 결과 없음"> -->
+                     </div>
+                  
+                       <!--  <div class="before">
                             <div class="circle"><em>0</em><span class="ir">점</span></div>
                             <p>관람 전</p>
-                        </div>
-                        <div class="after">
-                            <div class="circle"><em>0</em><span class="ir">점</span></div>
+                        </div> -->
+                     <div class="score equal" style="position: relative; bottom: 29px;;">
+                        <div class="middle">
+                            <div class="circle"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></div>
                             <p>관람 후</p>
                         </div>
                     </div>
@@ -83,13 +83,13 @@
             <dl>
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
-                    <span id="rkTag">46.5%</span>
+                    <span id="rkTag">___</span>
                 </dd>
             </dl>
 
             <div class="graph" style="position: relative; bottom: 10px; right: 10px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                 <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
-                <img src="../../../static/pc/images/movie/no-graph03.jpg" alt="기대율 결과 없음" style="display: none;">
+
             </div>
         </div>
 
@@ -98,18 +98,81 @@
                 <dt>일자별관객수</dt>
                 <dd class="font-roboto regular">
                   
-                        ${vo.views }
+                       ${views }
                     
                 </dd>
             </dl>
 
             <div class="graph">
                 <canvas id="chartByLine" style="width: 220px; height: 205px; display: block;" width="220" height="205"></canvas>
-                <img src="../../../static/pc/images/movie/no-graph04.jpg" alt="일자별 관객수 결과 없음" style="display: none;">
+              
             </div>
         </div>
     </div>
     <!--// movie-graph -->
+    
+ <script>
+var marksCanvas = document.getElementById("chartByStart");
+var max = Math.max(${direct}, ${player}, ${ost}, ${beauty}, ${story});
+if(max==${direct}){
+$('#charByPoint').html("<em>연출</em>")
+} else if(max==${player}) {
+	$('#charByPoint').html("<em>배우</em>")	
+}else if(max==${ost}) {
+	$('#charByPoint').html("<em>OST</em>")	
+}else if(max==${beauty}) {
+	$('#charByPoint').html("<em>영상미</em>")	
+} else {
+	$('#charByPoint').html("<em>스토리</em>")	
+}
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var marksData = {
+  labels: ["연출", "배우", "OST", "영상미", "스토리"],
+  datasets: [{
+    
+    backgroundColor: "transparent",
+    borderColor: "purple",
+	pointBorderWidth:'0',
+    pointBackgroundColor: "purple",
+    pointStyle : "line",
+    
+    data: [${direct}, ${player}, ${ost}, ${beauty}, ${story}]
+  }]
+};
+
+var chartOptions = {
+  scale: {
+	  gridLines: {
+	      color: "silver",
+	      lineWidth: 1
+	    },
+    ticks: {
+      beginAtZero: true,
+      min: 0,
+      max: 100,
+      stepSize: 35,
+      display: false
+    },
+    pointLabels: {
+      fontSize: 11,
+      fontColor: "gray"
+    }
+  },
+  legend: {
+	
+    display: false
+  }
+};
+
+var radarChart = new Chart(marksCanvas, {
+  type: 'radar',
+  data: marksData,
+  options: chartOptions
+});
+</script>
 
     <!-- 영화관 선택후 -->
     
@@ -235,12 +298,37 @@
 	$('.btn-more').click(function(){
 		if(num==1){
 			$('.txt').css("height", "360px")
+			$('.txt').css("overflow", "auto")
+			$('.btn-more .ico-btn-more-arr').css("transform", "rotate(180deg)")
+			$('.btn-more span').html("닫기")
 			num=0
 		} else {
 			$('.txt').css("height", "140px")
+			$('.txt').css("overflow", "hidden")
+			$('.btn-more .ico-btn-more-arr').css("transform", "rotate(360deg)")
+			$('.btn-more span').html("더보기")
 			num=1
 		}
 		})
+		
+	$('.btn-like').on("click", function(){
+		if(${empty member}){
+			alert("로그인 후 이용해주세요");
+		} else {
+			 $.post("./likeUpdate", {movieNum:'${vo.movieNum}', like:'${vo.like}'}, function(result) {
+					if(result>0){
+							alert("success");
+						} else{
+						alert("failed");
+						}
+				 window.location.replace("./movieSelect?movieNum="+${vo.movieNum});
+				});
+				
+		}
+		
+		
+			
+		});
 	
 	</script>
 

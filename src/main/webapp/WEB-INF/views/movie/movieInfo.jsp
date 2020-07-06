@@ -6,11 +6,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-	
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<!-- 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script> -->
 
     <c:import url="../template/header_css.jsp"></c:import>
 	<style type="text/css">
@@ -25,41 +32,10 @@
 	
 		
 	</style>
-
-
-
-
-		<title>(&amp;#35;살아있다) 주요정보 &lt; 영화 | 라이프시어터, 메가박스</title>
-		<meta property="name" id="metaTagTitle" content="(&amp;#35;살아있다) 주요정보 < 영화 | 라이프시어터, 메가박스">
-		<meta property="description" id="metaTagDtls" content="원인불명 증세의 사람들의 공격에 통제 불능에 빠진 도시. &amp;lt;br&amp;gt;영문도 모른 채 잠에서 깬 ‘준우’&amp;#40;유아인&amp;#41;는 아무도 없는 집에 혼자 고립된 것을 알게 된다. &amp;lt;br&amp;gt;데이터, 와이파이, 문자, 전화 모든 것이 끊긴 채 고립된 상황. &amp;lt;br&amp;gt;연락이 두절된 가족에 이어 최소한의 식량마저 바닥이 나자 더 이상 버티기 힘들어진 ‘준우’. &amp;lt;br&amp;gt;하지만 그 순간 건너편 아파트에서 누군가 시그널을 보내온다. &amp;lt;br&amp;gt;또 다른 생존자 ‘유빈’&amp;#40;박신혜&amp;#41;이 아직 살아있음을 알게 된 ‘준우’는 &amp;lt;br&amp;gt;함께 살아남기 위한 방법을 찾아 나서는데...! &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;꼭 살아남아야 한다&amp;lt;br&amp;gt;">
-		<meta property="keywords" id="metaTagKeyword" content="&amp;#35;살아있다, , , ">
-
-		<meta property="fb:app_id" id="fbAppId" content="546913502790694">
-		
-
-		<meta property="og:site_name" id="fbSiteName" content="메가박스">
-		<meta property="og:type" id="fbType" content="movie">
-		<meta property="og:url" id="fbUrl" content="https://www.megabox.co.kr/movie-detail?rpstMovieNo=20019200">
-		<meta property="og:title" id="fbTitle" content="(&amp;#35;살아있다) 주요정보 < 영화 | 라이프시어터, 메가박스">
-		<meta property="og:description" id="fbDtls" content="원인불명 증세의 사람들의 공격에 통제 불능에 빠진 도시. &amp;lt;br&amp;gt;영문도 모른 채 잠에서 깬 ‘준우’&amp;#40;유아인&amp;#41;는 아무도 없는 집에 혼자 고립된 것을 알게 된다. &amp;lt;br&amp;gt;데이터, 와이파이, 문자, 전화 모든 것이 끊긴 채 고립된 상황. &amp;lt;br&amp;gt;연락이 두절된 가족에 이어 최소한의 식량마저 바닥이 나자 더 이상 버티기 힘들어진 ‘준우’. &amp;lt;br&amp;gt;하지만 그 순간 건너편 아파트에서 누군가 시그널을 보내온다. &amp;lt;br&amp;gt;또 다른 생존자 ‘유빈’&amp;#40;박신혜&amp;#41;이 아직 살아있음을 알게 된 ‘준우’는 &amp;lt;br&amp;gt;함께 살아남기 위한 방법을 찾아 나서는데...! &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;꼭 살아남아야 한다&amp;lt;br&amp;gt;">
-		<meta property="og:image" id="fbImg" content="https://img.megabox.co.kr/SharedImg/2020/06/02/xIBdAOS5lJNBe1CBXovcV1WYE9Q6DWPV_316.jpg">
-		
-
-
-	
-	
-     	
+ 	
      		<!-- Global site tag (gtag.js) - Google Analytics -->
 			<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-30006739-3"></script>
-			<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-30006739-3');</script>
-		    <script src="/static/pc/dist/megabox.api.min.js"></script>
-			<script src="/static/mb/js/lozad.min.js"></script>
-			<script src="/js/common/dist/megabox.common.min.js"></script>
-     		<script src="/js/netfunnel/dist/megabox.netfunnel.min.js"></script>
-			<script src="//cast.imp.joins.com/persona.js" async=""></script>
-		
-		
-	
+
 
 </head>
 <body>
@@ -68,16 +44,6 @@
 
 <!-- container -->
 <div id="schdlContainer" class="container area-ad no-padding-bottom">
-    <div class="page-util off">
-        <div class="inner-wrap">
-            <div class="location">
-                <span>Home</span>
-                <a href="/movie" title="영화 페이지로 이동">영화</a>
-                <a href="/movie" title="전체영화 페이지로 이동">전체영화</a>
-                <a href="/movie" title="박스오피스 페이지로 이동">박스오피스</a>
-            </div>
-        </div>
-    </div>
 
     <!-- contents -->
     <div id="contents" class="no-padding">
@@ -125,7 +91,7 @@ $(function(){
 
 
 		<div class="btn-util">
-			<button type="button" title="보고싶어 안함" class="btn btn-like" rpst-movie-no="20019200">
+			<button type="button" class="btn btn-like">
 				<i class="iconset ico-heart-line"></i>
 				<span title="보고싶어 한 명수" id="intrstCnt">				
 								${vo.like }			
@@ -138,24 +104,10 @@ $(function(){
 <div class="sns-share">
 	<a href="#" class="btn btn-common-share" title="공유하기">
 		
-			
 				<i class="iconset ico-sns-line"></i> 공유하기 <!-- 공유하기 -->
-			
-			
-		
+	
 	</a>
 
-	<div class="btn-sns-share-wrap">
-		<div class="cont-area">
-			<div class="btn-sns-share-group">
-				<!-- <button type="button" title="카카오톡 공유하기" class="btn btnSns kakao">카카오톡 </button> 카카오톡 -->
-				<button type="button" title="페이스북 공유하기" class="btn btnSns face">페이스북 <!-- 페이스북 --></button>
-				<button type="button" title="밴드 공유하기" class="btn btnSns band">밴드 <!-- 밴드 --></button>
-				<button type="button" title="트위터 공유하기" class="btn btnSns twitter">트위터 <!-- 트위터 --></button>
-				<button type="button" title="링크 공유하기" class="btn btnSns link">링크공유 <!-- 링크공유 --></button>
-			</div>
-		</div>
-	</div>
 </div>
 		</div>
 
@@ -175,9 +127,7 @@ $(function(){
 
 			<div class="rate">
 				<p class="tit">예매율</p>
-
-				
-					
+		
 					
 						<p class="cont"><em>1</em>위 (46.5%)</p>
 					
@@ -204,7 +154,7 @@ $(function(){
 						</em>
 						</span>
                   </div>
-                  <p class="cont"><em>${vo.views }</em> 명</p>
+                  <p class="cont"><em>${views }</em> 명</p>
             </div>
 
 		</div>
@@ -267,17 +217,46 @@ $(function(){
             </div>
         
     </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script type="text/javascript">
+		
+	
 		var num = 1;
 		$('.btn-more').click(function(){
 			if(num==1){
 				$('.txt').css("height", "360px")
+				$('.txt').css("overflow", "auto")
+				$('.btn-more .ico-btn-more-arr').css("transform", "rotate(180deg)")
+				$('.btn-more span').html("닫기")
 				num=0
 			} else {
 				$('.txt').css("height", "140px")
+				$('.txt').css("overflow", "hidden")
+				$('.btn-more .ico-btn-more-arr').css("transform", "rotate(360deg)")
+				$('.btn-more span').html("더보기")
 				num=1
 			}
 			})
+			
+		$('.btn-like').on("click", function(){
+			if(${empty member}){
+				alert("로그인 후 이용해주세요");
+			} else {
+				 $.post("./likeUpdate", {movieNum:'${vo.movieNum}', like:'${vo.like}'}, function(result) {
+						if(result>0){
+								alert("success");
+							} else{
+							alert("failed");
+							}
+					 window.location.replace("./movieSelect?movieNum="+${vo.movieNum});
+					});
+					
+			}
+			
+			
+				
+			});
 			
 		
 		
@@ -304,6 +283,20 @@ $(function(){
 			$(this).parent().attr("class", "on");
 			$("#review").parent().removeClass("on");
 			$("#inform").parent().removeClass("on");
+			var ajaxOption = {
+		            url : "./preview",
+		            
+		            data : {movieNum:'${vo.movieNum}'},
+		            type : "GET",
+		            dataType : "html"
+		            
+		    };  
+			$.ajax(ajaxOption).done(function(data){
+		       
+		        $('.back').children().remove();
+		        $('.mt70').remove();
+		        $('.back').html(data);
+		    });
 		})
 		
 		$('#review').click(function(){
@@ -323,12 +316,22 @@ $(function(){
 		        $('.back').children().remove();
 		        $('.mt70').remove();
 		        $('.back').html(data);
+		        
 		    });
 			
 		})
+
+//이전 다음 버튼 클릭
+	$('.back').on('click', '.videoBtn', function(e){
 		
-	
-		
+		console.log("videoBtn");
+		e.preventDefault();
+		fn_stopVideo();
+		var obj = $('.swiper-slide-thumb-active img');
+		var s_cn = obj.data('cn');
+		$('#movieTitle').html(obj.data('title'));
+	});
+
 
 	</script>
     <div class="movie-info infoContent">
@@ -351,42 +354,32 @@ $(function(){
                 <dd id="charByPoint">&nbsp;</dd>
             </dl>
 
-            <div class="graph" style="position: relative; bottom: 0px;">
-                <canvas id="chartByStart" style="width: 216px; height: 216px; display: none;"></canvas>
-                <img src="../../../static/pc/images/movie/no-graph01.jpg" alt="기대포인트 결과 없음" style="">
+            <div class="graph" style="position: relative; bottom: 29px;">
+                <canvas id="chartByStart" style="width: 216px; height: 216px;"></canvas>
+                
             </div>
         </div>
 
+      
         <div class="col" id="subMegaScore">
             <dl>
                 <dt>실관람 평점</dt>
                 <dd class="font-roboto regular"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></dd>
             </dl>
-			<!--
-            
-                
-                
-                
-                    
-                
-            
-			-->
-            
-                
-                    <div class="graph">
-                        <img src="../../../static/pc/images/movie/no-graph02.jpg" alt="메가스코어 결과 없음">
-                    </div>
-                    <div class="score" style="position: relative; bottom: 29px; display: none;">
-                        <div class="before">
+
+         
+                  
+                       <!--  <div class="before">
                             <div class="circle"><em>0</em><span class="ir">점</span></div>
                             <p>관람 전</p>
-                        </div>
-                        <div class="after">
-                            <div class="circle"><em>0</em><span class="ir">점</span></div>
+                        </div> -->
+                     <div class="score equal" style="position: relative; bottom: 29px;;">
+                        <div class="middle">
+                            <div class="circle"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></div>
                             <p>관람 후</p>
                         </div>
                     </div>
-                
+               
                 
             
         </div>
@@ -395,13 +388,13 @@ $(function(){
             <dl>
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
-                    <span id="rkTag">46.5%</span>
+                    <span id="rkTag">___</span>
                 </dd>
             </dl>
 
             <div class="graph" style="position: relative; bottom: 10px; right: 10px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                 <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
-                <img src="../../../static/pc/images/movie/no-graph03.jpg" alt="기대율 결과 없음" style="display: none;">
+                
             </div>
         </div>
 
@@ -410,14 +403,14 @@ $(function(){
                 <dt>일자별관객수</dt>
                 <dd class="font-roboto regular">
                   
-                        ${vo.views }
+                       ${views }
                     
                 </dd>
             </dl>
 
             <div class="graph">
                 <canvas id="chartByLine" style="width: 220px; height: 205px; display: block;" width="220" height="205"></canvas>
-                <img src="../../../static/pc/images/movie/no-graph04.jpg" alt="일자별 관객수 결과 없음" style="display: none;">
+                
             </div>
         </div>
     </div>
@@ -427,6 +420,68 @@ $(function(){
     
     <!--// movie-greeting  -->
 
+<script>
+var marksCanvas = document.getElementById("chartByStart");
+var max = Math.max(${direct}, ${player}, ${ost}, ${beauty}, ${story});
+if(max==${direct}){
+$('#charByPoint').html("<em>연출</em>")
+} else if(max==${player}) {
+	$('#charByPoint').html("<em>배우</em>")	
+}else if(max==${ost}) {
+	$('#charByPoint').html("<em>OST</em>")	
+}else if(max==${beauty}) {
+	$('#charByPoint').html("<em>영상미</em>")	
+} else {
+	$('#charByPoint').html("<em>스토리</em>")	
+}
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var marksData = {
+  labels: ["연출", "배우", "OST", "영상미", "스토리"],
+  datasets: [{
+    
+    backgroundColor: "transparent",
+    borderColor: "purple",
+	pointBorderWidth:'0',
+    pointBackgroundColor: "purple",
+    pointStyle : "line",
+    
+    data: [${direct}, ${player}, ${ost}, ${beauty}, ${story}]
+  }]
+};
+
+var chartOptions = {
+  scale: {
+	  gridLines: {
+	      color: "silver",
+	      lineWidth: 1
+	    },
+    ticks: {
+      beginAtZero: true,
+      min: 0,
+      max: 100,
+      stepSize: 35,
+      display: false
+    },
+    pointLabels: {
+      fontSize: 11,
+      fontColor: "gray"
+    }
+  },
+  legend: {
+	
+    display: false
+  }
+};
+
+var radarChart = new Chart(marksCanvas, {
+  type: 'radar',
+  data: marksData,
+  options: chartOptions
+});
+</script>
         
         
 </div>
@@ -476,7 +531,7 @@ $(function(){
 								  <p class="user-id">${vo.writer}</p>        </div>        <div class="story-box">            <div class="story-wrap review"><div class="tit">관람평</div>                <div class="story-cont">                    <div class="story-point">                        
 								  <span>${vo.point }</span>                    </div>                    <div class="story-recommend">
 								  <em>${vo.likePoint }</em>                    </div>                    
-								  <div class="story-txt">${vo.contents } </div>                    <div class="story-like">                        <button type="button" class="oneLikeBtn" title="댓글 추천" data-no="648604" data-is="N"><i class="iconset ico-like-gray"></i> <span>0</span></button>                    </div>                    <div class="story-util">                        <div class="post-funtion">                            <div class="wrap">                                <button type="button" class="btn-alert">옵션보기</button>                                <div class="balloon-space user">                                    <div class="balloon-cont"><div class="user">    <p class="reset a-c">스포일러 및 욕설/비방하는<br>내용이 있습니까?</p>    <button type="button" class="maskOne" data-no="648604">댓글 신고 <i class="iconset ico-arr-right-green"></i></button></div>                                            <div class="btn-close"><a href="#" title="닫기"><img src="/static/pc/images/common/btn/btn-balloon-close.png" alt="닫기"></a></div>                                        </div>                                    </div>                                </div>                            </div>                        </div>                    </div>                </div>            </div>        </div>        <div class="story-date">            <div class="review on">                
+								  <div class="story-txt">${vo.contents } </div>                    <div class="story-like">                        <button type="button" class="oneLikeBtn" title="댓글 추천" data-no="648604" data-is="N"><i class="iconset ico-like-gray"></i> <span>0</span></button>                    </div>                    <div class="story-util">                        <div class="post-funtion">                            <div class="wrap">                                <button type="button" class="btn-alert">옵션보기</button>                                <div class="balloon-space user">                                    <div class="balloon-cont"><div class="user">    <p class="reset a-c">스포일러 및 욕설/비방하는<br>내용이 있습니까?</p>    <button type="button" class="maskOne" data-no="648604">댓글 신고 <i class="iconset ico-arr-right-green"></i></button></div>                                            <div class="btn-close"><a href="#" title="닫기"><img src="http://www.megabox.co.kr/static/pc/images/common/btn/btn-balloon-close.png" alt="닫기"></a></div>                                        </div>                                    </div>                                </div>                            </div>                        </div>                    </div>                </div>            </div>        </div>        <div class="story-date">            <div class="review on">                
 								  <span>${vo.regDate }</span>            </div>        </div></li>
       
 							</c:forEach>
@@ -543,6 +598,10 @@ $(function(){
 
 
     </div>
+    
+<div class="quick-area" style="display: block;">
+	<a href="" class="btn-go-top" title="top" style="position: fixed;">top</a>
+</div>
 
 <div class="inner-wrap mt70 infoContent">
     <div class="tit-util mb15">
@@ -607,6 +666,8 @@ $(".oneWrtNonMbBtn").click(function(){
         $('.back').html(data);
     });
 })
+
+
 	
 </script>
 

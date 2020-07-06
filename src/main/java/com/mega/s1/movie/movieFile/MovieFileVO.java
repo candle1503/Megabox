@@ -10,4 +10,6 @@ public class MovieFileVO {
 	private String fileName;
 	private String oriName;
 	private int movieNum;
+	private int status;
+	private String detail;
 }
