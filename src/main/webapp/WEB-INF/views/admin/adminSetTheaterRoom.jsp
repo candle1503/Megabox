@@ -68,9 +68,9 @@
 									<div class="right">
 										<p class="reset${i.count}">
 											<input id="calendar${0+i.count}" style="left: 1300px;"
-												value="시작날짜" name="startDay"> <input
+												value="시작날짜" name="startDay"/> <input
 												id="calendar${4+i.count}" style="left: 1400px;"
-												value="마지막날짜" name="endDay">
+												value="마지막날짜" name="endDay"/>
 										</p>
 									</div>
 
