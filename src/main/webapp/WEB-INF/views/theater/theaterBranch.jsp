@@ -39,634 +39,102 @@
 				<div class="bg-mask"></div>
 
 				<!-- theater-all -->
+
 				<div class="theater-all">
 					<!-- theater-area-list -->
 					<div class="theater-area-list">
 						<ul class="area-depth1">
 
 
-							<li><a href="" class="depth1" title="서울 선택">서울</a>
+							<li class="headtab"><a href="" class="depth1" title="서울 선택">서울</a>
 								<div class="area-depth2">
 									<ul>
 
-										<li class="on"><a href="/theater?brchNo=1372"
-											title="강남 상세보기">강남 </a></li>
-
-										<li><a href="/theater?brchNo=1359" title="강남대로(씨티) 상세보기">강남대로(씨티)
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1341" title="강동 상세보기">강동
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1431" title="군자 상세보기">군자
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1003" title="동대문 상세보기">동대문
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1572" title="마곡 상세보기">마곡
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1581" title="목동 상세보기">목동
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1311" title="상봉 상세보기">상봉
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1211" title="상암월드컵경기장 상세보기">상암월드컵경기장
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1331" title="성수 상세보기">성수
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1371" title="센트럴 상세보기">센트럴
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1381" title="송파파크하비오 상세보기">송파파크하비오
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1202" title="신촌 상세보기">신촌
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1221" title="은평 상세보기">은평
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1561" title="이수 상세보기">이수
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1321" title="창동 상세보기">창동
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1351" title="코엑스 상세보기">코엑스
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1212" title="홍대 상세보기">홍대
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1571" title="화곡 상세보기">화곡
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=1562" title="ARTNINE 상세보기">ARTNINE
-
-
-										</a></li>
+										<c:forEach items="${arSeoul}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="경기 선택">경기</a>
+							<li class="headtab"><a href="" class="depth1" title="경기 선택">경기</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=4121" title="고양스타필드 상세보기">고양스타필드
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4152" title="김포한강신도시 상세보기">김포한강신도시
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4721" title="남양주 상세보기">남양주
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4451" title="동탄 상세보기">동탄
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4652" title="미사강변 상세보기">미사강변
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4113" title="백석 상세보기">백석
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4722" title="별내 상세보기">별내
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4221" title="부천스타필드시티 상세보기">부천스타필드시티
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4631" title="분당 상세보기">분당
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4411" title="수원 상세보기">수원
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4421" title="수원남문 상세보기">수원남문
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4291" title="시흥배곧 상세보기">시흥배곧
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4253" title="안산중앙 상세보기">안산중앙
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4821" title="양주 상세보기">양주
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4431" title="영통 상세보기">영통
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=0012" title="용인기흥 상세보기">용인기흥
-
-
-
-
-												<i class="iconset ico-theater-new"></i>
-
-
-
-
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4462" title="용인테크노밸리 상세보기">용인테크노밸리
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4804" title="의정부민락 상세보기">의정부민락
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4111" title="일산 상세보기">일산
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4104" title="일산벨라시타 상세보기">일산벨라시타
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4112" title="킨텍스 상세보기">킨텍스
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4132" title="파주금촌 상세보기">파주금촌
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4115" title="파주운정 상세보기">파주운정
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4131" title="파주출판도시 상세보기">파주출판도시
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4501" title="평택 상세보기">평택
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4651" title="하남스타필드 상세보기">하남스타필드
-
-
-										</a></li>
-
+										<c:forEach items="${arGyeonggi}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="인천 선택">인천</a>
+							<li class="headtab"><a href="" class="depth1" title="인천 선택">인천</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=4041" title="검단 상세보기">검단
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4062" title="송도 상세보기">송도
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4001" title="영종 상세보기">영종
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4051" title="인천논현 상세보기">인천논현
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4042" title="청라 상세보기">청라
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=4043" title="청라지젤 상세보기">청라지젤
-
-
-										</a></li>
-
+										<c:forEach items="${arIncheon}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="대전/충청/세종 선택">대전/충청/세종</a>
+							<li class="headtab"><a href="" class="depth1"
+								title="대전/충청/세종 선택">대전/충청/세종</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=3141" title="공주 상세보기">공주
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3021" title="대전 상세보기">대전
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=0009" title="대전유성 상세보기">대전유성
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3011" title="대전중앙로 상세보기">대전중앙로
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=0017" title="대전현대아울렛 상세보기">대전현대아울렛
-
-
-
-
-
-
-												<i class="iconset ico-theater-open"></i>
-
-
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3391" title="세종(조치원) 상세보기">세종(조치원)
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3392" title="세종나성 상세보기">세종나성
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=0008" title="세종청사 상세보기">세종청사
-
-
-
-
-
-
-												<i class="iconset ico-theater-open"></i>
-
-
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3631" title="오창 상세보기">오창
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3901" title="제천 상세보기">제천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3651" title="진천 상세보기">진천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3301" title="천안 상세보기">천안
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3611" title="청주사창 상세보기">청주사창
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3801" title="충주 상세보기">충주
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=3501" title="홍성내포 상세보기">홍성내포
-
-
-										</a></li>
-
+										<c:forEach items="${arChungcheong}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="부산/대구/경상 선택">부산/대구/경상</a>
+							<li class="headtab"><a href="" class="depth1"
+								title="부산/대구/경상 선택">부산/대구/경상</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=6701" title="거창 상세보기">거창
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7602" title="경북도청 상세보기">경북도청
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7122" title="경산하양 상세보기">경산하양
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7801" title="경주 상세보기">경주
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7303" title="구미강동 상세보기">구미강동
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7401" title="김천 상세보기">김천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7901" title="남포항 상세보기">남포항
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7022" title="대구(칠성로) 상세보기">대구(칠성로)
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7011"
-											title="대구신세계(동대구) 상세보기">대구신세계(동대구) </a></li>
-
-										<li><a href="/theater?brchNo=7012" title="대구이시아 상세보기">대구이시아
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6161" title="덕천 상세보기">덕천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6312" title="마산 상세보기">마산
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7451" title="문경 상세보기">문경
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6001" title="부산극장 상세보기">부산극장
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6906" title="부산대 상세보기">부산대
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=7021" title="북대구(칠곡) 상세보기">북대구(칠곡)
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6641" title="사천 상세보기">사천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6642" title="삼천포 상세보기">삼천포
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6261" title="양산 상세보기">양산
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6262" title="양산라피에스타 상세보기">양산라피에스타
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6811" title="울산 상세보기">울산
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6191" title="정관 상세보기">정관
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6421" title="창원 상세보기">창원
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=0014" title="창원내서 상세보기">창원내서
-
-
-
-
-
-
-												<i class="iconset ico-theater-open"></i>
-
-
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=6121" title="해운대(장산) 상세보기">해운대(장산)
-
-
-										</a></li>
-
+										<c:forEach items="${arGyeongsang}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="광주/전라 선택">광주/전라</a>
+							<li class="headtab"><a href="" class="depth1"
+								title="광주/전라 선택">광주/전라</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=5021" title="광주상무 상세보기">광주상무
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5061" title="광주하남 상세보기">광주하남
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5901" title="남원 상세보기">남원
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5302" title="목포하당(포르모) 상세보기">목포하당(포르모)
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5612" title="송천 상세보기">송천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5401" title="순천 상세보기">순천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5552" title="여수웅천 상세보기">여수웅천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=0010" title="전대(광주) 상세보기">전대(광주)
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=5064" title="첨단 상세보기">첨단
-
-
-										</a></li>
-
+										<c:forEach items="${arJeolla}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="강원 선택">강원</a>
+							<li class="headtab"><a href="" class="depth1" title="강원 선택">강원</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=2001" title="남춘천 상세보기">남춘천
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=2171" title="속초 상세보기">속초
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=2201" title="원주 상세보기">원주
-
-
-										</a></li>
-
-										<li><a href="/theater?brchNo=2202" title="원주센트럴 상세보기">원주센트럴
-
-
-										</a></li>
-
+										<c:forEach items="${arGangwon}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
 
-							<li><a href="" class="depth1" title="제주 선택">제주</a>
+							<li class="headtab"><a href="" class="depth1" title="제주 선택">제주</a>
 								<div class="area-depth2">
 									<ul>
-
-										<li><a href="/theater?brchNo=6901" title="제주 상세보기">제주
-
-
-										</a></li>
-
+										<c:forEach items="${arJeju}" var="vo">
+											<li><a
+												href="./theaterBranch?theaterNum=${vo.theaterNum}">${vo.name}</a></li>
+										</c:forEach>
 									</ul>
 								</div></li>
 
@@ -674,17 +142,14 @@
 					</div>
 					<!--// theater-area-list -->
 
-					<p class="name">강남</p>
+					<p class="name">${vo.name}</p>
 
 					<div class="btn-util right">
 
 						<div class="block">
 
-
-
-
 							<button type="button" class="btn btn-like tooltip click">
-								<i class="iconset ico-like-line"></i> <span>선호극장</span> <span
+								<i class="iconset ico-like-line"></i> <span>예매하러 가기</span> <span
 									class="ir" data-width="235"> <span class="cont-area">
 										<span class="login-alert-tooltip"> 로그인이 필요한 서비스 입니다.<br>
 											<a href="" id="moveLogin" title="로그인하기">로그인하기 <i
@@ -698,9 +163,19 @@
 						</div>
 					</div>
 				</div>
+
 				<!--// theater-detail-cont -->
 			</div>
+			<script type="text/javascript">
+				$('li.headtab').hover(function() {
+					$('li.headtab').removeClass('on');
+					$(this).addClass('on');
+				}, function() {
+					$('li.headtab').removeClass('on');
+				})
+			</script>
 			<!--// theater-detail-page -->
+
 
 			<div class="inner-wrap pt40">
 
@@ -717,7 +192,7 @@
 						$('ul.tabs li').removeClass('on');
 						$(this).addClass('on');
 
-						alert($('ul.tabs li.on>a').attr("title"))
+						/* alert($('ul.tabs li.on>a').attr("title")) */
 
 						if ($('ul.tabs li.on>a').attr("title") == 1) {
 
@@ -815,13 +290,14 @@
 
 									<ul class="dot-list">
 
-										<li>아라타워 건물 內 지하 3층 ~ 지하 6층 주차장 이용</li>
+										<li>${vo.parking}</li>
+										<!-- <li>아라타워 건물 內 지하 3층 ~ 지하 6층 주차장 이용</li> -->
 
 									</ul>
 								</div>
 							</div>
 
-							<div class="parking-section">
+					<!-- 		<div class="parking-section">
 								<div class="icon-box">
 									<i class="iconset ico-parking-confirm" title="주차확인">주차확인</i>
 								</div>
@@ -861,7 +337,7 @@
 
 									</ul>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 
@@ -918,221 +394,51 @@
  -->
 
 						<!--// location-info -->
-
-
-
 						<div id="brchNoti">
 							<h2 class="tit small mt70">공지사항</h2>
+							<a href="${pageContext.request.contextPath}/notice/noticeList"
+								class="more" title="극장 공지사항 더보기" style="margin-left: 1030px;">더보기
+								<i class="iconset ico-arr-right-gray"></i>
+							</a> <br>
+							<br>
 
 							<!-- accordion-list -->
-							<div class="accordion-list">
-								<ul>
-									<li><div class="title ">
-											<a href="" title="[강남] 운영시간 임시 조정 안내">
-												<div class="cont-tit">[강남] 운영시간 임시 조정 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2020.04.03</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											안녕하세요.<br> 메가박스 강남지점입니다.<br> 코로나19 확산 예방에 동참하고자
-											운영시간이 임시 조정되오니<br> 홈페이지나 어플 상영시간표를 참고하시어 영화관 이용 부탁드립니다.<br>
-											<br> - 운영시간 조정 적용일 : 2020년 4월 1일(수) ~<br>
-											&nbsp;(매표, 매점 운영시간 : 13시 30분 ~ 20시 30분)<br> <br>
-											지속적인 방역과 소독관리를 통해 안전한 관람 환경 조성에 최선을 다하겠습니다.<br> 감사합니다.
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 영화 관람 요금 변경 안내">
-												<div class="cont-tit">[강남] 영화 관람 요금 변경 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2020.01.06</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p>
-												안녕하십니까.<br> 메가박스 강남지점입니다.<br> &nbsp;<br>
-												2020년 1월6일(월)부터 영화 관람 요금이 일부 조정됩니다.<br> &nbsp;<br>
-												- 조정내용<br> &nbsp;<br> 주말 청소년 조조 요금: 기존 6,000원 →
-												7,000원(상영관 별 첫 회차 영화)<br> &nbsp;<br> 앞으로도 고객님의 많은
-												관심과 사랑 부탁드리며,<br> 더욱 나아진 서비스로 고객님의 성원에 보답하는 메가박스 강남지점이
-												되겠습니다.<br> &nbsp;<br> 감사합니다.<br> &nbsp;
-											</p>
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 2019년 상반기 소방 작동기능점검 실시 안내">
-												<div class="cont-tit">[강남] 2019년 상반기 소방 작동기능점검 실시 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2019.02.07</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">안녕하십니까.
-													메가박스 강남지점입니다.</span>
-											</p>
+							<div class="table-wrap">
+								<table class="board-list">
+									<caption>번호, 제목, 지역, 등록일이 들어간 극장 공지사항 목록</caption>
+									<colgroup>
+										<col style="width: 150px;">
+										<col>
+										<col style="width: 150px;">
+										<col style="width: 120px;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">번호</th>
+											<th scope="col">제목</th>
+											<th scope="col">극장</th>
+											<th scope="col">등록일</th>
+										</tr>
+									</thead>
+									<tbody>
 
-											<p>
-												<br> <span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">고객님의
-													안전한 영화 관람을 위하여 2019년도 상반기&nbsp;소방 작동기능점검을 실시할 예정입니다.</span>
-											</p>
 
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">아래의
-													내용 확인하시어 영화관 이용에&nbsp;참고해 주시기 바랍니다.</span>
-											</p>
+										<c:forEach items="${notice}" var="vo" begin="0" end="4">
+											<tr>
+												<td>${vo.num}</td>
+												<th scope="row"><a
+													href="${pageContext.request.contextPath}/notice/noticeSelect?num=${vo.num}"
+													title="">${vo.title}</a></th>
+												<td>${vo.name}</td>
+												<td>${vo.regDate}</td>
+											</tr>
+										</c:forEach>
 
-											<p>&nbsp;</p>
-
-											<p>
-												<strong><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-													-&nbsp;내 용&nbsp;-</strong>
-											</p>
-
-											<p>&nbsp;</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">1.
-												</span> <span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">시행
-													일시:</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">&nbsp;2019년
-													2월 11일(월)~2월 12일(화) 09:00~16:00(2일 진행)</span>
-											</p>
-
-											<p>&nbsp;</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">2.&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">안내</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">
-													사항:</span><span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">
-													점검 시간 동안 간헐적으로 소음(경종, 싸이렌, 비상 방송) 발생 및 시각 경보기가&nbsp;작동할 수
-													있습니다.</span>
-											</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;다소
-													불편하시더라도 많은 양해 부탁 드립니다.</span>
-											</p>
-
-											<p>&nbsp;</p>
-
-											<p>
-												<span
-													style="color: rgb(0, 0, 0); font-family: 메가박스 라이프; font-size: 10pt;">감사합니다.</span>
-											</p>
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 건물 주차장 이용 제한 안내">
-												<div class="cont-tit">[강남] 건물 주차장 이용 제한 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2018.08.07</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">안녕하세요,<br>
-													메가박스 강남지점입니다.&nbsp;
-												</span>
-											</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">&nbsp;</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">'드루킹'
-													특검 수사 진행 기간 동안 강남역 일대&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">교통
-													통행 제한&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">및&nbsp;</span><span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">불편이
-													많을 것으로 예상되오니 참고 부탁드립니다.</span>
-											</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">&nbsp;</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">영화
-													관람 예정 고객께서는 주차장 이용에 제한이 있을 수 있으니<br> 가급적 대중교통을 이용해주시기
-													바랍니다.
-												</span>
-											</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">&nbsp;</p>
-
-											<p malgun=""
-												style="margin: 0px; padding: 0px; line-height: normal; font-family: dotum, 돋움, Apple-Gothic,; font-size: 20.79px; font-stretch: normal;">
-												<span
-													style="color: rgb(0, 0, 0); font-family:; -ms-word-break: break-all;">감사합니다.</span>
-											</p>
-										</div></li>
-									<li><div class="title ">
-											<a href="" title="[강남] 2018년 하반기 소방 종합정밀점검 안내">
-												<div class="cont-tit">[강남] 2018년 하반기 소방 종합정밀점검 안내</div>
-												<p class="cont-admin">강남</p>
-												<p class="cont-date">2018.08.06</p>
-											</a>
-										</div>
-										<div class="content" style="display: none">
-											<p>안녕하십니까,</p>
-
-											<p>메가박스 강남지점입니다.</p>
-
-											<p>&nbsp;</p>
-
-											<p>고객님의 안전한 영화 관람을 위하여 2018년도 하반기 소방 종합정밀점검을 실시할 예정입니다.</p>
-
-											<p>아래의 내용 확인하시어 영화관 이용에 참고해 주시기 바랍니다.</p>
-
-											<p>&nbsp;</p>
-
-											<p>1. 시행 일시: 2018년 8월 13일 ~ 14일 / 09:00~16:00 (양일 간 진행)</p>
-
-											<p>
-												<br> 2. 안내 사항<br> 점검 시간 동안 간헐적으로 소음(경종, 싸이렌, 비상
-												방송) 발생 및 시각 경보기가 작동될 수 있습니다.
-											</p>
-
-											<p>
-												다소 불편하시더라도 많은 양해 부탁 드립니다.<br> &nbsp;
-											</p>
-
-											<p>고객님 안전을 위하여 언제나 최선을 다하는 메가박스가 되겠습니다.</p>
-
-											<p>감사합니다.</p>
-										</div></li>
-								</ul>
+									</tbody>
+								</table>
 							</div>
 							<!--// accordion-list -->
 
-							<!-- pagination -->
-							<nav class="pagination">
-								<strong class="active">1</strong> <a title="2페이지보기"
-									href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기"
-									href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기"
-									href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기"
-									href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기"
-									href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기"
-									href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기"
-									href="javascript:void(0)" pagenum="8">8</a>
-							</nav>
-							<!--// pagination -->
 						</div>
 
 					</div>
@@ -2562,7 +1868,8 @@
 									</table>
 								</div>
 							</div>
-							<div class="fee-table">
+
+							<%-- 							<div class="fee-table">
 								<p class="fee-table-tit">일반 3D</p>
 								<div class="table-wrap">
 									<table class="data-table a-c"
@@ -2619,9 +1926,12 @@
 										</tbody>
 									</table>
 								</div>
-							</div>
+							</div> --%>
+
 						</div>
-						<div class="fee-table-box">
+
+
+						<%-- 						<div class="fee-table-box">
 							<div class="fee-table">
 								<p class="fee-table-tit">COMFORT 일반 2D</p>
 								<div class="table-wrap">
@@ -2738,7 +2048,9 @@
 									</table>
 								</div>
 							</div>
-						</div>
+						</div> --%>
+
+
 						<span style="color: #503396"><span style="font-size: 22px">요금제</span></span><br>
 						<br> • <font color="#01738b">청소년 요금</font>&nbsp; 만7세~ 만18세 :
 						초등학생~고등학생(학생증, 교복, 청소년증, 의료보험증, 주민등록 등/초본, 그 외 청소년 확인 가능 서류)<br>

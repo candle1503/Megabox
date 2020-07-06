@@ -4,13 +4,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="ko">
 <head>
-<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
+<link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
 
 </head>
 <body class="bg-member">
 	<div class="member-wrap">
 		<div>
-			<a href="../"><img alt="" src="/resources/images/sTheater.png"
+			<a href="../"><img alt="" src="/resources/static/images/sTheater.png"
 				style="margin-left: 90px"></a>
 		</div>
 		<p class="tit-member">로그인&<a href="./memberJoin" style="color:#503396;">회원가입</a></p>

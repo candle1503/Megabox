@@ -9,4 +9,5 @@ public interface NoticeFileRepository {
 	
 	public NoticeFileVO fileDown(NoticeFileVO noticeFileVO) throws Exception;
 	
+	public int fileDelete(NoticeFileVO noticeFileVO) throws Exception;
 }

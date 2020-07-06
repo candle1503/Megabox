@@ -5,9 +5,9 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/resources/css/main.css"	media="all">
-<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
- <link rel="shortcut icon" href="/resources/icon/favicon.ico">
+<link rel="stylesheet" href="/resources/static/css/main.css"	media="all">
+<link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
+ <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
 </head>
 <body>
 <c:import url="./template/header.jsp"></c:import>
@@ -1212,9 +1212,7 @@
 			
 			<c:import url="./template/footer.jsp"></c:import>
 			
-</body>
 
 </body>
-
 
 </html>

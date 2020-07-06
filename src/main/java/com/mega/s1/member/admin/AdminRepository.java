@@ -5,7 +5,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mega.s1.member.MemberVO;
+import com.mega.s1.movie.MovieVO;
 import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import com.mega.s1.util.Pager;
 
 @Mapper
@@ -32,4 +35,27 @@ public interface AdminRepository {
 	//theaterUpdate
 	public int theaterUpdate(TheaterVO theaterVO) throws Exception;
 	
+	//theaterRoomSet
+	public int theaterRoomSet(TheaterRoomVO theaterRoomVO) throws Exception;
+	
+	//getRoomList
+	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception;
+	
+	//getMovieList
+	public List<MovieVO> movieTimeCheck(String choosedTime) throws Exception;
+	
+	//getTheaterNum
+	public int getTheaterNum(TheaterVO theaterVO) throws Exception;
+	
+	//setTheaterRoom
+	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	
+	//getTheaterRoom
+	public RoomMovieTimeVO getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	 
+	//setSeat
+	public void setSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	
+	//getTimeCode
+	public int getTimeCode(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 }

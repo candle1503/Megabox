@@ -43,4 +43,38 @@
 		update theater set name=#{name}, localCode=#{localCode}, address=#{address}, info=#{info}, parking=#{parking} where theaterNum = #{theaterNum}
 	</update>
 	
+	<insert id="theaterRoomSet" parameterType="TheaterRoomVO" keyProperty="theaterRoomCode" useGeneratedKeys="true">
+		insert into theaterRoom values (#{name},#{roomName},0,100)
+	</insert>
+	
+	<select id="getRoomList" parameterType="TheaterVO" resultType="TheaterRoomVO">
+		select * from theaterRoom where name=#{name}
+	</select>
+	
+	<select id="movieTimeCheck" resultType="MovieVO" parameterType="String">
+	<![CDATA[ 
+		select * from movie where openDay  < str_to_date(#{choosedTime} , '%Y-%m-%d')
+		]]> 
+	</select >
+	
+	<select id="getTheaterNum" resultType="Integer" parameterType="TheaterVO">
+		select theaterNum from theater where name=#{name}
+	</select>
+	
+	<insert id="setTheaterRoom" parameterType="RoomMovieTimeVO" keyProperty="timeCode" useGeneratedKeys="true">
+		insert into roomMovieTime values (0,#{startTime},#{roomName},#{movieNum},#{theaterRoomCode},#{theaterNum})
+	</insert>
+	
+	<select id="getTheaterRoom" parameterType="RoomMovieTimeVO" resultType="RoomMovieTimeVO">
+		select * from roomMovieTime where roomName= #{roomName} and date_format(startTime, '%Y-%c-%e')= #{startDay} limit 1
+	</select>
+	
+	<insert id="setSeat" parameterType="RoomMovieTimeVO">
+		insert into seat values (0,#{timeCode},#{seatNum})
+	</insert>
+	
+	<select id="getTimeCode" parameterType="RoomMovieTimeVO" resultType="Integer">
+		select timeCode from roomMovieTime where startTime=#{startTime} and roomName=#{roomName}
+	</select>
+	
 </mapper>

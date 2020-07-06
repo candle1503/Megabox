@@ -13,5 +13,9 @@
 	<select id="fileDown" parameterType="NoticeFileVO" resultType="NoticeFileVO">
 		select * from noticeFile where fileNum = #{fileNum}
 	</select>
+	
+	<delete id="fileDelete" parameterType="NoticeFileVO">
+		delete from noticeFile where num = #{num}
+	</delete>
 
 </mapper>

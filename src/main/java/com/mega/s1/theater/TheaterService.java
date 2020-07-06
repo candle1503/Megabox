@@ -11,6 +11,10 @@ public class TheaterService {
 	@Autowired
 	private TheaterRepository theaterRepository;
 	
+	public List<TheaterVO> theaterNewBranchSelect() throws Exception{
+		return theaterRepository.theaterNewBranchSelect();		
+	}
+	
 	public TheaterVO theaterBranchSelect(TheaterVO theaterVO) throws Exception{
 		return theaterRepository.theaterBranchSelect(theaterVO);		
 	}
@@ -53,6 +57,10 @@ public class TheaterService {
 	public List<TheaterVO> theaterNameJeju() throws Exception {
 
 		return theaterRepository.theaterNameJeju();
+	}
+	
+	public String selectTheaterName(TheaterVO theaterVO) throws Exception{
+		return theaterRepository.selectTheaterName(theaterVO);
 	}
 
 }
