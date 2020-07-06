@@ -2,6 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:if test="${bookingMovieArSize eq 0}">
+	<div class="no-result" style="text-align: center; margin-top: 70px;">
+		<i class="iconset ico-movie-time"></i>
+
+		<p class="txt">
+			현재 날짜에 상영중인<br> 영화가 없습니다.<br> 다른 날짜를 선택해주세요.
+		</p>
+	</div>
+</c:if>
+
 <c:forEach items="${bookingMovieAr}" var="bmList" varStatus="i">
 	<li id="bookingMovie${i.count}" class="bookingMovie-Name">
 		<button type="button" id="movieBtn${i.count}" class="btn">
@@ -22,23 +32,10 @@
 				<span class="txt" >/${bmList.movieNum}</span>
 		</button>
 	</li>
-	
-	<c:if test="${bookingMovieArSize eq 0}">
-		<div class="no-result" id="playScheduleNonList">
-			<i class="iconset ico-movie-time"></i>
-
-			<p class="txt">
-				현재 날짜에 상영중인 영화가 없습니다.<br> 다른 날짜를 선택해주세요.
-			</p>
-		</div>
-	</c:if>
 </c:forEach>
 
 
 <script type="text/javascript">
-	var size = "${bookingMovieArSize}";
-	console.log(size);
-
 	for (var bml = 1; bml < 10; bml++) {
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
 			$(this).addClass("on");
@@ -46,11 +43,6 @@
 			var movieNum = parseInt(txt[1]);
 
 			console.log(movieNum);
-
-			/* $.ajax({
-				url:"",
-				
-			}); */
 
 		});
 	}

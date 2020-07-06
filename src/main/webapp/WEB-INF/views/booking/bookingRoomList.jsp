@@ -2,6 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:if test="${bookingRoomArSize eq 0}">
+	<div class="no-result" style="text-align: center;">
+		<i class="iconset ico-movie-time"></i>
+
+		<p class="txt">
+			현재 지역에 상영중인 영화가 없습니다.<br> 다른 지역을 선택해주세요.
+		</p>
+	</div>
+</c:if>
 
 <c:forEach items="${bookingRoomAr}" var="brList" varStatus="i">
 	<li class="bookingRoomList-room"><button type="button" class="btn">

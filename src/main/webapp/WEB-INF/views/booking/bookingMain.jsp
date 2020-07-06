@@ -801,7 +801,7 @@ function fn_validateDateYn(param) {
 
                                 <!-- 영화, 영화관 선택 안했을때 -->
                                 <!---->
-                                <c:if test="${bookingRoomArSize eq 0}">
+                                <%-- <c:if test="${bookingRoomArSize eq 0}">
 	                                <div class="no-result" id="playScheduleNonList">
 	                                    <i class="iconset ico-movie-time"></i>
 											
@@ -810,7 +810,7 @@ function fn_validateDateYn(param) {
 	                                        상영시간표를 비교하여 볼 수 있습니다.
 	                                    </p>
 	                                </div>
-                                </c:if>
+                                </c:if> --%>
 
 
                                 <!-- 영화, 영화관 선택 했을때 -->
