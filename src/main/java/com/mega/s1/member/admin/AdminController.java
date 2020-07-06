@@ -115,10 +115,12 @@ public class AdminController {
 	@GetMapping("setTheaterRoom")
 	public ModelAndView setTheaterRoom(TheaterVO theaterVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		
 		int theaterNum = adminService.getTheaterNum(theaterVO);
 		
 		List<TheaterRoomVO> roomVOs = adminService.getRoomList(theaterVO);
+		mv.addObject("roomMovieTimeVO", roomMovieTimeVO);
 		mv.addObject("list", roomVOs);
 		mv.addObject("theaterNum", theaterNum);
 		mv.addObject("name", theaterVO.getName());
