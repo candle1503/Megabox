@@ -454,11 +454,8 @@ function fn_validateDateYn(param) {
 																<ul>
 																	<li class="bookingLocal-Local"><button id="localBtnS1" type="button" 
 																			value="목동" >목동</button></li>
-																	<li class="bookingLocal-Local"><button id="localBtnS2" type="button" brch-no="1359"
-																			brch-nm="강남대로(씨티)" brch-eng-nm="Gangnam-daero (City)"
-																			form-at="Y" area-cd="10" area-cd-nm="서울" spclb-yn="N"
-																			brch-bokd-unable-at="N" brch-popup-at="Y"
-																			brch-popup-no="988" value="쌍용">쌍용</button></li>
+																	<li class="bookingLocal-Local"><button id="localBtnS2" type="button" 
+																			value="쌍용">쌍용</button></li>
 																	<li class="bookingLocal-Local"><button id="localBtnS3" type="button" brch-no="1341"
 																			brch-nm="강동" brch-eng-nm="Gangdong" form-at="Y"
 																			area-cd="10" area-cd-nm="서울" spclb-yn="N"
@@ -897,8 +894,6 @@ function fn_validateDateYn(param) {
 	}
 
 	var startDate = startYear + "-" + startMonth + "-" + startDaily;
-	console.log(startDate);
-	
 
 	if(count==0){
 		var startTime = startDay;
@@ -1010,17 +1005,29 @@ function fn_validateDateYn(param) {
 	
 	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
 		$("#bookingMovie-List").empty();
-		var days = $(this).text().split('/');
-		startTime = parseInt(days[0]);
+		$("#bookingRoom-List").empty();
+		/* var days = $(this).text().split('/');
+		startDaily = parseInt(days[0]); */
 
-		startTime = startTime+"";
+		var startYearCut = $(this).text().substr(0,6);
+		console.log(startYearCut);
+		var startMonthCut = $(this).text().substr(7,2);
+		console.log(startMonthCut);
+		var startDailyCut = $(this).text().substr(9,3); 
+		console.log(startDailyCut);
+
+		startYear = startYearCut.trim();
+		startMonth = startMonthCut.trim();
+		startDaily = startDailyCut.trim();
+
+		startDate = startYear + "-" + startMonth + "-" + startDaily;
+
+		console.log("sy:"+startYear);
+		console.log("sm:"+startMonth);
+		console.log("sd:"+startDaily);
+		console.log("sD:"+startDate);
 		
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		
-		//alert(startTime);
-		bookingMovieList(startTime);
+		bookingMovieList(startDate);
 	});
 	
 
@@ -1029,6 +1036,17 @@ function fn_validateDateYn(param) {
 	var lastDepth;
 	var lastlocal;
 	//localCode 눌렀을 때
+	
+	/* for(var j=1; j<9; j++){
+		$(".bookingLocal-Local").on("click", "#local"+j, function(){
+			$(lastDepth).removeClass("on");
+			$(lastlocal).removeClass("on");
+			$(this).addClass("on");
+			$("#localDepth"+j).addClass("on");
+			lastDepth = "#localDepth"+j;
+			lastlocal = "#local"+j;
+		});
+	} */
 	$(".bookingLocal-Local").on("click", "#local1", function(){
 		$(lastDepth).removeClass("on");
 		$(lastlocal).removeClass("on");
@@ -1036,16 +1054,16 @@ function fn_validateDateYn(param) {
 		$("#localDepth1").addClass("on");
 		lastDepth = "#localDepth1";
 		lastlocal = "#local1";
-
-		})
-	$(".bookingLocal-Local").on("click", "#local2", function(){
+	});
+	
+	/* $(".bookingLocal-Local").on("click", "#local2", function(){
 		$(lastDepth).removeClass("on");
 		$(lastlocal).removeClass("on");
 		$(this).addClass("on");
 		$("#localDepth2").addClass("on");
 		lastDepth = "#localDepth2";
 		lastlocal = "#local2";
-		})
+		}); */
 	
 // 	$(".bookingLocal-Local").on("click", "#local2", function(){
 // 		$(this).addClass("on");
@@ -1054,18 +1072,28 @@ function fn_validateDateYn(param) {
 	 
 
 	//예매 날짜별로 극장을 선택했을 때 리스트 부분//
-	function bookingRoomList(startTime, name){
-		$.get("bookingRoomList?startTime="+startTime+"&name="+name, function(result){
+	function bookingRoomList(startDate, name){
+		$.get("bookingRoomList?startTime="+startDate+"&name="+name, function(result){
 			$("#bookingRoom-List").append(result);
 		});
 	}
 
-	var name = "";
+
+
+	//test
 	
-	//name
+
+	
+	//name 눌렀을 때
+	var name = "";
+
+	var localBtnCss;
+	
 	for(var i=1; i<10; i++){
 		
 		$("#localBtnS"+i).on("click" , function(){
+			//localBtnCss = ("#localBtnS"+i);
+			$(this).removeClass("on");
 			$(this).addClass("on");
 			$("#bookingRoom-List").empty();
 
@@ -1073,8 +1101,10 @@ function fn_validateDateYn(param) {
 			/* alert(name);	
 			alert(startTime); */
 
-			bookingRoomList(startTime, name);
+			bookingRoomList(startDate, name);
 		});
+
+		
 
 		
 		/* $(".bookingLocal-Local").on("click", "#localBtnS"+i, function(){

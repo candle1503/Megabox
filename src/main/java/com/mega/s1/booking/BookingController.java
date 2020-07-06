@@ -23,6 +23,8 @@ public class BookingController {
 	private BookingService bookingService;
 	@Autowired
 	private MovieService movieService;
+	@Autowired
+	private BookingTimeService bookingTimeService;
 
 	@GetMapping("bookingMain")
 	public void bookingMain() throws Exception {
@@ -125,7 +127,7 @@ public class BookingController {
 				endTimeHour = midnight - endTimeHour;
 				endTimeHour = endTimeHour * -1;
 			}
-			System.out.println("endTimeHourR:"+endTimeHour);
+			//System.out.println("endTimeHourR:"+endTimeHour);
 			
 			//-----------------------------------//
 			
