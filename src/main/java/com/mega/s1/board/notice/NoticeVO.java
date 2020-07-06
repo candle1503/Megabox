@@ -12,7 +12,11 @@ import lombok.Data;
 @Data
 public class NoticeVO extends BoardVO {
 	
+
 	private String name;
+
+	private String localCode;
+	
 
 	private String separate;
 	
