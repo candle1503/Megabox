@@ -64,10 +64,21 @@ public class BookingController {
 		
 		Map<Integer, String> startTimeMap = new HashMap<>();
 		Map<Integer, String> movieNameMap = new HashMap<>();
+		Map<Integer, String> endTimeMap = new HashMap<>();
 		
+		//영화상영 시간
 		String startTime = "";
 		int movieNum = 0;
-		String playTime = "";
+		//영화 플레이시간
+		int playTime = 0;
+		
+		//영화 상영시간 데이터
+		int startTimeHour = 0;
+		int startTimeMinute = 0;
+		
+		int endTimeHour = 0;
+		int endTimeMinute = 0;
+		
 		String endTime = "";
 		
 		for(int i=0; i<bookingRoomAr.size(); i++) {
@@ -87,12 +98,67 @@ public class BookingController {
 			
 			mv.addObject("vom", movieNameMap);
 			
-			playTime = movieVO.getPlayTime()+"";
+			//영화 끝나는 시간 계산//
+			playTime = movieVO.getPlayTime();
 			
+			startTimeHour = Integer.parseInt(startTime.substring(0, 2));
+			//System.out.println("startTimeHour:"+startTimeHour);
+			
+			startTimeMinute = Integer.parseInt(startTime.substring(3, 5));
+			//System.out.println("startTimeMinute:"+startTimeMinute);
+			
+			int playTimeHour = playTime/60;
+			//System.out.println("playTimeHour:"+playTimeHour);
+			int playTimeMinute = playTime%60;
+			//System.out.println("playTimeMinute:"+playTimeMinute);
+			
+			endTimeHour = startTimeHour + playTimeHour;
+			//System.out.println("endTimeHour:"+endTimeHour);
+			
+			endTimeMinute = startTimeMinute + playTimeMinute + 10;
+			//System.out.println("endTimeMinute:"+endTimeMinute);
+			
+			int midnight = 24;
+			
+			//24시로 넘어가면 1시로 넘어가게 변경
+			if(endTimeHour >= 24) {
+				endTimeHour = midnight - endTimeHour;
+				endTimeHour = endTimeHour * -1;
+			}
+			System.out.println("endTimeHourR:"+endTimeHour);
+			
+			//-----------------------------------//
+			
+			int midnightM = 60;
+			
+			if(endTimeMinute >= 60) {
+				endTimeMinute = midnightM - endTimeMinute;
+				endTimeMinute = endTimeMinute * -1;
+				endTimeHour++;
+			}
+			//System.out.println("endTimeMinuteR:"+endTimeMinute);
+			
+			String endTimeHourResult = endTimeHour+""; 
+						
+			//1시를 문자열 01로 변경 
+			if(endTimeHourResult.length() < 2) {
+				endTimeHourResult = 0+endTimeHourResult;				
+			}
+			//System.out.println("endTimeHourResult:"+endTimeHourResult);
+			
+			String endTimeMinuteResult = endTimeMinute+"";
+			
+			if(endTimeMinuteResult.length() < 2) {
+				endTimeMinuteResult = 0+endTimeMinuteResult;
+			}
+			//System.out.println("endTimeMinuteResult:"+endTimeMinuteResult);
+			
+			endTime = endTimeHourResult + ":" + endTimeMinuteResult;
+			
+			endTimeMap.put(i, endTime);
+			mv.addObject("etm", endTimeMap);
 			
 		}
-		System.out.println("play:"+movieVO.getPlayTime());
-		
 		
 		mv.addObject("bookingRoomAr", bookingRoomAr);
 		mv.setViewName("booking/bookingRoomList");

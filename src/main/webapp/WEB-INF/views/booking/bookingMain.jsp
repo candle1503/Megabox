@@ -884,9 +884,28 @@ function fn_validateDateYn(param) {
 	var date = new Date();
 	var startDay = parseInt((date.getDate()+100+"").substr(1,3));
 
+	var startYear = date.getFullYear();
+	var startMonth = date.getMonth()+1+"";
+	var startDaily = startDay+"";
+	
+	if(startMonth.length < 2){
+		startMonth = 0 + startMonth;
+	}	
+
+	if(startDaily.length < 2){
+		startDaily = 0 + startDaily;
+	}
+
+	var startDate = startYear + "-" + startMonth + "-" + startDaily;
+	console.log(startDate);
+	
+
 	if(count==0){
 		var startTime = startDay;
 	}
+
+	
+	
 
 	//console.log(startDay);
 	 
@@ -949,7 +968,7 @@ function fn_validateDateYn(param) {
 	
 	
 	//예매 날짜별로 영화 리스트 부분//
-	startTime = startDay+"";
+	/* startTime = startDay+"";
 	
 	if(startTime.length<2){
 		startTime = 0+startTime;
@@ -976,20 +995,62 @@ function fn_validateDateYn(param) {
 		
 		//alert(startTime);
 		bookingMovieList(startTime);
+	}); */
+
+
+	//-----------------------------------------------
+	
+	bookingMovieList(startDate);
+	
+	function bookingMovieList(startDate){
+		$.get("bookingMovieList?startTime="+startDate, function(result){
+			$("#bookingMovie-List").append(result);
+		});	
+	}
+	
+	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
+		$("#bookingMovie-List").empty();
+		var days = $(this).text().split('/');
+		startTime = parseInt(days[0]);
+
+		startTime = startTime+"";
+		
+		if(startTime.length<2){
+			startTime = 0+startTime;
+		}
+		
+		//alert(startTime);
+		bookingMovieList(startTime);
 	});
+	
 
 	
 	//예매 날짜별로 영화 리스트 부분//
-
+	var lastDepth;
+	var lastlocal;
 	//localCode 눌렀을 때
 	$(".bookingLocal-Local").on("click", "#local1", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
 		$(this).addClass("on");
 		$("#localDepth1").addClass("on");
-	});
+		lastDepth = "#localDepth1";
+		lastlocal = "#local1";
+
+		})
 	$(".bookingLocal-Local").on("click", "#local2", function(){
+		$(lastDepth).removeClass("on");
+		$(lastlocal).removeClass("on");
 		$(this).addClass("on");
 		$("#localDepth2").addClass("on");
-	});
+		lastDepth = "#localDepth2";
+		lastlocal = "#local2";
+		})
+	
+// 	$(".bookingLocal-Local").on("click", "#local2", function(){
+// 		$(this).addClass("on");
+// 		$("#localDepth2").addClass("on");
+// 	});
 	 
 
 	//예매 날짜별로 극장을 선택했을 때 리스트 부분//
