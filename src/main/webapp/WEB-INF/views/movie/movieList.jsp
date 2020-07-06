@@ -43,7 +43,10 @@
 		</div>
 	</div>
 </div>
+<div id="contents">
 <div class="inner-wrap">
+	<h2 class="tit">전체영화</h2>
+
     <div class="tab-list fixed">
         <ul>
             <li class="on"><a href="#" title="주요정보 탭으로 이동" id="inform">주요정보</a></li>
@@ -51,7 +54,7 @@
             
             <li><a href="#" title="예고편/스틸컷 탭으로 이동" id="preview">예고편/스틸컷</a></li>
         </ul>
-    </div>
+    </div><br><br><br><br>
 <div class="movie-list">
 	<ol class="list" id="movieList">
 		<c:forEach var="movie" items="${movie }" varStatus="vs">	
@@ -90,7 +93,7 @@
      
 </div>
 <!--// inner-wrap -->
-
+</div>
     
 	<div class="quick-area" style="display: block;">
 		<a href="" class="btn-go-top" title="top" style="position: fixed;">top</a>

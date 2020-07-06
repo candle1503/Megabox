@@ -32,10 +32,10 @@
 
 	<nav id="gnb">
 		<ul class="gnb-depth1">
-			<li><a href="/movie" title="영화">영화</a>
+			<li><a href="${pageContext.request.contextPath}/movie/movieList" title="영화">영화</a>
 				<div class="gnb-depth2">
 					<ul>
-						<li><a href="/movie" title="전체영화">전체영화</a></li>
+						<li><a href="${pageContext.request.contextPath}/movie/movieList" title="전체영화">전체영화</a></li>
 						<li><a href="/curation/specialcontent" title="큐레이션">큐레이션</a></li>
 
 						<li id="festivalArea" style="display: none;"><a
