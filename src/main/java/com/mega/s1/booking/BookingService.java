@@ -19,4 +19,8 @@ public class BookingService {
 		return bookingRepository.bookingRoomList(bookingVO);
 	}
 	
+	public List<BookingVO> bookingFinalResult(BookingVO bookingVO) throws Exception{
+		return bookingRepository.bookingFinalResult(bookingVO);
+	}
+	
 }

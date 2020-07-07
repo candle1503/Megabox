@@ -16,7 +16,17 @@
 		select R.*, TR.*
 		from roomMovieTime R left join theaterRoom TR
 		on (R.theaterRoomCode = TR.theaterRoomCode)
-		where date_format(startTime, '%Y-%m-%d') = #{startTime} and name = #{name} order by startTime asc
+		where date_format(startTime, '%Y-%m-%d') = #{startTime} and name = #{name}
+		order by startTime asc
+	</select>
+	
+	<select id="bookingFinalResult" parameterType="BookingVO" resultType="BookingVO">
+		select R.*, TR.*
+		from roomMovieTime R left join theaterRoom TR
+		on (R.theaterRoomCode = TR.theaterRoomCode)
+		where date_format(startTime, '%Y-%m-%d') = #{startTime} and name = #{name}
+		and movieNum = #{movieNum}
+		order by startTime asc
 	</select>
 
 </mapper>

@@ -10,6 +10,10 @@
 <c:import url="../template/header_css.jsp"></c:import>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+
+
+
 
 <style type="text/css">
 
@@ -34,7 +38,6 @@
 	::-webkit-scrollbar-track {background-color: #ebebeb;}
 	::-webkit-scrollbar-thumb {background-color: #555; border-radius: 2px;}
 	
-	
 </style>
 
 
@@ -44,7 +47,7 @@
 
 <body class="body-iframe">
         <!-- inner-wrap -->
-        <div class="inner-wrap" style="padding-top:40px; padding-bottom:100px;">
+        <div class="inner-wrap" style="padding-top:40px; padding-bottom:100px; margin-top: 130px;">
             <input type="hidden" id="playDe" name="playDe" value="2020.06.18">
             <input type="hidden" id="crtDe" name="crtDe" value="2020.06.18">
 
@@ -61,7 +64,7 @@
                 
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var requestPayAt = "N";
 
 $(function(){
@@ -257,7 +260,7 @@ function fn_validateDateYn(param) {
 	}
 }
 
-</script>
+</script> -->
 <!-- cti 일때만 출력 -->
 <div class="cti-area" style="display:none">
     <p>이름</p>
@@ -423,18 +426,16 @@ function fn_validateDateYn(param) {
 										<ul id="bookingLocal-List">
 											<li class="bookingLocal-Local"><button type="button"
 													class="btn" id="local1">
-													<!-- btn on 하면 활성화  / has-issue 하면 왼쪽에 점 생김-->
+													<!-- btn on 하면 활성화  / has-issue 왼쪽 점 (신규)-->
 													<span class="txt">서울</span>
 												</button>
 												<div id="localDepth1" class="depth">
 													<!-- on (name출력) -->
-													<!-- mCS_no_scrollbar 활성화되면 지워짐 -->
 													<div
 														class="detail-list m-scroll area-cd10 mCustomScrollbar _mCS_4 mCS_no_scrollbar">
 														<div id="mCSB_4"
 															class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 															style="max-height: none;" tabindex="0">
-															<!-- mCS_no_scrollbar_y 활성화되면 지워짐 -->
 															<div id="mCSB_4_container"
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0; overflow: auto; height: 300px;" dir="ltr">
@@ -818,208 +819,15 @@ function fn_validateDateYn(param) {
 <div class="normalStyle" style="display:none;position:fixed;top:0;left:0;background:#000;opacity:0.7;text-indent:-9999px;width:100%;height:100%;z-index:100;">닫기</div><div class="alertStyle" style="display:none;position:fixed;top:0px;left:0px;background:#000;opacity:0.7;width:100%;height:100%;z-index:5005;"></div><div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body>
 
 
+
 <c:import url="../template/footer.jsp"></c:import>
 
 
 
-<script type="text/javascript">
+<script type="text/javascript" src="../resources/static/js/bookingMain.js">
 
-	//예매 날짜 리스트 부분 start//
-	var count = 0;
-	var date = new Date();
-	var startDay = parseInt((date.getDate()+100+"").substr(1,3));
-
-	var startYear = date.getFullYear();
-	var startMonth = date.getMonth()+1+"";
-	var startDaily = startDay+"";
-	
-	if(startMonth.length < 2){
-		startMonth = 0 + startMonth;
-	}	
-
-	if(startDaily.length < 2){
-		startDaily = 0 + startDaily;
-	}
-
-	var startDate = startYear + "-" + startMonth + "-" + startDaily;
-
-	if(count==0){
-		var startTime = startDay;
-	}
-	 
-	bookingTimeZone(startDay);
-	
-	$("#next").click(function(){
-		$("#bookingTime-list").empty();
-		startDay = startDay + 1;
-		count++;
-		bookingTimeZone(startDay);
-	});
-	
-	$("#prev").click(function(){
-		$("#bookingTime-list").empty();
-		startDay = startDay - 1;
-		count--;
-		bookingTimeZone(startDay);
-	});
-
-	var miniTimeCss;
-	
-	function bookingTimeZone(startDay){
-		$.get("bookingTimeZone?startDay="+startDay, function(result){
-			$("#bookingTime-list").append(result);
-		});
-	
-		if(count == 0){
-			$("#prev").prop("disabled", "disabled");
-			$("#next").removeAttr("disabled");
-		} else if(count > 0 && count < 7){
-			$("#prev").removeAttr("disabled");
-			$("#next").removeAttr("disabled");
-		} else if(count == 14){
-			$("#prev").removeAttr("disabled");
-			$("#next").prop("disabled", "disabled");
-		}
-	}
-	
-	$(".wrap").on("mouseover", ".bookingTime-list", function(){
-		$(this).css("border-bottom", "2px solid #503396");
-
-		var timeCss;
-
-		for(var timeNum=1; timeNum<15; timeNum++){
-			$(".bookingTime-list").on("click", "#timeBtn"+timeNum, function(){
-				$("#timeBtn"+timeCss).removeClass("on");
-				$(this).addClass("on");
-				timeCss = $(this).attr('id').replace("timeBtn", '');
-			}); 	
-		}
-	});
-	
-	$(".wrap").on("mouseout", ".bookingTime-list", function(){
-		$(this).css("border-bottom", "1px solid #d8d9db");
-	});
-	//예매 날짜 리스트 부분 end//
-	
-	
-	//예매 날짜별로 영화 리스트 부분 start//
-	/* startTime = startDay+"";
-	
-	if(startTime.length<2){
-		startTime = 0+startTime;
-	}
-	bookingMovieList(startTime);
-	//startTime = parseInt(startTime);
-	
-	function bookingMovieList(startTime){
-		$.get("bookingMovieList?startTime="+startTime, function(result){
-			$("#bookingMovie-List").append(result);
-		});	
-	}
-	
-	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
-		$("#bookingMovie-List").empty();
-		var days = $(this).text().split('/');
-		startTime = parseInt(days[0]);
-
-		startTime = startTime+"";
-		
-		if(startTime.length<2){
-			startTime = 0+startTime;
-		}
-		
-		//alert(startTime);
-		bookingMovieList(startTime);
-	}); */
-
-
-	//-----------------------------------------------
-	
-	bookingMovieList(startDate);
-	
-	function bookingMovieList(startDate){
-		$.get("bookingMovieList?startTime="+startDate, function(result){
-			$("#bookingMovie-List").append(result);
-		});	
-	}
-	
-	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
-		$("#bookingMovie-List").empty();
-		$("#bookingRoom-List").empty();
-		/* var days = $(this).text().split('/');
-		startDaily = parseInt(days[0]); */
-
-		var startYearCut = $(this).text().substr(0,6);
-		var startMonthCut = $(this).text().substr(7,2);
-		var startDailyCut = $(this).text().substr(9,3); 
-
-		startYear = startYearCut.trim();
-		startMonth = startMonthCut.trim();
-		startDaily = startDailyCut.trim();
-
-		startDate = startYear + "-" + startMonth + "-" + startDaily;
-		
-		bookingMovieList(startDate);
-	});
-	//예매 날짜별로 영화 리스트 부분 end//
-	
-	
-	//localCode 눌렀을 때
-	for(var localNum=1; localNum<9; localNum++){
-
-		var lastLocal;
-		var lastDepth;
-		var countDepth;
-		
-		$(".bookingLocal-Local").on("click", "#local"+localNum, function(){
-			$("#local"+lastLocal).removeClass("on");
-			$(this).addClass("on");
-			lastLocal = $(this).attr('id').replace("local", '');
-
-			$(lastDepth).removeClass("on");
-			countDepth = $(this).attr('id').replace("local", '');
-			lastDepth = "#localDepth"+countDepth;
-			$(lastDepth).addClass("on");
-		});
-	}
-	
-
-	//예매 날짜별로 극장을 선택했을 때 리스트 부분 start//
-	function bookingRoomList(startDate, name){
-		$.get("bookingRoomList?startTime="+startDate+"&name="+name, function(result){
-			$("#bookingRoom-List").append(result);
-		});
-	}
-
-
-	
-	//name 눌렀을 때
-	var name = "";
-	
-	for(var nameNum=1; nameNum<51; nameNum++){
-
-		var localBtnCss;
-		
-		$(".localList").on("click", "#localBtnS"+nameNum, function(){
-			$("#bookingRoom-List").empty();
-
-			$("#localBtnS"+localBtnCss).removeClass("on");
-			$(this).addClass("on");
-			localBtnCss = $(this).attr('id').replace('localBtnS', '');
-			
-			name = encodeURIComponent($(this).val());
-			bookingRoomList(startDate, name);
-		});
-		
-	}
-	//예매 날짜별로 극장을 선택했을 때 리스트 부분 end//
-	
-
-	//
-	
-	
-	
 </script>
+
 
 </body>
 </html>

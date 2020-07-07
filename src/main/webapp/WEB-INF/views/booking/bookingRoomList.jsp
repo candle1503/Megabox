@@ -13,7 +13,7 @@
 </c:if>
 
 <c:forEach items="${bookingRoomAr}" var="brList" varStatus="i">
-	<li class="bookingRoomList-room"><button type="button" class="btn">
+	<li class="bookingRoomList-room"><button type="button" class="btn" id="roomBtn${i.count}">
 			<div class="legend"></div>
 			<span class="time"><strong title="상영 시작">${stm[i.index]}</strong><em
 				title="상영 종료">~${etm[i.index]}</em></span><span class="title">
@@ -26,8 +26,11 @@
 		</button></li>
 </c:forEach>
 
-<script type="text/javascript">
 
+
+<script type="text/javascript" src="../resources/static/js/bookingRoomList.js">
 
 </script>
+
+
 

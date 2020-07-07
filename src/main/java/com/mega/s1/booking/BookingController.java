@@ -149,6 +149,13 @@ public class BookingController {
 			mv.addObject("etm", endTimeMap);
 			
 		}
+//		System.out.println("movieNumber:"+movieNumber);
+//		List<BookingVO> finalResultAr = bookingService.bookingFinalResult(bookingVO);
+//		bookingVO.setMovieNum(movieNumber);
+//		finalResultAr.add(bookingVO);
+//		
+//		mv.addObject("finalResultAr", finalResultAr);
+		
 		
 		mv.addObject("bookingRoomArSize", bookingRoomArSize);
 		mv.addObject("bookingRoomAr", bookingRoomAr);
