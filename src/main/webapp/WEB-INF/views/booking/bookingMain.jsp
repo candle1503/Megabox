@@ -30,6 +30,11 @@
 		width: 3.15%;
 	}
 	
+	::-webkit-scrollbar{width: 5px;}
+	::-webkit-scrollbar-track {background-color: #ebebeb;}
+	::-webkit-scrollbar-thumb {background-color: #555; border-radius: 2px;}
+	
+	
 </style>
 
 
@@ -279,8 +284,6 @@ function fn_validateDateYn(param) {
                     <div class="time-schedule quick">
                         <div class="wrap">
 
-							<!-- <button id="prev" class="timeButton">&lt</button> -->
-
                             <!-- 이전날짜 -->
                             <button id="prev" class="btn-pre timeButton" title="이전 날짜 보기">
                                 <i class="iconset ico-cld-pre"></i> <em>이전</em>
@@ -311,8 +314,6 @@ function fn_validateDateYn(param) {
                                 <i class="iconset ico-cld-next"></i> <em>다음</em>
                             </button>
                             <!--// 다음날짜 -->
-                            
-                            <!-- <button id="next" class="timeButton">&gt</button> -->
 
                             <!-- 달력보기 -->
                             <div class="bg-line">
@@ -324,14 +325,6 @@ function fn_validateDateYn(param) {
                         </div>
                     </div>
                     <!--// time-schedule -->
-
-
-					<script type="text/javascript">
-						
-						
-					</script>
-
-
 
                     <!-- quick-reserve-area -->
                     <div class="quick-reserve-area">
@@ -345,21 +338,21 @@ function fn_validateDateYn(param) {
 
                                 <!-- all : 전체 -->
                                 <div class="all-list">
-                                    <button type="button" class="btn-tab on" id="movieAll">전체</button>
+                                    <button type="button" class="btn-tab on" id="movieAll" style="width: 230px; ">전체</button>
                                     <div class="list">
 									<div class="scroll m-scroll mCustomScrollbar _mCS_1"
 										id="movieList">
-										<div id="mCSB_1"
-											class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-											style="max-height: none;" tabindex="0">
 											<div id="mCSB_1_container" class="mCSB_container"
-												style="position: relative; top: 0; left: 0;" dir="ltr">
+												style="position: relative; top: 0; left: 0; overflow: auto; height: 310px;" dir="ltr">
 												
 												<ul id="bookingMovie-List">
 
 
 												</ul>
 											</div>
+										<!-- <div id="mCSB_1"
+											class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+											style="max-height: none;" tabindex="0">
 											<div id="mCSB_1_scrollbar_vertical"
 												class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical"
 												style="display: block;">
@@ -371,19 +364,19 @@ function fn_validateDateYn(param) {
 													<div class="mCSB_draggerRail"></div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
                                 </div>
                                 <!--// all : 전체 -->
 
                                 <!-- other-list  : 큐레이션 -->
-                                <div class="other-list">
+                                <!-- <div class="other-list">
                                     <button type="button" class="btn-tab" id="movieCrtn">큐레이션</button>
                                     <div class="list">
                                         
                                     </div>
-                                </div>
+                                </div> -->
                                 <!--// other-list  : 큐레이션 -->
                             </div>
                             <!--// list-area -->
@@ -423,7 +416,7 @@ function fn_validateDateYn(param) {
 
                                 <!-- all-list : 전체 -->
                                 <div class="all-list">
-                                    <button type="button" class="btn-tab on">전체</button>
+                                    <button type="button" class="btn-tab on" style="width: 310px;">전체</button>
                                     <div class="list">
                                         <div class="scroll" id="brchList">
                                         
@@ -444,17 +437,17 @@ function fn_validateDateYn(param) {
 															<!-- mCS_no_scrollbar_y 활성화되면 지워짐 -->
 															<div id="mCSB_4_container"
 																class="mCSB_container mCS_no_scrollbar_y"
-																style="position: relative; top: 0; left: 0;" dir="ltr">
+																style="position: relative; top: 0; left: 0; overflow: auto; height: 300px;" dir="ltr">
 																<ul>
 																	<li class="localList"><button id="localBtnS1" type="button" 
 																			value="목동" >목동</button></li>
 																	<li class="localList"><button id="localBtnS2" type="button" 
 																			value="쌍용">쌍용</button></li>
 																	<li class="localList"><button id="localBtnS3" type="button"
-																					>강동</button></li>
+																			value="홍대">홍대</button></li>
 																</ul>
 															</div>
-															<div id="mCSB_4_scrollbar_vertical"
+															<!-- <div id="mCSB_4_scrollbar_vertical"
 																class="mCSB_scrollTools mCSB_4_scrollbar mCS-light mCSB_scrollTools_vertical">
 																<div class="mCSB_draggerContainer">
 																	<div id="mCSB_4_dragger_vertical" class="mCSB_dragger"
@@ -464,7 +457,7 @@ function fn_validateDateYn(param) {
 																	</div>
 																	<div class="mCSB_draggerRail"></div>
 																</div>
-															</div>
+															</div> -->
 														</div>
 													</div>
 												</div></li>
@@ -482,24 +475,15 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li><button id="btn" type="button" brch-no="1372"
-																			brch-nm="강남" brch-eng-nm="Gangnam" form-at="Y"
-																			area-cd="10" area-cd-nm="서울" spclb-yn="N"
-																			brch-bokd-unable-at="N" brch-popup-at="Y"
-																			brch-popup-no="998">고양</button></li>
-																</ul>
-															</div>
-															<div id="mCSB_5_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_5_scrollbar mCS-light mCSB_scrollTools_vertical"
-																style="display: block;">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_5_dragger_vertical" class="mCSB_dragger"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 141px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
+																	<li class="localList"><button id="localBtnS4" type="button"
+																			value="고양스타필드">고양스타필드</button></li>
+																	<li class="localList"><button id="localBtnS5" type="button"
+																			value="분당">분당</button></li>
+																	<li class="localList"><button id="localBtnS6" type="button"
+																			value="수원">수원</button></li>
+																	<li class="localList"><button id="localBtnS7" type="button"
+																			value="하남스타필드">하남스타필드</button></li>
+																</ul> 
 															</div>
 														</div>
 													</div>
@@ -518,18 +502,15 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
+																	<li class="localList"><button id="localBtnS8" type="button"
+																			value="검단">검단</button></li>
+																	<li class="localList"><button id="localBtnS9" type="button"
+																			value="영종">영종</button></li>
+																	<li class="localList"><button id="localBtnS10" type="button"
+																			value="청라">청라</button></li>
+																	<li class="localList"><button id="localBtnS11" type="button"
+																			value="송도">송도</button></li>	
 																</ul>
-															</div>
-															<div id="mCSB_6_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_6_scrollbar mCS-light mCSB_scrollTools_vertical">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_6_dragger_vertical" class="mCSB_dragger"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 610px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
 															</div>
 														</div>
 													</div>
@@ -538,7 +519,7 @@ function fn_validateDateYn(param) {
 											<li class="bookingLocal-Local"><button type="button" class="btn" id="local4">
 													<span calss="txt">대전/충청/세종</span>
 												</button>
-												<div class="depth">
+												<div id="localDepth4" class="depth">
 													<div
 														class="detail-list m-scroll area-cd45 mCustomScrollbar _mCS_7 mCS_no_scrollbar">
 														<div id="mCSB_7"
@@ -548,19 +529,15 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
+																	<li class="localList"><button id="localBtnS12" type="button"
+																			value="대전">대전</button></li>
+																	<li class="localList"><button id="localBtnS13" type="button"
+																			value="세종청사">세종청사</button></li>
+																	<li class="localList"><button id="localBtnS14" type="button"
+																			value="천안">천안</button></li>
+																	<li class="localList"><button id="localBtnS15" type="button"
+																			value="충주">충주</button></li>			
 																</ul>
-															</div>
-															<div id="mCSB_7_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_7_scrollbar mCS-light mCSB_scrollTools_vertical"
-																style="display: block;">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_7_dragger_vertical" class="mCSB_dragger"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 244px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
 															</div>
 														</div>
 													</div>
@@ -569,7 +546,7 @@ function fn_validateDateYn(param) {
 											<li class="bookingLocal-Local"><button type="button" class="btn" id="local5">
 													<span calss="txt">부산/대구/경상</span>
 												</button>
-												<div class="depth">
+												<div id="localDepth5" class="depth">
 													<div
 														class="detail-list m-scroll area-cd55 mCustomScrollbar _mCS_8 mCS_no_scrollbar">
 														<div id="mCSB_8"
@@ -580,20 +557,15 @@ function fn_validateDateYn(param) {
 																style="position: relative; top: 0px; left: 0px;"
 																dir="ltr">
 																<ul>
+																	<li class="localList"><button id="localBtnS16" type="button"
+																			value="경주">경주</button></li>
+																	<li class="localList"><button id="localBtnS17" type="button"
+																			value="대구">대구</button></li>
+																	<li class="localList"><button id="localBtnS18" type="button"
+																			value="부산극장">부산극장</button></li>
+																	<li class="localList"><button id="localBtnS19" type="button"
+																			value="울산">울산</button></li>
 																</ul>
-															</div>
-															<div id="mCSB_8_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_8_scrollbar mCS-light mCSB_scrollTools_vertical mCSB_scrollTools_onDrag"
-																style="display: block;">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_8_dragger_vertical"
-																		class="mCSB_dragger mCSB_dragger_onDrag"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 146px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
 															</div>
 														</div>
 													</div>
@@ -602,7 +574,7 @@ function fn_validateDateYn(param) {
 											<li class="bookingLocal-Local"><button type="button" class="btn" id="local6">
 													<span calss="txt">광주/전라</span>
 												</button>
-												<div class="depth">
+												<div id="localDepth6" class="depth">
 													<div
 														class="detail-list m-scroll area-cd65 mCustomScrollbar _mCS_9 mCS_no_scrollbar">
 														<div id="mCSB_9"
@@ -612,18 +584,15 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
+																	<li class="localList"><button id="localBtnS20" type="button"
+																			value="남원">남원</button></li>
+																	<li class="localList"><button id="localBtnS21" type="button"
+																			value="순천">순천</button></li>
+																	<li class="localList"><button id="localBtnS22" type="button"
+																			value="여수">여수</button></li>
+																	<li class="localList"><button id="localBtnS23" type="button"
+																			value="목포">목포</button></li>
 																</ul>
-															</div>
-															<div id="mCSB_9_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_9_scrollbar mCS-light mCSB_scrollTools_vertical">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_9_dragger_vertical" class="mCSB_dragger"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 406px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
 															</div>
 														</div>
 													</div>
@@ -632,7 +601,7 @@ function fn_validateDateYn(param) {
 											<li class="bookingLocal-Local"><button type="button" class="btn" id="local7">
 													<span calss="txt">강원</span>
 												</button>
-												<div class="depth">
+												<div id="localDepth7" class="depth">
 													<div
 														class="detail-list m-scroll area-cd70 mCustomScrollbar _mCS_10 mCS_no_scrollbar">
 														<div id="mCSB_10"
@@ -642,18 +611,15 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
+																	<li class="localList"><button id="localBtnS24" type="button"
+																			value="춘천">춘천</button></li>
+																	<li class="localList"><button id="localBtnS25" type="button"
+																			value="속초">속초</button></li>
+																	<li class="localList"><button id="localBtnS26" type="button"
+																			value="원주">원주</button></li>
+																	<li class="localList"><button id="localBtnS27" type="button"
+																			value="원주센트럴">원주센트럴</button></li>
 																</ul>
-															</div>
-															<div id="mCSB_10_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_10_scrollbar mCS-light mCSB_scrollTools_vertical">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_10_dragger_vertical" class="mCSB_dragger"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 914px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
 															</div>
 														</div>
 													</div>
@@ -662,7 +628,7 @@ function fn_validateDateYn(param) {
 											<li class="bookingLocal-Local"><button type="button" class="btn" id="local8">
 													<span calss="txt">제주</span>
 												</button>
-												<div class="depth">
+												<div id="localDepth8" class="depth">
 													<div
 														class="detail-list m-scroll area-cd80 mCustomScrollbar _mCS_11 mCS_no_scrollbar">
 														<div id="mCSB_11"
@@ -672,23 +638,9 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li><button id="btn" type="button" brch-no="6901"
-																			brch-nm="제주" brch-eng-nm="Jeju" form-at="Y"
-																			area-cd="80" area-cd-nm="제주" spclb-yn="N"
-																			brch-bokd-unable-at="N" brch-popup-at="N"
-																			brch-popup-no="0">제주</button></li>
+																	<li class="localList"><button id="localBtnS28" type="button"
+																			value="제주">제주</button></li>
 																</ul>
-															</div>
-															<div id="mCSB_11_scrollbar_vertical"
-																class="mCSB_scrollTools mCSB_11_scrollbar mCS-light mCSB_scrollTools_vertical">
-																<div class="mCSB_draggerContainer">
-																	<div id="mCSB_11_dragger_vertical" class="mCSB_dragger"
-																		style="position: absolute; min-height: 30px; display: none; top: 0px; height: 3657px; max-height: 310px;">
-																		<div class="mCSB_dragger_bar"
-																			style="line-height: 30px;"></div>
-																	</div>
-																	<div class="mCSB_draggerRail"></div>
-																</div>
 															</div>
 														</div>
 													</div>
@@ -702,16 +654,16 @@ function fn_validateDateYn(param) {
                                 <!--// all-list : 전체 -->
 
                                 <!-- other-list : 특별관 -->
-                                <div class="other-list">
+                                <!-- <div class="other-list">
                                     <button type="button" class="btn-tab">특별관</button>
-                                    <!-- list -->
+                                    list
                                     <div class="list" id="specialBrchTab">
                                         <div class="scroll" id="specialBrchList">
                                             
                                         </div>
                                     </div>
-                                    <!--// list -->
-                                </div>
+                                    // list
+                                </div> -->
                                 <!--// other-list : 특별관 -->
                             </div>
                             <!--// list-area -->
@@ -746,17 +698,18 @@ function fn_validateDateYn(param) {
                             <div class="tit-area">
                                 <p class="tit">시간</p>
 
-                                <div class="right legend">
+                               <!--  <div class="right legend">
                                     <i class="iconset ico-sun" title="조조"></i> 조조
                                     <i class="iconset ico-brunch" title="브런치"></i> 브런치
                                     <i class="iconset ico-moon" title="심야"></i> 심야
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- hour-schedule : 시간 선택  : 00~30 시-->
-                            <div class="hour-schedule">
-                                <button type="button" class="btn-prev-time">이전 시간 보기</button>
-
+                            <div class="hour-schedule">  
+                            	<div class="wrap">
+                            	</div>
+                               <!--  <button type="button" class="btn-prev-time">이전 시간 보기</button>
                                 <div class="wrap">
                                     <div class="view" style="position: absolute; width: 1015px;">
                                         <button type="button" class="hour" disabled="true" style="opacity: 0.5">00</button>
@@ -792,7 +745,7 @@ function fn_validateDateYn(param) {
                                     </div>
                                 </div>
 
-                                <button type="button" class="btn-next-time">다음 시간 보기</button>
+                                <button type="button" class="btn-next-time">다음 시간 보기</button> -->
                             </div>
                             <!--// hour-schedule : 시간 선택  : 00~30 시-->
 
@@ -816,17 +769,18 @@ function fn_validateDateYn(param) {
                                 <!-- 영화, 영화관 선택 했을때 -->
                                 <div class="result">
                                 <div class="scroll m-scroll mCustomScrollbar _mCS_17" id="playScheduleList" style="">
-									<div id="mCSB_17" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-										style="max-height: none;" tabindex="0">
-											<div id="mCSB_17_container" class="mCSB_container" style="position: relative; top: 0; left: 0;" dir="ltr">
+											<div id="mCSB_17_container" class="mCSB_container" style="position: relative; top: 0; left: 0; overflow:auto; height: 430px;" dir="ltr">
 												<ul id="bookingRoom-List">
 											
 
 												</ul>
 											</div>
+											
+									<!-- <div id="mCSB_17" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+										style="max-height: none;" tabindex="0">
 											<div id="mCSB_30_scrollbar_vertical"
 												class="mCSB_scrollTools mCSB_30_scrollbar mCS-light mCSB_scrollTools_vertical"
-												style="display: block;">
+												style="">
 												<div class="mCSB_draggerContainer">
 													<div id="mCSB_30_dragger_vertical" class="mCSB_dragger"
 														style="position: absolute; min-height: 30px; display: block; height: 77px; max-height: 420px; top: 0px;">
@@ -835,7 +789,7 @@ function fn_validateDateYn(param) {
 													<div class="mCSB_draggerRail"></div>
 												</div>
 											</div>
-										</div>	
+									</div> -->
 										
 										
 	                               	 </div>
@@ -1042,7 +996,7 @@ function fn_validateDateYn(param) {
 	//name 눌렀을 때
 	var name = "";
 	
-	for(var nameNum=1; nameNum<11; nameNum++){
+	for(var nameNum=1; nameNum<51; nameNum++){
 
 		var localBtnCss;
 		
