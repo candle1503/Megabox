@@ -104,21 +104,13 @@ public class BookingController {
 			playTime = movieVO.getPlayTime();
 			
 			startTimeHour = Integer.parseInt(startTime.substring(0, 2));
-			//System.out.println("startTimeHour:"+startTimeHour);
-			
 			startTimeMinute = Integer.parseInt(startTime.substring(3, 5));
-			//System.out.println("startTimeMinute:"+startTimeMinute);
 			
 			int playTimeHour = playTime/60;
-			//System.out.println("playTimeHour:"+playTimeHour);
 			int playTimeMinute = playTime%60;
-			//System.out.println("playTimeMinute:"+playTimeMinute);
 			
 			endTimeHour = startTimeHour + playTimeHour;
-			//System.out.println("endTimeHour:"+endTimeHour);
-			
 			endTimeMinute = startTimeMinute + playTimeMinute + 10;
-			//System.out.println("endTimeMinute:"+endTimeMinute);
 			
 			int midnight = 24;
 			
@@ -127,7 +119,6 @@ public class BookingController {
 				endTimeHour = midnight - endTimeHour;
 				endTimeHour = endTimeHour * -1;
 			}
-			//System.out.println("endTimeHourR:"+endTimeHour);
 			
 			//-----------------------------------//
 			
@@ -138,7 +129,6 @@ public class BookingController {
 				endTimeMinute = endTimeMinute * -1;
 				endTimeHour++;
 			}
-			//System.out.println("endTimeMinuteR:"+endTimeMinute);
 			
 			String endTimeHourResult = endTimeHour+""; 
 						
@@ -146,14 +136,12 @@ public class BookingController {
 			if(endTimeHourResult.length() < 2) {
 				endTimeHourResult = 0+endTimeHourResult;				
 			}
-			//System.out.println("endTimeHourResult:"+endTimeHourResult);
 			
 			String endTimeMinuteResult = endTimeMinute+"";
 			
 			if(endTimeMinuteResult.length() < 2) {
 				endTimeMinuteResult = 0+endTimeMinuteResult;
 			}
-			//System.out.println("endTimeMinuteResult:"+endTimeMinuteResult);
 			
 			endTime = endTimeHourResult + ":" + endTimeMinuteResult;
 			

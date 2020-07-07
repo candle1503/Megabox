@@ -6,15 +6,15 @@
 	<c:forEach items="${timeList}" var="date" varStatus="i">
 	
 		<c:if test="${fn:substringAfter(date,'//') eq '토'}">
-			<li id="day${i.index}" class="bookingTime-list"> <button type="button" id="timeBtn${i.index}" style="color: #3b5fcb" > <h5>${fn:substring(date, 0, 7)}</h5> <em><span class="dateNum timeSpan">${fn:substring(date, 8, 10)}</span></em><span class="yoil">${fn:substringAfter(date,'//')}</span> </button> </li>
+			<li id="day${i.index}" class="bookingTime-list"> <button type="button" id="timeBtn${i.count}" style="color: #3b5fcb" > <h5>${fn:substring(date, 0, 7)}</h5> <em><span class="dateNum timeSpan">${fn:substring(date, 8, 10)}</span></em><span class="yoil">${fn:substringAfter(date,'//')}</span> </button> </li>
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'//') eq '일'}">
-			<li id="day${i.index}" class="bookingTime-list"> <button type="button" id="timeBtn${i.index}" style="color: #e81002;"> <h5>${fn:substring(date, 0, 7)}</h5> <em><span class="dateNum timeSpan">${fn:substring(date, 8, 10)}</span></em><span class="yoil">${fn:substringAfter(date,'//')}</span> </button> </li>
+			<li id="day${i.index}" class="bookingTime-list"> <button type="button" id="timeBtn${i.count}" style="color: #e81002;"> <h5>${fn:substring(date, 0, 7)}</h5> <em><span class="dateNum timeSpan">${fn:substring(date, 8, 10)}</span></em><span class="yoil">${fn:substringAfter(date,'//')}</span> </button> </li>
 		</c:if>
 		
 		<c:if test="${fn:substringAfter(date,'//') ne '토' && fn:substringAfter(date,'//') ne '일'}">
-			<li id="day${i.index}" class="bookingTime-list"> <button type="button" id="timeBtn${i.index}" style="color: black;"> <h5>${fn:substring(date, 0, 7)}</h5> <em><span class="dateNum timeSpan">${fn:substring(date, 8, 10)}</span></em><span class="yoil">${fn:substringAfter(date,'//')}</span> </button> </li>
+			<li id="day${i.index}" class="bookingTime-list"> <button type="button" id="timeBtn${i.count}" style="color: black;"> <h5>${fn:substring(date, 0, 7)}</h5> <em><span class="dateNum timeSpan">${fn:substring(date, 8, 10)}</span></em><span class="yoil">${fn:substringAfter(date,'//')}</span> </button> </li>
 		</c:if>
 		
 	</c:forEach>

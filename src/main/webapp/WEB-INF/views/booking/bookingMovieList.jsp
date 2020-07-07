@@ -36,9 +36,16 @@
 
 
 <script type="text/javascript">
-	for (var bml = 1; bml < 10; bml++) {
+	var movieSize = "${bookingMovieArSize}";
+
+	for (var bml = 1; bml < movieSize+1; bml++) {
+		var movieCss;
+
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
+			$("#movieBtn"+movieCss).removeClass("on");
 			$(this).addClass("on");
+			movieCss = $(this).attr('id').replace("movieBtn", '');
+			
 			var txt = $(this).text().split('/');
 			var movieNum = parseInt(txt[1]);
 
