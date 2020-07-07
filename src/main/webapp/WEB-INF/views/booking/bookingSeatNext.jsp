@@ -103,10 +103,8 @@
 						</h3>
 
 						<div class="right">
-							<button type="button" class="button gray-line small"
-								id="btn_booking_init">
+						<button type="button" class="button gray-line small"  onclick="location.href='./bookingSeatNext' ">
 								<i class="iconset ico-reset-small"></i>초기화
-								<!-- 초기화 -->
 							</button>
 						</div>
 					</div>
@@ -116,7 +114,7 @@
 					<div class="discout-setting">
 						<div class="discout-list">
 							<ul>
-								<li class="on"><a href="#mega_point" class="tit"
+								<li class="on"><a class="tit"
 									id="grp_mega_point" name="grp_mega_dc" title="메가박스 포인트/쿠폰">
 										메가박스 포인트/쿠폰<!-- 메가박스 포인트/관람권 --> <!-- <span class="text">멤버십 포인트는 월~금(주말 및 공휴일 제외) 평일에만 사용 가능합니다. </span> -->
 								</a>
@@ -142,6 +140,8 @@
 							</ul>
 						</div>
 					</div>
+					
+					
 
 
 					<!--// discout-setting -->

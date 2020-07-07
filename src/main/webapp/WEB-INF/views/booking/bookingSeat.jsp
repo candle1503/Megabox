@@ -1129,8 +1129,8 @@
 						var strArray = array.split(' ');
 						var idOn = strArray[strArray.length-1];			
 
-						alert(cnt)
-						alert(seatCheckCnt)
+						alert('총 좌석 수 : ' + cnt)
+						alert('선택 좌석수(0부터 시작) :' + seatCheckCnt)
 						
 						if(seatCheckCnt<=cnt){
 
@@ -1159,16 +1159,18 @@
 								$('.'+idSeatArray).addClass('choice');
 								}
 
-								alert($(this).attr('title').slice(0,2))
-								alert($('.'+idSeatArray).attr('title'))
+								<!-- 스트링 split 주의-->
+/* 								alert($(this).attr('title').slice(0,2))
+								alert($('.'+idSeatArray).attr('title')) */
 								
 							}
 							
 							else if(idOn = 'on'){
 
+								var checkingSeatDelete = $(this).attr('rownm') + $(this).attr('seatno')
+								alert('자리 삭제 번호 확인 alert : ' + checkingSeatDelete)
 								
-								
-								if($(this).attr('title').slice(0,2) ==$('.'+idSeatArray).attr('title')){
+								if(checkingSeatDelete ==$('.'+idSeatArray).attr('title')){
 
 
 									$('.'+idSeatArray).removeClass('choice');
@@ -1197,13 +1199,12 @@
 							$('#pageNext').addClass('disabled')
 
 						}
-
 						if(seatCheckCnt==cnt){
-									alert('모두 선택하셨습니다. 결제창으로 이동해 주세요')
-									
-									$('#pageNext').attr('href','${pageContext.request.contextPath}/booking/bookingSeatNext')
-									$('#pageNext').removeClass('disabled')
-							}
+							alert('모두 선택하셨습니다. 결제창으로 이동해 주세요')
+							
+							$('#pageNext').attr('href','${pageContext.request.contextPath}/booking/bookingSeatNext')
+							$('#pageNext').removeClass('disabled')
+					}
 
 					})
 	
