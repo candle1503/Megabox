@@ -189,4 +189,12 @@ public class MemberController {
 	
 	}
 	
+	@GetMapping("bookingMy")
+	public void bookingMy() throws Exception {
+	}
+	
+	@GetMapping("myMovieStory")
+	public void myMovieStory() throws Exception {
+	}
+	
 }

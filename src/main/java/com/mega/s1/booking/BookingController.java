@@ -163,5 +163,8 @@ public class BookingController {
 		return mv;
 	}
 	
+	@GetMapping("bookingComplete")
+	public void bookingComplete() throws Exception {
+	}
 
 }

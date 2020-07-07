@@ -65,6 +65,11 @@
 		resultType="TheaterVO">
 		select * from theater where localCode='제주'
 	</select>
+	
+	<select id="selectTheaterName" parameterType="TheaterVO"
+		resultType="String">
+		select name from theater where theaterNum = #{theaterNum}
+	</select>
 
 </mapper>
   

@@ -123,4 +123,9 @@ public class NoticeService implements BoardService{
 		return noticeRepository.localCodeNameList();
 	}
 	
+	//theater 극장별 공지사항 가져오기
+	public List<NoticeVO> boardSelectList(String name) throws Exception{
+		return noticeRepository.boardSelectList(name);
+	}
+	
 }

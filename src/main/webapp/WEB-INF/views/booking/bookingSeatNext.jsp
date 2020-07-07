@@ -104,9 +104,8 @@
 
 						<div class="right">
 							<button type="button" class="button gray-line small"
-								id="btn_booking_init">
+								onclick="location.href='./bookingSeatNext' ">
 								<i class="iconset ico-reset-small"></i>초기화
-								<!-- 초기화 -->
 							</button>
 						</div>
 					</div>
@@ -116,335 +115,28 @@
 					<div class="discout-setting">
 						<div class="discout-list">
 							<ul>
-								<li class="on"><a href="#mega_point" class="tit"
-									id="grp_mega_point" name="grp_mega_dc" title="메가박스 포인트/쿠폰">
-										메가박스 포인트/쿠폰<!-- 메가박스 포인트/관람권 --> <!-- <span class="text">멤버십 포인트는 월~금(주말 및 공휴일 제외) 평일에만 사용 가능합니다. </span> -->
-										<i class="iconset ico-btn-more-arr"></i>
+								<li class="on"><a class="tit" id="grp_mega_point"
+									name="grp_mega_dc" title="메가박스 포인트/쿠폰"> 쌍용씨네마 포인트 및 쿠폰<!-- 메가박스 포인트/관람권 -->
+										<!-- <span class="text">멤버십 포인트는 월~금(주말 및 공휴일 제외) 평일에만 사용 가능합니다. </span> -->
 								</a>
 
 									<div id="mega_point" class="cont-down">
 										<div class="coupon-box">
-											<div class="item col-1">
-												<a href="#layer_memp" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_memp"
-													id="btn_pay_memp" title="메가박스 멤버십 포인트"> <span
-													class="txt">메가박스 멤버십 포인트 <!-- 메가박스 멤버십 포인트 --></span>
+										
+											<div class="item col-1" style="width: 333px; float: left;">
+												<a w-data="500" h-data="450" class="btn-modal-open"
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트">
+													<span class="txt">쌍용씨네마 멤버십 포인트 : JSTL 받아서 입력 <!-- 메가박스 멤버십 포인트 --></span>
 												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_memp" method="memp">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-										</div>
-									</div></li>
-
-								<li class=""><a href="#mobile_coupon" class="tit"
-									id="grp_mobile_point" name="grp_mega_dc" title="관람권/모바일상품권">관람권/모바일상품권
-										<!-- 제휴 모바일 쿠폰 --> <i class="iconset ico-btn-more-arr"></i>
-								</a>
-									<div id="mobile_coupon" class="cont-down">
-										<div class="coupon-box">
-											<div class="item col-1">
-												<a href="#layer_movie_megabox_coupon" w-data="600"
-													h-data="550" class="btn-modal-open" name="btn_pay_mcoupon"
-													id="btn_pay_mcoupon" title="메가박스 관람권"> <span
-													class="txt">메가박스 관람권 <!-- 메가박스 관람권 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_mcoupon" method="mcoupon">
-													취소
-													<!-- 취소 -->
-												</button>
 											</div>
 
-											<div class="item col-1">
-												<a href="#layer_store_change" w-data="600" h-data="560"
-													class="btn-modal-open" name="btn_pay_scoupon"
-													id="btn_pay_scoupon" title="스토어교환권"> <span class="txt">스토어교환권
-														<!-- 스토어교환권 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_scoupon" method="scoupon">
-													취소
-													<!-- 취소 -->
-												</button>
+											<div style="float: left; padding-left: 15px; padding-top: 35px;">
+												<input type="checkbox" id="same_use_payment"> <label
+													for="same_use_payment" id="label_use_payment">멤버십
+													포인트 사용하기 <!-- 다음에도 이 결제수단 사용 -->
+												</label>
 											</div>
 
-											<div class="item col-1">
-												<a href="#layer_gifticon" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_gfcon"
-													id="btn_pay_gfcon" title="기프티콘"> <span class="txt">기프티콘
-														<!-- 기프티콘 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_gfcon" method="gfcon">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_giftishow" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_gfshow"
-													id="btn_pay_gfshow" title="기프티쇼"> <span class="txt">기프티쇼
-														<!-- 기프티쇼 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_gfshow" method="gfshow">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_inumber" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_inumber"
-													id="btn_pay_inumber" title="아이넘버"> <span class="txt">아이넘버
-														<!-- 아이넘버 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_inumber" method="inumber">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_gmarket" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_gmarket"
-													id="btn_pay_gmarket" title="G마켓 예매권"> <span class="txt">G마켓
-														예매권 <!-- G마켓 예매권 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_gmarket" method="gmarket">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_smartcon" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_smcon"
-													id="btn_pay_smcon" title="스마트콘"> <span class="txt">스마트콘
-														<!-- 스마트콘 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_smcon" method="smcon">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_alliance" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_pcoupon"
-													id="btn_pay_pcoupon" title="제휴예매권"> <span class="txt">제휴예매권
-														<!-- 제휴예매권 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_pcoupon" method="pcoupon">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_donutbook" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_donut"
-													id="btn_pay_donut" title="도넛북"> <span class="txt">도넛북
-														<!-- 도넛북 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_donut" method="donut">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_friends" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_friends"
-													id="btn_pay_friends" title="스타카드/프렌즈 멤버십"> <span
-													class="txt">스타카드/프렌즈 멤버십 <!-- 스타카드/프렌즈 멤버십 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_friends" method="friends">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_annus_card" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_annus"
-													id="btn_pay_annus" title="메가박스 아너스카드"> <span
-													class="txt">메가박스 아너스카드 <!-- 메가박스 아너스카드 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_annus" method="annus">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-										</div>
-									</div></li>
-
-								<li class=""><a href="#point_coupon" class="tit"
-									id="grp_point_coupon" name="grp_mega_dc" title="제휴포인트">제휴포인트
-										<!-- 포인트/할인쿠폰 --> <i class="iconset ico-btn-more-arr"></i>
-								</a>
-									<div id="point_coupon" class="cont-down">
-										<div class="coupon-box">
-											<div class="item col-1">
-												<a href="#layer_skt" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_skt" id="btn_pay_skt"
-													title="SKT 멤버십"> <span class="txt">SKT 멤버십 <!-- SKT 멤버십 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel" id="btn_cancel_skt"
-													method="skt">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_okcashbag" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_okcb"
-													id="btn_pay_okcb" title="OK 캐쉬백"> <span class="txt">OK
-														캐쉬백 <!-- OK 캐쉬백 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_okcb" method="okcb">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_gs_point" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_gsnp"
-													id="btn_pay_gsnp" title="GS&amp;POINT"> <span
-													class="txt">GS&amp;POINT <!-- GS&amp;POINT --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_gsnp" method="gsnp">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_oilbank" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_hyoil"
-													id="btn_pay_hyoil" title="현대오일뱅크"> <span class="txt">현대오일뱅크
-														<!-- 현대오일뱅크 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_hyoil" method="hyoil">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_happypoint" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_happ"
-													id="btn_pay_happ" title="해피포인트"> <span class="txt">해피포인트
-														<!-- 해피포인트 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_happ" method="happ">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_bluemembers" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_hbluep"
-													id="btn_pay_hbluep" title="블루멤버스 포인트"> <span
-													class="txt">블루멤버스 포인트 <!-- 블루멤버스 포인트 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_hbluep" method="hbluep">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_jmembership" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_joongang"
-													id="btn_pay_joongang" title="중앙멤버십"> <span class="txt">중앙멤버십
-														<!-- 중앙멤버십 -->
-												</span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_joongang" method="joongang">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_hyundai_m_point" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_hydm"
-													id="btn_pay_hydm" title="현대 M 포인트 카드"> <span
-													class="txt">현대 M 포인트 카드 <!-- 현대 M 포인트 카드 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_hydm" method="hydm">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
-
-											<div class="item col-1">
-												<a href="#layer_mnuri" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_culturenuri"
-													id="btn_pay_culturenuri" title="문화누리카드"> <span
-													class="txt">문화누리카드 <!-- 문화누리카드 --></span>
-												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_culturenuri" method="culturenuri">
-													취소
-													<!-- 취소 -->
-												</button>
-											</div>
 
 										</div>
 									</div></li>
@@ -452,6 +144,8 @@
 							</ul>
 						</div>
 					</div>
+
+
 
 
 					<!--// discout-setting -->
@@ -462,12 +156,6 @@
 							<!-- 결제수단선택 -->
 						</h3>
 
-						<div class="right">
-							<input type="checkbox" id="same_use_payment"> <label
-								for="same_use_payment" id="label_use_payment">다음에도 이
-								결제수단 사용 <!-- 다음에도 이 결제수단 사용 -->
-							</label>
-						</div>
 					</div>
 
 					<!--
@@ -479,25 +167,73 @@
 				-->
 					<div class="select-payment">
 
+
 						<div class="radio-group">
 							<span class="bg-chk small"> <input type="radio"
-								name="radio_payment" id="rdo_pay_credit" value="credit">
-								<label for="rdo_pay_credit">신용/체크카드 <!-- 신용/체크카드 --></label>
+								name="radio_payment" id="rdo_pay_credit" value="credit"
+								checked="checked"> <label for="rdo_pay_credit">신용/체크카드
+									<!-- 신용/체크카드 -->
+							</label>
 							</span> <span class="bg-chk small"> <input type="radio"
 								name="radio_payment" id="rdo_pay_mobile" value="mobile">
 								<label for="rdo_pay_mobile">휴대폰 결제 <!-- 휴대폰 소액결제 --></label>
 							</span> <span class="bg-chk small"> <input type="radio"
 								name="radio_payment" id="rdo_pay_kakaopay" value="kakaopay">
 								<label for="rdo_pay_kakaopay" class="kakaopay">카카오페이 <!-- 카카오페이 결제 --></label>
-							</span> <span class="bg-chk small"> <input type="radio"
-								name="radio_payment" id="rdo_pay_payco" value="payco"> <label
-								for="rdo_pay_payco" class="payco">페이코 <!-- 페이코 결제 --></label>
 							</span>
 						</div>
 
-						<div class="select-payment-card">
+						<script type="text/javascript">
+							$('#rdo_pay_credit').click(
+									function() {
+
+										$('.select-mobile-info').css('display',
+												'none');
+										$('.select-kakao-info').css('display',
+												'none');
+
+										$('.select-payment-card').css(
+												'display', 'none');
+										$('.select-payment-card').css(
+												'display', 'block');
+
+									})
+
+							$('#rdo_pay_mobile').click(
+									function() {
+
+										$('.select-payment-card').css(
+												'display', 'none');
+										$('.select-kakao-info').css('display',
+												'none');
+
+										$('.select-mobile-info').css('display',
+												'none');
+										$('.select-mobile-info').css('display',
+												'block');
+
+									})
+
+							$('#rdo_pay_kakaopay').click(
+									function() {
+
+										$('.select-payment-card').css(
+												'display', 'none');
+										$('.select-mobile-info').css('display',
+												'none');
+
+										$('.select-kakao-info').css('display',
+												'none');
+										$('.select-kakao-info').css('display',
+												'block');
+
+									})
+						</script>
+
+						<div class="select-payment-card" style="display: block;">
 							<label for="card_select">카드사 선택 <!-- 카드사 선택 --></label>
-							<div class="dropdown bootstrap-select v1 small bs3">
+							<div class="dropdown bootstrap-select v1 small bs3 dropup"
+								id="cardDrop" style="display: inline;">
 								<select id="card_select" title="카드사 선택"
 									class="selectpicker v1 small" tabindex="-98"><option
 										class="bs-title-option" value=""></option>
@@ -538,20 +274,61 @@
 									<option value="91">케이뱅크</option>
 									<!-- 케이뱅크   -->
 								</select>
-								<button type="button" class="btn dropdown-toggle btn-default"
+								<button type="button" class="btn dropdown-toggle btn-default on"
 									data-toggle="dropdown" role="button" data-id="card_select"
-									title="카드선택">
+									title="카드선택" aria-expanded="true" style="width: 14.4%;">
 									<div class="filter-option">
 										<div class="filter-option-inner">
-											<div class="filter-option-inner-inner">카드선택</div>
+											<div class="filter-option-inner-inner" id="selectCard">카드선택</div>
 										</div>
 									</div>
 									<span class="bs-caret"><span class="caret"></span></span>
 								</button>
-								<div class="dropdown-menu open" role="combobox">
-									<div class="inner open" role="listbox" aria-expanded="false"
-										tabindex="-1">
-										<ul class="dropdown-menu inner "></ul>
+								<div class="dropdown-menu open" role="combobox"
+									style="max-height: 302px; overflow: hidden; min-width: 104px;">
+									<div class="inner open" role="listbox" aria-expanded="true"
+										tabindex="-1" style="max-height: 300px; overflow-y: auto;">
+										<ul class="dropdown-menu inner " id="selectCardInner">
+											<li class="selected active"><a role="option"
+												aria-disabled="false" tabindex="0" class="selected active"
+												aria-selected="true"><span class="text">카드선택</span></a></li>
+
+
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">비씨카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">국민카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">신한카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">삼성카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">롯데카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">농협카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">하나카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">현대카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">씨티카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">제주카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">우리카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">수협카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">전북카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">광주카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">신협카드</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">카카오뱅크</span></a></li>
+											<li><a role="option" aria-disabled="false" tabindex="0"
+												aria-selected="false"><span class="text">케이뱅크</span></a></li>
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -570,6 +347,45 @@
 								style="display: none;">포인트사용 <!-- 삼성카드 포인트 사용 --></label>
 						</div>
 
+						<script type="text/javascript">
+							$('#cardDrop')
+									.click(
+											function() {
+
+												if ($("#cardDrop").hasClass(
+														"open") == false) {
+													$('#cardDrop').addClass(
+															'open');
+												}
+
+												else if ($("#cardDrop")
+														.hasClass("open") == true) {
+
+													$('#cardDrop').removeClass(
+															'open');
+												}
+											})
+
+							$('#selectCardInner>li')
+									.click(
+											function() {
+
+												$('#selectCardInner>li')
+														.removeClass(
+																'selected active')
+												$(this).addClass(
+														'selected active');
+												var test = $(
+														'#selectCardInner>li.active>a>span')
+														.text();
+												$('#selectCard').text(test)
+											})
+						</script>
+
+
+
+
+
 						<!-- 2020.02.07 수단별 알림 문구 추가 -->
 						<div class="select-mobile-info" style="display: none">
 							<ul class="dash-list">
@@ -582,13 +398,6 @@
 						</div>
 
 						<div class="select-kakao-info" style="display: none">
-							<ul class="dash-list">
-								<li>BC카드, 시티카드, 우리카드, 새마을카드 등은 카드사 사정으로 사용이 제한되오니 타 카드 사용
-									또는 신용/체크카드 결제 도구에서 사용해주시기 바랍니다.</li>
-							</ul>
-						</div>
-
-						<div class="select-payco-info" style="display: none">
 							<ul class="dash-list">
 								<li>BC카드, 시티카드, 우리카드, 새마을카드 등은 카드사 사정으로 사용이 제한되오니 타 카드 사용
 									또는 신용/체크카드 결제 도구에서 사용해주시기 바랍니다.</li>
@@ -626,7 +435,7 @@
 						<div class="price-process">
 							<div class="box">
 								<div class="data">
-									<span class="tit">일반 <em>1</em></span><span class="price">6,000</span>
+									<span class="tit">일반 <em>1</em></span><span class="price">8,000</span>
 								</div>
 								<!--
 							<div class="data">
@@ -640,7 +449,7 @@
 							</div>
 							-->
 								<div class="all">
-									<span class="tit">금액 <!-- 금액 --></span> <span class="price"><em>6,000</em>
+									<span class="tit">금액 <!-- 금액 --></span> <span class="price"><em>8,000</em>
 										<span>원 <!-- 원 --></span></span>
 								</div>
 							</div>
@@ -670,7 +479,7 @@
 								</p>
 
 								<div class="money">
-									<em>6,000</em> <span>원 <!-- 원 --></span>
+									<em>8,000</em> <span>원 <!-- 원 --></span>
 								</div>
 							</div>
 							<div class="payment-thing">
@@ -680,8 +489,8 @@
 						</div>
 
 						<div class="btn-group">
-							<a href="#" class="button" id="btn_booking_back" title="이전">이전
-								<!-- 이전 -->
+							<a href="${pageContext.request.contextPath}/booking/bookingSeat"
+								class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 -->
 							</a> <a href="#" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"
 								title="결제">결제</a>
