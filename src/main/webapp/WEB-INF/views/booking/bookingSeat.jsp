@@ -33,7 +33,7 @@
 						</h3>
 						<div class="right">
 							<button type="button" class="button gray-line small"
-								id="seatMemberCntInit">
+								id="seatMemberCntInit" onclick="location.href='./bookingSeat' ">
 								<i class="iconset ico-reset-small"></i>초기화
 							</button>
 						</div>
@@ -46,7 +46,8 @@
 
 									<div class="number">
 										<button type="button" class="now" title="성인 현재 좌석 선택 수"
-											ticketgrpcd="TKA" style="border-width: 1px 1px">0 ▼</button>
+											ticketgrpcd="TKA" style="border-width: 1px 1px"
+											id="initBtnCnt">0 ▼</button>
 										<ul class="num-choice">
 											<li><button type="button" class="btn on">0 ▼</button></li>
 											<li><button type="button" class="btn">1</button></li>
@@ -64,39 +65,29 @@
 							</div>
 
 							<script type="text/javascript">
-								$(document)
-										.on(
-												'click',
-												'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now',
+								$(document).on(	'click',	'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now',
 												function() {
-													$(this)
-															.closest('.number')
-															.find('.num-choice')
-															.toggleClass('on');
+									
+													if($('#initBtnCnt').text()=="0 ▼"){
+													$(this).closest('.number').find('.num-choice')	.addClass('on');
+													}	else if($('#initBtnCnt').text() !="0 ▼"){
+																alert('새로 설정하려면 오른쪽의 초기화 버튼을 눌러주세요')
+													}				
 												});
 
-								$(document)
-										.on(
-												'click',
-												'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn',
+								$(document).on(	'click','.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn',
 												function() {
 													_num = $(this).text();
-													$(this).closest('.number')
-															.find('.now').text(
-																	_num);
+													$(this).closest('.number').find('.now').text(_num);
 
-													$(this).closest('ul').find(
-															'.btn')
-															.removeClass('on');
+													$(this).closest('ul').find('.btn').removeClass('on');
 													$(this).addClass('on');
 
-													$(this).closest(
-															'.num-choice')
-															.removeClass('on');
-													$(this).closest('.number')
-															.find('.now')
-															.focus();
+													$(this).closest(	'.num-choice').removeClass('on');
+													$(this).closest('.number').find('.now').focus();
+
 												});
+
 							</script>
 
 						</div>
