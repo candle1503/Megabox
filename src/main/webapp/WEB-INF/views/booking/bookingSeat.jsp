@@ -64,29 +64,22 @@
 							</div>
 
 							<script type="text/javascript">
-								$(document)
-										.on(
-												'click',
-												'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now',
-												function() {
-													$(this)
-															.closest('.number')
-															.find('.num-choice')
-															.toggleClass('on');
-												});
+								$(document).on('click','.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .now',
+										function() {
+											$(this)
+													.closest('.number')
+													.find('.num-choice')
+													.toggleClass('on');
+										});
 
 								$(document)
-										.on(
-												'click',
-												'.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn',
+										.on('click', '.seat-select-section .seat-section .seat-area .seat-count .cell .count .number .num-choice .btn',
 												function() {
 													_num = $(this).text();
 													$(this).closest('.number')
-															.find('.now').text(
-																	_num);
+															.find('.now').text(_num);
 
-													$(this).closest('ul').find(
-															'.btn')
+													$(this).closest('ul').find(	'.btn')
 															.removeClass('on');
 													$(this).addClass('on');
 
