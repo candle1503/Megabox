@@ -15,8 +15,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 
 
-	<input type="hidden" id="playSchdlNo" name="playSchdlNo"
-		value="2006291372041">
+	<input type="hidden" id="playSchdlNo" name="playSchdlNo" value="2006291372041">
 	<input type="hidden" id="brchNo" name="brchNo" value="1372">
 
 
@@ -83,7 +82,7 @@
 													$(this).closest('ul').find('.btn').removeClass('on');
 													$(this).addClass('on');
 
-													$(this).closest(	'.num-choice').removeClass('on');
+													$(this).closest('.num-choice').removeClass('on');
 													$(this).closest('.number').find('.now').focus();
 
 												});
@@ -110,18 +109,50 @@
 												style="position: absolute; left: 62px; top: 10px;"
 												class="mCS_img_loaded">
 											<div class'row'="">
-												<button type="button" class="btn-seat-row" title="A 행"
-													style="position: absolute; left: 206px; top: 52px;">A</button>
-												<button type="button" title="A1 (스탠다드/일반)"
+											
+											
+											<!-- DB에서 seat 테이블에서 booked가 0인것만 가져오기 for each로 -->
+													
+<%--  											<c:forEach items="seatVO" var="seat"> --%>
+													
+													
+													
+<%--  												<c:if test="${seat.booked eq 0}"> --%>
+													
+<!-- 													<button type="button" title="A1" -->
+<!-- 													class="jq-tooltip seat-condition standard common" -->
+<!-- 													style="position: absolute; left: 251px; top: 50px; width: 20px;" -->
+<!-- 													 rownm="A" seatno="1"> -->
+<!-- 													<span class="num">1</span> -->
+													
+<!-- 													</button> -->
+												
+<%-- 													</c:if>  --%>
+													
+													
+<%-- 													<c:otherwise>  --%>
+<!-- 													<button type="button" title="A1" -->
+<!-- 														class="jq-tooltip seat-condition standard common finish" -->
+<!-- 														style="position: absolute; left: 251px; top: 50px; width: 20px;" -->
+<!-- 														 rownm="A" seatno="1"> -->
+<!-- 														<span class="num">1</span> -->
+														
+<!-- 														</button> -->
+													
+<%-- 													</c:otherwise>  --%>
+													
+													
+													
+<%-- 											</c:forEach> --%>
+													
+												<button type="button" title="A1"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 251px; top: 50px; width: 20px;"
-													seatclasscd="GERN_CLS" seatzonecd="GERN_ZONE"
-													seatuniqno="00100101" rownm="A" seatno="1"
-													seatchoidircval="1" seatchoigrpno="2" seatchoigrpnm="A2"
-													seatchoirowcnt="6" seatchoigrpseq="1" seattocnt="1">
-													<span class="num">1</span><span class="kind">스탠다드</span><span
-														class="condition">판매가능</span><span class="rank">일반</span>
+													 rownm="A" seatno="1">
+													<span class="num">1</span>
+													
 												</button>
+												
 												<button type="button" title="A2 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 271px; top: 50px; width: 20px;"
@@ -244,8 +275,6 @@
 													<span class="num">13</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">장애인석</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="B 행"
-													style="position: absolute; left: 206px; top: 72px;">B</button>
 												<button type="button" title="B1 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 251px; top: 70px; width: 20px;"
@@ -376,8 +405,6 @@
 													<span class="num">13</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="C 행"
-													style="position: absolute; left: 206px; top: 92px;">C</button>
 												<button type="button" title="C1 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 251px; top: 90px; width: 20px;"
@@ -508,8 +535,6 @@
 													<span class="num">13</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="D 행"
-													style="position: absolute; left: 206px; top: 112px;">D</button>
 												<button type="button" title="D1 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 251px; top: 110px; width: 20px;"
@@ -640,8 +665,6 @@
 													<span class="num">13</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="E 행"
-													style="position: absolute; left: 206px; top: 132px;">E</button>
 												<button type="button" title="E1 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard finish pos"
 													style="position: absolute; left: 251px; top: 130px; width: 20px;"
@@ -772,8 +795,6 @@
 													<span class="num">13</span><span class="kind">스탠다드</span><span
 														class="condition">선택불가</span><span class="rank">일반</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="F 행"
-													style="position: absolute; left: 206px; top: 152px;">F</button>
 												<button type="button" title="F1 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 251px; top: 150px; width: 20px;"
@@ -894,8 +915,6 @@
 													<span class="num">12</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="G 행"
-													style="position: absolute; left: 206px; top: 172px;">G</button>
 												<button type="button" title="G1 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard finish"
 													style="position: absolute; left: 251px; top: 170px; width: 20px;"
@@ -1006,8 +1025,6 @@
 													<span class="num">11</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
-												<button type="button" class="btn-seat-row" title="H 행"
-													style="position: absolute; left: 206px; top: 192px;">H</button>
 												<button type="button" title="H3 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 291px; top: 190px; width: 20px;"
@@ -1130,7 +1147,6 @@
 						var idOn = strArray[strArray.length-1];			
 
 						alert('총 좌석 수 : ' + cnt)
-						alert('선택 좌석수(0부터 시작) :' + seatCheckCnt)
 						
 						if(seatCheckCnt<=cnt){
 
@@ -1143,15 +1159,16 @@
 								seatCheckCnt = seatCheckCnt+1;
 								$(this).addClass('choice');
 								$(this).addClass('on');		
-
-								alert($('div.money>em').text())		
 								
 								$('div.money>em').text(seatCheckCnt * 8000)
+								
+								alert('선택 좌석수(1부터 시작) :' + seatCheckCnt)
+								alert($('div.money>em').text())		
 														
 
 								idSeatArray = "seatArray" + seatCheckCnt;
 								idSeatText = $(this).attr('rownm')+$(this).attr('seatno');				
-	
+
 								$('.'+idSeatArray).attr('title',idSeatText);
 								$('.'+idSeatArray).text(idSeatText);
 					
