@@ -29,4 +29,8 @@
 		order by startTime asc
 	</select>
 
+	<select id="getSeatList" parameterType="RoomMovieTimeVO" resultType="SeatVO">
+		select * from seat where timeCode=#{timeCode}	
+	</select>
+	
 </mapper>

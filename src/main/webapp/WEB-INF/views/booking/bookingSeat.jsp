@@ -111,48 +111,41 @@
 											<div class'row'="">
 											
 											
-											<!-- DB에서 seat 테이블에서 booked가 0인것만 가져오기 for each로 -->
+<!-- 											DB에서 seat 테이블에서 booked가 0인것만 가져오기 for each로 -->
 													
-<%--  											<c:forEach items="seatVO" var="seat"> --%>
-													
-													
-													
-<%--  												<c:if test="${seat.booked eq 0}"> --%>
-													
-<!-- 													<button type="button" title="A1" -->
+<%-- 											<c:forEach items="${seatList}" var="seat" varStatus="i"> --%>
+<%-- 													<button type="button" title="${seat.seatNum}" --%>
 <!-- 													class="jq-tooltip seat-condition standard common" -->
-<!-- 													style="position: absolute; left: 251px; top: 50px; width: 20px;" -->
-<!-- 													 rownm="A" seatno="1"> -->
-<!-- 													<span class="num">1</span> -->
+<!-- 													style="position: absolute; left: 251px+i; top: 50px; width: 20px;" -->
+<%-- 													 rownm="${seat.seatNum}" seatno="${seat.seatNum}"> --%>
+<%-- 													<span class="num">${seat.seatNum}</span> --%>
 													
 <!-- 													</button> -->
-												
-<%-- 													</c:if>  --%>
-													
-													
-<%-- 													<c:otherwise>  --%>
-<!-- 													<button type="button" title="A1" -->
-<!-- 														class="jq-tooltip seat-condition standard common finish" -->
-<!-- 														style="position: absolute; left: 251px; top: 50px; width: 20px;" -->
-<!-- 														 rownm="A" seatno="1"> -->
-<!-- 														<span class="num">1</span> -->
-														
-<!-- 														</button> -->
-													
-<%-- 													</c:otherwise>  --%>
-													
-													
 													
 <%-- 											</c:forEach> --%>
 													
-												<button type="button" title="A1"
+													
+													
+												<c:if test="${seatList.get(0).booked eq 0}">
+												<button type="button" title="${seatList.get(0).seatNum}"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 251px; top: 50px; width: 20px;"
 													 rownm="A" seatno="1">
-													<span class="num">1</span>
+													<span class="num">${seatList.get(0).seatNum}</span>
 													
 												</button>
+												</c:if>
 												
+												<c:if test="${seatList.get(0).booked eq 1}">
+													<button type="button" title="${seatList.get(0).seatNum}"
+												class="jq-tooltip seat-condition standard common finish"
+												style="position: absolute; left: 251px; top: 50px; width: 20px;"
+												 rownm="A" seatno="1">
+												<span class="num">${seatList.get(0).seatNum}</span>						
+												</button>
+												</c:if>
+												
+																								
 												<button type="button" title="A2 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 271px; top: 50px; width: 20px;"
@@ -1025,6 +1018,7 @@
 													<span class="num">11</span><span class="kind">스탠다드</span><span
 														class="condition">판매가능</span><span class="rank">일반</span>
 												</button>
+												
 												<button type="button" title="H3 (스탠다드/일반)"
 													class="jq-tooltip seat-condition standard common"
 													style="position: absolute; left: 291px; top: 190px; width: 20px;"

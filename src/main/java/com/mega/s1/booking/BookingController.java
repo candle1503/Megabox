@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
+import com.mega.s1.seat.SeatVO;
+import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
 
 @Controller
 @RequestMapping("booking/**")
@@ -29,7 +31,16 @@ public class BookingController {
 	}
 
 	@GetMapping("bookingSeat")
-	public void bookingSeat() throws Exception {
+	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<SeatVO> seatList = bookingService.getSeatList(roomMovieTimeVO);
+	
+		
+		mv.addObject("seatList", seatList);
+		
+		mv.setViewName("booking/bookingSeat");
+		return mv;
+		
 	}
 
 	@GetMapping("bookingTest")
