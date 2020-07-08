@@ -138,7 +138,6 @@
 	});
 	//예매 날짜별로 영화 리스트 부분 end//
 	
-	
 	//localCode 눌렀을 때
 	for(var localNum=1; localNum<9; localNum++){
 
@@ -189,10 +188,10 @@
 	}
 	//예매 날짜별로 극장을 선택했을 때 리스트 부분 end//
 	
+	
 
 
-
-
+	
 	
 	
 	

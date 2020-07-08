@@ -24,4 +24,10 @@ public class BookingVO {
 	private int seatCount;
 	
 	private int playTime;
+	
+	private int booked;
+	
+	private String seatNum;
+	
+	private int seatCode;
 }

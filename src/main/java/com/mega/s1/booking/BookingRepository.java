@@ -13,5 +13,7 @@ public interface BookingRepository {
 	
 	public List<BookingVO> bookingRoomList(BookingVO bookingVO) throws Exception;
 	
+	public BookingVO bookingSeatView(BookingVO bookingVO) throws Exception;
+	
 	public List<BookingVO> bookingFinalResult(BookingVO bookingVO) throws Exception;
 }

@@ -17,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-	<link rel="stylesheet" href="../resources/css/board.css"
+	<link rel="stylesheet" href="../resources/static/css/board.css"
 	media="all" />
 
 		<title>공지사항 < 고객센터 | 라이프씨어터, 메가박스</title>

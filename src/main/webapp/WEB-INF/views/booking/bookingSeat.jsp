@@ -14,11 +14,9 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 
-
 	<input type="hidden" id="playSchdlNo" name="playSchdlNo"
 		value="2006291372041">
 	<input type="hidden" id="brchNo" name="brchNo" value="1372">
-
 
 	<div class="inner-wrap" style="">
 		<div class="quick-reserve">
@@ -33,7 +31,7 @@
 						</h3>
 						<div class="right">
 							<button type="button" class="button gray-line small"
-								id="seatMemberCntInit" onclick="location.href='./bookingSeat' ">
+								id="seatMemberCntInit" onclick="javascript:location.reload()">
 								<i class="iconset ico-reset-small"></i>초기화
 							</button>
 						</div>
@@ -1216,20 +1214,31 @@
 				<div class="seat-result">
 					<div class="wrap">
 						<div class="tit-area">
-							<span class="movie-grade small age-all">전체관람가</span>
-							<p class="tit">영화제목 JSTL</p>
+							<c:if test="${movieVO.age eq '전체관람가'}">
+								<span class="movie-grade small age-all">${movieVO.age}</span>
+							</c:if>
+							<c:if test="${movieVO.age eq '12세이상관람가'}">
+								<span class="movie-grade small age-12">${movieVO.age}</span>
+							</c:if>
+							<c:if test="${movieVO.age eq '15세이상관람가'}">
+								<span class="movie-grade small age-15">${movieVO.age}</span>
+							</c:if>
+							<c:if test="${movieVO.age eq '청소년관람불가'}">
+								<span class="movie-grade small age-19">${movieVO.age}</span>
+							</c:if>
+							<p class="tit">${movieVO.name}</p>
 							<p class="cate"></p>
 						</div>
 						<div class="info-area">
-							<p class="theater">영화관 제목 JSTL</p>
-							<p class="special">상영관 이름 JSTL</p>
+							<p class="theater">${theaterVO.name}</p>
+							<p class="special">${bookingSeatView.roomName}</p>
 							<p class="date">
-								<span>상영날짜 JSTL</span>
+								<span>${bookingSeatView.startTime}(${yoil})</span>
 							</p>
 							<div class="other-time">
 								<p
 									style="border: 1px solid #333; border-bottom: 0; border-radius: 5px 5px 0 0; color: #fff; margin-left: 14px;">
-									시작시간JSTL</p>
+									${movieTime}</p>
 								<ul class="other">
 									<li><button type="button" choicnt="52"
 											playschdlno="2006301372021" class="btn on ">16:05~17:57</button></li>
@@ -1240,9 +1249,9 @@
 								</ul>
 							</div>
 							<p class="poster">
-								<img
+								<!-- <img
 									src="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
-									onerror="noImg(this);" alt="온워드: 단 하루의 기적">
+									onerror="noImg(this);" alt="온워드: 단 하루의 기적"> -->
 							</p>
 						</div>
 						<div class="choice-seat-area">
@@ -1285,7 +1294,7 @@
 							</div>
 						</div>
 						<div class="btn-group">
-							<a href="javaScript:void(0)" class="button" id="pagePrevious"
+							<a href="./bookingMain" class="button" id="pagePrevious"
 								title="이전">이전</a> <a href="#" class="button disabled"
 								id="pageNext" title="다음">다음</a>
 						</div>

@@ -446,6 +446,8 @@ function fn_validateDateYn(param) {
 																			value="쌍용">쌍용</button></li>
 																	<li class="localList"><button id="localBtnS3" type="button"
 																			value="홍대">홍대</button></li>
+																	<li class="localList"><button id="localBtnS29" type="button"
+																			value="영화관">영화관</button></li>
 																</ul>
 															</div>
 															<!-- <div id="mCSB_4_scrollbar_vertical"

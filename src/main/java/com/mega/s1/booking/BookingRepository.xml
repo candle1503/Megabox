@@ -20,6 +20,11 @@
 		order by startTime asc
 	</select>
 	
+	<select id="bookingSeatView" parameterType="BookingVO" resultType="BookingVO">
+		select * from roomMovieTime
+		where timeCode = #{timeCode}
+	</select>
+	
 	<select id="bookingFinalResult" parameterType="BookingVO" resultType="BookingVO">
 		select R.*, TR.*
 		from roomMovieTime R left join theaterRoom TR

@@ -9,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.ls.LSInput;
 
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
+import com.mega.s1.theater.TheaterService;
+import com.mega.s1.theater.TheaterVO;
 
 @Controller
 @RequestMapping("booking/**")
@@ -23,7 +27,18 @@ public class BookingController {
 	private BookingService bookingService;
 	@Autowired
 	private MovieService movieService;
-
+	@Autowired
+	private TheaterService theaterService;
+	
+	@GetMapping("bookingTimeZone")
+	public void bookingTimeList(long startDay, Model model) throws Exception{
+		
+		List<String> timeList = bookingService.bookingTimeList(startDay);
+		
+		model.addAttribute("timeList", timeList);
+		
+	}
+	
 	@GetMapping("bookingMain")
 	public void bookingMain() throws Exception {
 	}
@@ -160,6 +175,96 @@ public class BookingController {
 		mv.addObject("bookingRoomArSize", bookingRoomArSize);
 		mv.addObject("bookingRoomAr", bookingRoomAr);
 		mv.setViewName("booking/bookingRoomList");
+		return mv;
+	}
+	
+	@PostMapping("bookingSeatView")
+	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		bookingVO = bookingService.bookingSeatView(bookingVO);
+		
+		movieVO.setMovieNum(bookingVO.getMovieNum());
+		
+		movieVO = movieService.movieSelect(movieVO);
+		
+		System.out.println("나이:"+movieVO.getAge());
+		System.out.println("영화제목:"+movieVO.getName());
+		System.out.println("상영관:"+bookingVO.getRoomName());
+		System.out.println("상영시간:"+bookingVO.getStartTime());
+		System.out.println("영화번호:"+bookingVO.getMovieNum());
+		System.out.println("상영관번호:"+bookingVO.getTheaterRoomCode());
+		System.out.println("code:"+bookingVO.getTimeCode());
+		
+		theaterVO.setTheaterNum(bookingVO.getTheaterNum());
+		
+		theaterVO = theaterService.theaterBranchSelect(theaterVO);
+		
+		String startTime =  bookingVO.getStartTime();
+		int playTime = movieVO.getPlayTime();
+		
+		int startTimeHour = Integer.parseInt(startTime.substring(11, 13));
+		int startTimeMinute = Integer.parseInt(startTime.substring(14, 16));
+		
+		int playTimeHour = playTime/60;
+		int playTimeMinute = playTime%60;
+		
+		int endTimeHour = startTimeHour + playTimeHour;
+		int endTimeMinute = startTimeMinute + playTimeMinute + 10;
+		
+		int midnight = 24;
+		
+		if(endTimeHour >= 24) {
+			endTimeHour = midnight - endTimeHour;
+			endTimeHour = endTimeHour * -1;
+		}
+		
+		int midnightM = 60;
+		
+		if(endTimeMinute >= 60) {
+			endTimeMinute = midnightM - endTimeMinute;
+			endTimeMinute = endTimeMinute * -1;
+			endTimeHour++;
+		}
+		
+		String endTimeHourResult = endTimeHour+""; 
+					
+		if(endTimeHourResult.length() < 2) {
+			endTimeHourResult = 0+endTimeHourResult;				
+		}
+		
+		String endTimeMinuteResult = endTimeMinute+"";
+		
+		if(endTimeMinuteResult.length() < 2) {
+			endTimeMinuteResult = 0+endTimeMinuteResult;
+		}
+		
+		String endTime = endTimeHourResult + ":" + endTimeMinuteResult;
+	
+		String startTimeCut = startTime.substring(11, 16);
+		
+		String movieTime = startTimeCut + "~" + endTime; 
+
+		String startTimeChange = startTime.substring(0, 10);
+		bookingVO.setStartTime(startTimeChange);
+		
+		long startTimeDayCut = Integer.parseInt(startTime.substring(8, 10));
+		
+		List<String> timeAr = bookingService.bookingTimeList(startTimeDayCut);
+		
+		String [] yoils = timeAr.get(0).toString().split("//");
+		String yoil = yoils[1];
+		
+		//movieVO.getMovieFileVO().getFileName();
+		
+		
+		mv.addObject("yoil", yoil);
+		mv.addObject("movieTime", movieTime);
+		mv.addObject("movieVO", movieVO);
+		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("bookingSeatView", bookingVO);
+		mv.setViewName("booking/bookingSeat");
+		
 		return mv;
 	}
 	
