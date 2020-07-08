@@ -1,6 +1,7 @@
 package com.mega.s1.booking;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,18 +38,22 @@ public class BookingTimeService {
 //		System.out.println(startDay);
 //		System.out.println(Calendar.DATE);
 		
+//		LocalDate now = LocalDate.now();
+//		now.isLeapYear();
+				
+		
 		month = Integer.parseInt(sdfMonth.format(date));
 		
 		for(int i=0; i<14; i++) {
 			//월별로 현재 일이 현재 월의 마지막 날보다 크고 현재일이 원래 월보다 큰 경우 다음달로 월을 넘김
-							//현재 날짜중 월의 가장 마지막 날
-			if(startDay > cal.getActualMaximum(Calendar.DAY_OF_MONTH) || month > Calendar.DAY_OF_MONTH) {
+							//현재 날짜중 월의 가장 마지막 날(홀수달month+1 ifTop /짝수달 month-1 bottomElse)
+			if(startDay > cal.getActualMaximum(Calendar.DAY_OF_MONTH) || month > Calendar.DAY_OF_MONTH+2) {
 				year = Integer.parseInt(sdfYear.format(date));	//sdf형식을 date형식으로 바꾼 후 int타입으로 형변환
-				month = Integer.parseInt(sdfMonth.format(date));
+				month = Integer.parseInt(sdfMonth.format(date))+1;
 				day = Integer.parseInt(sdfDay.format(date));
 			} else {
 				year = Integer.parseInt(sdfYear.format(date));
-				month = Integer.parseInt(sdfMonth.format(date))-1;
+				month = Integer.parseInt(sdfMonth.format(date));
 				day = Integer.parseInt(sdfDay.format(date));
 			}
 			
@@ -62,7 +67,19 @@ public class BookingTimeService {
 //					System.out.println("Month:"+month);
 //					System.out.println("yoil:"+sdfYoil.format(setdate));
 					
-					timeList.add((int)startDay+"/"+sdfYoil.format(setdate));
+					String startMonth = month + "";
+					if(startMonth.length() < 2) {
+						startMonth = 0+startMonth;
+					}
+					
+					String startDays = startDay + "";
+					if(startDays.length() < 2) {
+						startDays = 0+startDays;
+					}
+					
+					//month = month + 1;
+					
+					timeList.add(year+"."+startMonth+"/"+startDays+"//"+sdfYoil.format(setdate));
 					count++;
 					startDay++;
 				}else {
@@ -73,7 +90,17 @@ public class BookingTimeService {
 //					System.out.println("day   :"+setdate.getDay());
 //					System.out.println("month:"+month);
 					
-					timeList.add((int)startDay+"/"+sdfYoil.format(setdate));
+					String startMonth = month + "";
+					if(startMonth.length() < 2) {
+						startMonth = 0+startMonth;
+					}
+					
+					String startDays = startDay + "";
+					if(startDays.length() < 2) {
+						startDays = 0+startDays;
+					}
+					
+					timeList.add(year+"."+startMonth+"/"+startDays+"//"+sdfYoil.format(setdate));
 					count++;
 					startDay++;
 //					System.out.println(timeList.get(i).toString());
