@@ -70,7 +70,7 @@
 	</select>
 	
 	<insert id="setSeat" parameterType="RoomMovieTimeVO" keyProperty="seatCode" useGeneratedKeys="true">
-		insert into seat values (0,#{timeCode},#{seatNum},0)
+		insert into seat values (0,#{timeCode},#{seatNum},0,#{seatnm},#{rownm})
 	</insert>
 	
 	<select id="getTimeCode" parameterType="RoomMovieTimeVO" resultType="Integer">

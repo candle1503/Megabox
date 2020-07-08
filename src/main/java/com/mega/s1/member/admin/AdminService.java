@@ -93,23 +93,31 @@ public class AdminService {
 				for(int i=1; i<13; i++) {
 					seatNum = Character.toString(seatCount)+i;
 					roomMovieTimeVO.setSeatNum(seatNum);
+					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
+					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
 					adminRepository.setSeat(roomMovieTimeVO);
 				}seatCount+=1;
 			}else if(seatCount ==71){
 				for(int i=1; i<12; i++) {
 					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
+					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
 					roomMovieTimeVO.setSeatNum(seatNum);
 					adminRepository.setSeat(roomMovieTimeVO);
 				}seatCount+=1;
 			}else if(seatCount ==72){
 				for(int i=3; i<11; i++) {
 					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
+					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
 					roomMovieTimeVO.setSeatNum(seatNum);
 					adminRepository.setSeat(roomMovieTimeVO);
 				}seatCount+=1;
 			}else {
 				for(int i=1; i<14; i++) {
 					seatNum = Character.toString(seatCount)+i;
+					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
+					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
 					roomMovieTimeVO.setSeatNum(seatNum);
 					adminRepository.setSeat(roomMovieTimeVO);
 				}
@@ -141,7 +149,4 @@ public class AdminService {
 		}
 	}
 	
-	public void setSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
-		adminRepository.setSeat(roomMovieTimeVO);
-	}
 }

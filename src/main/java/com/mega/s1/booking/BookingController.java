@@ -33,11 +33,10 @@ public class BookingController {
 	@GetMapping("bookingSeat")
 	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<SeatVO> seatList = bookingService.getSeatList(roomMovieTimeVO);
+		List<SeatVO> seatList;
+		seatList = bookingService.getSeatList(roomMovieTimeVO);
 	
-		
 		mv.addObject("seatList", seatList);
-		
 		mv.setViewName("booking/bookingSeat");
 		return mv;
 		
@@ -56,7 +55,7 @@ public class BookingController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookingVO> bookingMovieAr = bookingService.bookingMovieList(startTime);
-
+		
 		int bookingMovieArSize = bookingMovieAr.size();
 		
 		mv.addObject("bookingMovieArSize", bookingMovieArSize);

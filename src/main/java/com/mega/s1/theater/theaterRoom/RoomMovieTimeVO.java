@@ -23,4 +23,7 @@ public class RoomMovieTimeVO {
 	//seat 초기 설정하는 변수
 	private String seatNum;
 	private String seatCode;
+	private String rownm;
+	private String seatnm;
+	
 }

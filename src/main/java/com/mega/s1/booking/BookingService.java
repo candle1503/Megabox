@@ -29,15 +29,8 @@ public class BookingService {
 	public List<SeatVO> getSeatList(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
 		SeatVO seatVO = new SeatVO();
 		List<SeatVO> list = bookingRepository.getSeatList(roomMovieTimeVO);
-		for(int i=0; i<list.size(); i++) {
-			seatVO.setSeatnm(list.get(i).getSeatNum().substring(1));
-			seatVO.setRownm(list.get(i).getSeatNum().substring(0,1));
-			seatVO.setBooked(list.get(i).getBooked());
-			seatVO.setSeatNum(list.get(i).getSeatNum());
-			seatVO.setTimeCode(list.get(i).getTimeCode());
-			list.set(i, seatVO); 
-		}
-		return bookingRepository.getSeatList(roomMovieTimeVO);
+		
+		return list;
 	}
 	
 }

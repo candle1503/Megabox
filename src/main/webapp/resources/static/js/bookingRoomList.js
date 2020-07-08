@@ -32,7 +32,7 @@
 			
 			
 			
-			location.href="./bookingSeat?timeCode=465";
+			location.href="./bookingSeat?timeCode=468";
 		});
 	
 	}
