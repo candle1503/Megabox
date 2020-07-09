@@ -264,7 +264,6 @@ $(function(){
 		    });
 		})
 		$('#preview').click(function(){
-			
 			$(this).parent().attr("class", "on");
 			$("#review").parent().removeClass("on");
 			$("#inform").parent().removeClass("on");

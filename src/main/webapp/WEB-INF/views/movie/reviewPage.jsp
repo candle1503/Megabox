@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+	.pagination > li {
+		display: inline;
+	}
+</style>
 </head>
 <body>
 	
