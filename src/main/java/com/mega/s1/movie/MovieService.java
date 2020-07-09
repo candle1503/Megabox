@@ -44,6 +44,9 @@ public class MovieService {
 	public List<MovieFileVO> getMovieFile(MovieVO movieVO) throws Exception{
 		return movieFileRepository.movieFileSelect(movieVO);
 	}
+	public List<MovieFileVO> videoFile(MovieVO movieVO) throws Exception {
+		return movieFileRepository.videoFileSelect(movieVO);
+	}
 	
 	public List<ReviewVO> reviewPage(Pager pager) throws Exception{
 		pager.makeRow();
@@ -52,9 +55,50 @@ public class MovieService {
 		return movieRepository.reviewList(pager);
 	}
 	
+	public long imageCount(MovieVO movieVO) throws Exception{
+		return movieFileRepository.imageCount(movieVO);
+	}
+	public long videoCount(MovieVO movieVO) throws Exception{
+		return movieFileRepository.videoCount(movieVO);
+	}
+	
 	public long boardCount(Pager pager) throws Exception{
 		return movieRepository.boardCount(pager);
 	}
 	
+	public int reviewInsert(ReviewVO reviewVO) throws Exception{
+		int result = movieRepository.reviewInsert(reviewVO);
+		Double rate = movieRepository.reviewRate(reviewVO);
+		MovieVO movieVO = new MovieVO();
+		movieVO.setMovieNum(reviewVO.getMovieNum());
+		movieVO.setRate(rate);
+		movieRepository.rateUpdate(movieVO);
+		
+		return result;
+	}
+	
+	public long player(MovieVO movieVO) throws Exception{
+		return movieRepository.player(movieVO);
+	};
+	public long story(MovieVO movieVO) throws Exception{
+		return movieRepository.story(movieVO);
+	};
+	public long direct(MovieVO movieVO) throws Exception{
+		return movieRepository.direct(movieVO);
+	};
+	public long ost(MovieVO movieVO) throws Exception{
+		return movieRepository.ost(movieVO);
+	};
+	public long beauty(MovieVO movieVO) throws Exception{
+		return movieRepository.beauty(movieVO);
+	};
+	
+	public int likeUpdate(MovieVO movieVO) throws Exception{
+		return movieRepository.likeUpdate(movieVO);
+	};
+	
+	public List<MovieVO> movieList() throws Exception {
+		return movieRepository.movieList();
+	}
 
 }

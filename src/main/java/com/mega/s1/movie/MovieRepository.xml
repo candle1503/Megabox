@@ -4,6 +4,37 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mega.s1.movie.MovieRepository">
 
+	<resultMap type="MovieFileVO" id="MovieFileVO">
+		<id column="fileNum" property="fileNum" />
+		<result column="fileName" property="fileName"/>
+		<result column="oriName" property="oriName"/>		
+	</resultMap>
+	
+	<resultMap type="MovieVO" id="MovieVO">
+		<id column="movieNum" property="movieNum"/>
+		<result column="name" property="name"/>
+		<result column="director" property="director"/>
+		<result column="genre" property="genre"/>
+		<result column="rate" property="rate"/>
+		<result column="openDay" property="openDay"/>
+		<result column="age" property="age"/>
+		<result column="contents" property="contents"/>
+		<result column="like" property="like"/>
+		<result column="character" property="character"/>
+		<result column="playTime" property="playTime"/>
+		<result column="views" property="views"/>
+		<collection property="movieFileVO" resultMap="MovieFileVO"></collection>
+	</resultMap>
+	
+	<select id="movieList" resultMap="MovieVO">
+		select M.*, MF.fileName from movie M left join (select F.fileNum, F.fileName, F.movieNum 
+		from movieFile as F, 
+		(select movieNum, min(fileNum) as min_fileNum from movieFile where status=2 group by movieNum) as F2 
+		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
+		on M.movieNum = MF.movieNum
+	</select>
+
+
 	<select id="movieSelect" parameterType="MovieVO" resultType="MovieVO">
 		select * from movie where movieNum=#{movieNum}
 	</select>
@@ -14,10 +45,42 @@
 	
 	<select id="reviewList" parameterType="Pager" resultType="ReviewVO">
 		select * from review where movieNum=#{movieNum} 
-		order by movieNum desc limit #{startRow}, 10
+		order by reviewNum desc limit #{startRow}, 10
 	</select>
 	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
 		select count(movieNum) from review where movieNum=#{movieNum}
 	</select>
+	
+	
+	
+	<select id="reviewRate" parameterType="ReviewVO" resultType="java.lang.Double">
+		select avg(point) from review where movieNum=#{movieNum}
+	</select>
+	
+	<update id="rateUpdate" parameterType="MovieVO">
+		update movie set rate=#{rate} where movieNum=#{movieNum}
+	</update>
+	
+	<select id="player" parameterType="MovieVO" resultType="Long">
+		select count(likePoint) from review where movieNum=#{movieNum} and likePoint='배우'
+	</select>
+	
+	<select id="direct" parameterType="MovieVO" resultType="Long">
+		select count(likePoint) from review where movieNum=#{movieNum} and likePoint='연출'
+	</select>
+	<select id="ost" parameterType="MovieVO" resultType="Long">
+		select count(likePoint) from review where movieNum=#{movieNum} and likePoint='ost'
+	</select>
+	
+	<select id="story" parameterType="MovieVO" resultType="Long">
+		select count(likePoint) from review where movieNum=#{movieNum} and likePoint='스토리'
+	</select>
+	<select id="beauty" parameterType="MovieVO" resultType="Long">
+		select count(likePoint) from review where movieNum=#{movieNum} and likePoint='영상미'
+	</select>
+	
+	<update id="likeUpdate" parameterType="MovieVO">
+		update movie set movie.like=#{like}+1 where movieNum=#{movieNum}
+	</update>
 </mapper>

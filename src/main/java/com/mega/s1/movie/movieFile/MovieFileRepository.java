@@ -10,5 +10,7 @@ import com.mega.s1.movie.MovieVO;
 public interface MovieFileRepository {
 
 	public List<MovieFileVO> movieFileSelect(MovieVO movieVO) throws Exception;
-	
+	public long imageCount(MovieVO movieVO) throws Exception;
+	public List<MovieFileVO> videoFileSelect(MovieVO movieVO) throws Exception;
+	public long videoCount(MovieVO movieVO) throws Exception;
 }
