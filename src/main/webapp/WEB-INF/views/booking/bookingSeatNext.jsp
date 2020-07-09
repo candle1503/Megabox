@@ -488,8 +488,8 @@
 							</div>
 						</div>
 
-						<div class="btn-group">
-							<a href="${pageContext.request.contextPath}/booking/bookingSeat"
+						<div class="btn-group"> <!-- ${pageContext.request.contextPath} -->
+							<a href="javascript:history.back()"
 								class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 -->
 							</a> <a href="#" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"
