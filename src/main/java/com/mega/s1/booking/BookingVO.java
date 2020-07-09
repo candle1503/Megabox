@@ -30,4 +30,8 @@ public class BookingVO {
 	private String seatNum;
 	
 	private int seatCode;
+	
+	private String yoil;
+	
+	private String movieTime;
 }

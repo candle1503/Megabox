@@ -421,21 +421,21 @@
 							<span class="movie-grade small age-19">청소년 관람 불가</span>
 							<span class="movie-grade small age-no">미정</span>
 						-->
-							<span class="movie-grade small age-12" id="admisClassNm">12세이상관람가</span>
+							<span class="movie-grade small age-12" id="admisClassNm">${movieVO.age}</span>
 
-							<p class="tit" id="movieNm">영화제목 JSTL</p>
+							<p class="tit" id="movieNm">${movieVO.name}</p>
 							<p class="cate" id="playKindNm"></p>
-							<p class="theater" id="brchNm">상영관 JSTL</p>
+							<p class="theater" id="brchNm">${bookingVO.roomName}</p>
 							<p class="date">
-								<span id="playDe">상영날짜 JSTL</span><em id="dowNm">(화)</em> <span
+								<span id="playDe">${bookingVO.startTime}</span><em id="dowNm">(${bookingVO.yoil})</em> <span
 									class="time" id="playTime"><i
-									class="iconset ico-clock-white"></i>시작시간 JSTL</span>
+									class="iconset ico-clock-white"></i>${bookingVO.movieTime}</span>
 							</p>
 						</div>
 						<div class="price-process">
 							<div class="box">
 								<div class="data">
-									<span class="tit">일반 <em>1</em></span><span class="price">8,000</span>
+									<span class="tit">일반 <em>${sizeCount}</em></span><span class="price">${size}</span>
 								</div>
 								<!--
 							<div class="data">
@@ -449,7 +449,7 @@
 							</div>
 							-->
 								<div class="all">
-									<span class="tit">금액 <!-- 금액 --></span> <span class="price"><em>8,000</em>
+									<span class="tit">금액 <!-- 금액 --></span> <span class="price"><em>${size}</em>
 										<span>원 <!-- 원 --></span></span>
 								</div>
 							</div>
@@ -479,7 +479,7 @@
 								</p>
 
 								<div class="money">
-									<em>8,000</em> <span>원 <!-- 원 --></span>
+									<em>${size}</em> <span>원 <!-- 원 --></span>
 								</div>
 							</div>
 							<div class="payment-thing">

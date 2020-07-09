@@ -58,9 +58,27 @@ public class BookingController {
 	public void bookingTest() throws Exception {
 	}
 	
-	@GetMapping("bookingSeatNext")
-	public void bookingSeatNext() throws Exception {
+	@PostMapping("bookingSeatNext")
+	public ModelAndView bookingSeatNext(SeatVO seatVO,BookingVO bookingVO,MovieVO movieVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int size = seatVO.getSeatList().size();
+		mv.addObject("sizeCount", size);
+		System.out.println("dsjhfdjsf:"+size);
+		
+		size = size*8000;
+		
+		
+		mv.addObject("seatList", seatVO.getSeatList());
+		mv.addObject("movieVO", movieVO);
+		mv.addObject("bookingVO", bookingVO);
+		mv.addObject("size", size);
+		
+		return mv;
+		
 	}
+
+	
+	
 	
 	@GetMapping("bookingMovieList")
 	public ModelAndView bookingMovieList(String startTime) throws Exception{
@@ -260,15 +278,12 @@ public class BookingController {
 		String [] yoils = timeAr.get(0).toString().split("//");
 		String yoil = yoils[1];
 		
-		
-		System.out.println("mvmvmvmvmv:"+movieVO.getMovieNum());
-//		MovieFileVO movieFileVO = new MovieFileVO();
-//		movieFileVO.setMovieNum(movieVO.getMovieNum());
-		
 		List<MovieFileVO> mvf = movieService.getMovieFile(movieVO);
-		System.out.println("mvfmvf:"+mvf.get(0).getFileNum()); 
 		
-		mv.addObject("movieFileVO", mvf);
+		MovieFileVO movieFileVO = new MovieFileVO();
+		movieFileVO.setFileName(mvf.get(0).getFileName());
+		
+		mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("yoil", yoil);
 		mv.addObject("movieTime", movieTime);
 		mv.addObject("movieVO", movieVO);

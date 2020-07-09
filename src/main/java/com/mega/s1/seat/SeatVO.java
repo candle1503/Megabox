@@ -1,5 +1,7 @@
 package com.mega.s1.seat;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -11,4 +13,6 @@ public class SeatVO {
 	
 	private String rownm;
 	private String seatnm;
+	
+	private List<String> seatList;
 }

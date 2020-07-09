@@ -21,7 +21,25 @@
 		<div class="quick-reserve">
 			<h2 class="tit"></h2>
 
-
+			<form method="post" action="./bookingSeatNext">
+			<input type="text" value="${movieVO.age}" name="age">
+			<input type="text" value="${movieVO.name}" name="name">
+			<input type="text" value="${bookingSeatView.roomName}" name="roomName">
+			<input type="text" value="${bookingSeatView.startTime}" name="startTime">
+			<input type="text" value="${yoil}" name="yoil">
+			<input type="text" value="${movieTime}" name="movieTime">
+			
+			<input class="input0"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input1"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input2"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input3"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input4"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input5"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input6"type="text" value="" name="seatList" disabled="disabled">
+			<input class="input7"type="text" value="" name="seatList" disabled="disabled">
+			
+			
+			
 			<div class="seat-select-section">
 				<div class="seat-section">
 					<div class="tit-util">
@@ -88,6 +106,7 @@
 							</script>
 
 						</div>
+						
 						<div class="seat-layout">
 							<div class="alert" style="display: none;"></div>
 							<div class="seat-count-before off" style="top: 0px">관람인원을
@@ -156,6 +175,7 @@
 						if(seatCheckCnt<=cnt){
 
 							var idSeatArray = "seatArray" + seatCheckCnt;
+							var inputArray = "input" + seatCheckCnt;
 							var idSeatText = $(this).attr('rownm')+$(this).attr('seatno');		
 
 							if(idOn != 'on'){
@@ -176,7 +196,11 @@
 
 								$('.'+idSeatArray).attr('title',idSeatText);
 								$('.'+idSeatArray).text(idSeatText);
-					
+
+								$('.'+inputArray).attr('value',idSeatText);
+								$('.'+inputArray).removeAttr('disabled');
+
+								
 								$('.'+idSeatArray).removeClass('all');
 								$('.'+idSeatArray).addClass('choice');
 								}
@@ -224,7 +248,6 @@
 						if(seatCheckCnt==cnt){
 							alert('모두 선택하셨습니다. 결제창으로 이동해 주세요')
 							
-							$('#pageNext').attr('href','${pageContext.request.contextPath}/booking/bookingSeatNext')
 							$('#pageNext').removeClass('disabled')
 					}
 
@@ -273,7 +296,7 @@
 								</ul>
 							</div>
 							<p class="poster">
-								<img alt="" src="../resources/static/images/sTheater.png">
+								<img src="/upload/movie/${movieFileVO.fileName}">
 								<!-- <img
 									src="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
 									onerror="noImg(this);" alt="온워드: 단 하루의 기적"> -->
@@ -320,12 +343,16 @@
 						</div>
 						<div class="btn-group">
 							<a href="./bookingMain" class="button" id="pagePrevious"
-								title="이전">이전</a> <a href="#" class="button disabled"
-								id="pageNext" title="다음">다음</a>
+								title="이전">이전</a> 
+								
+								<button type="submit" class="button disabled"
+								id="pageNext" title="다음">다음</button>
+								
 						</div>
 					</div>
 				</div>
 			</div>
+								</form>
 
 
 
