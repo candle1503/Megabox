@@ -44,7 +44,7 @@
 	</update>
 	
 	<insert id="theaterRoomSet" parameterType="TheaterRoomVO" keyProperty="theaterRoomCode" useGeneratedKeys="true">
-		insert into theaterRoom values (#{name},#{roomName},0,100)
+		insert into theaterRoom values (#{name},#{roomName},0,96)
 	</insert>
 	
 	<select id="getRoomList" parameterType="TheaterVO" resultType="TheaterRoomVO">
