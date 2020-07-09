@@ -10,7 +10,7 @@
 <body class="bg-member">
 	<div class="member-wrap">
 		<div>
-			<a href="../"><img alt="" src="/resources/static/static/images/sTheater.png"
+			<a href="../"><img alt="" src="/resources/static/images/sTheater.png"
 				style="margin-left: 90px"></a>
 		</div>
 		<p class="tit-member">로그인&<a href="./memberJoin" style="color:#503396;">회원가입</a></p>

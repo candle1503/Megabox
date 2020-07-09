@@ -5,6 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.mega.s1.seat.SeatVO;
+import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
+
 @Repository
 @Mapper
 public interface BookingRepository {
@@ -16,4 +19,6 @@ public interface BookingRepository {
 	public BookingVO bookingSeatView(BookingVO bookingVO) throws Exception;
 	
 	public List<BookingVO> bookingFinalResult(BookingVO bookingVO) throws Exception;
+	
+	public List<SeatVO> getSeatList(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 }

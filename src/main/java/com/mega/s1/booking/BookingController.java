@@ -19,6 +19,8 @@ import com.mega.s1.movie.MovieVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.theater.TheaterService;
 import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.seat.SeatVO;
+import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
 
 @Controller
 @RequestMapping("booking/**")
@@ -45,7 +47,15 @@ public class BookingController {
 	}
 
 	@GetMapping("bookingSeat")
-	public void bookingSeat() throws Exception {
+	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<SeatVO> seatList;
+		seatList = bookingService.getSeatList(roomMovieTimeVO);
+	
+		mv.addObject("seatList", seatList);
+		mv.setViewName("booking/bookingSeat");
+		return mv;
+		
 	}
 
 	@GetMapping("bookingTest")
@@ -61,7 +71,7 @@ public class BookingController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookingVO> bookingMovieAr = bookingService.bookingMovieList(startTime);
-
+		
 		int bookingMovieArSize = bookingMovieAr.size();
 		
 		mv.addObject("bookingMovieArSize", bookingMovieArSize);
