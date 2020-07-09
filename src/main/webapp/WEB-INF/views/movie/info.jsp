@@ -38,20 +38,21 @@
 	<fmt:formatDate value="${vo.openDay }" pattern="yyyy-MM-dd" var="openDay"/>
 
 
-    <!-- movie-graph -->
+   <!-- movie-graph -->
     
     <div class="movie-graph infoContent">
         <div class="col">
             <dl>
                 <dt>관람포인트</dt>
+                
                 <dd id="charByPoint">&nbsp;</dd>
             </dl>
 
             <div class="graph" style="position: relative; bottom: 29px;">
            <c:choose>
            	<c:when test="${today <= openDay || vo.rate eq '0'}">
-				
-                        <img src="/resources/static/images/no-graph01.jpg" alt="메가스코어 결과 없음">
+		
+                 <img src="/resources/static/images/no-graph01.jpg" alt="메가스코어 결과 없음" style="margin-top: 30px;">
                 
              </c:when>
              <c:when test="${today >= openDay && vo.rate ne '0'}">
@@ -65,7 +66,12 @@
         <div class="col" id="subMegaScore">
             <dl>
                 <dt>실관람 평점</dt>
+                <c:if test="${vo.rate eq '0' }">
+                	<dd class="font-roboto regular"><em>0</em><span class="ir">점</span></dd>
+                </c:if>
+                <c:if test="${vo.rate ne '0' }">
                 <dd class="font-roboto regular"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></dd>
+            	</c:if>
             </dl>
             
            <c:choose>

@@ -34,8 +34,8 @@ public class MovieController {
 	public ModelAndView preview(ModelAndView mv, MovieVO movieVO) throws Exception {
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		MovieVO vo = movieService.movieSelect(movieVO);
-		long image = movieService.imageCount(movieVO);
 		List<MovieFileVO> videos = movieService.videoFile(movieVO);
+		long image = movieService.imageCount(movieVO);
 		long video = movieService.videoCount(movieVO);
 		
 		mv.addObject("video", videos);
@@ -239,8 +239,29 @@ public class MovieController {
 		return mv;
 	}
 	
+	@GetMapping("movieUpdate")
+	public ModelAndView movieUpdate(ModelAndView mv, MovieVO movieVO) throws Exception{
+		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
+		movieVO = movieService.movieSelect(movieVO);
+		List<MovieFileVO> videos = movieService.videoFile(movieVO);
+		String stc = movieVO.getGenre();
+		String[] arg = stc.split(", ");
+		String str = movieVO.getCharacter();
+		String[] arc = str.split(", ");
+		movieVO.setContents(movieVO.getContents().replace("<br>", "\r\n"));
+		
+		mv.addObject("genre", arg);
+		mv.addObject("character", arc);
+		mv.addObject("video", videos);
+		mv.addObject("file", files);
+		mv.addObject("movieVO", movieVO);
+		mv.setViewName("admin/updateMovie");
+		return mv;
+	}
+	
 	@PostMapping("movieInsert")
 	public ModelAndView movieInsert(ModelAndView mv, @Valid MovieVO movieVO, BindingResult bindingResult, MultipartFile[] files, String[] details, String[] characters) throws Exception {
+		
 		
 		 //취미 부분은 별도로 읽어들어 다시 빈 클래스에 저장
         String[] genre = movieVO.getGenreTest();
@@ -271,9 +292,9 @@ public class MovieController {
 		if (bindingResult.hasErrors()) {
 			mv.addObject("movieVO", movieVO);
 			mv.setViewName("admin/addMovie");
-			System.out.println(character);
-		}else {
 			
+		}else {
+			movieVO.setContents(movieVO.getContents().replace("\r\n", "<br>"));
 			movieService.movieInsert(movieVO, files, details);
 			mv.setViewName("redirect:./movieList");
 		}

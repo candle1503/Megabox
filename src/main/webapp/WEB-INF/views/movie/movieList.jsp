@@ -69,9 +69,11 @@
         </c:choose>
           
         </ul>
-    </div><br><br><a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a><br><br>
+    </div><br><br><c:if test="${member.id eq'ADMIN' }"><a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a></c:if><br><br>
 <div class="movie-list">
 	<ol class="list" id="movieList">
+	
+	<!-- 영화 뿌려주기 -->
 		<c:forEach var="movie" items="${movie }" varStatus="vs">	
 		<li tabindex="0" class="no-img">
 					
@@ -89,9 +91,22 @@
 			</div></div><div class="tit-area">    <p class="movie-grade age-15">,</p>    <p title="${movie.name }" class="tit">${movie.name }</p></div>
 			<div class="rate-date">    <span class="rate">예매율 25.2%</span> <span class="date">개봉 ${movie.openDay }</span>
 			</div><div class="btn-util">    <button type="button" class="button btn-like" data-no="20021300"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>${movie.like }</span></button>    
-			<div class="case col-2 movieStat3" style=""> <a href="#" class="button purple bokdBtn" data-no="20021300" title="영화 예매하기">예매</a> 
-			<button class="button purple delt" title="${movie.movieNum }" style="background-color: red;">삭제</button></div> </div></li>
-		</c:forEach>	
+			<div class="case col-2 movieStat3" style=""> 
+	<c:choose>
+		<c:when test="${member.id ne 'ADMIN' }">
+			<a href="#" class="button purple bokdBtn" data-no="20021300" title="영화 예매하기">예매</a> 
+		</c:when>
+		<c:when test="${member.id eq'ADMIN' }">
+			<a href="./movieUpdate?movieNum=${movie.movieNum }" class="button purple bokdBtn" data-no="20021300" title="영화 예매하기">수정</a> 
+			<button class="button purple delt" title="${movie.movieNum }" style="background-color: red;">삭제</button>
+		</c:when>
+	
+	</c:choose>
+	
+	</div> </div></li>
+	<!-- ////영화 뿌려주기 -->
+	</c:forEach>	
+	
 	</ol>
 	</div>
 	

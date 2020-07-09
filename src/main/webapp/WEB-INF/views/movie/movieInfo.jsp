@@ -366,7 +366,7 @@ $(function(){
             <dl>
                 <dt>실관람 평점</dt>
                 <c:if test="${vo.rate eq '0' }">
-                	<dd class="font-roboto regular"><em>"${vo.rate}"</em><span class="ir">점</span></dd>
+                	<dd class="font-roboto regular"><em>0</em><span class="ir">점</span></dd>
                 </c:if>
                 <c:if test="${vo.rate ne '0' }">
                 <dd class="font-roboto regular"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></dd>

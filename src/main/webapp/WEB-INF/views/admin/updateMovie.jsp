@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html lang="ko">
 <head>
 
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
 <link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <style type="text/css">
 
@@ -72,16 +74,16 @@
 				<c:import url="../template/adminSidebar.jsp"></c:import>
 
 				<div id="content" class="">
-					<form:form modelAttribute="movieVO" action="./movieInsert"
+					<form:form modelAttribute="movieVO" action="./movieUpdate"
 						method="post" enctype="multipart/form-data">
 						<h2 class="tit">영화 추가</h2>
 
 						<div class="box-radius" style="margin-bottom: 0px;">
 							<div class="box-top" style="padding-left: 10px">
-								<strong>영화 제목</strong>
+								<strong>영화 수정</strong>
 							</div>
 							<form:textarea path="name" class="box-bot" rows="1" cols="95"
-								style="resize: none;" placeholder="영화 이름을 입력하세요." />
+								style="resize: none;" placeholder="영화 이름을 입력하세요." value="${movieVO.name }"/>
 							<form:errors path="name"></form:errors>
 
 							<br>
@@ -111,7 +113,10 @@
 							</div>
 							<input type="button" value="배우 추가" class="button" id="addCha" />
 							<div id="cha" style="padding: 10px 45px 30px 30px;">
-								<input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" required="required">
+								<input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" required="required" value=${character[0] }>
+								<c:forEach items="${character }" var="cha" begin="1">
+									<span><input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" value="${cha}"><span style="cursor: pointer;" class="del"> ×</span></span>
+								</c:forEach>
 								
 							</div>
 							
@@ -119,7 +124,7 @@
 								<strong>감독</strong>
 							</div>
 							<form:textarea path="director" class="box-bot" rows="1" cols="95"
-								style="resize: none;" placeholder="감독 이름을 입력하세요." />
+								style="resize: none;" placeholder="감독 이름을 입력하세요." value="${movieVO.director }"/>
 							<form:errors path="director"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>영화 소개 줄거리</strong>
@@ -134,32 +139,47 @@
 							</div>
 							
 							<form:select path="age" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; margin-bottom:15px; margin-top:15px;" >
-							 	<option value="" selected="selected">나이 제한을 설정</option>
-								<option value="전체관람가">ALL</option>
-								<option value="12세이상관람가">12세이용가</option>
-								<option value="15세이상관람가">15세이용가</option>
-								<option value="청소년관람불가">청소년관람불가</option>							
+							 	<option class="opt" value="" selected="selected">나이 제한을 설정</option>
+								<option class="opt" value="전체관람가">ALL</option>
+								<option class="opt" value="12세이상관람가">12세이용가</option>
+								<option class="opt" value="15세이상관람가">15세이용가</option>
+								<option class="opt" value="청소년관람불가">청소년관람불가</option>							
 							</form:select>
 							<form:errors path="age"></form:errors>
 							
 							<div class="box-top" style="padding-left: 10px">
 								<strong>개봉일</strong> <strong style="float:right;">러닝 타임</strong>
 							</div>
-							<form:input path="openDay" type="Date" required="true" style="width:70%; height: 50px;"/>
+							<form:input path="openDay" type="Date" required="true" style="width:70%; height: 50px;" value="${movieVO.openDay }"/>
 							
-							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="0" />
+							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="${movieVO.playTime }" />
 							<div class="box-top" style="padding-left: 10px">
-								<strong>포스터 업로드</strong>
+								<strong>포스터 </strong>
 							</div>
-							<div id="postImg" style="display:none;">
-							<img alt="" src="" class="thumb_img" style="width:240px;">
+							<div id="postImg">
+							<img alt="" src="${pageContext.request.contextPath}/upload/movie/${file[0].fileName}" class="thumb_img" style="width:240px;">
 							</div>
 							<div class="box-file-input"><label>
 							<input name="files" type="file" accept="image/*" id="poster" class="file-input"></label>
 							<span class="filename">파일을 선택해주세요.</span>
 							</div>
+							
+							
 							<div class="box-top" style="padding-left: 10px">
 								<strong>무비 스틸컷(이미지 파일)</strong>
+							</div>
+							<div class="imgCut">
+							<c:forEach items="${file }" var="file" begin="1">
+							
+							<div style="box-sizing: content-box; display: inline-block; margin-left: 25px; margin-top: 10px; margin-bottom: 10px;">
+
+								<img src="${pageContext.request.contextPath}/upload/movie/${file.fileName}" alt="" onerror="noImg(this, 'main');" style="height: 240px; max-width: 360px;">
+								
+								<img src="/resources/static/images/xbutton.jpg" style="width: 20px; float:right; cursor: pointer;" class="del" title="${file.fileNum }">
+								
+							</div>
+
+							</c:forEach>
 							</div>
 							<input type="button" value="파일 추가" class="button" id="add" />
 							<div id="f">
@@ -183,14 +203,47 @@
 						</div>
 					</form:form>
 				</div>
-				
-				
 		
 			</div>
 		</div>
 		<script type="text/javascript">
 			var imgNum = 0;
+			var underAge = '${movieVO.age}'
+			var genre = [
+				<c:forEach items="${genre }" var="genre">
+				'${genre}',
+				</c:forEach>
+				];
+
+			var elImage = document.querySelector("#poster");
+			elImage.addEventListener("change", function(evt){
+				var image = evt.target.files[0];
+				
+				var thumb = document.querySelector(".thumb_img");
+	 			thumb.src = window.URL.createObjectURL(image);
+	 			
+	 			
+			})
+
 			
+			$('.cbox').each(function(){
+				for(i=0; i<genre.length; i++){
+					if($(this).val()==genre[i]){
+						$(this).prop("checked", true);
+					}
+						
+				}
+			})
+			
+			$('.opt').each(function(){
+				if(underAge==$(this).val()){
+					$(this).prop("selected", true)
+				}	
+
+			})
+			
+				
+				
 			$("#add").click(function(){
 			if(imgNum==15){
 				alert("이미지는 15개까지");
@@ -210,15 +263,14 @@
 			
 			});	
 
-			var elImage = document.querySelector("#poster");
-			elImage.addEventListener("change", function(evt){
-				var image = evt.target.files[0];
+			$('.imgCut').on('click', '.del', function(){
+				var fileNum=$(this).attr("title")
 				
-				var thumb = document.querySelector(".thumb_img");
-	 			thumb.src = window.URL.createObjectURL(image);
-	 			$('#postImg').show();
-	 			
-			}) 	
+				$(this).parent().remove();
+				
+
+				})
+			
 			
 			$('#cha').on('click', '.del', function(){
 				
