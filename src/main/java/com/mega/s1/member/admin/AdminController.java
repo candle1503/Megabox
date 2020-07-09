@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieVO;
@@ -63,7 +64,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("theaterAdd")
-	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult) throws Exception{
+	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult, RedirectAttributes attributes) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int roomCount = theaterVO.getRoomCount();
 		TheaterRoomVO roomVO = new TheaterRoomVO();
@@ -74,14 +75,14 @@ public class AdminController {
 			adminService.addTheater(theaterVO);
 			roomVO.setName(theaterVO.getName());
 			adminService.theaterRoomSet(roomVO,roomCount);
-			mv.setViewName("redirect:./setTheaterRoom?name="+theaterVO.getName());
+			attributes.addAttribute("name", theaterVO.getName());
+			mv.setViewName("redirect:./setTheaterRoom");
 		}
 		return mv;
 	}
 	
 	@GetMapping("theaterSelect")
 	public ModelAndView theaterSelect(TheaterVO theaterVO)throws Exception{
-		System.out.println(theaterVO.getName());
 		ModelAndView mv = new ModelAndView();
 		List<TheaterRoomVO> roomList = adminService.getRoomList(theaterVO);
 		theaterVO = adminService.theaterSelect(theaterVO);
@@ -117,7 +118,9 @@ public class AdminController {
 	}
 	
 	@GetMapping("setTheaterRoom")
-	public ModelAndView setTheaterRoom(TheaterVO theaterVO) throws Exception{
+	public ModelAndView setTheaterRoom(TheaterVO theaterVO,RedirectAttributes attributes) throws Exception{
+		String name = (String)attributes.getAttribute("name");
+		System.out.println(name);
 		ModelAndView mv = new ModelAndView();
 		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		
