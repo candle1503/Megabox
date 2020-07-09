@@ -49,11 +49,7 @@ public class BookingController {
 	@GetMapping("bookingSeat")
 	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<SeatVO> seatList;
-		seatList = bookingService.getSeatList(roomMovieTimeVO);
-	
-		mv.addObject("seatList", seatList);
-		mv.setViewName("booking/bookingSeat");
+		
 		return mv;
 		
 	}
@@ -193,6 +189,13 @@ public class BookingController {
 	@PostMapping("bookingSeatView")
 	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
+		roomMovieTimeVO.setTimeCode(bookingVO.getTimeCode());
+		List<SeatVO> seatList;
+		seatList = bookingService.getSeatList(roomMovieTimeVO);
+	
+		mv.addObject("seatList", seatList);
+		
 		
 		bookingVO = bookingService.bookingSeatView(bookingVO);
 		
