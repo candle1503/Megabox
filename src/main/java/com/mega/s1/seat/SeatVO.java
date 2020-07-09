@@ -8,4 +8,7 @@ public class SeatVO {
 	private int booked;
 	private int timeCode;
 	private String seatNum;
+	
+	private String rownm;
+	private String seatnm;
 }

@@ -104,9 +104,8 @@
 
 						<div class="right">
 							<button type="button" class="button gray-line small"
-								id="btn_booking_init">
+								onclick="location.href='./bookingSeatNext' ">
 								<i class="iconset ico-reset-small"></i>초기화
-								<!-- 초기화 -->
 							</button>
 						</div>
 					</div>
@@ -116,32 +115,37 @@
 					<div class="discout-setting">
 						<div class="discout-list">
 							<ul>
-								<li class="on"><a href="#mega_point" class="tit"
-									id="grp_mega_point" name="grp_mega_dc" title="메가박스 포인트/쿠폰">
-										메가박스 포인트/쿠폰<!-- 메가박스 포인트/관람권 --> <!-- <span class="text">멤버십 포인트는 월~금(주말 및 공휴일 제외) 평일에만 사용 가능합니다. </span> -->
+								<li class="on"><a class="tit" id="grp_mega_point"
+									name="grp_mega_dc" title="메가박스 포인트/쿠폰"> 쌍용씨네마 포인트 및 쿠폰<!-- 메가박스 포인트/관람권 -->
+										<!-- <span class="text">멤버십 포인트는 월~금(주말 및 공휴일 제외) 평일에만 사용 가능합니다. </span> -->
 								</a>
 
 									<div id="mega_point" class="cont-down">
 										<div class="coupon-box">
-											<div class="item col-1">
-												<a href="#layer_memp" w-data="600" h-data="550"
-													class="btn-modal-open" name="btn_pay_memp"
-													id="btn_pay_memp" title="메가박스 멤버십 포인트"> <span
-													class="txt">메가박스 멤버십 포인트 <!-- 메가박스 멤버십 포인트 --></span>
+										
+											<div class="item col-1" style="width: 333px; float: left;">
+												<a w-data="500" h-data="450" class="btn-modal-open"
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트">
+													<span class="txt">쌍용씨네마 멤버십 포인트 : JSTL 받아서 입력 <!-- 메가박스 멤버십 포인트 --></span>
 												</a>
-
-												<button type="button" class="btn-cancel"
-													id="btn_cancel_memp" method="memp">
-													취소
-													<!-- 취소 -->
-												</button>
 											</div>
+
+											<div style="float: left; padding-left: 15px; padding-top: 35px;">
+												<input type="checkbox" id="same_use_payment"> <label
+													for="same_use_payment" id="label_use_payment">멤버십
+													포인트 사용하기 <!-- 다음에도 이 결제수단 사용 -->
+												</label>
+											</div>
+
+
 										</div>
 									</div></li>
 
 							</ul>
 						</div>
 					</div>
+
+
 
 
 					<!--// discout-setting -->
@@ -152,12 +156,6 @@
 							<!-- 결제수단선택 -->
 						</h3>
 
-						<div class="right">
-							<input type="checkbox" id="same_use_payment"> <label
-								for="same_use_payment" id="label_use_payment">다음에도 이
-								결제수단 사용 <!-- 다음에도 이 결제수단 사용 -->
-							</label>
-						</div>
 					</div>
 
 					<!--
@@ -289,13 +287,13 @@
 								<div class="dropdown-menu open" role="combobox"
 									style="max-height: 302px; overflow: hidden; min-width: 104px;">
 									<div class="inner open" role="listbox" aria-expanded="true"
-										tabindex="-1" style="max-height: 300px; overflow-y: auto; ">
-										<ul class="dropdown-menu inner " id = "selectCardInner">
+										tabindex="-1" style="max-height: 300px; overflow-y: auto;">
+										<ul class="dropdown-menu inner " id="selectCardInner">
 											<li class="selected active"><a role="option"
 												aria-disabled="false" tabindex="0" class="selected active"
 												aria-selected="true"><span class="text">카드선택</span></a></li>
-												
-												
+
+
 											<li><a role="option" aria-disabled="false" tabindex="0"
 												aria-selected="false"><span class="text">비씨카드</span></a></li>
 											<li><a role="option" aria-disabled="false" tabindex="0"
@@ -350,27 +348,38 @@
 						</div>
 
 						<script type="text/javascript">
-							$('#cardDrop').click(function() {
-								
-								if ($("#cardDrop").hasClass("open") == false) {
-									$('#cardDrop').addClass('open');
-								}
+							$('#cardDrop')
+									.click(
+											function() {
 
-								else if ($("#cardDrop").hasClass("open") == true) {
+												if ($("#cardDrop").hasClass(
+														"open") == false) {
+													$('#cardDrop').addClass(
+															'open');
+												}
 
-									$('#cardDrop').removeClass('open');
-								}
-							})
-							
-							$('#selectCardInner>li').click(function(){
+												else if ($("#cardDrop")
+														.hasClass("open") == true) {
 
-								$('#selectCardInner>li').removeClass('selected active')
-								$(this).addClass('selected active');
-								var test = $('#selectCardInner>li.active>a>span').text();
-								$('#selectCard').text(test)
-								})
+													$('#cardDrop').removeClass(
+															'open');
+												}
+											})
 
-							
+							$('#selectCardInner>li')
+									.click(
+											function() {
+
+												$('#selectCardInner>li')
+														.removeClass(
+																'selected active')
+												$(this).addClass(
+														'selected active');
+												var test = $(
+														'#selectCardInner>li.active>a>span')
+														.text();
+												$('#selectCard').text(test)
+											})
 						</script>
 
 
@@ -479,9 +488,9 @@
 							</div>
 						</div>
 
-						<div class="btn-group">
-							<a href="${pageContext.request.contextPath}/booking/bookingSeat" class="button" id="btn_booking_back" title="이전">이전
-								<!-- 이전 -->
+						<div class="btn-group"> <!-- ${pageContext.request.contextPath} -->
+							<a href="javascript:history.back()"
+								class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 -->
 							</a> <a href="#" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"
 								title="결제">결제</a>

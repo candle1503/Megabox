@@ -396,7 +396,7 @@
 						<!--// location-info -->
 						<div id="brchNoti">
 							<h2 class="tit small mt70">공지사항</h2>
-							<a href="${pageContext.request.contextPath}/notice/noticeList"
+							<a href="${pageContext.request.contextPath}/notice/noticeList?name=${vo.name}"
 								class="more" title="극장 공지사항 더보기" style="margin-left: 1030px;">더보기
 								<i class="iconset ico-arr-right-gray"></i>
 							</a> <br>

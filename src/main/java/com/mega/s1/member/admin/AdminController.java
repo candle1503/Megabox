@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieVO;
@@ -63,7 +64,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("theaterAdd")
-	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult) throws Exception{
+	public ModelAndView theaterAdd(@Valid TheaterVO theaterVO, BindingResult bindingResult, RedirectAttributes attributes) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int roomCount = theaterVO.getRoomCount();
 		TheaterRoomVO roomVO = new TheaterRoomVO();
@@ -74,7 +75,8 @@ public class AdminController {
 			adminService.addTheater(theaterVO);
 			roomVO.setName(theaterVO.getName());
 			adminService.theaterRoomSet(roomVO,roomCount);
-			mv.setViewName("redirect:./theaterList");
+			attributes.addAttribute("name", theaterVO.getName());
+			mv.setViewName("redirect:./setTheaterRoom");
 		}
 		return mv;
 	}
@@ -82,8 +84,10 @@ public class AdminController {
 	@GetMapping("theaterSelect")
 	public ModelAndView theaterSelect(TheaterVO theaterVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<TheaterRoomVO> roomList = adminService.getRoomList(theaterVO);
 		theaterVO = adminService.theaterSelect(theaterVO);
 		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("roomList", roomList);
 		mv.setViewName("admin/adminSelectTheater");
 		return mv;
 	}
@@ -114,7 +118,8 @@ public class AdminController {
 	}
 	
 	@GetMapping("setTheaterRoom")
-	public ModelAndView setTheaterRoom(TheaterVO theaterVO) throws Exception{
+	public ModelAndView setTheaterRoom(TheaterVO theaterVO,RedirectAttributes attributes) throws Exception{
+		String name = (String)attributes.getAttribute("name");
 		ModelAndView mv = new ModelAndView();
 		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		
@@ -125,7 +130,6 @@ public class AdminController {
 		mv.addObject("list", roomVOs);
 		mv.addObject("theaterNum", theaterNum);
 		mv.addObject("name", theaterVO.getName());
-		System.out.println(theaterVO.getName());
 		
 		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;
@@ -400,7 +404,6 @@ public class AdminController {
 								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO.setMovieNum(movieNums[i]);
 								adminService.setTheaterRoom(roomMovieTimeVO);
-								System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 							}
 							firstDay += 1;
 							continue;
@@ -503,7 +506,6 @@ public class AdminController {
 									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 									roomMovieTimeVO.setMovieNum(movieNums[i]);
 									adminService.setTheaterRoom(roomMovieTimeVO);
-									System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 								}
 								startDayInt += 1;
 								continue;
@@ -523,7 +525,6 @@ public class AdminController {
 									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 									roomMovieTimeVO.setMovieNum(movieNums[i]);
 									adminService.setTheaterRoom(roomMovieTimeVO);
-									System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 								}
 								firstDay += 1;
 								continue;

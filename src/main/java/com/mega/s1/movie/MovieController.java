@@ -1,8 +1,8 @@
 package com.mega.s1.movie;
 
-import java.sql.Time;
+
 import java.text.DecimalFormat;
-import java.util.Calendar;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
-import com.mega.s1.theater.TheaterVO;
+
 import com.mega.s1.util.Pager;
 
 @Controller
@@ -32,11 +32,16 @@ public class MovieController {
 	
 	@GetMapping("preview")
 	public ModelAndView preview(ModelAndView mv, MovieVO movieVO) throws Exception {
+		
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
+
 		MovieVO vo = movieService.movieSelect(movieVO);
+
 		List<MovieFileVO> videos = movieService.videoFile(movieVO);
 		long image = movieService.imageCount(movieVO);
+
 		long video = movieService.videoCount(movieVO);
+
 		
 		mv.addObject("video", videos);
 		mv.addObject("videoCount", video);

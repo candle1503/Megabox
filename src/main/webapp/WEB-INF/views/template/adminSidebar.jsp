@@ -11,7 +11,7 @@
 
 						<ul>
 							<li class=""><a href="${pageContext.request.contextPath}/admin/memberList" title="회원 리스트">회원 리스트</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/movie" titel="영화 관리">영화 관리</a></li>
+<%-- 							<li><a href="${pageContext.request.contextPath}/admin/movie" titel="영화 관리">영화 관리</a></li> --%>
 							<li><a href="${pageContext.request.contextPath}/admin/theaterList" title="영화관 목록&관리">영화관 목록&관리</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/booking" title="예약 관리">예약 관리</a></li>
 						</ul>
