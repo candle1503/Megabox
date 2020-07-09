@@ -16,6 +16,7 @@ import org.w3c.dom.ls.LSInput;
 
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
+import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.theater.TheaterService;
 import com.mega.s1.theater.TheaterVO;
 
@@ -101,6 +102,7 @@ public class BookingController {
 		for(int i=0; i<bookingRoomArSize; i++) {
 			//영화 시작 시간 잘라오기
 			startTime = bookingRoomAr.get(i).getStartTime();
+			mv.addObject("stTime", startTime);
 			startTime = startTime.substring(11, 16);
 			startTimeMap.put(i, startTime);
 			
@@ -255,9 +257,15 @@ public class BookingController {
 		String [] yoils = timeAr.get(0).toString().split("//");
 		String yoil = yoils[1];
 		
-		//movieVO.getMovieFileVO().getFileName();
 		
+		System.out.println("mvmvmvmvmv:"+movieVO.getMovieNum());
+//		MovieFileVO movieFileVO = new MovieFileVO();
+//		movieFileVO.setMovieNum(movieVO.getMovieNum());
 		
+		List<MovieFileVO> mvf = movieService.getMovieFile(movieVO);
+		System.out.println("mvfmvf:"+mvf.get(0).getFileNum()); 
+		
+		mv.addObject("movieFileVO", mvf);
 		mv.addObject("yoil", yoil);
 		mv.addObject("movieTime", movieTime);
 		mv.addObject("movieVO", movieVO);

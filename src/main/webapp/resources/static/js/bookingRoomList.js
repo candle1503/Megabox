@@ -1,83 +1,44 @@
+//현재 시간 밀리초
+timestamp = new Date().getTime();
 
+for(var roomNum=1; roomNum<101; roomNum++){
+	var txt = $("#roomBtn"+roomNum).text();
 	
-	
-
-	/*function bookingSeatView(startDate, movieNum, theaterRoomCode){
-		$.get("bookingSeatView?startTime="+startDate+"&movieNum="+movieNum+"&theaterRoomCode="+theaterRoomCode, function(result){
-			location.href="./bookingSeat";
-		});
+	//현재 날짜의 년월일
+	var txtCut = txt.split('/');
+	var txtCutC = txtCut[0];
+	if(txtCutC != null){
+		txtCutC = txtCutC.trim();
 	}
 	
-	var roomSize = "${bookingRoomArSize}";
-	
-	for(var roomNum=1; roomNum<101; roomNum++){
+	//각 영화상영의 날짜 String타입을 Date타입으로 변환
+	function parse(txtCutC){
+		//현재 날짜의 년월일 
+		var y = txtCutC.substr(0, 4);
+		var m = txtCutC.substr(5, 2);
+		var d = txtCutC.substr(8, 3);
+		var h = txtCutC.substr(10, 4);
 		
-		$(".bookingRoomList-room").on("click", "#roomBtn"+roomNum, function(){
-			var zzz = $(this).text();
-			console.log(zzz);
-			
-			var numberCodeCut = $(this).text().split('/');
-			var startTimeHCut = $(this).text().split('//');
-			
-			var movieNum = parseInt(numberCodeCut[0]);
-			console.log(movieNum);
-			var theaterRoomCode = parseInt(numberCodeCut[1]);
-			console.log(theaterRoomCode);
-			var startTimeHMsub = startTimeHCut[1];
-			var startTimeHM = startTimeHMsub.substr(0, 13);
-			startTimeHM = startTimeHM.trim();
-			console.log(startTimeHM);
-			
-			startDate = startDate + "/" + startTimeHM;
-			console.log(startDate);
-			
-			bookingSeatView(startDate, movieNum, theaterRoomCode);
-		});
-	
-	}*/
- 
-	//-------------------------------------------------------------
-
-	function bookingSeatView(timeCode){
-		$.ajax({
-			url:"bookingSeatView",
-			type:"get",
-			data: {timeCode},
-			success:function(result){
-				location.href=result;
-			},
-		});
+		//현재 상영날짜의 시분
+		var txtCutCB = txtCut[1];
+		if(txtCutCB != null){
+			txtCutCB = txtCutCB.trim();
+			var txtCutCBC = txtCutCB.split('~');
+			var txtCutCBT = txtCutCBC[0];
+			var txtCutCBTH = txtCutCBT.substr(0, 2);
+			var txtCutCBTM = txtCutCBT.substr(3, 2);
+		}
 		
-		/*$.get("./bookingSeatView", {
-			data : timeCode
-		}, function(bookingSeatView){
-			alert(bookingSeatView);
-			var tt = bookingSeatView;
-			location.href=tt;
-		});*/
-		
-		
-//		$.get("bookingSeatView?startTime="+startDate+"&timeCode="+timeCode, function(result){
-//			location.href="./bookingSeatView?timeCode="+timeCode;
-//		});
+		//현재 날짜의 년월일과 현재 상영날짜의 시분을 합침 (현재 상영날짜 계산)
+		return new Date(y,m-1,d, txtCutCBTH, txtCutCBTM);
 	}
-
-	var roomSize = "${bookingRoomArSize}";
+	//변환
+	var daate = parse(txtCutC);
+	//밀리초로 변환
+	var daateM = daate.getTime(); 
 	
-	for(var roomNum=1; roomNum<101; roomNum++){
-		
-		$(".bookingRoomList-room").on("click", "#roomBtn"+roomNum, function(){
-			var numberCodeCut = $(this).text().split('/');
-			
-			var timeCode = parseInt(numberCodeCut[0]);
-			alert(timeCode);
-			
-			
-			//bookingSeatView(timeCode);
-		});
-	
+	if(timestamp > daateM){
+		$("#bookingRoomfrm"+roomNum).remove();
+		//$("#roomBtn"+roomNum).remove();
 	}
-	
-	
-	
-	
+}

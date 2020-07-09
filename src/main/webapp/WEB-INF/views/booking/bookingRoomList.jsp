@@ -13,12 +13,13 @@
 </c:if>
 
 <c:forEach items="${bookingRoomAr}" var="brList" varStatus="i">
-		<form action="./bookingSeatView" method="post">
+		<form action="./bookingSeatView" method="post" id="bookingRoomfrm${i.count}">
 			<input type="hidden" name="timeCode" value="${brList.timeCode}"/>
 		<li class="bookingRoomList-room"><button type="submit" class="btn" id="roomBtn${i.count}">
 			
 			<%-- <span hidden="${brList.movieNum}">${brList.movieNum}/</span>
 			<span hidden="${brList.theaterRoomCode}">${brList.theaterRoomCode}//</span> --%>
+			<span hidden="${stTime}">${stTime}/</span>
 			
 			<div class="legend"></div>
 			<span class="time"><strong title="상영 시작">${stm[i.index]}</strong><em
@@ -36,9 +37,9 @@
 
 
 
-<!-- <script type="text/javascript" src="../resources/static/js/bookingRoomList.js">
+<script type="text/javascript" src="../resources/static/js/bookingRoomList.js">
 
-</script> -->
+</script>
 
 
 
