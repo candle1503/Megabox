@@ -83,4 +83,35 @@
 	<update id="likeUpdate" parameterType="MovieVO">
 		update movie set movie.like=#{like}+1 where movieNum=#{movieNum}
 	</update>
+	
+	<insert id="movieInsert" parameterType="MovieVO" useGeneratedKeys="true" keyProperty="movieNum">
+		insert into movie values (0, #{name}, #{director}, #{genre}, 0, #{openDay}, #{age}, #{contents}, 0, #{character}, #{playTime}, 0)
+	</insert>
+	
+	<delete id="movieDelete" parameterType="MovieVO">
+		delete from movie where movieNum=#{movieNum}
+	</delete>
+	
+	<select id="futureList" resultMap="MovieVO">
+	<![CDATA[
+		select M.*, MF.fileName from movie M left join (select F.fileNum, F.fileName, F.movieNum 
+		from movieFile as F, 
+		(select movieNum, min(fileNum) as min_fileNum from movieFile where status=2 group by movieNum) as F2 
+		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
+		on M.movieNum = MF.movieNum
+		where M.openDay > sysdate() 
+		]]>
+	</select>
+	
+	<select id="ingList" resultMap="MovieVO">
+	<![CDATA[
+		select M.*, MF.fileName from movie M left join (select F.fileNum, F.fileName, F.movieNum 
+		from movieFile as F, 
+		(select movieNum, min(fileNum) as min_fileNum from movieFile where status=2 group by movieNum) as F2 
+		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
+		on M.movieNum = MF.movieNum
+		where M.openDay <= sysdate() 
+		]]>
+	</select>
+	
 </mapper>

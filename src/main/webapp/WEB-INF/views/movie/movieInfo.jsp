@@ -51,16 +51,18 @@
 
 <script type="text/javascript">
 $(function(){
-
-	//포스터 다운로드버튼 : 원본 다운로드
-	$('.btn-poster-down').on('click', function(){
-		if ($(this).data('no') == '') {
-			gfn_alertMsgBox('잘못된 접근입니다.');
-			return false;
-		} else {
-			gfn_fileDown( '/on/coc/FileUpload/downloadFile.do?fileNo=' + $(this).data('no') + '&fileSn=' + $(this).data('sn') );
-		}
-	});
+	var age = '${vo.age}'
+	
+	if(age=="전체관람가"){
+		$('.movie-grade').addClass("age-all")
+	} else if(age=="12세이상관람가") {
+		$('.movie-grade').addClass("age-12")
+	} else if(age=="15세이상관람가") {
+		$('.movie-grade').addClass("age-15")
+	} else {
+		$('.movie-grade').addClass("age-19")
+	}
+	
 });
 
 </script>
@@ -74,16 +76,7 @@ $(function(){
 
 	<!-- movie-detail-cont -->
 	<div class="movie-detail-cont">
-		
-			
-			
-			<!-- 개봉 예매가능-->
-				
-					<p class="d-day default">예매 D-1</p>
-				
-			
-			
-		
+	
 
         <p class="contents-type"></p>
 		<p class="title">${vo.name }</p>
@@ -141,16 +134,7 @@ $(function(){
 						<!-- 2019-09-11 툴팁 보기 수정 -->
 						<em class="m-tooltip ml05">
 							<i class="iconset ico-tooltip-gray">툴팁보기</i>
-							<div class="m-detail-tooltip">
-								<div class="bg-arr bottom"></div>
-								<div class="cont-area">
-									<p class="reset a-c">
-										누적관객 및 전일관객은 영화진흥 위원회<br>
-										영화관 입장권 통합전산망제공 기준입니다.<br>
-									(2020.06.19기준)
-									</p>
-								</div>
-							</div>
+							
 						</em>
 						</span>
                   </div>
@@ -165,11 +149,11 @@ $(function(){
 				
 					
 					
-					<p class="movie-grade age-15">15세 이상 관람가</p>
+					<p class="movie-grade">${vo.age }</p>
 					
 					
 				
-			 	<img src="${pageContext.request.contextPath}/upload/movie/${file[0].fileName}" onerror="noImg(this)" alt="#살아있다">
+			 	<img src="${pageContext.request.contextPath}/upload/movie/${file[0].fileName}" onerror="noImg(this)" alt="${vo.name }">
 
 				<a href="#" class="btn-poster-down" title="포스터 다운로드" data-no="1019195" data-sn="1">포스터 다운로드</a>
 			</div>
@@ -345,18 +329,35 @@ $(function(){
         </div>
            <p>출연진&nbsp;: ${vo.character }</p>
     </div>
+    
+    <jsp:useBean id="now" class="java.util.Date" />
+
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
+	
+	<fmt:formatDate value="${vo.openDay }" pattern="yyyy-MM-dd" var="openDay"/>
+
 
     <!-- movie-graph -->
+    
     <div class="movie-graph infoContent">
         <div class="col">
             <dl>
                 <dt>관람포인트</dt>
+                
                 <dd id="charByPoint">&nbsp;</dd>
             </dl>
 
             <div class="graph" style="position: relative; bottom: 29px;">
-                <canvas id="chartByStart" style="width: 216px; height: 216px;"></canvas>
+           <c:choose>
+           	<c:when test="${today <= openDay || vo.rate eq '0'}">
+		
+                 <img src="/resources/static/images/no-graph01.jpg" alt="메가스코어 결과 없음" style="margin-top: 30px;">
                 
+             </c:when>
+             <c:when test="${today >= openDay && vo.rate ne '0'}">
+                <canvas id="chartByStart" style="width: 216px; height: 216px;"></canvas>
+             </c:when>
+             </c:choose>
             </div>
         </div>
 
@@ -364,22 +365,31 @@ $(function(){
         <div class="col" id="subMegaScore">
             <dl>
                 <dt>실관람 평점</dt>
+                <c:if test="${vo.rate eq '0' }">
+                	<dd class="font-roboto regular"><em>"${vo.rate}"</em><span class="ir">점</span></dd>
+                </c:if>
+                <c:if test="${vo.rate ne '0' }">
                 <dd class="font-roboto regular"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></dd>
+            	</c:if>
             </dl>
+            
+           <c:choose>
+           	<c:when test="${today <= openDay || vo.rate eq '0'}">
 
-         
-                  
-                       <!--  <div class="before">
-                            <div class="circle"><em>0</em><span class="ir">점</span></div>
-                            <p>관람 전</p>
-                        </div> -->
+				<div class="graph" >
+                        <img src="/resources/static/images/no-graph02.jpg" alt="메가스코어 결과 없음">
+                </div>
+             </c:when>
+           	
+              <c:when test="${today >= openDay && vo.rate ne '0' }">
                      <div class="score equal" style="position: relative; bottom: 29px;;">
                         <div class="middle">
                             <div class="circle"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></div>
                             <p>관람 후</p>
                         </div>
                     </div>
-               
+               </c:when>
+             </c:choose>
                 
             
         </div>
@@ -388,13 +398,21 @@ $(function(){
             <dl>
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
-                    <span id="rkTag">___</span>
+                    <span id="rkTag">0 %</span>
                 </dd>
             </dl>
 
             <div class="graph" style="position: relative; bottom: 10px; right: 10px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
+                <c:choose>
+                <c:when test="${today <= openDay || views eq '0'}">
+				
+                        <img src="/resources/static/images/no-graph03.jpg" alt="메가스코어 결과 없음">
                 
+             </c:when>
+             <c:when test="${today >= openDay && views ne '0' }">
+                <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
+             </c:when>
+             </c:choose>
             </div>
         </div>
 
@@ -409,11 +427,20 @@ $(function(){
             </dl>
 
             <div class="graph">
-                <canvas id="chartByLine" style="width: 220px; height: 205px; display: block;" width="220" height="205"></canvas>
+            <c:choose>
+             <c:when test="${today <= openDay || views eq '0'}">
+				
+                        <img src="/resources/static/images/no-graph04.jpg" alt="메가스코어 결과 없음">
                 
+             </c:when>
+             <c:when test="${today >= openDay && views ne '0' }">
+                <canvas id="chartByLine" style="width: 220px; height: 205px; display: block;" width="220" height="205"></canvas>
+             </c:when>
+             </c:choose>
             </div>
         </div>
     </div>
+     
     <!--// movie-graph -->
 
     <!-- 영화관 선택후 -->

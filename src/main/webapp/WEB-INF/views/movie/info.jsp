@@ -31,7 +31,15 @@
            <p>출연진&nbsp;: ${vo.character }</p>
     </div>
 
+      <jsp:useBean id="now" class="java.util.Date" />
+
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
+	
+	<fmt:formatDate value="${vo.openDay }" pattern="yyyy-MM-dd" var="openDay"/>
+
+
     <!-- movie-graph -->
+    
     <div class="movie-graph infoContent">
         <div class="col">
             <dl>
@@ -39,42 +47,44 @@
                 <dd id="charByPoint">&nbsp;</dd>
             </dl>
 
-            <div class="graph" style="position: relative; bottom: 0px;">
-                <canvas id="chartByStart" style="width: 216px; height: 216px;"></canvas>
+            <div class="graph" style="position: relative; bottom: 29px;">
+           <c:choose>
+           	<c:when test="${today <= openDay || vo.rate eq '0'}">
+				
+                        <img src="/resources/static/images/no-graph01.jpg" alt="메가스코어 결과 없음">
                 
+             </c:when>
+             <c:when test="${today >= openDay && vo.rate ne '0'}">
+                <canvas id="chartByStart" style="width: 216px; height: 216px;"></canvas>
+             </c:when>
+             </c:choose>
             </div>
         </div>
 
+      
         <div class="col" id="subMegaScore">
             <dl>
                 <dt>실관람 평점</dt>
                 <dd class="font-roboto regular"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></dd>
             </dl>
-			<!--
             
-                
-                
-                
-                    
-                
-            
-			-->
-            
-                 <div class="graph" style="display: none;">
-                        <!-- <img src="../../../static/pc/images/movie/no-graph02.jpg" alt="메가스코어 결과 없음"> -->
-                     </div>
-                  
-                       <!--  <div class="before">
-                            <div class="circle"><em>0</em><span class="ir">점</span></div>
-                            <p>관람 전</p>
-                        </div> -->
+           <c:choose>
+           	<c:when test="${today <= openDay || vo.rate eq '0'}">
+
+				<div class="graph" >
+                        <img src="/resources/static/images/no-graph02.jpg" alt="메가스코어 결과 없음">
+                </div>
+             </c:when>
+           	
+              <c:when test="${today >= openDay && vo.rate ne '0' }">
                      <div class="score equal" style="position: relative; bottom: 29px;;">
                         <div class="middle">
                             <div class="circle"><em><fmt:formatNumber value="${vo.rate}" pattern="#,###.0"/></em><span class="ir">점</span></div>
                             <p>관람 후</p>
                         </div>
                     </div>
-                
+               </c:when>
+             </c:choose>
                 
             
         </div>
@@ -83,13 +93,21 @@
             <dl>
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
-                    <span id="rkTag">___</span>
+                    <span id="rkTag">0 %</span>
                 </dd>
             </dl>
 
             <div class="graph" style="position: relative; bottom: 10px; right: 10px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                <c:choose>
+                <c:when test="${today <= openDay || views eq '0'}">
+				
+                        <img src="/resources/static/images/no-graph03.jpg" alt="메가스코어 결과 없음">
+                
+             </c:when>
+             <c:when test="${today >= openDay && views ne '0' }">
                 <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
-
+             </c:when>
+             </c:choose>
             </div>
         </div>
 
@@ -104,11 +122,20 @@
             </dl>
 
             <div class="graph">
+            <c:choose>
+             <c:when test="${today <= openDay || views eq '0'}">
+				
+                        <img src="/resources/static/images/no-graph04.jpg" alt="메가스코어 결과 없음">
+                
+             </c:when>
+             <c:when test="${today >= openDay && views ne '0' }">
                 <canvas id="chartByLine" style="width: 220px; height: 205px; display: block;" width="220" height="205"></canvas>
-              
+             </c:when>
+             </c:choose>
             </div>
         </div>
     </div>
+     
     <!--// movie-graph -->
     
  <script>

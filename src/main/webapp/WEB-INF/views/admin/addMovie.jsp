@@ -7,14 +7,52 @@
 
 <title>나의메가박스 | 라이프씨어터, 메가박스</title>
 
-<link rel="shortcut icon" href="/resources/icon/favicon.ico">
-<link rel="stylesheet" href="/resources/css/megabox.min.css" media="all">
-<link rel="stylesheet" href="/resources/css/myPage.css" media="all">
+<link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
+<link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
+<link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style type="text/css">
+
+	#content {
+		float: right;
+    	width: calc(100% - 260px);
+		padding: 40px 0 0 0;
+	}
+	
+	.box-file-input label{
+    display:inline-block;
+    background:#23a3a7;
+    color:#fff;
+    padding:0px 15px;
+    line-height:35px;
+    cursor:pointer;
+}
+
+.box-file-input label:after{
+    content:"파일등록";
+}
+
+.box-file-input .file-input{
+    display:none;
+}
+
+.box-file-input .filename{
+    display:inline-block;
+    padding-left:10px;
+}
+
+.cbox {
+	margin-left: 15px;
+}
+
+</style>
+
 </head>
 
 <body>
-	<c:import url="../template/header.jsp"></c:import>
-	<div class="body-wrap">
+		<c:import url="../template/header.jsp"></c:import>
+	
 
 
 
@@ -33,39 +71,107 @@
 
 				<c:import url="../template/adminSidebar.jsp"></c:import>
 
-				<div id="contents" class="">
+				<div id="content" class="">
 					<form:form modelAttribute="movieVO" action="./movieInsert"
-						method="post">
+						method="post" enctype="multipart/form-data">
 						<h2 class="tit">영화 추가</h2>
 
 						<div class="box-radius" style="margin-bottom: 0px;">
-							<form:textarea path="name" class="box-bot" rows="1" cols="93"
+							<div class="box-top" style="padding-left: 10px">
+								<strong>영화 제목</strong>
+							</div>
+							<form:textarea path="name" class="box-bot" rows="1" cols="95"
 								style="resize: none;" placeholder="영화 이름을 입력하세요." />
+							<form:errors path="name"></form:errors>
 
-							<select id="theater" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; " name="director">
-							 	<option value="">지역선택</option>
-								<option value="서울">서울</option>
-								<option value="경기">경기</option>
-								<option value="인천">인천</option>
-								<option value="대전/충청/세종">대전/충청/세종</option>
-								<option value="부산/대구/경상">부산/대구/경상</option>
-								<option value="광주/전라">광주/전라</option>
-								<option value="강원">강원</option>
-								<option value="제주">제주</option>
-							</select>
-
-							<form:textarea path="genre" class="box-bot" rows="1" cols="93"
-								style="resize: none;" placeholder="영화관 주소를 입력하세요." />
+							<br>
 							<div class="box-top" style="padding-left: 10px">
-								<strong>주차 이용 안내</strong>
+								<strong>장르</strong>
 							</div>
-							<form:textarea path="openDay" class="box-bot" rows="15" cols="93"
-								style="resize: none;" placeholder="주차안내 메세지를 입력하세요." />
+							<form:checkbox path="genreTest" value="드라마" label="드라마 " class="cbox"/>
+							<form:checkbox path="genreTest" value="애니메이션" label="애니메이션 " class="cbox"/>
+							<form:checkbox path="genreTest" value="스릴러" label="스릴러 " class="cbox"/>
+							<form:checkbox path="genreTest" value="어드벤처" label="어드벤처 " class="cbox"/>
+							<form:checkbox path="genreTest" value="액션" label="액션 " class="cbox"/>
+							<form:checkbox path="genreTest" value="사극" label="사극 " class="cbox"/>
+							<form:checkbox path="genreTest" value="범죄" label="범죄 " class="cbox"/>
+							<form:checkbox path="genreTest" value="코미디" label="코미디 " class="cbox"/>
+							<form:checkbox path="genreTest" value="뮤지컬" label="뮤지컬 " class="cbox"/>
+							<form:checkbox path="genreTest" value="SF" label="SF " class="cbox"/>
+							<form:checkbox path="genreTest" value="미스터리" label="미스터리 " class="cbox"/>
+							<form:checkbox path="genreTest" value="로맨스" label="로맨스 " class="cbox"/>
+							<form:checkbox path="genreTest" value="공포" label="공포 " class="cbox"/>
+							<form:checkbox path="genreTest" value="판타지" label="판타지 " class="cbox"/>
+							
+							<br>
+							
+							<form:errors path="genreTest"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
-								<strong>극장 정보</strong>
+								<strong>배우</strong>
 							</div>
-							<form:textarea path="age" class="box-bot" rows="9" cols="93"
-								style="resize: none;" placeholder="극장 소개를 해주세요." />
+							<input type="button" value="배우 추가" class="button" id="addCha" />
+							<div id="cha" style="padding: 10px 45px 30px 30px;">
+								<input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" required="required">
+								
+							</div>
+							
+							<div class="box-top" style="padding-left: 10px">
+								<strong>감독</strong>
+							</div>
+							<form:textarea path="director" class="box-bot" rows="1" cols="95"
+								style="resize: none;" placeholder="감독 이름을 입력하세요." />
+							<form:errors path="director"></form:errors>
+							<div class="box-top" style="padding-left: 10px">
+								<strong>영화 소개 줄거리</strong>
+							</div>
+							<div style="width:100%; height:200px;">
+							<form:textarea path="contents" class="box-bot" rows="9" cols="95"
+								style="resize: none; padding: 30px 48px 30px 30px; width:100%;" placeholder="영화 소개를 해주세요."/>
+							<form:errors path="contents"></form:errors>
+							</div>
+							<div class="box-top" style="padding-left: 10px">
+								<strong>나이 제한</strong>
+							</div>
+							
+							<form:select path="age" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; margin-bottom:15px; margin-top:15px;" >
+							 	<option value="" selected="selected">나이 제한을 설정</option>
+								<option value="전체관람가">ALL</option>
+								<option value="12세이상관람가">12세이용가</option>
+								<option value="15세이상관람가">15세이용가</option>
+								<option value="청소년관람불가">청소년관람불가</option>							
+							</form:select>
+							<form:errors path="age"></form:errors>
+							
+							<div class="box-top" style="padding-left: 10px">
+								<strong>개봉일</strong> <strong style="float:right;">러닝 타임</strong>
+							</div>
+							<form:input path="openDay" type="Date" required="true" style="width:70%; height: 50px;"/>
+							
+							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="0" />
+							<div class="box-top" style="padding-left: 10px">
+								<strong>포스터 업로드</strong>
+							</div>
+							<div id="postImg" style="display:none;">
+							<img alt="" src="" class="thumb_img" style="width:240px;">
+							</div>
+							<div class="box-file-input"><label>
+							<input name="files" type="file" accept="image/*" id="poster" class="file-input"></label>
+							<span class="filename">파일을 선택해주세요.</span>
+							</div>
+							<div class="box-top" style="padding-left: 10px">
+								<strong>무비 스틸컷(이미지 파일)</strong>
+							</div>
+							<input type="button" value="파일 추가" class="button" id="add" />
+							<div id="f">
+								
+							</div>
+							<div class="box-top" style="padding-left: 10px">
+								<strong>관련 영상(예고편)  ※mp4파일만 가능※</strong>
+							</div>
+							<input type="button" value="영상 추가" class="button" id="addVideo" />
+							<div id="vid">
+								
+							</div>
 						</div>
 
 
@@ -77,11 +183,86 @@
 						</div>
 					</form:form>
 				</div>
-
+				
+				
+		
 			</div>
 		</div>
+		<script type="text/javascript">
+			var imgNum = 0;
+			
+			$('.large').click(function(){
+				var str = $('#contents').val();
+				str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+				$('#contents').val(str);
 
-		<!-- footer -->
+				})
+				
+			$("#add").click(function(){
+			if(imgNum==15){
+				alert("이미지는 15개까지");
+			}else{
+			 $("#f").append('<div class="box-file-input"><label><input type="file" name="files" accept="image/*" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span></div>');
+				imgNum+=1;
+			}
+			});	
+
+			$("#addVideo").click(function(){
+				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;"></div>');
+			
+			});	
+
+			$("#addCha").click(function(){
+				$("#cha").append('<span><input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;"><span style="cursor: pointer;" class="del"> ×</span></span>');
+			
+			});	
+
+			var elImage = document.querySelector("#poster");
+			elImage.addEventListener("change", function(evt){
+				var image = evt.target.files[0];
+				
+				var thumb = document.querySelector(".thumb_img");
+	 			thumb.src = window.URL.createObjectURL(image);
+	 			$('#postImg').show();
+	 			
+			}) 	
+			
+			$('#cha').on('click', '.del', function(){
+				
+				$(this).parent().remove();
+
+				})
+			
+			$('#f').on('click', '.del', function(){
+				
+				$(this).parent().remove();
+
+				})
+			$('#vid').on('click', '.del', function(){
+				
+				$(this).parent().remove();
+
+				})
+				
+			 $(document).on("change", ".file-input", function(){
+     
+		        var filename = $(this).val();
+		      
+		
+		        if(filename == ""){   
+		            filename = "파일을 선택해주세요.";
+		        }
+				
+				$(this).parent().next('.filename').text(filename);
+		        
+		        
+		
+		    })
+			
+		
+		</script>
+		
+		
 		<footer id="footer">
 			<!-- footer-top -->
 			<div class="footer-top">
@@ -149,7 +330,7 @@
 			<a href="#" data-url="https://m.megabox.co.kr">모바일웹으로 보기 <i
 				class="iconset ico-go-mobile"></i></a>
 		</div>
-	</div>
+	
 
 	<div class="normalStyle"
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>

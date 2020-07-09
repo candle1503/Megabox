@@ -282,7 +282,7 @@ function fn_stopVideo(){
 							<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 								<c:forEach var="video" items="${video }" varStatus="va">
 									<div class="thumbsBtn swiper-slide swiper-slide-thumb-active swiper-slide-active" style="width: 240px; margin-right: 20px;">
-										<img class="thumbs-img-button" src="${pageContext.request.contextPath}/upload/movie/${file[va.index].fileName}" data-url="${pageContext.request.contextPath}/upload/movie/${video.fileName}" data-title="${video.detail }" data-cn="${video.detail }" alt="${video.detail }" onerror="noImg(this);">
+										<img class="thumbs-img-button" src="${pageContext.request.contextPath}/upload/movie/${file[va.index].fileName}" data-url="${pageContext.request.contextPath}/upload/movie/${video.fileName}" data-title="${video.detail }" data-cn="${video.detail }" alt="${video.detail }" onerror="this.src='${pageContext.request.contextPath}/upload/movie/${file[0].fileName}'">
 										<div class="movie-detail">
 											${video.detail }	<!-- 예고편 제목 -->
 										</div>
@@ -428,6 +428,14 @@ function fn_stopVideo(){
 			</c:if>
 			<c:if test="${vs.index eq 14}">
 			<div class="thumb" style="display: block; opacity: 1; transform: translate(560px, 1140px); transition: transform 0s ease 0s, opacity 0.2s ease-out 0.2s;"><a href="#" title="스틸컷 보기" class="${vs.count }">
+
+   		<!-- 포스터 -->
+			<img src="${pageContext.request.contextPath}/upload/movie/${file.fileName}" alt="" onerror="noImg(this, 'main');" style="height: 360px;">
+
+	</a></div>
+			</c:if>
+			<c:if test="${vs.index eq 15}">
+			<div class="thumb" style="display: block; opacity: 1; transform: translate(840px, 1140px); transition: transform 0s ease 0s, opacity 0.2s ease-out 0.2s;"><a href="#" title="스틸컷 보기" class="${vs.count }">
 
    		<!-- 포스터 -->
 			<img src="${pageContext.request.contextPath}/upload/movie/${file.fileName}" alt="" onerror="noImg(this, 'main');" style="height: 360px;">

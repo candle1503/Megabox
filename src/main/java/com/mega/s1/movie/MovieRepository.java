@@ -29,5 +29,11 @@ public interface MovieRepository {
 	public int likeUpdate(MovieVO movieVO) throws Exception;
 	
 	public List<MovieVO> movieList() throws Exception;
+	public List<MovieVO> futureList() throws Exception;
+	public List<MovieVO> ingList() throws Exception;
+	
+	public int movieInsert(MovieVO movieVO) throws Exception;
+	
+	public int movieDelete(MovieVO movieVO) throws Exception;
 	
 }

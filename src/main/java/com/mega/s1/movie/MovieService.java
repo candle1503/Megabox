@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import com.mega.s1.board.BoardVO;
 import com.mega.s1.member.memberFile.MemberFileRepository;
@@ -37,7 +39,7 @@ public class MovieService {
 	
 	
 	public MovieVO movieSelect(MovieVO movieVO) throws Exception{
-		File fi = pathGenerator.getUseClassPathResource(filePath);
+		
 		return movieRepository.movieSelect(movieVO);
 	}
 	
@@ -99,6 +101,54 @@ public class MovieService {
 	
 	public List<MovieVO> movieList() throws Exception {
 		return movieRepository.movieList();
+	}
+	
+	public List<MovieVO> futureList() throws Exception {
+		return movieRepository.futureList();
+	}
+	
+	public List<MovieVO> ingList() throws Exception {
+		return movieRepository.ingList();
+	}
+	
+	public int movieInsert(MovieVO movieVO, MultipartFile[] files, String[] details) throws Exception{
+		File fi = pathGenerator.getUseClassPathResource(filePath);
+		int result = movieRepository.movieInsert(movieVO);
+		int j=0;
+		
+		for(int i = 0; i < files.length; i++) {
+			MultipartFile file = files[i];
+			if(file.getSize()<=0) {
+				continue;
+			}
+			String fileName=fileManager.saveFileCopy(file, fi);
+			MovieFileVO movieFileVO = new MovieFileVO();
+			int index = fileName.lastIndexOf(".");
+			String str = fileName.substring(index + 1);
+			
+			movieFileVO.setFileName(fileName);
+			movieFileVO.setOriName(file.getOriginalFilename());
+			movieFileVO.setMovieNum(movieVO.getMovieNum());
+			
+			if("mp4".equals(str.toLowerCase())) {	
+				movieFileVO.setStatus(1);
+				movieFileVO.setDetail(details[j]);
+				j++;
+			} else {
+				
+				movieFileVO.setStatus(2);
+				movieFileVO.setDetail(null);
+			}
+			result = movieFileRepository.movieFileInsert(movieFileVO);
+			
+		}
+		
+		
+		return result;
+	}
+	
+	public int movieDelete(MovieVO movieVO) throws Exception{
+		return movieRepository.movieDelete(movieVO);
 	}
 
 }

@@ -5,13 +5,16 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -204,6 +207,25 @@ public class MovieController {
 	@GetMapping("movieList")
 	public ModelAndView movieList(ModelAndView mv) throws Exception{
 		List<MovieVO> movieList = movieService.movieList();
+		mv.addObject("listName", "all");
+		mv.addObject("movie", movieList);
+		mv.setViewName("movie/movieList");
+		return mv;
+	}
+	
+	@GetMapping("futureList")
+	public ModelAndView futureList(ModelAndView mv) throws Exception{
+		List<MovieVO> movieList = movieService.futureList();
+		mv.addObject("listName", "future");
+		mv.addObject("movie", movieList);
+		mv.setViewName("movie/movieList");
+		return mv;
+	}
+	
+	@GetMapping("ingList")
+	public ModelAndView ingList(ModelAndView mv) throws Exception{
+		List<MovieVO> movieList = movieService.ingList();
+		mv.addObject("listName", "ing");
 		mv.addObject("movie", movieList);
 		mv.setViewName("movie/movieList");
 		return mv;
@@ -215,6 +237,56 @@ public class MovieController {
 		mv.addObject("movieVO", movieVO);
 		mv.setViewName("admin/addMovie");
 		return mv;
+	}
+	
+	@PostMapping("movieInsert")
+	public ModelAndView movieInsert(ModelAndView mv, @Valid MovieVO movieVO, BindingResult bindingResult, MultipartFile[] files, String[] details, String[] characters) throws Exception {
+		
+		 //취미 부분은 별도로 읽어들어 다시 빈 클래스에 저장
+        String[] genre = movieVO.getGenreTest();
+        //배열의 있는 내용을 하나의 스트림으로 젖아
+        String texthobby = "";
+        for (int i = 0; i < genre.length; i++) {
+        	if(i==(genre.length-1)) {
+        		texthobby += genre[i];
+        	}else {
+        		texthobby += genre[i] + ", ";
+        	}
+           
+        }
+        movieVO.setGenre(texthobby);
+        
+    	
+        String character = "";
+        for (int f = 0; f < characters.length; f++) {
+        	if(f==(characters.length-1)) {
+        		character += characters[f];
+        	}else {
+        		character += characters[f] + ", ";
+        	}
+        }
+        movieVO.setCharacter(character);
+        System.out.println(character);
+		
+		if (bindingResult.hasErrors()) {
+			mv.addObject("movieVO", movieVO);
+			mv.setViewName("admin/addMovie");
+			System.out.println(character);
+		}else {
+			
+			movieService.movieInsert(movieVO, files, details);
+			mv.setViewName("redirect:./movieList");
+		}
+		
+		
+		return mv;
+	}
+	
+	@PostMapping("movieDelete")
+	@ResponseBody
+	public int movieDelete(MovieVO movieVO) throws Exception {
+		
+		return movieService.movieDelete(movieVO);
 	}
 	
 
