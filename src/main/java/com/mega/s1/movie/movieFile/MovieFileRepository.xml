@@ -9,4 +9,7 @@
 	</select>
 	
 
+	<insert id="movieFileInsert" parameterType="MovieFileVO">
+		insert into movieFile values(0, #{oriName}, #{movieNum}, #{fileName}, #{status}, #{detail})
+	</insert>
 </mapper>
