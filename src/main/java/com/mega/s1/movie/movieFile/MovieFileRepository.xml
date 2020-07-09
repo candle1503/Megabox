@@ -5,17 +5,8 @@
 <mapper namespace="com.mega.s1.movie.movieFile.MovieFileRepository">
 
 	<select id="movieFileSelect" parameterType="MovieVO" resultType="MovieFileVO">
-		select * from movieFile where movieNum=#{movieNum} and status=2
-	</select>
-	<select id="videoFileSelect" parameterType="MovieVO" resultType="MovieFileVO">
-		select * from movieFile where movieNum=#{movieNum} and status=1
+		select * from movieFile where movieNum=#{movieNum}
 	</select>
 	
-	<select id="imageCount" parameterType="MovieVO" resultType="Long">
-		select count(fileNum) from movieFile where movieNum=#{movieNum} and status=2
-	</select>
-	<select id="videoCount" parameterType="MovieVO" resultType="Long">
-		select count(fileNum) from movieFile where movieNum=#{movieNum} and status=1
-	</select>
 
 </mapper>

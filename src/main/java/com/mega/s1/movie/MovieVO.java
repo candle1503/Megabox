@@ -14,7 +14,7 @@ public class MovieVO {
 	private String name;
 	private String director;
 	private String genre;
-	private Double rate;
+	private double rate;
 	private Date openDay;
 	private String age;
 	private String contents;

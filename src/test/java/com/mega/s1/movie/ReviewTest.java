@@ -21,7 +21,7 @@ class ReviewTest {
 			ReviewVO reviewVO = new ReviewVO();
 			if(i%4==0) {
 			
-			reviewVO.setLikePoint("배우");
+			reviewVO.setLikePoint("연출");
 			reviewVO.setContents("contents"+i);
 			reviewVO.setMovieNum(4);
 			reviewVO.setPoint(6);
@@ -30,7 +30,7 @@ class ReviewTest {
 			
 			} else if(i%4==1) {
 				
-				reviewVO.setLikePoint("스토리");
+				reviewVO.setLikePoint("OST");
 				reviewVO.setContents("contents"+i);
 				reviewVO.setMovieNum(4);
 				reviewVO.setPoint(8);
@@ -38,7 +38,7 @@ class ReviewTest {
 				reviewVO.setWriter("writer"+i);
 				
 			} else {
-				reviewVO.setLikePoint("영상미");
+				reviewVO.setLikePoint("배우");
 				reviewVO.setContents("contents"+i);
 				reviewVO.setMovieNum(4);
 				reviewVO.setPoint(10);
