@@ -69,7 +69,11 @@
         </c:choose>
           
         </ul>
-    </div><br><br><c:if test="${member.id eq'ADMIN' }"><a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a></c:if><br><br>
+    </div><br><br>
+<%--     <c:if test="${member.id eq'ADMIN' }"> --%>
+    <a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a>
+<%--     </c:if> --%>
+    <br><br>
 <div class="movie-list">
 	<ol class="list" id="movieList">
 	
