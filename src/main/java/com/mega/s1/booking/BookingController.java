@@ -1,5 +1,8 @@
 package com.mega.s1.booking;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -254,6 +257,16 @@ public class BookingController {
 		
 		List<MovieFileVO> mvf = movieService.getMovieFile(movieVO);
 		System.out.println("mvfmvf:"+mvf.get(0).getFileNum()); 
+		
+		File file = new File("../resources/static/images/sTheater.png");
+		FileInputStream fis = new FileInputStream(file);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		int bi;
+		byte[] buffer = new byte[1024];
+		while((bi=fis.read(buffer))!=-1) {
+			baos.write(buffer);
+		}
+		
 		
 		mv.addObject("movieFileVO", mvf);
 		mv.addObject("yoil", yoil);

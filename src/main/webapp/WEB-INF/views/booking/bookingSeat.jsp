@@ -1249,7 +1249,7 @@
 								</ul>
 							</div>
 							<p class="poster">
-								<img alt="" src="../resources/static/images/sTheater.png">
+								<img alt="" src="..${pageContext.request.contextPath}/resources/static/images/sTheater.png">
 								<!-- <img
 									src="/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_150.gif"
 									onerror="noImg(this);" alt="온워드: 단 하루의 기적"> -->
