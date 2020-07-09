@@ -13,38 +13,8 @@
  	<br>
  	<h2 class="tit small">${vo.name}에 대한 <span class="font-gblue">${count }</span>개의 이야기가 있어요!</h2><br>
         <ul>
-              <!-- 로그인이 안되있을시 -->
-                    <li class="type03">
-                        <div class="story-area">
-                            <!-- 프로필영역 -->
-                            <div class="user-prof">
-                                <div class="prof-img"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png" alt="MEGABOX"></div>
-                                <p class="user-id">쌍용씨네마</p>
-                            </div>
-                            <!-- // 프로필영역 -->
-
-                            <!-- 내용 영역 -->
-                            <div class="story-box">
-                                <div class="story-wrap">
-                                    <div class="story-cont">
-                                        <span class="font-gblue">${vo.name }</span> 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.
-                                    </div>
-
-                                    <div class="story-write">
-                                        <a href="#tooltip-layer01" title="관람평쓰기" class="tooltip-click oneWrtNonMbBtn"><i class="iconset ico-story-write"></i> 관람평쓰기</a>
-                                        <div id="tooltip-layer01" class="tooltip-cont" style="width: 225px; height: 80px;">
-                                            <div class="wrap loginTagClick">
-                                                로그인이 필요한 서비스 입니다.<br>
-                                                <a href="javaScript:fn_viewLoginPopup('default','pc');" class="font-green" title="로그인 바로가기">로그인 바로가기 <i class="iconset ico-arr-right-green"></i></a>
-                                                <button type="button" class="btn-close-tooltip">툴팁 닫기</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- // 내용 영역 -->
-                        </div>
-                    </li>
+             
+                  
         <c:choose>
 							<c:when test="${not empty review}">
 							<c:forEach items="${review}" var="vo">
@@ -92,7 +62,7 @@
 					                	
 
 					                	 <!-- 로그인이 안되있을시 -->
-                                        	<a href="#tooltip-layer01" class="tooltip-click oneWrtNonMbBtn" w-data="500" h-data="680" data-cd="PREV" title="관람평쓰기"><i class="iconset ico-story-write"></i> 관람평쓰기</a>
+                                        	<a href="#" class="tooltip-click oneWrtNonMbBtn" w-data="500" h-data="680" data-cd="PREV" title="관람평쓰기"><i class="iconset ico-story-write"></i> 관람평쓰기</a>
 
                                     </div>
                                 </div>
