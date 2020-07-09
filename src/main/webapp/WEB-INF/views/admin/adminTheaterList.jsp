@@ -67,7 +67,7 @@
 									<tr>
 										<td>${vo.theaterNum}</td>
 										<td>${vo.localCode}</td>
-										<td><a href="./theaterSelect?theaterNum=${vo.theaterNum}" style="color: blue;">${vo.name}</a></td>
+										<td><a href="./theaterSelect?theaterNum=${vo.theaterNum}&name=${vo.name}" style="color: blue;">${vo.name}</a></td>
 										<td>${vo.address}</td>
 									</tr>
 								</c:forEach>

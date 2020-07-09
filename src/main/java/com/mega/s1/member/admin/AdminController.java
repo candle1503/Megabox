@@ -74,16 +74,19 @@ public class AdminController {
 			adminService.addTheater(theaterVO);
 			roomVO.setName(theaterVO.getName());
 			adminService.theaterRoomSet(roomVO,roomCount);
-			mv.setViewName("redirect:./theaterList");
+			mv.setViewName("redirect:./setTheaterRoom?name="+theaterVO.getName());
 		}
 		return mv;
 	}
 	
 	@GetMapping("theaterSelect")
 	public ModelAndView theaterSelect(TheaterVO theaterVO)throws Exception{
+		System.out.println(theaterVO.getName());
 		ModelAndView mv = new ModelAndView();
+		List<TheaterRoomVO> roomList = adminService.getRoomList(theaterVO);
 		theaterVO = adminService.theaterSelect(theaterVO);
 		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("roomList", roomList);
 		mv.setViewName("admin/adminSelectTheater");
 		return mv;
 	}

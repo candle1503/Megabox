@@ -53,6 +53,9 @@
 						</div>
 						<textarea class="box-bot" rows="9" cols="93" style="resize: none; background-color: f2f4f5"
 							readonly="readonly">${theaterVO.info}</textarea>
+						<c:forEach items="${roomList}" var="list">
+						<input type="text" class="btn dropdown-toggle btn-default bs-placeholder" style="width: 840px; background-color: f2f4f5;" value="${list.roomName}" readonly="readonly"/>
+						</c:forEach>
 					</div>
 				
 

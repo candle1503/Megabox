@@ -28,19 +28,11 @@
 
 
 		<div class="container has-lnb">
-			<div class="page-util">
-				<div class="inner-wrap" id="myLoaction">
-					<div class="location">
-						<span>Home</span> <a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의
-							메가박스</a> <a href="#" title="회원정보 페이지로 이동">회원정보</a> <a class="no-link">개인정보
-							수정</a>
-					</div>
-				</div>
-			</div>
+			
 
 			<div class="inner-wrap">
 
-				<c:import url="../template/memberSidebar.jsp"></c:import>
+				<c:import url="../template/adminSidebar.jsp"></c:import>
 
 				<div id="contents">
 					<h2 class="tit">상영관 설정</h2>
@@ -134,10 +126,12 @@
 				</div>
 
 				<div class="btn-group mt40">
-					<a href="./getMyPage"> <input type="button"
+					<a href="${pageContext.request.contextPath}/admin/theaterList"> <input type="button"
 						class="button large" value="취소">
 					</a>
-					<button type="submit" class="button purple large" id="updateBtn">완료</button>
+					<a href="${pageContext.request.contextPath}/admin/theaterList"> <input type="button"
+						class="button purple large" value="완료">
+					</a>
 				</div>
 
 			</div>
