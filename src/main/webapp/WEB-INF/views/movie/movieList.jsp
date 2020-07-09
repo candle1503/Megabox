@@ -92,7 +92,21 @@
 			</div>            
 			<div class="my-score equa">  <div class="preview"> <p class="tit">관람평</p>
 			  <p class="number"><fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/><span class="ir">점</span></p>   </div> </div>  </a>    
-			</div></div><div class="tit-area">    <p class="movie-grade age-15">,</p>    <p title="${movie.name }" class="tit">${movie.name }</p></div>
+			</div></div><div class="tit-area">    
+			<c:if test="${movie.age eq '전체관람가' }">
+			<p class="movie-grade age-all">,</p>    
+			</c:if>
+			<c:if test="${movie.age eq '12세이상관람가' }">
+			<p class="movie-grade age-12">,</p>    
+			</c:if>
+			<c:if test="${movie.age eq '15세이상관람가' }">
+			<p class="movie-grade age-15">,</p>    
+			</c:if>
+			<c:if test="${movie.age eq '청소년관람불가' }">
+			<p class="movie-grade age-19">,</p>    
+			</c:if>
+			
+			<p title="${movie.name }" class="tit">${movie.name }</p></div>
 			<div class="rate-date">    <span class="rate">예매율 25.2%</span> <span class="date">개봉 ${movie.openDay }</span>
 			</div><div class="btn-util">    <button type="button" class="button btn-like" data-no="20021300"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>${movie.like }</span></button>    
 			<div class="case col-2 movieStat3" style=""> 
@@ -125,7 +139,7 @@
 		})
 		
 		$(".delt").click(function(){
-			
+			alert($(this).attr("title"));
 			var flag = confirm("정말 삭제하시겠습니까?");
 			var movieNum = $(this).attr("title");
 			 if(flag==true){

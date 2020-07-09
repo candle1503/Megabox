@@ -82,10 +82,10 @@
 							<div class="box-top" style="padding-left: 10px">
 								<strong>영화 수정</strong>
 							</div>
-							<form:textarea path="name" class="box-bot" rows="1" cols="95"
+							<form:textarea path="name" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화 이름을 입력하세요." value="${movieVO.name }"/>
 							<form:errors path="name"></form:errors>
-
+							<input type="text" name="movieNum" value="${movieVO.movieNum }" hidden="true">
 							<br>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>장르</strong>
@@ -113,7 +113,7 @@
 							</div>
 							<input type="button" value="배우 추가" class="button" id="addCha" />
 							<div id="cha" style="padding: 10px 45px 30px 30px;">
-								<input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" required="required" value=${character[0] }>
+								<input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" required="required" value="${character[0] }">
 								<c:forEach items="${character }" var="cha" begin="1">
 									<span><input type="text" name="characters" placeholder="배우 이름을 입력하세요." style="height: 45px; margin-left: 15px;" value="${cha}"><span style="cursor: pointer;" class="del"> ×</span></span>
 								</c:forEach>
@@ -123,14 +123,14 @@
 							<div class="box-top" style="padding-left: 10px">
 								<strong>감독</strong>
 							</div>
-							<form:textarea path="director" class="box-bot" rows="1" cols="95"
+							<form:textarea path="director" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="감독 이름을 입력하세요." value="${movieVO.director }"/>
 							<form:errors path="director"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>영화 소개 줄거리</strong>
 							</div>
 							<div style="width:100%; height:200px;">
-							<form:textarea path="contents" class="box-bot" rows="9" cols="95"
+							<form:textarea path="contents" class="box-bot" rows="9" cols="93"
 								style="resize: none; padding: 30px 48px 30px 30px; width:100%;" placeholder="영화 소개를 해주세요."/>
 							<form:errors path="contents"></form:errors>
 							</div>
@@ -155,12 +155,13 @@
 							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="${movieVO.playTime }" />
 							<div class="box-top" style="padding-left: 10px">
 								<strong>포스터 </strong>
+								<input type="text" name="posterNum" id="posterNum" hidden="true">
 							</div>
-							<div id="postImg">
+							<div id="postImg" title="${file[0].fileNum }">
 							<img alt="" src="${pageContext.request.contextPath}/upload/movie/${file[0].fileName}" class="thumb_img" style="width:240px;">
 							</div>
 							<div class="box-file-input"><label>
-							<input name="files" type="file" accept="image/*" id="poster" class="file-input"></label>
+							<input name="posterImg" type="file" accept="image/*" id="poster" class="file-input"></label>
 							<span class="filename">파일을 선택해주세요.</span>
 							</div>
 							
@@ -187,6 +188,17 @@
 							</div>
 							<div class="box-top" style="padding-left: 10px">
 								<strong>관련 영상(예고편)  ※mp4파일만 가능※</strong>
+							</div>
+							<div class="imgCut">
+							<c:forEach items="${video }" var="video">
+							
+							<div style="box-sizing: content-box; display: inline-block; margin-left: 25px; margin-top: 10px; margin-bottom: 10px;">
+								<video src="${pageContext.request.contextPath}/upload/movie/${video.fileName}" style="width: 320px; max-height: 180px;"></video>
+								<img src="/resources/static/images/xbutton.jpg" style="width: 20px; float:right; cursor: pointer;" class="del" title="${video.fileNum }">
+								<div> ${video.detail }</div>
+							</div>
+
+							</c:forEach>
 							</div>
 							<input type="button" value="영상 추가" class="button" id="addVideo" />
 							<div id="vid">
@@ -218,9 +230,10 @@
 			var elImage = document.querySelector("#poster");
 			elImage.addEventListener("change", function(evt){
 				var image = evt.target.files[0];
-				
+				var posterNum=$("#postImg").attr("title");
 				var thumb = document.querySelector(".thumb_img");
 	 			thumb.src = window.URL.createObjectURL(image);
+	 			$("#posterNum").val(posterNum)
 	 			
 	 			
 			})
@@ -254,7 +267,7 @@
 			});	
 
 			$("#addVideo").click(function(){
-				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;"></div>');
+				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;" required="required"></div>');
 			
 			});	
 
@@ -264,9 +277,12 @@
 			});	
 
 			$('.imgCut').on('click', '.del', function(){
-				var fileNum=$(this).attr("title")
-				
+				var fileNum=$(this).attr("title");
+				var flag = confirm("정말 삭제하시겠습니까?");
+				if(flag==true){
+				$("#cha").append('<input type="text" name="delImg" style="height: 45px; margin-left: 15px;" value="'+fileNum+'" hidden="true">');
 				$(this).parent().remove();
+				}
 				
 
 				})

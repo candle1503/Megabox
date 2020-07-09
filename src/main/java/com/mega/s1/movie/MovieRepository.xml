@@ -114,4 +114,9 @@
 		]]>
 	</select>
 	
+	<update id="movieUpdate" parameterType="MovieVO">
+		update movie set name=#{name}, director=#{director}, genre=#{genre}, openDay=#{openDay}, age=#{age}, contents=#{contents}, movie.character=#{character}, playTime=#{playTime}
+		where movieNum=#{movieNum}
+	</update>
+	
 </mapper>

@@ -150,5 +150,59 @@ public class MovieService {
 	public int movieDelete(MovieVO movieVO) throws Exception{
 		return movieRepository.movieDelete(movieVO);
 	}
+	
+	public int movieUpdate(MovieVO movieVO, MultipartFile[] files, String[] details) throws Exception{
+		File fi = pathGenerator.getUseClassPathResource(filePath);
+		int result = movieRepository.movieUpdate(movieVO);
+		int j=0;
+		
+		for(int i = 0; i < files.length; i++) {
+			MultipartFile file = files[i];
+			if(file.getSize()<=0) {
+				continue;
+			}
+			String fileName=fileManager.saveFileCopy(file, fi);
+			MovieFileVO movieFileVO = new MovieFileVO();
+			
+			int index = fileName.lastIndexOf(".");
+			String str = fileName.substring(index + 1);
+			
+			movieFileVO.setFileName(fileName);
+			movieFileVO.setOriName(file.getOriginalFilename());
+			movieFileVO.setMovieNum(movieVO.getMovieNum());
+			
+			if("mp4".equals(str.toLowerCase())) {	
+				movieFileVO.setStatus(1);
+				movieFileVO.setDetail(details[j]);
+				j++;
+			} else {
+				
+				movieFileVO.setStatus(2);
+				movieFileVO.setDetail(null);
+			}
+			result = movieFileRepository.movieFileInsert(movieFileVO);
+			
+			
+		}
+		
+		
+			
+		
+		
+		return result;
+	}
+	
+	public int posterUpdate(MultipartFile posterImg, String posterNum) throws Exception{
+		File fi = pathGenerator.getUseClassPathResource(filePath);
+		String posterName=fileManager.saveFileCopy(posterImg, fi);
+		MovieFileVO updateFileVO = new MovieFileVO();
+		updateFileVO.setFileName(posterName);
+		updateFileVO.setFileNum(Integer.parseInt(posterNum));
+		return movieFileRepository.movieFileUpdate(updateFileVO);
+	}
+	
+	public int imageDelete(MovieFileVO movieFileVO) throws Exception{
+		return movieFileRepository.imageDelete(movieFileVO);
+	}
 
 }

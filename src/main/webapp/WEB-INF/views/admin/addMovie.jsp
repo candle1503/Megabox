@@ -80,7 +80,7 @@
 							<div class="box-top" style="padding-left: 10px">
 								<strong>영화 제목</strong>
 							</div>
-							<form:textarea path="name" class="box-bot" rows="1" cols="95"
+							<form:textarea path="name" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화 이름을 입력하세요." />
 							<form:errors path="name"></form:errors>
 
@@ -118,7 +118,7 @@
 							<div class="box-top" style="padding-left: 10px">
 								<strong>감독</strong>
 							</div>
-							<form:textarea path="director" class="box-bot" rows="1" cols="95"
+							<form:textarea path="director" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="감독 이름을 입력하세요." />
 							<form:errors path="director"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
@@ -147,7 +147,7 @@
 							</div>
 							<form:input path="openDay" type="Date" required="true" style="width:70%; height: 50px;"/>
 							
-							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="0" />
+							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="${movieVO.playTime }" />
 							<div class="box-top" style="padding-left: 10px">
 								<strong>포스터 업로드</strong>
 							</div>
@@ -201,7 +201,7 @@
 			});	
 
 			$("#addVideo").click(function(){
-				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;"></div>');
+				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;" required="required"></div>');
 			
 			});	
 

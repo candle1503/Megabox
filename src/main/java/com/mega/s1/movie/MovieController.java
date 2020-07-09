@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -308,6 +309,60 @@ public class MovieController {
 	public int movieDelete(MovieVO movieVO) throws Exception {
 		
 		return movieService.movieDelete(movieVO);
+	}
+	
+	@PostMapping("movieUpdate")
+	public ModelAndView movieUpdate(ModelAndView mv, @Valid MovieVO movieVO, BindingResult bindingResult, MultipartFile[] files, String[] details, String[] characters, String[] delImg, MultipartFile posterImg, String posterNum) throws Exception{
+		
+		MovieFileVO movieFileVO = new MovieFileVO();
+		 //취미 부분은 별도로 읽어들어 다시 빈 클래스에 저장
+        String[] genre = movieVO.getGenreTest();
+        //배열의 있는 내용을 하나의 스트림으로 젖아
+        String texthobby = "";
+        for (int i = 0; i < genre.length; i++) {
+        	if(i==(genre.length-1)) {
+        		texthobby += genre[i];
+        	}else {
+        		texthobby += genre[i] + ", ";
+        	}
+           
+        }
+        movieVO.setGenre(texthobby);
+        
+    	
+        String character = "";
+        for (int f = 0; f < characters.length; f++) {
+        	if(f==(characters.length-1)) {
+        		character += characters[f];
+        	}else {
+        		character += characters[f] + ", ";
+        	}
+        }
+        movieVO.setCharacter(character);
+        
+      
+		if (bindingResult.hasErrors()) {
+			mv.addObject("movieVO", movieVO);
+			mv.setViewName("admin/addMovie");
+			
+		}else {
+			if(delImg!=null) {
+				
+				for(int f=0; f < delImg.length; f++) {
+					movieFileVO.setFileNum(Integer.parseInt(delImg[f])); 
+					movieService.imageDelete(movieFileVO);
+				}
+			}
+			movieVO.setContents(movieVO.getContents().replace("\r\n", "<br>"));
+			movieService.movieUpdate(movieVO, files, details);
+			if(posterNum != null && !posterNum.isEmpty()) {
+				
+				movieService.posterUpdate(posterImg, posterNum);
+			}
+			mv.setViewName("redirect:./movieList");
+		}
+		
+		return mv;
 	}
 	
 
