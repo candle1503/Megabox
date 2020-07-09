@@ -32,16 +32,11 @@ public class MovieController {
 	
 	@GetMapping("preview")
 	public ModelAndView preview(ModelAndView mv, MovieVO movieVO) throws Exception {
-		
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
-
 		MovieVO vo = movieService.movieSelect(movieVO);
-
 		List<MovieFileVO> videos = movieService.videoFile(movieVO);
 		long image = movieService.imageCount(movieVO);
-
 		long video = movieService.videoCount(movieVO);
-
 		
 		mv.addObject("video", videos);
 		mv.addObject("videoCount", video);
