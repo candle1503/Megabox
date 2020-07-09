@@ -187,19 +187,9 @@ public class BookingController {
 		bookingVO = bookingService.bookingSeatView(bookingVO);
 		
 		movieVO.setMovieNum(bookingVO.getMovieNum());
-		
 		movieVO = movieService.movieSelect(movieVO);
 		
-		System.out.println("나이:"+movieVO.getAge());
-		System.out.println("영화제목:"+movieVO.getName());
-		System.out.println("상영관:"+bookingVO.getRoomName());
-		System.out.println("상영시간:"+bookingVO.getStartTime());
-		System.out.println("영화번호:"+bookingVO.getMovieNum());
-		System.out.println("상영관번호:"+bookingVO.getTheaterRoomCode());
-		System.out.println("code:"+bookingVO.getTimeCode());
-		
 		theaterVO.setTheaterNum(bookingVO.getTheaterNum());
-		
 		theaterVO = theaterService.theaterBranchSelect(theaterVO);
 		
 		String startTime =  bookingVO.getStartTime();
