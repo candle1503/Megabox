@@ -120,7 +120,6 @@ public class AdminController {
 	@GetMapping("setTheaterRoom")
 	public ModelAndView setTheaterRoom(TheaterVO theaterVO,RedirectAttributes attributes) throws Exception{
 		String name = (String)attributes.getAttribute("name");
-		System.out.println(name);
 		ModelAndView mv = new ModelAndView();
 		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		
@@ -131,7 +130,6 @@ public class AdminController {
 		mv.addObject("list", roomVOs);
 		mv.addObject("theaterNum", theaterNum);
 		mv.addObject("name", theaterVO.getName());
-		System.out.println(theaterVO.getName());
 		
 		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;
@@ -406,7 +404,6 @@ public class AdminController {
 								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO.setMovieNum(movieNums[i]);
 								adminService.setTheaterRoom(roomMovieTimeVO);
-								System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 							}
 							firstDay += 1;
 							continue;
@@ -509,7 +506,6 @@ public class AdminController {
 									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 									roomMovieTimeVO.setMovieNum(movieNums[i]);
 									adminService.setTheaterRoom(roomMovieTimeVO);
-									System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 								}
 								startDayInt += 1;
 								continue;
@@ -529,7 +525,6 @@ public class AdminController {
 									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 									roomMovieTimeVO.setMovieNum(movieNums[i]);
 									adminService.setTheaterRoom(roomMovieTimeVO);
-									System.out.println("서비스로 보낼 시간 : "+roomMovieTimeVO.getStartTime());
 								}
 								firstDay += 1;
 								continue;
