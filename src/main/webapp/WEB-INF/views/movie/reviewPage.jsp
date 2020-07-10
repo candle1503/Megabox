@@ -155,7 +155,16 @@
     
 	
     
-    $(".oneWrtNonMbBtn").click(function(){
+  $(".oneWrtNonMbBtn").click(function(){
+	
+	if(${member eq null}){
+
+	alert("로그인이 필요한 서비스입니다.");
+		} else {
+
+		$('#review').parent().attr("class", "on");
+		$("#inform").parent().removeClass("on");
+		$("#preview").parent().removeClass("on");
 		var ajaxOption = {
 	            url : "./review",
 	            
@@ -167,9 +176,13 @@
 		$.ajax(ajaxOption).done(function(data){
 	       
 	        $('.back').children().remove();
-	       
+	       $('.mt70').remove();
 	        $('.back').html(data);
 	    });
+
+		}
+
+	
 	})
 	
 	$(".pagination > li").on("click", function(){

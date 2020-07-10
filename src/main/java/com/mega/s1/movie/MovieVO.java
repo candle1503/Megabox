@@ -39,5 +39,7 @@ public class MovieVO {
 	private String[] genreTest;
 	private int views;
 	private MovieFileVO movieFileVO;
+	
+	
 
 }

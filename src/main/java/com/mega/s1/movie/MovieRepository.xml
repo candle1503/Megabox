@@ -85,7 +85,7 @@
 	</update>
 	
 	<insert id="movieInsert" parameterType="MovieVO" useGeneratedKeys="true" keyProperty="movieNum">
-		insert into movie values (0, #{name}, #{director}, #{genre}, 0, #{openDay}, #{age}, #{contents}, 0, #{character}, #{playTime}, 0)
+		insert into movie values (0, #{name}, #{director}, #{genre}, 0, #{openDay}, #{age}, #{contents}, 0, #{character}, #{playTime}, 0, 0)
 	</insert>
 	
 	<delete id="movieDelete" parameterType="MovieVO">
@@ -113,5 +113,10 @@
 		where M.openDay <= sysdate() 
 		]]>
 	</select>
+	
+	<update id="movieUpdate" parameterType="MovieVO">
+		update movie set name=#{name}, director=#{director}, genre=#{genre}, openDay=#{openDay}, age=#{age}, contents=#{contents}, movie.character=#{character}, playTime=#{playTime}
+		where movieNum=#{movieNum}
+	</update>
 	
 </mapper>

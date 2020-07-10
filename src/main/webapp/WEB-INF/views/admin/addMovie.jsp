@@ -51,6 +51,16 @@
 </head>
 
 <body>
+
+<c:choose>
+	<c:when test="${member.id ne 'admin' }">
+		<script type="text/javascript">
+			alert('잘못된 접근입니다.');
+			window.location.replace("../member/memberLogin")
+		</script>
+	</c:when>
+	
+	<c:when test="${member.id eq 'admin' }">
 		<c:import url="../template/header.jsp"></c:import>
 	
 
@@ -80,7 +90,7 @@
 							<div class="box-top" style="padding-left: 10px">
 								<strong>영화 제목</strong>
 							</div>
-							<form:textarea path="name" class="box-bot" rows="1" cols="95"
+							<form:textarea path="name" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="영화 이름을 입력하세요." />
 							<form:errors path="name"></form:errors>
 
@@ -118,7 +128,7 @@
 							<div class="box-top" style="padding-left: 10px">
 								<strong>감독</strong>
 							</div>
-							<form:textarea path="director" class="box-bot" rows="1" cols="95"
+							<form:textarea path="director" class="box-bot" rows="1" cols="93"
 								style="resize: none;" placeholder="감독 이름을 입력하세요." />
 							<form:errors path="director"></form:errors>
 							<div class="box-top" style="padding-left: 10px">
@@ -147,7 +157,7 @@
 							</div>
 							<form:input path="openDay" type="Date" required="true" style="width:70%; height: 50px;"/>
 							
-							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="0" />
+							<span style="float:right; line-height: 50px; font-size: 1.2em; text-indent: 1.1em;"> <b>분</b></span><form:input path="playTime" type="number" min="1" max="300" style="width:60px; height:50px; float:right; text-align:center;" value="${movieVO.playTime }" />
 							<div class="box-top" style="padding-left: 10px">
 								<strong>포스터 업로드</strong>
 							</div>
@@ -201,7 +211,7 @@
 			});	
 
 			$("#addVideo").click(function(){
-				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;"></div>');
+				$("#vid").append('<div class="box-file-input"><label><input type="file" name="files" accept="video/mp4" class="file-input"></label><span class="filename">파일을 선택해주세요. </span><span style="cursor: pointer;" class="del"> ×</span><input type="text" name="details" placeholder="영상 제목" style="margin-left:30px;" required="required"></div>');
 			
 			});	
 
@@ -329,5 +339,10 @@
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
+
+	</c:when>
+</c:choose>
+		
+
 </body>
 </html>

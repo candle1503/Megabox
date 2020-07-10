@@ -15,4 +15,6 @@ public interface MovieFileRepository {
 	public List<MovieFileVO> videoFileSelect(MovieVO movieVO) throws Exception;
 	public long videoCount(MovieVO movieVO) throws Exception;
 	public int movieFileInsert(MovieFileVO movieFileVO) throws Exception;
+	public int movieFileUpdate(MovieFileVO movieFileVO) throws Exception;
+	public int imageDelete(MovieFileVO movieFileVO) throws Exception;
 }

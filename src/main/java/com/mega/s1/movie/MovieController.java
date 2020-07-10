@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,32 +64,64 @@ public class MovieController {
 		long story = Math.round(movieService.story(movieVO)*100/all);
 		long beauty = Math.round(movieService.beauty(movieVO)*100/all);
 		
-		if(player<=85) {
-			player += 15; 
-		} else {
-			player = 100;
-		};
+		if(vo.getRate()>=8) {
+			if(player<=35) {
+				player += 40; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=35) {
+				direct += 40;
+			} else {
+				direct =100;
+			};
+			if(ost<=35) {
+				ost += 40;
+			} else {
+				ost =100;
+			};
+			if(story<=35) {
+				story += 40;
+			} else {
+				story =100;
+			};
+			if(beauty<=35) {
+				beauty += 40;
+			} else {
+				beauty =100;
+			};
+			
+		}else {
+			
+			if(player<=50) {
+				player += 20; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=50) {
+				direct += 20;
+			} else {
+				direct =100;
+			};
+			if(ost<=50) {
+				ost += 20;
+			} else {
+				ost =100;
+			};
+			if(story<=50) {
+				story += 20;
+			} else {
+				story =100;
+			};
+			if(beauty<=50) {
+				beauty += 20;
+			} else {
+				beauty =100;
+			};
+		}
 		
-		if(direct<=85) {
-			direct += 15;
-		} else {
-			direct =100;
-		};
-		if(ost<=85) {
-			ost += 15;
-		} else {
-			ost =100;
-		};
-		if(story<=85) {
-			story += 15;
-		} else {
-			story =100;
-		};
-		if(beauty<=85) {
-			beauty += 15;
-		} else {
-			beauty =100;
-		};
 		mv.addObject("player", player);
 		mv.addObject("direct", direct);
 		mv.addObject("ost", ost);
@@ -129,32 +162,64 @@ public class MovieController {
 		long story = Math.round(movieService.story(movieVO)*100/all);
 		long beauty = Math.round(movieService.beauty(movieVO)*100/all);
 		
-		if(player<=85) {
-			player += 15; 
-		} else {
-			player = 100;
-		};
+		if(vo.getRate()>=8) {
+			if(player<=35) {
+				player += 40; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=35) {
+				direct += 40;
+			} else {
+				direct =100;
+			};
+			if(ost<=35) {
+				ost += 40;
+			} else {
+				ost =100;
+			};
+			if(story<=35) {
+				story += 40;
+			} else {
+				story =100;
+			};
+			if(beauty<=35) {
+				beauty += 40;
+			} else {
+				beauty =100;
+			};
+			
+		}else {
+			
+			if(player<=50) {
+				player += 20; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=50) {
+				direct += 20;
+			} else {
+				direct =100;
+			};
+			if(ost<=50) {
+				ost += 20;
+			} else {
+				ost =100;
+			};
+			if(story<=50) {
+				story += 20;
+			} else {
+				story =100;
+			};
+			if(beauty<=50) {
+				beauty += 20;
+			} else {
+				beauty =100;
+			};
+		}
 		
-		if(direct<=85) {
-			direct += 15;
-		} else {
-			direct =100;
-		};
-		if(ost<=85) {
-			ost += 15;
-		} else {
-			ost =100;
-		};
-		if(story<=85) {
-			story += 15;
-		} else {
-			story =100;
-		};
-		if(beauty<=85) {
-			beauty += 15;
-		} else {
-			beauty =100;
-		};
 		
 		mv.addObject("player", player);
 		mv.addObject("direct", direct);
@@ -308,6 +373,60 @@ public class MovieController {
 	public int movieDelete(MovieVO movieVO) throws Exception {
 		
 		return movieService.movieDelete(movieVO);
+	}
+	
+	@PostMapping("movieUpdate")
+	public ModelAndView movieUpdate(ModelAndView mv, @Valid MovieVO movieVO, BindingResult bindingResult, MultipartFile[] files, String[] details, String[] characters, String[] delImg, MultipartFile posterImg, String posterNum) throws Exception{
+		
+		MovieFileVO movieFileVO = new MovieFileVO();
+		 //취미 부분은 별도로 읽어들어 다시 빈 클래스에 저장
+        String[] genre = movieVO.getGenreTest();
+        //배열의 있는 내용을 하나의 스트림으로 젖아
+        String texthobby = "";
+        for (int i = 0; i < genre.length; i++) {
+        	if(i==(genre.length-1)) {
+        		texthobby += genre[i];
+        	}else {
+        		texthobby += genre[i] + ", ";
+        	}
+           
+        }
+        movieVO.setGenre(texthobby);
+        
+    	
+        String character = "";
+        for (int f = 0; f < characters.length; f++) {
+        	if(f==(characters.length-1)) {
+        		character += characters[f];
+        	}else {
+        		character += characters[f] + ", ";
+        	}
+        }
+        movieVO.setCharacter(character);
+        
+      
+		if (bindingResult.hasErrors()) {
+			mv.addObject("movieVO", movieVO);
+			mv.setViewName("admin/addMovie");
+			
+		}else {
+			if(delImg!=null) {
+				
+				for(int f=0; f < delImg.length; f++) {
+					movieFileVO.setFileNum(Integer.parseInt(delImg[f])); 
+					movieService.imageDelete(movieFileVO);
+				}
+			}
+			movieVO.setContents(movieVO.getContents().replace("\r\n", "<br>"));
+			movieService.movieUpdate(movieVO, files, details);
+			if(posterNum != null && !posterNum.isEmpty()) {
+				
+				movieService.posterUpdate(posterImg, posterNum);
+			}
+			mv.setViewName("redirect:./movieList");
+		}
+		
+		return mv;
 	}
 	
 

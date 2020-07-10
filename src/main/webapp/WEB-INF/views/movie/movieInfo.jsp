@@ -170,7 +170,7 @@ $(function(){
 			<div class="reserve">
 				
 					
-						<a href="javascript:fn_bookingForm('20019200','basic');" class="btn reserve" title="영화 예매하기" style="margin-left: 55px">예매</a>
+						<a href="../booking/bookingMain" class="btn reserve" title="영화 예매하기" style="margin-left: 55px">예매</a>
 						
 	
 				
@@ -488,8 +488,8 @@ var chartOptions = {
     ticks: {
       beginAtZero: true,
       min: 0,
-      max: 100,
-      stepSize: 35,
+      max: 110,
+      stepSize: 40,
       display: false
     },
     pointLabels: {
@@ -675,23 +675,33 @@ var radarChart = new Chart(marksCanvas, {
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript">
 $(".oneWrtNonMbBtn").click(function(){
-	$('#review').parent().attr("class", "on");
-	$("#inform").parent().removeClass("on");
-	$("#preview").parent().removeClass("on");
-	var ajaxOption = {
-            url : "./review",
-            
-            data : {movieNum:'${vo.movieNum}'},
-            type : "GET",
-            dataType : "html"
-            
-    };  
-	$.ajax(ajaxOption).done(function(data){
-       
-        $('.back').children().remove();
-       $('.mt70').remove();
-        $('.back').html(data);
-    });
+	
+	if(${member eq null}){
+
+	alert("로그인이 필요한 서비스입니다.");
+		} else {
+
+		$('#review').parent().attr("class", "on");
+		$("#inform").parent().removeClass("on");
+		$("#preview").parent().removeClass("on");
+		var ajaxOption = {
+	            url : "./review",
+	            
+	            data : {movieNum:'${vo.movieNum}'},
+	            type : "GET",
+	            dataType : "html"
+	            
+	    };  
+		$.ajax(ajaxOption).done(function(data){
+	       
+	        $('.back').children().remove();
+	       $('.mt70').remove();
+	        $('.back').html(data);
+	    });
+
+		}
+
+	
 })
 
 

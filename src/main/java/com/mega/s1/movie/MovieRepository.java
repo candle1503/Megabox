@@ -35,5 +35,6 @@ public interface MovieRepository {
 	public int movieInsert(MovieVO movieVO) throws Exception;
 	
 	public int movieDelete(MovieVO movieVO) throws Exception;
+	public int movieUpdate(MovieVO movieVO) throws Exception;
 	
 }

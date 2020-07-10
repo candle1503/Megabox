@@ -21,4 +21,12 @@
 	<insert id="movieFileInsert" parameterType="MovieFileVO">
 		insert into movieFile values(0, #{oriName}, #{movieNum}, #{fileName}, #{status}, #{detail})
 	</insert>
+	
+	<update id="movieFileUpdate" parameterType="MovieFileVO">
+		update movieFile set fileName=#{fileName} where fileNum=#{fileNum}
+	</update>
+	
+	<delete id="imageDelete" parameterType="MovieFileVO">
+		delete from movieFile where fileNum=#{fileNum}
+	</delete>
 </mapper>
