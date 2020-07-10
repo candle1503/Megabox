@@ -22,6 +22,8 @@
 			<h2 class="tit"></h2>
 
 			<form method="post" action="./bookingSeatNext">
+			
+			<input type="text" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${movieVO.age}" name="movieAge">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
 			<input type="hidden" value="${theaterVO.name}" name="name">

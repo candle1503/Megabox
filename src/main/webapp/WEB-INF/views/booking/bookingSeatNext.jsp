@@ -94,6 +94,7 @@
 			<!-- seat-select-section -->
 			<form action="./bookingComplete" method="post"> <!-- ---------------------------form----------------------------------------------- -->
 			
+			<input type="text" value="${movieVO.movieNum}" name="movieNum">
 			<input type="text" value="${movieVO.age}" name="movieAge">
 			<input type="text" value="${movieVO.name}" name="movieName">
 			<input type="text" value="${theaterVO.name}" name="name">
