@@ -85,7 +85,7 @@
 	</update>
 	
 	<insert id="movieInsert" parameterType="MovieVO" useGeneratedKeys="true" keyProperty="movieNum">
-		insert into movie values (0, #{name}, #{director}, #{genre}, 0, #{openDay}, #{age}, #{contents}, 0, #{character}, #{playTime}, 0)
+		insert into movie values (0, #{name}, #{director}, #{genre}, 0, #{openDay}, #{age}, #{contents}, 0, #{character}, #{playTime}, 0, 0)
 	</insert>
 	
 	<delete id="movieDelete" parameterType="MovieVO">

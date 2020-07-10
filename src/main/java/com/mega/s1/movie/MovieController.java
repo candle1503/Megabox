@@ -64,32 +64,64 @@ public class MovieController {
 		long story = Math.round(movieService.story(movieVO)*100/all);
 		long beauty = Math.round(movieService.beauty(movieVO)*100/all);
 		
-		if(player<=85) {
-			player += 15; 
-		} else {
-			player = 100;
-		};
+		if(vo.getRate()>=8) {
+			if(player<=35) {
+				player += 40; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=35) {
+				direct += 40;
+			} else {
+				direct =100;
+			};
+			if(ost<=35) {
+				ost += 40;
+			} else {
+				ost =100;
+			};
+			if(story<=35) {
+				story += 40;
+			} else {
+				story =100;
+			};
+			if(beauty<=35) {
+				beauty += 40;
+			} else {
+				beauty =100;
+			};
+			
+		}else {
+			
+			if(player<=50) {
+				player += 20; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=50) {
+				direct += 20;
+			} else {
+				direct =100;
+			};
+			if(ost<=50) {
+				ost += 20;
+			} else {
+				ost =100;
+			};
+			if(story<=50) {
+				story += 20;
+			} else {
+				story =100;
+			};
+			if(beauty<=50) {
+				beauty += 20;
+			} else {
+				beauty =100;
+			};
+		}
 		
-		if(direct<=85) {
-			direct += 15;
-		} else {
-			direct =100;
-		};
-		if(ost<=85) {
-			ost += 15;
-		} else {
-			ost =100;
-		};
-		if(story<=85) {
-			story += 15;
-		} else {
-			story =100;
-		};
-		if(beauty<=85) {
-			beauty += 15;
-		} else {
-			beauty =100;
-		};
 		mv.addObject("player", player);
 		mv.addObject("direct", direct);
 		mv.addObject("ost", ost);
@@ -130,32 +162,64 @@ public class MovieController {
 		long story = Math.round(movieService.story(movieVO)*100/all);
 		long beauty = Math.round(movieService.beauty(movieVO)*100/all);
 		
-		if(player<=85) {
-			player += 15; 
-		} else {
-			player = 100;
-		};
+		if(vo.getRate()>=8) {
+			if(player<=35) {
+				player += 40; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=35) {
+				direct += 40;
+			} else {
+				direct =100;
+			};
+			if(ost<=35) {
+				ost += 40;
+			} else {
+				ost =100;
+			};
+			if(story<=35) {
+				story += 40;
+			} else {
+				story =100;
+			};
+			if(beauty<=35) {
+				beauty += 40;
+			} else {
+				beauty =100;
+			};
+			
+		}else {
+			
+			if(player<=50) {
+				player += 20; 
+			} else {
+				player = 100;
+			};
+			
+			if(direct<=50) {
+				direct += 20;
+			} else {
+				direct =100;
+			};
+			if(ost<=50) {
+				ost += 20;
+			} else {
+				ost =100;
+			};
+			if(story<=50) {
+				story += 20;
+			} else {
+				story =100;
+			};
+			if(beauty<=50) {
+				beauty += 20;
+			} else {
+				beauty =100;
+			};
+		}
 		
-		if(direct<=85) {
-			direct += 15;
-		} else {
-			direct =100;
-		};
-		if(ost<=85) {
-			ost += 15;
-		} else {
-			ost =100;
-		};
-		if(story<=85) {
-			story += 15;
-		} else {
-			story =100;
-		};
-		if(beauty<=85) {
-			beauty += 15;
-		} else {
-			beauty =100;
-		};
 		
 		mv.addObject("player", player);
 		mv.addObject("direct", direct);
