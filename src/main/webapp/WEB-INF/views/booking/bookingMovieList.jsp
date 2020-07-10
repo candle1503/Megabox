@@ -29,19 +29,29 @@
 			</c:if>
 			<i class="iconset ico-heart-small">보고싶어 설정안함</i>
 				<span class="txt">${bmList.name}</span>
-				<span class="txt" >/${bmList.movieNum}</span>
+				<span class="txt" style="color:white;">/${bmList.movieNum}</span>
 		</button>
+				<input class="test123${i.count}" value="${bmList.movieNum}" type="hidden">
 	</li>
+
+	
 </c:forEach>
 
-				<input type="text" value="null" class="test"/>
+				<input type="hidden" value="null" class="test"/>
 
 
 
 <script type="text/javascript">
 
+	
 function bookingMovieRoomList(startDate, name, movieNumber){
 	$.get("bookingRoomList?startTime="+startDate+"&name="+name+"&movieNumber="+movieNumber, function(result){
+		$("#bookingRoom-List").append(result);
+	});
+}
+
+function bookingRoomList(startDate, name){
+	$.get("bookingRoomList?startTime="+startDate+"&name="+name, function(result){
 		$("#bookingRoom-List").append(result);
 	});
 }
@@ -52,36 +62,32 @@ function bookingMovieRoomList(startDate, name, movieNumber){
 		var movieCss;
 
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
+			if($(this).hasClass("on")){
+				$(this).removeClass("on");
+				$('.test').val("null");
+				$("#bookingRoom-List").empty();
+				var name = $(".localName").val();
+				bookingRoomList(startDate, name);
+			}else{
+				
 			$("#movieBtn"+movieCss).removeClass("on");
 			$(this).addClass("on");
 			movieCss = $(this).attr('id').replace("movieBtn", '');
 			
 			var txt = $(this).text().split('/');
 			var movieNumber = parseInt(txt[1]);
-			alert(startDate);
-			alert(movieNumber);
-			
 			if($('.localName').val()=="null"){
-				alert("null임");
+				
 			}else{
 				$("#bookingRoom-List").empty();
 				var name = $('.localName').val();
-				alert(name);
 				
 				bookingMovieRoomList(startDate, name, movieNumber);
 			}
 			
-			console.log(movieNumber);
 			
 			$('.test').val(movieNumber);
-// 			$.ajax({
-// 				url:"bookingRoomList",
-// 				type:"GET",
-// 				data:{movieNumber},
-// 				success:function(result){
-					
-// 				},
-// 			});
+			}
 
 		});
 	}

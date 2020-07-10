@@ -112,11 +112,16 @@
 	
 	bookingMovieList(startDate);
 	
-	function bookingMovieList(startDate){
-		$.get("bookingMovieList?startTime="+startDate, function(result){
-			$("#bookingMovie-List").append(result);
-		});	
-	}
+//	var movieNumCheck = $('.movieNumCheck').val();
+//	function bookingMovieList(startDate){
+//		$.get("bookingMovieList?startTime="+startDate, function(result){
+//			$("#bookingMovie-List").append(result);
+//		});
+//	}
+//	alert(movieNumCheck);
+//	if(movieNumCheck == 1){
+//		$("#movieBtn1").addClass("on");
+//	}
 	
 	$("#bookingTime-list").on("click", ".bookingTime-list",function(){
 		$("#bookingMovie-List").empty();

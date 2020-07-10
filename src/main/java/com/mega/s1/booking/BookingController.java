@@ -50,7 +50,15 @@ public class BookingController {
 	}
 	
 	@GetMapping("bookingMain")
-	public void bookingMain() throws Exception {
+	public ModelAndView bookingMain(Integer movieNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		if(movieNum != null) {
+			mv.addObject("movieNum", movieNum);
+		}
+		
+		return mv;
+		
 	}
 
 	@GetMapping("bookingSeat")
@@ -84,7 +92,7 @@ public class BookingController {
 	@GetMapping("bookingRoomList")
 	public ModelAndView bookingRoomList(BookingVO bookingVO, MovieVO movieVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("!!!!!!!!!!!!!!!!!"+bookingVO.getMovieNumber());
+		
 		List<BookingVO> bookingRoomAr = new ArrayList<BookingVO>();
 		
 		if(bookingVO.getMovieNumber() != null) {
@@ -301,8 +309,6 @@ public class BookingController {
 		
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
-		
-		System.out.println("a1a1a1a1a1a1a:"+movieVO.getAge()); 
 		
 		mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("seatList", seatVO.getSeatList());

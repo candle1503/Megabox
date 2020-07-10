@@ -43,6 +43,9 @@
 
 </head>
 <body>
+
+
+
 <c:import url="../template/header.jsp"></c:import>
 
 <body class="body-iframe">
@@ -347,12 +350,41 @@ function fn_validateDateYn(param) {
 										id="movieList">
 											<div id="mCSB_1_container" class="mCSB_container"
 												style="position: relative; top: 0; left: 0; overflow: auto; height: 310px;" dir="ltr">
-												
+												<c:if test="${movieNum ne null}">
+												<input type="hidden" value="${movieNum}" class="movieNumCheck">
+												</c:if>
+												<c:if test="${movieNum eq null}">
+												<input type="hidden" value="null" class="movieNumCheck">
+												</c:if>
 												<ul id="bookingMovie-List">
 
 
 												</ul>
 											</div>
+										
+										<script type="text/javascript">
+
+									function bookingMovieList(startDate){
+										$.get("bookingMovieList?startTime="+startDate, function(result){
+											$("#bookingMovie-List").append(result);
+
+											if(result != null){
+												var movieNumCheck = $('.movieNumCheck').val();
+												
+												for(var mc=1; mc<10; mc++){
+													if(movieNumCheck ==$('.test123'+mc).val()){
+														$("#movieBtn"+mc).addClass("on");
+														$('.test').val(movieNumCheck);
+													}
+														
+													}
+
+												
+												}
+										});
+										
+									}
+									</script>
 										<!-- <div id="mCSB_1"
 											class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 											style="max-height: none;" tabindex="0">
@@ -651,7 +683,7 @@ function fn_validateDateYn(param) {
 														</div>
 													</div>
 												</div></li>
-												<input type="text" value="null" class="localName">
+												<input type="hidden" value="null" class="localName">
 
 										</ul>
 										

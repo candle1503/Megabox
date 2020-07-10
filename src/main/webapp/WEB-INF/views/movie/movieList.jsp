@@ -159,21 +159,10 @@
 		})
 		
 		
-		function bookingMovieListOne(movieNumb){
-			$.get("bookingMovieList?movieNum="+movieNumb, function(result){
-				$("#bookingMovie-List").val().
-			});	
-		}
 		
 		$(".bokdBtn").click(function(){
 			var movieNumb = $(this).val();
-
-			//location.href="bookingMovieList?movieNum="+movieNumb;
-			
-			bookingMovieListOne(movieNumb);
-
-			alert(movieNumb);
-			
+			location.href="${pageContext.request.contextPath}/booking/bookingMain?movieNum="+movieNumb;
 		}); 
 		
 
