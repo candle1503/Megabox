@@ -23,6 +23,8 @@
 
 			<form method="post" action="./bookingSeatNext">
 			
+			<input type="text" value="${theaterVO.theaterNum}" name="theaterNum">
+			<input type="text" value="${bookingSeatView.theaterRoomCode}" name="theaterRoomCode">
 			<input type="text" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${movieVO.age}" name="movieAge">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
