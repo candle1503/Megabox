@@ -1,5 +1,6 @@
 package com.mega.s1.member.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -162,556 +163,564 @@ public class AdminController {
 		int endYearInt = Integer.parseInt(endDays[0]);
 		int length = times.length;
 		
-		if(startYearInt != endYearInt) {
-			while( startDayInt <= 31 ) {
-				roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-				switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-				
-				case 0 :
-					for(int i=length-1; i>-1; i--) {
-						roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-						roomMovieTimeVO.setMovieNum(movieNums[i]);
-						adminService.setTheaterRoom(roomMovieTimeVO);
-					}
-					startDayInt += 1;
-					continue;
-					
-				case 1 :
-					startDayInt += 1;
-					continue;
-				}
-				
-			}
-			while(firstDay <= endDayInt) {
-				roomMovieTimeVO.setStartDay((endYearInt+"-"+endMonthInt+"-"+firstDay));
-				switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-				
-				case 0 :
-					for(int i=length-1; i>-1; i--) {
-						roomMovieTimeVO.setStartTime((endYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-						roomMovieTimeVO.setMovieNum(movieNums[i]);
-						adminService.setTheaterRoom(roomMovieTimeVO);
-					}
-					firstDay += 1;
-					continue;
-					
-				case 1 :
-					firstDay += 1;
-					continue;
-				}
-				
-			}
-		}else {
-			if(endMonthInt > startMonthInt) {
-				if(endMonthInt == 2) {
-					
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-					//윤년계산 해줘야함
-				}else if(endMonthInt ==3) {
-					
-					if( startYearInt%4==0 && startYearInt%100!=0 || startYearInt%400==0 ) {
-						
-						
-						
-						while( startDayInt <= 29 ) {
-							roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
-							case 0 :
-								for(int i=length-1; i>-1; i--) {
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-									roomMovieTimeVO.setMovieNum(movieNums[i]);
-									adminService.setTheaterRoom(roomMovieTimeVO);
-								}
-								startDayInt += 1;
-								continue;
-								
-							case 1 :
-								startDayInt += 1;
-								continue;
-							}
-							
-						}
-						while(firstDay <= endDayInt) {
-							roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
-							case 0 :
-								for(int i=length-1; i>-1; i--) {
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-									roomMovieTimeVO.setMovieNum(movieNums[i]);
-									adminService.setTheaterRoom(roomMovieTimeVO);
-								}
-								firstDay += 1;
-								continue;
-								
-							case 1 :
-								firstDay += 1;
-								continue;
-							}
-							
-						}
-						
-						
-						
-						
-					}else {
-						
-						while( startDayInt <= 28 ) {
-							roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
-							case 0 :
-								for(int i=length-1; i>-1; i--) {
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-									roomMovieTimeVO.setMovieNum(movieNums[i]);
-									adminService.setTheaterRoom(roomMovieTimeVO);
-								}
-								startDayInt += 1;
-								continue;
-								
-							case 1 :
-								startDayInt += 1;
-								continue;
-							}
-							
-						}
-						while(firstDay <= endDayInt) {
-							roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
-							case 0 :
-								for(int i=length-1; i>-1; i--) {
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-									roomMovieTimeVO.setMovieNum(movieNums[i]);
-									adminService.setTheaterRoom(roomMovieTimeVO);
-								}
-								firstDay += 1;
-								continue;
-								
-							case 1 :
-								firstDay += 1;
-								continue;
-							}
-							
-						}
-					}
-					
-				}else if(endMonthInt ==4) {
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==5) {
-					while( startDayInt <= 30 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==6) {
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==7) {
-					while( startDayInt <= 30 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==8) {
-					
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
-							case 0 :
-								for(int i=length-1; i>-1; i--) {
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-									roomMovieTimeVO.setMovieNum(movieNums[i]);
-									adminService.setTheaterRoom(roomMovieTimeVO);
-								}
-								startDayInt += 1;
-								continue;
-							
-							case 1 :
-								startDayInt += 1;
-								continue;
-							}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
-							case 0 :
-								for(int i=length-1; i>-1; i--) {
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-									roomMovieTimeVO.setMovieNum(movieNums[i]);
-									adminService.setTheaterRoom(roomMovieTimeVO);
-								}
-								firstDay += 1;
-								continue;
-							
-							case 1 :
-								firstDay += 1;
-								continue;
-							}
-						
-					}
-					
-				}else if(endMonthInt ==9) {
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==10) {
-					while( startDayInt <= 30 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==11) {
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				}else if(endMonthInt ==12) {
-					while( startDayInt <= 30 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						
-					}
-					
-				
-					
-				}
-				
-				// startMonth랑 endMonth가 같을때
-			}else if(endMonthInt == startMonthInt) {
-					
+//		if(startYearInt != endYearInt) {
+//			while( startDayInt <= 31 ) {
+//				roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//				switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//				
+//				case 0 :
+//					for(int i=length-1; i>-1; i--) {
+//						roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//						roomMovieTimeVO.setMovieNum(movieNums[i]);
+//						adminService.setTheaterRoom(roomMovieTimeVO);
+//					}
+//					startDayInt += 1;
+//					continue;
+//					
+//				case 1 :
+//					startDayInt += 1;
+//					continue;
+//				}
+//				
+//			}
+//			while(firstDay <= endDayInt) {
+//				roomMovieTimeVO.setStartDay((endYearInt+"-"+endMonthInt+"-"+firstDay));
+//				switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//				
+//				case 0 :
+//					for(int i=length-1; i>-1; i--) {
+//						roomMovieTimeVO.setStartTime((endYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//						roomMovieTimeVO.setMovieNum(movieNums[i]);
+//						adminService.setTheaterRoom(roomMovieTimeVO);
+//					}
+//					firstDay += 1;
+//					continue;
+//					
+//				case 1 :
+//					firstDay += 1;
+//					continue;
+//				}
+//				
+//			}
+//		}else {
+//			if(endMonthInt > startMonthInt) {
+//				if(endMonthInt == 2) {
+//					
+//					while( startDayInt <= 31 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//					//윤년계산 해줘야함
+//				}else if(endMonthInt ==3) {
+//					
+//					if( startYearInt%4==0 && startYearInt%100!=0 || startYearInt%400==0 ) {
+//						
+//						
+//						
+//						while( startDayInt <= 29 ) {
+//							roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//							
+//							case 0 :
+//								for(int i=length-1; i>-1; i--) {
+//									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//									roomMovieTimeVO.setMovieNum(movieNums[i]);
+//									adminService.setTheaterRoom(roomMovieTimeVO);
+//								}
+//								startDayInt += 1;
+//								continue;
+//								
+//							case 1 :
+//								startDayInt += 1;
+//								continue;
+//							}
+//							
+//						}
+//						while(firstDay <= endDayInt) {
+//							roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//							
+//							case 0 :
+//								for(int i=length-1; i>-1; i--) {
+//									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//									roomMovieTimeVO.setMovieNum(movieNums[i]);
+//									adminService.setTheaterRoom(roomMovieTimeVO);
+//								}
+//								firstDay += 1;
+//								continue;
+//								
+//							case 1 :
+//								firstDay += 1;
+//								continue;
+//							}
+//							
+//						}
+//						
+//						
+//						
+//						
+//					}else {
+//						
+//						while( startDayInt <= 28 ) {
+//							roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//							
+//							case 0 :
+//								for(int i=length-1; i>-1; i--) {
+//									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//									roomMovieTimeVO.setMovieNum(movieNums[i]);
+//									adminService.setTheaterRoom(roomMovieTimeVO);
+//								}
+//								startDayInt += 1;
+//								continue;
+//								
+//							case 1 :
+//								startDayInt += 1;
+//								continue;
+//							}
+//							
+//						}
+//						while(firstDay <= endDayInt) {
+//							roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//							
+//							case 0 :
+//								for(int i=length-1; i>-1; i--) {
+//									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//									roomMovieTimeVO.setMovieNum(movieNums[i]);
+//									adminService.setTheaterRoom(roomMovieTimeVO);
+//								}
+//								firstDay += 1;
+//								continue;
+//								
+//							case 1 :
+//								firstDay += 1;
+//								continue;
+//							}
+//							
+//						}
+//					}
+//					
+//				}else if(endMonthInt ==4) {
+//					while( startDayInt <= 31 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==5) {
+//					while( startDayInt <= 30 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==6) {
+//					while( startDayInt <= 31 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==7) {
+//					while( startDayInt <= 30 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==8) {
+//					
+//					while( startDayInt <= 31 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//							
+//							case 0 :
+//								for(int i=length-1; i>-1; i--) {
+//									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//									roomMovieTimeVO.setMovieNum(movieNums[i]);
+//									adminService.setTheaterRoom(roomMovieTimeVO);
+//								}
+//								startDayInt += 1;
+//								continue;
+//							
+//							case 1 :
+//								startDayInt += 1;
+//								continue;
+//							}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//							
+//							case 0 :
+//								for(int i=length-1; i>-1; i--) {
+//									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//									roomMovieTimeVO.setMovieNum(movieNums[i]);
+//									adminService.setTheaterRoom(roomMovieTimeVO);
+//								}
+//								firstDay += 1;
+//								continue;
+//							
+//							case 1 :
+//								firstDay += 1;
+//								continue;
+//							}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==9) {
+//					while( startDayInt <= 31 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==10) {
+//					while( startDayInt <= 30 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==11) {
+//					while( startDayInt <= 31 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				}else if(endMonthInt ==12) {
+//					while( startDayInt <= 30 ) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+//								roomMovieTimeVO.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							startDayInt += 1;
+//							continue;
+//							
+//						case 1 :
+//							startDayInt += 1;
+//							continue;
+//						}
+//						
+//					}
+//					while(firstDay <= endDayInt) {
+//						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+//						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+//						
+//						case 0 :
+//							for(int i=length-1; i>-1; i--) {
+//								
+//								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
+//								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
+//								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
+//								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+//								roomMovieTimeVO2.setMovieNum(movieNums[i]);
+//								adminService.setTheaterRoom(roomMovieTimeVO);
+//							}
+//							firstDay += 1;
+//							continue;
+//							
+//						case 1 :
+//							firstDay += 1;
+//							continue;
+//						}
+//						
+//					}
+//					
+//				
+//					
+//				}
+//				
+//				// startMonth랑 endMonth가 같을때
+//			}else if(endMonthInt == startMonthInt) {
+				List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
 					while(startDayInt <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
 						
 						case 0 :
 							for(int i=length-1; i>-1; i--) {
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO.setMovieNum(movieNums[i]);
-								adminService.setTheaterRoom(roomMovieTimeVO);
+								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
+								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
+								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
+								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setMovieNum(movieNums[i]);
+								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
 							startDayInt += 1;
 							continue;
@@ -722,8 +731,9 @@ public class AdminController {
 						}
 						
 					}
-				}
-		}
+					adminService.setTheaterRoom(roomMovieTimeVOss);
+//				}
+//		}
 			
 		mv.setViewName("admin/adminSetTheaterRoom");
 		return mv;
