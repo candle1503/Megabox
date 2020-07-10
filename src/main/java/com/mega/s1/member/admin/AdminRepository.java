@@ -48,13 +48,13 @@ public interface AdminRepository {
 	public int getTheaterNum(TheaterVO theaterVO) throws Exception;
 	
 	//setTheaterRoom
-	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	public void setTheaterRoom(List<RoomMovieTimeVO> roomMovieTimeVOss) throws Exception;
 	
 	//getTheaterRoom
 	public RoomMovieTimeVO getTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 	 
 	//setSeat
-	public void setSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
+	public void setSeat(List<RoomMovieTimeVO> movieTimeVOs) throws Exception;
 	
 	//getTimeCode
 	public int getTimeCode(RoomMovieTimeVO roomMovieTimeVO) throws Exception;

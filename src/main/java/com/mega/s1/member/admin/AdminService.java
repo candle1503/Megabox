@@ -1,5 +1,6 @@
 package com.mega.s1.member.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,52 +80,76 @@ public class AdminService {
 	
 	
 	
-	public void setTheaterRoom(RoomMovieTimeVO roomMovieTimeVO) throws Exception{
-		adminRepository.setTheaterRoom(roomMovieTimeVO);
-		int timeCode = adminRepository.getTimeCode(roomMovieTimeVO);
+	public void setTheaterRoom(List<RoomMovieTimeVO> roomMovieTimeVOss) throws Exception{
+		adminRepository.setTheaterRoom(roomMovieTimeVOss);
+
+		// 좌석 추가하려고 넣는 list
+		List<RoomMovieTimeVO> movieTimeVOs = new ArrayList<RoomMovieTimeVO>(); 
+		
+		int start = 0;
+		
+		String seatNum;
 		
 		char seatCount = (char)65;
-		String seatNum;
-		roomMovieTimeVO.setTimeCode(timeCode);
 		
-		while(seatCount<73) {
+		
+		while(start<roomMovieTimeVOss.size()) {
 			
-			if(seatCount ==70) {
-				for(int i=1; i<13; i++) {
-					seatNum = Character.toString(seatCount)+i;
-					roomMovieTimeVO.setSeatNum(seatNum);
-					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
-					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
-					adminRepository.setSeat(roomMovieTimeVO);
-				}seatCount+=1;
-			}else if(seatCount ==71){
-				for(int i=1; i<12; i++) {
-					seatNum = Character.toString(seatCount)+i;
-					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
-					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
-					roomMovieTimeVO.setSeatNum(seatNum);
-					adminRepository.setSeat(roomMovieTimeVO);
-				}seatCount+=1;
-			}else if(seatCount ==72){
-				for(int i=3; i<11; i++) {
-					seatNum = Character.toString(seatCount)+i;
-					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
-					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
-					roomMovieTimeVO.setSeatNum(seatNum);
-					adminRepository.setSeat(roomMovieTimeVO);
-				}seatCount+=1;
-			}else {
-				for(int i=1; i<14; i++) {
-					seatNum = Character.toString(seatCount)+i;
-					roomMovieTimeVO.setSeatnm(seatNum.substring(1));
-					roomMovieTimeVO.setRownm(seatNum.substring(0,1));
-					roomMovieTimeVO.setSeatNum(seatNum);
-					adminRepository.setSeat(roomMovieTimeVO);
+			int timeCode = adminRepository.getTimeCode(roomMovieTimeVOss.get(start));
+			seatCount = (char)65;
+			
+			while(seatCount<73) {
+				
+				if(seatCount ==70) {
+					for(int i=1; i<13; i++) {
+						RoomMovieTimeVO vo = new RoomMovieTimeVO();
+						seatNum = Character.toString(seatCount)+i;
+						vo.setTimeCode(timeCode);
+						vo.setSeatNum(seatNum);
+						vo.setSeatnm(seatNum.substring(1));
+						vo.setRownm(seatNum.substring(0,1));
+						movieTimeVOs.add(vo);
+					}seatCount+=1;
+					
+				}else if(seatCount ==71){
+					for(int i=1; i<12; i++) {
+						RoomMovieTimeVO vo = new RoomMovieTimeVO();
+						seatNum = Character.toString(seatCount)+i;
+						vo.setTimeCode(timeCode);
+						vo.setSeatnm(seatNum.substring(1));
+						vo.setRownm(seatNum.substring(0,1));
+						vo.setSeatNum(seatNum);
+						movieTimeVOs.add(vo);
+					}seatCount+=1;
+					
+				}else if(seatCount ==72){
+					for(int i=3; i<11; i++) {
+						RoomMovieTimeVO vo = new RoomMovieTimeVO();
+						seatNum = Character.toString(seatCount)+i;
+						vo.setTimeCode(timeCode);
+						vo.setSeatnm(seatNum.substring(1));
+						vo.setRownm(seatNum.substring(0,1));
+						vo.setSeatNum(seatNum);
+						movieTimeVOs.add(vo);
+					}seatCount+=1;
+					
+				}else if(seatCount < 70){
+					for(int i=1; i<14; i++) {
+						RoomMovieTimeVO vo = new RoomMovieTimeVO();
+						seatNum = Character.toString(seatCount)+i;
+						vo.setTimeCode(timeCode);
+						vo.setSeatnm(seatNum.substring(1));
+						vo.setRownm(seatNum.substring(0,1));
+						vo.setSeatNum(seatNum);
+						movieTimeVOs.add(vo);
+					}
+					seatCount+=1;
 				}
-				seatCount+=1;
+				
 			}
-			
+			start +=1;
 		}
+		adminRepository.setSeat(movieTimeVOs);
 	}
 
 	

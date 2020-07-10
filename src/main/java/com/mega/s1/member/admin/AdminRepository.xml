@@ -44,7 +44,7 @@
 	</update>
 	
 	<insert id="theaterRoomSet" parameterType="TheaterRoomVO" keyProperty="theaterRoomCode" useGeneratedKeys="true">
-		insert into theaterRoom values (#{name},#{roomName},0,100)
+		insert into theaterRoom values (#{name},#{roomName},0,96)
 	</insert>
 	
 	<select id="getRoomList" parameterType="TheaterVO" resultType="TheaterRoomVO">
@@ -61,16 +61,22 @@
 		select theaterNum from theater where name=#{name}
 	</select>
 	
-	<insert id="setTheaterRoom" parameterType="RoomMovieTimeVO" keyProperty="timeCode" useGeneratedKeys="true">
-		insert into roomMovieTime values (0,#{startTime},#{roomName},#{movieNum},#{theaterRoomCode},#{theaterNum})
+	<insert id="setTheaterRoom" parameterType="List" keyProperty="timeCode" useGeneratedKeys="true">
+		insert into roomMovieTime values 
+		<foreach collection="list" item="item" separator=",">
+		(0,#{item.startTime},#{item.roomName},#{item.movieNum},#{item.theaterRoomCode},#{item.theaterNum})
+		</foreach>
 	</insert>
 	
 	<select id="getTheaterRoom" parameterType="RoomMovieTimeVO" resultType="RoomMovieTimeVO">
 		select * from roomMovieTime where roomName= #{roomName} and date_format(startTime, '%Y-%c-%e')= #{startDay} limit 1
 	</select>
 	
-	<insert id="setSeat" parameterType="RoomMovieTimeVO" keyProperty="seatCode" useGeneratedKeys="true">
-		insert into seat values (0,#{timeCode},#{seatNum},0,#{seatnm},#{rownm})
+	<insert id="setSeat" parameterType="List" keyProperty="seatCode" useGeneratedKeys="true">
+		insert into seat values 
+		<foreach collection="list" item="item" separator=",">
+		(0,#{item.timeCode},#{item.seatNum},0,#{item.seatnm},#{item.rownm})
+		</foreach>
 	</insert>
 	
 	<select id="getTimeCode" parameterType="RoomMovieTimeVO" resultType="Integer">
