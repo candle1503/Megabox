@@ -53,6 +53,9 @@
 </head>
 
 <body>
+
+
+	
 		<c:import url="../template/header.jsp"></c:import>
 	
 
@@ -397,5 +400,6 @@
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
+
 </body>
 </html>

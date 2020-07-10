@@ -238,6 +238,7 @@ function fn_stopVideo(){
 		<!-- slide-title -->
 		
 			<!-- stillcut-slide -->
+		<c:if test="${videoCount ne 0 }">
 			<div class="stillcut-slide" id="tab1">
 				<div class="slide-title">
 					<!-- 하단 thumb-list 에있는 img 에alt 값이 span속의 글귀가 자동으로 들어가고 desc 속의 내용은 제목부분으로 자동으로 작성이됨 -->
@@ -265,7 +266,7 @@ function fn_stopVideo(){
 							<c:forEach items="${video }" var="video" varStatus="va">
 								
 								<div class="swiper-slide swiper-slide-active" style="width: 800px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
-									<video class="videoTag" controls="" poster="${pageContext.request.contextPath}/upload/movie/${file[va.index].fileName}">
+									<video class="videoTag" controls="" poster="${pageContext.request.contextPath}/upload/movie/${file[va.count].fileName}">
 										<source src="${pageContext.request.contextPath}/upload/movie/${video.fileName}" type="video/mp4">
 									</video>
 								</div>
@@ -282,7 +283,7 @@ function fn_stopVideo(){
 							<div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 								<c:forEach var="video" items="${video }" varStatus="va">
 									<div class="thumbsBtn swiper-slide swiper-slide-thumb-active swiper-slide-active" style="width: 240px; margin-right: 20px;">
-										<img class="thumbs-img-button" src="${pageContext.request.contextPath}/upload/movie/${file[va.index].fileName}" data-url="${pageContext.request.contextPath}/upload/movie/${video.fileName}" data-title="${video.detail }" data-cn="${video.detail }" alt="${video.detail }" onerror="this.src='${pageContext.request.contextPath}/upload/movie/${file[0].fileName}'">
+										<img class="thumbs-img-button" src="${pageContext.request.contextPath}/upload/movie/${file[va.count].fileName}" data-url="${pageContext.request.contextPath}/upload/movie/${video.fileName}" data-title="${video.detail }" data-cn="${video.detail }" alt="${video.detail }" onerror="this.src='${pageContext.request.contextPath}/upload/movie/${file[0].fileName}'">
 										<div class="movie-detail">
 											${video.detail }	<!-- 예고편 제목 -->
 										</div>
@@ -304,7 +305,9 @@ function fn_stopVideo(){
 					</div>
 				</div><!--// slide-title -->
 
-			</div><!--// stillcut-slide -->
+			</div>
+			</c:if>
+			<!--// stillcut-slide -->
 		
 
 		<!-- stair-slide -->
