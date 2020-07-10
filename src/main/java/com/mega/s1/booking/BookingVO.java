@@ -34,4 +34,6 @@ public class BookingVO {
 	private String yoil;
 	
 	private String movieTime;
+	
+	private String movieNumber;
 }

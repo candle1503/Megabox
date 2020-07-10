@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.ls.LSInput;
 
+import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
@@ -21,6 +24,8 @@ import com.mega.s1.theater.TheaterService;
 import com.mega.s1.theater.TheaterVO;
 import com.mega.s1.seat.SeatVO;
 import com.mega.s1.theater.theaterRoom.RoomMovieTimeVO;
+import com.mega.s1.ticket.TicketService;
+import com.mega.s1.ticket.TicketVO;
 
 @Controller
 @RequestMapping("booking/**")
@@ -32,6 +37,8 @@ public class BookingController {
 	private MovieService movieService;
 	@Autowired
 	private TheaterService theaterService;
+	@Autowired
+	private TicketService ticketService;
 	
 	@GetMapping("bookingTimeZone")
 	public void bookingTimeList(long startDay, Model model) throws Exception{
@@ -58,27 +65,6 @@ public class BookingController {
 	public void bookingTest() throws Exception {
 	}
 	
-	@PostMapping("bookingSeatNext")
-	public ModelAndView bookingSeatNext(SeatVO seatVO,BookingVO bookingVO,MovieVO movieVO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		int size = seatVO.getSeatList().size();
-		mv.addObject("sizeCount", size);
-		System.out.println("dsjhfdjsf:"+size);
-		
-		size = size*8000;
-		
-		
-		mv.addObject("seatList", seatVO.getSeatList());
-		mv.addObject("movieVO", movieVO);
-		mv.addObject("bookingVO", bookingVO);
-		mv.addObject("size", size);
-		
-		return mv;
-		
-	}
-
-	
-	
 	
 	@GetMapping("bookingMovieList")
 	public ModelAndView bookingMovieList(String startTime) throws Exception{
@@ -98,8 +84,17 @@ public class BookingController {
 	@GetMapping("bookingRoomList")
 	public ModelAndView bookingRoomList(BookingVO bookingVO, MovieVO movieVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println("!!!!!!!!!!!!!!!!!"+bookingVO.getMovieNumber());
+		List<BookingVO> bookingRoomAr = new ArrayList<BookingVO>();
 		
-		List<BookingVO> bookingRoomAr = bookingService.bookingRoomList(bookingVO);
+		if(bookingVO.getMovieNumber() != null) {
+			int movieNumber1 = Integer.parseInt(bookingVO.getMovieNumber()); 
+			bookingVO.setMovieNum(movieNumber1);
+			bookingRoomAr = bookingService.bookingFinalResult(bookingVO);
+		}else {
+			bookingRoomAr = bookingService.bookingRoomList(bookingVO);
+		}
+		
 		
 		int bookingRoomArSize = bookingRoomAr.size();
 		
@@ -205,7 +200,7 @@ public class BookingController {
 	}
 	
 	@PostMapping("bookingSeatView")
-	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO) throws Exception{
+	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		roomMovieTimeVO.setTimeCode(bookingVO.getTimeCode());
@@ -283,6 +278,8 @@ public class BookingController {
 		MovieFileVO movieFileVO = new MovieFileVO();
 		movieFileVO.setFileName(mvf.get(0).getFileName());
 		
+		
+		
 		mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("yoil", yoil);
 		mv.addObject("movieTime", movieTime);
@@ -294,8 +291,72 @@ public class BookingController {
 		return mv;
 	}
 	
-	@GetMapping("bookingComplete")
-	public void bookingComplete() throws Exception {
+	@PostMapping("bookingSeatNext")
+	public ModelAndView bookingSeatNext(SeatVO seatVO, BookingVO bookingVO, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, MovieFileVO movieFileVO, TicketVO ticketVO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int size = seatVO.getSeatList().size();
+		mv.addObject("sizeCount", size);
+		
+		size = size*8000;
+		
+		movieVO.setAge(movieAge);
+		movieVO.setName(movieName);
+		
+		System.out.println("a1a1a1a1a1a1a:"+movieVO.getAge()); 
+		
+		mv.addObject("movieFileVO", movieFileVO);
+		mv.addObject("seatList", seatVO.getSeatList());
+		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("movieVO", movieVO);
+		mv.addObject("bookingVO", bookingVO);
+		mv.addObject("size", size);
+		
+		return mv;
+		
 	}
+	
+	@PostMapping("bookingComplete")
+	public ModelAndView bookingComplete(String[] seatList, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, BookingVO bookingVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+//		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+//		System.out.println(memberVO.getId());
+		
+//		ticketVO = ticketService.ticketInfo(ticketVO);
+//		
+//		ticketService.ticketInsert(ticketVO);
+//		
+//		System.out.println("titiititi:"+ticketVO.getTicketCode());
+//		System.out.println("aaaaaaaaaaa:"+movieAge);
+		
+		
+		int size = seatList.length;
+		mv.addObject("sizeCount", size);
+		
+		movieVO.setAge(movieAge);
+		movieVO.setName(movieName);
+		
+		
+		
+		mv.addObject("movieVO", movieVO);
+		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("bookingVO", bookingVO);
+		
+//		System.out.println(seatList[0]);
+//		System.out.println(seatList[1]);
+//		System.out.println(seatList[2]);
+		String seat = "";
+		for(int i =0; i<size; i++) {
+			seat = seat+seatList[i]+"/";
+		}
+		System.out.println("sssssss:"+seat);
+		
+		
+		
+		
+		
+		return mv;
+	}
+	
 
 }

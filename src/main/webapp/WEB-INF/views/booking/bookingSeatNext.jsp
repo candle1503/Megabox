@@ -92,6 +92,23 @@
 			</div>
 
 			<!-- seat-select-section -->
+			<form action="./bookingComplete" method="post"> <!-- ---------------------------form----------------------------------------------- -->
+			
+			<input type="text" value="${movieVO.age}" name="movieAge">
+			<input type="text" value="${movieVO.name}" name="movieName">
+			<input type="text" value="${theaterVO.name}" name="name">
+			<input type="text" value="${bookingVO.roomName}" name="roomName">
+			<input type="text" value="${bookingVO.startTime}" name="startTime">
+			<input type="text" value="${bookingVO.yoil}" name="yoil">
+			<input type="text" value="${bookingVO.movieTime}" name="movieTime">
+			<input type="text" value="${sizeCount}" name="sizeCount">
+			<input type="text" value="${movieFileVO.fileName}" name="fileName">
+			
+			<c:forEach items="${seatList}" var="list">
+			<input type="text" value="${list}" name="seatList">
+			</c:forEach>
+			
+			
 			<div class="seat-select-section">
 				<!-- seat-section -->
 				<div class="seat-section h-auto">
@@ -421,7 +438,18 @@
 							<span class="movie-grade small age-19">청소년 관람 불가</span>
 							<span class="movie-grade small age-no">미정</span>
 						-->
-							<span class="movie-grade small age-12" id="admisClassNm">${movieVO.age}</span>
+							<c:if test="${movieVO.age eq '전체관람가'}">		
+								<span class="movie-grade small age-all">${movieVO.age}</span>
+							</c:if>
+							<c:if test="${movieVO.age eq '12세이상관람가'}">		
+								<span class="movie-grade small age-12">${movieVO.age}</span>
+							</c:if>
+							<c:if test="${movieVO.age eq '15세이상관람가'}">		
+								<span class="movie-grade small age-15">${movieVO.age}</span>
+							</c:if>
+							<c:if test="${movieVO.age eq '청소년관람불가'}">		
+								<span class="movie-grade small age-19">${movieVO.age}</span>
+							</c:if>
 
 							<p class="tit" id="movieNm">${movieVO.name}</p>
 							<p class="cate" id="playKindNm"></p>
@@ -491,9 +519,9 @@
 						<div class="btn-group"> <!-- ${pageContext.request.contextPath} -->
 							<a href="javascript:history.back()"
 								class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 -->
-							</a> <a href="#" w-data="600" h-data="400"
+							</a> <button type="submit" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"
-								title="결제">결제</a>
+								title="결제">결제</button>
 
 
 
@@ -505,6 +533,8 @@
 
 			</div>
 			<!--// seat-select-section -->
+			
+			</form> <!-- ---------------------------form----------------------------------------------- -->
 
 		</div>
 		<!--// quick-reserve -->

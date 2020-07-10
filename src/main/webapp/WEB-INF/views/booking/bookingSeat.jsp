@@ -22,21 +22,24 @@
 			<h2 class="tit"></h2>
 
 			<form method="post" action="./bookingSeatNext">
-			<input type="text" value="${movieVO.age}" name="age">
-			<input type="text" value="${movieVO.name}" name="name">
-			<input type="text" value="${bookingSeatView.roomName}" name="roomName">
-			<input type="text" value="${bookingSeatView.startTime}" name="startTime">
-			<input type="text" value="${yoil}" name="yoil">
-			<input type="text" value="${movieTime}" name="movieTime">
+			<input type="hidden" value="${movieVO.age}" name="movieAge">
+			<input type="hidden" value="${movieVO.name}" name="movieName">
+			<input type="hidden" value="${theaterVO.name}" name="name">
+			<input type="hidden" value="${bookingSeatView.roomName}" name="roomName">
+			<input type="hidden" value="${bookingSeatView.startTime}" name="startTime">
+			<input type="hidden" value="${yoil}" name="yoil">
+			<input type="hidden" value="${movieTime}" name="movieTime">
+			<input type="hidden" value="${movieFileVO.fileName}" name="fileName">
 			
-			<input class="input0"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input1"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input2"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input3"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input4"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input5"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input6"type="text" value="" name="seatList" disabled="disabled">
-			<input class="input7"type="text" value="" name="seatList" disabled="disabled">
+			
+			<input class="input0"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input1"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input2"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input3"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input4"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input5"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input6"type="hidden" value="" name="seatList" disabled="disabled">
+			<input class="input7"type="hidden" value="" name="seatList" disabled="disabled">
 			
 			
 			

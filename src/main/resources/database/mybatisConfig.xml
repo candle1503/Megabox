@@ -15,6 +15,7 @@
 		<typeAlias type="com.mega.s1.movie.movieFile.MovieFileVO" alias="MovieFileVO"/>
 		<typeAlias type="com.mega.s1.review.ReviewVO" alias="ReviewVO"/>
 		<typeAlias type="com.mega.s1.booking.BookingVO" alias="BookingVO"/>
+		<typeAlias type="com.mega.s1.ticket.TicketVO" alias="TicketVO"/>
 		
 		<typeAlias type="com.mega.s1.util.Pager" alias="Pager"/>
 	

@@ -55,11 +55,23 @@
 
 							<div class="movie-info-middle">
 								<ul class="dot-list gray">
-									<li><span>예매영화 <!-- 예매영화 --></span> 영화제목 JSTL</li>
-									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span> 영화관 이름 JSTL /
-										상영관 이름 JSTL</li>
-									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;상영날짜 및 시간 JSTL</li>
-									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;일반 1명</li>
+									<li><span>예매영화 <!-- 예매영화 --></span>
+									<c:if test="${movieVO.age eq '전체관람가'}">
+										<span class="movie-grade small age-all" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+									</c:if>
+									<c:if test="${movieVO.age eq '12세이상관람가'}">
+										<span class="movie-grade small age-12" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+									</c:if>
+									<c:if test="${movieVO.age eq '15세이상관람가'}">
+										<span class="movie-grade small age-15" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+									</c:if>
+									<c:if test="${movieVO.age eq '청소년관람불가'}">
+										<span class="movie-grade small age-19" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+									</c:if>${movieVO.name}</li>
+									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span> ${theaterVO.name} /
+										${bookingVO.roomName}</li>
+									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${bookingVO.startTime}(${bookingVO.yoil}) / ${bookingVO.movieTime}</li>
+									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;일반 ${sizeCount}명</li>
 									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;E열 6</li>
 									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;010-0000-0000</li>
 									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto">12,000</strong>

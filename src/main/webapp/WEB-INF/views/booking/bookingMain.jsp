@@ -441,13 +441,13 @@ function fn_validateDateYn(param) {
 																style="position: relative; top: 0; left: 0; overflow: auto; height: 300px;" dir="ltr">
 																<ul>
 																	<li class="localList"><button id="localBtnS1" type="button" 
-																			value="목동" >목동</button></li>
+																			value="강남">강남</button></li>
 																	<li class="localList"><button id="localBtnS2" type="button" 
-																			value="쌍용">쌍용</button></li>
+																			value="강동">강동</button></li>
 																	<li class="localList"><button id="localBtnS3" type="button"
+																			value="목동">목동</button></li>
+																	<li class="localList"><button id="localBtnS4" type="button"
 																			value="홍대">홍대</button></li>
-																	<li class="localList"><button id="localBtnS29" type="button"
-																			value="영화관">영화관</button></li>
 																</ul>
 															</div>
 															<!-- <div id="mCSB_4_scrollbar_vertical"
@@ -478,14 +478,17 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS4" type="button"
-																			value="고양스타필드">고양스타필드</button></li>
 																	<li class="localList"><button id="localBtnS5" type="button"
-																			value="분당">분당</button></li>
+																			value="고양스타필드">고양스타필드</button></li>
 																	<li class="localList"><button id="localBtnS6" type="button"
-																			value="수원">수원</button></li>
+																			value="분당">분당</button></li>
 																	<li class="localList"><button id="localBtnS7" type="button"
+																			value="수원">수원</button></li>
+																	<li class="localList"><button id="localBtnS8" type="button"
 																			value="하남스타필드">하남스타필드</button></li>
+																	<li class="localList"><button id="localBtnS9" type="button"
+																			value="동탄">동탄</button></li>	
+																			
 																</ul> 
 															</div>
 														</div>
@@ -505,13 +508,13 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS8" type="button"
-																			value="검단">검단</button></li>
-																	<li class="localList"><button id="localBtnS9" type="button"
-																			value="영종">영종</button></li>
 																	<li class="localList"><button id="localBtnS10" type="button"
-																			value="청라">청라</button></li>
+																			value="검단">검단</button></li>
 																	<li class="localList"><button id="localBtnS11" type="button"
+																			value="영종">영종</button></li>
+																	<li class="localList"><button id="localBtnS12" type="button"
+																			value="청라">청라</button></li>
+																	<li class="localList"><button id="localBtnS13" type="button"
 																			value="송도">송도</button></li>	
 																</ul>
 															</div>
@@ -532,13 +535,13 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS12" type="button"
-																			value="대전">대전</button></li>
-																	<li class="localList"><button id="localBtnS13" type="button"
-																			value="세종청사">세종청사</button></li>
 																	<li class="localList"><button id="localBtnS14" type="button"
-																			value="천안">천안</button></li>
+																			value="대전">대전</button></li>
 																	<li class="localList"><button id="localBtnS15" type="button"
+																			value="세종청사">세종청사</button></li>
+																	<li class="localList"><button id="localBtnS16" type="button"
+																			value="천안">천안</button></li>
+																	<li class="localList"><button id="localBtnS17" type="button"
 																			value="충주">충주</button></li>			
 																</ul>
 															</div>
@@ -560,13 +563,13 @@ function fn_validateDateYn(param) {
 																style="position: relative; top: 0px; left: 0px;"
 																dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS16" type="button"
-																			value="경주">경주</button></li>
-																	<li class="localList"><button id="localBtnS17" type="button"
-																			value="대구">대구</button></li>
 																	<li class="localList"><button id="localBtnS18" type="button"
-																			value="부산극장">부산극장</button></li>
+																			value="경주">경주</button></li>
 																	<li class="localList"><button id="localBtnS19" type="button"
+																			value="대구">대구</button></li>
+																	<li class="localList"><button id="localBtnS20" type="button"
+																			value="부산극장">부산극장</button></li>
+																	<li class="localList"><button id="localBtnS21" type="button"
 																			value="울산">울산</button></li>
 																</ul>
 															</div>
@@ -587,13 +590,13 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS20" type="button"
-																			value="남원">남원</button></li>
-																	<li class="localList"><button id="localBtnS21" type="button"
-																			value="순천">순천</button></li>
 																	<li class="localList"><button id="localBtnS22" type="button"
-																			value="여수">여수</button></li>
+																			value="남원">남원</button></li>
 																	<li class="localList"><button id="localBtnS23" type="button"
+																			value="순천">순천</button></li>
+																	<li class="localList"><button id="localBtnS24" type="button"
+																			value="여수">여수</button></li>
+																	<li class="localList"><button id="localBtnS25" type="button"
 																			value="목포">목포</button></li>
 																</ul>
 															</div>
@@ -614,13 +617,13 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS24" type="button"
-																			value="춘천">춘천</button></li>
-																	<li class="localList"><button id="localBtnS25" type="button"
-																			value="속초">속초</button></li>
 																	<li class="localList"><button id="localBtnS26" type="button"
-																			value="원주">원주</button></li>
+																			value="춘천">춘천</button></li>
 																	<li class="localList"><button id="localBtnS27" type="button"
+																			value="속초">속초</button></li>
+																	<li class="localList"><button id="localBtnS28" type="button"
+																			value="원주">원주</button></li>
+																	<li class="localList"><button id="localBtnS29" type="button"
 																			value="원주센트럴">원주센트럴</button></li>
 																</ul>
 															</div>
@@ -641,13 +644,14 @@ function fn_validateDateYn(param) {
 																class="mCSB_container mCS_no_scrollbar_y"
 																style="position: relative; top: 0; left: 0;" dir="ltr">
 																<ul>
-																	<li class="localList"><button id="localBtnS28" type="button"
+																	<li class="localList"><button id="localBtnS30" type="button"
 																			value="제주">제주</button></li>
 																</ul>
 															</div>
 														</div>
 													</div>
 												</div></li>
+												<input type="text" value="null" class="localName">
 
 										</ul>
 										

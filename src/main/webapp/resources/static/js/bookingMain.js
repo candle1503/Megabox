@@ -159,6 +159,7 @@
 	
 
 	//예매 날짜별로 극장을 선택했을 때 리스트 부분 start//
+	
 	function bookingRoomList(startDate, name){
 		$.get("bookingRoomList?startTime="+startDate+"&name="+name, function(result){
 			$("#bookingRoom-List").append(result);
@@ -166,6 +167,11 @@
 	}
 
 
+	function bookingMovieRoomList(startDate, name, movieNumber){
+		$.get("bookingRoomList?startTime="+startDate+"&name="+name+"&movieNumber="+movieNumber, function(result){
+			$("#bookingRoom-List").append(result);
+		});
+	}
 	
 	//name 눌렀을 때
 	var name = "";
@@ -182,7 +188,16 @@
 			localBtnCss = $(this).attr('id').replace('localBtnS', '');
 			
 			name = encodeURIComponent($(this).val());
-			bookingRoomList(startDate, name);
+			
+			$(".localName").val(name);
+			
+			var movieNumber = $('.test').val();
+			
+			if(movieNumber=="null"){
+				bookingRoomList(startDate, name);
+			}else{
+				bookingMovieRoomList(startDate, name, movieNumber);
+			}
 		});
 		
 	}

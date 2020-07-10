@@ -34,10 +34,18 @@
 	</li>
 </c:forEach>
 
+				<input type="text" value="null" class="test"/>
 
 
 
 <script type="text/javascript">
+
+function bookingMovieRoomList(startDate, name, movieNumber){
+	$.get("bookingRoomList?startTime="+startDate+"&name="+name+"&movieNumber="+movieNumber, function(result){
+		$("#bookingRoom-List").append(result);
+	});
+}
+
 	var movieSize = "${bookingMovieArSize}";
 
 	for (var bml = 1; bml < movieSize+1; bml++) {
@@ -50,17 +58,30 @@
 			
 			var txt = $(this).text().split('/');
 			var movieNumber = parseInt(txt[1]);
-
+			alert(startDate);
+			alert(movieNumber);
+			
+			if($('.localName').val()=="null"){
+				alert("null임");
+			}else{
+				$("#bookingRoom-List").empty();
+				var name = $('.localName').val();
+				alert(name);
+				
+				bookingMovieRoomList(startDate, name, movieNumber);
+			}
+			
 			console.log(movieNumber);
-	
-			$.ajax({
-				url:"bookingRoomList",
-				type:"GET",
-				data:{movieNumber},
-				success:function(result){
+			
+			$('.test').val(movieNumber);
+// 			$.ajax({
+// 				url:"bookingRoomList",
+// 				type:"GET",
+// 				data:{movieNumber},
+// 				success:function(result){
 					
-				},
-			});
+// 				},
+// 			});
 
 		});
 	}
