@@ -170,7 +170,7 @@ $(function(){
 			<div class="reserve">
 				
 					
-						<a href="javascript:fn_bookingForm('20019200','basic');" class="btn reserve" title="영화 예매하기" style="margin-left: 55px">예매</a>
+						<a href="../booking/bookingMain" class="btn reserve" title="영화 예매하기" style="margin-left: 55px">예매</a>
 						
 	
 				

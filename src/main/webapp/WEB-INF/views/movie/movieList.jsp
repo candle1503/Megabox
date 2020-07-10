@@ -112,7 +112,7 @@
 			<div class="case col-2 movieStat3" style=""> 
 	<c:choose>
 		<c:when test="${member.id ne 'ADMIN' }">
-			<a href="#" class="button purple bokdBtn" data-no="20021300" title="영화 예매하기">예매</a> 
+			<a href="../booking/bookingMain" class="button purple bokdBtn" data-no="20021300" title="영화 예매하기">예매</a> 
 		</c:when>
 		<c:when test="${member.id eq'ADMIN' }">
 			<a href="./movieUpdate?movieNum=${movie.movieNum }" class="button purple bokdBtn" data-no="20021300" title="영화 예매하기">수정</a> 
