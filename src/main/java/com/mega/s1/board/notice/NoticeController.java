@@ -227,6 +227,7 @@ public class NoticeController {
 		mv.addObject("theaterArJeju", theaterArJeju);
 		
 		noticeVO = noticeService.boardSelect(noticeVO);
+		
 		mv.addObject("vo", noticeVO);
 		mv.addObject("path", "Update");
 		mv.setViewName("board/boardWrite");

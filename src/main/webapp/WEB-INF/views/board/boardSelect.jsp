@@ -98,7 +98,7 @@
 							</p>
 						</div>
 
-						<div class="cont">
+						<div class="cont" style="white-space:pre-line;">
 						<span style="font-size:10pt"><span style="font-family:">${vo.contents}</span></span><br />
 						<hr>
 

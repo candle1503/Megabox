@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쌍용 씨네시티 | 공지사항 편집</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -57,10 +57,19 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="contents">내용:</label>
 				<div class="col-sm-10"> 
-					<form:textarea path="contents" rows="10" cols="" class="form-control"
-						id="summernote" placeholder="내용을 입력해주세요." value="${vo.contents}"></form:textarea>
+				
+					<c:if test="${path eq 'Write'}">
+					<form:textarea path="contents" rows="10" cols="1" class="form-control"
+						id="summernote" placeholder="내용을 입력해주세요."></form:textarea>
 					<form:errors path="contents" cssClass="noticeError"></form:errors>
-					<textarea rows="" cols="" value="${vo.contents}"></textarea>
+					</c:if>
+					
+					<c:if test="${path eq 'Update'}">
+						<form:textarea path="contents" rows="10" cols="1" class="form-control contentsArea"
+							id="summernote" placeholder="마우스 커서를 올려주세요." onmouseover="textHere()"></form:textarea>
+						<form:errors path="contents" cssClass="noticeError"></form:errors>
+						<textarea rows="" cols="" id="inputContents" style="display: none;">${vo.contents}</textarea>
+					</c:if>
 				</div>
 			</div>
 
@@ -89,7 +98,7 @@
 				<label class="control-label col-sm-2" for="localCode">지역:</label>
 				<div class="col-sm-10">
 					<div class="dropdown">
-						<button class="btn btn-primary dropdown-toggle" type="button"
+						<button class="btn btn-success dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							지역을 선택해주세요 <span class="caret"></span>
 						</button>
@@ -116,7 +125,7 @@
 				<label class="control-label col-sm-2" for="name">극장:</label>
 				<div class="col-sm-10">
 					<div class="dropdown dd1">
-						<button class="btn btn-primary dropdown-toggle" type="button"
+						<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							서울 <span class="caret"></span>
 						</button>
@@ -129,7 +138,7 @@
 					</div>
 					
 					<div class="dropdown dd2">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							경기 <span class="caret"></span>
 						</button>
@@ -141,7 +150,7 @@
 					</div>
 					
 					<div class="dropdown dd3">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							인천 <span class="caret"></span>
 						</button>
@@ -153,7 +162,7 @@
 					</div>
 					
 					<div class="dropdown dd4">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							대전/충청/세종 <span class="caret"></span>
 						</button>
@@ -165,7 +174,7 @@
 					</div>
 					
 					<div class="dropdown dd5">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							부산/대구/경상 <span class="caret"></span>
 						</button>
@@ -177,7 +186,7 @@
 					</div>
 					
 					<div class="dropdown dd6">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							광주/전라 <span class="caret"></span>
 						</button>
@@ -189,7 +198,7 @@
 					</div>
 					
 					<div class="dropdown dd7">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							강원 <span class="caret"></span>
 						</button>
@@ -201,7 +210,7 @@
 					</div>
 					
 					<div class="dropdown dd8">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-info dropdown-toggle" type="button"
 							data-toggle="dropdown">
 							제주 <span class="caret"></span>
 						</button>
@@ -214,7 +223,7 @@
 
 					<form:input path="name" type="text"
 						class="form-control seoul gyeonggi incheon chungcheong gyeongsang jeolla gangwon jeju" id="name"
-						placeholder="극장을 선택해주세요." readonly="true" value="${vo.name}"/>
+						placeholder="반드시 지역에 맞는 극장을 선택해주세요." readonly="true" value="${vo.name}"/>
 					<form:errors path="name" cssClass="noticeError"></form:errors>
 				</div>
 			</div>
@@ -348,31 +357,41 @@
 			</div> --%>
 			
 			<div class="form-group"> 
+				<label class="control-label col-sm-2" for="file">첨부파일:</label>
 				<div class="col-sm-10">
-					<input type="button" class="btn btn-info" id="add" value="첨부파일 추가" style="margin-left: 80px;">
+					<input type="button" class="btn btn-warning" id="add" value="첨부파일 추가">
 				</div> 
 			</div>
-			<div class="form-group" id="file" style="margin-left: 95px;"></div>
-
-				<div class="fileDown" style="margin-left: 80px; margin-bottom: 50px;">
-					<c:forEach items="${vo.noticeFileVOs}" var="fileVO">
-						<div class="fileSub">
-							<span style="font-weight: bolder;">* 첨부 파일 다운로드 *</span><br>
-							<a href=""> -
-								${fileVO.oriName}</a><a href="./fileDelete?num=${vo.num}" class="btn btn-danger" id="fdc">첨부파일 삭제</a>
-						</div>
-					</c:forEach>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2"></label>
+				<div class="col-sm-10">
+					<div id="file" ></div>
 				</div>
+			</div>
 
+			<div class="form-group">
+				<div class="col-sm-10">
+					<div class="fileDown" style="margin-left: 80px; margin-bottom: 50px;">
+						<c:forEach items="${vo.noticeFileVOs}" var="fileVO">
+							<div class="fileSub" style="margin-left: 70px;">
+								<span style="font-weight: bolder;">* 첨부 파일  *</span><br>
+								<a href=""> -
+									${fileVO.oriName}</a><a href="./fileDelete?num=${vo.num}" class="btn btn-danger" id="fdc" style="color:white;">첨부파일 삭제</a>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">작성</button>
+					<button type="submit" class="btn btn-primary">작성</button>
 					<c:if test="${path eq 'Write'}">
-						<a href="./${board}List" class="btn btn-primary" style="color:white;">뒤로가기</a>
+						<a href="./${board}List" class="btn btn-default">뒤로가기</a>
 					</c:if>
 					<c:if test="${path eq 'Update'}">
-						<a href="./${board}Select?num=${vo.num}" class="btn btn-primary" style="color:white;">뒤로가기</a>
+						<a href="./${board}Select?num=${vo.num}" class="btn btn-default">뒤로가기</a>
 					</c:if>
 				</div>
 			</div>
@@ -435,9 +454,6 @@
 		}
 
 		var fileCount = 1;
-
-			
-
 		
 		$("#file").on("click", ".remove", function(){
 			$(this).parent().remove();
@@ -447,7 +463,7 @@
 		$("#add").click(function() {
 
 			if(fileCount < 6){
-				$("#file").append('<div class="form-group"><div><input type="file" name="files"></div><i class="glyphicon glyphicon-remove remove"></i></div>');
+				$("#file").append('<div><input type="file" name="files"><i class="glyphicon glyphicon-remove remove" style="cursor:pointer;"></i></div>');
 				fileCount++;
 			}else{
 				alert("최대 파일 등록 수는 5개까지만 가능합니다.");
@@ -462,7 +478,13 @@
 			$(".fileSub > a").remove();
 		});
 
+		var contentsTxt = $("#inputContents").val();
 
+		//form:textarea value값이 jsp에서 표시가 안나와서 input값 재사용
+		function textHere(){
+			contentsTxt = $("#inputContents").val();
+			$(".contentsArea").val(contentsTxt);
+		}
 		
 	</script>
 
