@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import com.mega.s1.board.BoardVO;
-import com.mega.s1.member.memberFile.MemberFileRepository;
+
 import com.mega.s1.movie.movieFile.MovieFileRepository;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
