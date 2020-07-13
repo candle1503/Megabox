@@ -9,120 +9,12 @@
 <c:import url="../template/mobileHeader_css.jsp"></c:import>
 
 </head>
-<body class="body">
-	<header class="header header-horizontal header-view-pannel">
-		<div class="container">
-			<nav class="navbar">
-				<a class="navbar-brand" href="./"> <span class="logo-element">
-						<span class="logo-tape"> <span
-							class="svg-content svg-fill-theme"
-							data-svg="${pageContext.request.contextPath}/resources/static/mobile/images/svg/logo-part.svg"></span>
-					</span> <span class="logo-text text-uppercase"> <span>쌍</span>용시네마
-					</span>
-				</span>
-				</a>
-				<button class="navbar-toggler" type="button">
-					<span class="th-dots-active-close th-dots th-bars"> <span></span>
-						<span></span> <span></span>
-					</span>
-				</button>
-				<div class="navbar-collapse">
-					<ul class="navbar-nav">
-						<li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-							<a class="nav-link" href="#">Homepage</a>
-							<div class="nav-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-							<ul class="collapse nav">
-								<li class="nav-item"><a class="nav-link"
-									href="homepage-1.html">Homepage 1</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="homepage-2.html">Homepage 2</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="homepage-3.html">Homepage 3</a></li>
-							</ul>
-						</li>
-						<li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-							<a class="nav-link" href="#" data-role="nav-toggler">Pages</a>
-							<div class="nav-arrow">
-								<i class="fas fa-chevron-down"></i>
-							</div>
-							<ul class="collapse nav">
-								<li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-									<a class="nav-link" href="#" data-role="nav-toggler">Movies</a>
-									<div class="nav-arrow">
-										<i class="fas fa-chevron-down"></i>
-									</div>
-									<ul class="collapse nav">
-										<li class="nav-item"><a class="nav-link"
-											href="movies-blocks.html">Blocks - No Sidebar</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="movies-blocks-sidebar-right.html">Blocks - Sidebar
-												right</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="movies-posters.html">Posters - No Sidebar</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="movies-posters-sidebar-right.html">Posters -
-												Sidebar right</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="movies-list.html">List - No Sidebar</a></li>
-									</ul>
-								</li>
-								<li class="nav-item"><a class="nav-link"
-									href="movie-info-sidebar-right.html">Movie info</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="gallery.html">Gallery</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="news-blocks-sidebar-right.html">News</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="article-sidebar-right.html">Article</a></li>
-								<li class="nav-item"><a class="nav-link"
-									href="about-us.html">About us</a></li>
-								<li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-									<a class="nav-link" href="#" data-role="nav-toggler">User
-										pages</a>
-									<div class="nav-arrow">
-										<i class="fas fa-chevron-down"></i>
-									</div>
-									<ul class="collapse nav">
-										<li class="nav-item"><a class="nav-link"
-											href="sign-in.html">Sign in</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="sign-up.html">Sign up</a></li>
-									</ul>
-								</li>
-								<li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-									<a class="nav-link" href="#" data-role="nav-toggler">Status
-										pages</a>
-									<div class="nav-arrow">
-										<i class="fas fa-chevron-down"></i>
-									</div>
-									<ul class="collapse nav">
-										<li class="nav-item"><a class="nav-link"
-											href="under-construction.html">Under construction</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="coming-soon.html">Coming soon</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="404-1.html">404 - 1</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="404-2.html">404 - 2</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item"><a class="nav-link"
-							href="movies-blocks.html">Movies</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="contact-us.html">Contact us</a></li>
-					</ul>
-					<div class="navbar-extra">
-						<a class="btn-theme btn" href="#"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;Buy
-							Ticket</a>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
+
+<body class="body" style="font-family: 'Do Hyeon', sans-serif;">
+
+<c:import url="../template/mobileHeader.jsp"></c:import>
+
+
 	<section class="section-text-white position-relative">
 		<div class="d-background"
 			data-image-src="http://via.placeholder.com/1920x1080"
@@ -131,7 +23,7 @@
 		<div class="mt-auto container position-relative">
 			<div class="top-block-head text-uppercase">
 				<h2 class="display-4">
-					#<span class="text-theme">상영중인 영화</span>
+					#<span class="text-theme" style="font-family: 'Do Hyeon', sans-serif;">상영중인 영화</span>
 				</h2>
 			</div>
 			<div class="top-block-footer">
@@ -315,8 +207,8 @@
 							</div>
 						</article>
 					</div>
-					
-					
+
+
 					<div class="slick-slide">
 						<article class="movie-line-entity">
 							<div class="entity-preview">
@@ -390,7 +282,7 @@
 	<section class="section-long">
 		<div class="container">
 			<div class="section-head">
-				<h2 class="section-title text-uppercase">공지사항</h2>
+				<h2 class="section-title text-uppercase" style="font-family: 'Do Hyeon', sans-serif;">공지사항</h2>
 			</div>
 			<div class="grid row">
 
@@ -427,7 +319,8 @@
 
 			</div>
 			<div class="section-bottom">
-				<a class="btn btn-theme" href="news-blocks-sidebar-right.html">공지사항 더보기</a>
+				<a class="btn btn-theme" href="${pageContext.request.contextPath}/notice/noticeList" style="font-family: 'Do Hyeon', sans-serif;">공지사항
+					더보기</a>
 			</div>
 		</div>
 	</section>

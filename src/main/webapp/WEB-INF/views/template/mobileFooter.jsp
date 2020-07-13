@@ -10,14 +10,14 @@
 						<span class="logo-tape"> <span
 							class="svg-content svg-fill-theme"
 							data-svg="${pageContext.request.contextPath}/resources/static/mobile/images/svg/logo-part.svg"></span>
-					</span> <span class="logo-text text-uppercase"> <span>쌍</span>용시네마
+					</span> <span class="logo-text text-uppercase"
+						style="font-family: 'Do Hyeon', sans-serif;"> <span
+							style="font-family: 'Do Hyeon', sans-serif;">쌍</span>용시네마
 					</span>
 				</span>
 				</a>
 				<div class="footer-content">
-					<p class="footer-text">
-						서울특별시 마포구 월드컵북로 21 풍성빌딩 2~4층 (우)04001
-					</p>
+					<p class="footer-text">서울특별시 마포구 월드컵북로 21 풍성빌딩 2~4층 (우)04001</p>
 					<p class="footer-text">02-336-8546</p>
 				</div>
 			</div>

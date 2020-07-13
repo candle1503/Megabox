@@ -1580,7 +1580,7 @@ textarea.form-control {
     top: 0;
   }
   .header-horizontal.active .navbar {
-    height: 100vh;
+    height: 39vh;
   }
   .header-horizontal.active .navbar-collapse {
     display: block;
