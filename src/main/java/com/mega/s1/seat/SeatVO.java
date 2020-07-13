@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class SeatVO {
 
+	private int seatCode;
 	private int booked;
 	private int timeCode;
 	private String seatNum;

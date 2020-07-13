@@ -23,9 +23,10 @@
 
 			<form method="post" action="./bookingSeatNext">
 			
-			<input type="text" value="${theaterVO.theaterNum}" name="theaterNum">
-			<input type="text" value="${bookingSeatView.theaterRoomCode}" name="theaterRoomCode">
-			<input type="text" value="${movieVO.movieNum}" name="movieNum">
+			<input type="hidden" value="${bookingSeatView.timeCode}" name="timeCode">
+			<input type="hidden" value="${theaterVO.theaterNum}" name="theaterNum">
+			<input type="hidden" value="${bookingSeatView.theaterRoomCode}" name="theaterRoomCode">
+			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${movieVO.age}" name="movieAge">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
 			<input type="hidden" value="${theaterVO.name}" name="name">
@@ -250,6 +251,7 @@
 
 							$('#pageNext').attr('href','#')
 							$('#pageNext').addClass('disabled')
+							$('#pageNext').removeAttr('disabled');
 
 						}
 						if(seatCheckCnt==cnt){
@@ -318,8 +320,8 @@
 										<em>예매완료</em></li>
 									<li><div class="seat-condition common" title="일반"></div> <em>
 											일반</em></li>
-									<li><div class="seat-condition disabled" title="장애인석"></div>
-										<em> 장애인석</em></li>
+									<!-- <li><div class="seat-condition disabled" title="장애인석"></div>
+										<em> 장애인석</em></li> -->
 								</ul>
 							</div>
 							<div class="seat-num">
@@ -352,7 +354,7 @@
 							<a href="./bookingMain" class="button" id="pagePrevious"
 								title="이전">이전</a> 
 								
-								<button type="submit" class="button disabled"
+								<button type="submit" class="button disabled" disabled="disabled"
 								id="pageNext" title="다음">다음</button>
 								
 						</div>

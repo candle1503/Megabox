@@ -61,13 +61,13 @@ public class BookingController {
 		
 	}
 
-	@GetMapping("bookingSeat")
-	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		return mv;
-		
-	}
+//	@GetMapping("bookingSeat")
+//	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		return mv;
+//		
+//	}
 
 	@GetMapping("bookingTest")
 	public void bookingTest() throws Exception {
@@ -90,7 +90,7 @@ public class BookingController {
 	}
 	
 	@GetMapping("bookingRoomList")
-	public ModelAndView bookingRoomList(BookingVO bookingVO, MovieVO movieVO) throws Exception{
+	public ModelAndView bookingRoomList(BookingVO bookingVO, MovieVO movieVO, SeatVO seatVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<BookingVO> bookingRoomAr = new ArrayList<BookingVO>();
@@ -110,6 +110,7 @@ public class BookingController {
 		Map<Integer, String> startTimeMap = new HashMap<>();
 		Map<Integer, String> movieNameMap = new HashMap<>();
 		Map<Integer, String> endTimeMap = new HashMap<>();
+		Map<Integer, Integer> notBookedMap = new HashMap<>();
 		
 		//영화상영 시간
 		String startTime = "";
@@ -192,14 +193,16 @@ public class BookingController {
 			endTimeMap.put(i, endTime);
 			mv.addObject("etm", endTimeMap);
 			
+			
+			//잔여 좌석
+			int tCode = bookingRoomAr.get(i).getTimeCode();
+			seatVO.setTimeCode(tCode);
+			
+			int notBookedCount = bookingService.bookingNotBooked(seatVO);
+			notBookedMap.put(i, notBookedCount);
+			
+			mv.addObject("notBookedCount", notBookedMap);
 		}
-//		System.out.println("movieNumber:"+movieNumber);
-//		List<BookingVO> finalResultAr = bookingService.bookingFinalResult(bookingVO);
-//		bookingVO.setMovieNum(movieNumber);
-//		finalResultAr.add(bookingVO);
-//		
-//		mv.addObject("finalResultAr", finalResultAr);
-		
 		
 		mv.addObject("bookingRoomArSize", bookingRoomArSize);
 		mv.addObject("bookingRoomAr", bookingRoomAr);
@@ -208,7 +211,7 @@ public class BookingController {
 	}
 	
 	@PostMapping("bookingSeatView")
-	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO, HttpSession session) throws Exception{
+	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		roomMovieTimeVO.setTimeCode(bookingVO.getTimeCode());
@@ -286,8 +289,6 @@ public class BookingController {
 		MovieFileVO movieFileVO = new MovieFileVO();
 		movieFileVO.setFileName(mvf.get(0).getFileName());
 		
-		
-		
 		mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("yoil", yoil);
 		mv.addObject("movieTime", movieTime);
@@ -310,7 +311,7 @@ public class BookingController {
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
 		
-		mv.addObject("movieFileVO", movieFileVO);
+		//mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("seatList", seatVO.getSeatList());
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("movieVO", movieVO);
@@ -322,11 +323,11 @@ public class BookingController {
 	}
 	
 	@PostMapping("bookingComplete")
-	public ModelAndView bookingComplete(String[] seatList, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, BookingVO bookingVO) throws Exception {
+	public ModelAndView bookingComplete(String[] seatList, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, BookingVO bookingVO, HttpSession session, MovieFileVO movieFileVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-//		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-//		System.out.println(memberVO.getId());
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		//mv.addObject("phone", memberVO.getPhone());
 		
 //		ticketVO = ticketService.ticketInfo(ticketVO);
 //		
@@ -335,31 +336,69 @@ public class BookingController {
 //		System.out.println("titiititi:"+ticketVO.getTicketCode());
 //		System.out.println("aaaaaaaaaaa:"+movieAge);
 		
+		mv.addObject("fileName", movieFileVO.getFileName());
 		
 		int size = seatList.length;
 		mv.addObject("sizeCount", size);
 		
+		int sizeResult = size*8000;
+		mv.addObject("size", sizeResult);
+		
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
-		
-		
 		
 		mv.addObject("movieVO", movieVO);
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("bookingVO", bookingVO);
 		
-//		System.out.println(seatList[0]);
-//		System.out.println(seatList[1]);
-//		System.out.println(seatList[2]);
+		Map<Integer, String> seatMap = new HashMap<>();
+		
 		String seat = "";
 		for(int i =0; i<size; i++) {
 			seat = seat+seatList[i]+"/";
+			
+			String seatCut[] = seat.split("/");
+			//A, B, C
+			String seatRownm = seatCut[i].substring(0, 1);
+			
+			String seatRCut[];
+			String seatColnm = "";
+			
+			if(seatRownm.equals("A")) {
+				//A열이면 A뒤 행만 뽑아옴
+				seatRCut = seatCut[i].split("A");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("B")) {
+				seatRCut = seatCut[i].split("B");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("C")) {
+				seatRCut = seatCut[i].split("C");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("D")) {
+				seatRCut = seatCut[i].split("D");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("E")) {
+				seatRCut = seatCut[i].split("E");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("F")) {
+				seatRCut = seatCut[i].split("F");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("G")) {
+				seatRCut = seatCut[i].split("G");
+				seatColnm = seatRCut[1];
+			}else if(seatRownm.equals("H")) {
+				seatRCut = seatCut[i].split("H");
+				seatColnm = seatRCut[1];
+			}
+				
+			//A열, B열, C열
+			seatRownm = seatRownm + "열";
+			
+			String seatResult = seatRownm+" "+seatColnm+" / ";
+			seatMap.put(i, seatResult);
+			
+			mv.addObject("seatResult", seatMap);
 		}
-		System.out.println("sssssss:"+seat);
-		
-		
-		
-		
 		
 		return mv;
 	}

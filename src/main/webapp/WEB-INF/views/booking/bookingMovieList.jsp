@@ -29,7 +29,7 @@
 			</c:if>
 			<i class="iconset ico-heart-small">보고싶어 설정안함</i>
 				<span class="txt">${bmList.name}</span>
-				<span class="txt" style="color:white;">/${bmList.movieNum}</span>
+				<span class="txt" style="display: none;">/${bmList.movieNum}</span>
 		</button>
 				<input class="test123${i.count}" value="${bmList.movieNum}" type="hidden">
 	</li>

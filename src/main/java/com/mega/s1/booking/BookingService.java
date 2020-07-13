@@ -141,4 +141,8 @@ public class BookingService {
 		return list;
 	}
 	
+	public int bookingNotBooked(SeatVO seatVO) throws Exception{
+		return bookingRepository.bookingNotBooked(seatVO);
+	}
+	
 }

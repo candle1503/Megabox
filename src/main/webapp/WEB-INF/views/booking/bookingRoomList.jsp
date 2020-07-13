@@ -17,8 +17,6 @@
 			<input type="hidden" name="timeCode" value="${brList.timeCode}"/>
 		<li class="bookingRoomList-room"><button type="submit" class="btn" id="roomBtn${i.count}">
 			
-			<%-- <span hidden="${brList.movieNum}">${brList.movieNum}/</span>
-			<span hidden="${brList.theaterRoomCode}">${brList.theaterRoomCode}//</span> --%>
 			<span hidden="${stTime}">${stTime}/</span>
 			
 			<div class="legend"></div>
@@ -27,7 +25,7 @@
 				<strong title="${vom[i.index]}">${vom[i.index]}</strong><em>2D</em></span>
 			<div class="info">
 				<span class="theater" title="극장">${brList.roomName} </span><span
-					class="seat"><strong class="now" title="잔여 좌석">??</strong><span>/</span><em
+					class="seat"><strong class="now" title="잔여 좌석">${notBookedCount[i.index]}</strong><span>/</span><em
 					class="all" title="전체 좌석">${brList.seatCount}</em></span>
 			</div>
 		</button>

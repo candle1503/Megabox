@@ -37,8 +37,11 @@
 								<span class="roboto">0000-000-00000</span>
 							</p>
 							<img
+								src="/upload/movie/${fileName}"
+								alt="" onerror="noImg(this)">
+							<!-- <img
 								src="https://img.megabox.co.kr/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_316.jpg"
-								alt="결백" onerror="noImg(this)">
+								alt="" onerror="noImg(this)"> -->
 						</div>
 
 						<!-- movie-infomation-area -->
@@ -68,13 +71,15 @@
 									<c:if test="${movieVO.age eq '청소년관람불가'}">
 										<span class="movie-grade small age-19" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
 									</c:if>${movieVO.name}</li>
-									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span> ${theaterVO.name} /
+									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span>${theaterVO.name} /
 										${bookingVO.roomName}</li>
 									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${bookingVO.startTime}(${bookingVO.yoil}) / ${bookingVO.movieTime}</li>
 									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;일반 ${sizeCount}명</li>
-									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;E열 6</li>
-									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;010-0000-0000</li>
-									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto">12,000</strong>
+									
+									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;<c:forEach items="${seatResult}" varStatus="i">${seatResult[i.index]}</c:forEach></li>
+									
+									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;${phone}</li>
+									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto">${size}</strong>
 										원 <!-- 원 --> <br> <em></em></li>
 								</ul>
 
@@ -409,8 +414,7 @@
 								<li>매표소에 당일 영화 티켓 인증 후, 차량 번호 할인 등록. 3시간 -&gt; 3,000원 (지하
 									3층 정산소에서 결제)</li>
 
-								<li>주차 공간이 협소하므로 가급적이면 대중교통을 이용 바랍니다. (지하철 2호선 강남역 출구 9번
-									출구)</li>
+								<li>주차 공간이 협소하므로 가급적이면 대중교통을 이용 바랍니다. </li>
 
 							</ul>
 						</li>
