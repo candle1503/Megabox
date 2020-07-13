@@ -372,9 +372,9 @@ function fn_validateDateYn(param) {
 												var movieNumCheck = $('.movieNumCheck').val();
 												
 												for(var mc=1; mc<10; mc++){
-													if(movieNumCheck ==$('.test123'+mc).val()){
+													if(movieNumCheck ==$('.mvNumD'+mc).val()){
 														$("#movieBtn"+mc).addClass("on");
-														$('.test').val(movieNumCheck);
+														$('.mvNum').val(movieNumCheck);
 													}
 														
 													}

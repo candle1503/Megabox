@@ -196,7 +196,7 @@
 			
 			$(".localName").val(name);
 			
-			var movieNumber = $('.test').val();
+			var movieNumber = $('.mvNum').val();
 			
 			if(movieNumber=="null"){
 				bookingRoomList(startDate, name);

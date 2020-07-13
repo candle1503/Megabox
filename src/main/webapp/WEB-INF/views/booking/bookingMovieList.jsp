@@ -31,13 +31,13 @@
 				<span class="txt">${bmList.name}</span>
 				<span class="txt" style="display: none;">/${bmList.movieNum}</span>
 		</button>
-				<input class="test123${i.count}" value="${bmList.movieNum}" type="hidden">
+				<input class="mvNumD${i.count}" value="${bmList.movieNum}" type="hidden">
 	</li>
 
 	
 </c:forEach>
 
-				<input type="hidden" value="null" class="test"/>
+				<input type="hidden" value="null" class="mvNum"/>
 
 
 
@@ -64,7 +64,7 @@ function bookingRoomList(startDate, name){
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
 			if($(this).hasClass("on")){
 				$(this).removeClass("on");
-				$('.test').val("null");
+				$('.mvNum').val("null");
 				$("#bookingRoom-List").empty();
 				var name = $(".localName").val();
 				bookingRoomList(startDate, name);
@@ -86,7 +86,7 @@ function bookingRoomList(startDate, name){
 			}
 			
 			
-			$('.test').val(movieNumber);
+			$('.mvNum').val(movieNumber);
 			}
 
 		});

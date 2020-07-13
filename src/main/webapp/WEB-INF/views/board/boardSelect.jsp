@@ -149,7 +149,7 @@
 					</c:if>
 					<a href="${board}List" class="button large listBtn" title="목록">목록</a>
 					<c:if test="${member.id eq 'ADMIN'}">
-						<a href="${board}Delete?num=${vo.num}" class="button large deleteBtn" title="글 삭제" style="border-color: #ff1a1a; color: #ff1a1a;">글 삭제</a>
+						<a href="${board}Delete?num=${vo.num}" onclick="if(!confirm('정말 삭제 하시겠어요?')){return false;}" class="button large deleteBtn" title="글 삭제" style="border-color: #ff1a1a; color: #ff1a1a;">글 삭제</a>
 					</c:if>
 				</div>
 				
@@ -162,8 +162,7 @@
         
         
 <script type="text/javascript">
-
-
+	i
 	$(function() {
 
 		var num = "${vo.num}";

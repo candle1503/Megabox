@@ -60,6 +60,7 @@
 					<form:textarea path="contents" rows="10" cols="" class="form-control"
 						id="summernote" placeholder="내용을 입력해주세요." value="${vo.contents}"></form:textarea>
 					<form:errors path="contents" cssClass="noticeError"></form:errors>
+					<textarea rows="" cols="" value="${vo.contents}"></textarea>
 				</div>
 			</div>
 
@@ -460,6 +461,7 @@
 			$(".fileSub > span").remove();
 			$(".fileSub > a").remove();
 		});
+
 
 		
 	</script>

@@ -213,7 +213,7 @@
 				
 				<div class="container">
 					<c:if test="${member.id eq 'ADMIN'}">
-						<a href="../notice/noticeWrite" class="button large writeBtn" style="border-color:#3385ff; color: #3385ff; ">Write</a>
+						<a href="../notice/noticeWrite" class="button large writeBtn" style="border-color:#3385ff; color: #3385ff; ">공지사항 작성</a>
 					</c:if>
 				</div>
 			</div>
