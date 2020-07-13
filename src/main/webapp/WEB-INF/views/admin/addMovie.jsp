@@ -52,7 +52,7 @@
 
 <body>
 
-<c:choose>
+<%-- <c:choose>
 	<c:when test="${member.id ne 'admin' }">
 		<script type="text/javascript">
 			alert('잘못된 접근입니다.');
@@ -60,7 +60,7 @@
 		</script>
 	</c:when>
 	
-	<c:when test="${member.id eq 'admin' }">
+	<c:when test="${member.id eq 'admin' }"> --%>
 		<c:import url="../template/header.jsp"></c:import>
 	
 
@@ -340,8 +340,8 @@
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
 
-	</c:when>
-</c:choose>
+<%-- 	</c:when>
+</c:choose> --%>
 		
 
 </body>
