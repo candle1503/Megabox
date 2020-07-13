@@ -139,7 +139,7 @@
 		})
 		
 		$(".delt").click(function(){
-			alert($(this).attr("title"));
+			
 			var flag = confirm("정말 삭제하시겠습니까?");
 			var movieNum = $(this).attr("title");
 			 if(flag==true){
