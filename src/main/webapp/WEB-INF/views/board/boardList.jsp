@@ -84,7 +84,7 @@
 							쌍용 씨네시티 고객센터
 							<span>Dream center</span>
 						</p>
-						<p class="tel">1544-0070</p>
+						<p class="tel">1234-0102</p>
 						<p class="time"><i class="iconset ico-clock"></i> 10:00~19:00</p>
 					</div>
 				</nav>

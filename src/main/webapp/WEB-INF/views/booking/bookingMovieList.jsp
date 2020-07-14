@@ -70,12 +70,12 @@ function bookingRoomList(startDate, name){
 				bookingRoomList(startDate, name);
 			}else{
 				
-			$("#movieBtn"+movieCss).removeClass("on");
-			$(this).addClass("on");
-			movieCss = $(this).attr('id').replace("movieBtn", '');
-			
-			var txt = $(this).text().split('/');
-			var movieNumber = parseInt(txt[1]);
+				$("#movieBtn"+movieCss).removeClass("on");
+				$(this).addClass("on");
+				movieCss = $(this).attr('id').replace("movieBtn", '');
+				
+				var txt = $(this).text().split('/');
+				var movieNumber = parseInt(txt[1]);
 			if($('.localName').val()=="null"){
 				
 			}else{

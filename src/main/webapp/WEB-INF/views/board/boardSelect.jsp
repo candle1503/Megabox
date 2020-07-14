@@ -162,7 +162,7 @@
         
         
 <script type="text/javascript">
-	i
+	
 	$(function() {
 
 		var num = "${vo.num}";

@@ -178,7 +178,7 @@
 						var strArray = array.split(' ');
 						var idOn = strArray[strArray.length-1];			
 
-						alert('총 좌석 수 : ' + cnt)
+						//alert('총 좌석 수 : ' + cnt)
 						
 						if(seatCheckCnt<=cnt){
 
@@ -195,8 +195,8 @@
 								
 								$('div.money>em').text(seatCheckCnt * 8000)
 								
-								alert('선택 좌석수(1부터 시작) :' + seatCheckCnt)
-								alert($('div.money>em').text())		
+								//alert('선택 좌석수(1부터 시작) :' + seatCheckCnt)
+								//alert($('div.money>em').text())		
 														
 
 								idSeatArray = "seatArray" + seatCheckCnt;
@@ -222,7 +222,7 @@
 							else if(idOn = 'on'){
 
 								var checkingSeatDelete = $(this).attr('rownm') + $(this).attr('seatno')
-								alert('자리 삭제 번호 확인 alert : ' + checkingSeatDelete)
+								//alert('자리 삭제 번호 확인 alert : ' + checkingSeatDelete)
 								
 								if(checkingSeatDelete ==$('.'+idSeatArray).attr('title')){
 

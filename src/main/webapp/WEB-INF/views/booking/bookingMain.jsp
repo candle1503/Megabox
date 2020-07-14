@@ -362,7 +362,7 @@ function fn_validateDateYn(param) {
 												</ul>
 											</div>
 										
-										<script type="text/javascript">
+									<script type="text/javascript">
 
 									function bookingMovieList(startDate){
 										$.get("bookingMovieList?startTime="+startDate, function(result){
@@ -370,17 +370,21 @@ function fn_validateDateYn(param) {
 
 											if(result != null){
 												var movieNumCheck = $('.movieNumCheck').val();
+
+												var mvCss;
 												
-												for(var mc=1; mc<10; mc++){
+												for(var mc=1; mc<101; mc++){
 													if(movieNumCheck ==$('.mvNumD'+mc).val()){
+
+														$("#movieBtn"+mc).removeClass("on");
 														$("#movieBtn"+mc).addClass("on");
 														$('.mvNum').val(movieNumCheck);
-													}
 														
 													}
-
-												
+														
 												}
+												
+											}
 										});
 										
 									}
