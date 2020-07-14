@@ -84,10 +84,15 @@ public class MemberController {
 	@GetMapping("getMyPage")
 	public ModelAndView getMyPage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberFileVO memberFileVO = new MemberFileVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		if(memberVO.getId().equals("ADMIN")) {
 			mv.setViewName("admin/adminPage");
 		}else {
+			memberFileVO = memberService.getMemberFile(memberVO);
+			memberVO.setFileName(memberFileVO.getFileName());
+			memberVO.setOriName(memberFileVO.getOriName());
+			session.setAttribute("memberVO", memberVO);
 			mv.setViewName("member/memberMyPage");
 		}
 		return mv;

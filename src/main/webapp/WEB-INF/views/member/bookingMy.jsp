@@ -86,20 +86,10 @@
 											<div class="dropdown bootstrap-select small bs3"
 												style="margin-top: 10px; width: 25%;">
 												
-												<input id="calendar" style="left: 1300px;"
+												<input id="calendar" style="left: 1300px; width: 130px"
 												value="시작날짜" name="startDay" class="button gray-line small" readonly="readonly">
 												
-<!-- 												<button type="button" -->
-<!-- 													class="btn dropdown-toggle btn-default" -->
-<!-- 													data-toggle="dropdown" role="button" tabindex="-1" -->
-<!-- 													aria-disabled="true" title="2020년 7월"> -->
-<!-- 													<div class="filter-option" > -->
-<!-- 														<div class="filter-option-inner" > -->
-<!-- 															<div class="filter-option-inner-inner">2020년 7월</div> -->
-<!-- 														</div> -->
-<!-- 													</div> -->
-<!-- 													<span class="bs-caret"><span class="caret"></span></span> -->
-<!-- 												</button> -->
+												
 												<div class="dropdown-menu open" role="combobox">
 													<div class="inner open" role="listbox"
 														aria-expanded="false" tabindex="-1">
@@ -120,20 +110,24 @@
 <script type="text/javascript">
 	var G_calendar = {
 			startDate: '-0d',
-		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 		    dayNamesMin: ['일','월','화','수','목','금','토'],
 		    weekHeader: 'Wk',
 		    dateFormat: 'yy-mm',
 		    autoclose : true,
 		    showOn:"both",
 		    showMonthAfterYear: true,
-		    maxDate: '2w',
-		    minDate: '-0d',
-		    closeText: '닫기'
-		        
+		    changeDate: false,   
+		    maxDate: '0d',
+		    minDate: '-3y',
+		    closeText: '닫기',
 	}
 
 	$('#calendar').datepicker(G_calendar);
+
+	$('#calendar').change(function(){
+	alert($('#calendar').val());
+			})
 
 	</script>
 
@@ -212,9 +206,6 @@
 													</tbody>
 												</table>
 											</div>
-<!-- 											<div class="btn-group"> -->
-<!-- 												<a href=""class="button gray" name="btnCancelBokd" title="예매취소">예매취소</a> -->
-<!-- 											</div> -->
 										</div>
 									</li>
 								</ul>
@@ -223,42 +214,6 @@
 								
 							</div>
 						</div>
-
-<!-- 						<h3 class="tit mt70">예매취소내역</h3> -->
-
-<!-- 						<ul class="dot-list"> -->
-<!-- 							<li>상영일 기준 7일간 취소내역을 확인하실 수 있습니다.</li> -->
-<!-- 						</ul> -->
-
-<!-- 						취소한 예매 영화 목록 -->
-<!-- 						<div class="table-wrap mt10"> -->
-<!-- 							<table class="board-list" -->
-<!-- 								summary="취소일시, 영화명, 극장, 상영일시, 취소금액 항목을 가진 취소내역 목록 표"> -->
-<%-- 								<caption>취소일시, 영화명, 극장, 상영일시, 취소금액 항목을 가진 취소내역 목록 표</caption> --%>
-<%-- 								<colgroup> --%>
-<%-- 									<col style="width: 160px;"> --%>
-<%-- 									<col> --%>
-<%-- 									<col style="width: 130px;"> --%>
-<%-- 									<col style="width: 188px;"> --%>
-<%-- 									<col style="width: 105px;"> --%>
-<%-- 								</colgroup> --%>
-<!-- 								<thead> -->
-<!-- 									<tr> -->
-<!-- 										<th scope="col">취소일시</th> -->
-<!-- 										<th scope="col">영화명</th> -->
-<!-- 										<th scope="col">극장</th> -->
-<!-- 										<th scope="col">상영일시</th> -->
-<!-- 										<th scope="col">취소금액</th> -->
-<!-- 									</tr> -->
-<!-- 								</thead> -->
-<!-- 								<tbody> -->
-<!-- 									<tr> -->
-<!-- 										<td colspan="5" class="a-c">취소내역이 없습니다.</td> -->
-<!-- 									</tr> -->
-<!-- 								</tbody> -->
-<!-- 							</table> -->
-<!-- 						</div> -->
-
 
 					</div>
 
