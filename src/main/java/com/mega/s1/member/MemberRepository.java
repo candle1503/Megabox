@@ -37,4 +37,7 @@ public interface MemberRepository {
 	
 	//getMovieImage
 	public String getMovieImage(int movieNum) throws Exception;
+	
+	//getMovieName
+	public String getMovieName(int movieNum) throws Exception;
 }

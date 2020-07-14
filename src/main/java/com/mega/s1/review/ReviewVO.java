@@ -19,4 +19,6 @@ public class ReviewVO {
 	
 	//리뷰 목록 확인할때 쓸 것
 	private String fileName;
+	
+	private String movieName;
 }

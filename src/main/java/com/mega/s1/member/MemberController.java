@@ -211,6 +211,8 @@ public class MemberController {
 		MemberVO memberVO = new MemberVO();
 		memberVO = (MemberVO)session.getAttribute("member");
 		List<ReviewVO> reviewVOs = memberService.getReviewList(memberVO);
+		int size = reviewVOs.size();
+		mv.addObject("size", size);
 		mv.addObject("List", reviewVOs);
 		mv.setViewName("member/reviewList");
 		return mv;

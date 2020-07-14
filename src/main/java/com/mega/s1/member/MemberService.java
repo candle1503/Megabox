@@ -152,10 +152,8 @@ public class MemberService {
 	}
 	
 	public List<ReviewVO> getReviewList(MemberVO memberVO) throws Exception{
-		System.out.println("끝났나0000??");
 		List<ReviewVO> list =  memberRepository.getReviewList(memberVO);
 		for(int i=0; i<list.size(); i++) {
-			System.out.println("끝났나11111??");
 			ReviewVO reviewVO = new ReviewVO();
 			reviewVO.setReviewNum(list.get(i).getReviewNum());
 			reviewVO.setWriter(list.get(i).getWriter());
@@ -166,9 +164,9 @@ public class MemberService {
 			reviewVO.setMovieNum(list.get(i).getMovieNum());
 			reviewVO.setLikePoint(list.get(i).getLikePoint());
 			reviewVO.setFileName(memberRepository.getMovieImage(list.get(i).getMovieNum()));
-			list.add(i, reviewVO);
+			reviewVO.setMovieName(memberRepository.getMovieName(list.get(i).getMovieNum()));
+			list.set(i, reviewVO);
 		}
-		System.out.println("끝났나??");
 		return list;
 	}
 	

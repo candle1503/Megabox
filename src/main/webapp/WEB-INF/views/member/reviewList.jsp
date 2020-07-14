@@ -8,8 +8,8 @@
 <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/static/css/megabox.min.css"
 	media="all">
-<link rel="stylesheet" href="/resources/static/css/myPage.css"
-	media="all">
+<link rel="stylesheet" href="/resources/static/css/myPage.css"	media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -39,63 +39,61 @@
 					<div class="board-list-util myOne myMovieStory"
 						style="display: block;">
 						<p class="result-count">
-							<strong>총 <b class="font-gblue" id="myOneCnt">1</b> 건
+							<strong>총 <b class="font-gblue" id="myOneCnt">${size}</b>
+								건
 							</strong>
 						</p>
 					</div>
 
-					<c:forEach items="${List}" var="vo">
-					<!-- 나의 한줄평 -->
-					<div class="my-appraisal myOne myMovieStory"
-						style="display: block;">
-						<ul id="myAppraisal">
-							<li>
-								<p class="img posterImg" data-mno="01550200"
-									style="cursor: pointer">
-									<img src="/upload/movie/${vo.fileName}"	>
-								</p>${vo.contents}
-								<div class="cont">
-									<p class="label">관람평</p>
-									<p class="tit">
-										<a href="javaScript:void(0)" title="한줄평 상세보기">기생충</a>
+					<c:forEach items="${List}" var="vo" varStatus="i">
+						<!-- 나의 한줄평 -->
+						<div class="my-appraisal myOne myMovieStory"
+							style="display: block;" id="myStoryM">
+							<ul id="myAppraisal">
+								<li>
+									<p class="img posterImg" data-mno="01550200"
+										style="cursor: pointer">
+										<img src="/upload/movie/${vo.fileName}" style="height: 145px;">
 									</p>
-									<div class="rate">
-										<p class="num review">10</p>
-										<div class="case">
-											<p>연출</p>
-											<p>스토리</p>
+									<div class="cont">
+										<p class="label">관람평</p>
+										<p class="tit">
+											<a href="javaScript:void(0)" title="한줄평 상세보기">${vo.movieName}</a>
+										</p>
+										<div class="rate">
+											<p class="num review">${vo.point}</p>
+											<div class="case">
+												<p>${vo.likePoint}</p>
+											</div>
+										</div>
+										<p class="txt oneData${i.count}" style="display: block">${vo.contents}</p>
+										<div class="modify-area updateData" style="">
+										
+											<textarea rows="5" cols="30" title="한줄평 수정 내용 입력"
+												class="input-textarea" id="updateForm${i.count}" style="display: none;">${vo.contents}
+											</textarea>
+										</div>
+										<div class="modify-area updateData" style="display: none;">
+										</div>
+										<div class="util">
+											<div class="right">
+												<span><button type="button"
+														class="btn modify" id="updateBtn${i.count}" data-no="663348"
+														data-mno="01550200" data-cd="PREV" >수정</button></span> <span><button
+														type="button" class="btn del deleteBtn" data-no="663348"
+														data-mno="01550200" data-cd="PREV">삭제</button></span>
+											</div>
 										</div>
 									</div>
-									<p class="txt oneData">${vo.contents}</p>
-									<div class="modify-area updateData" style="display: none;">
-									</div>
-									<div class="util">
-										<div class="left">
-											<button type="button" title="좋아요 수" class="like likeBtn"
-												data-no="663348" data-cd="PREV">
-												<i class="iconset ico-like"></i> 0
-											</button>
-											<p class="date">1 분전</p>
-										</div>
-										<div class="right">
-											<span><button type="button"
-													class="btn modify updateBtn" data-no="663348"
-													data-mno="01550200" data-cd="PREV">수정</button></span> <span><button
-													type="button" class="btn del deleteBtn" data-no="663348"
-													data-mno="01550200" data-cd="PREV">삭제</button></span>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					
+								</li>
+							</ul>
+						</div>
+
 					</c:forEach>
-					
+
 					<nav class="pagination myOne myMovieStory" style="display: block;">
 						<strong class="active">1</strong>
 					</nav>
-					<!--// 나의 한줄평 -->
 
 
 				</div>
@@ -104,6 +102,26 @@
 			</div>
 		</div>
 
+			<script type="text/javascript">
+
+			for(var i=1; i<100; i++){
+				var te;
+				$(".my-appraisal").on("click", "#updateBtn"+i, function(){
+					if($(this).html()=="수정"){
+					
+					te = $(this).attr('id').replace('updateBtn', '');
+					$('#updateForm'+te).css("display","block");
+					$('.oneData'+te).css("display", "none");
+					$(this).html("저장");
+					}else{
+					$('#updateForm'+te).css("display","none");
+					$('.oneData'+te).css("display", "block");
+					$(this).html("수정");
+					}
+				});
+			}
+					
+			</script>
 
 		<!-- footer -->
 		<footer id="footer">

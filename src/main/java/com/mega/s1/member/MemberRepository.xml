@@ -39,4 +39,7 @@
 		select fileName from movieFile where movieNum=#{movieNum} and status=2 limit 1
 	</select>
 	
+	<select id="getMovieName" parameterType="Integer" resultType="String">
+		select name from movie where movieNum=#{movieNum}
+	</select>
 </mapper>
