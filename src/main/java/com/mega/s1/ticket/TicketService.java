@@ -41,10 +41,13 @@ public class TicketService {
 		return theaterRepository.getRoom(theaterVO);
 	}
 	
-	public TicketVO ticketInfo(TicketVO ticketVO) throws Exception{
-		String ticketCode = UUID.randomUUID().toString();
-		ticketVO.setTicketCode(ticketCode);
-		
-		return ticketVO;
+	
+	public TicketVO reviewCheck(TicketVO ticketVO) throws Exception{
+	
+		return ticketRepository.reviewCheck(ticketVO);
+	}
+	
+	public int reviewDone(TicketVO ticketVO) throws Exception{
+		return ticketRepository.reviewDone(ticketVO);
 	}
 }

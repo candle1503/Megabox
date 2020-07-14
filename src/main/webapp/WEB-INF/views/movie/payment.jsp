@@ -50,7 +50,7 @@
 			        $.post("./payment", {seatNum:'${ticketVO.seatNum}', movieTime:'${ticketVO.movieTime}', id: '${ticketVO.id}', count:'${ticketVO.count}', movieNum:'${movieVO.movieNum}', theaterRoomCode:'${ticketVO.theaterRoomCode}', viewDate:'${ticketVO.viewDate}', movieName:'${movieVO.name}'}, function(result) {
 
 						if(result>0){
-				    	opener.$("#myForm").submit();
+				    	window.opener.$("#myForm").submit();
 				        self.close();
 						} else{
 
@@ -64,9 +64,9 @@
 			        msg += '에러내용 : ' + rsp.error_msg;
 			        
 			        alert(msg);
+					window.close();
 			    }
 				
-				window.close();
 			   
 			}
 		);

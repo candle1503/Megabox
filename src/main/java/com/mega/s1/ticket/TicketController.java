@@ -47,7 +47,6 @@ public class TicketController {
 		
 		int result = ticketService.ticketInsert(ticketVO);
 
-		
 		return result;
 	}
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,16 @@
 </head>
 <body>
 
+
 <!-- 레이어 : 관람평 등록 -->
+
+<c:if test="${ticketVO eq null}">
+	<script type="text/javascript">
+		alert("관람하신 분에 한해서 1회만 작성 가능합니다.");
+		location.reload();
+	</script>
+</c:if>
+<c:if test="${ticketVO ne null }">
 
     <div class="wrap">
      	<form action="./reviewInsert" method="post">   
@@ -174,5 +184,6 @@
     });
 	
 </script>
+</c:if>
 </body>
 </html>

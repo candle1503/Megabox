@@ -13,4 +13,12 @@
 		select * from ticket where id=#{id} order by ticketNum desc limit 1
 	</select>
 	
+	<select id="reviewCheck" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where id=#{id} and movieNum=#{movieNum} and status=1 limit 1
+	</select>
+	
+	<update id="reviewDone" parameterType="TicketVO">
+		update ticket set status=2 where ticketNum=#{ticketNum}
+	</update>
+	
 </mapper>

@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
@@ -19,9 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
-
+import com.mega.s1.ticket.TicketService;
+import com.mega.s1.ticket.TicketVO;
 import com.mega.s1.util.Pager;
 
 @Controller
@@ -30,6 +33,9 @@ public class MovieController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private TicketService ticketService;
 	
 	@GetMapping("preview")
 	public ModelAndView preview(ModelAndView mv, MovieVO movieVO) throws Exception {
@@ -137,9 +143,16 @@ public class MovieController {
 	}
 	
 	@GetMapping("review")
-	public ModelAndView review(ModelAndView mv, MovieVO movieVO) throws Exception {
+	public ModelAndView review(ModelAndView mv, MovieVO movieVO, HttpSession session) throws Exception {
 		MovieVO vo = movieService.movieSelect(movieVO);
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		TicketVO ticketVO= new TicketVO();
+		ticketVO.setId(memberVO.getId());
+		ticketVO.setMovieNum(vo.getMovieNum());
+		ticketVO = ticketService.reviewCheck(ticketVO);
 		
+		
+		mv.addObject("ticketVO", ticketVO);
 		mv.addObject("vo", vo);
 		mv.setViewName("movie/review");
 		return mv;
@@ -254,6 +267,10 @@ public class MovieController {
 	@PostMapping("reviewInsert")
 	public String reviewInsert(RedirectAttributes rd, ReviewVO reviewVO) throws Exception{
 			int result = movieService.reviewInsert(reviewVO);
+			TicketVO ticketVO = new TicketVO();
+			ticketVO.setTicketNum(reviewVO.getTicketNum());
+			
+			ticketService.reviewDone(ticketVO);
 			rd.addFlashAttribute("result",result);
 			String re = "redirect:./movieSelect?movieNum="+reviewVO.getMovieNum();
 			return re;
