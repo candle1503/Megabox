@@ -21,7 +21,7 @@
 			    pg : 'inicis', // version 1.1.0부터 지원.
 			    pay_method : 'card',
 			    merchant_uid : 'merchant_' + new Date().getTime(),
-			    name : 'ss',
+			    name : '${movieVO.name}',
 
 			    amount : ${ticketVO.count}*8000,
 

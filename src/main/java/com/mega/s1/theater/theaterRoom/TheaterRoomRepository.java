@@ -12,5 +12,8 @@ public interface TheaterRoomRepository {
 	//getRoomList
 	public List<TheaterRoomVO> getRoomList(TheaterVO theaterVO) throws Exception;
 	
+	//getRoom
+	public TheaterRoomVO getRoom(TheaterRoomVO theaterVO) throws Exception;
+	
 	
 }

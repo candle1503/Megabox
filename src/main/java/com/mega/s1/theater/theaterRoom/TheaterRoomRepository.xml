@@ -7,5 +7,9 @@
 	<select id="getRoomList" parameterType="TheaterVO">
 		select * from theaterRoom where name=#{name}
 	</select>
+	
+	<select id="getRoom" parameterType="TheaterRoomVO">
+		select * from theaterRoom where theaterRoomCode=#{theaterRoomCode}
+	</select>
 
 </mapper>

@@ -1,13 +1,21 @@
 package com.mega.s1.ticket;
 
+
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.movie.MovieService;
+import com.mega.s1.movie.MovieVO;
+import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 
 @Controller
 @RequestMapping("/ticket/**")
@@ -22,13 +30,37 @@ public class TicketController {
 	@GetMapping("payment")
 	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO) throws Exception{
 		
-		
-		movieService.movieSelect(ticketVO.getMovieNum());
+		MovieVO movieVO = new MovieVO();
+		movieVO.setMovieNum(ticketVO.getMovieNum());
+		movieVO = movieService.movieSelect(movieVO);
+
+		mv.addObject("movieVO", movieVO);
 		mv.addObject("ticketVO", ticketVO);
 		mv.setViewName("movie/payment");
 		return mv;
 	}
 
+	@PostMapping("payment")
+	public ModelAndView paymentDone(ModelAndView mv ,TicketVO ticketVO) throws Exception{
+		
+		int result = ticketService.ticketInsert(ticketVO);
+
+		MovieVO movieVO = new MovieVO();
+		TheaterRoomVO theaterVO = new TheaterRoomVO();
+		
+		movieVO.setMovieNum(ticketVO.getMovieNum());
+		movieVO = movieService.movieSelect(movieVO);
+		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
+		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
+		theaterVO=ticketService.getRoom(theaterVO);
+		
+		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("file", files);
+		mv.addObject("movieVO", movieVO);
+		mv.setViewName("booking/bookingComplete");
+		
+		return mv;
+	}
 	
 	
 }
