@@ -2,6 +2,7 @@ package com.mega.s1.ticket;
 
 import java.sql.Date;
 
+
 import lombok.Data;
 
 @Data
@@ -10,6 +11,7 @@ public class TicketVO {
 	private int ticketNum;
 
 	private String seatNum;
+	
 	
 	private String ticketCode;
 	

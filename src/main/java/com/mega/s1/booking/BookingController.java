@@ -1,5 +1,6 @@
 package com.mega.s1.booking;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,8 +38,7 @@ public class BookingController {
 	private MovieService movieService;
 	@Autowired
 	private TheaterService theaterService;
-	@Autowired
-	private TicketService ticketService;
+	
 	
 	@GetMapping("bookingTimeZone")
 	public void bookingTimeList(long startDay, Model model) throws Exception{
@@ -305,6 +305,17 @@ public class BookingController {
 		ModelAndView mv = new ModelAndView();
 		int size = seatVO.getSeatList().size();
 		mv.addObject("sizeCount", size);
+		 String texthobby = "";
+		 List<String> seatN = seatVO.getSeatList();
+	        for (int i = 0; i < seatN.size(); i++) {
+	        	if(i==(seatVO.getSeatList().size()-1)) {
+	        		texthobby += seatN.get(i);
+	        	}else {
+	        		texthobby += seatN.get(i) + ",";
+	        	}
+	           
+	        }
+	        
 		
 		size = size*8000;
 		
@@ -312,6 +323,7 @@ public class BookingController {
 		movieVO.setName(movieName);
 		
 		//mv.addObject("movieFileVO", movieFileVO);
+		mv.addObject("seat", texthobby);
 		mv.addObject("seatList", seatVO.getSeatList());
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("movieVO", movieVO);

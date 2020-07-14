@@ -92,23 +92,28 @@
 			</div>
 
 			<!-- seat-select-section -->
-			<form action="./bookingComplete" method="post"> <!-- ---------------------------form----------------------------------------------- -->
+			 <!-- ---------------------------form----------------------------------------------- -->
 			
-			<input type="hidden" value="${bookingVO.timeCode}" name="timeCode">
-			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
-			<input type="hidden" value="${movieVO.age}" name="movieAge">
-			<input type="hidden" value="${movieVO.name}" name="movieName">
-			<input type="hidden" value="${theaterVO.name}" name="name">
-			<input type="hidden" value="${bookingVO.roomName}" name="roomName">
-			<input type="hidden" value="${bookingVO.startTime}" name="startTime">
-			<input type="hidden" value="${bookingVO.yoil}" name="yoil">
-			<input type="hidden" value="${bookingVO.movieTime}" name="movieTime">
-			<input type="hidden" value="${sizeCount}" name="sizeCount">
-			<input type="hidden" value="${movieFileVO.fileName}" name="fileName">
+			<input type="text" value="${bookingVO.timeCode}" name="timeCode">
+			<input type="text" value="${movieVO.movieNum}" name="movieNum">
+			<input type="text" value="${movieVO.age}" name="movieAge">
+			<input type="text" value="${movieVO.name}" name="movieName">
+			<input type="text" value="${theaterVO.name}" name="name">
+			<input type="text" value="${bookingVO.roomName}" name="roomName">
+			<input type="text" value="${bookingVO.startTime}" name="startTime">
+			<input type="text" value="${bookingVO.yoil}" name="yoil">
+			<input type="text" value="${bookingVO.movieTime}" name="movieTime">
+			<input type="text" value="${sizeCount}" name="sizeCount">
+			
+			
+			
+			
 			
 			<c:forEach items="${seatList}" var="list">
 			<input type="hidden" value="${list}" name="seatList">
 			</c:forEach>
+			
+
 			
 			
 			<div class="seat-select-section">
@@ -203,6 +208,8 @@
 						</div>
 
 						<script type="text/javascript">
+
+							
 							$('#rdo_pay_credit').click(
 									function() {
 
@@ -367,6 +374,8 @@
 						</div>
 
 						<script type="text/javascript">
+							
+						
 							$('#cardDrop')
 									.click(
 											function() {
@@ -535,8 +544,14 @@
 
 			</div>
 			<!--// seat-select-section -->
+			<script type="text/javascript">
+			$('#btn_booking_pay').click(function(){
+				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${bookingVO.startTime}", "PopupWin", "top=200, left=400, width=850,height=600")
+			})
+
+			</script>
 			
-			</form> <!-- ---------------------------form----------------------------------------------- -->
+			 <!-- ---------------------------form----------------------------------------------- -->
 
 		</div>
 		<!--// quick-reserve -->

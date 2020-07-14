@@ -70,9 +70,9 @@
           
         </ul>
     </div><br><br>
-<%--     <c:if test="${member.id eq'ADMIN' }"> --%>
+<c:if test="${member.id eq'ADMIN' }">
     <a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a>
-<%--     </c:if> --%>
+</c:if>
     <br><br>
 <div class="movie-list">
 	<ol class="list" id="movieList">
