@@ -325,8 +325,8 @@
 		</div>
 	</section>
 
-	<a class="scroll-top disabled" href="#"><i class="fas fa-angle-up"
-		aria-hidden="true"></i></a>
+<!-- 	<a class="scroll-top disabled" href="#"><i class="fas fa-angle-up"
+		aria-hidden="true"></i></a> -->
 
 
 	<c:import url="../template/mobileFooter.jsp"></c:import>

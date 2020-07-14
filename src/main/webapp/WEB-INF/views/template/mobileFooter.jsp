@@ -3,6 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <footer class="section-text-white footer footer-links bg-darken">
+
+	<script
+		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger intent="WELCOME" chat-title="쌍용시네마봇"
+		agent-id="386f83e9-7332-4ef9-8624-91e64d82cecb" language-code="ko"></df-messenger>
+
 	<div class="footer-body container">
 		<div class="row">
 			<div class="col-sm-6 col-lg-3">
