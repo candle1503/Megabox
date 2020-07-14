@@ -36,7 +36,7 @@
 
 					<div class="my-megabox-main">
 
-						<div class="my-magabox-info" style="height: 210px;">
+						<div class="my-magabox-info" style="height: 180px;">
 							<!-- top -->
 							<div class="top" >
 								<div class="photo" id="myPhoto">
@@ -64,31 +64,32 @@
 
 								<div class="grade">
 									<p class="name">
-										${memberVO.name}님 <br>일반등급입니다.
+										${memberVO.name}님  환영합니다.
 									</p>
 
 									<div class="link">
 										<a href="./passwordCheck" title="개인정보수정 페이지로 이동">개인정보수정
 											<i class="iconset ico-arr-right-reverse"></i>
-										</a> <a href="#layer_before_grade" id="bfrClassSearch"
-											class="btn-modal-open" w-data="400" h-data="400"
-											title="지난등급 상세보기"> 지난등급조회 <i
-											class="iconset ico-arr-right-reverse"></i>
-										</a>
+								</a>  
+<!-- 												<a href="#layer_before_grade" id="bfrClassSearch" -->
+<!-- 											class="btn-modal-open" w-data="400" h-data="400" -->
+<!-- 											title="지난등급 상세보기"> 지난등급조회 <i -->
+<!-- 											class="iconset ico-arr-right-reverse"></i> -->
+<!-- 										</a> -->
 									</div>
 								</div>
 
 
-								<div class="special-membership" id="myMembership">
-									<p class="tit">Special Membership</p>
+<!-- 								<div class="special-membership" id="myMembership"> -->
+<!-- 									<p class="tit">Special Membership</p> -->
 
-									<!-- 스폐셜 가입 안했을 때 -->
-									<div class="join">
-										<div class="box">
-											<i class="iconset ico-film-society"></i> <span>필름</span>
-										</div>
-									</div>
-								</div>
+<!-- 									스폐셜 가입 안했을 때 -->
+<!-- 									<div class="join"> -->
+<!-- 										<div class="box"> -->
+<!-- 											<i class="iconset ico-film-society"></i> <span>필름</span> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 							</div>
 							<!--// top -->
 

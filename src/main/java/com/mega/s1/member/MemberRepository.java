@@ -18,4 +18,7 @@ public interface MemberRepository {
 	
 	//Update
 	public int setUpdate(MemberVO memberVO) throws Exception;
+	
+	//GetTicket
+	public ticket
 }

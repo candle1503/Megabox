@@ -23,4 +23,9 @@
 		update member set password=#{password},email=#{email}, phone= #{phone} where id=#{id}
 	</update>
 	
+	<select id="">
+	
+	</select>
+	
+	
 </mapper>
