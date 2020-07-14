@@ -113,7 +113,8 @@
 					$('#updateForm'+te).css("display","block");
 					$('.oneData'+te).css("display", "none");
 					$(this).html("저장");
-					}else{
+					}else{  
+						$.post()
 					$('#updateForm'+te).css("display","none");
 					$('.oneData'+te).css("display", "block");
 					$(this).html("수정");
