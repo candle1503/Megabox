@@ -1,6 +1,13 @@
 package com.mega.s1.member;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+
+import com.mega.s1.movie.MovieVO;
+import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.review.ReviewVO;
+import com.mega.s1.ticket.TicketVO;
 
 @Mapper
 public interface MemberRepository {
@@ -19,6 +26,15 @@ public interface MemberRepository {
 	//Update
 	public int setUpdate(MemberVO memberVO) throws Exception;
 	
-	//GetTicket
-	public ticket
+	//getTicketCount
+	public Integer getTicketCount(MemberVO memberVO) throws Exception;
+	
+	//getReviewCount
+	public Integer getReviewCount(MemberVO memberVO) throws Exception;
+	
+	//getReviewList
+	public List<ReviewVO> getReviewList(MemberVO memberVO) throws Exception;
+	
+	//getMovieImage
+	public String getMovieImage(int movieNum) throws Exception;
 }

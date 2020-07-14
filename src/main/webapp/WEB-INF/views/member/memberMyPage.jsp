@@ -105,9 +105,9 @@
 								</div>
 
 								<div class="box-border link-movie-story">
-									<a href="/mypage/moviestory?cd=sm"  style="margin-left: 20px;"> <em>33</em>
+									<a href="/mypage/moviestory?cd=sm"  style="margin-left: 20px;"> <em>${ticketCount}</em>
 										<span>본 영화</span>
-									</a> <a href="/mypage/moviestory?cd=one" style="margin-left: 30px;"> <em>0</em>
+									</a> <a href="/member/reviewList" style="margin-left: 30px;"> <em>${reviewCount}</em>
 										<span>리뷰</span>
 									</a> 
 									 <a href=""  style="margin-left: 30px;"> <em>0</em>
