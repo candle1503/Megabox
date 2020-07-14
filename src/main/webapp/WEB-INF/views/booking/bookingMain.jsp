@@ -324,7 +324,7 @@ function fn_validateDateYn(param) {
                             <!-- 달력보기 -->
                             <div class="bg-line">
                                 <input type="hidden" id="datePicker" value="2020.06.18" class="hasDatepicker">
-                                <button type="button" id="calendar" onclick="$('#datePicker').datepicker('show')" class="btn-calendar-large" title="달력보기"> 달력보기</button>
+                                <button type="button" id="calendar" onclick="$('#datePicker').datepicker('show')" class="btn-calendar-large" disabled="disabled"> 달력보기</button>
 
                             </div>
                             <!--// 달력보기 -->
@@ -375,7 +375,7 @@ function fn_validateDateYn(param) {
 												
 												for(var mc=1; mc<101; mc++){
 													if(movieNumCheck ==$('.mvNumD'+mc).val()){
-
+ 
 														$("#movieBtn"+mc).removeClass("on");
 														$("#movieBtn"+mc).addClass("on");
 														$('.mvNum').val(movieNumCheck);

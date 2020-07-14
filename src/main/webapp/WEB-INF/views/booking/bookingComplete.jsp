@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+	.movie-grade{
+		
+	}
+</style>
+
 </head>
 
 <c:import url="../template/header_css.jsp"></c:import>
@@ -60,16 +67,16 @@
 								<ul class="dot-list gray">
 									<li><span>예매영화 <!-- 예매영화 --></span>
 									<c:if test="${movieVO.age eq '전체관람가'}">
-										<span class="movie-grade small age-all" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+										<span class="movie-grade small age-all" style="width: 20px; margin-left: 105px;">${movieVO.age}</span>
 									</c:if>
 									<c:if test="${movieVO.age eq '12세이상관람가'}">
-										<span class="movie-grade small age-12" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+										<span class="movie-grade small age-12" style="width: 20px; margin-left: 105px;">${movieVO.age}</span>
 									</c:if>
 									<c:if test="${movieVO.age eq '15세이상관람가'}">
-										<span class="movie-grade small age-15" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+										<span class="movie-grade small age-15" style="width: 20px; margin-left: 105px;">${movieVO.age}</span>
 									</c:if>
 									<c:if test="${movieVO.age eq '청소년관람불가'}">
-										<span class="movie-grade small age-19" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
+										<span class="movie-grade small age-19" style="width: 20px; margin-left: 105px;">${movieVO.age}</span>
 									</c:if>${movieVO.name}</li>
 									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span>${theaterVO.name} /
 										${bookingVO.roomName}</li>
@@ -86,292 +93,6 @@
 
 							</div>
 
-							<!-- movie-info-bottom -->
-
-							<div class="movie-info-bottom">
-								<div class="add-send">
-									예매정보 추가 발송
-									<!-- 예매정보 추가 발송 -->
-									<a href="#tooltip01_01" class="tooltip hover"
-										title="입력하신 번호로 예매정보를 추가발송합니다."> <span><i
-											class="iconset ico-question-white">&nbsp;</i></span>
-										<div class="ir" id="tooltip01_01" data-width="220">
-											입력하신 번호로 예매정보를 추가발송합니다.
-											<!-- 입력하신 번호로 예매정보를 추가발송합니다. -->
-										</div>
-									</a> <input type="text" title="연락처 입력"
-										class="input-text w150px ml10" maxlength="11"
-										id="inp_sms_rcv_no">
-									<button type="button" class="button" id="btn_re_send_sms">
-										전송
-										<!-- 전송 -->
-									</button>
-								</div>
-
-
-								<!-- 레이어 : ok캐쉬백 적립 -->
-
-
-
-
-
-
-								<script type="text/javascript">
-									//예매 사용 카드번호 체크
-									$.fn.megaBoxCardNumberCheck = function() {
-										$(this).on(
-												"keypress",
-												function(e) {
-													if (!e.key.isNumber()
-															&& e.key != '-')
-														return false;
-												})
-										$(this)
-												.on(
-														"focus",
-														function(e) {
-															$(this)
-																	.val(
-																			$(
-																					'#'
-																							+ $(
-																									this)
-																									.attr(
-																											'id')
-																							+ '_hid')
-																					.val());
-														})
-										$(this)
-												.on(
-														"focusout",
-														function(e) {
-															var val = $(this)
-																	.val()
-																	.replace(
-																			/[^0-9]+/g,
-																			'');
-															$(this).val(val);
-															$(
-																	'#'
-																			+ $(
-																					this)
-																					.attr(
-																							'id')
-																			+ '_hid')
-																	.val(val);
-
-															var makNo = $(this)
-																	.val()
-																	.maskCardNo();
-															var varArr = makNo
-																	.split('-');
-															if (varArr.length > 3) {
-																varArr[2] = varArr[2]
-																		.replaceAll(
-																				/[0-9]/g,
-																				'*');
-															}
-
-															$(this)
-																	.val(
-																			varArr
-																					.join("-"));
-														})
-									};
-
-									$(function() {
-										//OK 캐쉬백 적립대상 금액 조회
-										selectOkCashSaveAmount();
-
-										$("#ok_card_no")
-												.megaBoxCardNumberCheck();
-
-										//OK 캐쉬백 인증 버튼 클릭
-										$('#btn_ok_save').on('click',
-												function() {
-													saveOkCashSaveAmount();
-												});
-
-									});
-
-									//OK 캐쉬백 적립대상 금액 조회
-									function selectOkCashSaveAmount() {
-										var transNo = $("#transNo").val();
-										var paramData = {
-											tranNo : transNo
-										};
-
-										$
-												.ajax({
-													url : "/on/oh/ohz/PayBooking/selectOkCashSaveAmount.do",
-													type : "POST",
-													contentType : "application/json;charset=UTF-8",
-													dataType : "json",
-													data : JSON
-															.stringify(paramData),
-													success : function(data,
-															textStatus, jqXHR) {
-														//console.log(data);
-														if (data.returnMap.resvrObjAt == 'Y') {
-															$('.point-save')
-																	.show();
-															$('#saveAmount')
-																	.val(
-																			data.returnMap.resvrObjAmt);
-														} else {
-															$('.point-save')
-																	.hide();
-															$('#saveAmount')
-																	.val(0);
-														}
-													},
-													error : function(xhr,
-															status, error) {
-														var err = JSON
-																.parse(xhr.responseText);
-														//err.statCd 에 따라서 이전화면으로 리턴 가능토록
-														errBookingChk(err.msg);
-													}
-												});
-									}
-
-									//OK 캐쉬백 적립
-									function saveOkCashSaveAmount() {
-										var transNo = $("#transNo").val();
-										var saveAmount = $("#saveAmount").val();
-										var cardNo = $("#ok_card_no_hid").val();
-										var paramData = {
-											tranNo : transNo,
-											saveAmount : saveAmount,
-											cardNo : cardNo
-										};
-
-										if (cardNo.length < 15) {
-											gfn_alertMsgBox('OK캐쉬백 카드번호를 다시 확인해주세요.');
-											$("#ok_card_no").focus();
-											return;
-										}
-
-										$
-												.ajaxMegaBox({
-													url : "/on/oh/ohz/PayBooking/saveOkCashSaveAmount.do",
-													type : "POST",
-													data : JSON
-															.stringify(paramData),
-													sessionAt : true,
-													success : function(data,
-															textStatus, jqXHR) {
-														//console.log(data);
-
-														if (data.statCd != "0") {
-															gfn_alertMsgBox(data.msg);
-														} else {
-															gfn_alertMsgBoxSize(
-																	data.returnMap.msg,
-																	350, 250);
-															$('.point-save')
-																	.hide();
-														}
-
-														//닫기버튼 클릭
-														$('#btn_ok_close')
-																.click();
-													},
-													error : function(xhr,
-															status, error) {
-														var err = JSON
-																.parse(xhr.responseText);
-														//err.statCd 에 따라서 이전화면으로 리턴 가능토록
-														errBookingChk(err.msg);
-													}
-												});
-									}
-
-									//오류메시지 체크 : 999 로 시작되는 오류 메시지 처음페이지로 리턴
-									function errBookingChk(msg) {
-										//알림메시지 노출
-										if (msg != null && msg != "") {
-											if (msg.indexOf("999:") == 0) {
-												var almsg = msg.substring(4,
-														msg.length);
-												gfn_alertMsgBox({
-													msg : almsg
-												});
-											} else {
-												if (msg.indexOf("9999:") == 0) {
-													var almsg = msg.substring(
-															5, msg.length);
-													gfn_alertMsgBox({
-														msg : almsg
-													});
-												} else {
-													gfn_alertMsgBox({
-														msg : msg
-													});
-												}
-											}
-										}
-									}
-								</script>
-
-								<input type="hidden" id="ok_card_no_hid">
-								<div class="point-save">
-									OK 캐쉬백 추후적립
-									<!-- OK 캐쉬백 추후적립 -->
-									<a href="#cash_back" class="button btn-modal-open white"
-										w-data="600" h-data="325" title="OK캐쉬백 적립">OK캐쉬백 적립 <!-- OK캐쉬백 적립 --></a>
-
-									<!-- 레이어 : OK캐쉬백 적립 -->
-									<section id="cash_back" class="modal-layer">
-										<a href="" class="focus">레이어로 포커스 이동 됨</a>
-										<div class="wrap">
-											<header class="layer-header">
-												<h3 class="tit">
-													OK캐쉬백 적립
-													<!-- OK캐쉬백 적립 -->
-												</h3>
-											</header>
-
-											<div class="layer-con">
-												<div class="pop-tit font-black">
-													적립 받으실 OK캐쉬백 카드번호 입력후 [인증]버튼을 눌러주세요.
-													<!-- 적립 받으실 OK캐쉬백 카드번호 입력후 [인증]버튼을 눌러주세요.<br />자세한 포인트 내역은 OK캐쉬백홈페이지를 참고해 주세요. -->
-												</div>
-												<div class="popup-gray mid-info-box mb20">
-													<input type="text" title="ok캐쉬백 카드번호 입력"
-														class="input-text w250px" id="ok_card_no"
-														name="ok_card_no" maxlength="20" onkeypress="">
-													<!-- ok캐쉬백 카드번호 입력 -->
-												</div>
-
-												<div class="btn-group">
-													<button type="button" class="button close-layer"
-														id="btn_ok_close">
-														닫기
-														<!-- 닫기 -->
-													</button>
-													<button type="button" class="button purple"
-														id="btn_ok_save">
-														인증
-														<!-- 인증 -->
-													</button>
-												</div>
-											</div>
-
-											<button type="button" class="btn-modal-close">
-												레이어 닫기
-												<!-- 레이어 닫기 -->
-											</button>
-										</div>
-									</section>
-									<!--// 레이어 : OK캐쉬백 적립 -->
-								</div>
-
-								<!-- 레이어 : ok캐쉬백 적립 -->
-
-							</div>
-
-							<!--// movie-info-bottom -->
 						</div>
 						<!--// movie-infomation-area -->
 					</div>

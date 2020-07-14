@@ -326,8 +326,8 @@ public class BookingController {
 	public ModelAndView bookingComplete(String[] seatList, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, BookingVO bookingVO, HttpSession session, MovieFileVO movieFileVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		//mv.addObject("phone", memberVO.getPhone());
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		mv.addObject("phone", memberVO.getPhone());
 		
 //		ticketVO = ticketService.ticketInfo(ticketVO);
 //		
@@ -355,6 +355,7 @@ public class BookingController {
 		
 		String seat = "";
 		for(int i =0; i<size; i++) {
+			
 			seat = seat+seatList[i]+"/";
 			
 			String seatCut[] = seat.split("/");
@@ -393,9 +394,15 @@ public class BookingController {
 				
 			//A열, B열, C열
 			seatRownm = seatRownm + "열";
+			String seatResult;
 			
-			String seatResult = seatRownm+" "+seatColnm+" / ";
-			seatMap.put(i, seatResult);
+			if(i != size -1) {
+				seatResult = seatRownm+" "+seatColnm+" / ";
+				seatMap.put(i, seatResult);
+			}else {
+				seatResult = seatRownm+" "+seatColnm;
+				seatMap.put(i, seatResult);
+			}
 			
 			mv.addObject("seatResult", seatMap);
 		}
