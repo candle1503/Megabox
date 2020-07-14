@@ -2,6 +2,7 @@ package com.mega.s1.ticket;
 
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,26 +42,36 @@ public class TicketController {
 	}
 
 	@PostMapping("payment")
-	public ModelAndView paymentDone(ModelAndView mv ,TicketVO ticketVO) throws Exception{
+	@ResponseBody
+	public int paymentDone(ModelAndView mv ,TicketVO ticketVO) throws Exception{
 		
 		int result = ticketService.ticketInsert(ticketVO);
 
+		
+		return result;
+	}
+	
+	@PostMapping("paymentDone")
+	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO) throws Exception{
+		ticketVO=ticketService.resultPage(ticketVO);
+		
 		MovieVO movieVO = new MovieVO();
 		TheaterRoomVO theaterVO = new TheaterRoomVO();
-		
 		movieVO.setMovieNum(ticketVO.getMovieNum());
 		movieVO = movieService.movieSelect(movieVO);
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
 		theaterVO=ticketService.getRoom(theaterVO);
 		
+		mv.addObject("ticketVO", ticketVO);
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("file", files);
 		mv.addObject("movieVO", movieVO);
 		mv.setViewName("booking/bookingComplete");
-		
 		return mv;
 	}
+	
+
 	
 	
 }

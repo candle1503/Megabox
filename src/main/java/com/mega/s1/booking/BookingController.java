@@ -311,7 +311,7 @@ public class BookingController {
 	        	if(i==(seatVO.getSeatList().size()-1)) {
 	        		texthobby += seatN.get(i);
 	        	}else {
-	        		texthobby += seatN.get(i) + ",";
+	        		texthobby += seatN.get(i) + ", ";
 	        	}
 	           
 	        }

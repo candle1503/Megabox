@@ -1,5 +1,6 @@
 package com.mega.s1.ticket;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,19 @@ public class TicketService {
 	private TheaterRoomRepository theaterRepository;
 	
 	public int ticketInsert(TicketVO ticketVO) throws Exception{
-		return ticketRepository.ticketInsert(ticketVO); 
+		
+		char ch = (char) ((Math.random() * 26) + 97);
+		
+		String ticketCode= ""+ch+new Date().getTime();
+		
+		ticketVO.setTicketCode(ticketCode);
+		
+		int result = ticketRepository.ticketInsert(ticketVO);
+		return result; 
+	}
+	
+	public TicketVO resultPage(TicketVO ticketVO) throws Exception{
+		return ticketRepository.resultPage(ticketVO);
 	}
 	
 	public TheaterRoomVO getRoom(TheaterRoomVO theaterVO) throws Exception{

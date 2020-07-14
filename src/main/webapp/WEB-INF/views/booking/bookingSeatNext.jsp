@@ -93,25 +93,19 @@
 
 			<!-- seat-select-section -->
 			 <!-- ---------------------------form----------------------------------------------- -->
+			 <form action="../ticket/paymentDone" id="myForm" method="post">
+
 			
-			<input type="text" value="${bookingVO.timeCode}" name="timeCode">
-			<input type="text" value="${movieVO.movieNum}" name="movieNum">
-			<input type="text" value="${movieVO.age}" name="movieAge">
-			<input type="text" value="${movieVO.name}" name="movieName">
-			<input type="text" value="${theaterVO.name}" name="name">
-			<input type="text" value="${bookingVO.roomName}" name="roomName">
-			<input type="text" value="${bookingVO.startTime}" name="startTime">
-			<input type="text" value="${bookingVO.yoil}" name="yoil">
+			<input type="text" value="${seat}" name="seatNum">
 			<input type="text" value="${bookingVO.movieTime}" name="movieTime">
-			<input type="text" value="${sizeCount}" name="sizeCount">
+			<input type="text" value="${movieVO.movieNum}" name="movieNum">
+			<input type="text" value="${member.id}" name="id">
+			<input type="text" value="${movieVO.name}" name="movieName">
 			
-			
-			
-			
-			
-			<c:forEach items="${seatList}" var="list">
-			<input type="hidden" value="${list}" name="seatList">
-			</c:forEach>
+			<input type="text" value="${sizeCount}" name="count">
+			<input type="text" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
+			<input type="text" value="${bookingVO.startTime}" name="viewDate">
+
 			
 
 			
@@ -530,7 +524,7 @@
 						<div class="btn-group"> <!-- ${pageContext.request.contextPath} -->
 							<a href="javascript:history.back()"
 								class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 -->
-							</a> <button type="submit" w-data="600" h-data="400"
+							</a> <button type="button" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"
 								title="결제">결제</button>
 
@@ -550,7 +544,7 @@
 			})
 
 			</script>
-			
+			</form>
 			 <!-- ---------------------------form----------------------------------------------- -->
 
 		</div>

@@ -23,7 +23,7 @@
 			    merchant_uid : 'merchant_' + new Date().getTime(),
 			    name : '${movieVO.name}',
 
-			    amount : ${ticketVO.count}*8000,
+			    amount : 100,//${ticketVO.count}*8000,
 
 			    buyer_email : '${member.email}',
 			    buyer_name : '${member.name}',
@@ -47,17 +47,17 @@
 			        
 			        alert(msg);
 			        
-// 				    $.post("./payment", {payType:'1', payInfo:'${payInfo}', payTotal: ${vo.placePrice}*${days}+${vo.placePrice}*0.06/*rsp.paid_amount*/, bookingNum:'${bvo.bookingNum}'}, function(result) {
+			        $.post("./payment", {seatNum:'${ticketVO.seatNum}', movieTime:'${ticketVO.movieTime}', id: '${ticketVO.id}', count:'${ticketVO.count}', movieNum:'${movieVO.movieNum}', theaterRoomCode:'${ticketVO.theaterRoomCode}', viewDate:'${ticketVO.viewDate}', movieName:'${movieVO.name}'}, function(result) {
+
+						if(result>0){
+				    	opener.$("#myForm").submit();
+				        self.close();
+						} else{
+
+							alert("결제 취소")
+						}
 						
-// 						if (result>0){
-// 							alert(msg);
-							
-// 						} else {
-// 							msg='결제에 문제가 있어 취소되었습니다.'
-// 							alert(msg);
-// 						}
-						
-//					});
+					});
 				    
 			    } else {
 			        var msg = '결제에 실패하였습니다.';

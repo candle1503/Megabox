@@ -95,9 +95,9 @@
         </div>
 
 			<input name="movieNum" value="${vo.movieNum}" hidden="true" >
-				<input name="writer" value="practice" hidden="true">
+				<input name="writer" value="${member.id }" hidden="true">
 				<input name="point" class="reviewRate" value="0" hidden="true">
-				<input name="ticketNum" value="111" hidden="true">
+				<input name="ticketNum" value="${ticketVO.ticketNum }" hidden="true">
 				<input name="likePoint" class="likePoint" value="없음" hidden="true">
 			    <div class="form-group">
 			      

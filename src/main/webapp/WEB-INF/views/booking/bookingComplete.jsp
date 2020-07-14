@@ -34,10 +34,10 @@
 							<p>
 								티켓 예매번호
 								<!-- 티켓 예매번호 -->
-								<span class="roboto">0000-000-00000</span>
+								<span class="roboto">${ticketVO.ticketCode }</span>
 							</p>
 							<img
-								src="/upload/movie/${fileName}"
+								src="/upload/movie/${file[0].fileName}"
 								alt="" onerror="noImg(this)">
 							<!-- <img
 								src="https://img.megabox.co.kr/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_316.jpg"
@@ -50,11 +50,15 @@
 								<p class="tit">
 									<strong>예매가 완료되었습니다 <!-- 예매가 완료되었습니다 --> <i>!</i></strong> <span
 										class="righten"> <i class="iconset ico-circle-point"></i>
-										고객님의 상영익일 적립예정 포인트는 <!-- 고객님의 상영익일 적립예정 포인트는 --> <em>600P</em>입니다.
+										고객님의 상영익일 적립예정 포인트는 <!-- 고객님의 상영익일 적립예정 포인트는 --> <em class="mPoint"></em>입니다.
 										<!-- 입니다. --></span>
 
 								</p>
 							</div>
+							<script type="text/javascript">
+								var point =${ticketVO.count}*8000/10
+								$(".mPoint").html(point+"P")
+							</script>
 
 							<div class="movie-info-middle">
 								<ul class="dot-list gray">
@@ -72,14 +76,14 @@
 										<span class="movie-grade small age-19" style="width: 20px; margin-left: 95px;">${movieVO.age}</span>
 									</c:if>${movieVO.name}</li>
 									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span>${theaterVO.name} /
-										${bookingVO.roomName}</li>
-									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${bookingVO.startTime}(${bookingVO.yoil}) / ${bookingVO.movieTime}</li>
-									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;일반 ${sizeCount}명</li>
+										${theaterVO.roomName}</li>
+									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${ticketVO.viewDate} <em id="yoil"></em> &nbsp;${ticketVO.movieTime}</li>
+									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;일반 ${ticketVO.count}명</li>
 									
-									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;<c:forEach items="${seatResult}" varStatus="i">${seatResult[i.index]}</c:forEach></li>
+									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;${ticketVO.seatNum }</li>
 									
-									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;${phone}</li>
-									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto">${size}</strong>
+									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;${member.phone}</li>
+									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto">${ticketVO.count*8000}</strong>
 										원 <!-- 원 --> <br> <em></em></li>
 								</ul>
 
@@ -117,6 +121,21 @@
 
 
 								<script type="text/javascript">
+
+								function getInputDayLabel() {
+
+									var viewDay = ${ticketVO.viewDate.day}
+								    
+								    var week = new Array('일', '월', '화', '수', '목', '금', '토');
+
+								    var todayLabel = week[viewDay];
+								    
+								    return todayLabel;
+								}
+								$("#yoil").html("("+getInputDayLabel()+")");
+
+								
+								
 									//예매 사용 카드번호 체크
 									$.fn.megaBoxCardNumberCheck = function() {
 										$(this).on(

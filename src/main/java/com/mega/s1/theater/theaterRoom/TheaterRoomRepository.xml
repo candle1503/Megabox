@@ -8,7 +8,7 @@
 		select * from theaterRoom where name=#{name}
 	</select>
 	
-	<select id="getRoom" parameterType="TheaterRoomVO">
+	<select id="getRoom" parameterType="TheaterRoomVO" resultType="TheaterRoomVO">
 		select * from theaterRoom where theaterRoomCode=#{theaterRoomCode}
 	</select>
 
