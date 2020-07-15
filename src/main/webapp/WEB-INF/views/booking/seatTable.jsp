@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    										
+    										<button type="button" class="btn-seat-row" title="A 행"
+													style="position: absolute; left: 206px; top: 50px;">A</button>
+											<button type="button" class="btn-seat-row" title="B 행"
+											style="position: absolute; left: 206px; top: 70px;">B</button>
+										<button type="button" class="btn-seat-row" title="C 행"
+											style="position: absolute; left: 206px; top: 90px;">C</button>
+										<button type="button" class="btn-seat-row" title="D 행"
+											style="position: absolute; left: 206px; top: 110px;">D</button>
+										<button type="button" class="btn-seat-row" title="E 행"
+											style="position: absolute; left: 206px; top: 130px;">E</button>
+										<button type="button" class="btn-seat-row" title="F 행"
+											style="position: absolute; left: 206px; top: 150px;">F</button>
+										<button type="button" class="btn-seat-row" title="G 행"
+											style="position: absolute; left: 206px; top: 170px;">G</button>
+										<button type="button" class="btn-seat-row" title="H 행"
+											style="position: absolute; left: 206px; top: 190px;">H</button>
+    			
 											<c:if test="${seatList[0].booked eq 0}">
 												<button type="button" title="${seatList[0].seatNum}"
 													class="jq-tooltip seat-condition standard common"
