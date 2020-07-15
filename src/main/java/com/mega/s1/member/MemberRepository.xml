@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="getReviewList" parameterType="MemberVO" resultType="ReviewVO">
-		select * from review where writer=#{id}
+		select * from review where writer=#{id} order by reviewNum desc
 	</select>
 	
 	<select id="getMovieImage" parameterType="Integer" resultType="String">
