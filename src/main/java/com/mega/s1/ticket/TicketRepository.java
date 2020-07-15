@@ -8,4 +8,10 @@ import org.springframework.stereotype.Repository;
 public interface TicketRepository {
 
 	public int ticketInsert(TicketVO ticketVO) throws Exception;
+	
+	public TicketVO resultPage(TicketVO ticketVO) throws Exception;
+	
+	public TicketVO reviewCheck(TicketVO ticketVO) throws Exception;
+	
+	public int reviewDone(TicketVO ticketVO) throws Exception;
 }

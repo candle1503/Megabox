@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,16 @@
 </head>
 <body>
 
+
 <!-- 레이어 : 관람평 등록 -->
+
+<c:if test="${ticketVO eq null}">
+	<script type="text/javascript">
+		alert("관람하신 분에 한해서 1회만 작성 가능합니다.");
+		location.reload();
+	</script>
+</c:if>
+<c:if test="${ticketVO ne null }">
 
     <div class="wrap">
      	<form action="./reviewInsert" method="post">   
@@ -95,9 +105,9 @@
         </div>
 
 			<input name="movieNum" value="${vo.movieNum}" hidden="true" >
-				<input name="writer" value="practice" hidden="true">
+				<input name="writer" value="${member.id }" hidden="true">
 				<input name="point" class="reviewRate" value="0" hidden="true">
-				<input name="ticketNum" value="111" hidden="true">
+				<input name="ticketNum" value="${ticketVO.ticketNum }" hidden="true">
 				<input name="likePoint" class="likePoint" value="없음" hidden="true">
 			    <div class="form-group">
 			      
@@ -174,5 +184,6 @@
     });
 	
 </script>
+</c:if>
 </body>
 </html>

@@ -1,30 +1,76 @@
 package com.mega.s1.ticket;
 
+
+
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mega.s1.movie.MovieService;
+import com.mega.s1.movie.MovieVO;
+import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
+
 @Controller
-@RequestMapping("/booking/bookingSeatNext")
+@RequestMapping("/ticket/**")
 public class TicketController {
 
-//	@Autowired
-//	private TicketService ticketService;
-//	
-//	
-//	@PostMapping("bookingSeatNext")
-//	public ModelAndView ticketInfo(TicketVO ticketVO) throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		
-//		ticketVO = ticketService.ticketInfo(ticketVO);
-//		
-//		System.out.println("ticketControllerTC:"+ticketVO.getTicketCode());
-//		
-//		mv.addObject("ticketVO", ticketVO);
-//		
-//		return mv;
-//	}
+	@Autowired
+	private TicketService ticketService;
+	
+	@Autowired
+	private MovieService movieService;
+	
+	@GetMapping("payment")
+	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO) throws Exception{
+		
+		MovieVO movieVO = new MovieVO();
+		movieVO.setMovieNum(ticketVO.getMovieNum());
+		movieVO = movieService.movieSelect(movieVO);
+
+		mv.addObject("movieVO", movieVO);
+		mv.addObject("ticketVO", ticketVO);
+		mv.setViewName("movie/payment");
+		return mv;
+	}
+
+	@PostMapping("payment")
+	@ResponseBody
+	public int paymentDone(ModelAndView mv ,TicketVO ticketVO) throws Exception{
+		
+		int result = ticketService.ticketInsert(ticketVO);
+
+		return result;
+	}
+	
+	@PostMapping("paymentDone")
+	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO) throws Exception{
+		ticketVO=ticketService.resultPage(ticketVO);
+		
+		MovieVO movieVO = new MovieVO();
+		TheaterRoomVO theaterVO = new TheaterRoomVO();
+		movieVO.setMovieNum(ticketVO.getMovieNum());
+		movieVO = movieService.movieSelect(movieVO);
+		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
+		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
+		theaterVO=ticketService.getRoom(theaterVO);
+		
+		mv.addObject("ticketVO", ticketVO);
+		mv.addObject("theaterVO", theaterVO);
+		mv.addObject("file", files);
+		mv.addObject("movieVO", movieVO);
+		mv.setViewName("booking/bookingComplete");
+		return mv;
+	}
+	
+
+	
+	
 }

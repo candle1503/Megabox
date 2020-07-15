@@ -1,5 +1,6 @@
 package com.mega.s1.booking;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.w3c.dom.ls.LSInput;
+
 
 import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieService;
@@ -37,6 +38,9 @@ public class BookingController {
 	private MovieService movieService;
 	@Autowired
 	private TheaterService theaterService;
+
+	
+
 	
 	@GetMapping("bookingTimeZone")
 	public void bookingTimeList(long startDay, Model model) throws Exception{
@@ -295,12 +299,27 @@ public class BookingController {
 		ModelAndView mv = new ModelAndView();
 		int size = seatVO.getSeatList().size();
 		mv.addObject("sizeCount", size);
+		 String texthobby = "";
+		 List<String> seatN = seatVO.getSeatList();
+	        for (int i = 0; i < seatN.size(); i++) {
+	        	if(i==(seatVO.getSeatList().size()-1)) {
+	        		texthobby += seatN.get(i);
+	        	}else {
+	        		texthobby += seatN.get(i) + ", ";
+	        	}
+	           
+	        }
+	        
 		
 		size = size*8000;
 		
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
 		
+
+		//mv.addObject("movieFileVO", movieFileVO);
+		mv.addObject("seat", texthobby);
+
 		mv.addObject("seatList", seatVO.getSeatList());
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("movieVO", movieVO);

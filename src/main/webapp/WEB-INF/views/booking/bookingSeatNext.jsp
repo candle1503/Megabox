@@ -92,23 +92,22 @@
 			</div>
 
 			<!-- seat-select-section -->
-			<form action="./bookingComplete" method="post"> <!-- ---------------------------form----------------------------------------------- -->
+			 <!-- ---------------------------form----------------------------------------------- -->
+			 <form action="../ticket/paymentDone" id="myForm" method="post">
+
 			
-			<input type="hidden" value="${bookingVO.timeCode}" name="timeCode">
-			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
-			<input type="hidden" value="${movieVO.age}" name="movieAge">
-			<input type="hidden" value="${movieVO.name}" name="movieName">
-			<input type="hidden" value="${theaterVO.name}" name="name">
-			<input type="hidden" value="${bookingVO.roomName}" name="roomName">
-			<input type="hidden" value="${bookingVO.startTime}" name="startTime">
-			<input type="hidden" value="${bookingVO.yoil}" name="yoil">
+			<input type="hidden" value="${seat}" name="seatNum">
 			<input type="hidden" value="${bookingVO.movieTime}" name="movieTime">
-			<input type="hidden" value="${sizeCount}" name="sizeCount">
-			<input type="hidden" value="${movieFileVO.fileName}" name="fileName">
+			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
+			<input type="hidden" value="${member.id}" name="id">
+			<input type="hidden" value="${movieVO.name}" name="movieName">
 			
-			<c:forEach items="${seatList}" var="list">
-			<input type="hidden" value="${list}" name="seatList">
-			</c:forEach>
+			<input type="hidden" value="${sizeCount}" name="count">
+			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
+			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
+
+			
+
 			
 			
 			<div class="seat-select-section">
@@ -203,6 +202,8 @@
 						</div>
 
 						<script type="text/javascript">
+
+							
 							$('#rdo_pay_credit').click(
 									function() {
 
@@ -367,6 +368,8 @@
 						</div>
 
 						<script type="text/javascript">
+							
+						
 							$('#cardDrop')
 									.click(
 											function() {
@@ -521,7 +524,7 @@
 						<div class="btn-group"> <!-- ${pageContext.request.contextPath} -->
 							<a href="javascript:history.back()"
 								class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 -->
-							</a> <button type="submit" w-data="600" h-data="400"
+							</a> <button type="button" w-data="600" h-data="400"
 								class="button active btn-modal-open" id="btn_booking_pay"
 								title="결제">결제</button>
 
@@ -535,8 +538,14 @@
 
 			</div>
 			<!--// seat-select-section -->
-			
-			</form> <!-- ---------------------------form----------------------------------------------- -->
+			<script type="text/javascript">
+			$('#btn_booking_pay').click(function(){
+				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${bookingVO.startTime}", "PopupWin", "top=200, left=400, width=850,height=600")
+			})
+
+			</script>
+			</form>
+			 <!-- ---------------------------form----------------------------------------------- -->
 
 		</div>
 		<!--// quick-reserve -->
