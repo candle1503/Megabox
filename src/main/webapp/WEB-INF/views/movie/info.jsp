@@ -99,7 +99,7 @@
             <dl>
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
-                    <span id="rkTag">0 %</span>
+                    <span id="rkTag">${vo.bookingRate } %</span>
                 </dd>
             </dl>
 

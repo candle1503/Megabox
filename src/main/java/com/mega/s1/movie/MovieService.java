@@ -203,5 +203,13 @@ public class MovieService {
 	public int imageDelete(MovieFileVO movieFileVO) throws Exception{
 		return movieFileRepository.imageDelete(movieFileVO);
 	}
+	
+	public int viewUp(MovieVO movieVO) throws Exception{
+		return movieRepository.viewUp(movieVO);
+	}
+	
+	public long ranking(MovieVO movieVO) throws Exception{
+		return movieRepository.ranking(movieVO);
+	}
 
 }

@@ -23,6 +23,7 @@
 		<result column="character" property="character"/>
 		<result column="playTime" property="playTime"/>
 		<result column="views" property="views"/>
+		<result column="bookingRate" property="bookingRate" />
 		<collection property="movieFileVO" resultMap="MovieFileVO"></collection>
 	</resultMap>
 	
@@ -32,6 +33,7 @@
 		(select movieNum, min(fileNum) as min_fileNum from movieFile where status=2 group by movieNum) as F2 
 		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
 		on M.movieNum = MF.movieNum
+		order by bookingRate desc
 	</select>
 
 
@@ -99,7 +101,8 @@
 		(select movieNum, min(fileNum) as min_fileNum from movieFile where status=2 group by movieNum) as F2 
 		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
 		on M.movieNum = MF.movieNum
-		where M.openDay > sysdate() 
+		where M.openDay > sysdate()
+		order by bookingRate desc 
 		]]>
 	</select>
 	
@@ -111,6 +114,7 @@
 		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
 		on M.movieNum = MF.movieNum
 		where M.openDay <= sysdate() 
+		order by bookingRate desc
 		]]>
 	</select>
 	
@@ -118,5 +122,15 @@
 		update movie set name=#{name}, director=#{director}, genre=#{genre}, openDay=#{openDay}, age=#{age}, contents=#{contents}, movie.character=#{character}, playTime=#{playTime}
 		where movieNum=#{movieNum}
 	</update>
+	
+	<update id="viewUp" parameterType="MovieVO">
+		update movie set views=#{views}+1 where movieNum=#{movieNum}
+	</update>
+	
+	<select id="ranking" parameterType="MovieVO" resultType="Long">
+		select (SELECT COUNT(*) FROM movie WHERE bookingRate >= t.bookingRate) AS ranking, t.name
+		FROM movie t
+		WHERE t.movieNum = #{movieNum}
+	</select>
 	
 </mapper>

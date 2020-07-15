@@ -58,6 +58,7 @@ public class MovieController {
 	public ModelAndView movieSelect(ModelAndView mv, MovieVO movieVO, Pager pager) throws Exception{
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		MovieVO vo = movieService.movieSelect(movieVO);
+		long rank = movieService.ranking(movieVO);
 		List<ReviewVO> review= movieService.reviewPage(pager);
 		DecimalFormat df = new DecimalFormat("#,###");
 		String viewer = df.format(vo.getViews());
@@ -138,6 +139,7 @@ public class MovieController {
 		mv.addObject("vo", vo);
 		mv.addObject("count", all);
 		mv.addObject("file", files);
+		mv.addObject("rank", rank);
 		mv.setViewName("movie/movieInfo");
 		return mv;
 	}

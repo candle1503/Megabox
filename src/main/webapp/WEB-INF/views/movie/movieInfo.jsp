@@ -122,7 +122,7 @@ $(function(){
 				<p class="tit">예매율</p>
 		
 					
-						<p class="cont"><em>1</em>위 (46.5%)</p>
+						<p class="cont"><em>${rank }</em>위 ${vo.bookingRate }%</p>
 					
 				
 
@@ -398,7 +398,7 @@ $(function(){
             <dl>
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
-                    <span id="rkTag">0 %</span>
+                    <span id="rkTag">${vo.bookingRate } %</span>
                 </dd>
             </dl>
 
