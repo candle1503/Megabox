@@ -59,9 +59,9 @@
 				<div class="tab-block tab-layer">
 					<ul>
 						<li data-url="/mypage/bookinglist?tab=01" data-tit="예매내역"
-							title="예매내역 탭으로 이동" class="on"><a href="./bookingMy"
+							title="예매내역 탭으로 이동" id="bookedBefore" class="bookedTab on"><a href="./bookingMy"
 							class="btn">예매 내역 </a></li>
-						<li data-url="/mypage/bookinglist?tab=02" data-tit="구매내역" id="bookedAfter"
+						<li data-url="/mypage/bookinglist?tab=02" data-tit="구매내역" id="bookedAfter" class="bookedTab"
 							title="구매내역 탭으로 이동"><a href="#After" class="btn">지난 내역
 						</a></li>
 					</ul>
@@ -78,9 +78,15 @@
 					}
 					
 					$("#bookedAfter").click(function(){
+						$(this).addClass("on");
+						$("#bookedBefore").removeClass("on");
+						
 						bookedCompAfter(id);
 					});
 
+					$("#bookedBefore").click(function(){
+						$(this).addClass("on");
+					});
 				
 				</script>
 				
@@ -173,9 +179,9 @@
 												alt="결백" onerror="noImg(this)"></a>
 											<table class="table">
 												<colgroup>
-													<col style="width: 75px;">
+													<col style="width: 100px;">
 													<col style="width: 230px;">
-													<col style="width: 80px;">
+													<col style="width: 100px;">
 													<col>
 												</colgroup>
 												<tbody>
@@ -208,18 +214,18 @@
 											<div class="bg-round">
 												<table class="table">
 													<colgroup>
-														<col style="width: 75px;">
+														<col style="width: 100px;">
 														<col style="width: 230px;">
 														<col style="width: 100px;">
 														<col>
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row" class="a-r">결제일시</th>
+															<!-- <th scope="row" class="a-r">결제일시</th>
 															<td>결제일시 JSTL <a href="#"
 																class="button gray-line x-small" title="결제정보">결제정보</a>
-															</td>
-															<th scope="row">적립예정 포인트</th>
+															</td> -->
+															<th scope="row" class="a-r">적립예정 포인트</th>
 															<td>600 P</td>
 														</tr>
 													</tbody>

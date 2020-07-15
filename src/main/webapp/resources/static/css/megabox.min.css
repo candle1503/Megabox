@@ -34460,7 +34460,8 @@ body.body-iframe .modal-layer2 {
 	margin: 5px 0 0 0;
 	padding: 5px 0;
 	background-color: #f3f4f6;
-	border-radius: 5px
+	border-radius: 5px;
+	width: 250px;
 }
 
 .history-reservation ul li .round .btn-group {

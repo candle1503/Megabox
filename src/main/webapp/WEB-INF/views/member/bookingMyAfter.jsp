@@ -26,9 +26,9 @@
 							onerror="noImg(this)"></a>
 						<table class="table">
 							<colgroup>
-								<col style="width: 75px;">
+								<col style="width: 100px;">
 								<col style="width: 230px;">
-								<col style="width: 80px;">
+								<col style="width: 100px;">
 								<col>
 							</colgroup>
 							<tbody>
@@ -61,17 +61,13 @@
 						<div class="bg-round">
 							<table class="table">
 								<colgroup>
-									<col style="width: 75px;">
+									<col style="width: 100px;">
 									<col style="width: 230px;">
 									<col style="width: 100px;">
 									<col>
 								</colgroup>
 								<tbody>
 									<tr>
-										<th scope="row" class="a-r">결제일시</th>
-										<td>결제일시 JSTL <a href="#"
-											class="button gray-line x-small" title="결제정보">결제정보</a>
-										</td>
 										<th scope="row">적립예정 포인트</th>
 										<td>600 P</td>
 									</tr>
