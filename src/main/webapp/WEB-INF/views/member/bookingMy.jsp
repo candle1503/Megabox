@@ -186,7 +186,7 @@
 												</colgroup>
 												<tbody>
 													<tr>
-														<th scope="row" class="a-r">예매번호</th>
+														<th scope="row">예매번호</th>
 														<td colspan="3"><em class="num">${bookedCompList.ticketCode}</em></td>
 													</tr>
 													<tr>
