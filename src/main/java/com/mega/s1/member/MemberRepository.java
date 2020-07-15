@@ -43,4 +43,13 @@ public interface MemberRepository {
 	
 	//deleteReview
 	public void deleteReview(String reviewNum)throws Exception;
+	
+	//updateTicket
+	public void updateTicket() throws Exception;
+	
+	//bookedCompleteList
+	public List<TicketVO> bookedCompleteList(String id) throws Exception;
+	
+	//bookedCompleteAfterList
+	public List<TicketVO> bookedCompleteAfterList(String id) throws Exception;
 }

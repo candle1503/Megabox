@@ -1,12 +1,15 @@
 package com.mega.s1.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.mega.s1.member.memberFile.MemberFileVO;
+import com.mega.s1.movie.MovieService;
+import com.mega.s1.movie.MovieVO;
+import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
+import com.mega.s1.theater.TheaterVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomRepository;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
+import com.mega.s1.ticket.TicketVO;
 
 @Controller
 @RequestMapping("/member/**")
@@ -23,6 +34,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private MovieService movieService;
 	
 	@GetMapping("memberJoin")
 	public ModelAndView setJoin() throws Exception{
@@ -202,7 +216,98 @@ public class MemberController {
 	}
 	
 	@GetMapping("bookingMy")
-	public void bookingMy() throws Exception {
+	public void bookingMy(HttpSession session, String id, Model model, TicketVO ticketVO) throws Exception {
+		//현재 날짜로 부터 지난 티켓의 status 1로 변경
+		memberService.updateTicket();
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		id = memberVO.getId();
+		model.addAttribute("id", id);
+		
+		List<TicketVO> bookedCompAr = memberService.bookedCompleteList(id);
+		
+		int size = bookedCompAr.size();
+		model.addAttribute("bookedSize", size);
+		
+		Map<Integer, String> theaterNameMap = new HashMap<>();
+		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
+		
+		String viewDateCut;
+		String viewDateTimeCut;
+		
+		for(int i=0; i<size; i++) {
+			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
+			theaterRoomVO.setTheaterRoomCode(bookedCompAr.get(i).getTheaterRoomCode());
+			
+			theaterRoomVO = memberService.getRoom(theaterRoomVO);
+			
+			theaterNameMap.put(i, theaterRoomVO.getName());
+			theaterRoomNameMap.put(i, theaterRoomVO.getRoomName());
+			
+			model.addAttribute("theaterName", theaterNameMap);
+			model.addAttribute("theaterRoomName", theaterRoomNameMap);
+			
+			//
+			viewDateCut = bookedCompAr.get(i).getViewDate().substring(0, 10);
+			viewDateTimeCut = bookedCompAr.get(i).getViewDate().substring(11, 16);
+			
+			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
+			
+			model.addAttribute("viewDate", viewDateR);
+			
+			MovieVO movieVO = new MovieVO();
+			movieVO.setMovieNum(bookedCompAr.get(i).getMovieNum());
+			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
+			
+			model.addAttribute("mvfile", mvfilesAr);
+		}
+		
+		model.addAttribute("bookedCompAr", bookedCompAr);
+	}
+	
+	@GetMapping("bookingMyAfter")
+	public void bookingMyAfter(String id, Model model) throws Exception{
+		
+		List<TicketVO> bookedCompAfterAr = memberService.bookedCompleteAfterList(id);
+		
+		int size = bookedCompAfterAr.size();
+		model.addAttribute("bookedAfterSize", size);
+		
+		Map<Integer, String> theaterNameMap = new HashMap<>();
+		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
+		
+		String viewDateCut;
+		String viewDateTimeCut;
+		
+		for(int i=0; i<size; i++) {
+			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
+			theaterRoomVO.setTheaterRoomCode(bookedCompAfterAr.get(i).getTheaterRoomCode());
+			
+			theaterRoomVO = memberService.getRoom(theaterRoomVO);
+			
+			theaterNameMap.put(i, theaterRoomVO.getName());
+			theaterRoomNameMap.put(i, theaterRoomVO.getRoomName());
+			
+			model.addAttribute("theaterName", theaterNameMap);
+			model.addAttribute("theaterRoomName", theaterRoomNameMap);
+			
+			//
+			viewDateCut = bookedCompAfterAr.get(i).getViewDate().substring(0, 10);
+			viewDateTimeCut = bookedCompAfterAr.get(i).getViewDate().substring(11, 16);
+			
+			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
+			
+			model.addAttribute("viewDate", viewDateR);
+			
+			MovieVO movieVO = new MovieVO();
+			movieVO.setMovieNum(bookedCompAfterAr.get(i).getMovieNum());
+			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
+			
+			model.addAttribute("mvfile", mvfilesAr);
+		}
+		
+		model.addAttribute("bookedCompAfterAr", bookedCompAfterAr);
+		
 	}
 	
 	@GetMapping("reviewList")

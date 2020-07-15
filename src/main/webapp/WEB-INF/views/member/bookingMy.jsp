@@ -59,13 +59,31 @@
 				<div class="tab-block tab-layer">
 					<ul>
 						<li data-url="/mypage/bookinglist?tab=01" data-tit="예매내역"
-							title="예매내역 탭으로 이동" class="on"><a href="#myBokdArea"
+							title="예매내역 탭으로 이동" class="on"><a href="./bookingMy"
 							class="btn">예매 내역 </a></li>
-						<li data-url="/mypage/bookinglist?tab=02" data-tit="구매내역"
-							title="구매내역 탭으로 이동"><a href="#myPurcArea" class="btn">지난 내역
+						<li data-url="/mypage/bookinglist?tab=02" data-tit="구매내역" id="bookedAfter"
+							title="구매내역 탭으로 이동"><a href="#After" class="btn">지난 내역
 						</a></li>
 					</ul>
 				</div>
+				
+				<script type="text/javascript">
+					var id = "${id}";
+
+					function bookedCompAfter(id){
+						$.get("bookingMyAfter?id="+id, function(result){
+							$("#bokdList").empty();
+							$("#bokdList").append(result);
+						});
+					}
+					
+					$("#bookedAfter").click(function(){
+						bookedCompAfter(id);
+					});
+
+				
+				</script>
+				
 				<div class="tab-cont-wrap">
 
 					<!-- 예매내역 -->
@@ -138,19 +156,20 @@
 							<div class="board-list-util">
 								<p class="result-count pt00">
 								<!-- size뿌려줄거 -->
-									<strong> 총 <b class="font-gblue">1</b>건
+									<strong> 총 <b class="font-gblue">${bookedSize}</b>건
 									</strong>
 								</p>
 							</div>
 							<div class="history-reservation">
 							
 							<!-- c:foreach로 뿌려줄 거 -->
-								<ul>
+								<ul id="bookedList">
+									<c:forEach items="${bookedCompAr}" var="bookedCompList" varStatus="i">
 									<li sell-tran-no="13722007010094143868">
 										<div class="round">
-											<a href="/movie-detail?rpstMovieNo=20003500" class="img"
-												title="결백 "><img
-												src="https://img.megabox.co.kr/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_316.jpg"
+											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompList.movieNum}" class="img"
+												title="${bookedCompList.movieName} "><img
+												src="upload/movie/${mvfile[0].fileName}"
 												alt="결백" onerror="noImg(this)"></a>
 											<table class="table">
 												<colgroup>
@@ -162,27 +181,27 @@
 												<tbody>
 													<tr>
 														<th scope="row" class="a-r">예매번호</th>
-														<td colspan="3"><em class="num">0000-000-00000</em></td>
+														<td colspan="3"><em class="num">${bookedCompList.ticketCode}</em></td>
 													</tr>
 													<tr>
 														<th scope="row" class="a-r">영화명</th>
 														<td colspan="3">
 															<p class="tit-movie">
-																<span>영화명 JSTL</span> <span>2D</span>
+																<span>${bookedCompList.movieName}</span> <span>2D</span>
 															</p>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row" class="a-r">극장/상영관</th>
-														<td>극장명 JSTL/상영관 JSTL</td>
+														<td>${theaterName[i.index]} / ${theaterRoomName[i.index]}</td>
 														<th scope="row">관람인원</th>
-														<td>일반 1명</td>
+														<td>일반 ${bookedCompList.count}명</td>
 													</tr>
 													<tr>
 														<th scope="row" class="a-r">관람일시</th>
-														<td>상영날짜 JSTL</td>
+														<td>${viewDate}</td>
 														<th scope="row">관람좌석</th>
-														<td>E열 6</td>
+														<td>${bookedCompList.seatNum}</td>
 													</tr>
 												</tbody>
 											</table>
@@ -208,12 +227,17 @@
 											</div>
 										</div>
 									</li>
+									</c:forEach>
+									
+									
 								</ul>
 								
 								
 								
 							</div>
 						</div>
+						
+
 
 					</div>
 

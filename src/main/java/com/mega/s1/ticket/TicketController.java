@@ -69,6 +69,9 @@ public class TicketController {
 		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
 		theaterVO=ticketService.getRoom(theaterVO);
 		
+		
+		
+		
 		mv.addObject("day", da);
 		mv.addObject("ticketVO", ticketVO);
 		mv.addObject("theaterVO", theaterVO);
