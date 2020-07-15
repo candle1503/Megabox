@@ -3,6 +3,7 @@ package com.mega.s1.ticket;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class TicketController {
 		System.out.println(ticketVO.getTimeCode());
 		System.out.println(ticketVO.getSeatNum());
 		String[] seat = ticketVO.getSeatNum().split(",");
-		List<SeatVO> seatVOs;
+		List<SeatVO> seatVOs = new ArrayList<SeatVO>();
 		for(int i=0; i<seat.length; i++) {
 			SeatVO seatVO = new SeatVO();
 			seat[i] = seat[i].trim();
