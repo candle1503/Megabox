@@ -47,4 +47,16 @@
 		delete from review where reviewNum=#{reviewNum}
 	</delete>
 	
+	<update id="updateTicket" parameterType="String">
+		update ticket set status = 1 where now() > viewDate 
+	</update>
+	
+	<select id="bookedCompleteList" parameterType="String" resultType="TicketVO">
+		select * from ticket where status = 0 and id = #{id}
+	</select>
+	
+	<select id="bookedCompleteAfterList" parameterType="String" resultType="TicketVO">
+		select * from ticket where status = 1 and id = #{id}
+	</select>
+	
 </mapper>

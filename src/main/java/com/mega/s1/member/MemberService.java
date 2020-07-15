@@ -16,6 +16,9 @@ import com.mega.s1.member.memberFile.MemberFileRepository;
 import com.mega.s1.member.memberFile.MemberFileVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
+import com.mega.s1.theater.theaterRoom.TheaterRoomRepository;
+import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
+import com.mega.s1.ticket.TicketVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
 
@@ -38,6 +41,8 @@ public class MemberService {
 	@Value("${member.filePath}")
 	private String filePath;
 
+	@Autowired
+	private TheaterRoomRepository theaterRoomRepository;
 	
 	public MemberFileVO getMemberFile(MemberVO memberVO) throws Exception{
 		return memberFileRepository.getMemberFile(memberVO);
@@ -172,6 +177,22 @@ public class MemberService {
 	
 	public void deleteReview(String reviewNum) throws Exception{
 		memberRepository.deleteReview(reviewNum);
+	}
+	
+	public void updateTicket() throws Exception{
+		memberRepository.updateTicket();
+	}
+	
+	public List<TicketVO> bookedCompleteList(String id) throws Exception{
+		return memberRepository.bookedCompleteList(id);
+	}
+	
+	public TheaterRoomVO getRoom(TheaterRoomVO theaterRoomVO) throws Exception{
+		return theaterRoomRepository.getRoom(theaterRoomVO);
+	}
+	
+	public List<TicketVO> bookedCompleteAfterList(String id) throws Exception{
+		return memberRepository.bookedCompleteAfterList(id);
 	}
 	
 }
