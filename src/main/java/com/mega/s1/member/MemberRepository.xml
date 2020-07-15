@@ -48,7 +48,7 @@
 	</delete>
 	
 	<update id="updateTicket" parameterType="String">
-		update ticket set status = 1 where now() > viewDate 
+		update ticket set status = 1 where status=0 and now() > viewDate 
 	</update>
 	
 	<select id="bookedCompleteList" parameterType="String" resultType="TicketVO">
