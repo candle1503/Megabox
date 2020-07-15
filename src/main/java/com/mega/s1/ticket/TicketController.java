@@ -30,20 +30,20 @@ public class TicketController {
 	
 	@GetMapping("payment")
 	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO) throws Exception{
-		System.out.println(ticketVO.getTimeCode());
-		System.out.println(ticketVO.getSeatNum());
-		String[] seatNum = ticketVO.getSeatNum().split(",");
-		for(int i=0; i<seatNum.length; i++) {
-			seatNum[i] = seatNum[i].trim();
-			System.out.println(seatNum[i]);
-		}
-//		MovieVO movieVO = new MovieVO();
-//		movieVO.setMovieNum(ticketVO.getMovieNum());
-//		movieVO = movieService.movieSelect(movieVO);
-//
-//		mv.addObject("movieVO", movieVO);
-//		mv.addObject("ticketVO", ticketVO);
-//		mv.setViewName("movie/payment");
+//		System.out.println(ticketVO.getTimeCode());
+//		System.out.println(ticketVO.getSeatNum());
+//		String[] seatNum = ticketVO.getSeatNum().split(",");
+//		for(int i=0; i<seatNum.length; i++) {
+//			seatNum[i] = seatNum[i].trim();
+//			System.out.println(seatNum[i]);
+//		}
+		MovieVO movieVO = new MovieVO();
+		movieVO.setMovieNum(ticketVO.getMovieNum());
+		movieVO = movieService.movieSelect(movieVO);
+
+		mv.addObject("movieVO", movieVO);
+		mv.addObject("ticketVO", ticketVO);
+		mv.setViewName("movie/payment");
 		return mv;
 	}
 
