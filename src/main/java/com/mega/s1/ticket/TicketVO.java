@@ -28,6 +28,9 @@ public class TicketVO {
 	
 	private String movieName;
 	
+	//예매한 사람들 수
+	private int amount;
+	
 	//좌석 비교할때 써야함
 	private int timeCode;
 }

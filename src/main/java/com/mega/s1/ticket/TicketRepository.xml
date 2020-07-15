@@ -70,5 +70,20 @@
 	</select>
 	
 	
+	<select id="bookingCount" resultType="TicketVO">
+		select movieNum, count(ticketNum) as amount from ticket where viewDate>sysdate() group by movieNum
+	</select>
+	
+	<select id="bookingAllCount" resultType="Long">
+		select count(ticketNum) from ticket where viewDate>sysdate()
+	</select>
+	
+	<update id="bookingRateReset">
+		update movie set bookingRate=0
+	</update>
+	
+	<update id="bookingRateUpdate" parameterType="MovieVO">
+		update movie set bookingRate=#{bookingRate} where movieNum=#{movieNum}
+	</update>
 	
 </mapper>
