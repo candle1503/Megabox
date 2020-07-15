@@ -1,13 +1,13 @@
 package com.mega.s1.ticket;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
+import com.mega.s1.movie.MovieVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomRepository;
 import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 
@@ -50,4 +50,22 @@ public class TicketService {
 	public int reviewDone(TicketVO ticketVO) throws Exception{
 		return ticketRepository.reviewDone(ticketVO);
 	}
+	
+	public long bookingAllCount() throws Exception{
+		return ticketRepository.bookingAllCount();
+	}
+	
+	public List<TicketVO> bookingCount() throws Exception {
+		return ticketRepository.bookingCount();
+	}
+	
+	public int bookingRateReset() throws Exception {
+		return ticketRepository.bookingRateReset();
+	}
+	
+	public int bookingRateUpdate(MovieVO movieVO) throws Exception {
+		
+		return ticketRepository.bookingRateUpdate(movieVO);
+	}
+	
 }
