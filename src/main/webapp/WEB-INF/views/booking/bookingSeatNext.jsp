@@ -54,7 +54,7 @@
 			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${member.id}" name="id">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
-			<input type="text" value="${time}" name="time">
+			<input type="text" value="${time}" name="viewDate">
 			
 			
 			<input type="hidden" value="${sizeCount}" name="count">
@@ -477,7 +477,7 @@
 			<!--// seat-select-section -->
 			<script type="text/javascript">
 			$('#btn_booking_pay').click(function(){
-				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${bookingVO.startTime}", "PopupWin", "top=200, left=400, width=850,height=600")
+				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}", "PopupWin", "top=200, left=400, width=850,height=600")
 			})
 
 			</script>

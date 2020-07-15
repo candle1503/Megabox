@@ -25,7 +25,7 @@ public class TicketVO {
 	
 	private int theaterRoomCode;
 	
-	private Date viewDate;
+	private String viewDate;
 	
 	private int status;
 	

@@ -53,6 +53,7 @@ public class TicketController {
 	@PostMapping("paymentDone")
 	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO) throws Exception{
 		ticketVO=ticketService.resultPage(ticketVO);
+		String[] da =ticketVO.getViewDate().split(" ");
 		
 		MovieVO movieVO = new MovieVO();
 		TheaterRoomVO theaterVO = new TheaterRoomVO();
@@ -62,6 +63,7 @@ public class TicketController {
 		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
 		theaterVO=ticketService.getRoom(theaterVO);
 		
+		mv.addObject("day", da);
 		mv.addObject("ticketVO", ticketVO);
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("file", files);

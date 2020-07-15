@@ -84,7 +84,7 @@
 									</c:if>${movieVO.name}</li>
 									<li><span>관람극장/상영관 <!-- 관람극장/상영관 --></span>${theaterVO.name} /
 										${theaterVO.roomName}</li>
-									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${ticketVO.viewDate} <em id="yoil"></em> &nbsp;${ticketVO.movieTime}</li>
+									<li><span>관람일시 <!-- 관람일시 --></span> &nbsp;${day[0]} <em id="yoil"></em> &nbsp;${ticketVO.movieTime}</li>
 									<li><span>관람인원 <!-- 관람인원 --></span> &nbsp;일반 ${ticketVO.count}명</li>
 									
 									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;${ticketVO.seatNum }</li>
@@ -132,7 +132,7 @@
 
 								function getInputDayLabel() {
 
-									var viewDay = ${ticketVO.viewDate.day}
+									var viewDay = new Date(${day[0]}).getDay();
 								    
 								    var week = new Array('일', '월', '화', '수', '목', '금', '토');
 
