@@ -105,7 +105,7 @@
 			<input type="hidden" value="${sizeCount}" name="count">
 			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
 			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
-
+			
 			
 
 			
