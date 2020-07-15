@@ -67,7 +67,7 @@
 								$(".mPoint").html(point+"P")
 							</script>
 
-							<div class="movie-info-middle">
+							<div class="movie-info-middle" style="padding: 15px 0 15px 0;">
 								<ul class="dot-list gray">
 									<li><span>예매영화 <!-- 예매영화 --></span>
 									<c:if test="${movieVO.age eq '전체관람가'}">
