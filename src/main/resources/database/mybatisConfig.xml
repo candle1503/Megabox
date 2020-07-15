@@ -28,5 +28,12 @@
 		<typeAlias type="com.mega.s1.theater.theaterRoom.RoomMovieTimeVO" alias="RoomMovieTimeVO"/>
 		<typeAlias type="com.mega.s1.seat.SeatVO" alias="SeatVO"/>
 		
+		
+		
+		
+		
+		
+		<typeAlias type="com.mega.s1.ticket.TicketVO" alias="TicketVO"/>
+		
 	</typeAliases>
 </configuration>

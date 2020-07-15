@@ -1,6 +1,7 @@
 package com.mega.s1.member;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mega.s1.member.memberFile.MemberFileRepository;
 import com.mega.s1.member.memberFile.MemberFileVO;
+import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.review.ReviewVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
 
@@ -139,4 +142,33 @@ public class MemberService {
 		}
 		return result;
 	}
+	
+	public Integer getTicketCount(MemberVO memberVO) throws Exception{
+		return memberRepository.getTicketCount(memberVO);
+	}
+	
+	public Integer getReviewCount(MemberVO memberVO) throws Exception{
+		return memberRepository.getReviewCount(memberVO);
+	}
+	
+	public List<ReviewVO> getReviewList(MemberVO memberVO) throws Exception{
+		List<ReviewVO> list =  memberRepository.getReviewList(memberVO);
+		for(int i=0; i<list.size(); i++) {
+			ReviewVO reviewVO = new ReviewVO();
+			reviewVO.setReviewNum(list.get(i).getReviewNum());
+			reviewVO.setWriter(list.get(i).getWriter());
+			reviewVO.setPoint(list.get(i).getPoint());
+			reviewVO.setContents(list.get(i).getContents());
+			reviewVO.setRegDate(list.get(i).getRegDate());
+			reviewVO.setTicketNum(list.get(i).getTicketNum());
+			reviewVO.setMovieNum(list.get(i).getMovieNum());
+			reviewVO.setLikePoint(list.get(i).getLikePoint());
+			reviewVO.setFileName(memberRepository.getMovieImage(list.get(i).getMovieNum()));
+			reviewVO.setMovieName(memberRepository.getMovieName(list.get(i).getMovieNum()));
+			list.set(i, reviewVO);
+		}
+		return list;
+	}
+	
+	
 }

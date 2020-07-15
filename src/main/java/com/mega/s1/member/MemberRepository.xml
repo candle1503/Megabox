@@ -23,4 +23,23 @@
 		update member set password=#{password},email=#{email}, phone= #{phone} where id=#{id}
 	</update>
 	
+	<select id="getTicketCount" parameterType="MemberVO" resultType="Integer">
+		select count(ticketNum) from ticket where id=#{id}
+	</select>
+	
+	<select id="getReviewCount" parameterType="MemberVO" resultType="Integer">
+		select count(reviewNum) from review where writer=#{id}
+	</select>
+	
+	<select id="getReviewList" parameterType="MemberVO" resultType="ReviewVO">
+		select * from review where writer=#{id}
+	</select>
+	
+	<select id="getMovieImage" parameterType="Integer" resultType="String">
+		select fileName from movieFile where movieNum=#{movieNum} and status=2 limit 1
+	</select>
+	
+	<select id="getMovieName" parameterType="Integer" resultType="String">
+		select name from movie where movieNum=#{movieNum}
+	</select>
 </mapper>

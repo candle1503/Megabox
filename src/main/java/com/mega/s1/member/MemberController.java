@@ -1,5 +1,7 @@
 package com.mega.s1.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mega.s1.member.memberFile.MemberFileVO;
+import com.mega.s1.review.ReviewVO;
 
 @Controller
 @RequestMapping("/member/**")
@@ -84,10 +87,19 @@ public class MemberController {
 	@GetMapping("getMyPage")
 	public ModelAndView getMyPage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberFileVO memberFileVO = new MemberFileVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		if(memberVO.getId().equals("ADMIN")) {
 			mv.setViewName("admin/adminPage");
 		}else {
+			Integer ticketCount = memberService.getTicketCount(memberVO);
+			Integer reviewCount = memberService.getReviewCount(memberVO);
+			memberFileVO = memberService.getMemberFile(memberVO);
+			memberVO.setFileName(memberFileVO.getFileName());
+			memberVO.setOriName(memberFileVO.getOriName());
+			mv.addObject("ticketCount", ticketCount);
+			mv.addObject("reviewCount", reviewCount);
+			session.setAttribute("memberVO", memberVO);
 			mv.setViewName("member/memberMyPage");
 		}
 		return mv;
@@ -193,8 +205,17 @@ public class MemberController {
 	public void bookingMy() throws Exception {
 	}
 	
-	@GetMapping("myMovieStory")
-	public void myMovieStory() throws Exception {
+	@GetMapping("reviewList")
+	public ModelAndView myMovieStory(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = new MemberVO();
+		memberVO = (MemberVO)session.getAttribute("member");
+		List<ReviewVO> reviewVOs = memberService.getReviewList(memberVO);
+		int size = reviewVOs.size();
+		mv.addObject("size", size);
+		mv.addObject("List", reviewVOs);
+		mv.setViewName("member/reviewList");
+		return mv;
 	}
 	
 }

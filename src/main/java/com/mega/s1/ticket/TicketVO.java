@@ -1,7 +1,6 @@
 package com.mega.s1.ticket;
 
 import java.sql.Date;
-
 import lombok.Data;
 
 @Data
