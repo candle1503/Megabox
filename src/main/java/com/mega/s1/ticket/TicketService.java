@@ -61,7 +61,12 @@ public class TicketService {
 	
 	
 	
-	
+	public void seatUpdate(List<SeatVO> seatVOs) throws Exception{
+		
+		for(int i =0; i<seatVOs.size(); i++) {
+			ticketRepository.seatUpdate(seatVOs.get(i));
+		}
+	}
 	
 	
 		

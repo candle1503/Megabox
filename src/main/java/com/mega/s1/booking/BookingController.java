@@ -429,7 +429,6 @@ public class BookingController {
 		int result = bookingService.checkSeat(seatVOs);
 		System.out.println("결과는???"+result);
 		if(result == 1) {
-			 mv.addObject("ss", result);
 			 mv.addObject("result", 1);
 		}else {
 			mv.addObject("result", 0);

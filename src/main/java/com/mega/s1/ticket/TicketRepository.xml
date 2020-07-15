@@ -60,7 +60,9 @@
 	
 	
 	
-	
+	<update id="seatUpdate" parameterType="SeatVO">
+		update seat set booked=1 where timeCode=#{timeCode} and seatNum=#{seatNum}
+	</update>
 	
 	
 	

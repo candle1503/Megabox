@@ -57,6 +57,19 @@ public class TicketController {
 	
 	@PostMapping("paymentDone")
 	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO) throws Exception{
+		
+		String[] seats = ticketVO.getSeatNum().split(",");
+		List<SeatVO> seatVOs = new ArrayList<SeatVO>();
+		for(int i=0; i<seats.length; i++) {
+			SeatVO seatVO = new SeatVO();
+			seats[i] = seats[i].trim();
+			seatVO.setTimeCode(ticketVO.getTimeCode());
+			seatVO.setSeatNum(seats[i]);
+			seatVOs.add(i, seatVO);
+		}
+		
+		ticketService.seatUpdate(seatVOs);
+		
 		ticketVO=ticketService.resultPage(ticketVO);
 		String[] da =ticketVO.getViewDate().split(" ");
 		
@@ -68,12 +81,16 @@ public class TicketController {
 		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
 		theaterVO=ticketService.getRoom(theaterVO);
 		
+		
+		
+		
 		mv.addObject("day", da);
 		mv.addObject("ticketVO", ticketVO);
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("file", files);
 		mv.addObject("movieVO", movieVO);
 		mv.setViewName("booking/bookingComplete");
+		
 		return mv;
 	}
 	

@@ -63,7 +63,7 @@ public interface TicketRepository {
 	
 	
 	
-	
+	public void seatUpdate(SeatVO seatVO) throws Exception;
 	
 	
 	
