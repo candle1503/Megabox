@@ -96,15 +96,15 @@
 			 <form action="../ticket/paymentDone" id="myForm" method="post">
 
 			
-			<input type="text" value="${seat}" name="seatNum">
-			<input type="text" value="${bookingVO.movieTime}" name="movieTime">
-			<input type="text" value="${movieVO.movieNum}" name="movieNum">
-			<input type="text" value="${member.id}" name="id">
-			<input type="text" value="${movieVO.name}" name="movieName">
+			<input type="hidden" value="${seat}" name="seatNum">
+			<input type="hidden" value="${bookingVO.movieTime}" name="movieTime">
+			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
+			<input type="hidden" value="${member.id}" name="id">
+			<input type="hidden" value="${movieVO.name}" name="movieName">
 			
-			<input type="text" value="${sizeCount}" name="count">
-			<input type="text" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
-			<input type="text" value="${bookingVO.startTime}" name="viewDate">
+			<input type="hidden" value="${sizeCount}" name="count">
+			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
+			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
 
 			
 
