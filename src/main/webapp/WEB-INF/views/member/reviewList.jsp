@@ -78,7 +78,7 @@
 												<span><button type="button"
 														class="btn modify" id="updateBtn${i.count}" data-no="663348"
 														data-mno="01550200" data-cd="PREV" >수정</button></span> <span><button
-														type="button" class="btn del deleteBtn" data-no="663348"
+														type="button" class="btn del deleteBtn${i.count}" data-no="663348"
 														data-mno="01550200" data-cd="PREV">삭제</button></span>
 											</div>
 										</div>
@@ -104,7 +104,7 @@
 
 			for(var i=1; i<100; i++){
 				var te;
-				$(".my-appraisal").on("click", "#updateBtn"+i, function(){
+				$(".my-appraisal").on("click", "#updateBtn"+i,"#deleteBtn"+i , function(){
 					if($(this).html()=="수정"){
 					
 					te = $(this).attr('id').replace('updateBtn', '');
