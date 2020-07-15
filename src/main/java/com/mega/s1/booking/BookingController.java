@@ -37,8 +37,6 @@ public class BookingController {
 	private MovieService movieService;
 	@Autowired
 	private TheaterService theaterService;
-	@Autowired
-	private TicketService ticketService;
 	
 	@GetMapping("bookingTimeZone")
 	public void bookingTimeList(long startDay, Model model) throws Exception{
@@ -60,14 +58,6 @@ public class BookingController {
 		return mv;
 		
 	}
-
-//	@GetMapping("bookingSeat")
-//	public ModelAndView bookingSeat(RoomMovieTimeVO roomMovieTimeVO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		return mv;
-//		
-//	}
 
 	@GetMapping("bookingTest")
 	public void bookingTest() throws Exception {
@@ -311,7 +301,6 @@ public class BookingController {
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
 		
-		//mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("seatList", seatVO.getSeatList());
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("movieVO", movieVO);
@@ -328,13 +317,6 @@ public class BookingController {
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		mv.addObject("phone", memberVO.getPhone());
-		
-//		ticketVO = ticketService.ticketInfo(ticketVO);
-//		
-//		ticketService.ticketInsert(ticketVO);
-//		
-//		System.out.println("titiititi:"+ticketVO.getTicketCode());
-//		System.out.println("aaaaaaaaaaa:"+movieAge);
 		
 		mv.addObject("fileName", movieFileVO.getFileName());
 		
@@ -396,7 +378,8 @@ public class BookingController {
 			seatRownm = seatRownm + "열";
 			String seatResult;
 			
-			if(i != size -1) {
+			//seat 개수중 2개 이상이면 맨 마지막 / 제거
+			if(i != size-1) {
 				seatResult = seatRownm+" "+seatColnm+" / ";
 				seatMap.put(i, seatResult);
 			}else {
