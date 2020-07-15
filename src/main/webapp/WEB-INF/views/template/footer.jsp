@@ -4,6 +4,11 @@
 
 <footer id="footer">
 
+	<script
+		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger intent="WELCOME" chat-title="쌍용시네마봇"
+		agent-id="386f83e9-7332-4ef9-8624-91e64d82cecb" language-code="ko"></df-messenger>
+
 	<div class="quick-area" style="display: block;">
 		<a href="" class="btn-go-top" title="top" style="position: absolute;">top</a>
 	</div>
@@ -22,7 +27,7 @@
 					target="_blank" title="윤리경영 페이지로 이동">윤리경영</a></li>
 			</ul>
 
-<!-- 			<a href="#layer_looking_theater" class="btn-looking-theater"
+			<!-- 			<a href="#layer_looking_theater" class="btn-looking-theater"
 				title="극장찾기" style="margin-right: 10px;"><i
 				class="iconset ico-footer-search"></i> 극장찾기</a> -->
 		</div>
