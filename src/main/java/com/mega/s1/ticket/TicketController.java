@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
+import com.mega.s1.seat.SeatVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 
 @Controller
@@ -30,20 +31,25 @@ public class TicketController {
 	
 	@GetMapping("payment")
 	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO) throws Exception{
-//		System.out.println(ticketVO.getTimeCode());
-//		System.out.println(ticketVO.getSeatNum());
-//		String[] seatNum = ticketVO.getSeatNum().split(",");
-//		for(int i=0; i<seatNum.length; i++) {
-//			seatNum[i] = seatNum[i].trim();
-//			System.out.println(seatNum[i]);
-//		}
-		MovieVO movieVO = new MovieVO();
-		movieVO.setMovieNum(ticketVO.getMovieNum());
-		movieVO = movieService.movieSelect(movieVO);
-
-		mv.addObject("movieVO", movieVO);
-		mv.addObject("ticketVO", ticketVO);
-		mv.setViewName("movie/payment");
+		System.out.println(ticketVO.getTimeCode());
+		System.out.println(ticketVO.getSeatNum());
+		String[] seat = ticketVO.getSeatNum().split(",");
+		List<SeatVO> seatVOs;
+		for(int i=0; i<seat.length; i++) {
+			SeatVO seatVO = new SeatVO();
+			seat[i] = seat[i].trim();
+			seatVO.setTimeCode(ticketVO.getTimeCode());
+			seatVO.setSeatNum(seat[i]);
+			seatVOs.set(i, seatVO);
+		}
+		ticketService.checkSeat(seatVOs);
+//		MovieVO movieVO = new MovieVO();
+//		movieVO.setMovieNum(ticketVO.getMovieNum());
+//		movieVO = movieService.movieSelect(movieVO);
+//
+//		mv.addObject("movieVO", movieVO);
+//		mv.addObject("ticketVO", ticketVO);
+//		mv.setViewName("movie/payment");
 		return mv;
 	}
 

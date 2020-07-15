@@ -29,5 +29,5 @@ public class TicketVO {
 	private String movieName;
 	
 	//좌석 비교할때 써야함
-	private String timeCode;
+	private int timeCode;
 }
