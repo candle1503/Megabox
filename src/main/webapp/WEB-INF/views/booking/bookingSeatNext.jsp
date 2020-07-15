@@ -477,7 +477,7 @@
 			<!--// seat-select-section -->
 			<script type="text/javascript">
 			$('#btn_booking_pay').click(function(){
-				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${bookingVO.startTime}", "PopupWin", "top=200, left=400, width=850,height=600")
+				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${bookingVO.startTime}&timeCode=${bookingVO.timeCode}", "PopupWin", "top=200, left=400, width=850,height=600")
 			})
 
 			</script>
