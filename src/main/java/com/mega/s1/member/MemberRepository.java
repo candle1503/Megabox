@@ -40,4 +40,7 @@ public interface MemberRepository {
 	
 	//getMovieName
 	public String getMovieName(int movieNum) throws Exception;
+	
+	//deleteReview
+	public void deleteReview(String reviewNum)throws Exception;
 }

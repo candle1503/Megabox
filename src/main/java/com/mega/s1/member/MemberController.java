@@ -218,4 +218,12 @@ public class MemberController {
 		return mv;
 	}
 	
+	@PostMapping("deleteReview")
+	public ModelAndView deleteReview(String reviewNum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberService.deleteReview(reviewNum);
+		mv.setViewName("redirect:./reviewList");
+		return mv;
+	}
+	
 }

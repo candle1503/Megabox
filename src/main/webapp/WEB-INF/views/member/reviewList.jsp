@@ -44,7 +44,9 @@
 							</strong>
 						</p>
 					</div>
-
+					
+					<div id="deleteReview">
+					
 					<c:forEach items="${List}" var="vo" varStatus="i">
 						<!-- 나의 한줄평 -->
 						<div class="my-appraisal myOne myMovieStory"
@@ -55,6 +57,7 @@
 										style="cursor: pointer">
 										<img src="/upload/movie/${vo.fileName}" style="height: 145px;">
 									</p>
+							
 									<div class="cont">
 										<p class="label">관람평</p>
 										<p class="tit">
@@ -77,9 +80,15 @@
 											<div class="right">
 												<span><button type="button"
 														class="btn modify" id="updateBtn${i.count}" data-no="663348"
-														data-mno="01550200" data-cd="PREV" >수정</button></span> <span><button
-														type="button" class="btn del deleteBtn${i.count}" data-no="663348"
-														data-mno="01550200" data-cd="PREV">삭제</button></span>
+														data-mno="01550200" data-cd="PREV" >수정</button></span> <span>
+														
+														<form action="./deleteReview" method="post">
+														<input type="hidden" value="${vo.reviewNum}" id="reviewNum${i.count}" name="reviewNum">
+														<button
+														type="submit" class="btn del" id="deleteBtn${i.count}" data-no="663348"
+														data-mno="01550200" data-cd="PREV">삭제</button>
+														</form>
+														</span>
 											</div>
 										</div>
 									</div>
@@ -88,6 +97,8 @@
 						</div>
 
 					</c:forEach>
+					
+					</div>
 
 					<nav class="pagination myOne myMovieStory" style="display: block;">
 						<strong class="active">1</strong>
@@ -100,42 +111,7 @@
 			</div>
 		</div>
 
-			<script type="text/javascript">
-
-			for(var i=1; i<100; i++){
-				var te;
-				$(".my-appraisal").on("click", "#updateBtn"+i,"#deleteBtn"+i , function(){
-					if($(this).html()=="수정"){
-					
-					te = $(this).attr('id').replace('updateBtn', '');
-					$('#updateForm'+te).css("display","block");
-					$('.oneData'+te).css("display", "none");
-					$(this).html("저장");
-					}else{  
-						var content = $('#updateForm'+te).html();
-						alert(content);
-// 						$.post("reviewUpdate"){
-// 							contents : content
-// 							}
-					$('#updateForm'+te).css("display","none");
-					$('.oneData'+te).css("display", "block");
-					$(this).html("수정");
-					}
-				});
-			}
-
-
-// 			$.post("movieTimeCheck", {
-// 				choosedTime : startDay1
-// 			}, function(result) {
-// 			$('.movieSelect1').empty();
-// 			$('.movieSelect1').append(result);
-// 				result.trim();
-// 				console.log(result)
-// 			});
-
-// 			})
-			</script>
+			
 
 		<!-- footer -->
 		<footer id="footer">

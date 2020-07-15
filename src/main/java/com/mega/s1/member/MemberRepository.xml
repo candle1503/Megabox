@@ -42,4 +42,9 @@
 	<select id="getMovieName" parameterType="Integer" resultType="String">
 		select name from movie where movieNum=#{movieNum}
 	</select>
+	
+	<delete id="deleteReview" parameterType="String">
+		delete from review where reviewNum=#{reviewNum}
+	</delete>
+	
 </mapper>

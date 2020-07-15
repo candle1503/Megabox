@@ -170,5 +170,8 @@ public class MemberService {
 		return list;
 	}
 	
+	public void deleteReview(String reviewNum) throws Exception{
+		memberRepository.deleteReview(reviewNum);
+	}
 	
 }
