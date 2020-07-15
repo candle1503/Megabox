@@ -65,9 +65,7 @@
 	
 	
 	
-	<select id="getBooked" parameterType="SeatVO" resultType="Integer">
-		select booked from seat where timeCode=#{timeCode} and seatNum=#{seatNum};
-	</select>
+	
 	
 	
 	<select id="bookingCount" resultType="TicketVO">

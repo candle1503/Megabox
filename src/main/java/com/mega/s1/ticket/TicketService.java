@@ -63,9 +63,7 @@ public class TicketService {
 	
 	
 	
-	public void checkSeat(List<SeatVO> seatVO) throws Exception{
-		ticketRepository.getBooked(seatVO.get(0));
-	}
+	
 		
 	public long bookingAllCount() throws Exception{
 		return ticketRepository.bookingAllCount();

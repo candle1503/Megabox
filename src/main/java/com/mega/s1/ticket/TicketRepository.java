@@ -63,7 +63,7 @@ public interface TicketRepository {
 	
 	
 	
-	public int getBooked(SeatVO seatVO) throws Exception;
+	
 	
 	
 	

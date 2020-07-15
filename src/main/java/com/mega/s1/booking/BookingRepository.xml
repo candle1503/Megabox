@@ -42,4 +42,8 @@
 		select count(booked) from seat where booked = 0 and timeCode = #{timeCode}
 	</select>
 	
+	<select id="getBooked" parameterType="SeatVO" resultType="Integer">
+		select booked from seat where timeCode=#{timeCode} and seatNum=#{seatNum};
+	</select>
+	
 </mapper>

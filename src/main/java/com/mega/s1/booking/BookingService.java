@@ -145,4 +145,18 @@ public class BookingService {
 		return bookingRepository.bookingNotBooked(seatVO);
 	}
 	
+	public int checkSeat(List<SeatVO> seatVO) throws Exception{
+		int result = 0;
+		
+		for(int i =0; i<seatVO.size(); i++) {
+			Integer booked = bookingRepository.getBooked(seatVO.get(i));
+			if(booked == 1) {
+				result = 1;
+			}
+		}
+		
+		return result;
+	}
+	
+	
 }

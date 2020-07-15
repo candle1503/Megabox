@@ -9,7 +9,7 @@
 </head>
 
 <c:import url="../template/header_css.jsp"></c:import>
-
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
 
 	<c:import url="../template/header.jsp"></c:import>
@@ -49,7 +49,7 @@
 			 <form action="../ticket/paymentDone" id="myForm" method="post">
 
 			
-			<input type="hidden" value="${seat}" name="seatNum">
+			<input type="hidden" value="${seat}" name="seatNum" class="seat">
 			<input type="hidden" value="${bookingVO.movieTime}" name="movieTime">
 			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${member.id}" name="id">
@@ -60,7 +60,8 @@
 			<input type="hidden" value="${sizeCount}" name="count">
 			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
 			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
-
+			<input type="hidden" value="${bookingVO.timeCode}" name="timeCode" class="timeCode">
+			
 			
 
 			
@@ -476,8 +477,37 @@
 			</div>
 			<!--// seat-select-section -->
 			<script type="text/javascript">
+			var timeCode = $('.timeCode').val();
+			var seat = $('.seat').val();
+
+			var form = document.createElement("form");
+			form.setAttribute("charset", "UTF-8");
+
+			form.setAttribute("method", "Post"); 
+
+			form.setAttribute("action", "/booking/bookingSeatView");
+
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "timeCode");
+			hiddenField.setAttribute("value", timeCode);
+			form.appendChild(hiddenField);
+
+			document.body.appendChild(form);
+
 			$('#btn_booking_pay').click(function(){
-				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}", "PopupWin", "top=200, left=400, width=850,height=600")
+				$.post("seatCheck",{
+					seat : seat,
+					timeCode : timeCode
+					}, function(result){
+						var te = Number(result);
+						alert(te);
+					if(te==1){
+						form.submit();
+					}else if(te==0){
+						window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}", "PopupWin", "top=200, left=400, width=850,height=600")
+						}
+					});
 			})
 
 			</script>
