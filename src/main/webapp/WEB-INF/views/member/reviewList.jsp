@@ -70,9 +70,7 @@
 										<div class="modify-area updateData" style="">
 										
 											<textarea rows="5" cols="30" title="한줄평 수정 내용 입력"
-												class="input-textarea" id="updateForm${i.count}" style="display: none;">${vo.contents}
-											</textarea>
-										</div>
+												class="input-textarea" id="updateForm${i.count}" style="display: none;">${vo.contents}</textarea></div>
 										<div class="modify-area updateData" style="display: none;">
 										</div>
 										<div class="util">
@@ -114,14 +112,29 @@
 					$('.oneData'+te).css("display", "none");
 					$(this).html("저장");
 					}else{  
-						$.post()
+						var content = $('#updateForm'+te).html();
+						alert(content);
+// 						$.post("reviewUpdate"){
+// 							contents : content
+// 							}
 					$('#updateForm'+te).css("display","none");
 					$('.oneData'+te).css("display", "block");
 					$(this).html("수정");
 					}
 				});
 			}
-					
+
+
+// 			$.post("movieTimeCheck", {
+// 				choosedTime : startDay1
+// 			}, function(result) {
+// 			$('.movieSelect1').empty();
+// 			$('.movieSelect1').append(result);
+// 				result.trim();
+// 				console.log(result)
+// 			});
+
+// 			})
 			</script>
 
 		<!-- footer -->
