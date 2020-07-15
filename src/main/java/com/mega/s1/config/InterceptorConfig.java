@@ -25,7 +25,7 @@ public class InterceptorConfig implements WebMvcConfigurer{
 		.addPathPatterns("/notice/noticeWrite")
 		.addPathPatterns("/notice/noticeUpdate")
 		.addPathPatterns("/notice/noticeDelete")
-		.addPathPatterns("/booking/bookingSeatNext")
+//		.addPathPatterns("/booking/bookingSeatNext")
 		.excludePathPatterns("/member/memberLogin");
 	
 //		registry.addInterceptor(adminInterceptor)

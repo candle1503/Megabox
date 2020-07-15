@@ -296,6 +296,12 @@ public class BookingController {
 	
 	@PostMapping("bookingSeatNext")
 	public ModelAndView bookingSeatNext(SeatVO seatVO, BookingVO bookingVO, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, MovieFileVO movieFileVO, TicketVO ticketVO, HttpSession session) throws Exception {
+		System.out.println("!!!!!!!!!");
+		System.out.println(bookingVO.getStartTime());
+		System.out.println(bookingVO.getMovieTime());
+		String mvTime[] = bookingVO.getMovieTime().split("~");
+		System.out.println(mvTime[0]);
+		String time = bookingVO.getStartTime()+" "+mvTime[0];
 		ModelAndView mv = new ModelAndView();
 		int size = seatVO.getSeatList().size();
 		mv.addObject("sizeCount", size);
@@ -325,6 +331,7 @@ public class BookingController {
 		mv.addObject("movieVO", movieVO);
 		mv.addObject("bookingVO", bookingVO);
 		mv.addObject("size", size);
+		mv.addObject("time", time);
 		
 		return mv;
 		

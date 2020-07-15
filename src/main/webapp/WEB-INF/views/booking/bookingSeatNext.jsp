@@ -14,51 +14,7 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 
-	<form name="payForm" id="payForm" method="post">
-		<input type="hidden" name="playSchdlNo" id="playSchdlNo"
-			value="2006301372022"> <input type="hidden"
-			name="seatOccupText" id="seatOccupText"
-			value="00100901,TKA,6000,MBX,GERN_ZONE,GERN_CLS,1"> <input
-			type="hidden" name="totalAmt" id="totalAmt" value="6000"> <input
-			type="hidden" name="transNo" id="transNo"
-			value="13722006300094132053"> <input type="hidden"
-			name="cashBillYn" id="cashBillYn" value=""> <input
-			type="hidden" name="cashrecIssueCd" id="cashrecIssueCd" value="">
-
-		<input type="hidden" name="lastPayMethod" id="lastPayMethod"
-			value="credit"> <input type="hidden" name="preDisc"
-			id="preDisc" value=""> <input type="hidden" name="discType"
-			id="discType" value=""> <input type="hidden" name="tellerFee"
-			id="tellerFee" value=""> <input type="hidden"
-			name="completeYn" id="completeYn" value=""> <input
-			type="hidden" name="prepareYn" id="prepareYn" value="Y"> <input
-			type="hidden" name="prepareFavorYn" id="prepareFavorYn" value="Y">
-		<input type="hidden" name="goBackYn" id="goBackYn" value="">
-	</form>
-	<form name="completeForm" id="completeForm" method="post">
-		<input type="hidden" name="completeTransNo" id="completeTransNo">
-		<input type="hidden" name="completeRiaMemberYn"
-			id="completeRiaMemberYn"> <input type="hidden"
-			name="completeRiaBirthday" id="completeRiaBirthday">
-	</form>
-	<form name="ifrm" method="POST" target="FD_PAY_FRAME"
-		action="/on/oh/ohz/PayBooking/applyCreditCard.do">
-		<input type="hidden" name="transNo" id="ifrm_transNo"> <input
-			type="hidden" name="useAmt" id="ifrm_useAmt"> <input
-			type="hidden" name="methodName" id="ifrm_methodName"> <input
-			type="hidden" name="selectCard" id="ifrm_selectCard"> <input
-			type="hidden" name="pointDmode" id="ifrm_pointDmode">
-	</form>
-
-
-	<input type="hidden" name="dowCd" id="dowCd">
-	<input type="hidden" name="brchNo" id="brchNo" value="1372">
-	<!-- 레이어 팝업 처리 시 화면 영역 시작 -->
-	<div id="mask"></div>
-	<div id="fdpayWin" class="fdLayer">
-		<div class="fdContainer"></div>
-	</div>
-	<!-- 레이어 팝업 처리 시 화면 영역 끝 -->
+	
 
 
 	<div class="inner-wrap"
@@ -101,6 +57,8 @@
 			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${member.id}" name="id">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
+			<input type="text" value="${time}" name="time">
+			
 			
 			<input type="hidden" value="${sizeCount}" name="count">
 			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
