@@ -365,6 +365,7 @@ function fn_validateDateYn(param) {
 									<script type="text/javascript">
 
 									function bookingMovieList(startDate){
+										
 										$.get("bookingMovieList?startTime="+startDate, function(result){
 											$("#bookingMovie-List").append(result);
 
@@ -375,21 +376,11 @@ function fn_validateDateYn(param) {
 												
 												for(var mc=1; mc<101; mc++){
 													if(movieNumCheck ==$('.mvNumD'+mc).val()){
-
-
 														
-														/* if($("#movieBtn"+mc).prop("onchange")){
-															$("#movieBtn"+mvCss).removeClass("on");
-															alert("z");
-														} */
-														$("#movieBtn"+mvCss).removeClass("on");
 														$("#movieBtn"+mc).addClass("on");
-														mvCss = $("#movieBtn"+mc).attr('id').replace("movieBtn", '');	
-														console.log(mvCss);
-														
-														//$("#movieBtn"+mvCss).removeClass("on");
-														
+														$('.hasParameter').val("has");
 														$('.mvNum').val(movieNumCheck);
+														
 													}
 												}
 												
@@ -398,6 +389,7 @@ function fn_validateDateYn(param) {
 										
 									}
 									</script>
+									<input type="hidden" value="" class="hasParameter">
 										<!-- <div id="mCSB_1"
 											class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 											style="max-height: none;" tabindex="0">

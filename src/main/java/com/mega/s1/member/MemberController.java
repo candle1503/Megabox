@@ -231,6 +231,7 @@ public class MemberController {
 		
 		Map<Integer, String> theaterNameMap = new HashMap<>();
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
+		Map<Integer, String> viewDateMap = new HashMap<>();
 		
 		String viewDateCut;
 		String viewDateTimeCut;
@@ -253,7 +254,9 @@ public class MemberController {
 			
 			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
 			
-			model.addAttribute("viewDate", viewDateR);
+			viewDateMap.put(i, viewDateR);
+			
+			model.addAttribute("viewDate", viewDateMap);
 			
 			MovieVO movieVO = new MovieVO();
 			movieVO.setMovieNum(bookedCompAr.get(i).getMovieNum());
@@ -275,6 +278,7 @@ public class MemberController {
 		
 		Map<Integer, String> theaterNameMap = new HashMap<>();
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
+		Map<Integer, String> viewDateMap = new HashMap<>();
 		
 		String viewDateCut;
 		String viewDateTimeCut;
@@ -297,7 +301,9 @@ public class MemberController {
 			
 			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
 			
-			model.addAttribute("viewDate", viewDateR);
+			viewDateMap.put(i, viewDateR);
+			
+			model.addAttribute("viewDate", viewDateMap);
 			
 			MovieVO movieVO = new MovieVO();
 			movieVO.setMovieNum(bookedCompAfterAr.get(i).getMovieNum());

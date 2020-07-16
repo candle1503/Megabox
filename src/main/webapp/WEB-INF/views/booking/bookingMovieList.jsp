@@ -60,7 +60,7 @@ function bookingRoomList(startDate, name){
 
 	for (var bml = 1; bml < movieSize+1; bml++) {
 		var movieCss;
-
+		
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
 			if($(this).hasClass("on")){
 				$(this).removeClass("on");
@@ -69,7 +69,11 @@ function bookingRoomList(startDate, name){
 				var name = $(".localName").val();
 				bookingRoomList(startDate, name);
 			}else{
-				
+				if($('.hasParameter').val()=="has"){
+					for(var i=1; i < 100; i++){
+						$("#movieBtn"+i).removeClass("on");
+					}
+				}
 				$("#movieBtn"+movieCss).removeClass("on");
 				$(this).addClass("on");
 				movieCss = $(this).attr('id').replace("movieBtn", '');

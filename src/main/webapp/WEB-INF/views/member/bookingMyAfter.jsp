@@ -52,7 +52,7 @@
 								</tr>
 								<tr>
 									<th scope="row" class="a-r">관람일시</th>
-									<td>${viewDate}</td>
+									<td>${viewDate[i.index]}</td>
 									<th scope="row">관람좌석</th>
 									<td>${bookedCompAfList.seatNum}</td>
 								</tr>

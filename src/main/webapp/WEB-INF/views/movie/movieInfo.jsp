@@ -177,7 +177,7 @@ $(function(){
 			<div class="reserve">
 				
 					
-						<a href="../booking/bookingMain" class="btn reserve" title="영화 예매하기" style="margin-left: 55px">예매</a>
+						<a href="${pageContext.request.contextPath}/booking/bookingMain?movieNum=${vo.movieNum}" class="btn reserve" title="영화 예매하기" style="margin-left: 55px">예매</a>
 						
 	
 				

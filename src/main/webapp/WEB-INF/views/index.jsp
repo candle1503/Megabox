@@ -475,8 +475,8 @@
 											</button>
 											<div class="case">
 												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('01693600');"
-													class="button gblue" title="영화 예매하기">예매</a>
+												<a href="booking/bookingMain?movieNum=${movie.movieNum}"
+													class="button gblue bokdBtn" title="영화 예매하기" >예매</a>
 											</div>
 										</div></li>
 										</c:forEach>
