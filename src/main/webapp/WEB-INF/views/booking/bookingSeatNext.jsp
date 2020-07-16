@@ -61,8 +61,8 @@
 			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
 			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
 			<input type="hidden" value="${bookingVO.timeCode}" name="timeCode" class="timeCode">
-			<input type="hidden" value="" name="savePoint" class="savePoint">
-			<input type="hidden" value="" name="usedPoint" class="usedPoint">
+			<input type="hidden" value="0" name="savePoint" class="savePoint">
+			<input type="hidden" value="0" name="usedPoint" class="usedPoint">
 			<input type="hidden" value="${memberVO.point}" name="point" >
 			
 			
@@ -102,7 +102,7 @@
 										
 											<div class="" style="width: 333px; margin-left: 10px; margin-top: 10px; float: left; margin-right: 0px; ">
 												<input  class="pointUse"
-													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" readonly="readonly" style="background-color: #f2f4f5;">
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" readonly="readonly" style="background-color: #f2f4f5;" value="0">
 													
 											</div>
 
@@ -535,6 +535,7 @@
 				var usedPoint= $('.pointUse').val()
 				$('.savePoint').val(finalPay/10);
 				$('.usedPoint').val(usedPoint);
+				var savePoint = $('.savePoint').val();
 				$.post("seatCheck",{
 					seat : seat,
 					timeCode : timeCode
@@ -543,7 +544,7 @@
 					if(te==1){
 						form.submit();
 					}else if(te==0){
-						window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}", "PopupWin", "top=200, left=400, width=850,height=600")
+					window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}&savePoint="+savePoint+"&usedPoint="+usedPoint, "PopupWin", "top=200, left=400, width=850,height=600")
 						}
 					});
 			})

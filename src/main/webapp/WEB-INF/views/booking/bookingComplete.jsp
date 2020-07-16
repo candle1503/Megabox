@@ -57,15 +57,11 @@
 								<p class="tit">
 									<strong>예매가 완료되었습니다 <!-- 예매가 완료되었습니다 --> <i>!</i></strong> <span
 										class="righten"> <i class="iconset ico-circle-point"></i>
-										고객님의 상영익일 적립예정 포인트는 <!-- 고객님의 상영익일 적립예정 포인트는 --> <em class="mPoint"></em>입니다.
+										고객님의 상영익일 적립예정 포인트는 <!-- 고객님의 상영익일 적립예정 포인트는 --> <em class="mPoint">${savePoint}</em>원 입니다.
 										<!-- 입니다. --></span>
 
 								</p>
 							</div>
-							<script type="text/javascript">
-								var point =${ticketVO.count}*8000/10
-								$(".mPoint").html(point+"P")
-							</script>
 
 							<div class="movie-info-middle" style="padding: 15px 0 15px 0;">
 								<ul class="dot-list gray">
@@ -90,13 +86,17 @@
 									<li><span>좌석번호 <!-- 좌석번호 --></span> &nbsp;${ticketVO.seatNum }</li>
 									
 									<li><span>전화번호 <!-- 전화번호 --></span> &nbsp;${member.phone}</li>
-									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto">${ticketVO.count*8000}</strong>
+									<li><span>결제정보 <!-- 결제정보 --></span> <strong class="roboto" id="payment"></strong>
 										원 <!-- 원 --> <br> <em></em></li>
 								</ul>
 
 
 							</div>
-
+	
+							<script type="text/javascript">
+							var payment = ${ticketVO.count*8000}-${usedPoint};
+							$('#payment').html(payment);
+							</script>
 
 							<!-- movie-info-bottom -->
 

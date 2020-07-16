@@ -36,7 +36,10 @@ public class TicketController {
 	private MovieService movieService;
 	
 	@GetMapping("payment")
-	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO) throws Exception{
+	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO,HttpSession session, MemberVO memberVO) throws Exception{
+		System.out.println(memberVO.getSavePoint());
+		System.out.println(memberVO.getUsedPoint());
+		session.setAttribute("point", "1234");
 		MovieVO movieVO = new MovieVO();
 		movieVO.setMovieNum(ticketVO.getMovieNum());
 		movieVO = movieService.movieSelect(movieVO);
@@ -50,7 +53,8 @@ public class TicketController {
 
 	@PostMapping("payment")
 	@ResponseBody
-	public int paymentDone(ModelAndView mv ,TicketVO ticketVO) throws Exception{
+	public int paymentDone(ModelAndView mv ,TicketVO ticketVO,HttpSession session) throws Exception{
+		System.out.println("넘어오나요??????"+session.getAttribute("point"));
 		
 		int result = ticketService.ticketInsert(ticketVO);
 		
@@ -58,54 +62,43 @@ public class TicketController {
 	}
 	
 	@PostMapping("paymentDone")
-	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO, MemberVO memberVO) throws Exception{
-		System.out.println(memberVO.getSavePoint());
-		System.out.println(memberVO.getSavePoint());
-		System.out.println(memberVO.getSavePoint());
-		System.out.println(memberVO.getSavePoint());
-		System.out.println(memberVO.getSavePoint());
-		System.out.println(memberVO.getSavePoint());
-		
-		System.out.println(memberVO.getUsedPoint());
-		System.out.println(memberVO.getUsedPoint());
-		System.out.println(memberVO.getUsedPoint());
-		System.out.println(memberVO.getUsedPoint());
-		System.out.println(memberVO.getUsedPoint());
-		ticketService.pointAdd(memberVO);
-		
-		String[] seats = ticketVO.getSeatNum().split(",");
-		List<SeatVO> seatVOs = new ArrayList<SeatVO>();
-		for(int i=0; i<seats.length; i++) {
-			SeatVO seatVO = new SeatVO();
-			seats[i] = seats[i].trim();
-			seatVO.setTimeCode(ticketVO.getTimeCode());
-			seatVO.setSeatNum(seats[i]);
-			seatVOs.add(i, seatVO);
-		}
-		
-		ticketService.seatUpdate(seatVOs);
-		
-		ticketVO=ticketService.resultPage(ticketVO);
-		String[] da =ticketVO.getViewDate().split(" ");
-		
-		MovieVO movieVO = new MovieVO();
-		TheaterRoomVO theaterVO = new TheaterRoomVO();
-		movieVO.setMovieNum(ticketVO.getMovieNum());
-		movieVO = movieService.movieSelect(movieVO);
-		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
-		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
-		theaterVO=ticketService.getRoom(theaterVO);
-		
-		
-		
-		
-		mv.addObject("day", da);
-		mv.addObject("ticketVO", ticketVO);
-		mv.addObject("theaterVO", theaterVO);
-		mv.addObject("file", files);
-		mv.addObject("movieVO", movieVO);
-		mv.setViewName("booking/bookingComplete");
-		return mv;
+	public void resultPage(ModelAndView mv, TicketVO ticketVO, MemberVO memberVO) throws Exception{
+//		ticketService.pointAdd(memberVO);
+//		
+//		String[] seats = ticketVO.getSeatNum().split(",");
+//		List<SeatVO> seatVOs = new ArrayList<SeatVO>();
+//		for(int i=0; i<seats.length; i++) {
+//			SeatVO seatVO = new SeatVO();
+//			seats[i] = seats[i].trim();
+//			seatVO.setTimeCode(ticketVO.getTimeCode());
+//			seatVO.setSeatNum(seats[i]);
+//			seatVOs.add(i, seatVO);
+//		}
+//		
+//		ticketService.seatUpdate(seatVOs);
+//		
+//		ticketVO=ticketService.resultPage(ticketVO);
+//		String[] da =ticketVO.getViewDate().split(" ");
+//		
+//		MovieVO movieVO = new MovieVO();
+//		TheaterRoomVO theaterVO = new TheaterRoomVO();
+//		movieVO.setMovieNum(ticketVO.getMovieNum());
+//		movieVO = movieService.movieSelect(movieVO);
+//		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
+//		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
+//		theaterVO=ticketService.getRoom(theaterVO);
+//		
+//		
+//		
+//		mv.addObject("savePoint", memberVO.getSavePoint());
+//		mv.addObject("usedPoint", memberVO.getUsedPoint());
+//		mv.addObject("day", da);
+//		mv.addObject("ticketVO", ticketVO);
+//		mv.addObject("theaterVO", theaterVO);
+//		mv.addObject("file", files);
+//		mv.addObject("movieVO", movieVO);
+//		mv.setViewName("booking/bookingComplete");
+//		return mv;
 	}
 	
 	
