@@ -64,6 +64,28 @@ public class MovieController {
 		String viewer = df.format(vo.getViews());
 		mv.addObject("views", viewer);
 		long all = movieService.boardCount(pager);
+		
+		long first = movieService.child(movieVO);
+		movieVO.setAges(20);
+		long second = movieService.ageCount(movieVO);
+		movieVO.setAges(30);
+		long third = movieService.ageCount(movieVO);
+		movieVO.setAges(40);
+		long fourth= movieService.ageCount(movieVO);
+		long old = movieService.old(movieVO);
+		
+		movieVO.setAges(0);
+		long today = movieService.viewCount(movieVO);
+		movieVO.setAges(1);
+		long one = movieService.viewCount(movieVO);
+		movieVO.setAges(2);
+		long two = movieService.viewCount(movieVO);
+		movieVO.setAges(3);
+		long three = movieService.viewCount(movieVO);
+		
+		
+
+		
 		if(all>0) {
 		long player = Math.round(movieService.player(movieVO)*100/all);
 		long direct = Math.round(movieService.direct(movieVO)*100/all);
@@ -135,6 +157,17 @@ public class MovieController {
 		mv.addObject("story", story);
 		mv.addObject("beauty", beauty);
 		};
+		
+		mv.addObject("one", today);
+		mv.addObject("two", one);
+		mv.addObject("three", two);
+		mv.addObject("four", three);
+		
+		mv.addObject("first", first);
+		mv.addObject("second", second);
+		mv.addObject("third", third);
+		mv.addObject("fourth", fourth);
+		mv.addObject("old", old);
 		mv.addObject("review", review);
 		mv.addObject("vo", vo);
 		mv.addObject("count", all);
@@ -170,6 +203,26 @@ public class MovieController {
 		mv.addObject("views", viewer);
 		long all = movieService.boardCount(pager);
 		
+		long first = movieService.child(movieVO);
+		movieVO.setAges(20);
+		long second = movieService.ageCount(movieVO);
+		movieVO.setAges(30);
+		long third = movieService.ageCount(movieVO);
+		movieVO.setAges(40);
+		long fourth= movieService.ageCount(movieVO);
+		long old = movieService.old(movieVO);
+		
+		movieVO.setAges(0);
+		long today = movieService.viewCount(movieVO);
+		movieVO.setAges(1);
+		long one = movieService.viewCount(movieVO);
+		movieVO.setAges(2);
+		long two = movieService.viewCount(movieVO);
+		movieVO.setAges(3);
+		long three = movieService.viewCount(movieVO);
+		
+		
+		
 		if(all>0) {
 		long player = Math.round(movieService.player(movieVO)*100/all);
 		long direct = Math.round(movieService.direct(movieVO)*100/all);
@@ -242,6 +295,17 @@ public class MovieController {
 		mv.addObject("story", story);
 		mv.addObject("beauty", beauty);
 		};
+		
+		mv.addObject("one", today);
+		mv.addObject("two", one);
+		mv.addObject("three", two);
+		mv.addObject("four", three);
+		
+		mv.addObject("first", first);
+		mv.addObject("second", second);
+		mv.addObject("third", third);
+		mv.addObject("fourth", fourth);
+		mv.addObject("old", old);
 		mv.addObject("review", review);
 		mv.addObject("vo", vo);
 		mv.addObject("count", all);
@@ -272,7 +336,7 @@ public class MovieController {
 			TicketVO ticketVO = new TicketVO();
 			ticketVO.setTicketNum(reviewVO.getTicketNum());
 			
-			ticketService.reviewDone(ticketVO);
+			result = ticketService.reviewDone(ticketVO);
 			rd.addFlashAttribute("result",result);
 			String re = "redirect:./movieSelect?movieNum="+reviewVO.getMovieNum();
 			return re;

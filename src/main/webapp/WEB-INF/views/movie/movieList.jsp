@@ -92,11 +92,11 @@
 			</div>            
 			<div class="my-score equa">  <div class="preview"> <p class="tit">관람평</p>
 			  <p class="number">
-			  <c:if test="${movie.rate ne 0}">
+			  <c:if test="${movie.rate >= 1}">
 						<fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/><span class="ir">점</span>
 			</c:if>
-			<c:if test="${movie.rate eq 0 }">
-				0 <span class="ir">점</span>
+			<c:if test="${movie.rate < 1 }">
+				0<fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/> <span class="ir">점</span>
 			</c:if>
 			  </p>   </div> </div>  </a>    
 			</div></div><div class="tit-area">    
@@ -114,7 +114,16 @@
 			</c:if>
 			
 			<p title="${movie.name }" class="tit">${movie.name }</p></div>
-			<div class="rate-date">    <span class="rate">예매율 ${movie.bookingRate } %</span> <span class="date">개봉 ${movie.openDay }</span>
+			<div class="rate-date">    <span class="rate">예매율 
+			<c:if test="${movie.bookingRate < 1 }">
+			
+			0<fmt:formatNumber value="${movie.bookingRate}" pattern="#,###.0"/>
+			
+			</c:if>
+			<c:if test="${movie.bookingRate>=1 }">
+			<fmt:formatNumber value="${movie.bookingRate}" pattern="#,###.0"/>
+			</c:if>
+			 %</span> <span class="date">개봉 ${movie.openDay }</span>
 			</div><div class="btn-util">    <button type="button" class="button btn-like" data-no="20021300"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>${movie.like }</span></button>    
 			<div class="case col-2 movieStat3" style=""> 
 	<c:choose>

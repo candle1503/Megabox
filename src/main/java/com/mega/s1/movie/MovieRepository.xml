@@ -133,4 +133,32 @@
 		WHERE t.movieNum = #{movieNum}
 	</select>
 	
+	<select id="ageCount" parameterType="MovieVO" resultType="Long">
+		select count(ticketNum) count from 
+		(select t.*, m.age from ticket t left join member m 
+		on t.id=m.id
+		where movieNum=#{movieNum}) as ag where age between 0+#{ages} and 9+#{ages}
+	</select>
+	
+	<select id="child" parameterType="MovieVO" resultType="Long">
+		select count(ticketNum) count from 
+		(select t.*, m.age from ticket t left join member m 
+		on t.id=m.id
+		where movieNum=#{movieNum}) as ag where 20>age 
+	</select>
+	
+	<select id="old" parameterType="MovieVO" resultType="Long">
+		select count(ticketNum) count from 
+		(select t.*, m.age from ticket t left join member m 
+		on t.id=m.id
+		where movieNum=#{movieNum}) as ag where age>=50
+	</select>
+	
+	<select id="viewCount" parameterType="MovieVO" resultType="Long">
+		select count(ticketNum) from ticket 
+		where viewDate between 
+		(SELECT date_add(now(),INTERVAL-1-#{ages} DAY) FROM dual) and (SELECT date_add(now(),INTERVAL -#{ages} DAY) FROM dual) and movieNum=#{movieNum}
+	</select>
+	
+	
 </mapper>

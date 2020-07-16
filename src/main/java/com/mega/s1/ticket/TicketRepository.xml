@@ -37,4 +37,6 @@
 		update movie set bookingRate=#{bookingRate} where movieNum=#{movieNum}
 	</update>
 	
+
+	
 </mapper>

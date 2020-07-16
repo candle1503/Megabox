@@ -211,5 +211,22 @@ public class MovieService {
 	public long ranking(MovieVO movieVO) throws Exception{
 		return movieRepository.ranking(movieVO);
 	}
+	
+
+	
+	public long ageCount(MovieVO movieVO) throws Exception {
+		return movieRepository.ageCount(movieVO);
+	}
+	
+	public long child(MovieVO movieVO) throws Exception {
+		return movieRepository.child(movieVO);
+	}
+	public long old(MovieVO movieVO) throws Exception {
+		return movieRepository.old(movieVO);
+	}
+	
+	public long viewCount(MovieVO movieVO) throws Exception{
+		return movieRepository.viewCount(movieVO);
+	}
 
 }
