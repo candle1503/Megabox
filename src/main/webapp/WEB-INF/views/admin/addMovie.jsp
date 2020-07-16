@@ -53,14 +53,15 @@
 <body>
 
 <c:choose>
-	<c:when test="${member.id ne 'admin' }">
+	<c:when test="${member.id ne 'ADMIN'}">
 		<script type="text/javascript">
+			
 			alert('잘못된 접근입니다.');
 			window.location.replace("../member/memberLogin")
 		</script>
 	</c:when>
 	
-	<c:when test="${member.id eq 'admin' }">
+	<c:when test="${member.id eq 'ADMIN' }">
 		<c:import url="../template/header.jsp"></c:import>
 	
 
