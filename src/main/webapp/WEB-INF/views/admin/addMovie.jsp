@@ -53,8 +53,10 @@
 <body>
 
 <c:choose>
-	<c:when test="${member.id ne 'ADMIN' }">
+
+	<c:when test="${member.id ne 'ADMIN'}">
 		<script type="text/javascript">
+			
 			alert('잘못된 접근입니다.');
 			window.location.replace("../member/memberLogin")
 		</script>

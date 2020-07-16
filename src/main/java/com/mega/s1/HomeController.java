@@ -50,7 +50,7 @@ public class HomeController {
 			
 		}
 		
-		List<MovieVO> movieList = movieService.movieList();
+		List<MovieVO> movieList = movieService.movieList(0);
 		
 		List<NoticeVO> ar = noticeService.boardList(pager);
 		mv.addObject("list", ar);

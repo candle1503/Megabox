@@ -27,13 +27,26 @@
 		<collection property="movieFileVO" resultMap="MovieFileVO"></collection>
 	</resultMap>
 	
-	<select id="movieList" resultMap="MovieVO">
+	<select id="movieList" parameterType="java.lang.Integer" resultMap="MovieVO">
 		select M.*, MF.fileName from movie M left join (select F.fileNum, F.fileName, F.movieNum 
 		from movieFile as F, 
 		(select movieNum, min(fileNum) as min_fileNum from movieFile where status=2 group by movieNum) as F2 
 		where F.fileNum = F2.min_fileNum and F.movieNum = F2.movieNum) as MF
 		on M.movieNum = MF.movieNum
 		order by bookingRate desc
+		limit #{startNum}, 12
+	</select>
+	
+	<select id="movieCount" resultType="Long">
+		select count(movieNum) from movie
+	</select>
+	
+	<select id="futureCount" resultType="Long">
+		select count(movieNum) from movie where openDay>sysdate()
+	</select>
+	
+	<select id="ingCount" resultType="Long">
+		select count(movieNum) from movie where sysdate()>=openDay;
 	</select>
 
 
@@ -47,7 +60,8 @@
 	
 	<select id="reviewList" parameterType="Pager" resultType="ReviewVO">
 		select * from review where movieNum=#{movieNum} 
-		order by reviewNum desc limit #{startRow}, 10
+		order by reviewNum desc 
+		limit #{startRow}, 10
 	</select>
 	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
@@ -94,7 +108,7 @@
 		delete from movie where movieNum=#{movieNum}
 	</delete>
 	
-	<select id="futureList" resultMap="MovieVO">
+	<select id="futureList" parameterType="java.lang.Integer" resultMap="MovieVO">
 	<![CDATA[
 		select M.*, MF.fileName from movie M left join (select F.fileNum, F.fileName, F.movieNum 
 		from movieFile as F, 
@@ -103,10 +117,11 @@
 		on M.movieNum = MF.movieNum
 		where M.openDay > sysdate()
 		order by bookingRate desc 
+		limit #{startNum}, 12
 		]]>
 	</select>
 	
-	<select id="ingList" resultMap="MovieVO">
+	<select id="ingList" parameterType="java.lang.Integer" resultMap="MovieVO">
 	<![CDATA[
 		select M.*, MF.fileName from movie M left join (select F.fileNum, F.fileName, F.movieNum 
 		from movieFile as F, 
@@ -115,6 +130,7 @@
 		on M.movieNum = MF.movieNum
 		where M.openDay <= sysdate() 
 		order by bookingRate desc
+		limit #{startNum}, 12
 		]]>
 	</select>
 	
