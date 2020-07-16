@@ -97,15 +97,16 @@
 									<div id="mega_point" class="cont-down">
 										<div class="coupon-box">
 										
-											<div class="item col-1" style="width: 333px; float: left;">
-												<a w-data="500" h-data="450" class="btn-modal-open"
-													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트">
-													<span class="txt">쌍용씨네마 멤버십 포인트 : JSTL 받아서 입력 <!-- 메가박스 멤버십 포인트 --></span>
-												</a>
+											<div class="" style="width: 333px; margin-left: 10px; margin-top: 10px; float: left; margin-right: 0px; ">
+												<input  class="pointUse"
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" readonly="readonly" style="background-color: #f2f4f5;">
+													
 											</div>
 
-											<div style="float: left; padding-left: 15px; padding-top: 35px;">
-												<input type="checkbox" id="same_use_payment"> <label
+											<div style="margin-left: 0px; ">
+											<input  class="myPoint"
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" style="margin-left: 10px; margin-top: 10px; background-color: #f2f4f5; border: medium;" readonly="readonly"  value="1000">
+												<input type="checkbox"  class="pointCheckBox"> <label
 													for="same_use_payment" id="label_use_payment">멤버십
 													포인트 사용하기 <!-- 다음에도 이 결제수단 사용 -->
 												</label>
@@ -120,6 +121,7 @@
 					</div>
 
 
+					
 
 
 					<!--// discout-setting -->
@@ -428,21 +430,13 @@
 							<div class="box discout-box">
 
 								<div class="all">
-									<span class="tit">할인적용 <!-- 할인적용 --></span> <span class="price"><em>0</em>
+									<span class="tit">할인적용 <!-- 할인적용 --></span> <span class="price"><em class="pointAdd"></em>
 										원 <!-- 원 --></span>
 								</div>
 							</div>
 						</div>
 
 						<div class="pay-area">
-							<div class="add-thing">
-								<p class="tit">
-									추가차액
-									<!-- 추가금액 -->
-								</p>
-
-								<div class="money">0</div>
-							</div>
 							<div class="pay">
 								<p class="tit">
 									최종결제금액
@@ -450,7 +444,7 @@
 								</p>
 
 								<div class="money">
-									<em>${size}</em> <span>원 <!-- 원 --></span>
+									<em class="lastPay">${size}</em> <span>원 <!-- 원 --></span>
 								</div>
 							</div>
 							<div class="payment-thing">
@@ -475,6 +469,43 @@
 				<!--// seat-result -->
 
 			</div>
+			
+			<script type="text/javascript">
+			var beforeMoney = $('.lastPay').html();
+			var myPoint = $('.myPoint').val();
+			
+					$('.pointCheckBox').click(function(){
+						if($('.pointCheckBox').is(":checked")==true){
+							$('.pointUse').removeAttr("readOnly");
+							$('.pointUse').css("background-color","#ffff99");
+							}else{
+							$('.pointUse').attr("readOnly","readOnly");
+							$('.pointUse').css("background-color","#f2f4f5");
+							$('.pointUse').val("");
+							$('.pointAdd').html("");
+							$('.lastPay').html(beforeMoney);
+							}
+						})
+			
+						
+						$('.pointUse').keyup(function(){
+							var point= $('.pointUse').val();
+							
+							if(point > myPoint){
+							alert("현재 포인트보다 적게 써야됌");
+							$('.pointUse').val(myPoint);
+							point = myPoint;
+							}
+							
+							var lastMoney = beforeMoney - point;
+							$('.pointAdd').html(point);
+							$('.lastPay').html(lastMoney);
+						})
+
+					</script>
+			
+			
+			
 			<!--// seat-select-section -->
 			<script type="text/javascript">
 			var timeCode = $('.timeCode').val();
@@ -501,7 +532,6 @@
 					timeCode : timeCode
 					}, function(result){
 						var te = Number(result);
-						alert(te);
 					if(te==1){
 						form.submit();
 					}else if(te==0){
