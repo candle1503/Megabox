@@ -28,9 +28,9 @@ public interface MovieRepository {
 	
 	public int likeUpdate(MovieVO movieVO) throws Exception;
 	
-	public List<MovieVO> movieList() throws Exception;
-	public List<MovieVO> futureList() throws Exception;
-	public List<MovieVO> ingList() throws Exception;
+	public List<MovieVO> movieList(int startNum) throws Exception;
+	public List<MovieVO> futureList(int startNum) throws Exception;
+	public List<MovieVO> ingList(int startNum) throws Exception;
 	
 	public int movieInsert(MovieVO movieVO) throws Exception;
 	
@@ -45,5 +45,10 @@ public interface MovieRepository {
 	public long old(MovieVO movieVO) throws Exception;
 	
 	public long viewCount(MovieVO movieVO) throws Exception;
+	
+	public long movieCount() throws Exception;
+	public long ingCount() throws Exception;
+	public long futureCount() throws Exception;
+	
 	
 }

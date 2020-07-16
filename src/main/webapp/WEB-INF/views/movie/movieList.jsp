@@ -144,18 +144,23 @@
 	
 	</ol>
 	</div>
+	<div class="btn-more v1" id="addMovieDiv" style="margin-bottom: 30px;">
+		<button type="button" class="btn" id="btnAddMovie">더보기 <i class="iconset ico-btn-more-arr"></i></button>
+	</div>
 	
 	<script type="text/javascript">
-		$(".movie-list-info").on("mouseover", function(e){
+		var startNum=0
+	
+		$("#movieList").on("mouseover",".movie-list-info", function(e){
 			$(this).children('.movie-score').addClass("on");
 			$(this).children('.movie-score').css("opacity", "1");
 		})
-		$(".movie-list-info").on("mouseleave", function(e){
+		$("#movieList").on("mouseleave",".movie-list-info", function(e){
 			$(this).children('.movie-score').removeClass("on");
 			$(this).children('.movie-score').css("opacity", "0");
 		})
 		
-		$(".delt").click(function(){
+		$("#movieList").on("click", ".delt", function(){
 			
 			var flag = confirm("정말 삭제하시겠습니까?");
 			var movieNum = $(this).attr("title");
@@ -170,17 +175,71 @@
 						
 					});
 
-				
 			}
 		})
 		
 		
 		
-		$(".bokdBtn").click(function(){
+		$("#movieList").on("click", ".bokdBtn", function(){
 			var movieNumb = $(this).val();
 			location.href="${pageContext.request.contextPath}/booking/bookingMain?movieNum="+movieNumb;
 		}); 
+
+		if(${movieCount}<=12){
+			$("#btnAddMovie").remove();
+			}
 		
+		$("#btnAddMovie").click(function(){
+			startNum+=12
+
+			if('${listName}'=="all"){
+
+			var ajaxOption = {
+	            url : "./moreMovie",      
+	            data : {startNum:startNum},
+	            type : "POST",
+	            dataType : "html"
+	            
+	    	};  
+			$.ajax(ajaxOption).done(function(data){
+	       
+		        $('#movieList').append(data);
+		    });
+
+			}else if('${listName}'=="Ing"){
+
+				var ajaxOption = {
+			            url : "./moreIng",      
+			            data : {startNum:startNum},
+			            type : "POST",
+			            dataType : "html"
+			            
+			    	};  
+					$.ajax(ajaxOption).done(function(data){
+			       
+				        $('#movieList').append(data);
+				    });
+			} else{
+				var ajaxOption = {
+			            url : "./moreFuture",      
+			            data : {startNum:startNum},
+			            type : "POST",
+			            dataType : "html"
+			            
+			    	};  
+					$.ajax(ajaxOption).done(function(data){
+			       
+				        $('#movieList').append(data);
+				    });
+
+			}
+			
+
+		    if(startNum+12>=${movieCount}){
+					
+					$(this).remove();
+			    }
+			})
 
 	</script>
      

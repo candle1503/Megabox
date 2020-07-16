@@ -44,7 +44,7 @@ public class HomeController {
 			
 		}
 		
-		List<MovieVO> movieList = movieService.movieList();
+		List<MovieVO> movieList = movieService.movieList(0);
 		
 		mv.addObject("movie", movieList);
 		mv.setViewName("index");

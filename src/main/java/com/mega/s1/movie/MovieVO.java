@@ -42,6 +42,6 @@ public class MovieVO {
 	private Double bookingRate;
 	
 	private int ages;
-	
+
 
 }

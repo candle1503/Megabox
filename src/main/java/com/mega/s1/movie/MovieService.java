@@ -98,16 +98,16 @@ public class MovieService {
 		return movieRepository.likeUpdate(movieVO);
 	};
 	
-	public List<MovieVO> movieList() throws Exception {
-		return movieRepository.movieList();
+	public List<MovieVO> movieList(int startNum) throws Exception {
+		return movieRepository.movieList(startNum);
 	}
 	
-	public List<MovieVO> futureList() throws Exception {
-		return movieRepository.futureList();
+	public List<MovieVO> futureList(int startNum) throws Exception {
+		return movieRepository.futureList(startNum);
 	}
 	
-	public List<MovieVO> ingList() throws Exception {
-		return movieRepository.ingList();
+	public List<MovieVO> ingList(int startNum) throws Exception {
+		return movieRepository.ingList(startNum);
 	}
 	
 	public int movieInsert(MovieVO movieVO, MultipartFile[] files, String[] details) throws Exception{
@@ -228,5 +228,17 @@ public class MovieService {
 	public long viewCount(MovieVO movieVO) throws Exception{
 		return movieRepository.viewCount(movieVO);
 	}
-
+	
+	public long movieCount() throws Exception{
+		return movieRepository.movieCount();
+	}
+	
+	public long ingCount() throws Exception{
+		return movieRepository.ingCount();
+	}
+	
+	public long futureCount() throws Exception{
+		return movieRepository.futureCount();
+	}
+	
 }
