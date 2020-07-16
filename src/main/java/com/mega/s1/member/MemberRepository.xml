@@ -63,5 +63,8 @@
 		update ticket set status = 1 where status=2 and id=#{id} 
 	</update>
 	
+	<select id="bookedCompleteListCalandar" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where status = 1 and id = #{id} and viewDate >= str_to_date(#{calandarDate} , '%Y-%m-%d')	
+	</select>
 	
 </mapper>

@@ -53,8 +53,8 @@ public interface MemberRepository {
 	//bookedCompleteAfterList
 	public List<TicketVO> bookedCompleteAfterList(String id) throws Exception;
 	
-	
-	
+	//bookedCompleteListCalandar
+	public List<TicketVO> bookedCompleteListCalandar(TicketVO ticketVO) throws Exception;
 	
 	
 	

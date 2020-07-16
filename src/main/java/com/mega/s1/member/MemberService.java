@@ -196,4 +196,7 @@ public class MemberService {
 		return memberRepository.bookedCompleteAfterList(id);
 	}
 	
+	public List<TicketVO> bookedCompleteListCalandar(TicketVO ticketVO) throws Exception{
+		return memberRepository.bookedCompleteListCalandar(ticketVO);
+	}
 }

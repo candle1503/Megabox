@@ -34,4 +34,7 @@ public class TicketVO {
 	//좌석 비교할때 써야함
 	private int timeCode;
 	
+	//날짜비교할때 쓸것
+	private String calandarDate;
+	
 }
