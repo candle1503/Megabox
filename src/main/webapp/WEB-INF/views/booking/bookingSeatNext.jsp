@@ -54,7 +54,7 @@
 			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
 			<input type="hidden" value="${memberVO.id}" name="id">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
-			<input type="text" value="${time}" name="viewDate">
+			<input type="hidden" value="${time}" name="viewDate">
 			
 			
 			<input type="hidden" value="${sizeCount}" name="count">
@@ -78,13 +78,6 @@
 							관람권 및 할인적용
 							<!-- 관람권 및 할인적용-->
 						</h3>
-
-						<div class="right">
-							<button type="button" class="button gray-line small"
-								onclick="location.href='./bookingSeatNext' ">
-								<i class="iconset ico-reset-small"></i>초기화
-							</button>
-						</div>
 					</div>
 
 					<!-- discout-setting -->
