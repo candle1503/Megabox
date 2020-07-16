@@ -2,18 +2,54 @@ package com.mega.s1;
 
 
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mega.s1.movie.MovieService;
+import com.mega.s1.movie.MovieVO;
+import com.mega.s1.ticket.TicketService;
+import com.mega.s1.ticket.TicketVO;
+
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private TicketService ticketService;
+	
+	@Autowired
+	private MovieService movieService;
 
 	@GetMapping("/")
-	public String home() throws Exception{
-
-		return "index";
+	public ModelAndView home(ModelAndView mv) throws Exception{
+		
+		long amount = ticketService.bookingAllCount();
+		List<TicketVO> bk = ticketService.bookingCount();
+		
+		ticketService.bookingRateReset();
+		
+		for(int i=0; i<bk.size(); i++) {
+			MovieVO movieVO = new MovieVO();
+			int rating = bk.get(i).getAmount();
+			double booking = rating*1.0/amount*100.0;
+			System.out.println(rating);
+			movieVO.setBookingRate(booking);
+			movieVO.setMovieNum(bk.get(i).getMovieNum());
+			System.out.println(booking);
+			ticketService.bookingRateUpdate(movieVO);
+			
+		}
+		
+		List<MovieVO> movieList = movieService.movieList();
+		
+		mv.addObject("movie", movieList);
+		mv.setViewName("index");
+		
+		return mv;
 	}
 	
 	@GetMapping("/adminOnly")

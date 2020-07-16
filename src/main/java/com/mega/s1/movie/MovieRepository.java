@@ -36,5 +36,14 @@ public interface MovieRepository {
 	
 	public int movieDelete(MovieVO movieVO) throws Exception;
 	public int movieUpdate(MovieVO movieVO) throws Exception;
+	public int viewUp(MovieVO movieVO) throws Exception;
+	public long ranking(MovieVO movieVO) throws Exception;
+	public long ageCount(MovieVO movieVO) throws Exception;
+
+	
+	public long child(MovieVO movieVO) throws Exception;
+	public long old(MovieVO movieVO) throws Exception;
+	
+	public long viewCount(MovieVO movieVO) throws Exception;
 	
 }
