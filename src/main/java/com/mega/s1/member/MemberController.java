@@ -247,7 +247,7 @@ public class MemberController {
 			model.addAttribute("theaterName", theaterNameMap);
 			model.addAttribute("theaterRoomName", theaterRoomNameMap);
 			
-			//
+			//날짜 따로
 			viewDateCut = bookedCompAr.get(i).getViewDate().substring(0, 10);
 			viewDateTimeCut = bookedCompAr.get(i).getViewDate().substring(11, 16);
 			

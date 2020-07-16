@@ -21,7 +21,8 @@
 		<div class="quick-reserve">
 			<h2 class="tit"></h2>
 
-			<form method="post" action="./bookingSeatNext">
+			<form method="post" action="./bookingSeatNext" id="seatFrm">
+			
 			
 			<input type="hidden" value="${bookingSeatView.timeCode}" name="timeCode">
 			<input type="hidden" value="${theaterVO.theaterNum}" name="theaterNum">
@@ -362,7 +363,19 @@
 				</div>
 			</div>
 								</form>
-
+			<script type="text/javascript">
+				
+				var memberAge = "${memberAge}";
+				var movieAge = "${movieAge}";
+			
+				$("#pageNext").click(function(){
+					if(memberAge < movieAge){
+						alert("영화 연령이 맞지않아 예매가 불가능합니다. \n연령대에 맞는 영화를 선택해주세요.");
+						$("#seatFrm").remove();
+						location.href="javascript:history.back()";
+					}
+				});
+			</script>
 
 
 		</div>

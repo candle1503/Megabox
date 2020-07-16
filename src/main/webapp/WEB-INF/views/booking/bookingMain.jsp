@@ -375,13 +375,22 @@ function fn_validateDateYn(param) {
 												
 												for(var mc=1; mc<101; mc++){
 													if(movieNumCheck ==$('.mvNumD'+mc).val()){
- 
-														$("#movieBtn"+mc).removeClass("on");
+
+
+														
+														/* if($("#movieBtn"+mc).prop("onchange")){
+															$("#movieBtn"+mvCss).removeClass("on");
+															alert("z");
+														} */
+														$("#movieBtn"+mvCss).removeClass("on");
 														$("#movieBtn"+mc).addClass("on");
+														mvCss = $("#movieBtn"+mc).attr('id').replace("movieBtn", '');	
+														console.log(mvCss);
+														
+														//$("#movieBtn"+mvCss).removeClass("on");
+														
 														$('.mvNum').val(movieNumCheck);
-														
 													}
-														
 												}
 												
 											}

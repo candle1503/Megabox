@@ -14,7 +14,7 @@
 
 <c:forEach items="${bookingMovieAr}" var="bmList" varStatus="i">
 	<li id="bookingMovie${i.count}" class="bookingMovie-Name">
-		<button type="button" id="movieBtn${i.count}" class="btn" movieNum="${bmList.movieNum}">
+		<button type="button" id="movieBtn${i.count}"  class="btn">
 			<c:if test="${bmList.age eq '전체관람가'}">		
 				<span class="movie-grade small age-all">${bmList.age}</span>
 			</c:if>
@@ -79,6 +79,7 @@ function bookingRoomList(startDate, name){
 			if($('.localName').val()=="null"){
 				
 			}else{
+				
 				$("#bookingRoom-List").empty();
 				var name = $('.localName').val();
 				
