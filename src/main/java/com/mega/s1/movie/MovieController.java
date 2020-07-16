@@ -393,6 +393,7 @@ public class MovieController {
 	public ModelAndView movieInsert(ModelAndView mv) throws Exception {
 		MovieVO movieVO = new MovieVO();
 		mv.addObject("movieVO", movieVO);
+		
 		mv.setViewName("admin/addMovie");
 		return mv;
 	}
@@ -456,6 +457,7 @@ public class MovieController {
 			movieService.movieInsert(movieVO, files, details);
 			mv.setViewName("redirect:./movieList");
 		}
+		
 		
 		
 		return mv;

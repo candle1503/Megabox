@@ -89,7 +89,7 @@
 				<div id="content" class="">
 					<form:form modelAttribute="movieVO" action="./movieUpdate"
 						method="post" enctype="multipart/form-data">
-						<h2 class="tit">영화 추가</h2>
+						<h2 class="tit">영화 수정</h2>
 
 						<div class="box-radius" style="margin-bottom: 0px;">
 							<div class="box-top" style="padding-left: 10px">
