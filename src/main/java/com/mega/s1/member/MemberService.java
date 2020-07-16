@@ -175,8 +175,9 @@ public class MemberService {
 		return list;
 	}
 	
-	public void deleteReview(String reviewNum) throws Exception{
-		memberRepository.deleteReview(reviewNum);
+	public void deleteReview(ReviewVO reviewVO,TicketVO ticketVO) throws Exception{
+		memberRepository.deleteReview(reviewVO);
+		memberRepository.deleteReviewStatus(ticketVO);
 	}
 	
 	public void updateTicket() throws Exception{
@@ -195,4 +196,7 @@ public class MemberService {
 		return memberRepository.bookedCompleteAfterList(id);
 	}
 	
+	public List<TicketVO> bookedCompleteListCalandar(TicketVO ticketVO) throws Exception{
+		return memberRepository.bookedCompleteListCalandar(ticketVO);
+	}
 }

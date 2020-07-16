@@ -9,7 +9,7 @@
 </head>
 
 <c:import url="../template/header_css.jsp"></c:import>
-
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
 
 	<c:import url="../template/header.jsp"></c:import>
@@ -49,10 +49,10 @@
 			 <form action="../ticket/paymentDone" id="myForm" method="post">
 
 			
-			<input type="hidden" value="${seat}" name="seatNum">
+			<input type="hidden" value="${seat}" name="seatNum" class="seat">
 			<input type="hidden" value="${bookingVO.movieTime}" name="movieTime">
 			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
-			<input type="hidden" value="${member.id}" name="id">
+			<input type="hidden" value="${memberVO.id}" name="id">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
 			<input type="text" value="${time}" name="viewDate">
 			
@@ -60,7 +60,11 @@
 			<input type="hidden" value="${sizeCount}" name="count">
 			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
 			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
-
+			<input type="hidden" value="${bookingVO.timeCode}" name="timeCode" class="timeCode">
+			<input type="hidden" value="0" name="savePoint" class="savePoint">
+			<input type="hidden" value="0" name="usedPoint" class="usedPoint">
+			<input type="hidden" value="${memberVO.point}" name="point" >
+			
 			
 
 			
@@ -96,15 +100,16 @@
 									<div id="mega_point" class="cont-down">
 										<div class="coupon-box">
 										
-											<div class="item col-1" style="width: 333px; float: left;">
-												<a w-data="500" h-data="450" class="btn-modal-open"
-													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트">
-													<span class="txt">쌍용씨네마 멤버십 포인트 : JSTL 받아서 입력 <!-- 메가박스 멤버십 포인트 --></span>
-												</a>
+											<div class="" style="width: 333px; margin-left: 10px; margin-top: 10px; float: left; margin-right: 0px; ">
+												<input  class="pointUse"
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" readonly="readonly" style="background-color: #f2f4f5;" value="0">
+													
 											</div>
 
-											<div style="float: left; padding-left: 15px; padding-top: 35px;">
-												<input type="checkbox" id="same_use_payment"> <label
+											<div style="margin-left: 0px; ">
+											<input  class="myPoint"
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" style="margin-left: 10px; margin-top: 10px; background-color: #f2f4f5; border: medium;" readonly="readonly"  value="${memberVO.point}">
+												<input type="checkbox"  class="pointCheckBox"> <label
 													for="same_use_payment" id="label_use_payment">멤버십
 													포인트 사용하기 <!-- 다음에도 이 결제수단 사용 -->
 												</label>
@@ -119,6 +124,7 @@
 					</div>
 
 
+					
 
 
 					<!--// discout-setting -->
@@ -427,21 +433,13 @@
 							<div class="box discout-box">
 
 								<div class="all">
-									<span class="tit">할인적용 <!-- 할인적용 --></span> <span class="price"><em>0</em>
+									<span class="tit">할인적용 <!-- 할인적용 --></span> <span class="price"><em class="pointAdd"></em>
 										원 <!-- 원 --></span>
 								</div>
 							</div>
 						</div>
 
 						<div class="pay-area">
-							<div class="add-thing">
-								<p class="tit">
-									추가차액
-									<!-- 추가금액 -->
-								</p>
-
-								<div class="money">0</div>
-							</div>
 							<div class="pay">
 								<p class="tit">
 									최종결제금액
@@ -449,7 +447,7 @@
 								</p>
 
 								<div class="money">
-									<em>${size}</em> <span>원 <!-- 원 --></span>
+									<em class="lastPay">${size}</em> <span>원 <!-- 원 --></span>
 								</div>
 							</div>
 							<div class="payment-thing">
@@ -474,10 +472,81 @@
 				<!--// seat-result -->
 
 			</div>
+			
+			<script type="text/javascript">
+			var beforeMoney = $('.lastPay').html();
+			var myPoint = $('.myPoint').val();
+			
+					$('.pointCheckBox').click(function(){
+						if($('.pointCheckBox').is(":checked")==true){
+							$('.pointUse').removeAttr("readOnly");
+							$('.pointUse').css("background-color","#ffff99");
+							}else{
+							$('.pointUse').attr("readOnly","readOnly");
+							$('.pointUse').css("background-color","#f2f4f5");
+							$('.pointUse').val("");
+							$('.pointAdd').html("");
+							$('.lastPay').html(beforeMoney);
+							}
+						})
+			
+						
+						$('.pointUse').keyup(function(){
+							var point= $('.pointUse').val();
+							
+							if(point > myPoint){
+							alert("현재 포인트보다 적게 써야됌");
+							$('.pointUse').val(myPoint);
+							point = myPoint;
+							}
+							
+							var lastMoney = beforeMoney - point;
+							$('.pointAdd').html(point);
+							$('.lastPay').html(lastMoney);
+						})
+
+					</script>
+			
+			
+			
 			<!--// seat-select-section -->
 			<script type="text/javascript">
+			
+			var timeCode = $('.timeCode').val();
+			var seat = $('.seat').val();
+
+			var form = document.createElement("form");
+			form.setAttribute("charset", "UTF-8");
+
+			form.setAttribute("method", "Post"); 
+
+			form.setAttribute("action", "/booking/bookingSeatView");
+
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "timeCode");
+			hiddenField.setAttribute("value", timeCode);
+			form.appendChild(hiddenField);
+
+			document.body.appendChild(form);
+			
 			$('#btn_booking_pay').click(function(){
-				window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}", "PopupWin", "top=200, left=400, width=850,height=600")
+				var finalPay =$('.lastPay').html();
+				var usedPoint= $('.pointUse').val()
+				$('.savePoint').val(finalPay/10);
+				$('.usedPoint').val(usedPoint);
+				var savePoint = $('.savePoint').val();
+				$.post("seatCheck",{
+					seat : seat,
+					timeCode : timeCode
+					}, function(result){
+						var te = Number(result);
+					if(te==1){
+						form.submit();
+					}else if(te==0){
+					window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}&savePoint="+savePoint+"&usedPoint="+usedPoint, "PopupWin", "top=200, left=400, width=850,height=600")
+						}
+					});
 			})
 
 			</script>

@@ -7,7 +7,7 @@
 	<select id="getMemberList" parameterType="Pager" resultType="MemberVO">
 		select * from member where id
 		<include refid="search"></include>
-		limit #{startRow}, 10
+		order by regDate desc limit #{startRow}, 10
 	</select>
 
 
@@ -27,6 +27,7 @@
 	<select id="getTheaterList" parameterType="Pager" resultType="TheaterVO">
 		select * from theater where name
 		<include refid="search"></include>
+		order by theaterNum desc
 		limit #{startRow}, 10
 	</select>
 	

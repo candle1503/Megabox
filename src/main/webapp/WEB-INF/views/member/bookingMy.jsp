@@ -69,13 +69,17 @@
 				
 				<script type="text/javascript">
 					var id = "${id}";
-
+					
+					
 					function bookedCompAfter(id){
 						$.get("bookingMyAfter?id="+id, function(result){
+							('board-list-search mt20')
 							$("#bokdList").empty();
 							$("#bokdList").append(result);
+							$('#calandarOpen').css("display","block");
 						});
 					}
+					
 					
 					$("#bookedAfter").click(function(){
 						$(this).addClass("on");
@@ -96,7 +100,7 @@
 					<div id="myBokdArea" class="tab-cont on">
 
 						<!-- 예매 조회 조건 -->
-						<div class="board-list-search mt20">
+						<div class="board-list-search mt20" style="display: none" id="calandarOpen">
 							<table summary="예매 조회 조건">
 								<colgroup>
 									<col style="width: 75px;">
@@ -131,29 +135,7 @@
 						</div>
 						<!-- 예매 조회 조건 End -->
 
-<script type="text/javascript">
-	var G_calendar = {
-			startDate: '-0d',
-		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    dayNamesMin: ['일','월','화','수','목','금','토'],
-		    weekHeader: 'Wk',
-		    dateFormat: 'yy-mm-dd',
-		    autoclose : true,
-		    showOn:"both",
-		    showMonthAfterYear: true,
-		    changeDate: false,   
-		    maxDate: '0d',
-		    minDate: '-3y',
-		    closeText: '닫기',
-	}
 
-	$('#calendar').datepicker(G_calendar);
-
-	$('#calendar').change(function(){
-	alert($('#calendar').val());
-			})
-
-	</script>
 
 
 
@@ -162,7 +144,7 @@
 							<div class="board-list-util">
 								<p class="result-count pt00">
 								<!-- size뿌려줄거 -->
-									<strong> 총 <b class="font-gblue">${bookedSize}</b>건
+									<strong> 총 <b class="font-gblue" id="bookedSize">${bookedSize}</b>건
 									</strong>
 								</p>
 							</div>
@@ -175,8 +157,7 @@
 										<div class="round">
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompList.movieNum}" class="img"
 												title="${bookedCompList.movieName} "><img
-												src="upload/movie/${mvfile[0].fileName}"
-												alt="결백" onerror="noImg(this)"></a>
+												src="upload/movie/${mvfile[0].fileName}"></a>
 											<table class="table">
 												<colgroup>
 													<col style="width: 100px;">
@@ -252,6 +233,44 @@
 			</div>
 
 		</div>
+
+	<input type="hidden" value="" class="date" name="calandarDate" >
+
+<script type="text/javascript">
+	var G_calendar = {
+			startDate: '-0d',
+		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    dayNamesMin: ['일','월','화','수','목','금','토'],
+		    weekHeader: 'Wk',
+		    dateFormat: 'yy-mm-dd',
+		    autoclose : true,
+		    showOn:"both",
+		    showMonthAfterYear: true,
+		    changeDate: false,   
+		    maxDate: '3y',
+		    minDate: '-3y',
+		    closeText: '닫기',
+	}
+
+
+	$('#calendar').datepicker(G_calendar);
+
+	$('#calendar').change(function(){
+	$('.date').val($('#calendar').val());
+		var date=$('.date').val();
+		bookedCompAfterCalandar(id,date);
+			})
+
+function bookedCompAfterCalandar(id,date){
+		alert(date)
+	$.get("bookingMyAfter?id="+id+"&calandarDate="+date, function(result){
+		$("#bokdList").empty();
+		$("#bokdList").append(result);
+		$('#calandarOpen').css("display","block");
+	});
+}
+			
+	</script>
 
 
 </body>

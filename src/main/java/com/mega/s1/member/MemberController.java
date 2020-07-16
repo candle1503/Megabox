@@ -216,15 +216,16 @@ public class MemberController {
 	}
 	
 	@GetMapping("bookingMy")
-	public void bookingMy(HttpSession session, String id, Model model, TicketVO ticketVO) throws Exception {
+	public void bookingMy(HttpSession session, String id, Model model) throws Exception {
 		//현재 날짜로 부터 지난 티켓의 status 1로 변경
 		memberService.updateTicket();
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		id = memberVO.getId();
 		model.addAttribute("id", id);
-		
+	
 		List<TicketVO> bookedCompAr = memberService.bookedCompleteList(id);
+		
 		
 		int size = bookedCompAr.size();
 		model.addAttribute("bookedSize", size);
@@ -266,12 +267,21 @@ public class MemberController {
 		}
 		
 		model.addAttribute("bookedCompAr", bookedCompAr);
+	
+		
 	}
 	
 	@GetMapping("bookingMyAfter")
-	public void bookingMyAfter(String id, Model model) throws Exception{
+	public void bookingMyAfter(String id, Model model, TicketVO ticketVO) throws Exception{
 		
-		List<TicketVO> bookedCompAfterAr = memberService.bookedCompleteAfterList(id);
+		List<TicketVO> bookedCompAfterAr;
+		if(ticketVO.getCalandarDate() != null) {
+			ticketVO.setId(id);
+			bookedCompAfterAr = memberService.bookedCompleteListCalandar(ticketVO);
+			
+		}else {
+			bookedCompAfterAr = memberService.bookedCompleteAfterList(id);
+		}		
 		
 		int size = bookedCompAfterAr.size();
 		model.addAttribute("bookedAfterSize", size);
@@ -313,7 +323,6 @@ public class MemberController {
 		}
 		
 		model.addAttribute("bookedCompAfterAr", bookedCompAfterAr);
-		
 	}
 	
 	@GetMapping("reviewList")
@@ -330,9 +339,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("deleteReview")
-	public ModelAndView deleteReview(String reviewNum) throws Exception{
+	public ModelAndView deleteReview(ReviewVO reviewVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		memberService.deleteReview(reviewNum);
+		TicketVO ticketVO = new TicketVO();
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		ticketVO.setId(memberVO.getId());
+		ticketVO.setMovieName(reviewVO.getMovieName());
+		
+		memberService.deleteReview(reviewVO,ticketVO);
+		
+		
 		mv.setViewName("redirect:./reviewList");
 		return mv;
 	}

@@ -23,4 +23,6 @@ public interface BookingRepository {
 	public List<SeatVO> getSeatList(RoomMovieTimeVO roomMovieTimeVO) throws Exception;
 	
 	public int bookingNotBooked(SeatVO seatVO) throws Exception;
+	
+	public Integer getBooked(SeatVO seatVO) throws Exception;
 }

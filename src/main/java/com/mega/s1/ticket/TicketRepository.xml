@@ -21,6 +21,56 @@
 		update ticket set status=2 where ticketNum=#{ticketNum}
 	</update>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<update id="pointAdd" parameterType="MemberVO">
+		update member set point=point+#{savePoint}-#{usedPoint} where id=#{id}
+	</update>
+	
+	
+	<update id="seatUpdate" parameterType="SeatVO">
+		update seat set booked=1 where timeCode=#{timeCode} and seatNum=#{seatNum}
+	</update>
+	
+	
+	
+	
+	
+	
+	
 	<select id="bookingCount" resultType="TicketVO">
 		select movieNum, count(ticketNum) as amount from ticket where viewDate>sysdate() group by movieNum
 	</select>

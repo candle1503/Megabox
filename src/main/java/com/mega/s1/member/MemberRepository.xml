@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mega.s1.member.MemberRepository">
 	<insert id="setJoin" parameterType="MemberVO">
-		insert into member values (#{id},#{password},#{name},#{phone},#{email},#{age},now())
+		insert into member values (#{id},#{password},#{name},#{phone},#{email},#{age},now(),1000)
 	</insert>
 	
 	<select id="setLogin" parameterType="MemberVO" resultType="MemberVO">
@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="getReviewList" parameterType="MemberVO" resultType="ReviewVO">
-		select * from review where writer=#{id}
+		select * from review where writer=#{id} order by reviewNum desc
 	</select>
 	
 	<select id="getMovieImage" parameterType="Integer" resultType="String">
@@ -43,12 +43,12 @@
 		select name from movie where movieNum=#{movieNum}
 	</select>
 	
-	<delete id="deleteReview" parameterType="String">
+	<delete id="deleteReview" parameterType="ReviewVO">
 		delete from review where reviewNum=#{reviewNum}
 	</delete>
 	
 	<update id="updateTicket" parameterType="String">
-		update ticket set status = 1 where now() > viewDate 
+		update ticket set status = 1 where status=0 and now() > viewDate 
 	</update>
 	
 	<select id="bookedCompleteList" parameterType="String" resultType="TicketVO">
@@ -57,6 +57,14 @@
 	
 	<select id="bookedCompleteAfterList" parameterType="String" resultType="TicketVO">
 		select * from ticket where status = 1 and id = #{id}
+	</select>
+	
+	<update id="deleteReviewStatus" parameterType="TicketVO">
+		update ticket set status = 1 where status=2 and id=#{id} 
+	</update>
+	
+	<select id="bookedCompleteListCalandar" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where status = 1 and id = #{id} and viewDate >= str_to_date(#{calandarDate} , '%Y-%m-%d')	
 	</select>
 	
 </mapper>
