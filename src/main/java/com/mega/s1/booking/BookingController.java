@@ -317,11 +317,11 @@ public class BookingController {
 		
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
-		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 
 		//mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("seat", texthobby);
-
+		mv.addObject("memberVO", memberVO);
 		mv.addObject("seatList", seatVO.getSeatList());
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("movieVO", movieVO);

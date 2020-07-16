@@ -56,8 +56,9 @@
 	
 	
 	
-	
-	
+	<update id="pointAdd" parameterType="MemberVO">
+		update member set point=point+#{savePoint}-#{usedPoint} where id=#{id}
+	</update>
 	
 	
 	<update id="seatUpdate" parameterType="SeatVO">

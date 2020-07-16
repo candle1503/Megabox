@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.seat.SeatVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomVO;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -34,7 +37,6 @@ public class TicketController {
 	
 	@GetMapping("payment")
 	public ModelAndView payment(ModelAndView mv, TicketVO ticketVO) throws Exception{
-		
 		MovieVO movieVO = new MovieVO();
 		movieVO.setMovieNum(ticketVO.getMovieNum());
 		movieVO = movieService.movieSelect(movieVO);
@@ -51,12 +53,25 @@ public class TicketController {
 	public int paymentDone(ModelAndView mv ,TicketVO ticketVO) throws Exception{
 		
 		int result = ticketService.ticketInsert(ticketVO);
-
+		
 		return result;
 	}
 	
 	@PostMapping("paymentDone")
-	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO) throws Exception{
+	public ModelAndView resultPage(ModelAndView mv, TicketVO ticketVO, MemberVO memberVO) throws Exception{
+		System.out.println(memberVO.getSavePoint());
+		System.out.println(memberVO.getSavePoint());
+		System.out.println(memberVO.getSavePoint());
+		System.out.println(memberVO.getSavePoint());
+		System.out.println(memberVO.getSavePoint());
+		System.out.println(memberVO.getSavePoint());
+		
+		System.out.println(memberVO.getUsedPoint());
+		System.out.println(memberVO.getUsedPoint());
+		System.out.println(memberVO.getUsedPoint());
+		System.out.println(memberVO.getUsedPoint());
+		System.out.println(memberVO.getUsedPoint());
+		ticketService.pointAdd(memberVO);
 		
 		String[] seats = ticketVO.getSeatNum().split(",");
 		List<SeatVO> seatVOs = new ArrayList<SeatVO>();
@@ -90,7 +105,6 @@ public class TicketController {
 		mv.addObject("file", files);
 		mv.addObject("movieVO", movieVO);
 		mv.setViewName("booking/bookingComplete");
-		
 		return mv;
 	}
 	

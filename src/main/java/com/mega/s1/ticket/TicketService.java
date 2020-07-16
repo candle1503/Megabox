@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mega.s1.member.MemberVO;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.seat.SeatVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomRepository;
@@ -58,7 +59,9 @@ public class TicketService {
 	
 	
 	
-	
+	public void pointAdd(MemberVO memberVO) throws Exception{
+		ticketRepository.pointAdd(memberVO);
+	}
 	
 	
 	public void seatUpdate(List<SeatVO> seatVOs) throws Exception{

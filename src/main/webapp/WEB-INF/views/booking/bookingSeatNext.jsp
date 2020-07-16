@@ -52,7 +52,7 @@
 			<input type="hidden" value="${seat}" name="seatNum" class="seat">
 			<input type="hidden" value="${bookingVO.movieTime}" name="movieTime">
 			<input type="hidden" value="${movieVO.movieNum}" name="movieNum">
-			<input type="hidden" value="${member.id}" name="id">
+			<input type="hidden" value="${memberVO.id}" name="id">
 			<input type="hidden" value="${movieVO.name}" name="movieName">
 			<input type="text" value="${time}" name="viewDate">
 			
@@ -61,6 +61,9 @@
 			<input type="hidden" value="${bookingVO.theaterRoomCode}" name="theaterRoomCode">
 			<input type="hidden" value="${bookingVO.startTime}" name="viewDate">
 			<input type="hidden" value="${bookingVO.timeCode}" name="timeCode" class="timeCode">
+			<input type="hidden" value="" name="savePoint" class="savePoint">
+			<input type="hidden" value="" name="usedPoint" class="usedPoint">
+			<input type="hidden" value="${memberVO.point}" name="point" >
 			
 			
 
@@ -105,7 +108,7 @@
 
 											<div style="margin-left: 0px; ">
 											<input  class="myPoint"
-													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" style="margin-left: 10px; margin-top: 10px; background-color: #f2f4f5; border: medium;" readonly="readonly"  value="1000">
+													name="btn_pay_memp" id="btn_pay_memp" title="메가박스 멤버십 포인트" style="margin-left: 10px; margin-top: 10px; background-color: #f2f4f5; border: medium;" readonly="readonly"  value="${memberVO.point}">
 												<input type="checkbox"  class="pointCheckBox"> <label
 													for="same_use_payment" id="label_use_payment">멤버십
 													포인트 사용하기 <!-- 다음에도 이 결제수단 사용 -->
@@ -508,6 +511,7 @@
 			
 			<!--// seat-select-section -->
 			<script type="text/javascript">
+			
 			var timeCode = $('.timeCode').val();
 			var seat = $('.seat').val();
 
@@ -525,8 +529,12 @@
 			form.appendChild(hiddenField);
 
 			document.body.appendChild(form);
-
+			
 			$('#btn_booking_pay').click(function(){
+				var finalPay =$('.lastPay').html();
+				var usedPoint= $('.pointUse').val()
+				$('.savePoint').val(finalPay/10);
+				$('.usedPoint').val(usedPoint);
 				$.post("seatCheck",{
 					seat : seat,
 					timeCode : timeCode
