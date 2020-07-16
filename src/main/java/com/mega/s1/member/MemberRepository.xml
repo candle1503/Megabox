@@ -43,7 +43,7 @@
 		select name from movie where movieNum=#{movieNum}
 	</select>
 	
-	<delete id="deleteReview" parameterType="String">
+	<delete id="deleteReview" parameterType="ReviewVO">
 		delete from review where reviewNum=#{reviewNum}
 	</delete>
 	
@@ -58,5 +58,10 @@
 	<select id="bookedCompleteAfterList" parameterType="String" resultType="TicketVO">
 		select * from ticket where status = 1 and id = #{id}
 	</select>
+	
+	<update id="deleteReviewStatus" parameterType="TicketVO">
+		update ticket set status = 1 where status=2 and id=#{id} 
+	</update>
+	
 	
 </mapper>

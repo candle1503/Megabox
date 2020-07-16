@@ -33,4 +33,5 @@ public class TicketVO {
 	
 	//좌석 비교할때 써야함
 	private int timeCode;
+	
 }

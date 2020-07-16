@@ -42,7 +42,7 @@ public interface MemberRepository {
 	public String getMovieName(int movieNum) throws Exception;
 	
 	//deleteReview
-	public void deleteReview(String reviewNum)throws Exception;
+	public void deleteReview(ReviewVO reviewVO)throws Exception;
 	
 	//updateTicket
 	public void updateTicket() throws Exception;
@@ -52,4 +52,13 @@ public interface MemberRepository {
 	
 	//bookedCompleteAfterList
 	public List<TicketVO> bookedCompleteAfterList(String id) throws Exception;
+	
+	
+	
+	
+	
+	
+	
+	//deleteReviewStatus
+	public void deleteReviewStatus(TicketVO ticketVO) throws Exception;
 }

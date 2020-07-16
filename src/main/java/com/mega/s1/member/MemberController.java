@@ -324,9 +324,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("deleteReview")
-	public ModelAndView deleteReview(String reviewNum) throws Exception{
+	public ModelAndView deleteReview(ReviewVO reviewVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		memberService.deleteReview(reviewNum);
+		TicketVO ticketVO = new TicketVO();
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		ticketVO.setId(memberVO.getId());
+		ticketVO.setMovieName(reviewVO.getMovieName());
+		
+		memberService.deleteReview(reviewVO,ticketVO);
+		
+		
 		mv.setViewName("redirect:./reviewList");
 		return mv;
 	}

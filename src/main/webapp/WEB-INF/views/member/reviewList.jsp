@@ -84,6 +84,7 @@
 														
 														<form action="./deleteReview" method="post">
 														<input type="hidden" value="${vo.reviewNum}" id="reviewNum${i.count}" name="reviewNum">
+														<input type="hidden" value="${vo.movieName}" id="reviewNum${i.count}" name="movieName">
 														<button
 														type="submit" class="btn del" id="deleteBtn${i.count}" data-no="663348"
 														data-mno="01550200" data-cd="PREV">삭제</button>
