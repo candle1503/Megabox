@@ -40,6 +40,12 @@ public class MemberController {
 	
 	@GetMapping("memberJoin")
 	public ModelAndView setJoin() throws Exception{
+		System.out.println("!!!!");
+		System.out.println("!!!!");
+		System.out.println("!!!!");
+		System.out.println("!!!!");
+		System.out.println("!!!!");
+		System.out.println("!!!!");
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = new MemberVO();
 		mv.addObject("memberVO", memberVO);

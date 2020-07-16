@@ -12,7 +12,7 @@
 
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<div class="body-wrap">
+	<div class="body-wrap" style="margin-top: 92px;">  
 
 		
 		<!--// header -->

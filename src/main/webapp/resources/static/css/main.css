@@ -26,7 +26,6 @@ h2.tit {
 
 .main-container {
 	min-width: 1100px;
-	padding-bottom: 200px;
 }
 
 .main-container #contents {
@@ -1786,7 +1785,7 @@ h2.tit {
 
 /* 硫붽�諛뺤뒪  �덈궡  - �꾩껜怨듭� */
 .main-info .info-notice {
-	margin-top: 50px;
+	/* margin-top: 50px; */
 	border: 1px solid #e2e2e2;
 	border-width: 1px 0;
 }

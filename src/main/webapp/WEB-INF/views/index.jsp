@@ -538,9 +538,9 @@
 					<!-- section main-info : 메가박스 안내 -->
 					<div id="main_section04" class="section main-info">
 
-						<h2 class="tit">쌍용 씨네시티 안내</h2>
+						<!-- <h2 class="tit">쌍용 씨네시티 안내</h2> -->
 
-						<div class="info-special">
+						<!-- <div class="info-special">
 							<a href="/specialtheater/boutique" title="부티크 페이지로 이동"
 								class="bg-boutique">부티크</a> <a href="/specialtheater/mx"
 								title="MX 페이지로 이동" class="bg-mx">MX</a> <a
@@ -550,8 +550,8 @@
 								class="bg-kids">MEGA KIDS BOX</a> <a
 								href="/specialtheater/firstclub" title="THE FIRST CLUB 페이지로 이동"
 								class="bg-first">THE FIRST CLUB</a>
-							<!-- <a href="/specialtheater/balcony" title="발코니 페이지로 이동" class="bg-balcony">발코니</a>-->
-						</div>
+							<a href="/specialtheater/balcony" title="발코니 페이지로 이동" class="bg-balcony">발코니</a>
+						</div> -->
 
 						<!-- info-notice -->
 						<div class="info-notice">

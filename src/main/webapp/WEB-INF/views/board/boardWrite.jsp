@@ -36,7 +36,7 @@
 
 <!-- <div class="container"></div> -->
 
-<div class="container has-lnb">
+<div class="container has-lnb" style="margin-top: 50px;">
 
 	<div class="inner-wrap">
 
@@ -403,8 +403,9 @@
 
 	</div>
 	
-	<c:import url="../template/footer.jsp"></c:import>
-
+	<div style="margin-top: 200px;">
+		<c:import url="../template/footer.jsp"></c:import>
+	</div>
 
 	<script type="text/javascript">
 		$(".dropdown-separate li > a").click(function() {

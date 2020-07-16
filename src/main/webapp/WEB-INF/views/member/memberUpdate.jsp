@@ -18,7 +18,7 @@
 
 
 
-		<div class="container has-lnb">
+		<div class="container has-lnb" style="margin-top: 0px;">
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
@@ -283,10 +283,11 @@
 			<a href="" class="btn-go-top" title="top" style="position: fixed;">top</a>
 		</div>
 
+		<%-- <c:import url="../template/footer.jsp"></c:import> --%>
+
 		<!-- footer -->
 		<footer id="footer">
-			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 200px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>
@@ -304,14 +305,12 @@
 						title="극장찾기"><i class="iconset ico-footer-search"></i> 극장찾기</a>
 				</div>
 			</div>
-			<!--// footer-top -->
 
-			<!-- footer-bottom -->
 			<div class="footer-bottom">
 				<div class="inner-wrap">
 					<div class="ci">MEGABOX : Life Theater</div>
 
-					<div class="footer-info">
+					<div class="footer-info" style="margin-top: 0px;">
 						<div>
 							<address>서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 메가박스스퀘어)</address>
 							<p>ARS 1544-0070</p>
@@ -341,7 +340,6 @@
 					</div>
 				</div>
 			</div>
-			<!--// footer-bottom -->
 			<div id="layer_looking_theater" class="layer-looking-theater"></div>
 		</footer>
 		<!--// footer -->

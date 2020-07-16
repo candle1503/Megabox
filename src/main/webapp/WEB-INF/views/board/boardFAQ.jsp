@@ -13,7 +13,7 @@
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-<link rel="stylesheet" href="../resources/css/board.css" media="all" />
+<link rel="stylesheet" href="../resources/static/css/board.css" media="all" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

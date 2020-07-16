@@ -14959,7 +14959,7 @@ body.body-iframe .modal-layer {
 	min-width: 1100px;
 	min-height: 100%;
 	margin: -92px 0 -200px 0;
-	padding: 92px 0 300px 0
+	/* padding: 92px 0 300px 0 */
 }
 
 .container.no-padding-bottom {
