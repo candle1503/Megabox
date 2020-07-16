@@ -10,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mega.s1.board.notice.NoticeService;
+import com.mega.s1.board.notice.NoticeVO;
 import com.mega.s1.movie.MovieService;
 import com.mega.s1.movie.MovieVO;
 import com.mega.s1.ticket.TicketService;
 import com.mega.s1.ticket.TicketVO;
+import com.mega.s1.util.Pager;
 
 @Controller
 public class HomeController {
@@ -23,9 +26,12 @@ public class HomeController {
 	
 	@Autowired
 	private MovieService movieService;
-
+	
+	@Autowired
+	private NoticeService noticeService;
+	
 	@GetMapping("/")
-	public ModelAndView home(ModelAndView mv) throws Exception{
+	public ModelAndView home(ModelAndView mv, NoticeVO noticeVO, Pager pager) throws Exception{
 		
 		long amount = ticketService.bookingAllCount();
 		List<TicketVO> bk = ticketService.bookingCount();
@@ -45,6 +51,9 @@ public class HomeController {
 		}
 		
 		List<MovieVO> movieList = movieService.movieList();
+		
+		List<NoticeVO> ar = noticeService.boardList(pager);
+		mv.addObject("list", ar);
 		
 		mv.addObject("movie", movieList);
 		mv.setViewName("index");

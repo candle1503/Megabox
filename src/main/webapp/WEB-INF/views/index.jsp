@@ -518,7 +518,7 @@
 										class="iconset ico-boxoffice-main"></i> 박스오피스</a>
 								</div>
 								<div class="cell">
-									<a href="/booking" title="빠른예매 보기"><i
+									<a href="${pageContext.request.contextPath}/booking/bookingMain" title="빠른예매 보기"><i
 										class="iconset ico-quick-reserve-main"></i> 빠른예매</a>
 								</div>
 							</div>
@@ -556,18 +556,17 @@
 						<!-- info-notice -->
 						<div class="info-notice">
 							<div class="wrap">
-								<p class="tit">지점</p>
+								<p class="tit">${list[0].name}</p>
 								<p class="link">
-									<a href="/support/notice/detail?artiNo=10099&amp;bbsNo=9"
-										title="공지사항 상세보기"> <strong> [홍대] </strong> [홍대] 쌍용강북교육센터와
-										함께하는 이벤트
+									<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=${list[0].num}"
+										title="공지사항 상세보기"> <strong> [${list[0].separate}] </strong> ${list[0].title}
 									</a>
 								</p>
 
-								<p class="date">2020.06.17</p>
+								<p class="date">${list[0].regDate}</p>
 
 								<p class="more">
-									<a href="/support/notice" title="전체공지 더보기">더보기 <i
+									<a href="${pageContext.request.contextPath}/notice/noticeList" title="전체공지 더보기">더보기 <i
 										class="iconset ico-arr-right-gray"></i></a>
 								</p>
 							</div>
