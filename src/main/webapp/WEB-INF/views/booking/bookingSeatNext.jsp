@@ -513,8 +513,8 @@
 			$('#btn_booking_pay').click(function(){
 				var point= $('.pointUse').val();
 				var myPoint = $('.myPoint').val();
-				
-				if(point > myPoint){
+				var result = myPoint-point;
+				if(result<0){
 					alert("현재 포인트보다 적게 써야됌");
 
 					if(myPoint%10 !=0){
@@ -522,6 +522,7 @@
 						myPoint = Math.floor(myPoint);
 						myPoint *= 10;
 					}
+
 					
 					$('.pointUse').val(myPoint);
 					$('.pointAdd').html(myPoint);

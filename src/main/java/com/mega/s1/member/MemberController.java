@@ -108,7 +108,7 @@ public class MemberController {
 		MemberFileVO memberFileVO = new MemberFileVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		if(memberVO.getId().equals("ADMIN")) {
-			mv.setViewName("admin/adminPage");
+			mv.setViewName("redirect:../admin/theaterList");
 		}else {
 			Integer ticketCount = memberService.getTicketCount(memberVO);
 			Integer reviewCount = memberService.getReviewCount(memberVO);
