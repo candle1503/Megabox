@@ -1,17 +1,9 @@
 package com.mega.s1.aop;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpSession;
-
-import org.apache.catalina.connector.Request;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.mega.s1.member.MemberVO;
 
 @Component
 @Aspect
@@ -19,13 +11,12 @@ import com.mega.s1.member.MemberVO;
 public class CustomAOP {
 
 	@Autowired
-	private HttpSession session;
 	
-	@Before("execution(* com.mega.s1.member.*Service.*(..))")
+	@Before("execution(* com.mega.s1.ticket.TicketController.resultPage(..))")
 	public void afterReturning() throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = new MemberVO();
+//		System.out.println("?!?!?!?!?!?!?");
+//		ModelAndView mv = new ModelAndView();
+//		MemberVO memberVO = new MemberVO();
 //		memberVO = (MemberVO)session.getAttribute("member");
 
 //		System.out.println(memberVO.getId());

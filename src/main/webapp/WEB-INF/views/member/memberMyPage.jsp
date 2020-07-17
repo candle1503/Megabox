@@ -12,7 +12,7 @@
 
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<div class="body-wrap">
+	<div class="body-wrap" style="margin-top: 92px;">  
 
 		
 		<!--// header -->
@@ -95,7 +95,6 @@
 
 						</div>
 
-						
 						<div class="column mt70">
 							<!-- left -->
 							<div class="col left" id="myStory">
@@ -105,12 +104,12 @@
 								</div>
 
 								<div class="box-border link-movie-story">
-									<a href="/mypage/moviestory?cd=sm"  style="margin-left: 20px;"> <em>${ticketCount}</em>
+									<a href=""  style="margin-left: 20px;"> <em>${ticketCount}</em>
 										<span>본 영화</span>
 									</a> <a href="/member/reviewList" style="margin-left: 30px;"> <em>${reviewCount}</em>
 										<span>리뷰</span>
 									</a> 
-									 <a href=""  style="margin-left: 30px;"> <em>0</em>
+									 <a href=""  style="margin-left: 30px;"> <em>${memberVO.point}</em>
 										<span>총 포인트</span>
 									</a> 
 								</div>
@@ -124,7 +123,7 @@
 							<div class="tit-util mt70">
 								<h2 class="tit small">나의 예매내역</h2>
 
-								<a href="/mypage/bookinglist?tab=01" class="more"
+								<a href="/member/bookingMy" class="more"
 									title="나의 예매내역 더보기">더보기 <i
 									class="iconset ico-arr-right-gray"></i></a>
 							</div>
@@ -132,9 +131,52 @@
 							<!-- my-reserve-history -->
 							<div class="my-reserve-history">
 								<ul>
-									<li class="no-result">
-										<div class="no-history-reservation">예매 내역이 없습니다.</div>
+									<li sell-tran-no="13722007010094143868">
+									<div class="round">
+											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${ticketVO.movieNum}" class="img"
+												title="${ticketVO.movieName} "><img
+												src="upload/movie/${ticketVO.movieName}"></a>
+											<table class="table">
+												<tbody >
+													<tr>
+														<th scope="row">예매번호</th>
+														<td colspan="3"><em class="num">${ticketVO.ticketCode}</em></td>
+													</tr>
+													<tr>
+														<th scope="row" >영화명</th>
+														<td colspan="3">
+															<p class="tit-movie">
+																<span>${ticketVO.movieName}</span> <span>2D</span>
+															</p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" >극장/상영관</th>
+														<td>일반 ${ticketVO.count}명</td>
+													</tr>
+													<tr>
+													<th scope="row">관람인원</th>
+														<td>일반 ${ticketVO.count}명</td>
+													</tr>
+													
+													<tr>
+														<th scope="row" style="width: 300px;">관람일시</th>
+														<td>${ticketVO.viewDate}</td>
+														<th scope="row">관람좌석</th>
+														<td>${ticketVO.seatNum}</td>
+													</tr>
+													
+													<tr>
+														<th scope="row" >적립 포인트</th>
+														<td>${ticketVO.savedPoint} 원</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									
 									</li>
+									
+									
 								</ul>
 							</div>
 							<!--// my-reserve-history -->
@@ -151,7 +193,7 @@
 		<!-- footer -->
 		<footer id="footer">
 			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 200px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>

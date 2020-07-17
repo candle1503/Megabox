@@ -6,7 +6,7 @@
 <mapper namespace="com.mega.s1.ticket.TicketRepository">
 
 	<insert id="ticketInsert" parameterType="TicketVO" useGeneratedKeys="true" keyProperty="movieNum">
-		insert into ticket values(0, #{seatNum}, #{ticketCode}, #{movieTime}, #{id}, #{count}, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName})
+		insert into ticket values(0, #{seatNum}, #{ticketCode}, #{movieTime}, #{id}, #{count}, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName},#{savedPoint})
 	</insert>
 	
 	<select id="resultPage" parameterType="TicketVO" resultType="TicketVO">
@@ -20,5 +20,73 @@
 	<update id="reviewDone" parameterType="TicketVO">
 		update ticket set status=2 where ticketNum=#{ticketNum}
 	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<update id="pointAdd" parameterType="MemberVO">
+		update member set point=point+#{savePoint}-#{usedPoint} where id=#{id}
+	</update>
+	
+	
+	<update id="seatUpdate" parameterType="SeatVO">
+		update seat set booked=1 where timeCode=#{timeCode} and seatNum=#{seatNum}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	<select id="bookingCount" resultType="TicketVO">
+		select movieNum, count(ticketNum) as amount from ticket where viewDate>sysdate() group by movieNum
+	</select>
+	
+	<select id="bookingAllCount" resultType="Long">
+		select count(ticketNum) from ticket where viewDate>sysdate()
+	</select>
+	
+	<update id="bookingRateReset">
+		update movie set bookingRate=0
+	</update>
+	
+	<update id="bookingRateUpdate" parameterType="MovieVO">
+		update movie set bookingRate=#{bookingRate} where movieNum=#{movieNum}
+	</update>
+	
+
 	
 </mapper>

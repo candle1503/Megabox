@@ -205,7 +205,8 @@ public class BookingController {
 	}
 	
 	@PostMapping("bookingSeatView")
-	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO) throws Exception{
+	public ModelAndView bookingSeatView(BookingVO bookingVO, MovieVO movieVO, TheaterVO theaterVO, HttpSession session) throws Exception{
+		
 		ModelAndView mv = new ModelAndView();
 		RoomMovieTimeVO roomMovieTimeVO = new RoomMovieTimeVO();
 		roomMovieTimeVO.setTimeCode(bookingVO.getTimeCode());
@@ -214,11 +215,34 @@ public class BookingController {
 	
 		mv.addObject("seatList", seatList);
 		
-		
 		bookingVO = bookingService.bookingSeatView(bookingVO);
 		
 		movieVO.setMovieNum(bookingVO.getMovieNum());
 		movieVO = movieService.movieSelect(movieVO);
+		
+		//예매 전 연령제한 확인
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		if(memberVO != null) {
+			int memberAge = memberVO.getAge(); 
+			mv.addObject("memberAge", memberAge);
+			
+			String movieAgeText = movieVO.getAge();
+			int movieAge = 0;
+			
+			if(movieAgeText.equals("12세이상관람가")) {
+				movieAgeText = "12";
+				movieAge = Integer.parseInt(movieAgeText);
+			}else if(movieAgeText.equals("15세이상관람가")) {
+				movieAgeText = "15";
+				movieAge = Integer.parseInt(movieAgeText);
+			}else if(movieAgeText.equals("청소년관람불가")) {
+				movieAgeText = "19";
+				movieAge = Integer.parseInt(movieAgeText);
+			}
+			
+			mv.addObject("movieAge", movieAge);
+		}
+		
 		
 		theaterVO.setTheaterNum(bookingVO.getTheaterNum());
 		theaterVO = theaterService.theaterBranchSelect(theaterVO);
@@ -290,12 +314,13 @@ public class BookingController {
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("bookingSeatView", bookingVO);
 		mv.setViewName("booking/bookingSeat");
-		
 		return mv;
 	}
 	
 	@PostMapping("bookingSeatNext")
 	public ModelAndView bookingSeatNext(SeatVO seatVO, BookingVO bookingVO, MovieVO movieVO, String movieAge, String movieName, TheaterVO theaterVO, MovieFileVO movieFileVO, TicketVO ticketVO, HttpSession session) throws Exception {
+		String mvTime[] = bookingVO.getMovieTime().split("~");
+		String time = bookingVO.getStartTime()+" "+mvTime[0];
 		ModelAndView mv = new ModelAndView();
 		int size = seatVO.getSeatList().size();
 		mv.addObject("sizeCount", size);
@@ -315,17 +340,17 @@ public class BookingController {
 		
 		movieVO.setAge(movieAge);
 		movieVO.setName(movieName);
-		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 
 		//mv.addObject("movieFileVO", movieFileVO);
 		mv.addObject("seat", texthobby);
-
+		mv.addObject("memberVO", memberVO);
 		mv.addObject("seatList", seatVO.getSeatList());
 		mv.addObject("theaterVO", theaterVO);
 		mv.addObject("movieVO", movieVO);
 		mv.addObject("bookingVO", bookingVO);
 		mv.addObject("size", size);
-		
+		mv.addObject("time", time);
 		return mv;
 		
 	}
@@ -412,5 +437,27 @@ public class BookingController {
 		return mv;
 	}
 	
+	@PostMapping("seatCheck")
+	public ModelAndView seatCheck(int timeCode, String seat)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String[] seats = seat.split(",");
+		List<SeatVO> seatVOs = new ArrayList<SeatVO>();
+		for(int i=0; i<seats.length; i++) {
+			SeatVO seatVO = new SeatVO();
+			seats[i] = seats[i].trim();
+			seatVO.setTimeCode(timeCode);
+			seatVO.setSeatNum(seats[i]);
+			seatVOs.add(i, seatVO);
+		}
+		int result = bookingService.checkSeat(seatVOs);
+		System.out.println("결과는???"+result);
+		if(result == 1) {
+			 mv.addObject("result", 1);
+		}else {
+			mv.addObject("result", 0);
+		}
+		mv.setViewName("/ajax/ajaxResult");
+		return mv;
+	}
 
 }

@@ -2,12 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/static/css/main.css"	media="all">
 <link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
  <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <c:import url="./template/header.jsp"></c:import>
@@ -411,249 +413,34 @@
 							</div>
 							<!-- tab-sorting -->
 
-							<a href="/movie" class="more-movie" title="더 많은 영화보기"> 더 많은
+							<a href="./movie/movieList" class="more-movie" title="더 많은 영화보기"> 더 많은
 								영화보기 <i class="iconset ico-more-corss gray"></i>
 							</a>
 
 							<!-- main-movie-list -->
 							<div class="main-movie-list">
 								<ol class="list">
-									<!-- 3개의 list를  loop 한다-->
-									<!-- 박스오피스 시작 -->
+									
 									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_accmAdncList" style="display: none;" class="first">
-										<a href="javascript:gfn_moveDetail('20003900')"
+									<c:forEach items="${movie }" var="movie" varStatus="vr" end="3">
+									<c:if test="${vr.count eq 1 }">
+									<li name="li_boxoRankList" class="first">
+									</c:if>
+									<c:if test="${vr.count ne 1 }">
+									<li name="li_boxoRankList">
+									</c:if>
+									<a
+										href="./movie/movieSelect?movieNum=${movie.movieNum }"
 										class="movie-list-info" title="영화상세 보기">
 											<p class="rank">
-												1<span class="ir">위</span>
+												${vr.count }<span class="ir">위</span>
 											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/05/07/FPu782r61QMPQ44Yr0YdHbBTwF5Ags94_420.jpg"
-											alt="트롤: 월드 투어" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													팝, 록, 클래식, 컨트리, 펑크, 테크노, K-POP까지<br>세상의 모든 음악이 쏟아진다!<br>노래와
-													춤을 즐기며 평화로운 나날을 보내던 팝 트롤 ‘파피’와 ‘브랜치’ 그리고 친구들.<br>어느 날
-													‘파피’는 자신들 외에도 서로 다른 외모와 노래를 가진 5개의 트롤 마을이 더 있다는 것을 알게 된다.<br>
-													<br>모두와 친구가 되어 신나게 지내고 싶은 ‘파피’와 달리,<br>록 트롤 마을의
-													여왕 ‘바브’는 록을 제외한 모든 음악을 없애기 위해 다른 트롤 마을들을 하나씩 파괴하기 시작하고<br>‘파피’는
-													위기에 빠진 트롤 세계를 구하기 위해 친구들과 위험천만한 모험을 떠나게 되는데…
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20003900">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												751
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20003900');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_accmAdncList" style="display: none;" class="">
-										<a href="javascript:gfn_moveDetail('01438700')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												2<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2018/C6/013959-C07F-401A-AAC0-CA9A76DB48AE.large.jpg"
-											alt="스타 이즈 본" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													나도 몰랐던 내 안의 빛을 찾아낸 그대<br>우리 모습 이대로 영원히 기억할 거야…<br>
-													<br>노래에 놀라운 재능을 가졌지만 외모에는 자신이 없는 무명가수 앨리(레이디 가가)는<br>공연을
-													하던 바에서 우연히 톱스타 잭슨 메인(브래들리 쿠퍼)을 만나게 된다.<br>자신의 모든 것을
-													사랑해주는 잭슨의 도움으로 앨리는 자기 안의 열정을 폭발시키며 최고의 스타로 거듭나지만,<br>잭슨은
-													어린 시절의 상처와 예술가적 고뇌 속에서 점점 무너져가는데…
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9.1<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="01438700">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												4.3k
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('01438700');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_accmAdncList" style="display: none;" class="">
-										<a href="javascript:gfn_moveDetail('20003100')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												3<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/05/13/L1M5yrfpINDCNXETFojjPzPfJk8jcpxx_420.jpg"
-											alt="침입자" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													25년만에 돌아온 동생,<br>나는 그녀가 의심스럽다!<br> <br>얼마 전
-													사고로 아내를 잃고 실의에 빠져 있는 건축가 ‘서진’에게<br>25년 전 실종된 동생을 찾았다는
-													연락이 온다<br>처음 본 자신을 친근하게 “오빠”라고 부르는 ‘유진’이 어딘가 불편한 ‘서진’과
-													달리<br>가족들은 금세 그녀를 받아들인다<br> <br>그런데 ‘유진’이
-													돌아온 후 가족들에게 이상한 일들이 벌어지기 시작하고,<br>이를 의심스럽게 여긴 ‘서진’은
-													동생의 비밀을 쫓다 자신의 일상을 송두리째 뒤흔든 사건에<br>그녀가 연관되어 있음을 알게
-													되는데...<br> <br>추적 끝에 드러나는 충격적인 진실!
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															7.3<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20003100">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												596
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20003100');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_accmAdncList" style="display: none;" class="">
-										<a href="javascript:gfn_moveDetail('20003500')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												4<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_420.jpg"
-											alt="결백" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													아빠의 장례식장에서 벌어진 막걸리 농약 살인사건<br>기억을 잃은 채 살인사건의 용의자로 몰린
-													엄마 '화자'(배종옥)의 결백을 밝히려는 변호사 '정인'(신혜선)이 '추시장'(허준호)과 마을 사람들이
-													숨기려 한 추악한 진실을 파헤쳐가는 무죄 입증 추적극
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															8.7<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20003500">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												557
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20003500');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 박스오피스 종료 -->
-									<!-- 박스오피스 시작 -->
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_boxoRankList" class="first"><a
-										href="javascript:gfn_moveDetail('01693600')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												1<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/06/16/g8krQAvfYaqZvbZTdDipqRErDbiTUr8Z_420.gif"
-											alt="온워드: 단 하루의 기적" class="poster"
+											src="${pageContext.request.contextPath}/upload/movie/${movie.movieFileVO.fileName}"
+											alt="${movie.name }" class="poster"
 											onerror="noImg(this, 'main');">
 											<div class="wrap">
 												<div class="summary">
-													마법이 허락된 단 하루, 지금 만나고 싶은 사람이 있나요?<br> <br>마법이 사라진
-													세상에 살고 있는 취향과 성격 모두 정반대의 두 형제인<br>철든 동생 ‘이안’(톰 홀랜드)과
-													의욕충만 형 ‘발리’(크리스 프랫).<br> <br>‘이안’은 태어나서 얼굴도 본 적
-													없는 아빠를 그리워하던 중, 서프라이즈 생일 선물로<br>아빠의 마법 지팡이를 받게 된다. 그러나
-													실수로, 아빠의 반쪽만 소환시키는 위기가 발생하는데!!<br> <br>주어진 시간은 단
-													하루, 두 형제는 완벽한 모습의 아빠를 찾기 위해 모험을 떠나고<br>마법으로 절벽을 건너고,
-													까마귀 봉우리의 힌트를 따라 관문을 통과하지만<br>서로 다른 성격으로 인해, 사사건건 부딪히게
-													되고, 위험이 발생하는데…<br>과연 이들은 무사히 기적을 이룰 수 있을까?<br> <br>기적을
-													향한 출발, 지금 당신을 만나러 갑니다.<br>
+													${movie.contents }
 												</div>
 												<!--
 														관람 전이 더 높을 때
@@ -669,7 +456,12 @@
 													<div class="preview">
 														<p class="tit">관람평</p>
 														<p class="number">
-															9<span class="ir">점</span>
+														<c:if test="${movie.rate ne 0}">
+															<fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/><span class="ir">점</span>
+														</c:if>
+														<c:if test="${movie.rate eq 0 }">
+															0 <span class="ir">점</span>
+														</c:if>
 														</p>
 													</div>
 												</div>
@@ -679,384 +471,31 @@
 											<button type="button" class="button btn-like"
 												rpst-movie-no="01693600">
 												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												586
+												${movie.like }
 											</button>
 											<div class="case">
 												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('01693600');"
-													class="button gblue" title="영화 예매하기">예매</a>
+												<a href="booking/bookingMain?movieNum=${movie.movieNum}"
+													class="button gblue bokdBtn" title="영화 예매하기" >예매</a>
 											</div>
 										</div></li>
+										</c:forEach>
 									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
 
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_boxoRankList" class=""><a
-										href="javascript:gfn_moveDetail('20018900')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												2<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/06/08/s0lDFGluXxYc6hNTqfr1qfOeS2UVw7nc_420.jpg"
-											alt="사라진 시간" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													그날 밤, 모든 것이 변했다!<br> <br>한적한 소도시의 시골마을, 외지인 부부가
-													의문의 화재 사고로 사망하는 사건이 발생한다.<br>사건 수사를 담당하게 된 형구는 마을 사람들의
-													수상한 낌새를 눈치채고 단서를 추적하던 중,<br>하루 아침에 자신의 삶이 송두리째 뒤바뀌는
-													충격적인 상황에 빠지게 된다.<br>집도, 가족도, 직업도 내가 알던 모든 것이 사라졌다.<br>과연
-													그는 자신의 삶을 되찾을 수 있을 것인가.
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															0<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20018900">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												350
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20018900');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div></li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_boxoRankList" class=""><a
-										href="javascript:gfn_moveDetail('20003500')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												3<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/06/15/pjraLryYt5zQ1HEf6axtAdkXRhfhRZTZ_420.jpg"
-											alt="결백" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													아빠의 장례식장에서 벌어진 막걸리 농약 살인사건<br>기억을 잃은 채 살인사건의 용의자로 몰린
-													엄마 '화자'(배종옥)의 결백을 밝히려는 변호사 '정인'(신혜선)이 '추시장'(허준호)과 마을 사람들이
-													숨기려 한 추악한 진실을 파헤쳐가는 무죄 입증 추적극
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															8.7<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20003500">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												557
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20003500');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div></li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_boxoRankList" class=""><a
-										href="javascript:gfn_moveDetail('01309400')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												4<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2017/D0/D558A7-DE6C-4178-B3F6-27A023AA5DEE.large.jpg"
-											alt="위대한 쇼맨" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													불가능한 꿈, 그 이상의 쇼!<br>쇼 비즈니스의 창시자이자, 꿈의 무대로 전세계를 매료시킨 남자
-													‘바넘’의 이야기에서 영감을 받아 탄생한 오리지널 뮤지컬 영화 &lt;위대한 쇼맨&gt;.
-													&lt;레미제라블&gt; 이후 다시 뮤지컬 영화로 돌아온 휴 잭맨부터 잭 에프론, 미셸 윌리엄스, 레베카
-													퍼거슨, 젠다야까지 할리우드 최고의 배우들이 합류해 환상적인 앙상블을 선보인다. 여기에 &lt;미녀와
-													야수&gt; 제작진과 &lt;라라랜드&gt; 작사팀의 합류로 더욱 풍성해진 비주얼과 스토리, 음악까지
-													선보일 &lt;위대한 쇼맨&gt;은 ‘우리는 누구나 특별하다’는 메시지로 관객들에게 재미는 물론, 감동까지
-													선사할 것이다.<br>THIS IS ME! 우리는 누구나 특별하다!
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9.4<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="01309400">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												1.6k
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('01309400');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div></li>
-									<!-- 박스오피스 종료 -->
-									<!-- 박스오피스 시작 -->
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_megaScoreList" style="display: none;"
-										class="first"><a
-										href="javascript:gfn_moveDetail('20004100')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												1<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/04/13/6R6F5khxY400ZPHaixQDjZL7zabPSrLF_420.jpg"
-											alt="킹 오브 프리즘 올 스타즈 -프리즘 쇼☆베스트10-" class="poster"
-											onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													"마음속의 두근거림이 멈추지 않아!!"<br> <br>모두를 마음을 사로잡은 '킹 오브
-													프리즘' 시리즈가,<br>이번엔 킹프리 올스타즈로 다시 스크린에 돌아온다!<br> <br>팬들이
-													직접 선정한 <br>주옥같은 프리즘 쇼 베스트 10을 한자리에!<br>상상 초월한 프리즘
-													쇼가 당신의 마음을 사로잡는다!<br> <br>과연 당신의 가슴을 설레게 할<br>'프리즘
-													쇼'의 주인공은 누가 될 것인가?!<br> <br>60분의 신개념 엔터테인먼트 쇼의
-													세계로 여러분을 초대합니다!
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9.6<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20004100">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												360
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20004100');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div></li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_megaScoreList" style="display: none;" class="">
-										<a href="javascript:gfn_moveDetail('20004800')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												2<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/04/16/3OHRKnHHelry9f7WY1vM9qghwK48Sr0I_420.jpg"
-											alt="패왕별희 디 오리지널" class="poster"
-											onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													어렸을 때부터 함께 경극을 해온 ‘두지’(장국영)와 ‘시투’(장풍의). <br>세상에 둘도 없는
-													절친한 아우와 형이지만, <br>‘두지’는 남몰래 ‘시투’에 대한 마음을 품고 있다.<br>
-													<br>하지만 ‘시투’는 여인 ‘주샨’(공리)에 마음을 빼앗기고, <br>그로 인해
-													‘두지’는 감정의 소용돌이에 빠지게 되는데…<br> <br>사랑과 운명, 아름다움을
-													뒤바꾼 화려한 막이 열린다!
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9.5<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20004800">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												1k
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20004800');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_megaScoreList" style="display: none;" class="">
-										<a href="javascript:gfn_moveDetail('20007800')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												3<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/2020/03/11/Qgl73W9FxEMYJnnaOYPFtyqSrqB3vmJ2_420.jpg"
-											alt="라라랜드" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													황홀한 사랑, 순수한 희망, 격렬한 열정… <br>이 곳에서 모든 감정이 폭발한다!<br>꿈을
-													꾸는 사람들을 위한 별들의 도시 ‘라라랜드’. 재즈 피아니스트 ‘세바스찬’(라이언 고슬링)과 배우 지망생
-													‘미아’(엠마 스톤), 인생에서 가장 빛나는 순간 만난 두 사람은 미완성인 서로의 무대를 만들어가기
-													시작한다.
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9.5<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="20007800">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												1.2k
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('20007800');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-
-									<!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
-									<li name="li_megaScoreList" style="display: none;" class="">
-										<a href="javascript:gfn_moveDetail('01309400')"
-										class="movie-list-info" title="영화상세 보기">
-											<p class="rank">
-												4<span class="ir">위</span>
-											</p> <!-- to 개발 : alt 값에 영화 제목 출력 --> <img
-											src="https://img.megabox.co.kr/SharedImg/asis/system/mop/poster/2017/D0/D558A7-DE6C-4178-B3F6-27A023AA5DEE.large.jpg"
-											alt="위대한 쇼맨" class="poster" onerror="noImg(this, 'main');">
-											<div class="wrap">
-												<div class="summary">
-													불가능한 꿈, 그 이상의 쇼!<br>쇼 비즈니스의 창시자이자, 꿈의 무대로 전세계를 매료시킨 남자
-													‘바넘’의 이야기에서 영감을 받아 탄생한 오리지널 뮤지컬 영화 &lt;위대한 쇼맨&gt;.
-													&lt;레미제라블&gt; 이후 다시 뮤지컬 영화로 돌아온 휴 잭맨부터 잭 에프론, 미셸 윌리엄스, 레베카
-													퍼거슨, 젠다야까지 할리우드 최고의 배우들이 합류해 환상적인 앙상블을 선보인다. 여기에 &lt;미녀와
-													야수&gt; 제작진과 &lt;라라랜드&gt; 작사팀의 합류로 더욱 풍성해진 비주얼과 스토리, 음악까지
-													선보일 &lt;위대한 쇼맨&gt;은 ‘우리는 누구나 특별하다’는 메시지로 관객들에게 재미는 물론, 감동까지
-													선사할 것이다.<br>THIS IS ME! 우리는 누구나 특별하다!
-												</div>
-												<!--
-														관람 전이 더 높을 때
-														<div class="my-score small">
-
-														관람 후가 더 높을 때
-														<div class="my-score big">
-
-														관람 후가 더 같을 때
-														<div class="my-score equal">
-													 -->
-												<div class="score">
-													<div class="preview">
-														<p class="tit">관람평</p>
-														<p class="number">
-															9.4<span class="ir">점</span>
-														</p>
-													</div>
-												</div>
-											</div>
-									</a>
-										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="01309400">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
-												1.6k
-											</button>
-											<div class="case">
-												<!-- 개봉 예매가능 기본-->
-												<a href="javascript:moveBokdPage('01309400');"
-													class="button gblue" title="영화 예매하기">예매</a>
-											</div>
-										</div>
-									</li>
-									<!-- 박스오피스 종료 -->
+								
 								</ol>
 							</div>
+							<script type="text/javascript">
+							$(".movie-list-info").on("mouseover", function(e){
+								
+								$(this).children('.wrap').css("display", "block");
+								$(this).children('.wrap').css("opacity", "1");
+							})
+							$(".movie-list-info").on("mouseleave", function(e){
+								$(this).children('.wrap').css("display", "none");
+								$(this).children('.wrap').css("opacity", "0");
+							})
+							</script>
 							<!--// main-movie-list -->
 
 							<div class="search-link">
@@ -1079,7 +518,7 @@
 										class="iconset ico-boxoffice-main"></i> 박스오피스</a>
 								</div>
 								<div class="cell">
-									<a href="/booking" title="빠른예매 보기"><i
+									<a href="${pageContext.request.contextPath}/booking/bookingMain" title="빠른예매 보기"><i
 										class="iconset ico-quick-reserve-main"></i> 빠른예매</a>
 								</div>
 							</div>
@@ -1099,9 +538,9 @@
 					<!-- section main-info : 메가박스 안내 -->
 					<div id="main_section04" class="section main-info">
 
-						<h2 class="tit">쌍용 씨네시티 안내</h2>
+						<!-- <h2 class="tit">쌍용 씨네시티 안내</h2> -->
 
-						<div class="info-special">
+						<!-- <div class="info-special">
 							<a href="/specialtheater/boutique" title="부티크 페이지로 이동"
 								class="bg-boutique">부티크</a> <a href="/specialtheater/mx"
 								title="MX 페이지로 이동" class="bg-mx">MX</a> <a
@@ -1111,24 +550,23 @@
 								class="bg-kids">MEGA KIDS BOX</a> <a
 								href="/specialtheater/firstclub" title="THE FIRST CLUB 페이지로 이동"
 								class="bg-first">THE FIRST CLUB</a>
-							<!-- <a href="/specialtheater/balcony" title="발코니 페이지로 이동" class="bg-balcony">발코니</a>-->
-						</div>
+							<a href="/specialtheater/balcony" title="발코니 페이지로 이동" class="bg-balcony">발코니</a>
+						</div> -->
 
 						<!-- info-notice -->
 						<div class="info-notice">
 							<div class="wrap">
-								<p class="tit">지점</p>
+								<p class="tit">${list[0].name}</p>
 								<p class="link">
-									<a href="/support/notice/detail?artiNo=10099&amp;bbsNo=9"
-										title="공지사항 상세보기"> <strong> [홍대] </strong> [홍대] 쌍용강북교육센터와
-										함께하는 이벤트
+									<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=${list[0].num}"
+										title="공지사항 상세보기"> <strong> [${list[0].separate}] </strong> ${list[0].title}
 									</a>
 								</p>
 
-								<p class="date">2020.06.17</p>
+								<p class="date">${list[0].regDate}</p>
 
 								<p class="more">
-									<a href="/support/notice" title="전체공지 더보기">더보기 <i
+									<a href="${pageContext.request.contextPath}/notice/noticeList" title="전체공지 더보기">더보기 <i
 										class="iconset ico-arr-right-gray"></i></a>
 								</p>
 							</div>

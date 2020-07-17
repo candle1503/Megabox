@@ -58,11 +58,34 @@ public class MovieController {
 	public ModelAndView movieSelect(ModelAndView mv, MovieVO movieVO, Pager pager) throws Exception{
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		MovieVO vo = movieService.movieSelect(movieVO);
+		long rank = movieService.ranking(movieVO);
 		List<ReviewVO> review= movieService.reviewPage(pager);
 		DecimalFormat df = new DecimalFormat("#,###");
 		String viewer = df.format(vo.getViews());
 		mv.addObject("views", viewer);
 		long all = movieService.boardCount(pager);
+		
+		long first = movieService.child(movieVO);
+		movieVO.setAges(20);
+		long second = movieService.ageCount(movieVO);
+		movieVO.setAges(30);
+		long third = movieService.ageCount(movieVO);
+		movieVO.setAges(40);
+		long fourth= movieService.ageCount(movieVO);
+		long old = movieService.old(movieVO);
+		
+		movieVO.setAges(0);
+		long today = movieService.viewCount(movieVO);
+		movieVO.setAges(1);
+		long one = movieService.viewCount(movieVO);
+		movieVO.setAges(2);
+		long two = movieService.viewCount(movieVO);
+		movieVO.setAges(3);
+		long three = movieService.viewCount(movieVO);
+		
+		
+
+		
 		if(all>0) {
 		long player = Math.round(movieService.player(movieVO)*100/all);
 		long direct = Math.round(movieService.direct(movieVO)*100/all);
@@ -134,10 +157,22 @@ public class MovieController {
 		mv.addObject("story", story);
 		mv.addObject("beauty", beauty);
 		};
+		
+		mv.addObject("one", today);
+		mv.addObject("two", one);
+		mv.addObject("three", two);
+		mv.addObject("four", three);
+		
+		mv.addObject("first", first);
+		mv.addObject("second", second);
+		mv.addObject("third", third);
+		mv.addObject("fourth", fourth);
+		mv.addObject("old", old);
 		mv.addObject("review", review);
 		mv.addObject("vo", vo);
 		mv.addObject("count", all);
 		mv.addObject("file", files);
+		mv.addObject("rank", rank);
 		mv.setViewName("movie/movieInfo");
 		return mv;
 	}
@@ -168,6 +203,26 @@ public class MovieController {
 		mv.addObject("views", viewer);
 		long all = movieService.boardCount(pager);
 		
+		long first = movieService.child(movieVO);
+		movieVO.setAges(20);
+		long second = movieService.ageCount(movieVO);
+		movieVO.setAges(30);
+		long third = movieService.ageCount(movieVO);
+		movieVO.setAges(40);
+		long fourth= movieService.ageCount(movieVO);
+		long old = movieService.old(movieVO);
+		
+		movieVO.setAges(0);
+		long today = movieService.viewCount(movieVO);
+		movieVO.setAges(1);
+		long one = movieService.viewCount(movieVO);
+		movieVO.setAges(2);
+		long two = movieService.viewCount(movieVO);
+		movieVO.setAges(3);
+		long three = movieService.viewCount(movieVO);
+		
+		
+		
 		if(all>0) {
 		long player = Math.round(movieService.player(movieVO)*100/all);
 		long direct = Math.round(movieService.direct(movieVO)*100/all);
@@ -240,6 +295,17 @@ public class MovieController {
 		mv.addObject("story", story);
 		mv.addObject("beauty", beauty);
 		};
+		
+		mv.addObject("one", today);
+		mv.addObject("two", one);
+		mv.addObject("three", two);
+		mv.addObject("four", three);
+		
+		mv.addObject("first", first);
+		mv.addObject("second", second);
+		mv.addObject("third", third);
+		mv.addObject("fourth", fourth);
+		mv.addObject("old", old);
 		mv.addObject("review", review);
 		mv.addObject("vo", vo);
 		mv.addObject("count", all);
@@ -270,7 +336,7 @@ public class MovieController {
 			TicketVO ticketVO = new TicketVO();
 			ticketVO.setTicketNum(reviewVO.getTicketNum());
 			
-			ticketService.reviewDone(ticketVO);
+			result = ticketService.reviewDone(ticketVO);
 			rd.addFlashAttribute("result",result);
 			String re = "redirect:./movieSelect?movieNum="+reviewVO.getMovieNum();
 			return re;
@@ -288,7 +354,11 @@ public class MovieController {
 	
 	@GetMapping("movieList")
 	public ModelAndView movieList(ModelAndView mv) throws Exception{
-		List<MovieVO> movieList = movieService.movieList();
+		int startNum = 0;
+		long movieCount = movieService.movieCount();
+		List<MovieVO> movieList = movieService.movieList(startNum);
+		
+		mv.addObject("movieCount", movieCount);
 		mv.addObject("listName", "all");
 		mv.addObject("movie", movieList);
 		mv.setViewName("movie/movieList");
@@ -297,7 +367,10 @@ public class MovieController {
 	
 	@GetMapping("futureList")
 	public ModelAndView futureList(ModelAndView mv) throws Exception{
-		List<MovieVO> movieList = movieService.futureList();
+		List<MovieVO> movieList = movieService.futureList(0);
+		long movieCount = movieService.futureCount();
+		mv.addObject("movieCount", movieCount);
+		mv.addObject("startNum", 0);
 		mv.addObject("listName", "future");
 		mv.addObject("movie", movieList);
 		mv.setViewName("movie/movieList");
@@ -306,7 +379,10 @@ public class MovieController {
 	
 	@GetMapping("ingList")
 	public ModelAndView ingList(ModelAndView mv) throws Exception{
-		List<MovieVO> movieList = movieService.ingList();
+		List<MovieVO> movieList = movieService.ingList(0);
+		long movieCount = movieService.ingCount();
+		mv.addObject("movieCount", movieCount);
+		mv.addObject("startNum", 0);
 		mv.addObject("listName", "ing");
 		mv.addObject("movie", movieList);
 		mv.setViewName("movie/movieList");
@@ -317,6 +393,7 @@ public class MovieController {
 	public ModelAndView movieInsert(ModelAndView mv) throws Exception {
 		MovieVO movieVO = new MovieVO();
 		mv.addObject("movieVO", movieVO);
+		
 		mv.setViewName("admin/addMovie");
 		return mv;
 	}
@@ -382,6 +459,7 @@ public class MovieController {
 		}
 		
 		
+		
 		return mv;
 	}
 	
@@ -443,6 +521,42 @@ public class MovieController {
 			mv.setViewName("redirect:./movieList");
 		}
 		
+		return mv;
+	}
+	
+	@PostMapping("moreMovie")
+	public ModelAndView moreMovie(ModelAndView mv, int startNum) throws Exception{
+		
+		List<MovieVO> movieList = movieService.movieList(startNum);
+		
+		mv.addObject("startNum", startNum);
+		
+		mv.addObject("movie", movieList);
+		mv.setViewName("movie/moreMovie");
+		return mv;
+	}
+	
+	@PostMapping("moreIng")
+	public ModelAndView moreIng(ModelAndView mv, int startNum) throws Exception{
+		
+		List<MovieVO> movieList = movieService.ingList(startNum);
+		
+		mv.addObject("startNum", startNum);
+		
+		mv.addObject("movie", movieList);
+		mv.setViewName("movie/moreMovie");
+		return mv;
+	}
+	
+	@PostMapping("moreFuture")
+	public ModelAndView moreFuture(ModelAndView mv, int startNum) throws Exception{
+		
+		List<MovieVO> movieList = movieService.futureList(startNum);
+		
+		mv.addObject("startNum", startNum);
+		
+		mv.addObject("movie", movieList);
+		mv.setViewName("movie/moreMovie");
 		return mv;
 	}
 	

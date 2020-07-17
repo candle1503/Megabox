@@ -53,6 +53,16 @@
 </head>
 
 <body>
+<c:choose>
+	<c:when test="${member.id ne 'ADMIN'}">
+		<script type="text/javascript">
+			
+			alert('잘못된 접근입니다.');
+			window.location.replace("../member/memberLogin")
+		</script>
+	</c:when>
+	
+	<c:when test="${member.id eq 'ADMIN' }">
 
 
 	
@@ -61,7 +71,7 @@
 
 
 
-		<div class="container has-lnb">
+		<div class="container has-lnb" style="margin-top: 0px;">
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
@@ -79,7 +89,7 @@
 				<div id="content" class="">
 					<form:form modelAttribute="movieVO" action="./movieUpdate"
 						method="post" enctype="multipart/form-data">
-						<h2 class="tit">영화 추가</h2>
+						<h2 class="tit">영화 수정</h2>
 
 						<div class="box-radius" style="margin-bottom: 0px;">
 							<div class="box-top" style="padding-left: 10px">
@@ -329,7 +339,7 @@
 		
 		<footer id="footer">
 			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 200px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>
@@ -400,6 +410,9 @@
 		style="display: none; position: fixed; top: 0; left: 0; background: #000; opacity: 0.7; text-indent: -9999px; width: 100%; height: 100%; z-index: 100;">닫기</div>
 	<div class="alertStyle"
 		style="display: none; position: fixed; top: 0px; left: 0px; background: #000; opacity: 0.7; width: 100%; height: 100%; z-index: 5005;"></div>
+
+</c:when>
+</c:choose>
 
 </body>
 </html>

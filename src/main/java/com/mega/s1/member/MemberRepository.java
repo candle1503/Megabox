@@ -40,4 +40,29 @@ public interface MemberRepository {
 	
 	//getMovieName
 	public String getMovieName(int movieNum) throws Exception;
+	
+	//deleteReview
+	public void deleteReview(ReviewVO reviewVO)throws Exception;
+	
+	//updateTicket
+	public void updateTicket() throws Exception;
+	
+	//bookedCompleteList
+	public List<TicketVO> bookedCompleteList(String id) throws Exception;
+	
+	//bookedCompleteAfterList
+	public List<TicketVO> bookedCompleteAfterList(String id) throws Exception;
+	
+	//bookedCompleteListCalandar
+	public List<TicketVO> bookedCompleteListCalandar(TicketVO ticketVO) throws Exception;
+	
+	//getOneTicket
+	public TicketVO getOneTicket(MemberVO memberVO) throws Exception;
+	
+	
+	//deleteReviewStatus
+	public void deleteReviewStatus(TicketVO ticketVO) throws Exception;
+	
+	//getMemberInfo
+	public MemberVO getMemberInfo(MemberVO memberVO) throws Exception;
 }

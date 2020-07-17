@@ -53,20 +53,22 @@
 <body>
 
 <c:choose>
-	<c:when test="${member.id ne 'admin' }">
+
+	<c:when test="${member.id ne 'ADMIN'}">
 		<script type="text/javascript">
+			
 			alert('잘못된 접근입니다.');
 			window.location.replace("../member/memberLogin")
 		</script>
 	</c:when>
 	
-	<c:when test="${member.id eq 'admin' }">
+	<c:when test="${member.id eq 'ADMIN' }">
 		<c:import url="../template/header.jsp"></c:import>
 	
 
 
 
-		<div class="container has-lnb">
+		<div class="container has-lnb" style="margin-top: 0px;">
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
@@ -268,7 +270,7 @@
 		
 		<footer id="footer">
 			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 200px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>

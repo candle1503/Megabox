@@ -15,7 +15,7 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 
-	<div id="schdlContainer" class="container">
+	<div id="schdlContainer" class="container" style="margin-top: 92px;">
 		<div class="page-util">
 			<div class="inner-wrap">
 				<div class="location">

@@ -14,7 +14,7 @@
 
 <c:forEach items="${bookingMovieAr}" var="bmList" varStatus="i">
 	<li id="bookingMovie${i.count}" class="bookingMovie-Name">
-		<button type="button" id="movieBtn${i.count}" class="btn" movieNum="${bmList.movieNum}">
+		<button type="button" id="movieBtn${i.count}"  class="btn">
 			<c:if test="${bmList.age eq '전체관람가'}">		
 				<span class="movie-grade small age-all">${bmList.age}</span>
 			</c:if>
@@ -60,7 +60,7 @@ function bookingRoomList(startDate, name){
 
 	for (var bml = 1; bml < movieSize+1; bml++) {
 		var movieCss;
-
+		
 		$(".bookingMovie-Name").on("click", "#movieBtn" + bml, function() {
 			if($(this).hasClass("on")){
 				$(this).removeClass("on");
@@ -69,7 +69,11 @@ function bookingRoomList(startDate, name){
 				var name = $(".localName").val();
 				bookingRoomList(startDate, name);
 			}else{
-				
+				if($('.hasParameter').val()=="has"){
+					for(var i=1; i < 100; i++){
+						$("#movieBtn"+i).removeClass("on");
+					}
+				}
 				$("#movieBtn"+movieCss).removeClass("on");
 				$(this).addClass("on");
 				movieCss = $(this).attr('id').replace("movieBtn", '');
@@ -79,6 +83,7 @@ function bookingRoomList(startDate, name){
 			if($('.localName').val()=="null"){
 				
 			}else{
+				
 				$("#bookingRoom-List").empty();
 				var name = $('.localName').val();
 				

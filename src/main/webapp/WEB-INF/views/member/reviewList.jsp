@@ -20,7 +20,7 @@
 		<!--// header -->
 
 
-		<div class="container has-lnb">
+		<div class="container has-lnb" style="margin-top: 0px;">
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
@@ -44,21 +44,27 @@
 							</strong>
 						</p>
 					</div>
-
+					
+					<div id="deleteReview">
+					
 					<c:forEach items="${List}" var="vo" varStatus="i">
 						<!-- 나의 한줄평 -->
 						<div class="my-appraisal myOne myMovieStory"
 							style="display: block;" id="myStoryM">
 							<ul id="myAppraisal">
 								<li>
+								
 									<p class="img posterImg" data-mno="01550200"
-										style="cursor: pointer">
+										style="cursor: pointer"><a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${vo.movieNum}" class="img"
+												title="${bookedCompList.movieName} ">
 										<img src="/upload/movie/${vo.fileName}" style="height: 145px;">
+										</a>
 									</p>
+							
 									<div class="cont">
 										<p class="label">관람평</p>
 										<p class="tit">
-											<a href="javaScript:void(0)" title="한줄평 상세보기">${vo.movieName}</a>
+											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${vo.movieNum}">${vo.movieName}</a>
 										</p>
 										<div class="rate">
 											<p class="num review">${vo.point}</p>
@@ -75,11 +81,18 @@
 										</div>
 										<div class="util">
 											<div class="right">
-												<span><button type="button"
-														class="btn modify" id="updateBtn${i.count}" data-no="663348"
-														data-mno="01550200" data-cd="PREV" >수정</button></span> <span><button
-														type="button" class="btn del deleteBtn" data-no="663348"
-														data-mno="01550200" data-cd="PREV">삭제</button></span>
+<!-- 												<span><button type="button" -->
+<%-- 														class="btn modify" id="updateBtn${i.count}" data-no="663348" --%>
+<!-- 														data-mno="01550200" data-cd="PREV" >수정</button></span> <span> -->
+														
+														<form action="./deleteReview" method="post">
+														<input type="hidden" value="${vo.ticketNum}" id="reviewNum${i.count}" name="ticketNum">
+														<input type="hidden" value="${vo.movieName}" id="reviewNum${i.count}" name="movieName">
+														<button
+														type="submit" class="btn del" id="deleteBtn${i.count}" data-no="663348"
+														data-mno="01550200" data-cd="PREV">삭제</button>
+														</form>
+														</span>
 											</div>
 										</div>
 									</div>
@@ -88,6 +101,8 @@
 						</div>
 
 					</c:forEach>
+					
+					</div>
 
 					<nav class="pagination myOne myMovieStory" style="display: block;">
 						<strong class="active">1</strong>
@@ -100,47 +115,12 @@
 			</div>
 		</div>
 
-			<script type="text/javascript">
-
-			for(var i=1; i<100; i++){
-				var te;
-				$(".my-appraisal").on("click", "#updateBtn"+i, function(){
-					if($(this).html()=="수정"){
-					
-					te = $(this).attr('id').replace('updateBtn', '');
-					$('#updateForm'+te).css("display","block");
-					$('.oneData'+te).css("display", "none");
-					$(this).html("저장");
-					}else{  
-						var content = $('#updateForm'+te).html();
-						alert(content);
-// 						$.post("reviewUpdate"){
-// 							contents : content
-// 							}
-					$('#updateForm'+te).css("display","none");
-					$('.oneData'+te).css("display", "block");
-					$(this).html("수정");
-					}
-				});
-			}
-
-
-// 			$.post("movieTimeCheck", {
-// 				choosedTime : startDay1
-// 			}, function(result) {
-// 			$('.movieSelect1').empty();
-// 			$('.movieSelect1').append(result);
-// 				result.trim();
-// 				console.log(result)
-// 			});
-
-// 			})
-			</script>
+			
 
 		<!-- footer -->
 		<footer id="footer">
 			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 250px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>

@@ -317,7 +317,7 @@ public class NoticeController {
 		return "board/boardFAQ";
 	}
 	
-	/*
+	/*	
 	 * @ExceptionHandler(Exception.class) public ModelAndView errorPage() {
 	 * ModelAndView mv = new ModelAndView(); mv.setViewName("./error/errorPage");
 	 * return mv; }

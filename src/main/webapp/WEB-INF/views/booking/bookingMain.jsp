@@ -365,6 +365,7 @@ function fn_validateDateYn(param) {
 									<script type="text/javascript">
 
 									function bookingMovieList(startDate){
+										
 										$.get("bookingMovieList?startTime="+startDate, function(result){
 											$("#bookingMovie-List").append(result);
 
@@ -375,13 +376,12 @@ function fn_validateDateYn(param) {
 												
 												for(var mc=1; mc<101; mc++){
 													if(movieNumCheck ==$('.mvNumD'+mc).val()){
- 
-														$("#movieBtn"+mc).removeClass("on");
+														
 														$("#movieBtn"+mc).addClass("on");
+														$('.hasParameter').val("has");
 														$('.mvNum').val(movieNumCheck);
 														
 													}
-														
 												}
 												
 											}
@@ -389,6 +389,7 @@ function fn_validateDateYn(param) {
 										
 									}
 									</script>
+									<input type="hidden" value="" class="hasParameter">
 										<!-- <div id="mCSB_1"
 											class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
 											style="max-height: none;" tabindex="0">

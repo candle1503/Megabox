@@ -69,11 +69,16 @@
         </c:choose>
           
         </ul>
-    </div><br><br>
+    </div><br>
 <c:if test="${member.id eq'ADMIN' }">
     <a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a>
 </c:if>
-    <br><br>
+
+
+    <br><p class="no-result-count" style="margin-left: 20px;"><strong id="totCnt">${movieCount }</strong>개의 영화가 검색되었습니다.</p><br>
+    
+    
+    
 <div class="movie-list">
 	<ol class="list" id="movieList">
 	
@@ -91,7 +96,14 @@
 			
 			</div>            
 			<div class="my-score equa">  <div class="preview"> <p class="tit">관람평</p>
-			  <p class="number"><fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/><span class="ir">점</span></p>   </div> </div>  </a>    
+			  <p class="number">
+			  <c:if test="${movie.rate >= 1}">
+						<fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/><span class="ir">점</span>
+			</c:if>
+			<c:if test="${movie.rate < 1 }">
+				0<fmt:formatNumber value="${movie.rate}" pattern="#,###.0"/> <span class="ir">점</span>
+			</c:if>
+			  </p>   </div> </div>  </a>    
 			</div></div><div class="tit-area">    
 			<c:if test="${movie.age eq '전체관람가' }">
 			<p class="movie-grade age-all">,</p>    
@@ -107,7 +119,16 @@
 			</c:if>
 			
 			<p title="${movie.name }" class="tit">${movie.name }</p></div>
-			<div class="rate-date">    <span class="rate">예매율 25.2%</span> <span class="date">개봉 ${movie.openDay }</span>
+			<div class="rate-date">    <span class="rate">예매율 
+			<c:if test="${movie.bookingRate < 1 }">
+			
+			0<fmt:formatNumber value="${movie.bookingRate}" pattern="#,###.0"/>
+			
+			</c:if>
+			<c:if test="${movie.bookingRate>=1 }">
+			<fmt:formatNumber value="${movie.bookingRate}" pattern="#,###.0"/>
+			</c:if>
+			 %</span> <span class="date">개봉 ${movie.openDay }</span>
 			</div><div class="btn-util">    <button type="button" class="button btn-like" data-no="20021300"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>${movie.like }</span></button>    
 			<div class="case col-2 movieStat3" style=""> 
 	<c:choose>
@@ -128,18 +149,23 @@
 	
 	</ol>
 	</div>
+	<div class="btn-more v1" id="addMovieDiv" style="margin-bottom: 30px;">
+		<button type="button" class="btn" id="btnAddMovie">더보기 <i class="iconset ico-btn-more-arr"></i></button>
+	</div>
 	
 	<script type="text/javascript">
-		$(".movie-list-info").on("mouseover", function(e){
+		var startNum=0
+	
+		$("#movieList").on("mouseover",".movie-list-info", function(e){
 			$(this).children('.movie-score').addClass("on");
 			$(this).children('.movie-score').css("opacity", "1");
 		})
-		$(".movie-list-info").on("mouseleave", function(e){
+		$("#movieList").on("mouseleave",".movie-list-info", function(e){
 			$(this).children('.movie-score').removeClass("on");
 			$(this).children('.movie-score').css("opacity", "0");
 		})
 		
-		$(".delt").click(function(){
+		$("#movieList").on("click", ".delt", function(){
 			
 			var flag = confirm("정말 삭제하시겠습니까?");
 			var movieNum = $(this).attr("title");
@@ -154,17 +180,71 @@
 						
 					});
 
-				
 			}
 		})
 		
 		
 		
-		$(".bokdBtn").click(function(){
+		$("#movieList").on("click", ".bokdBtn", function(){
 			var movieNumb = $(this).val();
 			location.href="${pageContext.request.contextPath}/booking/bookingMain?movieNum="+movieNumb;
 		}); 
+
+		if(${movieCount}<=12){
+			$("#btnAddMovie").remove();
+			}
 		
+		$("#btnAddMovie").click(function(){
+			startNum+=12
+
+			if('${listName}'=="all"){
+
+			var ajaxOption = {
+	            url : "./moreMovie",      
+	            data : {startNum:startNum},
+	            type : "POST",
+	            dataType : "html"
+	            
+	    	};  
+			$.ajax(ajaxOption).done(function(data){
+	       
+		        $('#movieList').append(data);
+		    });
+
+			}else if('${listName}'=="Ing"){
+
+				var ajaxOption = {
+			            url : "./moreIng",      
+			            data : {startNum:startNum},
+			            type : "POST",
+			            dataType : "html"
+			            
+			    	};  
+					$.ajax(ajaxOption).done(function(data){
+			       
+				        $('#movieList').append(data);
+				    });
+			} else{
+				var ajaxOption = {
+			            url : "./moreFuture",      
+			            data : {startNum:startNum},
+			            type : "POST",
+			            dataType : "html"
+			            
+			    	};  
+					$.ajax(ajaxOption).done(function(data){
+			       
+				        $('#movieList').append(data);
+				    });
+
+			}
+			
+
+		    if(startNum+12>=${movieCount}){
+					
+					$(this).remove();
+			    }
+			})
 
 	</script>
      

@@ -14,11 +14,11 @@
 
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<div class="body-wrap">
+	<div class="body-wrap">	
 
 
 
-		<div class="container has-lnb">
+		<div class="container has-lnb" style="margin-top: 0px;">
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction">
 					<div class="location">
@@ -81,7 +81,7 @@
 		<!-- footer -->
 		<footer id="footer">
 			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 200px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>

@@ -16,7 +16,7 @@
 		<a href="#layer_sitemap" class="header-open-layer btn-layer-sitemap"
 			title="사이트맵">사이트맵</a> <a href="#layer_header_search"
 			class="header-open-layer btn-layer-search" title="검색">검색</a> <a
-			href="/booking/timetable" class="link-ticket" title="상영시간표">상영시간표</a>
+			href="${pageContext.request.contextPath}/booking/bookingMain" class="link-ticket" title="빠른예매">빠른예매</a>
 		<c:if test="${member ne null}">
 			<a href="${pageContext.request.contextPath}/member/getMyPage" class="header-open-layer btn-layer-mymega"
 			title="나의 메가박스">나의 메가박스</a>
@@ -62,7 +62,7 @@
 
 
 			<li><a href="${pageContext.request.contextPath}/notice/noticeList" style="color: white;">공지사항</a></li>
-			<li><a href="${pageContext.request.contextPath}/notice/noticeFAQ">FAQ</a></li>
+			<li><a href="${pageContext.request.contextPath}/notice/noticeFAQ" style="margin-right: 8px;">FAQ</a></li>
 			<c:if test="${member eq null}">
 			<li><a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a></li>
 			</c:if>

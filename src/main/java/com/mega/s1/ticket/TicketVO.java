@@ -1,8 +1,5 @@
 package com.mega.s1.ticket;
 
-import java.sql.Date;
-
-
 import lombok.Data;
 
 @Data
@@ -25,9 +22,23 @@ public class TicketVO {
 	
 	private int theaterRoomCode;
 	
-	private Date viewDate;
+	private String viewDate;
 	
 	private int status;
 	
 	private String movieName;
+	
+	//예매한 사람들 수
+	private int amount;
+	
+	//좌석 비교할때 써야함
+	private int timeCode;
+	
+	//날짜비교할때 쓸것
+	private String calandarDate;
+	private String calandarDate2;
+	
+	//적립예정 포인트
+	private int savedPoint;
+	
 }
