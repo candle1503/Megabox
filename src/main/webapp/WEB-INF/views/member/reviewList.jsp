@@ -78,9 +78,9 @@
 										</div>
 										<div class="util">
 											<div class="right">
-												<span><button type="button"
-														class="btn modify" id="updateBtn${i.count}" data-no="663348"
-														data-mno="01550200" data-cd="PREV" >수정</button></span> <span>
+<!-- 												<span><button type="button" -->
+<%-- 														class="btn modify" id="updateBtn${i.count}" data-no="663348" --%>
+<!-- 														data-mno="01550200" data-cd="PREV" >수정</button></span> <span> -->
 														
 														<form action="./deleteReview" method="post">
 														<input type="hidden" value="${vo.reviewNum}" id="reviewNum${i.count}" name="reviewNum">
