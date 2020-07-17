@@ -60,7 +60,7 @@
 	</select>
 	
 	<update id="deleteReviewStatus" parameterType="TicketVO">
-		update ticket set status = 1 where status=2 and id=#{id} and movieName=#{movieName}
+		update ticket set status = 1 where status=2 and id=#{id} and ticketNum=#{ticketNum}
 	</update>
 	
 	<select id="bookedCompleteListCalandar" parameterType="TicketVO" resultType="TicketVO">

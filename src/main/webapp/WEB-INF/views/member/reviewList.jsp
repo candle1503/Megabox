@@ -86,7 +86,7 @@
 <!-- 														data-mno="01550200" data-cd="PREV" >수정</button></span> <span> -->
 														
 														<form action="./deleteReview" method="post">
-														<input type="hidden" value="${vo.reviewNum}" id="reviewNum${i.count}" name="reviewNum">
+														<input type="hidden" value="${vo.ticketNum}" id="reviewNum${i.count}" name="ticketNum">
 														<input type="hidden" value="${vo.movieName}" id="reviewNum${i.count}" name="movieName">
 														<button
 														type="submit" class="btn del" id="deleteBtn${i.count}" data-no="663348"
@@ -120,7 +120,7 @@
 		<!-- footer -->
 		<footer id="footer">
 			<!-- footer-top -->
-			<div class="footer-top">
+			<div class="footer-top" style="margin-top: 250px;">
 				<div class="inner-wrap">
 					<ul class="fnb">
 						<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>

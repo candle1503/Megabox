@@ -372,7 +372,7 @@ public class MemberController {
 		TicketVO ticketVO = new TicketVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		ticketVO.setId(memberVO.getId());
-		ticketVO.setMovieName(reviewVO.getMovieName());
+		ticketVO.setTicketNum(reviewVO.getTicketNum());
 		
 		memberService.deleteReview(reviewVO,ticketVO);
 		
