@@ -486,24 +486,11 @@
 						
 						$('.pointUse').keyup(function(){
 							var point= $('.pointUse').val();
-							
-							if(point > myPoint){
-							alert("현재 포인트보다 적게 써야됌");
-							$('.pointUse').val(myPoint);
-							point = myPoint;
-							}
-							
 							var lastMoney = beforeMoney - point;
 							$('.pointAdd').html(point);
 							$('.lastPay').html(lastMoney);
 						})
 
-					</script>
-			
-			
-			
-			<!--// seat-select-section -->
-			<script type="text/javascript">
 			
 			var timeCode = $('.timeCode').val();
 			var seat = $('.seat').val();
@@ -524,6 +511,38 @@
 			document.body.appendChild(form);
 			
 			$('#btn_booking_pay').click(function(){
+				var point= $('.pointUse').val();
+				var myPoint = $('.myPoint').val();
+				
+				if(point > myPoint){
+					alert("현재 포인트보다 적게 써야됌");
+
+					if(myPoint%10 !=0){
+						myPoint /= 10;
+						myPoint = Math.floor(myPoint);
+						myPoint *= 10;
+					}
+					
+					$('.pointUse').val(myPoint);
+					$('.pointAdd').html(myPoint);
+					var lastMoney = beforeMoney - myPoint;
+					point = myPoint;
+					$('.lastPay').html(lastMoney);
+
+					
+					
+					return false;
+				}else if(point%10 !=0){
+					alert("1원 단위는 사용이 불가능 합니다. (0단위 제거 성공)");
+					point /= 10;
+					point = Math.floor(point);
+					point *= 10;
+					$('.pointUse').val(point);
+					$('.pointAdd').html(point);
+					var lastMoney = beforeMoney - point;
+					$('.lastPay').html(lastMoney);
+					return false;
+					}
 				var finalPay =$('.lastPay').html();
 				var usedPoint= $('.pointUse').val()
 				$('.savePoint').val(finalPay/10);
