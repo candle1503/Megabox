@@ -6,7 +6,7 @@
 <mapper namespace="com.mega.s1.ticket.TicketRepository">
 
 	<insert id="ticketInsert" parameterType="TicketVO" useGeneratedKeys="true" keyProperty="movieNum">
-		insert into ticket values(0, #{seatNum}, #{ticketCode}, #{movieTime}, #{id}, #{count}, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName})
+		insert into ticket values(0, #{seatNum}, #{ticketCode}, #{movieTime}, #{id}, #{count}, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName},#{savedPoint})
 	</insert>
 	
 	<select id="resultPage" parameterType="TicketVO" resultType="TicketVO">

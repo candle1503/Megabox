@@ -1,5 +1,6 @@
 package com.mega.s1.member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,12 +41,6 @@ public class MemberController {
 	
 	@GetMapping("memberJoin")
 	public ModelAndView setJoin() throws Exception{
-		System.out.println("!!!!");
-		System.out.println("!!!!");
-		System.out.println("!!!!");
-		System.out.println("!!!!");
-		System.out.println("!!!!");
-		System.out.println("!!!!");
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = new MemberVO();
 		mv.addObject("memberVO", memberVO);
@@ -241,12 +236,20 @@ public class MemberController {
 		Map<Integer, String> theaterNameMap = new HashMap<>();
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
 		Map<Integer, String> viewDateMap = new HashMap<>();
+		List<Integer> points = new ArrayList<Integer>();
 		
 		String viewDateCut;
 		String viewDateTimeCut;
 		
 		for(int i=0; i<size; i++) {
+			Integer point;
+			point = bookedCompAr.get(i).getSavedPoint();
 			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
+			
+			points.add(i, point);
+			
+			model.addAttribute("points", points);
+			
 			theaterRoomVO.setTheaterRoomCode(bookedCompAr.get(i).getTheaterRoomCode());
 			
 			theaterRoomVO = memberService.getRoom(theaterRoomVO);
@@ -275,7 +278,6 @@ public class MemberController {
 		}
 		
 		model.addAttribute("bookedCompAr", bookedCompAr);
-	
 		
 	}
 	
@@ -301,11 +303,19 @@ public class MemberController {
 		Map<Integer, String> theaterNameMap = new HashMap<>();
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
 		Map<Integer, String> viewDateMap = new HashMap<>();
+		List<Integer> points = new ArrayList<Integer>();
 		
 		String viewDateCut;
 		String viewDateTimeCut;
 		
 		for(int i=0; i<size; i++) {
+			Integer point;
+			point = bookedCompAfterAr.get(i).getSavedPoint();
+			
+			points.add(i, point);
+			
+			model.addAttribute("points", points);
+			
 			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
 			theaterRoomVO.setTheaterRoomCode(bookedCompAfterAr.get(i).getTheaterRoomCode());
 			

@@ -69,7 +69,7 @@
 								<tbody>
 									<tr>
 										<th scope="row">적립예정 포인트</th>
-										<td>600 P</td>
+										<td>${points[i.index]} 원</td>
 									</tr>
 								</tbody>
 							</table>

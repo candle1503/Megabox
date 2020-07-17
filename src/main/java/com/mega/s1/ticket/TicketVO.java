@@ -38,4 +38,7 @@ public class TicketVO {
 	private String calandarDate;
 	private String calandarDate2;
 	
+	//적립예정 포인트
+	private int savedPoint;
+	
 }

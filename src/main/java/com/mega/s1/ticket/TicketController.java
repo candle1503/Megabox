@@ -56,10 +56,11 @@ public class TicketController {
 	@ResponseBody
 	public int paymentDone(ModelAndView mv ,TicketVO ticketVO,HttpSession session) throws Exception{
 		MemberVO memberVO = new MemberVO();
+		PointVO pointVO = (PointVO)session.getAttribute("point");
+		ticketVO.setSavedPoint(pointVO.getSavePoint());
 		int result = ticketService.ticketInsert(ticketVO);
 
 		if(result>0) {
-			PointVO pointVO = (PointVO)session.getAttribute("point");
 			memberVO.setSavePoint(pointVO.getSavePoint());
 			memberVO.setUsedPoint(pointVO.getUsedPoint());
 			memberVO.setId(pointVO.getId());

@@ -178,7 +178,7 @@
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompList.movieNum}" class="img"
 												title="${bookedCompList.movieName} "><img
 												src="upload/movie/${mvfile[0].fileName}"></a>
-											<table class="table" style="margin-top: 35px; margin-left: 30px;">
+											<table class="table">
 												<colgroup>
 													<col style="width: 100px;">
 													<col style="width: 230px;">
@@ -212,6 +212,22 @@
 													</tr>
 												</tbody>
 											</table>
+											<div class="bg-round">
+							<table class="table">
+								<colgroup>
+									<col style="width: 100px;">
+									<col style="width: 230px;">
+									<col style="width: 100px;">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row">적립예정 포인트</th>
+										<td>${points[i.index]} 원</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 										</div>
 									</li>
 									</c:forEach>
