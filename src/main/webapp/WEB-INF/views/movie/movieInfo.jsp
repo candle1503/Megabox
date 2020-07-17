@@ -122,7 +122,9 @@ $(function(){
 				<p class="tit">예매율</p>
 		
 					
-						<p class="cont"><em>${rank }</em>위 (
+						<p class="cont">
+						
+						<em>${rank }</em>위 (
 						<c:if test="${vo.bookingRate >= 1 }">
 						<fmt:formatNumber value="${vo.bookingRate}" pattern="#,###.0"/>
 						</c:if>
@@ -444,7 +446,7 @@ $(function(){
             </dl>
             
            <c:choose>
-           	<c:when test="${today <= openDay || vo.rate eq '0'}">
+           	<c:when test="${today lt openDay or vo.rate eq '0'}">
 
 				<div class="graph" >
                         <img src="/resources/static/images/no-graph02.jpg" alt="메가스코어 결과 없음">
@@ -469,10 +471,10 @@ $(function(){
                 <dt>예매율</dt>
                 <dd class="font-roboto regular">
                     <span id="rkTag">
-                    	<c:if test="${vo.bookingRate >= 1 }">
+                    	<c:if test="${vo.bookingRate ge 1 }">
 						<fmt:formatNumber value="${vo.bookingRate}" pattern="#,###.0"/>
 						</c:if>
-						<c:if test="${vo.bookingRate < 1 }">
+						<c:if test="${vo.bookingRate lt 1 }">
 						0<fmt:formatNumber value="${vo.bookingRate}" pattern="#,###.0"/>
 						</c:if>
 						 %</span>
@@ -562,7 +564,7 @@ $(function(){
 
             <div class="graph">
             <c:choose>
-             <c:when test="${today <= openDay || views eq '0'}">
+             <c:when test="${today lt openDay or views eq '0'}">
 				
                         <img src="/resources/static/images/no-graph04.jpg" alt="메가스코어 결과 없음">
                 

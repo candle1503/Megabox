@@ -69,11 +69,16 @@
         </c:choose>
           
         </ul>
-    </div><br><br>
+    </div><br>
 <c:if test="${member.id eq'ADMIN' }">
     <a href="./movieInsert" class="button purple" style="width:150px; font-size: 1.2em;">영화 추가</a>
 </c:if>
-    <br><br>
+
+
+    <br><p class="no-result-count" style="margin-left: 20px;"><strong id="totCnt">${movieCount }</strong>개의 영화가 검색되었습니다.</p><br>
+    
+    
+    
 <div class="movie-list">
 	<ol class="list" id="movieList">
 	
