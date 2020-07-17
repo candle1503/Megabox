@@ -64,7 +64,7 @@
 	</update>
 	
 	<select id="bookedCompleteListCalandar" parameterType="TicketVO" resultType="TicketVO">
-		select * from ticket where status = 1 and id = #{id} and str_to_date(#{calandarDate2} , '%Y-%m-%d') > viewDate and  viewDate >= str_to_date(#{calandarDate} , '%Y-%m-%d')	
+		select * from ticket where status != 0 and id = #{id} and str_to_date(#{calandarDate2} , '%Y-%m-%d') > viewDate and  viewDate >= str_to_date(#{calandarDate} , '%Y-%m-%d')	
 	</select>
 	
 	<select id="getMemberInfo" parameterType="MemberVO" resultType="MemberVO">
