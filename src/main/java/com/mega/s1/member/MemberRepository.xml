@@ -71,4 +71,8 @@
 		select * from member where id=#{id}
 	</select>
 	
+	<select id="getOneTicket" parameterType="MemberVO" resultType="TicketVO">
+		SELECT * FROM user01.ticket where id=#{id} order by ticketNum desc limit 1
+	</select>
+	
 </mapper>

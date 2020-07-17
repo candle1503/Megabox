@@ -56,7 +56,8 @@ public interface MemberRepository {
 	//bookedCompleteListCalandar
 	public List<TicketVO> bookedCompleteListCalandar(TicketVO ticketVO) throws Exception;
 	
-	
+	//getOneTicket
+	public TicketVO getOneTicket(MemberVO memberVO) throws Exception;
 	
 	
 	//deleteReviewStatus

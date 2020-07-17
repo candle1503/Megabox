@@ -203,4 +203,8 @@ public class MemberService {
 	public MemberVO getMemberInfo(MemberVO memberVO) throws Exception{
 		return memberRepository.getMemberInfo(memberVO);
 	}
+	
+	public TicketVO getOneTicket(MemberVO memberVO) throws Exception{
+		return memberRepository.getOneTicket(memberVO);
+	}
 }

@@ -104,6 +104,7 @@ public class MemberController {
 	@GetMapping("getMyPage")
 	public ModelAndView getMyPage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		TicketVO ticketVO = new TicketVO();
 		MemberFileVO memberFileVO = new MemberFileVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		if(memberVO.getId().equals("ADMIN")) {
@@ -111,11 +112,15 @@ public class MemberController {
 		}else {
 			Integer ticketCount = memberService.getTicketCount(memberVO);
 			Integer reviewCount = memberService.getReviewCount(memberVO);
+			
+			ticketVO = memberService.getOneTicket(memberVO);
+			
 			memberFileVO = memberService.getMemberFile(memberVO);
 			memberVO.setFileName(memberFileVO.getFileName());
 			memberVO.setOriName(memberFileVO.getOriName());
 			mv.addObject("ticketCount", ticketCount);
 			mv.addObject("reviewCount", reviewCount);
+			mv.addObject("ticketVO", ticketVO);
 			session.setAttribute("memberVO", memberVO);
 			mv.setViewName("member/memberMyPage");
 		}
