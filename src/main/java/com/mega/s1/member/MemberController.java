@@ -63,6 +63,7 @@ public class MemberController {
 			mv.addObject("memerVO", memberVO);
 		}else {
 			memberVO = memberService.setJoin(memberVO);
+			memberVO = memberService.getMemberInfo(memberVO);
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}
@@ -89,6 +90,7 @@ public class MemberController {
 			mv.addObject("memberVO", memberVO);
 		}else {
 			memberVO =  memberService.setLogin(memberVO);
+			memberVO = memberService.getMemberInfo(memberVO);
 			session.setAttribute("member", memberVO);
 			mv.setViewName("redirect:../");
 		}
@@ -282,6 +284,10 @@ public class MemberController {
 		
 		List<TicketVO> bookedCompAfterAr;
 		if(ticketVO.getCalandarDate() != null) {
+			ticketVO.setCalandarDate(ticketVO.getCalandarDate()+"-01");
+			String [] month = ticketVO.getCalandarDate().split("-");
+			int monthNum =Integer.parseInt(month[1])+1;
+			ticketVO.setCalandarDate2(month[0]+"-"+monthNum+"-01");
 			ticketVO.setId(id);
 			bookedCompAfterAr = memberService.bookedCompleteListCalandar(ticketVO);
 			
@@ -329,6 +335,7 @@ public class MemberController {
 		}
 		
 		model.addAttribute("bookedCompAfterAr", bookedCompAfterAr);
+		
 	}
 	
 	@GetMapping("reviewList")

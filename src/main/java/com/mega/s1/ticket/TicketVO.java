@@ -36,5 +36,6 @@ public class TicketVO {
 	
 	//날짜비교할때 쓸것
 	private String calandarDate;
+	private String calandarDate2;
 	
 }

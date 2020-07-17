@@ -61,4 +61,7 @@ public interface MemberRepository {
 	
 	//deleteReviewStatus
 	public void deleteReviewStatus(TicketVO ticketVO) throws Exception;
+	
+	//getMemberInfo
+	public MemberVO getMemberInfo(MemberVO memberVO) throws Exception;
 }

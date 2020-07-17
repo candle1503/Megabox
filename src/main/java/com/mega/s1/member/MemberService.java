@@ -199,4 +199,8 @@ public class MemberService {
 	public List<TicketVO> bookedCompleteListCalandar(TicketVO ticketVO) throws Exception{
 		return memberRepository.bookedCompleteListCalandar(ticketVO);
 	}
+	
+	public MemberVO getMemberInfo(MemberVO memberVO) throws Exception{
+		return memberRepository.getMemberInfo(memberVO);
+	}
 }

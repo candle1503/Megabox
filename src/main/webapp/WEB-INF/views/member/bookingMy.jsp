@@ -13,8 +13,30 @@
 <link rel="stylesheet" href="/resources/static/css/bookingMy.css" media="all">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script type="text/javascript" src="/resources/static/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/resources/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/resources/static/js/jquery.mtz.monthpicker.js"></script>
+<!-- MonthPicker -->
+<link href="/resources/static/css/jquery-ui.css" rel="stylesheet" type="text/css">
+	<style>
+		#monthpicker {
+			width: 60px;
+		}
+		#btn_monthpicker {
+			background: url('/resources/static/images/datepicker.png');
+			border: 0;
+			height: 24px;
+			overflow: hieen;
+			text-indent: 999;
+			width: 24px;
+		}
+	</style>
+
+
 <!-- dataPicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 </head>
 
 <body>
@@ -94,6 +116,8 @@
 				
 				</script>
 				
+				
+				
 				<div class="tab-cont-wrap">
 
 					<!-- 예매내역 -->
@@ -114,8 +138,8 @@
 											<div class="dropdown bootstrap-select small bs3"
 												style="margin-top: 10px; width: 25%;">
 												
-												<input id="calendar" style="left: 1300px; width: 130px"
-												value="시작날짜" name="startDay" class="button gray-line small" readonly="readonly">
+												<input id="monthpicker" style="left: 1300px; width: 130px"
+												value="월별 티켓 확인" name="startDay" class="button gray-line small" readonly="readonly">
 												
 												
 												<div class="dropdown-menu open" role="combobox">
@@ -125,10 +149,6 @@
 													</div>
 												</div>
 											</div>
-											<button type="button" class="button gray-line small"
-												name="search" style="margin-top: 10px; margin-left: 0px;">
-												<i class="iconset ico-search-gray"></i> 조회
-											</button></td>
 									</tr>
 								</tbody>
 							</table>
@@ -158,14 +178,14 @@
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompList.movieNum}" class="img"
 												title="${bookedCompList.movieName} "><img
 												src="upload/movie/${mvfile[0].fileName}"></a>
-											<table class="table">
+											<table class="table" style="margin-top: 35px; margin-left: 30px;">
 												<colgroup>
 													<col style="width: 100px;">
 													<col style="width: 230px;">
 													<col style="width: 100px;">
 													<col>
 												</colgroup>
-												<tbody>
+												<tbody >
 													<tr>
 														<th scope="row">예매번호</th>
 														<td colspan="3"><em class="num">${bookedCompList.ticketCode}</em></td>
@@ -192,26 +212,6 @@
 													</tr>
 												</tbody>
 											</table>
-											<div class="bg-round">
-												<table class="table">
-													<colgroup>
-														<col style="width: 100px;">
-														<col style="width: 230px;">
-														<col style="width: 100px;">
-														<col>
-													</colgroup>
-													<tbody>
-														<tr>
-															<!-- <th scope="row" class="a-r">결제일시</th>
-															<td>결제일시 JSTL <a href="#"
-																class="button gray-line x-small" title="결제정보">결제정보</a>
-															</td> -->
-															<th scope="row" class="a-r">적립예정 포인트</th>
-															<td>600 P</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
 										</div>
 									</li>
 									</c:forEach>
@@ -237,32 +237,14 @@
 	<input type="hidden" value="" class="date" name="calandarDate" >
 
 <script type="text/javascript">
-	var G_calendar = {
-			startDate: '-0d',
-		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    dayNamesMin: ['일','월','화','수','목','금','토'],
-		    weekHeader: 'Wk',
-		    dateFormat: 'yy-mm-dd',
-		    autoclose : true,
-		    showOn:"both",
-		    showMonthAfterYear: true,
-		    changeDate: false,   
-		    maxDate: '3y',
-		    minDate: '-3y',
-		    closeText: '닫기',
-	}
 
-
-	$('#calendar').datepicker(G_calendar);
-
-	$('#calendar').change(function(){
-	$('.date').val($('#calendar').val());
+	$('#monthpicker').change(function(){
+	$('.date').val($('#monthpicker').val());
 		var date=$('.date').val();
 		bookedCompAfterCalandar(id,date);
 			})
 
 function bookedCompAfterCalandar(id,date){
-		alert(date)
 	$.get("bookingMyAfter?id="+id+"&calandarDate="+date, function(result){
 		$("#bokdList").empty();
 		$("#bokdList").append(result);
@@ -272,6 +254,28 @@ function bookedCompAfterCalandar(id,date){
 			
 	</script>
 
+
+<script>
+
+		var thisDate = new Date();
+		var thisYear = thisDate.getFullYear();        //해당 연
+		
+		options = {
+			pattern: 'yyyy-mm',
+			selectYear: thisYear,
+			startYear: thisYear-1,
+			finalYear: thisYear,
+			monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+		};
+
+// 		$('#monthpicker').monthpicker('setDate', thisYear+'-'+thisMonth+'-01'); 
+		$('#monthpicker').monthpicker(options);
+		
+		$('#btn_monthpicker').bind('click', function () {
+			$('#monthpicker').monthpicker('show');
+		});
+		
+	</script>
 
 </body>
 </html>
