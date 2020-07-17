@@ -65,6 +65,8 @@ public class TicketController {
 			memberVO.setUsedPoint(pointVO.getUsedPoint());
 			memberVO.setId(pointVO.getId());
 			ticketService.pointAdd(memberVO);
+			memberVO= ticketService.getId(memberVO);
+			session.setAttribute("member", memberVO);
 			session.removeAttribute("point");
 		}
 		return result;

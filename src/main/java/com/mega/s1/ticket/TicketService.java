@@ -90,4 +90,8 @@ public class TicketService {
 		return ticketRepository.bookingRateUpdate(movieVO);
 	}
 	
+	public MemberVO getId(MemberVO memberVO) throws Exception{
+		return ticketRepository.getId(memberVO);
+	}
+	
 }
