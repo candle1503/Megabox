@@ -52,11 +52,11 @@
 	</update>
 	
 	<select id="bookedCompleteList" parameterType="String" resultType="TicketVO">
-		select * from ticket where status = 0 and id = #{id}
+		select * from ticket where status = 0 and id = #{id} order by ticketNum desc
 	</select>
 	
 	<select id="bookedCompleteAfterList" parameterType="String" resultType="TicketVO">
-		select * from ticket where status = 1 and id = #{id}
+		select * from ticket where status != 0 and id = #{id} order by ticketNum desc
 	</select>
 	
 	<update id="deleteReviewStatus" parameterType="TicketVO">
@@ -74,5 +74,7 @@
 	<select id="getOneTicket" parameterType="MemberVO" resultType="TicketVO">
 		SELECT * FROM user01.ticket where id=#{id} order by ticketNum desc limit 1
 	</select>
+	
+	
 	
 </mapper>
