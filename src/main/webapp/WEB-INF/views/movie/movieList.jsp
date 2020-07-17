@@ -211,7 +211,7 @@
 		        $('#movieList').append(data);
 		    });
 
-			}else if('${listName}'=="Ing"){
+			}else if('${listName}'=="ing"){
 
 				var ajaxOption = {
 			            url : "./moreIng",      
