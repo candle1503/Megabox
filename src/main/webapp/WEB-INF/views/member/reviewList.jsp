@@ -53,15 +53,18 @@
 							style="display: block;" id="myStoryM">
 							<ul id="myAppraisal">
 								<li>
+								
 									<p class="img posterImg" data-mno="01550200"
-										style="cursor: pointer">
+										style="cursor: pointer"><a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${vo.movieNum}" class="img"
+												title="${bookedCompList.movieName} ">
 										<img src="/upload/movie/${vo.fileName}" style="height: 145px;">
+										</a>
 									</p>
 							
 									<div class="cont">
 										<p class="label">관람평</p>
 										<p class="tit">
-											<a href="javaScript:void(0)" title="한줄평 상세보기">${vo.movieName}</a>
+											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${vo.movieNum}">${vo.movieName}</a>
 										</p>
 										<div class="rate">
 											<p class="num review">${vo.point}</p>
