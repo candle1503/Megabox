@@ -2073,8 +2073,8 @@
 		</div>
 		<!--// contents -->
 	</div>
-
-	<c:import url="../template/footer.jsp"></c:import>
-
+	<div style="margin-top: 300px;">
+		<c:import url="../template/footer.jsp"></c:import>
+	</div>
 </body>
 </html>
