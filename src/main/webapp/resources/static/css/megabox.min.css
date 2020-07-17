@@ -34442,6 +34442,7 @@ body.body-iframe .modal-layer2 {
 }
 
 .history-reservation ul li .round .table th {
+	width: 100px;
 	font-weight: 700;
 	text-align: right
 }

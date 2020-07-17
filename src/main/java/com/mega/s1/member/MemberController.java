@@ -105,6 +105,7 @@ public class MemberController {
 	public ModelAndView getMyPage(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		TicketVO ticketVO = new TicketVO();
+		TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
 		MemberFileVO memberFileVO = new MemberFileVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		if(memberVO.getId().equals("ADMIN")) {
@@ -114,6 +115,8 @@ public class MemberController {
 			Integer reviewCount = memberService.getReviewCount(memberVO);
 			
 			ticketVO = memberService.getOneTicket(memberVO);
+			theaterRoomVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
+			theaterRoomVO = memberService.getRoom(theaterRoomVO);
 			
 			memberFileVO = memberService.getMemberFile(memberVO);
 			memberVO.setFileName(memberFileVO.getFileName());
@@ -121,6 +124,7 @@ public class MemberController {
 			mv.addObject("ticketCount", ticketCount);
 			mv.addObject("reviewCount", reviewCount);
 			mv.addObject("ticketVO", ticketVO);
+			mv.addObject("theaterRoomVO", theaterRoomVO);
 			session.setAttribute("memberVO", memberVO);
 			mv.setViewName("member/memberMyPage");
 		}

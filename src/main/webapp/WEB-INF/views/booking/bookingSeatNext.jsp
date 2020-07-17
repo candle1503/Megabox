@@ -514,6 +514,7 @@
 				var point= $('.pointUse').val();
 				var myPoint = $('.myPoint').val();
 				var result = myPoint-point;
+				
 				if(result<0){
 					alert("현재 포인트보다 적게 써야됌");
 

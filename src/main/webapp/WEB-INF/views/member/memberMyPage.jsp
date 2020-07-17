@@ -129,7 +129,7 @@
 							</div>
 
 							<!-- my-reserve-history -->
-							<div class="my-reserve-history">
+							<div class="history-reservation">
 								<ul>
 									<li sell-tran-no="13722007010094143868">
 									<div class="round">
@@ -152,7 +152,7 @@
 													</tr>
 													<tr>
 														<th scope="row" >극장/상영관</th>
-														<td>일반 ${ticketVO.count}명</td>
+														<td> ${theaterRoomVO.name} / ${theaterRoomVO.roomName}</td>
 													</tr>
 													<tr>
 													<th scope="row">관람인원</th>
@@ -161,17 +161,29 @@
 													
 													<tr>
 														<th scope="row" style="width: 300px;">관람일시</th>
-														<td>${ticketVO.viewDate}</td>
-														<th scope="row">관람좌석</th>
+														<td style="width: 1000px;">${ticketVO.viewDate}</td>
+														<th scope="row" style="width:1px;">관람좌석</th>
 														<td>${ticketVO.seatNum}</td>
-													</tr>
-													
-													<tr>
-														<th scope="row" >적립 포인트</th>
-														<td>${ticketVO.savedPoint} 원</td>
 													</tr>
 												</tbody>
 											</table>
+													<div class="bg-round">
+														<table class="table">
+														<colgroup>
+															<col style="width: 100px;">
+															<col style="width: 230px;">
+															<col style="width: 100px;">
+															<col>
+														</colgroup>
+														<tbody>
+															<tr>
+																<th scope="row" >적립 포인트</th>
+																<td>${ticketVO.savedPoint} 원</td>
+															</tr>
+														</tbody>
+														</table>
+													</div>
+													
 										</div>
 									
 									</li>
