@@ -211,11 +211,11 @@
 
 						<div class="entity-content">
 							<h4 class="entity-title">
-								<a class="content-link" href="article-sidebar-right.html">${notice[0].title}</a>
+								<a class="content-link" href="article-sidebar-right.html" style="font-family: 'Do Hyeon', sans-serif;">${notice[0].title}</a>
 							</h4>
 							<div class="entity-category">
-								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].sepearate}</a>,
-								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].regDate}</a>
+								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].name}</a>,
+								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].separate}</a>
 							</div>
 							<p class="text-short entity-text">${notice[0].contents}</p>
 
