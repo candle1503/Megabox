@@ -133,6 +133,7 @@
 								<ul>
 									<li sell-tran-no="13722007010094143868">
 									<div class="round">
+									<c:if test="${ticketVO ne null}">
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${ticketVO.movieNum}" class="img"
 												title="${ticketVO.movieName} "><img
 												src="upload/movie/${ticketVO.movieName}"></a>
@@ -182,10 +183,10 @@
 															</tr>
 														</tbody>
 														</table>
+											</c:if>
 													</div>
 													
 										</div>
-									
 									</li>
 									
 									

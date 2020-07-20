@@ -104,9 +104,6 @@
 					
 					</div>
 
-					<nav class="pagination myOne myMovieStory" style="display: block;">
-						<strong class="active">1</strong>
-					</nav>
 
 
 				</div>

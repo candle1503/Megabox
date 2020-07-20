@@ -44,7 +44,7 @@
 	</select>
 	
 	<delete id="deleteReview" parameterType="ReviewVO">
-		delete from review where ticketNum=#{reviewNum}
+		delete from review where ticketNum=#{ticketNum}
 	</delete>
 	
 	<update id="updateTicket" parameterType="String">

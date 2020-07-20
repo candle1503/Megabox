@@ -1,7 +1,7 @@
 
 								var G_calendar = {
 										startDate: '-0d',
-									    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+										monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 									    dayNamesMin: ['일','월','화','수','목','금','토'],
 									    weekHeader: 'Wk',
 									    dateFormat: 'yy-mm-dd',	
@@ -9,7 +9,7 @@
 									    showOn:"both",
 										buttonImageOnly:false,
 									    showMonthAfterYear: true,
-									    maxDate: '2w',
+									    maxDate: '10w',
 									    minDate: '-0d',
 									    closeText: '닫기'
 									        
@@ -77,7 +77,6 @@
 									$('#calendar1').change( function(){
 										
 										startDay1 = $('#calendar1').val();
-										alert(startDay1);
 										
 										if(startDay1 > endDay5){
 											alert("마지막 날짜 이전으로 설정해주세요.");
@@ -415,10 +414,6 @@
 							
 								$('.timeAddBtn1').on('click',function() {
 								
-								if (listCount1 > 3) {
-									alert("상영은 최대 4번");
-									return false;
-								}
 
 								var timeChoose1 = $('.timeChoose1').val();
 								var movieSelected1 = $('.movieSelect1').val();
@@ -447,10 +442,6 @@
 							
 							$('.timeAddBtn2').on('click',function() {
 								
-								if (listCount2 > 3) {
-									alert("상영은 최대 4번");
-									return false;
-								}
 
 								var timeChoose2 = $('.timeChoose2').val();
 								var movieSelected2 = $('.movieSelect2').val();
@@ -480,10 +471,6 @@
 							
 							$('.timeAddBtn3').on('click',function() {
 								
-								if (listCount3 > 3) {
-									alert("상영은 최대 4번");
-									return false;
-								}
 
 								var timeChoose3 = $('.timeChoose3').val();
 								var movieSelected3 = $('.movieSelect3').val();
@@ -513,10 +500,6 @@
 							
 							$('.timeAddBtn4').on('click',function() {
 								
-								if (listCount4 > 3) {
-									alert("상영은 최대 4번");
-									return false;
-								}
 
 								var timeChoose4 = $('.timeChoose4').val();
 								var movieSelected4 = $('.movieSelect4').val();

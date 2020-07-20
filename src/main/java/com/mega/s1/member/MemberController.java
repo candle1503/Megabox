@@ -115,8 +115,10 @@ public class MemberController {
 			Integer reviewCount = memberService.getReviewCount(memberVO);
 			
 			ticketVO = memberService.getOneTicket(memberVO);
-			theaterRoomVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
-			theaterRoomVO = memberService.getRoom(theaterRoomVO);
+			if(ticketVO != null) {
+				theaterRoomVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
+				theaterRoomVO = memberService.getRoom(theaterRoomVO);
+			}
 			
 			memberFileVO = memberService.getMemberFile(memberVO);
 			memberVO.setFileName(memberFileVO.getFileName());
