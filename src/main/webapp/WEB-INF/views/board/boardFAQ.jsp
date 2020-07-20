@@ -73,7 +73,7 @@
 												<span class="font-green">[영화예매]</span>
 											</p>
 											<p class="txt">
-												영화 예매 시 메가박스 포인트 선택이 되지않아요
+												영화 예매 시 쌍용 씨네마 포인트 선택이 되지않아요
 											</p></a>
 									</div>
 									<div class="awn">
