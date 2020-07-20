@@ -516,7 +516,7 @@
 				var result = myPoint-point;
 				
 				if(result<0){
-					alert("현재 포인트보다 적게 써야됌");
+					alert("사용가능 포인트:"+myPoint+"입니다");
 
 					if(myPoint%10 !=0){
 						myPoint /= 10;
