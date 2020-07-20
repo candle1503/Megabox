@@ -75,13 +75,5 @@
 		SELECT * FROM user01.ticket where id=#{id} order by ticketNum desc limit 1
 	</select>
 	
-	<select id="getOneTicketMovieFile" parameterType="TicketVO" resultType="MovieFileVO">
-		select * from movieFile where movieNum = #{movieNum} limit 1
-	</select>
-	
-
-	<select id="getOneTicketMovieFile2" parameterType="MovieVO" resultType="MovieFileVO">
-		select * from movieFile where movieNum = #{movieNum} limit 1
-	</select>
 	
 </mapper>

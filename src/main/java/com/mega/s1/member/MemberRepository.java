@@ -65,10 +65,4 @@ public interface MemberRepository {
 	
 	//getMemberInfo
 	public MemberVO getMemberInfo(MemberVO memberVO) throws Exception;
-	
-	//getOneTicketMovieFile
-	public MovieFileVO getOneTicketMovieFile(TicketVO ticketVO) throws Exception;
-	
-	//getOneTicketMovieFile2
-	public MovieFileVO getOneTicketMovieFile2(MovieVO movieVO) throws Exception;
 }

@@ -168,6 +168,7 @@
 								</p>
 							</div>
 							<div class="history-reservation">
+							${mvfile[0].fileName}
 							<!-- c:foreach로 뿌려줄 거 -->
 								<ul id="bookedList">
 									<c:forEach items="${bookedCompAr}" var="bookedCompList" varStatus="i">
@@ -175,7 +176,7 @@
 										<div class="round">
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompList.movieNum}" class="img"
 												title="${bookedCompList.movieName} "><img
-												src="/upload/movie/${mvfile[i.index].fileName}"></a>
+												src="/upload/movie/${mvfile[0].fileName}"></a>
 											<table class="table">
 												<colgroup>
 													<col style="width: 100px;">

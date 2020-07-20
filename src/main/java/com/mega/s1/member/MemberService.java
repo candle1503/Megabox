@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mega.s1.member.memberFile.MemberFileRepository;
 import com.mega.s1.member.memberFile.MemberFileVO;
-import com.mega.s1.movie.MovieVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomRepository;
@@ -207,13 +206,5 @@ public class MemberService {
 	
 	public TicketVO getOneTicket(MemberVO memberVO) throws Exception{
 		return memberRepository.getOneTicket(memberVO);
-	}
-	
-	public MovieFileVO getOneTicketMovieFile(TicketVO ticketVO) throws Exception{
-		return memberRepository.getOneTicketMovieFile(ticketVO);
-	}
-	
-	public MovieFileVO getOneTicketMovieFile2(MovieVO movieVO) throws Exception{
-		return memberRepository.getOneTicketMovieFile2(movieVO);
 	}
 }
