@@ -108,6 +108,7 @@ public class MemberController {
 		TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
 		MemberFileVO memberFileVO = new MemberFileVO();
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		MovieFileVO movieFileVO = new MovieFileVO();
 		if(memberVO.getId().equals("ADMIN")) {
 			mv.setViewName("redirect:../admin/theaterList");
 		}else {
@@ -118,6 +119,8 @@ public class MemberController {
 			if(ticketVO != null) {
 				theaterRoomVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
 				theaterRoomVO = memberService.getRoom(theaterRoomVO);
+				movieFileVO = memberService.getOneTicketMovieFile(ticketVO);
+				
 			}
 			
 			memberFileVO = memberService.getMemberFile(memberVO);
@@ -127,6 +130,7 @@ public class MemberController {
 			mv.addObject("reviewCount", reviewCount);
 			mv.addObject("ticketVO", ticketVO);
 			mv.addObject("theaterRoomVO", theaterRoomVO);
+			mv.addObject("movieFileVO", movieFileVO);
 			session.setAttribute("memberVO", memberVO);
 			mv.setViewName("member/memberMyPage");
 		}
