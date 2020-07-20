@@ -52,11 +52,11 @@
 			</div>
 
 			<div class="footer-sns" style="margin-right: 10px;">
-				<a href="https://twitter.com" target="_blank"><i
+				<a href="https://twitter.com/megaboxon" target="_blank"><i
 					class="iconset ico-twitter">트위터</i></a> <a
-					href="https://www.facebook.com" target="_blank"><i
+					href="https://www.facebook.com/megaboxon" target="_blank"><i
 					class="iconset ico-facebook">페이스북</i></a> <a
-					href="http://instagram.com" target="_blank"><i
+					href="http://instagram.com/megaboxon" target="_blank"><i
 					class="iconset ico-instagram">인스타그램</i></a>
 			</div>
 		</div>
