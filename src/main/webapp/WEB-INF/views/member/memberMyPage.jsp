@@ -127,7 +127,6 @@
 									title="나의 예매내역 더보기">더보기 <i
 									class="iconset ico-arr-right-gray"></i></a>
 							</div>
-
 							<!-- my-reserve-history -->
 							<div class="history-reservation">
 								<ul>
@@ -136,7 +135,7 @@
 									<c:if test="${ticketVO ne null}">
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${ticketVO.movieNum}" class="img"
 												title="${ticketVO.movieName} "><img
-												src="upload/movie/${ticketVO.movieName}"></a>
+												src="/upload/movie/${movieFileVO.fileName}"></a>
 											<table class="table">
 												<tbody >
 													<tr>
