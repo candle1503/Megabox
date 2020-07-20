@@ -19,6 +19,7 @@
 				varStatus="i">
 				<li sell-tran-no="13722007010094143868">
 					<div class="round">
+					
 						<a
 							href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompAfList.movieNum}"
 							class="img" title="${bookedCompAfList.movieName} "><img
@@ -58,7 +59,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<div class="bg-round">
+						<div class="bg-round" style="float: left;">
 							<table class="table">
 								<colgroup>
 									<col style="width: 100px;">
@@ -74,6 +75,9 @@
 								</tbody>
 							</table>
 						</div>
+							<c:if test="${bookedCompAfList.status eq 1}">
+								<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompAfList.movieNum}" class="button large purple" style="margin-left: 400px;">리뷰 작성</a>
+							</c:if>
 					</div>
 				</li>
 			</c:forEach>

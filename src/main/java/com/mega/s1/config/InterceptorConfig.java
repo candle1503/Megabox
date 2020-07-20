@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.mega.s1.member.MemberInterceptor;
+import com.mega.s1.member.admin.AdminInterceptor;
 
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer{
@@ -13,8 +14,8 @@ public class InterceptorConfig implements WebMvcConfigurer{
 	@Autowired
 	private MemberInterceptor memberInterceptor;
 	
-//	@Autowired
-//	private AdminInterceptor adminInterceptor;
+	@Autowired
+	private AdminInterceptor adminInterceptor;
 	
 	
 	@Override
@@ -29,8 +30,8 @@ public class InterceptorConfig implements WebMvcConfigurer{
 		.excludePathPatterns("/member/memberLogin")
 		.excludePathPatterns("/member/memberJoin");
 	
-//		registry.addInterceptor(adminInterceptor)
-//		.addPathPatterns("/admin/*");
+		registry.addInterceptor(adminInterceptor)
+		.addPathPatterns("/admin/*");
 		
 	}
 	
