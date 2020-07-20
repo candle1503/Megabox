@@ -23,7 +23,7 @@
 						<a
 							href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${bookedCompAfList.movieNum}"
 							class="img" title="${bookedCompAfList.movieName} "><img
-							src="upload/movie/${mvfile[0].fileName}" alt="결백"
+							src="/upload/movie/${mvfile[i.index].fileName}" alt="결백"
 							onerror="noImg(this)"></a>
 						<table class="table">
 							<colgroup>
