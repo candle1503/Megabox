@@ -157,7 +157,6 @@
 
 
 
-${mvfile[0].fileName}${mvfile[0].fileName}${mvfile[0].fileName}asdfasdf
 
 						<!-- 예매 영화 목록 -->
 						<div id="bokdList">
