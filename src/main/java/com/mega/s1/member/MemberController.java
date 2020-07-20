@@ -252,11 +252,12 @@ public class MemberController {
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
 		Map<Integer, String> viewDateMap = new HashMap<>();
 		List<Integer> points = new ArrayList<Integer>();
-		
+		List<MovieFileVO> mvfilesAr = new ArrayList<MovieFileVO>();
 		String viewDateCut;
 		String viewDateTimeCut;
 		
 		for(int i=0; i<size; i++) {
+			MovieFileVO movieFileVO = new MovieFileVO();
 			Integer point;
 			point = bookedCompAr.get(i).getSavedPoint();
 			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
@@ -287,7 +288,8 @@ public class MemberController {
 			
 			MovieVO movieVO = new MovieVO();
 			movieVO.setMovieNum(bookedCompAr.get(i).getMovieNum());
-			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
+			movieFileVO = memberService.getOneTicketMovieFile2(movieVO);
+			mvfilesAr.add(i, movieFileVO);
 			
 			model.addAttribute("mvfile", mvfilesAr);
 		}
@@ -319,11 +321,13 @@ public class MemberController {
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
 		Map<Integer, String> viewDateMap = new HashMap<>();
 		List<Integer> points = new ArrayList<Integer>();
+		List<MovieFileVO> mvfilesAr = new ArrayList<MovieFileVO>();
 		
 		String viewDateCut;
 		String viewDateTimeCut;
 		
 		for(int i=0; i<size; i++) {
+			MovieFileVO movieFileVO = new MovieFileVO();
 			Integer point;
 			point = bookedCompAfterAr.get(i).getSavedPoint();
 			
@@ -354,7 +358,9 @@ public class MemberController {
 			
 			MovieVO movieVO = new MovieVO();
 			movieVO.setMovieNum(bookedCompAfterAr.get(i).getMovieNum());
-			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
+			
+			movieFileVO = memberService.getOneTicketMovieFile2(movieVO);
+			mvfilesAr.add(i, movieFileVO);
 			
 			model.addAttribute("mvfile", mvfilesAr);
 		}
