@@ -30,62 +30,63 @@
 	<section class="section-long">
 		<div class="container">
 
-			<article class="movie-line-entity">
-				<div class="entity-poster" data-role="hover-wrap">
-					<div class="embed-responsive embed-responsive-poster">
-						<img class="embed-responsive-item"
-							src="http://via.placeholder.com/340x510" alt="">
-					</div>
-					<div class="d-over bg-theme-lighted collapse animated faster"
-						data-show-class="fadeIn show" data-hide-class="fadeOut show">
-						<div class="entity-play">
-							<a class="action-icon-theme action-icon-bordered rounded-circle"
-								href="https://www.youtube.com/watch?v=d96cjJhvlMA"
-								data-magnific-popup="iframe"> <span class="icon-content"><i
-									class="fas fa-play"></i></span>
-							</a>
+
+
+			<c:forEach items="${bookedCompAr}" var="bookedCompList" varStatus="i">
+
+				<article class="movie-line-entity">
+					<div class="entity-poster" data-role="hover-wrap">
+						<div class="embed-responsive embed-responsive-poster">
+							<img class="embed-responsive-item"
+								src="http://via.placeholder.com/340x510" alt="">
 						</div>
-					</div>
-				</div>
-				<div class="entity-content">
-					<h4 class="entity-title">
-						<a class="content-link" href="movie-info-sidebar-right.html"
-							style="font-family: 'Do Hyeon', sans-serif;">영화제목 JSTL(누르면
-							이동)</a>
-					</h4>
-					<div class="entity-category">
-						<a class="content-link" href="movies-blocks.html"
-							style="font-family: 'Do Hyeon', sans-serif;">영화장르 JSTL</a>
-					</div>
-					<div class="entity-info">
-						<div class="info-lines">
-							<div class="info info-short">
-								<span class="text-theme info-icon"><i class="fas fa-star"></i></span>
-								<span class="info-text"
-									style="font-family: 'Do Hyeon', sans-serif;">평점JSTL</span> <span
-									class="info-rest" style="font-family: 'Do Hyeon', sans-serif;">/10</span>
-							</div>
-							<div class="info info-short">
-								<span class="text-theme info-icon"><i
-									class="fas fa-clock"></i></span> <span class="info-text"
-									style="font-family: 'Do Hyeon', sans-serif;">상영시간JSTL</span> <span
-									class="info-rest">&nbsp;분</span>
+						<div class="d-over bg-theme-lighted collapse animated faster"
+							data-show-class="fadeIn show" data-hide-class="fadeOut show">
+							<div class="entity-play">
+								<a class="action-icon-theme action-icon-bordered rounded-circle"
+									href="https://www.youtube.com/watch?v=d96cjJhvlMA"
+									data-magnific-popup="iframe"> <span class="icon-content"><i
+										class="fas fa-play"></i></span>
+								</a>
 							</div>
 						</div>
 					</div>
-					<p class="text-short entity-text"
-						style="font-family: 'Do Hyeon', sans-serif;">티켓 관련 내용 JSTL(좌석,
-						관람인원 등등) or 영화 줄거리JSTL</p>
+					<div class="entity-content">
+						<h4 class="entity-title">
+							<a class="content-link" href="movie-info-sidebar-right.html"
+								style="font-family: 'Do Hyeon', sans-serif;">${bookedCompList.movieName}</a>
+						</h4>
+						<div class="entity-category">
+							<a class="content-link" href="movies-blocks.html"
+								style="font-family: 'Do Hyeon', sans-serif;">${bookedCompList.genre}</a>
+						</div>
+						<div class="entity-info">
+							<div class="info-lines">
+								<div class="info info-short">
 
-					<a class="btn btn-theme"
-						href="${pageContext.request.contextPath}/mobile/mobileQrCode"
-						style="font-family: 'Do Hyeon', sans-serif; margin-top: 20px; margin-left: 100px;">티켓
-						양도하기</a>
+									<div class="info info-short">
+										<span class="text-theme info-icon"><i
+											class="fas fa-clock"></i></span> <span class="info-text"
+											style="font-family: 'Do Hyeon', sans-serif;">${viewDate[i.index]}</span>
+									</div>
+								</div>
+							</div>
+							<p class="text-short entity-text"
+								style="font-family: 'Do Hyeon', sans-serif;">일반
+								${bookedCompList.count}명</p>
+							<p class="text-short entity-text"
+								style="font-family: 'Do Hyeon', sans-serif;">관람좌석
+								${bookedCompList.seatNum}</p>
 
-				</div>
+							<a class="btn btn-theme"
+								href="${pageContext.request.contextPath}/mobile/mobileQrCode"
+								style="font-family: 'Do Hyeon', sans-serif; margin-top: 20px; margin-left: 100px;">티켓
+								양도하기</a>
 
-			</article>
+						</div>
+				</article>
 
+			</c:forEach>
 		</div>
 	</section>
 	<a class="scroll-top disabled" href="#"><i class="fas fa-angle-up"
