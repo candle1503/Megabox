@@ -40,7 +40,7 @@
 					<!-- c:foreach 로 관수 마다 뿌려져야함 -->
 
 					<c:forEach items="${list}" var="vo" varStatus="i">
-						<form action="./setTheaterRoom" method="post">
+						<form action="./setTheaterRoom" method="post" class="setSubmit${i.count}">
 							<div class="roomNumber">
 								<!-- theaterNum 히든으로 넘겨줄거임 -->
 								<input type="hidden" value="${theaterNum}" name="theaterNum">
@@ -59,7 +59,7 @@
 
 									<div class="right">
 										<p class="reset${i.count}">
-											<input id="calendar${0+i.count}" style="left: 1300px;"
+											<input id="calendar${i.count}" style="left: 1300px;"
 												value="시작날짜" name="startDay"/> <input
 												id="calendar${4+i.count}" style="left: 1400px;"
 												value="마지막날짜" name="endDay"/>
@@ -114,8 +114,8 @@
 									</table>
 									<input type=button class="button resetBTN${i.count}"
 										style="float: right;" value="RESET">
-									<button type="submit" class="button purple saveBTN${i.count}"
-										style="margin-left: 700px;">저장</button>
+									<input type="button" class="button purple" id="saveBTN${i.count}"
+										style="margin-left: 700px;" value="저장">
 								</div>
 						</form>
 					</c:forEach>
@@ -123,14 +123,45 @@
 					<!-- 각종 체크.. -->
 					<script src="/resources/static/js/movieTimeChecking.js" async=""></script>
 
+				<script type="text/javascript">
+// 				var timeCss;
+
+// 				for(var timeNum=1; timeNum<15; timeNum++){
+// 					$(".bookingTime-list").on("click", "#timeBtn"+timeNum, function(){
+// 						$("#timeBtn"+timeCss).removeClass("on");
+// 						$(this).addClass("on");
+// 						timeCss = $(this).attr('id').replace("timeBtn", '');
+// 					}); 	
+// 				}
+				var num;
+				var num2;
+				var lastTimeChoose=0;
+					for(var i=1; i<5; i++){
+					$('#saveBTN'+i).on("click",function(){
+						num = $(this).attr('id').replace("saveBTN", '');
+						num2 = Number(num)+Number(4);
+						var startDay = $('#calendar'+num).val();
+						var endDay = $('#calendar'+num2).val();
+						var timeChoose = $('.timeChoose'+num).val();
+						var movieSelect = $('.movieSelect'+num).val();
+						if(startDay,endDay,timeChoose,movieSelect == null ){
+							alert("날짜, 시간, 영화 모두 선택 해주세요.");
+							}else{
+							$('.setSubmit'+num).submit();
+
+								}
+						})
+					}
+// 					if()	
+// 				  	$('.setSubmit').submit();
+// 						})
+				</script>
+
 				</div>
 
 				<div class="btn-group mt40">
 					<a href="${pageContext.request.contextPath}/admin/theaterList"> <input type="button"
-						class="button large" value="취소">
-					</a>
-					<a href="${pageContext.request.contextPath}/admin/theaterList"> <input type="button"
-						class="button purple large" value="완료">
+						class="button purple large" value="뒤로가기">
 					</a>
 				</div>
 

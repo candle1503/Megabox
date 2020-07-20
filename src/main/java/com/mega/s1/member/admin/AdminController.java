@@ -165,6 +165,7 @@ public class AdminController {
 		
 		if(startYearInt != endYearInt) {
 			List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+			List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 			while( startDayInt <= 31 ) {
 				roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 				switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -175,7 +176,7 @@ public class AdminController {
 						roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 						roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 						roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-						roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+						roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 						roomMovieTimeVO2.setMovieNum(movieNums[i]);
 						roomMovieTimeVOss.add(roomMovieTimeVO2);
 					}
@@ -186,7 +187,9 @@ public class AdminController {
 					startDayInt += 1;
 					continue;
 				}
-				adminService.setTheaterRoom(roomMovieTimeVOss);
+				if(roomMovieTimeVOss.size() != 0) {
+					adminService.setTheaterRoom(roomMovieTimeVOss);
+				}
 			}
 			while(firstDay <= endDayInt) {
 				RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
@@ -199,9 +202,9 @@ public class AdminController {
 						roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 						roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 						roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-						roomMovieTimeVO.setStartTime((endYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+						roomMovieTimeVO2.setStartTime((endYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 						roomMovieTimeVO2.setMovieNum(movieNums[i]);
-						roomMovieTimeVOss.add(roomMovieTimeVO2);
+						roomMovieTimeVOss2.add(roomMovieTimeVO2);
 					}
 					firstDay += 1;
 					continue;
@@ -210,13 +213,15 @@ public class AdminController {
 					firstDay += 1;
 					continue;
 				}
-				adminService.setTheaterRoom(roomMovieTimeVOss);
+				if(roomMovieTimeVOss2.size() != 0) {
+					adminService.setTheaterRoom(roomMovieTimeVOss2);
+				}
 			}
 		}else {
 			if(endMonthInt > startMonthInt) {
-				List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
 				if(endMonthInt == 2) {
-					
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 31 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -228,7 +233,7 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
 								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
@@ -239,7 +244,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -252,9 +259,9 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -263,12 +270,15 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 					//윤년계산 해줘야함
 				}else if(endMonthInt ==3) {
-					
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					if( startYearInt%4==0 && startYearInt%100!=0 || startYearInt%400==0 ) {
 						
 						
@@ -284,7 +294,7 @@ public class AdminController {
 									roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 									roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 									roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+									roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 									roomMovieTimeVO2.setMovieNum(movieNums[i]);
 									roomMovieTimeVOss.add(roomMovieTimeVO2);
 								}
@@ -295,7 +305,9 @@ public class AdminController {
 								startDayInt += 1;
 								continue;
 							}
-							adminService.setTheaterRoom(roomMovieTimeVOss);
+							if(roomMovieTimeVOss.size() != 0) {
+								adminService.setTheaterRoom(roomMovieTimeVOss);
+							}
 						}
 						while(firstDay <= endDayInt) {
 							roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -308,9 +320,9 @@ public class AdminController {
 									roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 									roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 									roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+									roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 									roomMovieTimeVO2.setMovieNum(movieNums[i]);
-									roomMovieTimeVOss.add(roomMovieTimeVO2);
+									roomMovieTimeVOss2.add(roomMovieTimeVO2);
 								}
 								firstDay += 1;
 								continue;
@@ -319,7 +331,9 @@ public class AdminController {
 								firstDay += 1;
 								continue;
 							}
-							adminService.setTheaterRoom(roomMovieTimeVOss);
+							if(roomMovieTimeVOss2.size() != 0) {
+								adminService.setTheaterRoom(roomMovieTimeVOss2);
+							}
 						}
 						
 						
@@ -338,7 +352,7 @@ public class AdminController {
 									roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 									roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 									roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+									roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 									roomMovieTimeVO2.setMovieNum(movieNums[i]);
 									roomMovieTimeVOss.add(roomMovieTimeVO2);
 								}
@@ -349,7 +363,9 @@ public class AdminController {
 								startDayInt += 1;
 								continue;
 							}
-							adminService.setTheaterRoom(roomMovieTimeVOss);
+							if(roomMovieTimeVOss.size() != 0) {
+								adminService.setTheaterRoom(roomMovieTimeVOss);
+							}
 						}
 						while(firstDay <= endDayInt) {
 							roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -362,9 +378,9 @@ public class AdminController {
 									roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 									roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 									roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+									roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 									roomMovieTimeVO2.setMovieNum(movieNums[i]);
-									roomMovieTimeVOss.add(roomMovieTimeVO2);
+									roomMovieTimeVOss2.add(roomMovieTimeVO2);
 								}
 								firstDay += 1;
 								continue;
@@ -375,10 +391,14 @@ public class AdminController {
 							}
 							
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				}else if(endMonthInt ==4) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 31 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -390,7 +410,7 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
 								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
@@ -401,7 +421,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -413,9 +435,9 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -424,10 +446,14 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				}else if(endMonthInt ==5) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 30 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -439,7 +465,7 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
 								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
@@ -450,7 +476,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -463,9 +491,9 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -474,10 +502,14 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				}else if(endMonthInt ==6) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 31 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -489,7 +521,7 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
 								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
@@ -500,7 +532,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -513,9 +547,9 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -524,10 +558,14 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				}else if(endMonthInt ==7) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 30 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -539,7 +577,7 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
 								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
@@ -550,7 +588,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -563,9 +603,9 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -574,15 +614,17 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				}else if(endMonthInt ==8) {
-					
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 31 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-							
 							case 0 :
 								for(int i=length-1; i>-1; i--) {
 									
@@ -590,7 +632,7 @@ public class AdminController {
 									roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 									roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 									roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+									roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 									roomMovieTimeVO2.setMovieNum(movieNums[i]);
 									roomMovieTimeVOss.add(roomMovieTimeVO2);
 								}
@@ -601,9 +643,12 @@ public class AdminController {
 								startDayInt += 1;
 								continue;
 							}
-							adminService.setTheaterRoom(roomMovieTimeVOss);
+					}
+					if(roomMovieTimeVOss.size() != 0) {
+						adminService.setTheaterRoom(roomMovieTimeVOss);
 					}
 					while(firstDay <= endDayInt) {
+						
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
 							switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
 							
@@ -613,9 +658,9 @@ public class AdminController {
 									roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 									roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 									roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-									roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+									roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 									roomMovieTimeVO2.setMovieNum(movieNums[i]);
-									roomMovieTimeVOss.add(roomMovieTimeVO2);
+									roomMovieTimeVOss2.add(roomMovieTimeVO2);
 								}
 								firstDay += 1;
 								continue;
@@ -624,10 +669,14 @@ public class AdminController {
 								firstDay += 1;
 								continue;
 							}
-							adminService.setTheaterRoom(roomMovieTimeVOss);
+					}
+					if(roomMovieTimeVOss2.size() != 0) {
+						adminService.setTheaterRoom(roomMovieTimeVOss2);
 					}
 					
 				}else if(endMonthInt ==9) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 31 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -638,7 +687,7 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
 								roomMovieTimeVOss.add(roomMovieTimeVO2);
 							}
@@ -649,7 +698,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -661,9 +712,9 @@ public class AdminController {
 								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
 								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -672,106 +723,14 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				}else if(endMonthInt ==10) {
-					while( startDayInt <= 30 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
-								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
-								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
-								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
-								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
-								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
-								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
-					}
-					
-				}else if(endMonthInt ==11) {
-					while( startDayInt <= 31 ) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
-								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
-								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
-								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
-								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
-							}
-							startDayInt += 1;
-							continue;
-							
-						case 1 :
-							startDayInt += 1;
-							continue;
-						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
-					}
-					while(firstDay <= endDayInt) {
-						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
-						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
-						
-						case 0 :
-							for(int i=length-1; i>-1; i--) {
-								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
-								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
-								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
-								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
-								roomMovieTimeVO.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
-								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
-							}
-							firstDay += 1;
-							continue;
-							
-						case 1 :
-							firstDay += 1;
-							continue;
-						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
-					}
-					
-				}else if(endMonthInt ==12) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
 					while( startDayInt <= 30 ) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
 						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
@@ -793,7 +752,9 @@ public class AdminController {
 							startDayInt += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
 					}
 					while(firstDay <= endDayInt) {
 						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
@@ -807,7 +768,7 @@ public class AdminController {
 								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
 								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
 								roomMovieTimeVO2.setMovieNum(movieNums[i]);
-								roomMovieTimeVOss.add(roomMovieTimeVO2);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
 							}
 							firstDay += 1;
 							continue;
@@ -816,7 +777,117 @@ public class AdminController {
 							firstDay += 1;
 							continue;
 						}
-						adminService.setTheaterRoom(roomMovieTimeVOss);
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
+					}
+					
+				}else if(endMonthInt ==11) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
+					while( startDayInt <= 31 ) {
+						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+						
+						case 0 :
+							for(int i=length-1; i>-1; i--) {
+								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
+								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
+								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
+								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setMovieNum(movieNums[i]);
+								roomMovieTimeVOss.add(roomMovieTimeVO2);
+							}
+							startDayInt += 1;
+							continue;
+							
+						case 1 :
+							startDayInt += 1;
+							continue;
+						}
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
+					}
+					while(firstDay <= endDayInt) {
+						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+						
+						case 0 :
+							for(int i=length-1; i>-1; i--) {
+								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
+								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
+								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
+								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setMovieNum(movieNums[i]);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
+							}
+							firstDay += 1;
+							continue;
+							
+						case 1 :
+							firstDay += 1;
+							continue;
+						}
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
+					}
+					
+				}else if(endMonthInt ==12) {
+					List<RoomMovieTimeVO> roomMovieTimeVOss = new ArrayList<RoomMovieTimeVO>();
+					List<RoomMovieTimeVO> roomMovieTimeVOss2 = new ArrayList<RoomMovieTimeVO>();
+					while( startDayInt <= 30 ) {
+						roomMovieTimeVO.setStartDay((startYearInt+"-"+startMonthInt+"-"+startDayInt));
+						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+						
+						case 0 :
+							for(int i=length-1; i>-1; i--) {
+								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
+								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
+								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
+								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+startMonthInt+"-"+startDayInt+" "+times[i]));
+								roomMovieTimeVO2.setMovieNum(movieNums[i]);
+								roomMovieTimeVOss.add(roomMovieTimeVO2);
+							}
+							startDayInt += 1;
+							continue;
+							
+						case 1 :
+							startDayInt += 1;
+							continue;
+						}
+						if(roomMovieTimeVOss.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss);
+						}
+					}
+					while(firstDay <= endDayInt) {
+						roomMovieTimeVO.setStartDay((startYearInt+"-"+endMonthInt+"-"+firstDay));
+						switch(adminService.getTheaterRoom(roomMovieTimeVO)) {
+						
+						case 0 :
+							for(int i=length-1; i>-1; i--) {
+								RoomMovieTimeVO roomMovieTimeVO2 = new RoomMovieTimeVO();
+								roomMovieTimeVO2.setRoomName(roomMovieTimeVO.getRoomName());
+								roomMovieTimeVO2.setTheaterRoomCode(roomMovieTimeVO.getTheaterRoomCode());
+								roomMovieTimeVO2.setTheaterNum(roomMovieTimeVO.getTheaterNum());
+								roomMovieTimeVO2.setStartTime((startYearInt+"-"+endMonthInt+"-"+firstDay+" "+times[i]));
+								roomMovieTimeVO2.setMovieNum(movieNums[i]);
+								roomMovieTimeVOss2.add(roomMovieTimeVO2);
+							}
+							firstDay += 1;
+							continue;
+							
+						case 1 :
+							firstDay += 1;
+							continue;
+						}
+						if(roomMovieTimeVOss2.size() != 0) {
+							adminService.setTheaterRoom(roomMovieTimeVOss2);
+						}
 					}
 					
 				
@@ -849,7 +920,9 @@ public class AdminController {
 						}
 						
 					}
-					adminService.setTheaterRoom(roomMovieTimeVOss);
+					if(roomMovieTimeVOss.size() != 0) {
+						adminService.setTheaterRoom(roomMovieTimeVOss);
+					}
 				}
 		}
 			

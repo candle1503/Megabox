@@ -57,7 +57,8 @@ public interface TicketRepository {
 	
 	
 	
-	
+	//session 다시 저장
+	public MemberVO getId(MemberVO memberVO) throws Exception;
 	
 	
 	
