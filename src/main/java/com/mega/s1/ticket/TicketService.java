@@ -94,4 +94,34 @@ public class TicketService {
 		return ticketRepository.getId(memberVO);
 	}
 	
+	//여기서부터 티켓 양도
+	
+	public TicketVO ticketMoveBegin(TicketVO ticketVO) throws Exception{
+		return ticketRepository.ticketMoveBegin(ticketVO);
+	}
+	
+	public TicketVO giveSeat(TicketVO ticketVO) throws Exception{
+		return ticketRepository.giveSeat(ticketVO);
+	}	
+
+	public int giveSeatAdd(TicketVO ticketVO) throws Exception{
+		return ticketRepository.giveSeatAdd(ticketVO);
+	}
+	
+	public int giveSeatRemove(TicketVO ticketVO) throws Exception{
+		return ticketRepository.giveSeatRemove(ticketVO);
+	}
+	
+	public int removeTicket(TicketVO ticketVO) throws Exception{
+		return ticketRepository.removeTicket(ticketVO);
+	}
+	
+	public int countMinus(TicketVO ticketVO) throws Exception{
+		return ticketRepository.countMinus(ticketVO);
+	}
+	
+	public int countPlus(TicketVO ticketVO) throws Exception{
+		return ticketRepository.countPlus(ticketVO);
+	}
+	
 }

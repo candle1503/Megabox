@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모바일 로그인</title>
 <c:import url="../template/mobileHeader_css.jsp"></c:import>
 
 </head>

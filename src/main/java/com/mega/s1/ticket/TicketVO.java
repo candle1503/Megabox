@@ -1,5 +1,7 @@
 package com.mega.s1.ticket;
 
+import org.hibernate.validator.constraints.Currency;
+
 import lombok.Data;
 
 @Data
@@ -40,5 +42,10 @@ public class TicketVO {
 	
 	//적립예정 포인트
 	private int savedPoint;
+	
+	//아래부터 티켓 양도용
+	private String giveId;
+	private String receiveId;	
+	private String giveSeatNum;
 	
 }

@@ -21,6 +21,49 @@
 		update ticket set status=2 where ticketNum=#{ticketNum}
 	</update>
 	
+	<!-- 티켓 양도 전 단일 티켓 내용 전부 조회하기 -->
+	<select id="ticketMoveBegin" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where ticketCode = #{ticketCode}
+	</select>
+	
+	<!-- 티켓 양도할 좌석 조회하기 -->
+	<select id="giveSeat" parameterType="TicketVO" resultType="TicketVO">
+		select substring(seatNum,1,2) from ticket where ticketCode=#{ticketCode} and id = #{giveId} 
+	</select>
+	
+	<!-- 티켓 양도할 좌석 추가하기 -->
+	<insert id="giveSeatAdd" parameterType="TicketVO"  useGeneratedKeys="true" keyProperty="movieNum">
+		insert into ticket values(0, (select  * from (select substring(seatNum,1,2) from ticket where ticketCode=#{ticketCode} and id =#{giveId}) as t), #{ticketCode}, #{movieTime}, #{receiveId}, 0, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName},#{savedPoint})
+	</insert>
+	
+	<!-- 티켓 양도한 사람의 좌석 삭제하기 -->
+	<update id="giveSeatRemove" parameterType="TicketVO" >
+		update ticket set seatNum = replace(seatNum,(select  * from (select substring(seatNum,1,4) from ticket where ticketCode=#{ticketCode} and id =#{giveId}) as t), '') where ticketCode=#{ticketCode} and id = #{giveId}
+	</update>
+		
+	<!-- 마지막 남은 좌석을 양도했을 경우 해당 티켓 삭제-->
+	<delete id="removeTicket" parameterType="TicketVO" >
+		delete ticket where ticketCode = #{ticketCode} and id = #{giveId} 
+	</delete>	
+	
+	<!-- 티켓 양도한 사람 count -1 -->
+	<update id="countMinus" parameterType="TicketVO" >
+		update ticket set count = count-1 where ticketCode = #{ticketCode} and id = #{giveId}
+	</update>
+	
+	<!-- 티켓 받은 사람 count +1 -->
+	<update id="countPlus" parameterType="TicketVO" >
+		update ticket set count = count+1 where ticketCode = #{ticketCode} and id = #{receiveId}
+	</update>
+	
+	<!--  트랜잭션 처리 -->
+	
+	
+	
+	
+	
+
+	
 	
 	
 	

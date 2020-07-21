@@ -6,7 +6,7 @@
 <html>
 
 <head>
-
+<title>모바일 메인화면</title>
 <c:import url="../template/mobileHeader_css.jsp"></c:import>
 
 </head>
@@ -41,14 +41,14 @@
 								<article class="poster-entity" data-role="hover-wrap">
 									<div class="embed-responsive embed-responsive-poster">
 										<img class="embed-responsive-item"
-											src="${pageContext.request.contextPath}/upload/movie/${movie.movieFileVO.fileName}"
+											src="${pageContext.request.contextPath}/upload/movie/test1.jpg"
 											alt="${movie.name}" />
 									</div>
 									<div
 										class="d-background bg-theme-lighted collapse animated faster"
-										data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
+										data-show-class="" data-hide-class=""></div>
 									<div class="d-over bg-highlight-bottom">
-										<div class="collapse animated faster entity-play"
+<%-- 										<div class="collapse animated faster entity-play"
 											data-show-class="fadeIn show" data-hide-class="fadeOut show">
 											<a
 												class="action-icon-theme action-icon-bordered rounded-circle"
@@ -56,7 +56,7 @@
 												data-magnific-popup="iframe"> <span class="icon-content"><i
 													class="fas fa-play"></i></span>
 											</a>
-										</div>
+										</div> --%>
 										<h4 class="entity-title">
 											<a class="content-link" href="movie-info-sidebar-right.html"
 												style="font-family: 'Do Hyeon', sans-serif;">${movie.name}</a>
@@ -118,7 +118,7 @@
 	<section
 		class="section-solid-long section-text-white position-relative">
 		<div class="d-background"
-			data-image-src="http://via.placeholder.com/1920x1080"
+			data-image-src=""
 			data-parallax="scroll"></div>
 		<div class="d-background bg-gradient-black"></div>
 		<div class="container position-relative">
@@ -138,13 +138,13 @@
 								<div class="entity-preview">
 									<div class="embed-responsive embed-responsive-16by9">
 										<img class="embed-responsive-item"
-											src="http://via.placeholder.com/1920x1080" alt="" />
+											src="${pageContext.request.contextPath}/upload/movie/test3.jpg" alt="" />
 									</div>
 									<div class="d-over">
 										<div class="entity-play">
 											<a
 												class="action-icon-theme action-icon-bordered rounded-circle"
-												href="https://www.youtube.com/watch?v=d96cjJhvlMA"
+												href="${pageContext.request.contextPath}/upload/movie/test2.mp4"
 												data-magnific-popup="iframe"> <span class="icon-content"><i
 													class="fas fa-play"></i></span>
 											</a>
@@ -211,11 +211,11 @@
 
 						<div class="entity-content">
 							<h4 class="entity-title">
-								<a class="content-link" href="article-sidebar-right.html" style="font-family: 'Do Hyeon', sans-serif;">${notice[0].title}</a>
+								<a class="content-link" href="" style="font-family: 'Do Hyeon', sans-serif;">${notice[0].title}</a>
 							</h4>
 							<div class="entity-category">
-								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].name}</a>,
-								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].separate}</a>
+								<a class="content-link" href="">${notice[0].name}</a>,
+								<a class="content-link" href="">${notice[0].separate}</a>
 							</div>
 							<p class="text-short entity-text">${notice[0].contents}</p>
 
@@ -227,7 +227,7 @@
 			<div class="section-bottom">
 				<a class="btn btn-theme"
 					href="${pageContext.request.contextPath}/notice/noticeList"
-					style="font-family: 'Do Hyeon', sans-serif;">공지사항 더보기</a>
+					style="font-family: 'Do Hyeon', sans-serif;">공지사항 더보기(웹)</a>
 			</div>
 		</div>
 	</section>

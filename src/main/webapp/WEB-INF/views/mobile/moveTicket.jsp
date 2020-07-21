@@ -5,31 +5,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>모바일 QR코드</title>
+<title>티켓 양도하기</title>
 <c:import url="../template/mobileHeader_css.jsp"></c:import>
 </head>
+
 <body>
+
 	<c:import url="../template/mobileHeader.jsp"></c:import>
 
-	<div class="container">
+	<div class="col-lg-6 ml-lg-auto">
+		<div class="gmap-form bg-white">
+			<h4 class="form-title text-uppercase" style="font-family: 'Do Hyeon', sans-serif; font-size: 23px;">받는 사람 아이디를 다시 한번 확인해 주세요</h4>
+			<p class="form-text"></p>
+			
+			<form autocomplete="off" action="./mobileIndex" method="post">
 
-		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">티켓
-			양도를 위해</h1>
-		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">
-			QR코드를 인식해 주세요</h1>
+				<div class="row form-grid">
+					<div class="col-sm-6">
+						<div class="input-view-flat input-group">
+							<input class="form-control" name="name" type="text"
+								placeholder="입력해주세요" value="${member.id}"
+								style="font-family: 'Do Hyeon', sans-serif;">
+						</div>
+					</div>
 
-		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${param.giveId},${param.ticketCode},${param.receiveId}</h1>
-		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${ticket.seatNum}</h1>
-
-		<img style="display: block; margin: 33px auto 77px auto;"
-			src="${pageContext.request.contextPath}/resources/static/mobile/images/QrCodeTest2.png">
-
+					<div class="col-12">
+						<button class="px-5 btn btn-theme" type="submit"
+							style="font-family: 'Do Hyeon', sans-serif; margin-top: 20px; margin-left: 129px;">확인</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
 
 	<c:import url="../template/mobileFooter.jsp"></c:import>
 
@@ -61,4 +68,5 @@
 		src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js"></script>
 
 </body>
+
 </html>

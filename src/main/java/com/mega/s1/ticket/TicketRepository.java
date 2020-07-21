@@ -20,8 +20,20 @@ public interface TicketRepository {
 	public TicketVO reviewCheck(TicketVO ticketVO) throws Exception;
 	
 	public int reviewDone(TicketVO ticketVO) throws Exception;
-
 	
+	public TicketVO ticketMoveBegin(TicketVO ticketVO) throws Exception;
+	
+	public TicketVO giveSeat(TicketVO ticketVO) throws Exception;
+	
+	public int giveSeatAdd(TicketVO ticketVO) throws Exception;
+	
+	public int giveSeatRemove(TicketVO ticketVO) throws Exception;
+	
+	public int removeTicket(TicketVO ticketVO) throws Exception;
+	
+	public int countMinus(TicketVO ticketVO) throws Exception;
+
+	public int countPlus(TicketVO ticketVO) throws Exception;
 	
 	
 	
