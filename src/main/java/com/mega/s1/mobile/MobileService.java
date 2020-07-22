@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mega.s1.movie.MovieVO;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.theater.theaterRoom.TheaterRoomRepository;
 import com.mega.s1.ticket.TicketRepository;
@@ -39,7 +40,7 @@ public class MobileService {
 		return mobileRepository.getMovieVideo(movieNum);
 	}
 
-	public List<MovieFileVO> getMovieNum() throws Exception{
+	public List<MovieVO> getMovieNum() throws Exception{
 		return mobileRepository.getMovieNum();
 	}
 }

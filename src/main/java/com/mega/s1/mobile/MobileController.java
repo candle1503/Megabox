@@ -53,7 +53,7 @@ public class MobileController {
 	@GetMapping("mobileIndex")
 	public ModelAndView mobileIndex(ModelAndView mv, NoticeVO noticeVO, Pager pager) throws Exception {
 		MovieFileVO movieFileVO = new MovieFileVO();
-		List<MovieFileVO> numList = new ArrayList<MovieFileVO>();
+		List<MovieVO> numList = new ArrayList<MovieVO>();
 		List<String> fileNames = new ArrayList<String>();
 		numList = mobileService.getMovieNum();
 		
@@ -92,12 +92,12 @@ public class MobileController {
 
 //		 개봉예정작
 		
-		movieList = movieService.futureList(0);
-		long movieCount = movieService.futureCount();
-		mv.addObject("movieCount", movieCount);
-		mv.addObject("startNum", 0);
-		mv.addObject("listName", "future");
-		mv.addObject("movie2", movieList);
+//		movieList = movieService.futureList(0);
+//		long movieCount = movieService.futureCount();
+//		mv.addObject("movieCount", movieCount);
+//		mv.addObject("startNum", 0);
+//		mv.addObject("listName", "future");
+//		mv.addObject("movie2", movieList);
 
 		// 공지사항 받아오기
 
@@ -122,6 +122,7 @@ public class MobileController {
 		System.out.println(fileNames.get(11));
 		
 		mv.addObject("video", fileNames);
+		mv.addObject("movie2", numList);
 		
 		return mv;
 	}
