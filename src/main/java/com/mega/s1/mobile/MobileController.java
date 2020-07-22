@@ -48,10 +48,24 @@ public class MobileController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
 
 	@GetMapping("mobileIndex")
-	public ModelAndView mobileIndex(ModelAndView mv, NoticeVO noticeVO, Pager pager, MovieVO movieVO) throws Exception {
-
+	public ModelAndView mobileIndex(ModelAndView mv, NoticeVO noticeVO, Pager pager) throws Exception {
+		MovieFileVO movieFileVO = new MovieFileVO();
+		List<MovieFileVO> numList = new ArrayList<MovieFileVO>();
+		List<String> fileNames = new ArrayList<String>();
+		numList = mobileService.getMovieNum();
+		
+		for(int i=0; i<13; i++) {
+			String fileName;
+			Integer movieNum=numList.get(i).getMovieNum();
+			movieFileVO= mobileService.getMovieVideo(movieNum);
+			fileName = movieFileVO.getFileName();
+			fileNames.add(i, fileName);
+		}
+		
+		
 		long amount = ticketService.bookingAllCount();
 		List<TicketVO> bk = ticketService.bookingCount();
 
@@ -76,8 +90,8 @@ public class MobileController {
 
 		mv.addObject("movie", movieList);
 
-		// 개봉예정작
-
+//		 개봉예정작
+		
 		movieList = movieService.futureList(0);
 		long movieCount = movieService.futureCount();
 		mv.addObject("movieCount", movieCount);
@@ -94,6 +108,18 @@ public class MobileController {
 		mv.addObject("notice", ar2);
 
 		mv.setViewName("mobile/mobileIndex");
+		System.out.println("사이즈??"+numList.size());
+		System.out.println(fileNames.get(0));
+		System.out.println(fileNames.get(1));
+		System.out.println(fileNames.get(2));
+		System.out.println(fileNames.get(4));
+		System.out.println(fileNames.get(5));
+		System.out.println(fileNames.get(6));
+		System.out.println(fileNames.get(7));
+		System.out.println(fileNames.get(8));
+		System.out.println(fileNames.get(9));
+		System.out.println(fileNames.get(10));
+		System.out.println(fileNames.get(11));
 		return mv;
 	}
 
@@ -142,6 +168,7 @@ public class MobileController {
 		mv.addObject("notice", ar2);
 
 		mv.setViewName("mobile/mobileIndex");
+		
 		return mv;
 	}
 

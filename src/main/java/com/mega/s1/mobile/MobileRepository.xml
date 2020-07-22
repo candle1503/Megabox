@@ -5,6 +5,12 @@
   
 <mapper namespace="com.mega.s1.mobile.MobileRepository">
 
-
+	<select id="getMovieVideo" parameterType="Integer" resultType="MovieFileVO">
+		select * from movieFile where movieNum=#{movieNum} and status=1 limit 1
+	</select>
+	
+	<select id="getMovieNum" resultType="MovieFileVO">
+		select movieNum from movie where openDay > now()
+	</select>
 	
 </mapper>
