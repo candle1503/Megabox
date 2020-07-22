@@ -33,6 +33,9 @@ import com.mega.s1.util.Pager;
 @Controller
 @RequestMapping("/mobile/**")
 public class MobileController {
+	
+	@Autowired
+	private MobileService mobileService;
 
 	@Autowired
 	private MemberService memberService;
@@ -93,7 +96,7 @@ public class MobileController {
 		mv.setViewName("mobile/mobileIndex");
 		return mv;
 	}
-	
+
 	@PostMapping("mobileIndex")
 	public ModelAndView mobileIndexPost(ModelAndView mv, NoticeVO noticeVO, Pager pager) throws Exception {
 
@@ -243,6 +246,71 @@ public class MobileController {
 		mv.setViewName("mobile/mobileTicket");
 		return mv;
 	}
+	
+	@PostMapping("mobileTicket")
+	public ModelAndView mobileMyPagePost(HttpSession session, String id, Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		memberService.updateTicket();
+
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		id = memberVO.getId();
+		model.addAttribute("id", id);
+
+		List<TicketVO> bookedCompAr = memberService.bookedCompleteList(id);
+
+		int size = bookedCompAr.size();
+		model.addAttribute("bookedSize", size);
+
+		Map<Integer, String> theaterNameMap = new HashMap<>();
+		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
+		Map<Integer, String> viewDateMap = new HashMap<>();
+		List<Integer> points = new ArrayList<Integer>();
+
+		String viewDateCut;
+		String viewDateTimeCut;
+
+		for (int i = 0; i < size; i++) {
+			Integer point;
+			point = bookedCompAr.get(i).getSavedPoint();
+			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
+
+			points.add(i, point);
+
+			model.addAttribute("points", points);
+
+			theaterRoomVO.setTheaterRoomCode(bookedCompAr.get(i).getTheaterRoomCode());
+
+			theaterRoomVO = memberService.getRoom(theaterRoomVO);
+
+			theaterNameMap.put(i, theaterRoomVO.getName());
+			theaterRoomNameMap.put(i, theaterRoomVO.getRoomName());
+
+			model.addAttribute("theaterName", theaterNameMap);
+			model.addAttribute("theaterRoomName", theaterRoomNameMap);
+
+			// 날짜 따로
+			viewDateCut = bookedCompAr.get(i).getViewDate().substring(0, 10);
+			viewDateTimeCut = bookedCompAr.get(i).getViewDate().substring(11, 16);
+
+			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
+
+			viewDateMap.put(i, viewDateR);
+
+			model.addAttribute("viewDate", viewDateMap);
+
+			MovieVO movieVO = new MovieVO();
+			movieVO.setMovieNum(bookedCompAr.get(i).getMovieNum());
+			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
+
+			model.addAttribute("mvfile", mvfilesAr);
+		}
+
+		model.addAttribute("bookedCompAr", bookedCompAr);
+
+		mv.setViewName("mobile/mobileTicket");
+		return mv;
+	}
 
 	@GetMapping("mobileQrCode")
 	public ModelAndView mobileQrCode() throws Exception {
@@ -252,27 +320,26 @@ public class MobileController {
 		return mv;
 
 	}
-	
+
 	@PostMapping("mobileQrCode")
 	public ModelAndView mobileQrCodePost(TicketVO ticketVO) throws Exception {
-		
+
 		System.out.println("주는 아이디 :" + ticketVO.getGiveId());
 		System.out.println("받는 아이디 :" + ticketVO.getReceiveId());
 		System.out.println("아이디 :" + ticketVO.getId());
 		System.out.println(ticketVO.getMovieName());
-		
+
 		ModelAndView mv = new ModelAndView();
-		//티켓 정보 조회
+		// 티켓 정보 조회
 //		TicketVO ticketVO2 =  ticketService.ticketMoveBegin(ticketVO);
-		//양도할 좌석 조회
+		// 양도할 좌석 조회
 //		ticketService.giveSeat(ticketVO);
-		//양도 받는 사람에게 좌석 추가
-		ticketService.giveSeatAdd(ticketVO);		
+		// 양도 받는 사람에게 좌석 추가
+		ticketService.giveSeatAdd(ticketVO);
 //		//양도 한 사람에게 좌석 삭제 및 cnt - 1 (모두 양도했을 시 티켓 삭제)
 		ticketService.giveSeatRemove(ticketVO);
 		ticketService.countMinus(ticketVO);
 		ticketService.countPlus(ticketVO);
-		
 
 		mv.setViewName("mobile/mobileQrCode");
 		return mv;
@@ -280,10 +347,66 @@ public class MobileController {
 	}
 
 	@GetMapping("moveTicket")
-	public ModelAndView moveTicket() throws Exception {
+	public ModelAndView moveTicket(TicketVO ticketVO) throws Exception {
+		
+		System.out.println("주는 아이디 :" + ticketVO.getGiveId());
+		System.out.println("받는 아이디 :" + ticketVO.getReceiveId());
+		System.out.println("티켓 코드 :" + ticketVO.getTicketCode());
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("mobile/moveTicket");
+		return mv;
+
+	}
+
+	@PostMapping("moveTicket")
+	public ModelAndView moveTicketPost() throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mobile/moveTicket");
+		return mv;
+
+	}
+	
+	@GetMapping("moveCancel")
+	public ModelAndView moveCancel() throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mobile/moveCancel");
+		return mv;
+
+	}
+	
+	@PostMapping("moveCancel")
+	public ModelAndView moveCancelPost(TicketVO ticketVO) throws Exception {
+		
+		System.out.println("moveCancel Post");
+		System.out.println(ticketVO.getId());
+
+		ModelAndView mv = new ModelAndView();
+		
+		TicketVO ticketVO2 = ticketService.cancelTicket(ticketVO);
+		ticketService.cancelSeatNum(ticketVO2);
+		
+		TicketVO ticketVO3 = ticketService.cancelOriginId(ticketVO2);
+		ticketService.cancelOriginSeatNum(ticketVO3);
+		
+		ticketVO3.setReceiveId(ticketVO.getId());
+		
+		ticketService.cancelOriginUpdate(ticketVO3);
+		ticketService.countOriginPlus(ticketVO3);
+		ticketService.deleteGiveTicket(ticketVO2);
+		
+		mv.setViewName("mobile/moveCancel");
+		return mv;
+
+	}
+	
+	@GetMapping("mobile404")
+	public ModelAndView mobile404() throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mobile/mobile404");
 		return mv;
 
 	}

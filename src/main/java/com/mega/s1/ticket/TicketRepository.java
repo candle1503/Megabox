@@ -34,10 +34,20 @@ public interface TicketRepository {
 	public int countMinus(TicketVO ticketVO) throws Exception;
 
 	public int countPlus(TicketVO ticketVO) throws Exception;
+
+	public TicketVO cancelTicket(TicketVO ticketVO) throws Exception;
 	
+	public TicketVO cancelSeatNum(TicketVO ticketVO) throws Exception;
 	
+	public TicketVO cancelOriginId(TicketVO ticketVO) throws Exception;
 	
+	public TicketVO cancelOriginSeatNum(TicketVO ticketVO) throws Exception;
 	
+	public int cancelOriginUpdate(TicketVO ticketVO) throws Exception;
+	
+	public int countOriginPlus(TicketVO ticketVO) throws Exception;
+	
+	public int deleteGiveTicket(TicketVO ticketVO) throws Exception;
 	
 	
 	

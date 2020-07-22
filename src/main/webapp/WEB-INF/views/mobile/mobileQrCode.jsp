@@ -20,14 +20,18 @@
 			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">
 			QR코드를 인식해 주세요</h1>
 
-		<h1
+		<%-- 		<h1
 			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${param.giveId},${param.ticketCode},${param.receiveId}</h1>
 		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${ticket.seatNum}</h1>
+			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${ticket.seatNum}</h1> --%>
 
 		<img style="display: block; margin: 33px auto 77px auto;"
 			src="${pageContext.request.contextPath}/resources/static/mobile/images/QrCodeTest2.png">
 
+	</div>
+
+	<div class="col-12" style="text-align: center;">
+		<a class="px-5 btn btn-theme"  href="./mobileTicket"  style="font-family: 'Do Hyeon', sans-serif; margin-bottom: 50px;">확인</a>
 	</div>
 
 

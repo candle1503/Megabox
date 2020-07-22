@@ -15,26 +15,94 @@
 
 	<div class="col-lg-6 ml-lg-auto">
 		<div class="gmap-form bg-white">
-			<h4 class="form-title text-uppercase" style="font-family: 'Do Hyeon', sans-serif; font-size: 23px;">받는 사람 아이디를 다시 한번 확인해 주세요</h4>
+			<h4 class="form-title text-uppercase"
+				style="font-family: 'Do Hyeon', sans-serif; font-size: 23px;">받는
+				사람 아이디를 다시 한번 확인해 주세요</h4>
 			<p class="form-text"></p>
-			
-			<form autocomplete="off" action="./mobileIndex" method="post">
+
+			<form autocomplete="off" action="./moveCancel" method="post">
 
 				<div class="row form-grid">
 					<div class="col-sm-6">
 						<div class="input-view-flat input-group">
-							<input class="form-control" name="name" type="text"
+							<input class="form-control" name="id" type="text"
 								placeholder="입력해주세요" value="${member.id}"
 								style="font-family: 'Do Hyeon', sans-serif;">
 						</div>
 					</div>
 
 					<div class="col-12">
-						<button class="px-5 btn btn-theme" type="submit"
-							style="font-family: 'Do Hyeon', sans-serif; margin-top: 20px; margin-left: 129px;">확인</button>
+						<button class="px-5 btn btn-theme" type="button"
+							style="font-family: 'Do Hyeon', sans-serif; margin-top: 20px; margin-left: 35px;"
+							onclick="location.href = './mobileTicket' " formmethod="post">양도
+							확인</button>
+						<button class="px-5 btn btn-danger" type="submit"
+							style="font-family: 'Do Hyeon', sans-serif; margin-top: 20px; margin-left: 39px;">양도
+							취소하기</button>
 					</div>
 				</div>
 			</form>
+		</div>
+	</div>
+
+	<!-- data-toggle="modal" data-target="#myModal" -->
+
+	<!-- The Modal -->
+	<div class="modal fade" id="myModal" style="margin-top: 39%;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">양도 받을 아이디를 입력해 주세요</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<form class="footer-form" autocomplete="off" method="post"
+					action='${pageContext.request.contextPath}/mobile/mobileQrCode'>
+					<div class="input-group"
+						style="width: 80%; padding-left: 70px; padding-bottom: 30px;">
+						<input class="form-control" name="receiveId" type="text"
+							placeholder="아이디 입력" required="required">
+						<div class="input-group-append">
+							<button class="btn btn-theme" type="submit">
+								<i class="fas fa-angle-right"></i>
+							</button>
+						</div>
+					</div>
+					<input type="hidden" id="ticketCode" name="ticketCode"
+						value="${bookedCompList.ticketCode}"> <input type="hidden"
+						id="giveId" name="giveId" value="${member.id}"> <input
+						type="hidden" id="Id" name="Id" value="${member.id}"> <input
+						type="hidden" id="seatNum" name="seatNum"
+						value="${bookedCompList.seatNum}"> <input type="hidden"
+						id="movieTime" name="movieTime"
+						value="${bookedCompList.movieTime}"> <input type="hidden"
+						id="id" name="id" value="${bookedCompList.id}"> <input
+						type="hidden" id="count" name="count"
+						value="${bookedCompList.count}"> <input type="hidden"
+						id="movieNum" name="movieNum" value="${bookedCompList.movieNum}">
+					<input type="hidden" id="theaterRoomCode" name="theaterRoomCode"
+						value="${bookedCompList.theaterRoomCode}"> <input
+						type="hidden" id="viewDate" name="viewDate"
+						value="${bookedCompList.viewDate}"> <input type="hidden"
+						id="status" name="status" value="${bookedCompList.status}">
+					<input type="hidden" id="movieName" name="movieName"
+						value="${bookedCompList.movieName}"> <input type="hidden"
+						id="savedPoint" name="savedPoint"
+						value="${bookedCompList.savedPoint}">
+
+
+				</form>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal"
+						style="font-family: 'Do Hyeon', sans-serif;">닫기</button>
+				</div>
+
+			</div>
 		</div>
 	</div>
 

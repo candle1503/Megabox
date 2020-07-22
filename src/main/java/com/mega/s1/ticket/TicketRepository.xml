@@ -33,7 +33,7 @@
 	
 	<!-- 티켓 양도할 좌석 추가하기 -->
 	<insert id="giveSeatAdd" parameterType="TicketVO"  useGeneratedKeys="true" keyProperty="movieNum">
-		insert into ticket values(0, (select  * from (select substring(seatNum,1,2) from ticket where ticketCode=#{ticketCode} and id =#{giveId}) as t), #{ticketCode}, #{movieTime}, #{receiveId}, 0, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName},#{savedPoint})
+		insert into ticket values(0, (select  * from (select substring(seatNum,1,2) from ticket where ticketCode=#{ticketCode} and id =#{giveId}) as t), #{ticketCode}, #{movieTime}, #{receiveId}, 0, #{movieNum}, #{theaterRoomCode}, #{viewDate}, 0, #{movieName},0)
 	</insert>
 	
 	<!-- 티켓 양도한 사람의 좌석 삭제하기 -->
@@ -56,8 +56,38 @@
 		update ticket set count = count+1 where ticketCode = #{ticketCode} and id = #{receiveId}
 	</update>
 	
-	<!--  트랜잭션 처리 -->
+	<!-- 티켓 취소 부분 -->
+
+	<select id="cancelTicket" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where id =#{id} order by ticketNum desc limit 1
+	</select>
 	
+	<select id="cancelSeatNum" parameterType="TicketVO" resultType="TicketVO">
+		select seatNum from ticket where id =#{id} order by ticketNum desc limit 1
+	</select>
+	
+	<select id="cancelOriginId" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where ticketCode=#{ticketCode} and savedPoint != 0
+	</select>
+	
+	<select id="cancelOriginSeatNum" parameterType="TicketVO" resultType="TicketVO">
+		select seatNum from ticket where ticketCode=#{ticketCode} and id =#{id}
+	</select>
+	
+	<update id="cancelOriginUpdate" parameterType="TicketVO" >
+		update ticket set seatNum = concat((select * from (select seatNum from ticket where id =#{receiveId} order by ticketNum desc limit 1)as t),', ',(select * from (select seatNum from ticket where ticketCode=#{ticketCode} and id =#{id})as t)) where ticketCode=#{ticketCode} and id=#{id}
+	</update>
+	
+	<update id="countOriginPlus" parameterType="TicketVO" >
+		update ticket set count = count+1 where ticketCode = #{ticketCode} and id = #{id}
+	</update>
+	
+	<delete id="deleteGiveTicket" parameterType="TicketVO" >
+		delete from ticket where ticketNum = #{ticketNum}
+	</delete>
+	
+
+
 	
 	
 	

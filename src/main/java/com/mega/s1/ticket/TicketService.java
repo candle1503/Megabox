@@ -124,4 +124,32 @@ public class TicketService {
 		return ticketRepository.countPlus(ticketVO);
 	}
 	
+	public TicketVO cancelTicket(TicketVO ticketVO) throws Exception{
+		return ticketRepository.cancelTicket(ticketVO);
+	}	
+	
+	public TicketVO cancelSeatNum(TicketVO ticketVO) throws Exception{
+		return ticketRepository.cancelSeatNum(ticketVO);
+	}	
+	
+	public TicketVO cancelOriginId(TicketVO ticketVO) throws Exception{
+		return ticketRepository.cancelOriginId(ticketVO);
+	}	
+	
+	public TicketVO cancelOriginSeatNum(TicketVO ticketVO) throws Exception{
+		return ticketRepository.cancelOriginSeatNum(ticketVO);
+	}	
+	
+	public int cancelOriginUpdate(TicketVO ticketVO) throws Exception{
+		return ticketRepository.cancelOriginUpdate(ticketVO);
+	}
+	
+	public int countOriginPlus(TicketVO ticketVO) throws Exception{
+		return ticketRepository.countOriginPlus(ticketVO);
+	}
+	
+	public int deleteGiveTicket(TicketVO ticketVO) throws Exception{
+		return ticketRepository.deleteGiveTicket(ticketVO);
+	}
+	
 }

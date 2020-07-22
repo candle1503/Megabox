@@ -26,7 +26,7 @@
 				<ul class="navbar-nav">
 
 					<c:if test="${member ne null}">
-						<li><h3 style="padding-bottom: 15px;">${member.id}님
+						<li><h3 style="padding-bottom: 15px;">${member.name}님
 								환영합니다!!</h3></li>
 					</c:if>
 

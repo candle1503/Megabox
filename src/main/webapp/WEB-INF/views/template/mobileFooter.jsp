@@ -31,17 +31,13 @@
 			<div class="col-sm-6 col-lg-3">
 				<h5 class="footer-title text-uppercase">Follow</h5>
 				<ul class="list-wide footer-content list-inline">
-					<li class="list-inline-item"><a class="content-link" href="#"><i
-							class="fab fa-slack-hash"></i></a></li>
-					<li class="list-inline-item"><a class="content-link" href="#"><i
+					<li class="list-inline-item"><a class="content-link" href="https://www.twitter.com"><i
 							class="fab fa-twitter"></i></a></li>
-					<li class="list-inline-item"><a class="content-link" href="#"><i
+					<li class="list-inline-item"><a class="content-link" href="https://www.facebook.com"><i
 							class="fab fa-facebook-f"></i></a></li>
-					<li class="list-inline-item"><a class="content-link" href="#"><i
-							class="fab fa-dribbble"></i></a></li>
-					<li class="list-inline-item"><a class="content-link" href="#"><i
+					<li class="list-inline-item"><a class="content-link" href="https://www.google.com"><i
 							class="fab fa-google-plus-g"></i></a></li>
-					<li class="list-inline-item"><a class="content-link" href="#"><i
+					<li class="list-inline-item"><a class="content-link" href="https://www.instagram.com"><i
 							class="fab fa-instagram"></i></a></li>
 				</ul>
 

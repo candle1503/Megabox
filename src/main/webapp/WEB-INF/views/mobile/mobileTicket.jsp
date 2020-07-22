@@ -35,7 +35,7 @@
 						<div class="embed-responsive embed-responsive-poster"
 							style="width: 50%; margin: 0 auto;">
 							<img class="embed-responsive-item"
-								src="${pageContext.request.contextPath}/upload/movie/test1.jpg"
+								src="${pageContext.request.contextPath}/upload/movie/${movie.movieFileVO.fileName}"
 								alt="">
 						</div>
 						<div class="d-over bg-theme-lighted collapse animated faster"

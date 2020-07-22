@@ -41,7 +41,7 @@
 								<article class="poster-entity" data-role="hover-wrap">
 									<div class="embed-responsive embed-responsive-poster">
 										<img class="embed-responsive-item"
-											src="${pageContext.request.contextPath}/upload/movie/test1.jpg"
+											src="${pageContext.request.contextPath}/upload/movie/${movie.movieFileVO.fileName}"
 											alt="${movie.name}" />
 									</div>
 									<div
@@ -226,8 +226,8 @@
 			</div>
 			<div class="section-bottom">
 				<a class="btn btn-theme"
-					href="${pageContext.request.contextPath}/notice/noticeList"
-					style="font-family: 'Do Hyeon', sans-serif;">공지사항 더보기(웹)</a>
+					href="${pageContext.request.contextPath}/mobile/mobile404"
+					style="font-family: 'Do Hyeon', sans-serif;">공지사항 더보기</a>
 			</div>
 		</div>
 	</section>

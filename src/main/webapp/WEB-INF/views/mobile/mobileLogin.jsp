@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="col-12"  style="text-align:center;">
-						<button class="px-5 btn btn-theme" type="submit" >로그인</button>
+						<button class="px-5 btn btn-theme" type="submit"  style="font-family: 'Do Hyeon', sans-serif;">로그인</button>
 					</div>
 				</div>
 			</form:form>
