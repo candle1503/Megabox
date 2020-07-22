@@ -105,7 +105,7 @@
                             <!-- 프로필영역 -->
                             <div class="user-prof">
                                 <div class="prof-img"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png" alt="MEGABOX"></div>
-                                <p class="user-id">MEGABOX</p>
+                                <p class="user-id">쌍용씨네마</p>
                             </div>
                             <!-- // 프로필영역 -->
 
