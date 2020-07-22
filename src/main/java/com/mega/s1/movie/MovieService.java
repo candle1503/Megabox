@@ -3,6 +3,7 @@ package com.mega.s1.movie;
 import java.io.File;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mega.s1.movie.movieFile.MovieFileRepository;
 import com.mega.s1.movie.movieFile.MovieFileVO;
 import com.mega.s1.review.ReviewVO;
+import com.mega.s1.ticket.TicketVO;
 import com.mega.s1.util.FileManager;
 import com.mega.s1.util.FilePathGenerator;
 import com.mega.s1.util.Pager;
@@ -241,4 +243,18 @@ public class MovieService {
 		return movieRepository.futureCount();
 	}
 	
+	public List<MovieVO> viewUpCount() throws Exception{
+	
+		List<MovieVO> vos = movieRepository.viewUpCount();
+		
+		return vos;
+	};
+
+	public TicketVO canLike(TicketVO ticketVO) throws Exception{
+		return movieRepository.canLike(ticketVO);
+	}
+	
+	public int likeDone(TicketVO ticketVO) throws Exception{
+		return movieRepository.likeDone(ticketVO);
+	}
 }

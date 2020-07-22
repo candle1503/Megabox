@@ -97,7 +97,7 @@ public class TicketController {
 		List<MovieFileVO> files = movieService.getMovieFile(movieVO);
 		theaterVO.setTheaterRoomCode(ticketVO.getTheaterRoomCode());
 		theaterVO=ticketService.getRoom(theaterVO);
-		movieService.viewUp(movieVO);
+		
 		
 		
 		

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mega.s1.review.ReviewVO;
+import com.mega.s1.ticket.TicketVO;
 import com.mega.s1.util.Pager;
 
 @Mapper
@@ -49,6 +50,13 @@ public interface MovieRepository {
 	public long movieCount() throws Exception;
 	public long ingCount() throws Exception;
 	public long futureCount() throws Exception;
+	
+	public List<MovieVO> viewUpCount() throws Exception;
+	
+	public TicketVO canLike(TicketVO ticketVO) throws Exception;
+	
+	public int likeDone(TicketVO ticketVO) throws Exception;
+	
 	
 	
 }

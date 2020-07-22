@@ -236,11 +236,11 @@ $(function(){
 			if(${empty member}){
 				alert("로그인 후 이용해주세요");
 			} else {
-				 $.post("./likeUpdate", {movieNum:'${vo.movieNum}', like:'${vo.like}'}, function(result) {
+				 $.post("./likeUpdate", {movieNum:'${vo.movieNum}', like:'${vo.like}', id:'${member.id}'}, function(result) {
 						if(result>0){
-								alert("success");
+								alert("좋아요 성공");
 							} else{
-							alert("failed");
+							alert("like는 리뷰입력 후 한번만 가능합니다");
 							}
 					 window.location.replace("./movieSelect?movieNum="+${vo.movieNum});
 					});

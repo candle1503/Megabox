@@ -345,9 +345,19 @@ public class MovieController {
 	
 	@PostMapping("likeUpdate")
 	@ResponseBody
-	public int likeUpdate(MovieVO movieVO) throws Exception {
+	public int likeUpdate(MovieVO movieVO, String id) throws Exception {
 		
-		int result = movieService.likeUpdate(movieVO);
+		TicketVO ticketVO = new TicketVO();
+		ticketVO.setMovieNum(movieVO.getMovieNum());
+		ticketVO.setId(id);
+		ticketVO=movieService.canLike(ticketVO);
+		int result = 0;
+		
+		if(ticketVO!=null) {
+			result = movieService.likeUpdate(movieVO);
+			movieService.likeDone(ticketVO);
+		}
+		
 		
 		return result;
 	}
