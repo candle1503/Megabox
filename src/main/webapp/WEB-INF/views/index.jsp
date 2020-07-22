@@ -498,7 +498,7 @@
 							<!--// main-movie-list -->
 
 							<div class="search-link">
-								<div class="cell">
+								<!-- <div class="cell">
 									<div class="search">
 										<input type="text" placeholder="영화명을 입력해 주세요" title="영화 검색"
 											class="input-text" id="movieName">
@@ -506,19 +506,19 @@
 											<i class="iconset ico-search-w"></i> 검색
 										</button>
 									</div>
-								</div>
+								</div> -->
 
 								<div class="cell">
-									<a href="/booking/timetable" title="상영시간표 보기"><i
+									<a href="${pageContext.request.contextPath}/booking/bookingMain" title="상영시간표 보기"><i
 										class="iconset ico-schedule-main"></i> 상영시간표</a>
 								</div>
 								<div class="cell">
-									<a href="/movie" title="박스오피스 보기"><i
-										class="iconset ico-boxoffice-main"></i> 박스오피스</a>
+									<a href="${pageContext.request.contextPath}/booking/bookingMain" title="박스오피스 보기"><i
+										class="iconset ico-boxoffice-main" style="margin-left: 70px;"></i> 박스오피스</a>
 								</div>
 								<div class="cell">
 									<a href="${pageContext.request.contextPath}/booking/bookingMain" title="빠른예매 보기"><i
-										class="iconset ico-quick-reserve-main"></i> 빠른예매</a>
+										class="iconset ico-quick-reserve-main" style="margin-left: 100px;"></i> 빠른예매</a>
 								</div>
 							</div>
 							<!-- 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->

@@ -14047,7 +14047,7 @@ body.body-iframe .modal-layer {
 }
 
 #header .link-area a.btn-layer-search {
-	left: 40px;
+	/* left: 40px; */
 	background-image:
 		url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png)
 }
@@ -14071,7 +14071,8 @@ body.body-iframe .modal-layer {
 }
 
 #header.no-bg {
-	background-color: rgba(0, 0, 0, .3);
+	background-color: #110c17;
+	/* background-color: rgba(0, 0, 0, .3); */
 	border-bottom: 1px solid rgba(255, 255, 255, .2)
 }
 
@@ -14096,7 +14097,7 @@ body.body-iframe .modal-layer {
 
 #header.no-bg .link-area a.btn-layer-search {
 	background-image:
-		url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-search-white.png)
+		url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule-white.png)
 }
 
 #header.no-bg .link-area a.link-ticket {
@@ -15612,9 +15613,7 @@ body.no-scroll .page-util.fixed {
 	margin: 0 20px 0 0;
 	padding: 0;
 	text-indent: -9999px;
-	background:
-		url(/resources/static/images/sTheater.png)
-		no-repeat center
+	background-color: #444;
 }
 
 #footer .footer-bottom .footer-info {

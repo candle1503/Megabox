@@ -676,6 +676,7 @@ h2.tit {
 	width: 25%;
 	text-align: center;
 	border-left: 1px solid #423e3e;
+	margin-left: 60px;
 }
 
 .main-movie .search-link .cell:first-child {

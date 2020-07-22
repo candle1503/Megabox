@@ -16,15 +16,14 @@
 	<div class="footer-top">
 		<div class="inner-wrap">
 			<ul class="fnb">
-				<li><a href="/megaboxinfo" title="회사소개 페이지로 이동">회사소개</a></li>
-				<li><a href="/recruit" title="인재채용 페이지로 이동">인재채용</a></li>
-				<li><a href="/socialcontribution" title="사회공헌 페이지로 이동">사회공헌</a></li>
-				<li><a href="/partner" title="제휴/광고/부대사업문의 페이지로 이동">제휴/광고/부대사업문의</a></li>
-				<li><a href="/support/terms" title="이용약관 페이지로 이동">이용약관</a></li>
-				<li class="privacy"><a href="/support/privacy"
+				<li><a href="#" title="회사소개 페이지로 이동">회사소개</a></li>
+				<li><a href="#" title="인재채용 페이지로 이동">인재채용</a></li>
+				<li><a href="#" title="사회공헌 페이지로 이동">사회공헌</a></li>
+				<li><a href="#" title="제휴/광고/부대사업문의 페이지로 이동">제휴/광고/부대사업문의</a></li>
+				<li><a href="#" title="이용약관 페이지로 이동">이용약관</a></li>
+				<li class="privacy"><a href="#"
 					title="개인정보처리방침 페이지로 이동">개인정보처리방침</a></li>
-				<li><a href="https://jebo.joonganggroup.com/main.do"
-					target="_blank" title="윤리경영 페이지로 이동">윤리경영</a></li>
+				<li><a href="#" title="윤리경영 페이지로 이동">윤리경영</a></li>
 			</ul>
 
 			<!-- 			<a href="#layer_looking_theater" class="btn-looking-theater"
@@ -37,7 +36,9 @@
 	<!-- footer-bottom -->
 	<div class="footer-bottom">
 		<div class="inner-wrap">
-			<div class="ci">MEGABOX : Life Theater</div>
+			
+			<a href="${pageContext.request.contextPath}/"><img class="ci" alt=""
+		src="${pageContext.request.contextPath}/resources/static/icon/logo.png"></a>
 
 			<div class="footer-info">
 				<div>
@@ -52,11 +53,11 @@
 			</div>
 
 			<div class="footer-sns" style="margin-right: 10px;">
-				<a href="https://twitter.com/megaboxon" target="_blank"><i
+				<a href="https://twitter.com/" target="_blank"><i
 					class="iconset ico-twitter">트위터</i></a> <a
-					href="https://www.facebook.com/megaboxon" target="_blank"><i
+					href="https://www.facebook.com/" target="_blank"><i
 					class="iconset ico-facebook">페이스북</i></a> <a
-					href="http://instagram.com/megaboxon" target="_blank"><i
+					href="http://instagram.com/" target="_blank"><i
 					class="iconset ico-instagram">인스타그램</i></a>
 			</div>
 		</div>
