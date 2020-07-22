@@ -226,7 +226,7 @@
 			</div>
 			<div class="section-bottom">
 				<a class="btn btn-theme"
-					href="${pageContext.request.contextPath}/notice/noticeList"
+					href="${pageContext.request.contextPath}/mobile/mobile404"
 					style="font-family: 'Do Hyeon', sans-serif;">공지사항 더보기</a>
 			</div>
 		</div>
