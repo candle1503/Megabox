@@ -120,6 +120,9 @@ public class MobileController {
 		System.out.println(fileNames.get(9));
 		System.out.println(fileNames.get(10));
 		System.out.println(fileNames.get(11));
+		
+		mv.addObject("video", fileNames);
+		
 		return mv;
 	}
 

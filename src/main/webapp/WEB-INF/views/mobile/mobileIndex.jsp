@@ -18,7 +18,7 @@
 
 	<section class="section-text-white position-relative">
 		<div class="d-background"
-			data-image-src="http://via.placeholder.com/1920x1080"
+			data-image-src=""
 			data-parallax="scroll"></div>
 		<div class="d-background bg-theme-blacked"></div>
 		<div class="mt-auto container position-relative">
@@ -116,7 +116,7 @@
 	<section
 		class="section-solid-long section-text-white position-relative">
 		<div class="d-background"
-			data-image-src="http://via.placeholder.com/1920x1080"
+			data-image-src=""
 			data-parallax="scroll"></div>
 		<div class="d-background bg-gradient-black"></div>
 		<div class="container position-relative">
@@ -136,16 +136,13 @@
 								<div class="entity-preview">
 									<div class="embed-responsive embed-responsive-16by9">
 										<img class="embed-responsive-item"
-											src="http://via.placeholder.com/1920x1080" alt="" />
+											src="" alt="" />
 									</div>
 									<div class="d-over">
 										<div class="entity-play">
-											<a
-												class="action-icon-theme action-icon-bordered rounded-circle"
-												href="https://www.youtube.com/watch?v=d96cjJhvlMA"
-												data-magnific-popup="iframe"> <span class="icon-content"><i
-													class="fas fa-play"></i></span>
-											</a>
+											<video class="videoTag" controls="" style="width: 350px;">
+												<source 	src="${pageContext.request.contextPath}/upload/movie/${video[vs.count-1]}"type="video/mp4">
+											</video>
 										</div>
 									</div>
 								</div>
