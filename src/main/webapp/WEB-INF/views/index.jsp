@@ -468,11 +468,10 @@
 											</div>
 									</a>
 										<div class="btn-util">
-											<button type="button" class="button btn-like"
-												rpst-movie-no="01693600">
-												<i title="보고싶어 설정 안함" class="iconset ico-heart-toggle-gray"></i>
+											<a href="./movie/movieSelect?movieNum=${movie.movieNum }" class="button btn-like">
+												❤&nbsp&nbsp&nbsp
 												${movie.like }
-											</button>
+											</a>
 											<div class="case">
 												<!-- 개봉 예매가능 기본-->
 												<a href="booking/bookingMain?movieNum=${movie.movieNum}"

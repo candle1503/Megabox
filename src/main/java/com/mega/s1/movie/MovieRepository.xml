@@ -139,9 +139,7 @@
 		where movieNum=#{movieNum}
 	</update>
 	
-	<update id="viewUp" parameterType="MovieVO">
-		update movie set views=#{views}+1 where movieNum=#{movieNum}
-	</update>
+
 	
 	<select id="ranking" parameterType="MovieVO" resultType="Long">
 		select (SELECT COUNT(*) FROM movie WHERE bookingRate >= t.bookingRate) AS ranking, t.name
@@ -171,10 +169,28 @@
 	</select>
 	
 	<select id="viewCount" parameterType="MovieVO" resultType="Long">
-		select count(ticketNum) from ticket 
+		select IFNULL(sum(count), 0) from ticket 
 		where viewDate between 
-		(SELECT date_add(now(),INTERVAL-1-#{ages} DAY) FROM dual) and (SELECT date_add(now(),INTERVAL -#{ages} DAY) FROM dual) and movieNum=#{movieNum}
+		(SELECT date_add(now(),INTERVAL-2-#{ages} DAY) FROM dual) and (SELECT date_add(now(),INTERVAL -1-#{ages} DAY) FROM dual) and movieNum=#{movieNum}
 	</select>
 	
+	<select id="viewUpCount" resultType="MovieVO">
+		select movieNum, sum(count) as ages from ticket 
+		where viewDate between 
+		(SELECT date_add(sysdate(),INTERVAL -1 DAY) FROM dual) and (SELECT date_add(sysdate(),INTERVAL 0 DAY) FROM dual) group by movieNum
+	</select>
+
+	
+	<update id="viewUp" parameterType="MovieVO">
+		update movie set views=#{views}+#{ages} where movieNum=#{movieNum}
+	</update>
+	
+	<select id="canLike" parameterType="TicketVO" resultType="TicketVO">
+		select * from ticket where id=#{id} and movieNum=#{movieNum} and status=2
+	</select>
+	
+	<update id="likeDone" parameterType="TicketVO">
+		update ticket set status=3 where ticketNum=#{ticketNum}
+	</update>
 	
 </mapper>

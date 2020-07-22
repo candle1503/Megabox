@@ -7,8 +7,8 @@
 <header id="header" class="main-header no-bg">
 
 	<a href="${pageContext.request.contextPath}/"><img class="ci" alt=""
-		src="${pageContext.request.contextPath}/resources/static/images/sTheater.png"
-		style="width: 7%; height: auto;"></a>
+		src="${pageContext.request.contextPath}/resources/static/icon/logo.png"
+		style="width: 260px; height: 43px; padding-right:80px;" ></a>
 
 	<!-- topGnb -->
 

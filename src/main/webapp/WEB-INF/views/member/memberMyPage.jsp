@@ -136,7 +136,7 @@
 									<c:if test="${ticketVO ne null}">
 											<a href="${pageContext.request.contextPath}/movie/movieSelect?movieNum=${ticketVO.movieNum}" class="img"
 												title="${ticketVO.movieName} "><img
-												src="upload/movie/${ticketVO.movieName}"></a>
+												src="/upload/movie/${movieFileVO.fileName}"></a>
 											<table class="table">
 												<tbody >
 													<tr>
