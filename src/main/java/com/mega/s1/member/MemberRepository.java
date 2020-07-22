@@ -71,4 +71,6 @@ public interface MemberRepository {
 	
 	//getOneTicketMovieFile2
 	public MovieFileVO getOneTicketMovieFile2(MovieVO movieVO) throws Exception;
+	
+	public String idCheck2(String id) throws Exception;
 }

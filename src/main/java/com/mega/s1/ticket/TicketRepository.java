@@ -25,6 +25,10 @@ public interface TicketRepository {
 	
 	public TicketVO giveSeat(TicketVO ticketVO) throws Exception;
 	
+	public String giveSeatCheck(TicketVO ticketVO) throws Exception;
+	
+	public String receiveCodeCheck(TicketVO ticketVO) throws Exception;
+	
 	public int giveSeatAdd(TicketVO ticketVO) throws Exception;
 	
 	public int giveSeatRemove(TicketVO ticketVO) throws Exception;

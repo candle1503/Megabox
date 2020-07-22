@@ -103,6 +103,14 @@ public class TicketService {
 	public TicketVO giveSeat(TicketVO ticketVO) throws Exception{
 		return ticketRepository.giveSeat(ticketVO);
 	}	
+	
+	public String giveSeatCheck(TicketVO ticketVO) throws Exception{
+		return ticketRepository.giveSeatCheck(ticketVO);
+	}	
+	
+	public String receiveCodeCheck(TicketVO ticketVO) throws Exception{
+		return ticketRepository.receiveCodeCheck(ticketVO);
+	}	
 
 	public int giveSeatAdd(TicketVO ticketVO) throws Exception{
 		return ticketRepository.giveSeatAdd(ticketVO);

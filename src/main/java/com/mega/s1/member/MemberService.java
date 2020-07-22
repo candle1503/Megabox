@@ -216,4 +216,8 @@ public class MemberService {
 	public MovieFileVO getOneTicketMovieFile2(MovieVO movieVO) throws Exception{
 		return memberRepository.getOneTicketMovieFile2(movieVO);
 	}
+	
+	public String idCheck2(String id) throws Exception{
+		return memberRepository.idCheck2(id);
+	}
 }

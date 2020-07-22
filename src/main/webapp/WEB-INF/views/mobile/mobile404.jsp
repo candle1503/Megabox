@@ -14,9 +14,9 @@
 	<div class="container">
 
 		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">개발중인 페이지입니다.</h1>
+			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">에러 페이지입니다.</h1>
 		<h1
-			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">양해 부탁드려요!</h1>
+			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 39px; text-align: center;">다시 한번 확인부탁드려요!</h1>
 
 		<%-- 		<h1
 			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${param.giveId},${param.ticketCode},${param.receiveId}</h1>

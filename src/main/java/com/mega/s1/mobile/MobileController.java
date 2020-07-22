@@ -50,7 +50,7 @@ public class MobileController {
 	private NoticeService noticeService;
 
 	@GetMapping("mobileIndex")
-	public ModelAndView mobileIndex(ModelAndView mv, NoticeVO noticeVO, Pager pager) throws Exception {
+	public ModelAndView mobileIndex(ModelAndView mv, NoticeVO noticeVO, Pager pager, MovieVO movieVO) throws Exception {
 
 		long amount = ticketService.bookingAllCount();
 		List<TicketVO> bk = ticketService.bookingCount();
@@ -58,14 +58,14 @@ public class MobileController {
 		ticketService.bookingRateReset();
 
 		for (int i = 0; i < bk.size(); i++) {
-			MovieVO movieVO = new MovieVO();
+			MovieVO movieVO2 = new MovieVO();
 			int rating = bk.get(i).getAmount();
 			double booking = rating * 1.0 / amount * 100.0;
 			System.out.println(rating);
-			movieVO.setBookingRate(booking);
-			movieVO.setMovieNum(bk.get(i).getMovieNum());
+			movieVO2.setBookingRate(booking);
+			movieVO2.setMovieNum(bk.get(i).getMovieNum());
 			System.out.println(booking);
-			ticketService.bookingRateUpdate(movieVO);
+			ticketService.bookingRateUpdate(movieVO2);
 
 		}
 
@@ -323,25 +323,38 @@ public class MobileController {
 
 	@PostMapping("mobileQrCode")
 	public ModelAndView mobileQrCodePost(TicketVO ticketVO) throws Exception {
-
+		
 		System.out.println("주는 아이디 :" + ticketVO.getGiveId());
 		System.out.println("받는 아이디 :" + ticketVO.getReceiveId());
 		System.out.println("아이디 :" + ticketVO.getId());
 		System.out.println(ticketVO.getMovieName());
 
 		ModelAndView mv = new ModelAndView();
+		
+		String checkId = memberService.idCheck2(ticketVO.getReceiveId());
+		//String checkSeat = ticketService.giveSeatCheck(ticketVO);
 		// 티켓 정보 조회
-//		TicketVO ticketVO2 =  ticketService.ticketMoveBegin(ticketVO);
-		// 양도할 좌석 조회
-//		ticketService.giveSeat(ticketVO);
-		// 양도 받는 사람에게 좌석 추가
-		ticketService.giveSeatAdd(ticketVO);
-//		//양도 한 사람에게 좌석 삭제 및 cnt - 1 (모두 양도했을 시 티켓 삭제)
-		ticketService.giveSeatRemove(ticketVO);
-		ticketService.countMinus(ticketVO);
-		ticketService.countPlus(ticketVO);
+		TicketVO ticketVO2 =  ticketService.ticketMoveBegin(ticketVO);
+		String receiveCode = ticketService.receiveCodeCheck(ticketVO);
+		
+		
+		if(checkId == null || ticketVO2.getCount()==1 || receiveCode != null) {
+			mv.setViewName("mobile/mobile404");
+		} else {
 
-		mv.setViewName("mobile/mobileQrCode");
+			// 양도할 좌석 조회
+//			ticketService.giveSeat(ticketVO);
+			// 양도 받는 사람에게 좌석 추가
+			ticketService.giveSeatAdd(ticketVO);
+//			//양도 한 사람에게 좌석 삭제 및 cnt - 1 (모두 양도했을 시 티켓 삭제)
+			ticketService.giveSeatRemove(ticketVO);
+			ticketService.countMinus(ticketVO);
+			ticketService.countPlus(ticketVO);
+			
+			mv.setViewName("mobile/mobileQrCode");
+					
+		}
+
 		return mv;
 
 	}

@@ -45,11 +45,9 @@
 											alt="${movie.name}" />
 									</div>
 									<div
-										class="d-background bg-theme-lighted collapse animated faster"
-										data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
+										class="d-background bg-theme-lighted collapse animated faster"></div>
 									<div class="d-over bg-highlight-bottom">
-										<div class="collapse animated faster entity-play"
-											data-show-class="fadeIn show" data-hide-class="fadeOut show">
+										<div class="collapse animated faster entity-play">
 											<a
 												class="action-icon-theme action-icon-bordered rounded-circle"
 												href="./movie/movieSelect?movieNum=${movie.movieNum}"
@@ -211,7 +209,8 @@
 
 						<div class="entity-content">
 							<h4 class="entity-title">
-								<a class="content-link" href="article-sidebar-right.html" style="font-family: 'Do Hyeon', sans-serif;">${notice[0].title}</a>
+								<a class="content-link" href="article-sidebar-right.html"
+									style="font-family: 'Do Hyeon', sans-serif;">${notice[0].title}</a>
 							</h4>
 							<div class="entity-category">
 								<a class="content-link" href="news-blocks-sidebar-right.html">${notice[0].name}</a>,

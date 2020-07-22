@@ -83,4 +83,8 @@
 		select * from movieFile where movieNum = #{movieNum} limit 1
 	</select>
 	
+	<select id="idCheck2" parameterType="String" resultType="String">
+		select * from member where id=#{id}	
+	</select>
+	
 </mapper>
