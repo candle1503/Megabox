@@ -42,10 +42,10 @@ public class HomeController {
 			MovieVO movieVO = new MovieVO();
 			int rating = bk.get(i).getAmount();
 			double booking = rating*1.0/amount*100.0;
-			System.out.println(rating);
+			
 			movieVO.setBookingRate(booking);
 			movieVO.setMovieNum(bk.get(i).getMovieNum());
-			System.out.println(booking);
+			
 			ticketService.bookingRateUpdate(movieVO);
 			
 		}

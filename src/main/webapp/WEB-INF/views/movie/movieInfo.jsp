@@ -379,11 +379,9 @@ $(function(){
 					$('#charByPoint').html("<em>영상미</em>")	
 				} else {
 					$('#charByPoint').html("<em>스토리</em>")	
-				}
-				
+				}			
 				Chart.defaults.global.defaultFontFamily = "Lato";
 				Chart.defaults.global.defaultFontSize = 15;
-				
 				var marksData = {
 				  labels: ["연출", "배우", "OST", "영상미", "스토리"],
 				  datasets: [{
@@ -397,7 +395,6 @@ $(function(){
 				    data: [${direct}, ${player}, ${ost}, ${beauty}, ${story}]
 				  }]
 				};
-				
 				var chartOptions = {
 				  scale: {
 					  gridLines: {
@@ -417,7 +414,6 @@ $(function(){
 				    }
 				  },
 				  legend: {
-					
 				    display: false
 				  }
 				};
@@ -489,7 +485,7 @@ $(function(){
                 
              </c:when>
              <c:when test="${vo.bookingRate ne 0 }">
-                <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
+ <canvas id="chartByBar" style="display: block; width: 216px; height: 216px;" width="216" height="216" class="chartjs-render-monitor"></canvas>
             <script>
 			var ctx = document.getElementById('chartByBar').getContext('2d');
 			 Chart.defaults.global.defaultFontFamily = "Lato";
@@ -506,15 +502,13 @@ $(function(){
 			        labels: ['10대', '20대', '30대', '40대', '50대'],
 			        datasets: [{
 			            label:'',
-			           data: [first, second, third, fourth, old],
-			           
+			           data: [first, second, third, fourth, old],           
 			            backgroundColor: [
 			                'rgba(255, 99, 132, 0.2)',
 			                'rgba(54, 162, 235, 0.2)',
 			                'rgba(255, 206, 86, 0.2)',
 			                'rgba(75, 192, 192, 0.2)',
-			                'rgba(153, 102, 255, 0.2)'
-			                
+			                'rgba(153, 102, 255, 0.2)'                
 			            ],
 			            borderColor: [
 			                'rgba(255, 99, 132, 1)',
@@ -527,10 +521,8 @@ $(function(){
 			        }]
 			    },
 			    options: { 
-			        scales: {
-			            
-			            yAxes: [{
-			            	
+			        scales: {            
+			            yAxes: [{       	
 			                ticks: {
 			                    beginAtZero: true,
 			                    display: false,
@@ -542,9 +534,6 @@ $(function(){
 			        legend : {display:false}
 			    }
 			});
-			
-			
-			
 			</script>
             
              </c:when>
@@ -571,24 +560,18 @@ $(function(){
              </c:when>
              <c:otherwise>
                 <canvas id="chartByLine" style="width: 220px; height: 205px; display: block;" width="220" height="205"></canvas>
-                
                 <script type="text/javascript">
                 var maxView = Math.max(${one}, ${two}, ${three}, ${four});
                 var now = new Date();
                 var mon = (now.getMonth()+1)>9 ? ''+(now.getMonth()+1) : '0'+(now.getMonth()+1);
                 var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
-
                 var one = mon + '.' + (day-1);        
                 var two = mon + '.' + (day-2);
                 var three = mon + '.' + (day-3); 
                 var four = mon + '.' + (day-4);
-                
-
                 var speedCanvas = document.getElementById("chartByLine");
-
                 Chart.defaults.global.defaultFontFamily = "Lato";
                 Chart.defaults.global.defaultFontSize = 15;
-
                 var speedData = {
                   labels: [four, three, two, one],
                   datasets: [{
@@ -608,36 +591,29 @@ $(function(){
                     pointStyle: 'rectRounded'
                   }]
                 };
-
                 var chartOption = {
-                	scales: {
-    			      
-    			    	yAxes: [{
-    			            	
+                	scales: {      
+    			    	yAxes: [{	            	
     			            ticks: {
     			                    beginAtZero: true,
     			                    display: false,
     			                    stepSize: 100,
     			                    max : maxView+5
     			                }
-    			            }]
-    			        ,
+    			            }],
       				    pointLabels: {
       				      fontSize: 11,
       				      fontColor: "gray"
       				    }
-      				  },
-                  
+      				  }, 
                   legend: {
                     display: false,
-                    
                     labels: {
                       boxWidth: 80,
                       fontColor: 'black'
                     }
                   }
                 };
-
                 var lineChart = new Chart(speedCanvas, {
                   type: 'line',
                   data: speedData,
@@ -731,7 +707,7 @@ $(function(){
                             <!-- 프로필영역 -->
                             <div class="user-prof">
                                 <div class="prof-img"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png" alt="MEGABOX"></div>
-                                <p class="user-id">MEGABOX</p>
+                                <p class="user-id">쌍용씨네마</p>
                             </div>
                             <!-- // 프로필영역 -->
 

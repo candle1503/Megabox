@@ -434,7 +434,7 @@ public class MovieController {
 		
 		 //취미 부분은 별도로 읽어들어 다시 빈 클래스에 저장
         String[] genre = movieVO.getGenreTest();
-        //배열의 있는 내용을 하나의 스트림으로 젖아
+        //배열의 있는 내용을 하나의 스트링으로 저장
         String texthobby = "";
         for (int i = 0; i < genre.length; i++) {
         	if(i==(genre.length-1)) {
@@ -486,7 +486,7 @@ public class MovieController {
 		MovieFileVO movieFileVO = new MovieFileVO();
 		 //취미 부분은 별도로 읽어들어 다시 빈 클래스에 저장
         String[] genre = movieVO.getGenreTest();
-        //배열의 있는 내용을 하나의 스트림으로 젖아
+        //배열의 있는 내용을 하나의 스트링으로 저장
         String texthobby = "";
         for (int i = 0; i < genre.length; i++) {
         	if(i==(genre.length-1)) {
