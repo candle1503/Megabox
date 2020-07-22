@@ -129,7 +129,11 @@
 			<fmt:formatNumber value="${movie.bookingRate}" pattern="#,###.0"/>
 			</c:if>
 			 %</span> <span class="date">개봉 ${movie.openDay }</span>
-			</div><div class="btn-util">    <button type="button" class="button btn-like" data-no="20021300"><i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> <span>${movie.like }</span></button>    
+			</div><div class="btn-util">    
+			<a href="./movieSelect?movieNum=${movie.movieNum }" class="button btn-like" data-no="20021300">
+			<i title="보고싶어 안함" class="iconset ico-heart-toggle-gray intrstType"></i> 
+			<span>${movie.like }</span>
+			</a>    
 			<div class="case col-2 movieStat3" style=""> 
 	<c:choose>
 		<c:when test="${member.id ne 'ADMIN' }">
