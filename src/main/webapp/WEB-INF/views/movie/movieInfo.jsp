@@ -358,7 +358,7 @@ $(function(){
 
             <div class="graph" style="position: relative; bottom: 29px;">
            <c:choose>
-           	<c:when test="${today <= openDay || vo.rate eq '0'}">
+           	<c:when test="${today <= openDay || empty review}">
 		
                  <img src="/resources/static/images/no-graph01.jpg" alt="메가스코어 결과 없음" style="margin-top: 30px;">
                 
