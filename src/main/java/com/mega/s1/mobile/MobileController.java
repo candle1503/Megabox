@@ -217,61 +217,65 @@ public class MobileController {
 	public ModelAndView mobileMyPage(HttpSession session, String id, Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
+		//현재 날짜로 부터 지난 티켓의 status 1로 변경
 		memberService.updateTicket();
-
-		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		id = memberVO.getId();
 		model.addAttribute("id", id);
-
+	
 		List<TicketVO> bookedCompAr = memberService.bookedCompleteList(id);
-
+		
+		
 		int size = bookedCompAr.size();
 		model.addAttribute("bookedSize", size);
-
+		
 		Map<Integer, String> theaterNameMap = new HashMap<>();
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
 		Map<Integer, String> viewDateMap = new HashMap<>();
 		List<Integer> points = new ArrayList<Integer>();
-
+		List<MovieFileVO> mvfilesAr = new ArrayList<MovieFileVO>();
 		String viewDateCut;
 		String viewDateTimeCut;
-
-		for (int i = 0; i < size; i++) {
+		
+		for(int i=0; i<size; i++) {
+			MovieFileVO movieFileVO = new MovieFileVO();
 			Integer point;
 			point = bookedCompAr.get(i).getSavedPoint();
 			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
-
+			
 			points.add(i, point);
-
+			
 			model.addAttribute("points", points);
-
+			
 			theaterRoomVO.setTheaterRoomCode(bookedCompAr.get(i).getTheaterRoomCode());
-
+			
 			theaterRoomVO = memberService.getRoom(theaterRoomVO);
-
+			
 			theaterNameMap.put(i, theaterRoomVO.getName());
 			theaterRoomNameMap.put(i, theaterRoomVO.getRoomName());
-
+			
 			model.addAttribute("theaterName", theaterNameMap);
 			model.addAttribute("theaterRoomName", theaterRoomNameMap);
-
-			// 날짜 따로
+			
+			//날짜 따로
 			viewDateCut = bookedCompAr.get(i).getViewDate().substring(0, 10);
 			viewDateTimeCut = bookedCompAr.get(i).getViewDate().substring(11, 16);
-
+			
 			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
-
+			
 			viewDateMap.put(i, viewDateR);
-
+			
 			model.addAttribute("viewDate", viewDateMap);
-
+			
 			MovieVO movieVO = new MovieVO();
 			movieVO.setMovieNum(bookedCompAr.get(i).getMovieNum());
-			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
-
+			movieFileVO = memberService.getOneTicketMovieFile2(movieVO);
+			mvfilesAr.add(i, movieFileVO);
+			
 			model.addAttribute("mvfile", mvfilesAr);
 		}
-
+		
 		model.addAttribute("bookedCompAr", bookedCompAr);
 
 		mv.setViewName("mobile/mobileTicket");
@@ -282,61 +286,65 @@ public class MobileController {
 	public ModelAndView mobileMyPagePost(HttpSession session, String id, Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
+		//현재 날짜로 부터 지난 티켓의 status 1로 변경
 		memberService.updateTicket();
-
-		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		id = memberVO.getId();
 		model.addAttribute("id", id);
-
+	
 		List<TicketVO> bookedCompAr = memberService.bookedCompleteList(id);
-
+		
+		
 		int size = bookedCompAr.size();
 		model.addAttribute("bookedSize", size);
-
+		
 		Map<Integer, String> theaterNameMap = new HashMap<>();
 		Map<Integer, String> theaterRoomNameMap = new HashMap<>();
 		Map<Integer, String> viewDateMap = new HashMap<>();
 		List<Integer> points = new ArrayList<Integer>();
-
+		List<MovieFileVO> mvfilesAr = new ArrayList<MovieFileVO>();
 		String viewDateCut;
 		String viewDateTimeCut;
-
-		for (int i = 0; i < size; i++) {
+		
+		for(int i=0; i<size; i++) {
+			MovieFileVO movieFileVO = new MovieFileVO();
 			Integer point;
 			point = bookedCompAr.get(i).getSavedPoint();
 			TheaterRoomVO theaterRoomVO = new TheaterRoomVO();
-
+			
 			points.add(i, point);
-
+			
 			model.addAttribute("points", points);
-
+			
 			theaterRoomVO.setTheaterRoomCode(bookedCompAr.get(i).getTheaterRoomCode());
-
+			
 			theaterRoomVO = memberService.getRoom(theaterRoomVO);
-
+			
 			theaterNameMap.put(i, theaterRoomVO.getName());
 			theaterRoomNameMap.put(i, theaterRoomVO.getRoomName());
-
+			
 			model.addAttribute("theaterName", theaterNameMap);
 			model.addAttribute("theaterRoomName", theaterRoomNameMap);
-
-			// 날짜 따로
+			
+			//날짜 따로
 			viewDateCut = bookedCompAr.get(i).getViewDate().substring(0, 10);
 			viewDateTimeCut = bookedCompAr.get(i).getViewDate().substring(11, 16);
-
+			
 			String viewDateR = viewDateCut + " / " + viewDateTimeCut;
-
+			
 			viewDateMap.put(i, viewDateR);
-
+			
 			model.addAttribute("viewDate", viewDateMap);
-
+			
 			MovieVO movieVO = new MovieVO();
 			movieVO.setMovieNum(bookedCompAr.get(i).getMovieNum());
-			List<MovieFileVO> mvfilesAr = movieService.getMovieFile(movieVO);
-
+			movieFileVO = memberService.getOneTicketMovieFile2(movieVO);
+			mvfilesAr.add(i, movieFileVO);
+			
 			model.addAttribute("mvfile", mvfilesAr);
 		}
-
+		
 		model.addAttribute("bookedCompAr", bookedCompAr);
 
 		mv.setViewName("mobile/mobileTicket");
