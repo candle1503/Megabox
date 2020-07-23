@@ -26,7 +26,7 @@
 			style="font-family: 'Do Hyeon', sans-serif; padding-top: 33px; font-size: 20px; text-align: center;">${ticket.seatNum}</h1> --%>
 
 		<img style="display: block; margin: 33px auto 77px auto;"
-			src="${pageContext.request.contextPath}/resources/static/mobile/images/QrCodeTest2.png">
+			src="${pageContext.request.contextPath}/resources/static/mobile/images/QrCodeFinal.png">
 
 	</div>
 
