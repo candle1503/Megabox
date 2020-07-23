@@ -516,7 +516,7 @@
 				var result = myPoint-point;
 				
 				if(result<0){
-					alert("현재 포인트보다 적게 써야됌");
+					alert("최대 사용가능 포인트 : "+ myPoint);
 
 					if(myPoint%10 !=0){
 						myPoint /= 10;
@@ -556,6 +556,7 @@
 					}, function(result){
 						var te = Number(result);
 					if(te==1){
+						alert("선택하신 좌석이 이미 예약 되었습니다.")
 						form.submit();
 					}else if(te==0){
 					window.open("../ticket/payment?seatNum=${seat}&movieTime=${bookingVO.movieTime}&id=${member.id}&count=${sizeCount}&movieNum=${movieVO.movieNum}&theaterRoomCode=${bookingVO.theaterRoomCode}&viewDate=${time}&timeCode=${bookingVO.timeCode}&savePoint="+savePoint+"&usedPoint="+usedPoint, "PopupWin", "top=200, left=400, width=850,height=600")
