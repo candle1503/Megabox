@@ -49,8 +49,8 @@
 		<div class="page-util">
 			<div class="inner-wrap" id="myLoaction">
 				<div class="location">
-					<span>Home</span> <a href="/mypage" title="나의 메가박스 페이지로 이동">나의
-						메가박스</a> <a href="/mypage/bookinglist?tab=01" title="예매/구매내역 페이지로 이동">예매/구매내역</a>
+					<span>Home</span> <a href="/mypage" title="나의 쌍용 페이지로 이동">나의
+						쌍용</a> <a href="/mypage/bookinglist?tab=01" title="예매/구매내역 페이지로 이동">예매/구매내역</a>
 					<a href="/mypage/bookinglist?tab=01" title="예매내역 페이지로 이동">예매내역</a>
 				</div>
 			</div>
@@ -69,8 +69,8 @@
 
 			<div id="myLoactionInfo" style="display: none;">
 				<div class="location">
-					<span>Home</span> <a href="/mypage" title="나의 메가박스 페이지로 이동">나의
-						메가박스</a> <a href="/mypage/bookinglist?tab=01" title="예매/구매내역 페이지로 이동">예매/구매내역</a>
+					<span>Home</span> <a href="/mypage" title="나의 쌍용 페이지로 이동">나의
+						쌍용</a> <a href="/mypage/bookinglist?tab=01" title="예매/구매내역 페이지로 이동">예매/구매내역</a>
 				</div>
 			</div>
 

@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 
-<title>나의메가박스 | 라이프씨어터, 메가박스</title>
+<title>나의쌍용 | 라이프씨어터, 쌍용</title>
 <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
 <link rel="stylesheet" href="/resources/static/css/myPage.css" media="all">
@@ -127,11 +127,12 @@
 			<!-- footer-bottom -->
 			<div class="footer-bottom">
 				<div class="inner-wrap">
-					<div class="ci">MEGABOX : Life Theater</div>
+					<div class="ci"><a href="${pageContext.request.contextPath}/"><img class="ci" alt=""
+		src="${pageContext.request.contextPath}/resources/static/icon/logo.png"></a></div>
 
 					<div class="footer-info">
 						<div>
-							<address>서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 메가박스스퀘어)</address>
+							<address>서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 쌍용스퀘어)</address>
 							<p>ARS 1544-0070</p>
 						</div>
 						<p>대표자명 김진선</p>

@@ -9,8 +9,8 @@
 <body class="bg-member">
 		<div class="member-wrap">
 			<div>
-				<a href="../"><img alt="" src="/resources/static/images/sTheater.png"
-					style="margin-left: 90px" ></a> 
+				<a href="${pageContext.request.contextPath}/"><img class="" alt=""
+		src="${pageContext.request.contextPath}/resources/static/icon/loginLogo.png" style="width: 300px; margin-left: 100px; margin-bottom: 30px;"></a>
 			</div>
 			<p class="tit-member">회원가입&<a href="./memberLogin" style="color:#503396;">로그인</a></p>
 

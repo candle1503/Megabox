@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 
-<title>나의메가박스 | 라이프씨어터, 메가박스</title>
+<title>나의쌍용 | 라이프씨어터, 쌍용</title>
 
 <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
 <link rel="stylesheet" href="/resources/static/css/megabox.min.css" media="all">
@@ -22,7 +22,7 @@
 			<div class="page-util">
 				<div class="inner-wrap" id="myLoaction"><div class="location">
 				<span>Home</span>
-				<a href="./getMyPage" title="나의 메가박스 페이지로 이동">나의 메가박스</a>
+				<a href="./getMyPage" title="나의 쌍용 페이지로 이동">나의 쌍용</a>
 				<a href="#" title="회원정보 페이지로 이동">회원정보</a>
 			</div></div>
 			</div>
@@ -36,7 +36,7 @@
 					
 							<div class="intro-pwd">
 								<strong>회원님의 개인정보 보호를 위해 비밀번호를 입력하셔야 합니다.</strong>
-								<span>메가박스 로그인 시 사용하시는 비밀번호를 입력해 주세요.</span>
+								<span>쌍용 로그인 시 사용하시는 비밀번호를 입력해 주세요.</span>
 								<form:form modelAttribute="memberVO" action="./passwordCheck" method="post">
 								<form:input path="password" type="password" title="비밀번호 입력" class="input-text large w380px" id="password" />
 								<form:errors path="password"></form:errors>
@@ -127,11 +127,12 @@
 			<!-- footer-bottom -->
 			<div class="footer-bottom">
 				<div class="inner-wrap">
-					<div class="ci">MEGABOX : Life Theater</div>
+					<div class="ci"><a href="${pageContext.request.contextPath}/"><img class="ci" alt=""
+		src="${pageContext.request.contextPath}/resources/static/icon/logo.png"></a></div>
 
 					<div class="footer-info">
 						<div>
-							<address>서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 메가박스스퀘어)</address>
+							<address>서울특별시 성동구 왕십리로 50, 6층(성수동 1가, 쌍용스퀘어)</address>
 							<p>ARS 1544-0070</p>
 						</div>
 						<p>대표자명 김진선</p>

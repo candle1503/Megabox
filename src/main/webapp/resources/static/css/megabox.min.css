@@ -14159,7 +14159,8 @@ body.body-iframe .modal-layer {
 	height: 38px;
 	text-indent: 10px;
 	background-position: center 0;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
+	font-size: 17;
 }
 
 #gnb>ul>li>a:after {
