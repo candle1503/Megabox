@@ -15,14 +15,12 @@
 
     <c:import url="../template/header_css.jsp"></c:import>
 	<style type="text/css">
-		header {
-			font-size: 1.4em;
-			font-weight: bold;
-			
-		}
-		#header.no-bg{
+		/* header {
+			font-size: 1.1em;
+		} */
+		/* #header.no-bg{
 			background-color : black;
-		}
+		} */
 		
 	
 		

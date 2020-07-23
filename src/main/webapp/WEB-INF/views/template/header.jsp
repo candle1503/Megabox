@@ -32,7 +32,7 @@
 
 	<nav id="gnb">
 		<ul class="gnb-depth1">
-			<li><a href="/movie/movieList" title="영화">영화</a>
+			<li><a href="/movie/movieList" title="영화" style="font-size: 17;">영화</a>
 				<div class="gnb-depth2">
 					<ul>
 						<li><a href="/movie/movieList" title="전체영화">전체영화</a></li>

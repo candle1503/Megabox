@@ -17,7 +17,7 @@
 			<!-- contents -->
 			<div id="contents">
 
-				<div class="error-page">
+				<div class="error-page" style="margin-top: 120px;">
 					<i class="iconset ico-error-404"></i>
 
 					<p class="tit">페이지를 찾을 수 없습니다.</p>
