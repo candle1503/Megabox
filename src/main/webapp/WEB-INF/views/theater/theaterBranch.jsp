@@ -19,10 +19,7 @@
 		<div class="page-util">
 			<div class="inner-wrap">
 				<div class="location">
-					<span>Home</span> <a href="/theater/list" title="극장 페이지로 이동">극장</a>
-					<a href="/theater/list" title="전체극장 페이지로 이동">전체극장</a> <a
-						href="https://www.megabox.co.kr/theater?brchNo=1372"
-						title="극장정보 페이지로 이동">극장정보</a>
+
 				</div>
 			</div>
 		</div>
@@ -148,7 +145,7 @@
 
 						<div class="block">
 
-							<button type="button" class="btn btn-like tooltip click">
+							<button type="button" class="btn btn-like tooltip click" onclick="location.href='../booking/bookingMain' ">
 								<i class="iconset ico-like-line"></i> <span>예매하러 가기</span> <span
 									class="ir" data-width="235"> <span class="cont-area">
 										<span class="login-alert-tooltip"> 로그인이 필요한 서비스 입니다.<br>
@@ -230,8 +227,7 @@
 						<div class="theater-facility">
 
 							<p>
-								<i class="iconset ico-facility-theater"></i>일반상영관<br>(상영관
-								정보 입력)
+								<i class="iconset ico-facility-theater"></i>일반상영관<br>
 							</p>
 
 							<p>
@@ -240,7 +236,7 @@
 
 						</div>
 
-						<h3 class="tit small mt30">층별안내(각 상영관 정보로 바꿀 예정)</h3>
+						<h3 class="tit small mt30">층별안내</h3>
 
 						<ul class="dot-list">
 
@@ -270,7 +266,7 @@
 						<div class="location-map-btn mt15">
 							<div class="btn-group left">
 								<a
-									href="http://m.map.naver.com/map.nhn?lng=127.0264086&amp;lat=37.498214&amp;level=2"
+									href="http://m.map.naver.com/map.nhn"
 									class="button purple" target="_blank" title="새창열림">실시간 길찾기</a>
 							</div>
 						</div>
@@ -1834,34 +1830,34 @@
 											<tr>
 												<th scope="rowgroup" rowspan="3">월~목</th>
 												<td>조조 (06:00~)</td>
-												<td>7,000</td>
-												<td>6,000</td>
+												<td>8,000</td>
+												<td>8,000</td>
 											</tr>
 											<tr>
 												<td>일반 (10:00~)</td>
-												<td>10,000</td>
+												<td>8,000</td>
 												<td>8,000</td>
 											</tr>
 											<tr>
 												<td>심야 (23:00~)</td>
-												<td>9,000</td>
-												<td>7,000</td>
+												<td>8,000</td>
+												<td>8,000</td>
 											</tr>
 											<tr>
 												<th scope="rowgroup" rowspan="3">금~일<br>공휴일
 												</th>
 												<td>조조 (06:00~)</td>
 												<td>8,000</td>
-												<td>6,000</td>
+												<td>8,000</td>
 											</tr>
 											<tr>
 												<td>일반 (10:00~)</td>
-												<td>12,000</td>
-												<td>9,000</td>
+												<td>8,000</td>
+												<td>8,000</td>
 											</tr>
 											<tr>
 												<td>심야 (23:00~)</td>
-												<td>10,000</td>
+												<td>8,000</td>
 												<td>8,000</td>
 											</tr>
 										</tbody>
@@ -2062,8 +2058,7 @@
 						소지한 장애인(1급~3급까지 동반 1인까지 적용 / 4급~6급은 본인에 한함)<br> • <font
 							color="#01738b">경로</font>&nbsp; 만65세 이상 본인에 한함(신분증 확인)<br> •
 						<font color="#01738b">경찰, 소방종사자</font>&nbsp; 공무원증을 소지하거나 정복을 입은
-						경찰, 소방관 본인<br> <br> <br> 관람가격 및 시간대 운영은 극장마다 상이할 수
-						있으며, 상기 가격은 메가박스 동대문점에 한하여 적용됩니다.
+						경찰, 소방관 본인<br> <br> <br> 
 					</div>
 
 
