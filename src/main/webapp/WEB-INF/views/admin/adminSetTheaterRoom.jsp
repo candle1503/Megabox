@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 
-<title>나의메가박스 | 라이프씨어터, 메가박스</title>
+<title>나의쌍용 | 라이프씨어터, 쌍용</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="/resources/static/icon/favicon.ico">
