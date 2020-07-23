@@ -17,27 +17,27 @@ class ReviewTest {
 	@Test
 	void insertTest() throws Exception{
 		
-		for(int i=1; i<5; i++) {
+		for(int i=1; i<50; i++) {
 			ReviewVO reviewVO = new ReviewVO();
 			if(i%4==1) {
-				reviewVO.setLikePoint("배우");
+				reviewVO.setLikePoint("OST");
 				reviewVO.setContents("OST최강"+i);
-				reviewVO.setMovieNum(1);
-				reviewVO.setPoint(1);
+				reviewVO.setMovieNum(4);
+				reviewVO.setPoint(7);
 				reviewVO.setTicketNum(2);
 				reviewVO.setWriter("writer"+i);
 			} else if(i%4==2) {
-				reviewVO.setLikePoint("연출");
+				reviewVO.setLikePoint("OST");
 				reviewVO.setContents("연출최강"+i);
-				reviewVO.setMovieNum(1);
-				reviewVO.setPoint(3);
+				reviewVO.setMovieNum(4);
+				reviewVO.setPoint(7);
 				reviewVO.setTicketNum(2);
 				reviewVO.setWriter("writer"+i);
 			} else {
 				reviewVO.setLikePoint("배우");
 				reviewVO.setContents("배우최강"+i);
-				reviewVO.setMovieNum(1);
-				reviewVO.setPoint(2);
+				reviewVO.setMovieNum(4);
+				reviewVO.setPoint(8);
 				reviewVO.setTicketNum(2);
 				reviewVO.setWriter("writer"+i);
 			}

@@ -21,21 +21,22 @@ class TicketTest {
 	@Test
 	void test() throws Exception {
 		
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<15; i++) {
 			TicketVO ticketVO = new TicketVO();
-			ticketVO.setSeatNum("E"+i+1);
+			ticketVO.setSeatNum("G"+i+1);
 			ticketVO.setMovieTime("11:00~12:40");
-			ticketVO.setId("test123");
+			ticketVO.setId("id32");
 			ticketVO.setCount(1);
-			ticketVO.setMovieNum(1);
-			ticketVO.setTheaterRoomCode(1);
+			ticketVO.setMovieNum(64);
+			ticketVO.setTheaterRoomCode(2);
 			ticketVO.setViewDate("2020-07-21 11:00:00");
-			ticketVO.setMovieName("#살아있다");
+			ticketVO.setMovieName("스파이더맨: 파 프롬 홈");
 
 			MovieVO movieVO = new MovieVO();
-			movieVO.setMovieNum(1);
-			movieVO.setAges(10);
-			movieVO=movieService.movieSelect(movieVO);
+			movieVO.setMovieNum(64);
+			movieVO = movieService.movieSelect(movieVO);
+			movieVO.setAges(897);
+			
 			
 			ticketService.ticketInsert(ticketVO);
 			movieService.viewUp(movieVO);
