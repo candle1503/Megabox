@@ -583,7 +583,7 @@
 								src="//cast.imp.joins.com/body/K3I6ffWoQiqG93YqqRV0LA/ctd1SjLS0pFootcP6YRZToHmQNtHyjYW5zPeR5KvzXWEAM4qWzAZAbZfUWVaNDF3RlIxS1RVQ3FDS2hjVWNRAstB17q0AhD3dgPLQde6tAIQ93Y.js"></script>
 							<div id="K3I6ffWoQiqG93YqqRV0LA">
 								<iframe
-									src="//ad.imp.joins.com/html/megabox_p/main/main@main_bottom_1100x227?_cid=K3I6ffWoQiqG93YqqRV0LA&amp;_uid=ctd1SjLS0pFootcP6YRZToHmQNtHyjYW5zPeR5KvzXWEAM4qWzAZAbZfUWVaNDF3RlIxS1RVQ3FDS2hjVWNRAstB17q0AhD3dgPLQde6tAIQ93Y&amp;_ref=https%3A%2F%2Fwww.megabox.co.kr%2F"
+									src="${pageContext.request.contextPath}/resources/static/images/banner.png"
 									title="메인 하단 배너영역" height="227px" width="100%" name="mliframe"
 									scrolling="no" frameborder="0" topmargin="0" leftmargin="0"
 									marginwidth="0" marginheight="0"></iframe>

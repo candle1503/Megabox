@@ -14,9 +14,9 @@
 
 	<div class="link-area">
 	
-<!-- 		<a href="#layer_sitemap" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a> 
-		<a href="#layer_header_search"class="header-open-layer btn-layer-search" title="검색">검색</a> -->
-		<a href="${pageContext.request.contextPath}/booking/bookingMain" class="header-open-layer btn-layer-search" title="빠른예매">빠른예매</a>
+ 		<a href="${pageContext.request.contextPath}/mobile/mobileIndex" class="header-open-layer btn-layer-sitemap" title="사이트맵" >사이트맵</a> 
+		<!--<a href="#layer_header_search"class="header-open-layer btn-layer-search" title="검색">검색</a> -->
+		<a href="${pageContext.request.contextPath}/booking/bookingMain" class="header-open-layer btn-layer-search" title="빠른예매" style="margin-left: 40px;">빠른예매</a>
 		<c:if test="${member ne null}">
 			<a href="${pageContext.request.contextPath}/member/getMyPage" class="header-open-layer btn-layer-mymega"
 			title="나의 메가박스">나의 메가박스</a>
