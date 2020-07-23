@@ -550,6 +550,7 @@
 				$('.savePoint').val(finalPay/10);
 				$('.usedPoint').val(usedPoint);
 				var savePoint = $('.savePoint').val();
+				
 				$.post("seatCheck",{
 					seat : seat,
 					timeCode : timeCode

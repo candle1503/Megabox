@@ -23,7 +23,7 @@
 			    merchant_uid : 'merchant_' + new Date().getTime(),
 			    name : '${movieVO.name}',
 
-			    amount : 100,//${ticketVO.count}*8000,
+			    amount : ${ticketVO.count}*8000-${pointVO.usedPoint},
 
 			    buyer_email : '${member.email}',
 			    buyer_name : '${member.name}',

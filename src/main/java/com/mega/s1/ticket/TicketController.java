@@ -44,7 +44,7 @@ public class TicketController {
 		MovieVO movieVO = new MovieVO();
 		movieVO.setMovieNum(ticketVO.getMovieNum());
 		movieVO = movieService.movieSelect(movieVO);
-
+		mv.addObject("pointVO", pointVO);
 		mv.addObject("movieVO", movieVO);
 		mv.addObject("ticketVO", ticketVO);
 		mv.setViewName("movie/payment");
