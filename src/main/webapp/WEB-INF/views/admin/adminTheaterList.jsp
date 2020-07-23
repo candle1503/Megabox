@@ -127,7 +127,8 @@
 			<!-- footer-bottom -->
 			<div class="footer-bottom">
 				<div class="inner-wrap">
-					<div class="ci">MEGABOX : Life Theater</div>
+					<div class="ci"><a href="${pageContext.request.contextPath}/"><img class="ci" alt=""
+		src="${pageContext.request.contextPath}/resources/static/icon/logo.png"></a></div>
 
 					<div class="footer-info">
 						<div>
